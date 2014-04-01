@@ -9,6 +9,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-Expecta.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Specta.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1AC683CBA04341FB913DD086</key>
+		<key>10D549F676B64B8790293C3C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>246E4C0F7B864F91AA0D2920</key>
+		<key>A23EF63188D14E39A14E09DA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A3DD356BCE3C4BE085C0E7E6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EBA93DF7A63F4E0AB04564E5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
