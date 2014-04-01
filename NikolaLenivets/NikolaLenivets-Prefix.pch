@@ -16,3 +16,5 @@
 #endif
 
 #define BACKEND_URL @"http://api.minecraft.perm.ru/"
+
+#define EXP_SHORTHAND
