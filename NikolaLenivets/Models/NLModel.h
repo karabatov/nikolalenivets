@@ -11,6 +11,8 @@
 
 @interface NLModel : NSObject
 
+@property (strong, nonatomic) NSNumber *id;
+
 + (id)modelFromDictionary:(NSDictionary *)dict;
 
 @end

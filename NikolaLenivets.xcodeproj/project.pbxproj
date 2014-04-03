@@ -17,6 +17,7 @@
 		4F390E8618ED753700131934 /* NLPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F390E8518ED753700131934 /* NLPlace.m */; };
 		4F390E8918ED754700131934 /* NLScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F390E8818ED754700131934 /* NLScreen.m */; };
 		4F390E8C18ED755300131934 /* NLEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F390E8B18ED755300131934 /* NLEvent.m */; };
+		4F390E8F18ED8FAF00131934 /* NLModelsSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F390E8E18ED8FAF00131934 /* NLModelsSpecs.m */; };
 		4F7A321718EA8BC200C75EE5 /* NLBackendSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7A321618EA8BC200C75EE5 /* NLBackendSpec.m */; };
 		4F9C413818EA84640038090E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9C413718EA84640038090E /* Foundation.framework */; };
 		4F9C413A18EA84640038090E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9C413918EA84640038090E /* CoreGraphics.framework */; };
@@ -64,6 +65,7 @@
 		4F390E8818ED754700131934 /* NLScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLScreen.m; path = Models/NLScreen.m; sourceTree = "<group>"; };
 		4F390E8A18ED755300131934 /* NLEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLEvent.h; path = Models/NLEvent.h; sourceTree = "<group>"; };
 		4F390E8B18ED755300131934 /* NLEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLEvent.m; path = Models/NLEvent.m; sourceTree = "<group>"; };
+		4F390E8E18ED8FAF00131934 /* NLModelsSpecs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLModelsSpecs.m; sourceTree = "<group>"; };
 		4F7A321618EA8BC200C75EE5 /* NLBackendSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLBackendSpec.m; sourceTree = "<group>"; };
 		4F9C413418EA84640038090E /* NikolaLenivets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NikolaLenivets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F9C413718EA84640038090E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -200,6 +202,7 @@
 				4F7A321618EA8BC200C75EE5 /* NLBackendSpec.m */,
 				4F390E7018ED55F800131934 /* NLStorageSpec.m */,
 				4F390E7218ED561D00131934 /* NLSpecHelper.h */,
+				4F390E8E18ED8FAF00131934 /* NLModelsSpecs.m */,
 			);
 			path = NikolaLenivetsTests;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 			files = (
 				4F390E7118ED55F800131934 /* NLStorageSpec.m in Sources */,
 				4F7A321718EA8BC200C75EE5 /* NLBackendSpec.m in Sources */,
+				4F390E8F18ED8FAF00131934 /* NLModelsSpecs.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
