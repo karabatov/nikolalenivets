@@ -18,17 +18,23 @@ PODS:
   - AFNetworking/UIKit (2.2.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - DCKeyValueObjectMapping (1.4)
   - Expecta (0.3.0)
   - Specta (0.2.1)
+  - Underscore.m (0.2.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.2.1)
+  - DCKeyValueObjectMapping (~> 1.4)
   - Expecta (~> 0.3.0)
   - Specta (~> 0.2.1)
+  - Underscore.m (~> 0.2.1)
 
 SPEC CHECKSUMS:
   AFNetworking: 0121f4b69be3fa58d1ab317866e036e12ac9651d
+  DCKeyValueObjectMapping: 39adaf0a54ff6368a22d9221db60f0696d81ad7b
   Expecta: 322f1dc42610106a5ba9871b4924cf1635d80833
   Specta: 2d06220591110c6d9757d8be8ecf8e63aa40dc2a
+  Underscore.m: 593ea54a19d3cc4439387a83d36eb7ba6ffd1707
 
 COCOAPODS: 0.29.0

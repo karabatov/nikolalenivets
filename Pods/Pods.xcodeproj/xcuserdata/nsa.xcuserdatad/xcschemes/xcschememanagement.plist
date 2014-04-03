@@ -9,12 +9,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-DCKeyValueObjectMapping.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Expecta.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>Pods-Specta.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Underscore.m.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -27,22 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>10D549F676B64B8790293C3C</key>
+		<key>8737C3DACA8A4150820D175A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A23EF63188D14E39A14E09DA</key>
+		<key>8EF0BD0DD6B24693A6EAF55D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A3DD356BCE3C4BE085C0E7E6</key>
+		<key>9028AB7653924A909ADB17F8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EBA93DF7A63F4E0AB04564E5</key>
+		<key>95366D4CE1FF43C98676BFEB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9E4B6BBE323040C3BF77094A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A5B4DB66EFAE4C898AB8EB65</key>
 		<dict>
 			<key>primary</key>
 			<true/>

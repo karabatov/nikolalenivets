@@ -48,6 +48,12 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 2
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 1
 
+// DCKeyValueObjectMapping
+#define COCOAPODS_POD_AVAILABLE_DCKeyValueObjectMapping
+#define COCOAPODS_VERSION_MAJOR_DCKeyValueObjectMapping 1
+#define COCOAPODS_VERSION_MINOR_DCKeyValueObjectMapping 4
+#define COCOAPODS_VERSION_PATCH_DCKeyValueObjectMapping 0
+
 // Expecta
 #define COCOAPODS_POD_AVAILABLE_Expecta
 #define COCOAPODS_VERSION_MAJOR_Expecta 0
@@ -59,4 +65,10 @@
 #define COCOAPODS_VERSION_MAJOR_Specta 0
 #define COCOAPODS_VERSION_MINOR_Specta 2
 #define COCOAPODS_VERSION_PATCH_Specta 1
+
+// Underscore.m
+#define COCOAPODS_POD_AVAILABLE_Underscore_m
+#define COCOAPODS_VERSION_MAJOR_Underscore_m 0
+#define COCOAPODS_VERSION_MINOR_Underscore_m 2
+#define COCOAPODS_VERSION_PATCH_Underscore_m 1
 

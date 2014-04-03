@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F390E7118ED55F800131934 /* NLStorageSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F390E7018ED55F800131934 /* NLStorageSpec.m */; };
+		4F390E7518ED589200131934 /* NLStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F390E7418ED589200131934 /* NLStorage.m */; };
+		4F390E7818ED684200131934 /* NLDiffIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F390E7718ED684200131934 /* NLDiffIndex.m */; };
+		4F390E7A18ED69C500131934 /* test-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F390E7918ED69C500131934 /* test-data.json */; };
+		4F390E7D18ED731E00131934 /* NLNewsEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F390E7C18ED731E00131934 /* NLNewsEntry.m */; };
+		4F390E8018ED732D00131934 /* NLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F390E7F18ED732D00131934 /* NLModel.m */; };
+		4F390E8318ED752700131934 /* NLTeaser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F390E8218ED752700131934 /* NLTeaser.m */; };
+		4F390E8618ED753700131934 /* NLPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F390E8518ED753700131934 /* NLPlace.m */; };
+		4F390E8918ED754700131934 /* NLScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F390E8818ED754700131934 /* NLScreen.m */; };
+		4F390E8C18ED755300131934 /* NLEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F390E8B18ED755300131934 /* NLEvent.m */; };
 		4F7A321718EA8BC200C75EE5 /* NLBackendSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7A321618EA8BC200C75EE5 /* NLBackendSpec.m */; };
 		4F9C413818EA84640038090E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9C413718EA84640038090E /* Foundation.framework */; };
 		4F9C413A18EA84640038090E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9C413918EA84640038090E /* CoreGraphics.framework */; };
@@ -19,7 +29,6 @@
 		4F9C415218EA84640038090E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9C413718EA84640038090E /* Foundation.framework */; };
 		4F9C415318EA84640038090E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9C413B18EA84640038090E /* UIKit.framework */; };
 		4F9C415B18EA84640038090E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4F9C415918EA84640038090E /* InfoPlist.strings */; };
-		4F9C415D18EA84640038090E /* NikolaLenivetsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9C415C18EA84640038090E /* NikolaLenivetsTests.m */; };
 		4FF31086D2714E0584DB4E63 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 213D00ACD702461FA5EF0EB3 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +45,25 @@
 /* Begin PBXFileReference section */
 		213D00ACD702461FA5EF0EB3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B21A1ADAF4F4E0BA8ED7C42 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		4F390E7018ED55F800131934 /* NLStorageSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLStorageSpec.m; sourceTree = "<group>"; };
+		4F390E7218ED561D00131934 /* NLSpecHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLSpecHelper.h; sourceTree = "<group>"; };
+		4F390E7318ED589200131934 /* NLStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLStorage.h; path = Models/NLStorage.h; sourceTree = "<group>"; };
+		4F390E7418ED589200131934 /* NLStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLStorage.m; path = Models/NLStorage.m; sourceTree = "<group>"; };
+		4F390E7618ED684200131934 /* NLDiffIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLDiffIndex.h; path = Models/NLDiffIndex.h; sourceTree = "<group>"; };
+		4F390E7718ED684200131934 /* NLDiffIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLDiffIndex.m; path = Models/NLDiffIndex.m; sourceTree = "<group>"; };
+		4F390E7918ED69C500131934 /* test-data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "test-data.json"; sourceTree = "<group>"; };
+		4F390E7B18ED731E00131934 /* NLNewsEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLNewsEntry.h; path = Models/NLNewsEntry.h; sourceTree = "<group>"; };
+		4F390E7C18ED731E00131934 /* NLNewsEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLNewsEntry.m; path = Models/NLNewsEntry.m; sourceTree = "<group>"; };
+		4F390E7E18ED732D00131934 /* NLModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLModel.h; path = Models/NLModel.h; sourceTree = "<group>"; };
+		4F390E7F18ED732D00131934 /* NLModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLModel.m; path = Models/NLModel.m; sourceTree = "<group>"; };
+		4F390E8118ED752700131934 /* NLTeaser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLTeaser.h; path = Models/NLTeaser.h; sourceTree = "<group>"; };
+		4F390E8218ED752700131934 /* NLTeaser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLTeaser.m; path = Models/NLTeaser.m; sourceTree = "<group>"; };
+		4F390E8418ED753700131934 /* NLPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLPlace.h; path = Models/NLPlace.h; sourceTree = "<group>"; };
+		4F390E8518ED753700131934 /* NLPlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLPlace.m; path = Models/NLPlace.m; sourceTree = "<group>"; };
+		4F390E8718ED754700131934 /* NLScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLScreen.h; path = Models/NLScreen.h; sourceTree = "<group>"; };
+		4F390E8818ED754700131934 /* NLScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLScreen.m; path = Models/NLScreen.m; sourceTree = "<group>"; };
+		4F390E8A18ED755300131934 /* NLEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLEvent.h; path = Models/NLEvent.h; sourceTree = "<group>"; };
+		4F390E8B18ED755300131934 /* NLEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLEvent.m; path = Models/NLEvent.m; sourceTree = "<group>"; };
 		4F7A321618EA8BC200C75EE5 /* NLBackendSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLBackendSpec.m; sourceTree = "<group>"; };
 		4F9C413418EA84640038090E /* NikolaLenivets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NikolaLenivets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F9C413718EA84640038090E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -52,7 +80,6 @@
 		4F9C415018EA84640038090E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		4F9C415818EA84640038090E /* NikolaLenivetsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NikolaLenivetsTests-Info.plist"; sourceTree = "<group>"; };
 		4F9C415A18EA84640038090E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		4F9C415C18EA84640038090E /* NikolaLenivetsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NikolaLenivetsTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +107,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F390E6D18ED50F100131934 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4F390E7318ED589200131934 /* NLStorage.h */,
+				4F390E7418ED589200131934 /* NLStorage.m */,
+				4F390E7618ED684200131934 /* NLDiffIndex.h */,
+				4F390E7718ED684200131934 /* NLDiffIndex.m */,
+				4F390E7B18ED731E00131934 /* NLNewsEntry.h */,
+				4F390E7C18ED731E00131934 /* NLNewsEntry.m */,
+				4F390E7E18ED732D00131934 /* NLModel.h */,
+				4F390E7F18ED732D00131934 /* NLModel.m */,
+				4F390E8118ED752700131934 /* NLTeaser.h */,
+				4F390E8218ED752700131934 /* NLTeaser.m */,
+				4F390E8418ED753700131934 /* NLPlace.h */,
+				4F390E8518ED753700131934 /* NLPlace.m */,
+				4F390E8718ED754700131934 /* NLScreen.h */,
+				4F390E8818ED754700131934 /* NLScreen.m */,
+				4F390E8A18ED755300131934 /* NLEvent.h */,
+				4F390E8B18ED755300131934 /* NLEvent.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		4F390E6E18ED510500131934 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
 		4F9C412B18EA84640038090E = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +172,8 @@
 		4F9C413D18EA84640038090E /* NikolaLenivets */ = {
 			isa = PBXGroup;
 			children = (
+				4F390E6E18ED510500131934 /* UI */,
+				4F390E6D18ED50F100131934 /* Models */,
 				4F9C414618EA84640038090E /* NLAppDelegate.h */,
 				4F9C414718EA84640038090E /* NLAppDelegate.m */,
 				4F9C414918EA84640038090E /* Images.xcassets */,
@@ -137,9 +196,10 @@
 		4F9C415618EA84640038090E /* NikolaLenivetsTests */ = {
 			isa = PBXGroup;
 			children = (
-				4F9C415C18EA84640038090E /* NikolaLenivetsTests.m */,
 				4F9C415718EA84640038090E /* Supporting Files */,
 				4F7A321618EA8BC200C75EE5 /* NLBackendSpec.m */,
+				4F390E7018ED55F800131934 /* NLStorageSpec.m */,
+				4F390E7218ED561D00131934 /* NLSpecHelper.h */,
 			);
 			path = NikolaLenivetsTests;
 			sourceTree = "<group>";
@@ -149,6 +209,7 @@
 			children = (
 				4F9C415818EA84640038090E /* NikolaLenivetsTests-Info.plist */,
 				4F9C415918EA84640038090E /* InfoPlist.strings */,
+				4F390E7918ED69C500131934 /* test-data.json */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -241,6 +302,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F9C415B18EA84640038090E /* InfoPlist.strings in Resources */,
+				4F390E7A18ED69C500131934 /* test-data.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,8 +346,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F390E7518ED589200131934 /* NLStorage.m in Sources */,
+				4F390E8918ED754700131934 /* NLScreen.m in Sources */,
 				4F9C414818EA84640038090E /* NLAppDelegate.m in Sources */,
 				4F9C414418EA84640038090E /* main.m in Sources */,
+				4F390E8C18ED755300131934 /* NLEvent.m in Sources */,
+				4F390E8618ED753700131934 /* NLPlace.m in Sources */,
+				4F390E7D18ED731E00131934 /* NLNewsEntry.m in Sources */,
+				4F390E8318ED752700131934 /* NLTeaser.m in Sources */,
+				4F390E7818ED684200131934 /* NLDiffIndex.m in Sources */,
+				4F390E8018ED732D00131934 /* NLModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,7 +363,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F9C415D18EA84640038090E /* NikolaLenivetsTests.m in Sources */,
+				4F390E7118ED55F800131934 /* NLStorageSpec.m in Sources */,
 				4F7A321718EA8BC200C75EE5 /* NLBackendSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
