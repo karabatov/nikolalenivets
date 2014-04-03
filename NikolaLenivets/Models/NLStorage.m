@@ -27,25 +27,25 @@
 {
     _index = [NLDiffIndex modelFromDictionary:jsonDictionary[@"index"]];
     
-    _news = _.array(jsonDictionary[@"news"]).map(^(NSDictionary *d) {
+    _news = _.arrayMap(jsonDictionary[@"news"], ^(NSDictionary *d) {
         return [NLNewsEntry modelFromDictionary:d];
-    }).unwrap;
+    });
     
-    _places = _.array(jsonDictionary[@"places"]).map(^(NSDictionary *d) {
+    _places = _.arrayMap(jsonDictionary[@"places"], ^(NSDictionary *d) {
         return [NLPlace modelFromDictionary:d];
-    }).unwrap;
+    });
 
-    _teasers = _.array(jsonDictionary[@"teasers"]).map(^(NSDictionary *d) {
+    _teasers = _.arrayMap(jsonDictionary[@"teasers"], ^(NSDictionary *d) {
         return [NLTeaser modelFromDictionary:d];
-    }).unwrap;
+    });
 
-    _events = _.array(jsonDictionary[@"events"]).map(^(NSDictionary *d) {
+    _events = _.arrayMap(jsonDictionary[@"events"], ^(NSDictionary *d) {
         return [NLEvent modelFromDictionary:d];
-    }).unwrap;
+    });
     
-    _screens = _.array(jsonDictionary[@"screens"]).map(^(NSDictionary *d) {
+    _screens = _.arrayMap(jsonDictionary[@"screens"], ^(NSDictionary *d) {
         return [NLScreen modelFromDictionary:d];
-    }).unwrap;
+    });
 }
 
 @end
