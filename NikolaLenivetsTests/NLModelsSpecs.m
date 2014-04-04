@@ -52,6 +52,11 @@ describe(@"models specification", ^{
         };
     });
     
+    it (@"should have properly structed NLDiffIndex model", ^{
+        NSArray *properties = @[@"news", @"teasers", @"places", @"events", @"screens"];
+        expect(missingFields([NLDiffIndex class], properties)).to.equal(@[]);
+    });
+    
     it (@"should have properly structed NLTeaser model", ^{
         NSArray *properties = @[@"id", @"order", @"pubdate", @"content", @"news", @"event", @"place"];
         expect(missingFields([NLTeaser class], properties)).to.equal(@[]);

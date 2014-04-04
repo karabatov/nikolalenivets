@@ -11,4 +11,10 @@
 
 @interface NLDiffIndex : NLModel
 
+@property (strong, nonatomic) NSArray *news;
+@property (strong, nonatomic) NSArray *events;
+@property (strong, nonatomic) NSArray *teasers;
+@property (strong, nonatomic) NSArray *places;
+@property (strong, nonatomic) NSArray *screens;
+
 @end
