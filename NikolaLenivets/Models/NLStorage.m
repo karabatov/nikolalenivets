@@ -8,7 +8,9 @@
 
 #import "NLStorage.h"
 #import "Underscore.h"
+#import "AFNetworking.h"
 
+#define CACHED_JSON @"CACHED_JSON"
 
 @implementation NLStorage
 
@@ -20,6 +22,24 @@
         _sharedStorage = [self new];
     });
     return _sharedStorage;
+}
+
+- (void)update
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:BACKEND_URL
+      parameters:nil
+         success:^(AFHTTPRequestOperation *op, id response) {
+             [self populateWithDictionary:response];
+             [[NSUserDefaults standardUserDefaults] setObject:response forKey:CACHED_JSON];
+             [[NSUserDefaults standardUserDefaults] synchronize];
+         }
+         failure:^(AFHTTPRequestOperation *op, NSError *error) {
+             NSLog(@"Error: %@", error);
+             [[NSUserDefaults standardUserDefaults] synchronize];
+             NSDictionary *cachedJSON = [[NSUserDefaults standardUserDefaults] objectForKey:CACHED_JSON];
+             [self populateWithDictionary:cachedJSON];
+         }];
 }
 
 

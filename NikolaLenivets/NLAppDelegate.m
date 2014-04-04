@@ -8,6 +8,7 @@
 
 #import "NLAppDelegate.h"
 #import "AFNetworking.h"
+#import "NLStorage.h"
 
 @implementation NLAppDelegate
 
@@ -16,24 +17,13 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
-    [self fetchData];
+    
+    [[NLStorage sharedInstance] update];
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
 
-
-- (void)fetchData
-{
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:BACKEND_URL
-      parameters:nil
-         success:^(AFHTTPRequestOperation *op, id response) {
-             NSLog(@"Response: %@", response);
-         }
-         failure:^(AFHTTPRequestOperation *op, NSError *error) {
-             NSLog(@"Error: %@", error);
-         }];
-}
 
 
 - (void)applicationWillResignActive:(UIApplication *)application

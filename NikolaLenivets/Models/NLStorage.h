@@ -27,6 +27,7 @@
 @property (strong, nonatomic, readonly) NSArray *screens;
 
 + (NLStorage *)sharedInstance;
+- (void)update;
 - (void)populateWithDictionary:(NSDictionary *)jsonDictionary;
 
 @end
