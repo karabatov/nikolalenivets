@@ -10,4 +10,13 @@
 
 @interface NLPlace : NLModel
 
+@property (strong, nonatomic) NSString *title;
+@property (strong, nonatomic) NSString *content;
+@property (strong, nonatomic) NSArray *categories;
+@property (strong, nonatomic) NSString *thumbnail;
+@property (strong, nonatomic) NSString *geo;
+@property (strong, nonatomic) NSString *foursquare;
+@property (strong, nonatomic) NSString *instagram;
+@property (strong, nonatomic) NSString *images;
+
 @end

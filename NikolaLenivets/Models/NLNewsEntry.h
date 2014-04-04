@@ -11,4 +11,9 @@
 
 @interface NLNewsEntry : NLModel
 
+@property (strong, nonatomic) NSString *title;
+@property (strong, nonatomic) NSString *content;
+@property (strong, nonatomic) NSString *pubdate;
+@property (strong, nonatomic) NSArray *images;
+
 @end

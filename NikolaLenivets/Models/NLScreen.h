@@ -10,4 +10,9 @@
 
 @interface NLScreen : NLModel
 
+@property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) NSString *fullname;
+@property (strong, nonatomic) NSString *image;
+@property (strong, nonatomic) NSString *url;
+
 @end
