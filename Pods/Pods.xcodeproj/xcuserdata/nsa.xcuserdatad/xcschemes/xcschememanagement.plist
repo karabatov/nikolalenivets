@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-PaperFold.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Specta.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,32 +42,37 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>8737C3DACA8A4150820D175A</key>
+		<key>197DC714EB0441C38ACA939C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8EF0BD0DD6B24693A6EAF55D</key>
+		<key>1DBBCEEA707B4125820CE20A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9028AB7653924A909ADB17F8</key>
+		<key>21AC3E0365B74B998F625E52</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>95366D4CE1FF43C98676BFEB</key>
+		<key>2C419432FB4F4B6683CAB325</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9E4B6BBE323040C3BF77094A</key>
+		<key>60CDF08B374147489E7B4984</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A5B4DB66EFAE4C898AB8EB65</key>
+		<key>7D73E779C8424E03B8B78CBE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D38C7CE1CF604C0D917ACB77</key>
 		<dict>
 			<key>primary</key>
 			<true/>

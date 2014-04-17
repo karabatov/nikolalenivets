@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0500"
+   LastUpgradeVersion = "0510"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9028AB7653924A909ADB17F8"
+               BlueprintIdentifier = "21AC3E0365B74B998F625E52"
                BuildableName = "libPods-DCKeyValueObjectMapping.a"
                BlueprintName = "Pods-DCKeyValueObjectMapping"
                ReferencedContainer = "container:Pods.xcodeproj">

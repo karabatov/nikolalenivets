@@ -10,6 +10,8 @@
 #import "AFNetworking.h"
 #import "NLStorage.h"
 
+#import "NLMainMenuController.h"
+
 @implementation NLAppDelegate
 
 
@@ -17,6 +19,9 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    NLMainMenuController *main = [NLMainMenuController new];
+    self.window.rootViewController = main;
     
     [[NLStorage sharedInstance] update];
     
