@@ -29,7 +29,7 @@
     [super viewDidLoad];
     _paperFoldView = [[PaperFoldView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, [self.view bounds].size.height)];
     [self.view addSubview:_paperFoldView];
-    [_paperFoldView setLeftFoldContentView:self.menuView foldCount:2 pullFactor:0.9];
+    [_paperFoldView setLeftFoldContentView:self.menuView foldCount:1 pullFactor:0.9];
     [_paperFoldView setCenterContentView:self.childView];
     [_paperFoldView setPaperFoldState:PaperFoldStateLeftUnfolded];
 }
