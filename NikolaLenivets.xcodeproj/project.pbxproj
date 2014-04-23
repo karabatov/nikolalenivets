@@ -32,6 +32,9 @@
 		4F9C415218EA84640038090E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9C413718EA84640038090E /* Foundation.framework */; };
 		4F9C415318EA84640038090E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9C413B18EA84640038090E /* UIKit.framework */; };
 		4F9C415B18EA84640038090E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4F9C415918EA84640038090E /* InfoPlist.strings */; };
+		4FCBE0081907A054002F37A3 /* BookmanC.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBE0051907A054002F37A3 /* BookmanC.otf */; };
+		4FCBE0091907A054002F37A3 /* MonoCondensedC.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBE0061907A054002F37A3 /* MonoCondensedC.ttf */; };
+		4FCBE00A1907A054002F37A3 /* MonoCondensedC_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBE0071907A054002F37A3 /* MonoCondensedC_Bold.ttf */; };
 		4FF31086D2714E0584DB4E63 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 213D00ACD702461FA5EF0EB3 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +90,9 @@
 		4F9C415018EA84640038090E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		4F9C415818EA84640038090E /* NikolaLenivetsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NikolaLenivetsTests-Info.plist"; sourceTree = "<group>"; };
 		4F9C415A18EA84640038090E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4FCBE0051907A054002F37A3 /* BookmanC.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BookmanC.otf; sourceTree = "<group>"; };
+		4FCBE0061907A054002F37A3 /* MonoCondensedC.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MonoCondensedC.ttf; sourceTree = "<group>"; };
+		4FCBE0071907A054002F37A3 /* MonoCondensedC_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MonoCondensedC_Bold.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +146,7 @@
 		4F390E6E18ED510500131934 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				4FCBE0041907A054002F37A3 /* fonts */,
 				4F411E7B18FFD8AA00758E30 /* NLMainMenuController.h */,
 				4F411E7C18FFD8AA00758E30 /* NLMainMenuController.m */,
 				4F411E7D18FFD8AA00758E30 /* NLMainMenuController.xib */,
@@ -225,6 +232,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		4FCBE0041907A054002F37A3 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4FCBE0051907A054002F37A3 /* BookmanC.otf */,
+				4FCBE0061907A054002F37A3 /* MonoCondensedC.ttf */,
+				4FCBE0071907A054002F37A3 /* MonoCondensedC_Bold.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -304,7 +321,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F9C414218EA84640038090E /* InfoPlist.strings in Resources */,
+				4FCBE0091907A054002F37A3 /* MonoCondensedC.ttf in Resources */,
+				4FCBE0081907A054002F37A3 /* BookmanC.otf in Resources */,
 				4F411E7F18FFD8AA00758E30 /* NLMainMenuController.xib in Resources */,
+				4FCBE00A1907A054002F37A3 /* MonoCondensedC_Bold.ttf in Resources */,
 				4F9C414A18EA84640038090E /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
