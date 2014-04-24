@@ -32,8 +32,31 @@
     [_paperFoldView setLeftFoldContentView:self.menuView foldCount:1 pullFactor:0.9];
     [_paperFoldView setCenterContentView:self.childView];
     [_paperFoldView setPaperFoldState:PaperFoldStateLeftUnfolded];
+    
+    NSArray *familyNames = [[UIFont familyNames] sortedArrayUsingSelector: @selector(compare:)];
+    for (NSString *familyName in familyNames) {
+        NSArray *names = [ [UIFont fontNamesForFamilyName: familyName] sortedArrayUsingSelector: @selector(compare:)];
+        for (NSString *name in names) {
+            NSLog(@"Font: %@", name);
+        }
+    }
 }
 
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.nikolaLabel.font = [UIFont fontWithName:@"MonoCondensedCBold" size:16];
+    self.lenivetsLabel.font = [UIFont fontWithName:@"MonoCondensedCBold" size:16];
+    
+    for (UIView *v in self.menuView.subviews) {
+        if ([v isKindOfClass:[UIButton class]]) {
+            UIButton *btn = (UIButton *)v;
+            btn.titleLabel.font = [UIFont fontWithName:@"MonoCondensedCBold" size:16];
+        }
+    }
+}
 
 - (IBAction)unfoldItem:(id)sender
 {

@@ -1,0 +1,1 @@
+PODS_SKUTOUCHPRESENTER_OTHER_LDFLAGS = -framework QuartzCore

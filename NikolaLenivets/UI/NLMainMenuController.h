@@ -14,4 +14,14 @@
 @property (strong, nonatomic) IBOutlet UIView *menuView;
 @property (strong, nonatomic) IBOutlet UIView *childView;
 
+/* Fancy stuff */
+@property (weak, nonatomic) IBOutlet UILabel *nikolaLabel;
+@property (weak, nonatomic) IBOutlet UILabel *lenivetsLabel;
+@property (weak, nonatomic) IBOutlet UIButton *searchButton;
+
+@property (weak, nonatomic) IBOutlet UILabel *newsCounter;
+@property (weak, nonatomic) IBOutlet UILabel *eventsCounter;
+@property (weak, nonatomic) IBOutlet UILabel *mapCounter;
+@property (weak, nonatomic) IBOutlet UILabel *placesCounter;
+
 @end
