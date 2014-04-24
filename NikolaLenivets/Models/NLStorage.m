@@ -33,12 +33,14 @@
              [self populateWithDictionary:response];
              [[NSUserDefaults standardUserDefaults] setObject:response forKey:CACHED_JSON];
              [[NSUserDefaults standardUserDefaults] synchronize];
+             [[NSNotificationCenter defaultCenter] postNotificationName:STORAGE_DID_UPDATE object:self];
          }
          failure:^(AFHTTPRequestOperation *op, NSError *error) {
              NSLog(@"Error: %@", error);
              [[NSUserDefaults standardUserDefaults] synchronize];
              NSDictionary *cachedJSON = [[NSUserDefaults standardUserDefaults] objectForKey:CACHED_JSON];
              [self populateWithDictionary:cachedJSON];
+             [[NSNotificationCenter defaultCenter] postNotificationName:STORAGE_DID_UPDATE object:self];
          }];
 }
 

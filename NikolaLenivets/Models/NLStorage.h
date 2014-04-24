@@ -15,6 +15,8 @@
 #import "NLEvent.h"
 #import "NLPlace.h"
 
+#define STORAGE_DID_UPDATE @"STORAGE_DID_UPDATE"
+
 @interface NLStorage : NSObject
 
 /** Diff object */

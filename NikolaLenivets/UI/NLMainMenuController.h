@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PaperFoldView.h"
+#import "NLStorage.h"
 
 @interface NLMainMenuController : UIViewController <PaperFoldViewDelegate>
 

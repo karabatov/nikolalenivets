@@ -19,10 +19,16 @@
 {
     self = [super initWithNibName:@"NLMainMenuController" bundle:nil];
     if (self) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateMenuState) name:STORAGE_DID_UPDATE object:nil];
     }
     return self;
 }
 
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (void)viewDidLoad
 {
@@ -34,6 +40,8 @@
     [_paperFoldView setCenterContentView:self.childView];
     [_paperFoldView setPaperFoldState:PaperFoldStateLeftUnfolded];
     
+#ifdef DEBUG
+    /** DEBUG: Show all fonts installed and available */
     NSArray *familyNames = [[UIFont familyNames] sortedArrayUsingSelector: @selector(compare:)];
     for (NSString *familyName in familyNames) {
         NSArray *names = [ [UIFont fontNamesForFamilyName: familyName] sortedArrayUsingSelector: @selector(compare:)];
@@ -41,6 +49,9 @@
             NSLog(@"Font: %@", name);
         }
     }
+#endif
+    
+    [self updateMenuState];
 }
 
 
@@ -59,12 +70,7 @@
     }
 }
 
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    
-}
-
+#pragma mark - Paper Fold Stuff
 
 - (IBAction)unfoldItem:(id)sender
 {
@@ -73,13 +79,23 @@
 }
 
 
-#pragma mark - Paper Fold Stuff
-
 - (void)paperFoldView:(id)paperFoldView didFoldAutomatically:(BOOL)automated toState:(PaperFoldState)paperFoldState
 {
     if (paperFoldState == PaperFoldStateLeftUnfolded) {
         [SKUTouchPresenter showTouchesWithColor:[UIColor colorWithRed:0.2 green:0.3 blue:0.4 alpha:0.2]];
     }
+}
+
+
+#pragma mark - actions
+
+- (void)updateMenuState
+{
+    NLStorage *store = [NLStorage sharedInstance];
+    self.newsCounter.text = [NSString stringWithFormat:@"%02d", store.news.count];
+    self.eventsCounter.text = [NSString stringWithFormat:@"%02d", store.events.count];
+    self.mapCounter.text = @"00";
+    self.placesCounter.text = [NSString stringWithFormat:@"%02d", store.places.count];
 }
 
 @end
