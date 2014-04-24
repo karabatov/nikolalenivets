@@ -23,6 +23,7 @@
 		4F7A321718EA8BC200C75EE5 /* NLBackendSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7A321618EA8BC200C75EE5 /* NLBackendSpec.m */; };
 		4F7EC305190933B9002C0ECD /* NLNewsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7EC303190933B9002C0ECD /* NLNewsListController.m */; };
 		4F7EC306190933B9002C0ECD /* NLNewsListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7EC304190933B9002C0ECD /* NLNewsListController.xib */; };
+		4F7EC30819093E16002C0ECD /* picalka.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4F7EC30719093E16002C0ECD /* picalka.jpg */; };
 		4F9C413818EA84640038090E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9C413718EA84640038090E /* Foundation.framework */; };
 		4F9C413A18EA84640038090E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9C413918EA84640038090E /* CoreGraphics.framework */; };
 		4F9C413C18EA84640038090E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9C413B18EA84640038090E /* UIKit.framework */; };
@@ -80,6 +81,7 @@
 		4F7EC302190933B9002C0ECD /* NLNewsListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLNewsListController.h; path = UI/NLNewsListController.h; sourceTree = "<group>"; };
 		4F7EC303190933B9002C0ECD /* NLNewsListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLNewsListController.m; path = UI/NLNewsListController.m; sourceTree = "<group>"; };
 		4F7EC304190933B9002C0ECD /* NLNewsListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLNewsListController.xib; path = UI/NLNewsListController.xib; sourceTree = "<group>"; };
+		4F7EC30719093E16002C0ECD /* picalka.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = picalka.jpg; sourceTree = "<group>"; };
 		4F9C413418EA84640038090E /* NikolaLenivets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NikolaLenivets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F9C413718EA84640038090E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4F9C413918EA84640038090E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -151,6 +153,7 @@
 		4F390E6E18ED510500131934 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				4F7EC30719093E16002C0ECD /* picalka.jpg */,
 				4FCBE0041907A054002F37A3 /* fonts */,
 				4F411E7B18FFD8AA00758E30 /* NLMainMenuController.h */,
 				4F411E7C18FFD8AA00758E30 /* NLMainMenuController.m */,
@@ -335,6 +338,7 @@
 				4F411E7F18FFD8AA00758E30 /* NLMainMenuController.xib in Resources */,
 				4FCBE00A1907A054002F37A3 /* MonoCondensedC_Bold.ttf in Resources */,
 				4F9C414A18EA84640038090E /* Images.xcassets in Resources */,
+				4F7EC30819093E16002C0ECD /* picalka.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

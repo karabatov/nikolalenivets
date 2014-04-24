@@ -10,6 +10,8 @@
 #import "PaperFoldView.h"
 #import "NLStorage.h"
 
+#define SHOW_MENU_NOW @"SHOW_MENU_NOW"
+
 @interface NLMainMenuController : UIViewController <PaperFoldViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *menuView;

@@ -10,4 +10,9 @@
 
 @interface NLNewsListController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITableView *leftTable;
+@property (weak, nonatomic) IBOutlet UITableView *rightTable;
+
+- (IBAction)back:(id)sender;
+
 @end

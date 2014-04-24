@@ -7,10 +7,8 @@
 //
 
 #import "NLNewsListController.h"
+#import "NLMainMenuController.h"
 
-@interface NLNewsListController ()
-
-@end
 
 @implementation NLNewsListController
 
@@ -22,5 +20,10 @@
     return self;
 }
 
+
+- (IBAction)back:(id)sender
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_MENU_NOW object:nil];
+}
 
 @end

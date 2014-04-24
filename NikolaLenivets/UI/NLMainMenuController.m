@@ -8,10 +8,22 @@
 
 #import "NLMainMenuController.h"
 #import "SKUTouchPresenter.h"
+#import "NLNewsListController.h"
+
+enum {
+    News = 0,
+    Events = 1,
+    Map = 2,
+    Places = 3,
+    Way = 4,
+    About = 5
+};
 
 @implementation NLMainMenuController
 {
-    PaperFoldView *_paperFoldView;
+    __strong PaperFoldView *_paperFoldView;
+    __strong NLNewsListController *_newsList;
+    __strong UIView *_contentView;
 }
 
 
@@ -20,6 +32,7 @@
     self = [super initWithNibName:@"NLMainMenuController" bundle:nil];
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateMenuState) name:STORAGE_DID_UPDATE object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewDidLoad) name:SHOW_MENU_NOW object:nil];
     }
     return self;
 }
@@ -33,11 +46,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    _contentView = [[UIView alloc] initWithFrame:self.view.frame];
     _paperFoldView = [[PaperFoldView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, [self.view bounds].size.height)];
     _paperFoldView.delegate = self;
     [self.view addSubview:_paperFoldView];
     [_paperFoldView setLeftFoldContentView:self.menuView foldCount:1 pullFactor:0.9];
-    [_paperFoldView setCenterContentView:self.childView];
+    [_paperFoldView setCenterContentView:_contentView];
     [_paperFoldView setPaperFoldState:PaperFoldStateLeftUnfolded];
     
 #ifdef DEBUG
@@ -72,8 +87,22 @@
 
 #pragma mark - Paper Fold Stuff
 
-- (IBAction)unfoldItem:(id)sender
+- (IBAction)unfoldItem:(UIButton *)sender
 {
+    for (UIView *v in _contentView.subviews) {
+        [v removeFromSuperview];
+    }
+    switch (sender.tag) {
+        case News: {
+            _newsList = [NLNewsListController new];
+            [_contentView addSubview:_newsList.view];
+            break;
+        }
+        default:
+            [_contentView addSubview:self.childView];
+            break;
+    }
+    
     [_paperFoldView setPaperFoldState:PaperFoldStateDefault];
     [SKUTouchPresenter showTouchesWithColor:nil];
 }
