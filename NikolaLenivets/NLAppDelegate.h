@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SKUTouchPresenter.h"
 
 @interface NLAppDelegate : UIResponder <UIApplicationDelegate>
 

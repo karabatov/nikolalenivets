@@ -7,7 +7,7 @@
 //
 
 #import "NLMainMenuController.h"
-
+#import "SKUTouchPresenter.h"
 
 @implementation NLMainMenuController
 {
@@ -28,6 +28,7 @@
 {
     [super viewDidLoad];
     _paperFoldView = [[PaperFoldView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, [self.view bounds].size.height)];
+    _paperFoldView.delegate = self;
     [self.view addSubview:_paperFoldView];
     [_paperFoldView setLeftFoldContentView:self.menuView foldCount:1 pullFactor:0.9];
     [_paperFoldView setCenterContentView:self.childView];
@@ -58,9 +59,27 @@
     }
 }
 
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    
+}
+
+
 - (IBAction)unfoldItem:(id)sender
 {
     [_paperFoldView setPaperFoldState:PaperFoldStateDefault];
+    [SKUTouchPresenter showTouchesWithColor:nil];
+}
+
+
+#pragma mark - Paper Fold Stuff
+
+- (void)paperFoldView:(id)paperFoldView didFoldAutomatically:(BOOL)automated toState:(PaperFoldState)paperFoldState
+{
+    if (paperFoldState == PaperFoldStateLeftUnfolded) {
+        [SKUTouchPresenter showTouchesWithColor:[UIColor colorWithRed:0.2 green:0.3 blue:0.4 alpha:0.2]];
+    }
 }
 
 @end

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PaperFoldView.h"
 
-@interface NLMainMenuController : UIViewController
+@interface NLMainMenuController : UIViewController <PaperFoldViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *menuView;
 @property (strong, nonatomic) IBOutlet UIView *childView;
