@@ -30,6 +30,7 @@ PODS:
   - DTFoundation/UIKit (1.6.3):
     - DTFoundation/Core
   - Expecta (0.3.0)
+  - NSDate+Helper (1.0.0)
   - PaperFold (1.1)
   - SKUTouchPresenter (1.2.0)
   - Specta (0.2.1)
@@ -41,6 +42,7 @@ DEPENDENCIES:
   - DCKeyValueObjectMapping (~> 1.4)
   - DTCoreText (~> 1.6.11)
   - Expecta (~> 0.3.0)
+  - NSDate+Helper (~> 1.0.0)
   - PaperFold (~> 1.1)
   - SKUTouchPresenter (~> 1.2.0)
   - Specta (~> 0.2.1)
@@ -53,6 +55,7 @@ SPEC CHECKSUMS:
   DTCoreText: 4d56bb74ff05a3b2415fc15fccc4b5689ed3119c
   DTFoundation: 42939bcb968b331673ae4992289bf0f761b588a4
   Expecta: 322f1dc42610106a5ba9871b4924cf1635d80833
+  NSDate+Helper: 6f6ab03e05037127c85c2e1f5f6c27021ed2887c
   PaperFold: a7b0348ac9a48478dcd0b216f7a05fb5e3345961
   SKUTouchPresenter: 27d2f53554b1965e4b8e807a7ad07fd204de353a
   Specta: 2d06220591110c6d9757d8be8ecf8e63aa40dc2a

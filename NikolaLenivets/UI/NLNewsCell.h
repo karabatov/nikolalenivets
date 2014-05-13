@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet DTAttributedLabel *previewLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *thumbnail;
 
++ (CGFloat)heightForCellWithEntry:(NLNewsEntry *)entry;
 - (void)populateFromNewsEntry:(NLNewsEntry *)entry;
 
 @end

@@ -34,6 +34,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-NSDate+Helper.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-PaperFold.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -62,57 +67,62 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>16740BA72D4A45D1851758A0</key>
+		<key>0114F2DD98614C48984B9317</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6C2019DBFEE647DA8ABEB993</key>
+		<key>07F83AC0521A4FB1B5092BB1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8803648236AD43E9A89D0164</key>
+		<key>2E94955084424A34B87F98D3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9B5AB10188774F479E00B7B1</key>
+		<key>2FCC64047E0248D2A1D14B28</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C7F3A4440E9A4B6C8A07C016</key>
+		<key>6682B5573D054136947D8288</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D81C19096D5342CF94E693BD</key>
+		<key>95DFC1B37E064931AD2EB272</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D98477F9ED6A4F3B89F1773B</key>
+		<key>AD44F7FBD4854758BE1BBD07</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EBF2F266C8084D02B875D9E5</key>
+		<key>C238663CD96F477EAF0821A2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EE268D3C44AA40A094DB2402</key>
+		<key>CAC32D000F4B41F3851F900E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F85E8A2C2E204B11BA2324B7</key>
+		<key>D4B6BCA2C37143B48E7D4087</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FB725268878942CEA2136C4E</key>
+		<key>D58F8874F9F2438189EA8137</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FC153B50ECF849E085B16E7D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

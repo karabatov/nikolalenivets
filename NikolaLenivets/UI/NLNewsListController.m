@@ -68,7 +68,20 @@ enum  {
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 314.0;
+    NLNewsEntry *entry = nil;
+    switch (tableView.tag) {
+        case LeftTable:
+            entry = _leftNews[indexPath.row];
+            break;
+        case RightTable:
+            entry = _rightNews[indexPath.row];
+            break;
+        default:
+            NSAssert(0, @"Something strange happened!");
+            break;
+    }
+    
+    return [NLNewsCell heightForCellWithEntry:entry];
 }
 
 

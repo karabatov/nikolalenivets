@@ -7,7 +7,15 @@
 //
 
 #import "NLNewsEntry.h"
+#import <NSDate+Helper.h>
 
 @implementation NLNewsEntry
+
+
+- (NSDate *)pubDate
+{
+    NSDate *date = [NSDate dateFromString:self.pubdate withFormat:[NSDate timestampFormatString]];
+    return date;
+}
 
 @end

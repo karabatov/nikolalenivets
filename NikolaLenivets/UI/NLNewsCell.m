@@ -8,8 +8,12 @@
 
 #import "NLNewsCell.h"
 #import <AsyncImageView.h>
+#import <NSDate+Helper.h>
 
 @implementation NLNewsCell
+{
+    __strong NLNewsEntry *_entry;
+}
 
 - (void)awakeFromNib
 {
@@ -22,9 +26,23 @@
 
 - (void)populateFromNewsEntry:(NLNewsEntry *)entry
 {
-    self.titleLabel.text = entry.title;
-    self.previewLabel.attributedString = [self attributedStringForString:entry.content];
-    self.thumbnail.imageURL = [NSURL URLWithString:entry.thumbnail];
+    _entry = entry;
+    self.titleLabel.text = _entry.title;
+    self.previewLabel.attributedString = [self attributedStringForString:_entry.content];
+    if (_entry.thumbnail == nil) {
+        self.thumbnail.image = nil;
+    }
+    self.thumbnail.imageURL = [NSURL URLWithString:_entry.thumbnail];
+    self.dateLabel.text = [[_entry pubDate] stringWithFormat:[NSDate dateFormatString]];
+}
+
+
++ (CGFloat)heightForCellWithEntry:(NLNewsEntry *)entry
+{
+    if (entry.thumbnail != nil) {
+        return 314.0;
+    }
+    return 89.0;
 }
 
 

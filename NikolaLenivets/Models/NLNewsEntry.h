@@ -17,4 +17,7 @@
 @property (strong, nonatomic) NSArray *images;
 @property (strong, nonatomic) NSString *thumbnail;
 
+
+- (NSDate *)pubDate;
+
 @end
