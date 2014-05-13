@@ -9,6 +9,7 @@
 #import "NLNewsListController.h"
 #import "NLMainMenuController.h"
 #import "NLNewsCell.h"
+#import "NLNewsEntryViewController.h"
 
 enum  {
     LeftTable  = 0,
@@ -20,6 +21,7 @@ enum  {
 {
     __strong NSMutableArray *_leftNews;
     __strong NSMutableArray *_rightNews;
+    __strong NLNewsEntryViewController *_details;
 }
 
 - (id)init
@@ -68,19 +70,7 @@ enum  {
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NLNewsEntry *entry = nil;
-    switch (tableView.tag) {
-        case LeftTable:
-            entry = _leftNews[indexPath.row];
-            break;
-        case RightTable:
-            entry = _rightNews[indexPath.row];
-            break;
-        default:
-            NSAssert(0, @"Something strange happened!");
-            break;
-    }
-    
+    NLNewsEntry *entry = [self entryForTable:tableView indexPath:indexPath];
     return [NLNewsCell heightForCellWithEntry:entry];
 }
 
@@ -117,8 +107,26 @@ enum  {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"NLNewsCellView" owner:self options:nil] firstObject];
     }
     
+    NLNewsEntry *entry = [self entryForTable:tableView indexPath:indexPath];
+    [cell populateFromNewsEntry:entry];
+    return cell;
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NLNewsEntry *entry = [self entryForTable:tableView indexPath:indexPath];
+    _details = [[NLNewsEntryViewController alloc] initWithEntry:entry];
+    [self presentViewController:_details animated:YES completion:^{}];
+}
+
+
+#pragma mark - Utils 
+
+- (NLNewsEntry *)entryForTable:(UITableView *)table indexPath:(NSIndexPath *)indexPath
+{
     NLNewsEntry *entry = nil;
-    switch (tableView.tag) {
+    switch (table.tag) {
         case LeftTable:
             entry = _leftNews[indexPath.row];
             break;
@@ -129,8 +137,7 @@ enum  {
             NSAssert(0, @"Something strange happened!");
             break;
     }
-    [cell populateFromNewsEntry:entry];
-    return cell;
+    return entry;
 }
 
 @end

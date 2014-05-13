@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F18FD3A192212F900032A34 /* NLNewsEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F18FD38192212F900032A34 /* NLNewsEntryViewController.m */; };
+		4F18FD3B192212F900032A34 /* NLNewsEntryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F18FD39192212F900032A34 /* NLNewsEntryViewController.xib */; };
 		4F390E7118ED55F800131934 /* NLStorageSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F390E7018ED55F800131934 /* NLStorageSpec.m */; };
 		4F390E7518ED589200131934 /* NLStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F390E7418ED589200131934 /* NLStorage.m */; };
 		4F390E7818ED684200131934 /* NLDiffIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F390E7718ED684200131934 /* NLDiffIndex.m */; };
@@ -56,6 +58,9 @@
 /* Begin PBXFileReference section */
 		213D00ACD702461FA5EF0EB3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B21A1ADAF4F4E0BA8ED7C42 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		4F18FD37192212F900032A34 /* NLNewsEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLNewsEntryViewController.h; path = UI/NLNewsEntryViewController.h; sourceTree = "<group>"; };
+		4F18FD38192212F900032A34 /* NLNewsEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLNewsEntryViewController.m; path = UI/NLNewsEntryViewController.m; sourceTree = "<group>"; };
+		4F18FD39192212F900032A34 /* NLNewsEntryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLNewsEntryViewController.xib; path = UI/NLNewsEntryViewController.xib; sourceTree = "<group>"; };
 		4F390E7018ED55F800131934 /* NLStorageSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLStorageSpec.m; sourceTree = "<group>"; };
 		4F390E7218ED561D00131934 /* NLSpecHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NLSpecHelper.h; sourceTree = "<group>"; };
 		4F390E7318ED589200131934 /* NLStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLStorage.h; path = Models/NLStorage.h; sourceTree = "<group>"; };
@@ -132,6 +137,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F18FD36192212DA00032A34 /* NewsEntry */ = {
+			isa = PBXGroup;
+			children = (
+				4F18FD37192212F900032A34 /* NLNewsEntryViewController.h */,
+				4F18FD38192212F900032A34 /* NLNewsEntryViewController.m */,
+				4F18FD39192212F900032A34 /* NLNewsEntryViewController.xib */,
+			);
+			name = NewsEntry;
+			sourceTree = "<group>";
+		};
 		4F390E6D18ED50F100131934 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +173,7 @@
 		4F390E6E18ED510500131934 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				4F18FD36192212DA00032A34 /* NewsEntry */,
 				4FAA131E190A4E90009A0546 /* News List */,
 				4F7EC30719093E16002C0ECD /* picalka.jpg */,
 				4FCBE0041907A054002F37A3 /* fonts */,
@@ -361,6 +377,7 @@
 				4FCBE0081907A054002F37A3 /* BookmanC.otf in Resources */,
 				4F411E7F18FFD8AA00758E30 /* NLMainMenuController.xib in Resources */,
 				4FCBE00A1907A054002F37A3 /* MonoCondensedC_Bold.ttf in Resources */,
+				4F18FD3B192212F900032A34 /* NLNewsEntryViewController.xib in Resources */,
 				4F8A13051921D5C700F3DA96 /* NLNewsCellView.xib in Resources */,
 				4F9C414A18EA84640038090E /* Images.xcassets in Resources */,
 				4F7EC30819093E16002C0ECD /* picalka.jpg in Resources */,
@@ -422,6 +439,7 @@
 				4F9C414418EA84640038090E /* main.m in Sources */,
 				4F7EC305190933B9002C0ECD /* NLNewsListController.m in Sources */,
 				4F390E8C18ED755300131934 /* NLEvent.m in Sources */,
+				4F18FD3A192212F900032A34 /* NLNewsEntryViewController.m in Sources */,
 				4F390E8618ED753700131934 /* NLPlace.m in Sources */,
 				4F390E7D18ED731E00131934 /* NLNewsEntry.m in Sources */,
 				4F390E8318ED752700131934 /* NLTeaser.m in Sources */,
