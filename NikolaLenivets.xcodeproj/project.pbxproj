@@ -24,6 +24,8 @@
 		4F7EC305190933B9002C0ECD /* NLNewsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7EC303190933B9002C0ECD /* NLNewsListController.m */; };
 		4F7EC306190933B9002C0ECD /* NLNewsListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7EC304190933B9002C0ECD /* NLNewsListController.xib */; };
 		4F7EC30819093E16002C0ECD /* picalka.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4F7EC30719093E16002C0ECD /* picalka.jpg */; };
+		4F8A13051921D5C700F3DA96 /* NLNewsCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F8A13041921D5C700F3DA96 /* NLNewsCellView.xib */; };
+		4F8A13081921D6CE00F3DA96 /* NLNewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8A13071921D6CE00F3DA96 /* NLNewsCell.m */; };
 		4F9C413818EA84640038090E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9C413718EA84640038090E /* Foundation.framework */; };
 		4F9C413A18EA84640038090E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9C413918EA84640038090E /* CoreGraphics.framework */; };
 		4F9C413C18EA84640038090E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9C413B18EA84640038090E /* UIKit.framework */; };
@@ -82,6 +84,9 @@
 		4F7EC303190933B9002C0ECD /* NLNewsListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLNewsListController.m; path = UI/NLNewsListController.m; sourceTree = "<group>"; };
 		4F7EC304190933B9002C0ECD /* NLNewsListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLNewsListController.xib; path = UI/NLNewsListController.xib; sourceTree = "<group>"; };
 		4F7EC30719093E16002C0ECD /* picalka.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = picalka.jpg; sourceTree = "<group>"; };
+		4F8A13041921D5C700F3DA96 /* NLNewsCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLNewsCellView.xib; path = UI/NLNewsCellView.xib; sourceTree = "<group>"; };
+		4F8A13061921D6CE00F3DA96 /* NLNewsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLNewsCell.h; path = UI/NLNewsCell.h; sourceTree = "<group>"; };
+		4F8A13071921D6CE00F3DA96 /* NLNewsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLNewsCell.m; path = UI/NLNewsCell.m; sourceTree = "<group>"; };
 		4F9C413418EA84640038090E /* NikolaLenivets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NikolaLenivets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F9C413718EA84640038090E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4F9C413918EA84640038090E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -153,16 +158,24 @@
 		4F390E6E18ED510500131934 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				4FAA131E190A4E90009A0546 /* News List */,
 				4F7EC30719093E16002C0ECD /* picalka.jpg */,
 				4FCBE0041907A054002F37A3 /* fonts */,
 				4F411E7B18FFD8AA00758E30 /* NLMainMenuController.h */,
 				4F411E7C18FFD8AA00758E30 /* NLMainMenuController.m */,
 				4F411E7D18FFD8AA00758E30 /* NLMainMenuController.xib */,
-				4F7EC302190933B9002C0ECD /* NLNewsListController.h */,
-				4F7EC303190933B9002C0ECD /* NLNewsListController.m */,
-				4F7EC304190933B9002C0ECD /* NLNewsListController.xib */,
 			);
 			name = UI;
+			sourceTree = "<group>";
+		};
+		4F8A13031921D57D00F3DA96 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4F8A13041921D5C700F3DA96 /* NLNewsCellView.xib */,
+				4F8A13061921D6CE00F3DA96 /* NLNewsCell.h */,
+				4F8A13071921D6CE00F3DA96 /* NLNewsCell.m */,
+			);
+			name = Cell;
 			sourceTree = "<group>";
 		};
 		4F9C412B18EA84640038090E = {
@@ -241,6 +254,17 @@
 				4F390E7918ED69C500131934 /* test-data.json */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4FAA131E190A4E90009A0546 /* News List */ = {
+			isa = PBXGroup;
+			children = (
+				4F8A13031921D57D00F3DA96 /* Cell */,
+				4F7EC302190933B9002C0ECD /* NLNewsListController.h */,
+				4F7EC303190933B9002C0ECD /* NLNewsListController.m */,
+				4F7EC304190933B9002C0ECD /* NLNewsListController.xib */,
+			);
+			name = "News List";
 			sourceTree = "<group>";
 		};
 		4FCBE0041907A054002F37A3 /* fonts */ = {
@@ -337,6 +361,7 @@
 				4FCBE0081907A054002F37A3 /* BookmanC.otf in Resources */,
 				4F411E7F18FFD8AA00758E30 /* NLMainMenuController.xib in Resources */,
 				4FCBE00A1907A054002F37A3 /* MonoCondensedC_Bold.ttf in Resources */,
+				4F8A13051921D5C700F3DA96 /* NLNewsCellView.xib in Resources */,
 				4F9C414A18EA84640038090E /* Images.xcassets in Resources */,
 				4F7EC30819093E16002C0ECD /* picalka.jpg in Resources */,
 			);
@@ -403,6 +428,7 @@
 				4F390E7818ED684200131934 /* NLDiffIndex.m in Sources */,
 				4F390E8018ED732D00131934 /* NLModel.m in Sources */,
 				4F411E7E18FFD8AA00758E30 /* NLMainMenuController.m in Sources */,
+				4F8A13081921D6CE00F3DA96 /* NLNewsCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

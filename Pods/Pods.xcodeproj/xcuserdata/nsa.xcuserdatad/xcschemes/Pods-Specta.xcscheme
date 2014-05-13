@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "550AA0C1A43C447BA2105C09"
+               BlueprintIdentifier = "9B5AB10188774F479E00B7B1"
                BuildableName = "libPods-Specta.a"
                BlueprintName = "Pods-Specta"
                ReferencedContainer = "container:Pods.xcodeproj">

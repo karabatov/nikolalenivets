@@ -9,7 +9,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-AsyncImageView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-DCKeyValueObjectMapping.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-DTCoreText.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-DTFoundation.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -47,42 +62,57 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>069C9F0D40AF465A809B38CB</key>
+		<key>16740BA72D4A45D1851758A0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4C9E95B4727E4164B305B05F</key>
+		<key>6C2019DBFEE647DA8ABEB993</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>550AA0C1A43C447BA2105C09</key>
+		<key>8803648236AD43E9A89D0164</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6082440CF5C54B10AFC074F7</key>
+		<key>9B5AB10188774F479E00B7B1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>70309280747B4A20AD21FEE0</key>
+		<key>C7F3A4440E9A4B6C8A07C016</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>727944FC2FAB4266B80FAE77</key>
+		<key>D81C19096D5342CF94E693BD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>985EE6BCA1E640EC93F34A2E</key>
+		<key>D98477F9ED6A4F3B89F1773B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BD00EF0644BD4ECBB19F8F69</key>
+		<key>EBF2F266C8084D02B875D9E5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EE268D3C44AA40A094DB2402</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F85E8A2C2E204B11BA2324B7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FB725268878942CEA2136C4E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

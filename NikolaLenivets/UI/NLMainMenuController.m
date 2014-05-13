@@ -11,12 +11,12 @@
 #import "NLNewsListController.h"
 
 enum {
-    News = 0,
+    News   = 0,
     Events = 1,
-    Map = 2,
+    Map    = 2,
     Places = 3,
-    Way = 4,
-    About = 5
+    Way    = 4,
+    About  = 5
 };
 
 @implementation NLMainMenuController
@@ -32,7 +32,7 @@ enum {
     self = [super initWithNibName:@"NLMainMenuController" bundle:nil];
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateMenuState) name:STORAGE_DID_UPDATE object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewDidLoad) name:SHOW_MENU_NOW object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showMenu) name:SHOW_MENU_NOW object:nil];
     }
     return self;
 }
@@ -42,6 +42,7 @@ enum {
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
 
 - (void)viewDidLoad
 {
@@ -53,7 +54,6 @@ enum {
     [self.view addSubview:_paperFoldView];
     [_paperFoldView setLeftFoldContentView:self.menuView foldCount:1 pullFactor:0.9];
     [_paperFoldView setCenterContentView:_contentView];
-    [_paperFoldView setPaperFoldState:PaperFoldStateLeftUnfolded];
     
 #ifdef DEBUG
     /** DEBUG: Show all fonts installed and available */
@@ -65,7 +65,13 @@ enum {
         }
     }
 #endif
-    
+    [self showMenu];
+}
+
+
+- (void)showMenu
+{
+    [_paperFoldView setPaperFoldState:PaperFoldStateLeftUnfolded];
     [self updateMenuState];
 }
 

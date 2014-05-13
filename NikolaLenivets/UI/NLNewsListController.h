@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NLNewsListController : UIViewController
+@interface NLNewsListController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *leftTable;
 @property (weak, nonatomic) IBOutlet UITableView *rightTable;

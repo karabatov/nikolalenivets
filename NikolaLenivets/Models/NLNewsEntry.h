@@ -15,5 +15,6 @@
 @property (strong, nonatomic) NSString *content;
 @property (strong, nonatomic) NSString *pubdate;
 @property (strong, nonatomic) NSArray *images;
+@property (strong, nonatomic) NSString *thumbnail;
 
 @end

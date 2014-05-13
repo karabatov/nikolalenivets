@@ -18,7 +18,17 @@ PODS:
   - AFNetworking/UIKit (2.2.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - AsyncImageView (1.5.1)
   - DCKeyValueObjectMapping (1.4)
+  - DTCoreText (1.6.11):
+    - DTFoundation/Core (~> 1.6.1)
+    - DTFoundation/DTHTMLParser (~> 1.6.1)
+    - DTFoundation/UIKit (~> 1.6.1)
+  - DTFoundation/Core (1.6.3)
+  - DTFoundation/DTHTMLParser (1.6.3):
+    - DTFoundation/Core
+  - DTFoundation/UIKit (1.6.3):
+    - DTFoundation/Core
   - Expecta (0.3.0)
   - PaperFold (1.1)
   - SKUTouchPresenter (1.2.0)
@@ -27,7 +37,9 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.2.1)
+  - AsyncImageView (~> 1.5.1)
   - DCKeyValueObjectMapping (~> 1.4)
+  - DTCoreText (~> 1.6.11)
   - Expecta (~> 0.3.0)
   - PaperFold (~> 1.1)
   - SKUTouchPresenter (~> 1.2.0)
@@ -36,7 +48,10 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: ae513199cca79e9d7af2708ccabe2ed075550c42
+  AsyncImageView: 686febb2b2a923353ede67c529d257498059852d
   DCKeyValueObjectMapping: 39adaf0a54ff6368a22d9221db60f0696d81ad7b
+  DTCoreText: 4d56bb74ff05a3b2415fc15fccc4b5689ed3119c
+  DTFoundation: 42939bcb968b331673ae4992289bf0f761b588a4
   Expecta: 322f1dc42610106a5ba9871b4924cf1635d80833
   PaperFold: a7b0348ac9a48478dcd0b216f7a05fb5e3345961
   SKUTouchPresenter: 27d2f53554b1965e4b8e807a7ad07fd204de353a
