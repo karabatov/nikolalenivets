@@ -10,6 +10,7 @@
 #import "NLStorage.h"
 #import "AsyncImageView.h"
 #import "NLGroup.h"
+#import "NLMainMenuController.h"
 
 @implementation NLEventsViewController
 {
@@ -29,6 +30,19 @@
 }
 
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self prepareEventsArray];
+}
+
+
+- (IBAction)back:(id)sender
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_MENU_NOW object:nil];
+}
+
+
 - (void)prepareEventsArray
 {
     _events = [[NLStorage sharedInstance] events];
@@ -41,7 +55,7 @@
     __block CGFloat leftOffset = 0.0;
 
     NSArray *slides = _.array(_events).map(^(NLEvent *event) {
-        UIImageView *slideImage = [[UIImageView alloc] initWithFrame:self.view.frame];
+        UIImageView *slideImage = [[UIImageView alloc] initWithFrame:self.scrollView.frame];
         NLGroup *group = [event.groups lastObject];
         slideImage.imageURL = [NSURL URLWithString:group.poster];
         slideImage.frame = CGRectMake(leftOffset, 0, slideImage.frame.size.width, slideImage.frame.size.height);
@@ -51,7 +65,7 @@
     })
     .unwrap;
 
-    self.scrollView.contentSize = CGSizeMake(slides.count * self.view.frame.size.width, self.view.frame.size.height);
+    self.scrollView.contentSize = CGSizeMake(slides.count * self.scrollView.frame.size.width, self.scrollView.frame.size.height);
     _.array(self.scrollView.subviews).each(^(UIView *v) { [v removeFromSuperview]; });
     _.array(slides).each(^(UIImageView *slide) {
         [self.scrollView addSubview:slide];

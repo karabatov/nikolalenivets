@@ -9,6 +9,7 @@
 #import "NLMainMenuController.h"
 #import "SKUTouchPresenter.h"
 #import "NLNewsListController.h"
+#import "NLEventsViewController.h"
 
 enum {
     News   = 0,
@@ -23,6 +24,7 @@ enum {
 {
     __strong PaperFoldView *_paperFoldView;
     __strong NLNewsListController *_newsList;
+    __strong NLEventsViewController *_eventsController;
     __strong UIView *_contentView;
 }
 
@@ -102,6 +104,11 @@ enum {
         case News: {
             _newsList = [NLNewsListController new];
             [_contentView addSubview:_newsList.view];
+            break;
+        }
+        case Events: {
+            _eventsController = [NLEventsViewController new];
+            [_contentView addSubview:_eventsController.view];
             break;
         }
         default:
