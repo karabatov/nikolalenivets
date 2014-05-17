@@ -115,6 +115,7 @@ enum  {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NLNewsEntry *entry = [self entryForTable:tableView indexPath:indexPath];
     _details = [[NLNewsEntryViewController alloc] initWithEntry:entry];
     [self presentViewController:_details animated:YES completion:^{}];

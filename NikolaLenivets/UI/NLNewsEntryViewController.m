@@ -8,6 +8,7 @@
 
 #import "NLNewsEntryViewController.h"
 #import <DTCoreText.h>
+#import <NSDate+Helper.h>
 
 @implementation NLNewsEntryViewController
 {
@@ -29,7 +30,7 @@
 {
     [super viewDidLoad];
     
-    self.titleLabel.font = [UIFont fontWithName:@"MonoCondensedC" size:16];
+    self.titleLabel.font = [UIFont fontWithName:@"MonoCondensedC" size:18];
     self.titleLabel.text = _entry.title;
     self.contentText.attributedString = [self attributedStringForString:_entry.content];
     
@@ -38,6 +39,13 @@
                                         self.contentView.frame.size.width,
                                         [self heightForString:_entry.content] + 151);
     self.scrollView.contentSize = self.contentView.frame.size;
+
+    NSString *firstLetter = [[self.contentText.attributedString string] substringToIndex:1];
+    self.capitalLetter.text = firstLetter;
+
+    self.countView.font = [UIFont fontWithName:@"MonoCondensedC" size:8];
+    self.dateLabel.font = [UIFont fontWithName:@"MonoCondensedC" size:8];
+    self.dateLabel.text = [[_entry pubDate] stringWithFormat:[NSDate dateFormatString]];
 }
 
 
@@ -48,8 +56,7 @@
                                                                                         options:@{DTUseiOS6Attributes: @(YES)}
                                                                              documentAttributes:nil];
     NSRange range = {0, attributed.length};
-    [attributed addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"BookmanC" size:12] range:range];
-    
+    [attributed addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"BookmanC" size:14] range:range];    
     return attributed;
 }
 

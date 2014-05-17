@@ -127,10 +127,10 @@ enum {
 - (void)updateMenuState
 {
     NLStorage *store = [NLStorage sharedInstance];
-    self.newsCounter.text = [NSString stringWithFormat:@"%02d", store.news.count];
-    self.eventsCounter.text = [NSString stringWithFormat:@"%02d", store.events.count];
+    self.newsCounter.text = [NSString stringWithFormat:@"%02lu", (unsigned long)store.news.count];
+    self.eventsCounter.text = [NSString stringWithFormat:@"%02lu", (unsigned long)store.events.count];
     self.mapCounter.text = @"00";
-    self.placesCounter.text = [NSString stringWithFormat:@"%02d", store.places.count];
+    self.placesCounter.text = [NSString stringWithFormat:@"%02lu", (unsigned long)store.places.count];
 }
 
 @end

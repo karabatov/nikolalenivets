@@ -17,6 +17,9 @@
 @property (weak, nonatomic) IBOutlet DTAttributedLabel *contentText;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
+@property (weak, nonatomic) IBOutlet UILabel *countView;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *capitalLetter;
 
 - (id)initWithEntry:(NLNewsEntry *)entry;
 - (IBAction)back:(id)sender;
