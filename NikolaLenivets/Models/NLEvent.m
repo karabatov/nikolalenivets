@@ -7,7 +7,22 @@
 //
 
 #import "NLEvent.h"
+#import "NLGroup.h"
+#import <DCKeyValueObjectMapping.h>
+#import <DCArrayMapping.h>
+#import <DCParserConfiguration.h>
 
 @implementation NLEvent
+
++ (id)modelFromDictionary:(NSDictionary *)dict
+{
+    DCArrayMapping *mapper = [DCArrayMapping mapperForClassElements:[NLGroup class] forAttribute:@"groups" onClass:[NLEvent class]];
+
+    DCParserConfiguration *config = [DCParserConfiguration configuration];
+    [config addArrayMapper:mapper];
+
+    DCKeyValueObjectMapping *parser = [DCKeyValueObjectMapping mapperForClass:[self class] andConfiguration:config];
+    return [parser parseDictionary:dict];
+}
 
 @end
