@@ -55,9 +55,10 @@
     __block CGFloat leftOffset = 0.0;
 
     NSArray *slides = _.array(_events).map(^(NLEvent *event) {
-        UIImageView *slideImage = [[UIImageView alloc] initWithFrame:self.scrollView.frame];
+        AsyncImageView *slideImage = [[AsyncImageView alloc] initWithFrame:self.scrollView.frame];
         NLGroup *group = [event.groups lastObject];
         slideImage.imageURL = [NSURL URLWithString:group.poster];
+        slideImage.showActivityIndicator = YES;
         slideImage.frame = CGRectMake(leftOffset, 0, slideImage.frame.size.width, slideImage.frame.size.height);
         leftOffset += slideImage.frame.size.width;
 
