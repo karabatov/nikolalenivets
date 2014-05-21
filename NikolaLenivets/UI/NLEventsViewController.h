@@ -8,8 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NLEventsViewController : UIViewController
+@interface NLEventsViewController : UIViewController <UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIButton *prevItemButton;
+@property (weak, nonatomic) IBOutlet UIButton *nextItemButton;
+@property (weak, nonatomic) IBOutlet UILabel *currentPageLabel;
+@property (weak, nonatomic) IBOutlet UILabel *overallPagesCountLabel;
+@property (weak, nonatomic) IBOutlet UIView *previewView;
+@property (weak, nonatomic) IBOutlet UILabel *eventTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *eventTypeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *ticketPriceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *eventDatesLabel;
 
 @end

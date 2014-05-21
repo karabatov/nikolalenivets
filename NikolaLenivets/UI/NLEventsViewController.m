@@ -15,6 +15,7 @@
 @implementation NLEventsViewController
 {
     __strong NSArray *_events;
+    NSUInteger _currentPage;
 }
 
 - (id)init
@@ -34,6 +35,7 @@
 {
     [super viewDidLoad];
     [self prepareEventsArray];
+    [self fillContentForPage:0];
 }
 
 
@@ -71,6 +73,56 @@
     _.array(slides).each(^(UIImageView *slide) {
         [self.scrollView addSubview:slide];
     });
+
+    self.overallPagesCountLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)slides.count];
+}
+
+
+#pragma mark - Scroll delegate
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    _currentPage = floor(scrollView.contentOffset.x / scrollView.bounds.size.width);
+    self.currentPageLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)_currentPage];
+	[self fillContentForPage:_currentPage];
+}
+
+
+- (void)fillContentForPage:(NSUInteger)pageIndex
+{
+    BOOL shouldFill = _events.count > pageIndex;
+    self.previewView.hidden = !shouldFill;
+    if (shouldFill) {
+        NLEvent *event = _events[pageIndex];
+        NLGroup *group = [event.groups lastObject];
+        self.eventTitleLabel.text = event.title;
+        self.ticketPriceLabel.text = [NSString stringWithFormat:@"%@ Р", group.ticketprice];
+        self.eventDatesLabel.text = [NSString stringWithFormat:@"  %@\n–%@", group.startdate, group.enddate];
+    }
+}
+
+
+- (IBAction)scrollBack:(id)sender
+{
+    if (self.scrollView.contentOffset.x > 0) {
+        [self.scrollView setContentOffset:CGPointMake(self.scrollView.contentOffset.x - self.scrollView.frame.size.width,
+                                                       self.scrollView.contentOffset.y)
+                                  animated:YES];
+        _currentPage--;
+        [self fillContentForPage:_currentPage];
+    }
+}
+
+
+- (IBAction)scrollForward:(id)sender
+{
+    if (self.scrollView.contentOffset.x < self.scrollView.contentSize.width - self.scrollView.frame.size.width) {
+        [self.scrollView setContentOffset:CGPointMake(self.scrollView.contentOffset.x + self.scrollView.frame.size.width,
+                                                       self.scrollView.contentOffset.y)
+                                  animated:YES];
+        _currentPage++;
+        [self fillContentForPage:_currentPage];
+    }
 }
 
 @end
