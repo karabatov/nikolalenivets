@@ -8,10 +8,10 @@
 
 #import "NLModel.h"
 
-@interface NLGroup : NLModel
+@interface NLEventGroup : NLModel
 
 @property (strong, nonatomic) NSNumber *id;
-@property (strong, nonatomic) NSNumber *ticketprice;
+@property (strong, nonatomic) NSString *ticketprice;
 @property (strong, nonatomic) NSString *startdate;
 @property (strong, nonatomic) NSString *enddate;
 @property (strong, nonatomic) NSString *name;

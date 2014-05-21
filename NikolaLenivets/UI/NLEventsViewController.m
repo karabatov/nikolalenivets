@@ -9,12 +9,13 @@
 #import "NLEventsViewController.h"
 #import "NLStorage.h"
 #import "AsyncImageView.h"
-#import "NLGroup.h"
+#import "NLEventGroup.h"
 #import "NLMainMenuController.h"
+#import <NSDate+Helper.h>
 
 @implementation NLEventsViewController
 {
-    __strong NSArray *_events;
+    __strong NSArray *_eventGroups;
     NSUInteger _currentPage;
 }
 
@@ -34,6 +35,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    self.titleLabel.font = [UIFont fontWithName:NLMonospacedFont size:18];
+    self.currentPageLabel.font = [UIFont fontWithName:NLMonospacedFont size:self.currentPageLabel.font.pointSize];
+    self.overallPagesCountLabel.font = self.currentPageLabel.font;
+
+    self.eventTypeLabel.font =
+    self.eventDatesTitleLabel.font =
+    self.eventPriceTitleLabel.font = [UIFont fontWithName:NLMonospacedFont size:self.eventTypeLabel.font.pointSize];
+
+    self.eventTitleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:24];
+    self.eventDatesLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:18];
+    self.ticketPriceLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:12];
+
     [self prepareEventsArray];
     [self fillContentForPage:0];
 }
@@ -47,7 +61,7 @@
 
 - (void)prepareEventsArray
 {
-    _events = [[NLStorage sharedInstance] events];
+    _eventGroups = [[NLStorage sharedInstance] eventGroups];
     [self layoutSlides];
 }
 
@@ -56,9 +70,8 @@
 {
     __block CGFloat leftOffset = 0.0;
 
-    NSArray *slides = _.array(_events).map(^(NLEvent *event) {
+    NSArray *slides = _.array(_eventGroups).map(^(NLEventGroup *group) {
         AsyncImageView *slideImage = [[AsyncImageView alloc] initWithFrame:self.scrollView.frame];
-        NLGroup *group = [event.groups lastObject];
         slideImage.imageURL = [NSURL URLWithString:group.poster];
         slideImage.showActivityIndicator = YES;
         slideImage.frame = CGRectMake(leftOffset, 0, slideImage.frame.size.width, slideImage.frame.size.height);
@@ -83,21 +96,26 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     _currentPage = floor(scrollView.contentOffset.x / scrollView.bounds.size.width);
-    self.currentPageLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)_currentPage];
 	[self fillContentForPage:_currentPage];
 }
 
 
 - (void)fillContentForPage:(NSUInteger)pageIndex
 {
-    BOOL shouldFill = _events.count > pageIndex;
+    BOOL shouldFill = _eventGroups.count > pageIndex;
     self.previewView.hidden = !shouldFill;
+    self.currentPageLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)(_currentPage + 1)];
     if (shouldFill) {
-        NLEvent *event = _events[pageIndex];
-        NLGroup *group = [event.groups lastObject];
-        self.eventTitleLabel.text = event.title;
-        self.ticketPriceLabel.text = [NSString stringWithFormat:@"%@ Р", group.ticketprice];
-        self.eventDatesLabel.text = [NSString stringWithFormat:@"  %@\n–%@", group.startdate, group.enddate];
+        NLEventGroup *group = _eventGroups[pageIndex];
+        self.eventTitleLabel.text = group.name;
+        self.ticketPriceLabel.text = group.ticketprice;
+        NSDate *startDate = [NSDate dateFromString:group.startdate];
+        NSDate *endDate = [NSDate dateFromString:group.enddate];
+
+        NSString *startDateString = [startDate stringWithFormat:@"d"];
+        NSString *endDateString = [endDate stringWithFormat:@"d MMMM"];
+
+        self.eventDatesLabel.text = [NSString stringWithFormat:@" %@\n—%@", startDateString, endDateString];
     }
 }
 
@@ -116,6 +134,9 @@
 
 - (IBAction)scrollForward:(id)sender
 {
+    if (_currentPage >= _eventGroups.count - 1 && _currentPage <= 0) {
+        return;
+    }
     if (self.scrollView.contentOffset.x < self.scrollView.contentSize.width - self.scrollView.frame.size.width) {
         [self.scrollView setContentOffset:CGPointMake(self.scrollView.contentOffset.x + self.scrollView.frame.size.width,
                                                        self.scrollView.contentOffset.y)

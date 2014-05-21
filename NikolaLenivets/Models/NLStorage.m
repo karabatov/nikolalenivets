@@ -61,8 +61,8 @@
         return [NLTeaser modelFromDictionary:d];
     });
 
-    _events = _.arrayMap(jsonDictionary[@"events"], ^(NSDictionary *d) {
-        return [NLEvent modelFromDictionary:d];
+    _eventGroups = _.arrayMap(jsonDictionary[@"eventgroups"], ^(NSDictionary *d) {
+        return [NLEventGroup modelFromDictionary:d];
     });
     
     _screens = _.arrayMap(jsonDictionary[@"screens"], ^(NSDictionary *d) {

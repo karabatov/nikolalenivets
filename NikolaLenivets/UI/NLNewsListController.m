@@ -39,6 +39,12 @@ enum  {
     [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_MENU_NOW object:nil];
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.titleLabel.font = [UIFont fontWithName:NLMonospacedFont size:18];
+}
+
 
 - (void)viewWillAppear:(BOOL)animated
 {

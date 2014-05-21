@@ -21,3 +21,7 @@
 
 #import "Underscore.h"
 #define _ Underscore
+
+#define NLMonospacedFont @"MonoCondensedC"
+#define NLMonospacedBoldFont @"MonoCondensedCBold"
+#define NLSerifFont @"BookmanC"

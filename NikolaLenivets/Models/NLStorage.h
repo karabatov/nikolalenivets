@@ -14,6 +14,7 @@
 #import "NLScreen.h"
 #import "NLEvent.h"
 #import "NLPlace.h"
+#import "NLEventGroup.h"
 
 #define STORAGE_DID_UPDATE @"STORAGE_DID_UPDATE"
 
@@ -25,7 +26,7 @@
 @property (strong, nonatomic, readonly) NSArray *news;
 @property (strong, nonatomic, readonly) NSArray *places;
 @property (strong, nonatomic, readonly) NSArray *teasers;
-@property (strong, nonatomic, readonly) NSArray *events;
+@property (strong, nonatomic, readonly) NSArray *eventGroups;
 @property (strong, nonatomic, readonly) NSArray *screens;
 
 + (NLStorage *)sharedInstance;

@@ -135,7 +135,7 @@ enum {
 {
     NLStorage *store = [NLStorage sharedInstance];
     self.newsCounter.text = [NSString stringWithFormat:@"%02lu", (unsigned long)store.news.count];
-    self.eventsCounter.text = [NSString stringWithFormat:@"%02lu", (unsigned long)store.events.count];
+    self.eventsCounter.text = [NSString stringWithFormat:@"%02lu", (unsigned long)store.eventGroups.count];
     self.mapCounter.text = @"00";
     self.placesCounter.text = [NSString stringWithFormat:@"%02lu", (unsigned long)store.places.count];
 }
