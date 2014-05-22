@@ -110,15 +110,15 @@ enum {
     }
     
     [_paperFoldView setPaperFoldState:PaperFoldStateDefault];
-    [SKUTouchPresenter showTouchesWithColor:nil];
+    //[SKUTouchPresenter showTouchesWithColor:nil];
 }
 
 
 - (void)paperFoldView:(id)paperFoldView didFoldAutomatically:(BOOL)automated toState:(PaperFoldState)paperFoldState
 {
-    if (paperFoldState == PaperFoldStateLeftUnfolded) {
-        [SKUTouchPresenter showTouchesWithColor:[UIColor colorWithRed:0.2 green:0.3 blue:0.4 alpha:0.2]];
-    }
+//    if (paperFoldState == PaperFoldStateLeftUnfolded) {
+//        [SKUTouchPresenter showTouchesWithColor:[UIColor colorWithRed:0.2 green:0.3 blue:0.4 alpha:0.2]];
+//    }
 }
 
 
