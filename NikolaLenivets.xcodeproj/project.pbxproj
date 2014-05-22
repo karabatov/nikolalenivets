@@ -20,6 +20,7 @@
 		4F411E7E18FFD8AA00758E30 /* NLMainMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F411E7C18FFD8AA00758E30 /* NLMainMenuController.m */; };
 		4F411E7F18FFD8AA00758E30 /* NLMainMenuController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F411E7D18FFD8AA00758E30 /* NLMainMenuController.xib */; };
 		4F454360192DE4D20043C3F4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F45435E192DE4D20043C3F4 /* Default-568h@2x.png */; };
+		4F454363192E0F810043C3F4 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F454362192E0F810043C3F4 /* Default@2x.png */; };
 		4F6137491927313700BFDD1C /* NLEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6137471927313700BFDD1C /* NLEventsViewController.m */; };
 		4F61374A1927313700BFDD1C /* NLEventsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F6137481927313700BFDD1C /* NLEventsViewController.xib */; };
 		4F61374D19273D7700BFDD1C /* NLEventGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F61374C19273D7700BFDD1C /* NLEventGroup.m */; };
@@ -74,6 +75,7 @@
 		4F411E7C18FFD8AA00758E30 /* NLMainMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLMainMenuController.m; path = UI/NLMainMenuController.m; sourceTree = "<group>"; };
 		4F411E7D18FFD8AA00758E30 /* NLMainMenuController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLMainMenuController.xib; path = UI/NLMainMenuController.xib; sourceTree = "<group>"; };
 		4F45435E192DE4D20043C3F4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		4F454362192E0F810043C3F4 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		4F6137461927313700BFDD1C /* NLEventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLEventsViewController.h; path = UI/NLEventsViewController.h; sourceTree = "<group>"; };
 		4F6137471927313700BFDD1C /* NLEventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLEventsViewController.m; path = UI/NLEventsViewController.m; sourceTree = "<group>"; };
 		4F6137481927313700BFDD1C /* NLEventsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLEventsViewController.xib; path = UI/NLEventsViewController.xib; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 		4FD010F1192CC316002F5836 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				4F454362192E0F810043C3F4 /* Default@2x.png */,
 				4F45435E192DE4D20043C3F4 /* Default-568h@2x.png */,
 				4FD010F4192CC326002F5836 /* search_icon.png */,
 				4FD010F2192CC320002F5836 /* menu_button.png */,
@@ -376,6 +379,7 @@
 				4F18FD3B192212F900032A34 /* NLNewsEntryViewController.xib in Resources */,
 				4FD010F5192CC326002F5836 /* search_icon.png in Resources */,
 				4F8A13051921D5C700F3DA96 /* NLNewsCellView.xib in Resources */,
+				4F454363192E0F810043C3F4 /* Default@2x.png in Resources */,
 				4F9C414A18EA84640038090E /* Images.xcassets in Resources */,
 				4F7EC30819093E16002C0ECD /* picalka.jpg in Resources */,
 			);
@@ -550,7 +554,6 @@
 			baseConfigurationReference = 3B21A1ADAF4F4E0BA8ED7C42 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -569,7 +572,6 @@
 			baseConfigurationReference = 3B21A1ADAF4F4E0BA8ED7C42 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Yakushev Lev (G9HB4UV686)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
