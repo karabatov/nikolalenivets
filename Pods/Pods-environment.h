@@ -84,12 +84,6 @@
 #define COCOAPODS_VERSION_MINOR_DTFoundation_UIKit 6
 #define COCOAPODS_VERSION_PATCH_DTFoundation_UIKit 3
 
-// Expecta
-#define COCOAPODS_POD_AVAILABLE_Expecta
-#define COCOAPODS_VERSION_MAJOR_Expecta 0
-#define COCOAPODS_VERSION_MINOR_Expecta 3
-#define COCOAPODS_VERSION_PATCH_Expecta 0
-
 // NSDate+Helper
 #define COCOAPODS_POD_AVAILABLE_NSDate_Helper
 #define COCOAPODS_VERSION_MAJOR_NSDate_Helper 1
@@ -107,12 +101,6 @@
 #define COCOAPODS_VERSION_MAJOR_SKUTouchPresenter 1
 #define COCOAPODS_VERSION_MINOR_SKUTouchPresenter 2
 #define COCOAPODS_VERSION_PATCH_SKUTouchPresenter 0
-
-// Specta
-#define COCOAPODS_POD_AVAILABLE_Specta
-#define COCOAPODS_VERSION_MAJOR_Specta 0
-#define COCOAPODS_VERSION_MINOR_Specta 2
-#define COCOAPODS_VERSION_PATCH_Specta 1
 
 // Underscore.m
 #define COCOAPODS_POD_AVAILABLE_Underscore_m

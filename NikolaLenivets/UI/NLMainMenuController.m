@@ -49,24 +49,17 @@ enum {
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    _contentView = [[UIView alloc] initWithFrame:self.view.frame];
-    _paperFoldView = [[PaperFoldView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, [self.view bounds].size.height)];
+    CGRect frame = [[UIScreen mainScreen] bounds];
+
+    _contentView = [[UIView alloc] initWithFrame:frame];
+
+    _paperFoldView = [[PaperFoldView alloc] initWithFrame:frame];
     _paperFoldView.delegate = self;
+
     [self.view addSubview:_paperFoldView];
     [_paperFoldView setLeftFoldContentView:self.menuView foldCount:1 pullFactor:0.9];
     [_paperFoldView setCenterContentView:_contentView];
-    
-#ifdef DEBUG
-    /** DEBUG: Show all fonts installed and available */
-    NSArray *familyNames = [[UIFont familyNames] sortedArrayUsingSelector: @selector(compare:)];
-    for (NSString *familyName in familyNames) {
-        NSArray *names = [ [UIFont fontNamesForFamilyName: familyName] sortedArrayUsingSelector: @selector(compare:)];
-        for (NSString *name in names) {
-            NSLog(@"Font: %@", name);
-        }
-    }
-#endif
+
     [self showMenu];
 }
 

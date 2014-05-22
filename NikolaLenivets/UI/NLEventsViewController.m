@@ -36,6 +36,8 @@
 {
     [super viewDidLoad];
 
+    self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+
     self.titleLabel.font = [UIFont fontWithName:NLMonospacedFont size:18];
     self.currentPageLabel.font = [UIFont fontWithName:NLMonospacedFont size:self.currentPageLabel.font.pointSize];
     self.overallPagesCountLabel.font = self.currentPageLabel.font;

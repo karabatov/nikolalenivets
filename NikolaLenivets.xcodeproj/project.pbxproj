@@ -9,23 +9,20 @@
 /* Begin PBXBuildFile section */
 		4F18FD3A192212F900032A34 /* NLNewsEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F18FD38192212F900032A34 /* NLNewsEntryViewController.m */; };
 		4F18FD3B192212F900032A34 /* NLNewsEntryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F18FD39192212F900032A34 /* NLNewsEntryViewController.xib */; };
-		4F390E7118ED55F800131934 /* NLStorageSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F390E7018ED55F800131934 /* NLStorageSpec.m */; };
 		4F390E7518ED589200131934 /* NLStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F390E7418ED589200131934 /* NLStorage.m */; };
 		4F390E7818ED684200131934 /* NLDiffIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F390E7718ED684200131934 /* NLDiffIndex.m */; };
-		4F390E7A18ED69C500131934 /* test-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F390E7918ED69C500131934 /* test-data.json */; };
 		4F390E7D18ED731E00131934 /* NLNewsEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F390E7C18ED731E00131934 /* NLNewsEntry.m */; };
 		4F390E8018ED732D00131934 /* NLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F390E7F18ED732D00131934 /* NLModel.m */; };
 		4F390E8318ED752700131934 /* NLTeaser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F390E8218ED752700131934 /* NLTeaser.m */; };
 		4F390E8618ED753700131934 /* NLPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F390E8518ED753700131934 /* NLPlace.m */; };
 		4F390E8918ED754700131934 /* NLScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F390E8818ED754700131934 /* NLScreen.m */; };
 		4F390E8C18ED755300131934 /* NLEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F390E8B18ED755300131934 /* NLEvent.m */; };
-		4F390E8F18ED8FAF00131934 /* NLModelsSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F390E8E18ED8FAF00131934 /* NLModelsSpecs.m */; };
 		4F411E7E18FFD8AA00758E30 /* NLMainMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F411E7C18FFD8AA00758E30 /* NLMainMenuController.m */; };
 		4F411E7F18FFD8AA00758E30 /* NLMainMenuController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F411E7D18FFD8AA00758E30 /* NLMainMenuController.xib */; };
+		4F454360192DE4D20043C3F4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F45435E192DE4D20043C3F4 /* Default-568h@2x.png */; };
 		4F6137491927313700BFDD1C /* NLEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6137471927313700BFDD1C /* NLEventsViewController.m */; };
 		4F61374A1927313700BFDD1C /* NLEventsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F6137481927313700BFDD1C /* NLEventsViewController.xib */; };
 		4F61374D19273D7700BFDD1C /* NLEventGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F61374C19273D7700BFDD1C /* NLEventGroup.m */; };
-		4F7A321718EA8BC200C75EE5 /* NLBackendSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7A321618EA8BC200C75EE5 /* NLBackendSpec.m */; };
 		4F7EC305190933B9002C0ECD /* NLNewsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7EC303190933B9002C0ECD /* NLNewsListController.m */; };
 		4F7EC306190933B9002C0ECD /* NLNewsListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7EC304190933B9002C0ECD /* NLNewsListController.xib */; };
 		4F7EC30819093E16002C0ECD /* picalka.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4F7EC30719093E16002C0ECD /* picalka.jpg */; };
@@ -38,28 +35,14 @@
 		4F9C414418EA84640038090E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9C414318EA84640038090E /* main.m */; };
 		4F9C414818EA84640038090E /* NLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9C414718EA84640038090E /* NLAppDelegate.m */; };
 		4F9C414A18EA84640038090E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F9C414918EA84640038090E /* Images.xcassets */; };
-		4F9C415118EA84640038090E /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9C415018EA84640038090E /* XCTest.framework */; };
-		4F9C415218EA84640038090E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9C413718EA84640038090E /* Foundation.framework */; };
-		4F9C415318EA84640038090E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9C413B18EA84640038090E /* UIKit.framework */; };
-		4F9C415B18EA84640038090E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4F9C415918EA84640038090E /* InfoPlist.strings */; };
 		4FCBE0081907A054002F37A3 /* BookmanC.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBE0051907A054002F37A3 /* BookmanC.otf */; };
 		4FCBE0091907A054002F37A3 /* MonoCondensedC.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBE0061907A054002F37A3 /* MonoCondensedC.ttf */; };
 		4FCBE00A1907A054002F37A3 /* MonoCondensedC_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBE0071907A054002F37A3 /* MonoCondensedC_Bold.ttf */; };
 		4FD010F3192CC320002F5836 /* menu_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD010F2192CC320002F5836 /* menu_button.png */; };
 		4FD010F5192CC326002F5836 /* search_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD010F4192CC326002F5836 /* search_icon.png */; };
-		4FD010F7192CC34A002F5836 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD010F6192CC34A002F5836 /* Default@2x.png */; };
+		4FD010FA192CC940002F5836 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FD010F9192CC940002F5836 /* Crashlytics.framework */; };
 		4FF31086D2714E0584DB4E63 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 213D00ACD702461FA5EF0EB3 /* libPods.a */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		4F9C415418EA84640038090E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4F9C412C18EA84640038090E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4F9C413318EA84640038090E;
-			remoteInfo = NikolaLenivets;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		213D00ACD702461FA5EF0EB3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,6 +73,7 @@
 		4F411E7B18FFD8AA00758E30 /* NLMainMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLMainMenuController.h; path = UI/NLMainMenuController.h; sourceTree = "<group>"; };
 		4F411E7C18FFD8AA00758E30 /* NLMainMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLMainMenuController.m; path = UI/NLMainMenuController.m; sourceTree = "<group>"; };
 		4F411E7D18FFD8AA00758E30 /* NLMainMenuController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLMainMenuController.xib; path = UI/NLMainMenuController.xib; sourceTree = "<group>"; };
+		4F45435E192DE4D20043C3F4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4F6137461927313700BFDD1C /* NLEventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLEventsViewController.h; path = UI/NLEventsViewController.h; sourceTree = "<group>"; };
 		4F6137471927313700BFDD1C /* NLEventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLEventsViewController.m; path = UI/NLEventsViewController.m; sourceTree = "<group>"; };
 		4F6137481927313700BFDD1C /* NLEventsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLEventsViewController.xib; path = UI/NLEventsViewController.xib; sourceTree = "<group>"; };
@@ -114,7 +98,6 @@
 		4F9C414618EA84640038090E /* NLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NLAppDelegate.h; sourceTree = "<group>"; };
 		4F9C414718EA84640038090E /* NLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NLAppDelegate.m; sourceTree = "<group>"; };
 		4F9C414918EA84640038090E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		4F9C414F18EA84640038090E /* NikolaLenivetsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NikolaLenivetsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F9C415018EA84640038090E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		4F9C415818EA84640038090E /* NikolaLenivetsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NikolaLenivetsTests-Info.plist"; sourceTree = "<group>"; };
 		4F9C415A18EA84640038090E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -123,7 +106,9 @@
 		4FCBE0071907A054002F37A3 /* MonoCondensedC_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MonoCondensedC_Bold.ttf; sourceTree = "<group>"; };
 		4FD010F2192CC320002F5836 /* menu_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_button.png; sourceTree = "<group>"; };
 		4FD010F4192CC326002F5836 /* search_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search_icon.png; sourceTree = "<group>"; };
-		4FD010F6192CC34A002F5836 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		4FD010F9192CC940002F5836 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		9F010D930FC743A086F2A9F3 /* libPods-NikolaLenivetsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NikolaLenivetsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CABA2254233B446F8102E8CC /* Pods-NikolaLenivetsTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NikolaLenivetsTests.xcconfig"; path = "Pods/Pods-NikolaLenivetsTests.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,19 +117,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F9C413A18EA84640038090E /* CoreGraphics.framework in Frameworks */,
+				4FD010FA192CC940002F5836 /* Crashlytics.framework in Frameworks */,
 				4F9C413C18EA84640038090E /* UIKit.framework in Frameworks */,
 				4F9C413818EA84640038090E /* Foundation.framework in Frameworks */,
 				4FF31086D2714E0584DB4E63 /* libPods.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4F9C414C18EA84640038090E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4F9C415118EA84640038090E /* XCTest.framework in Frameworks */,
-				4F9C415318EA84640038090E /* UIKit.framework in Frameworks */,
-				4F9C415218EA84640038090E /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,6 +205,7 @@
 				4F9C413618EA84640038090E /* Frameworks */,
 				4F9C413518EA84640038090E /* Products */,
 				3B21A1ADAF4F4E0BA8ED7C42 /* Pods.xcconfig */,
+				CABA2254233B446F8102E8CC /* Pods-NikolaLenivetsTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -236,7 +213,6 @@
 			isa = PBXGroup;
 			children = (
 				4F9C413418EA84640038090E /* NikolaLenivets.app */,
-				4F9C414F18EA84640038090E /* NikolaLenivetsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -244,11 +220,13 @@
 		4F9C413618EA84640038090E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4FD010F9192CC940002F5836 /* Crashlytics.framework */,
 				4F9C413718EA84640038090E /* Foundation.framework */,
 				4F9C413918EA84640038090E /* CoreGraphics.framework */,
 				4F9C413B18EA84640038090E /* UIKit.framework */,
 				4F9C415018EA84640038090E /* XCTest.framework */,
 				213D00ACD702461FA5EF0EB3 /* libPods.a */,
+				9F010D930FC743A086F2A9F3 /* libPods-NikolaLenivetsTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -324,7 +302,7 @@
 		4FD010F1192CC316002F5836 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				4FD010F6192CC34A002F5836 /* Default@2x.png */,
+				4F45435E192DE4D20043C3F4 /* Default-568h@2x.png */,
 				4FD010F4192CC326002F5836 /* search_icon.png */,
 				4FD010F2192CC320002F5836 /* menu_button.png */,
 			);
@@ -343,6 +321,7 @@
 				4F9C413118EA84640038090E /* Frameworks */,
 				4F9C413218EA84640038090E /* Resources */,
 				07994F22D96A448191BEA0EC /* Copy Pods Resources */,
+				4FD010F8192CC928002F5836 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -353,24 +332,6 @@
 			productReference = 4F9C413418EA84640038090E /* NikolaLenivets.app */;
 			productType = "com.apple.product-type.application";
 		};
-		4F9C414E18EA84640038090E /* NikolaLenivetsTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4F9C416318EA84640038090E /* Build configuration list for PBXNativeTarget "NikolaLenivetsTests" */;
-			buildPhases = (
-				4F9C414B18EA84640038090E /* Sources */,
-				4F9C414C18EA84640038090E /* Frameworks */,
-				4F9C414D18EA84640038090E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				4F9C415518EA84640038090E /* PBXTargetDependency */,
-			);
-			name = NikolaLenivetsTests;
-			productName = NikolaLenivetsTests;
-			productReference = 4F9C414F18EA84640038090E /* NikolaLenivetsTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -380,11 +341,6 @@
 				CLASSPREFIX = NL;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Semyon Novikov";
-				TargetAttributes = {
-					4F9C414E18EA84640038090E = {
-						TestTargetID = 4F9C413318EA84640038090E;
-					};
-				};
 			};
 			buildConfigurationList = 4F9C412F18EA84640038090E /* Build configuration list for PBXProject "NikolaLenivets" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -399,7 +355,6 @@
 			projectRoot = "";
 			targets = (
 				4F9C413318EA84640038090E /* NikolaLenivets */,
-				4F9C414E18EA84640038090E /* NikolaLenivetsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -414,6 +369,7 @@
 				4FD010F3192CC320002F5836 /* menu_button.png in Resources */,
 				4FCBE0091907A054002F37A3 /* MonoCondensedC.ttf in Resources */,
 				4FCBE0081907A054002F37A3 /* BookmanC.otf in Resources */,
+				4F454360192DE4D20043C3F4 /* Default-568h@2x.png in Resources */,
 				4F411E7F18FFD8AA00758E30 /* NLMainMenuController.xib in Resources */,
 				4FCBE00A1907A054002F37A3 /* MonoCondensedC_Bold.ttf in Resources */,
 				4F61374A1927313700BFDD1C /* NLEventsViewController.xib in Resources */,
@@ -421,17 +377,7 @@
 				4FD010F5192CC326002F5836 /* search_icon.png in Resources */,
 				4F8A13051921D5C700F3DA96 /* NLNewsCellView.xib in Resources */,
 				4F9C414A18EA84640038090E /* Images.xcassets in Resources */,
-				4FD010F7192CC34A002F5836 /* Default@2x.png in Resources */,
 				4F7EC30819093E16002C0ECD /* picalka.jpg in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4F9C414D18EA84640038090E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4F9C415B18EA84640038090E /* InfoPlist.strings in Resources */,
-				4F390E7A18ED69C500131934 /* test-data.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,6 +398,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		4FD010F8192CC928002F5836 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 2859bb1aae7d9b32942d1d64eebd584fa07a88af 4b0a0eac76b07ad148fae9a832ce9a19e1846b0c7fe40a572ca9ef8a4c575d7e";
 		};
 		71C9E1B8363D4E4FA529F140 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -494,25 +453,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4F9C414B18EA84640038090E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4F390E7118ED55F800131934 /* NLStorageSpec.m in Sources */,
-				4F7A321718EA8BC200C75EE5 /* NLBackendSpec.m in Sources */,
-				4F390E8F18ED8FAF00131934 /* NLModelsSpecs.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		4F9C415518EA84640038090E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4F9C413318EA84640038090E /* NikolaLenivets */;
-			targetProxy = 4F9C415418EA84640038090E /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		4F9C414018EA84640038090E /* InfoPlist.strings */ = {
@@ -610,10 +551,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NikolaLenivets/NikolaLenivets-Prefix.pch";
 				INFOPLIST_FILE = "NikolaLenivets/NikolaLenivets-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -625,55 +571,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Yakushev Lev (G9HB4UV686)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NikolaLenivets/NikolaLenivets-Prefix.pch";
 				INFOPLIST_FILE = "NikolaLenivets/NikolaLenivets-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		4F9C416418EA84640038090E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NikolaLenivets.app/NikolaLenivets";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "NikolaLenivets/NikolaLenivets-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "NikolaLenivetsTests/NikolaLenivetsTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/**";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		4F9C416518EA84640038090E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NikolaLenivets.app/NikolaLenivets";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "NikolaLenivets/NikolaLenivets-Prefix.pch";
-				INFOPLIST_FILE = "NikolaLenivetsTests/NikolaLenivetsTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/**";
-				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
 		};
@@ -694,15 +601,6 @@
 			buildConfigurations = (
 				4F9C416118EA84640038090E /* Debug */,
 				4F9C416218EA84640038090E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4F9C416318EA84640038090E /* Build configuration list for PBXNativeTarget "NikolaLenivetsTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4F9C416418EA84640038090E /* Debug */,
-				4F9C416518EA84640038090E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

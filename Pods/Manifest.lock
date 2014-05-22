@@ -49,16 +49,16 @@ DEPENDENCIES:
   - Underscore.m (~> 0.2.1)
 
 SPEC CHECKSUMS:
-  AFNetworking: 01aa7c3aa9a200b94943e54072a4373f14b3d219
-  AsyncImageView: 686febb2b2a923353ede67c529d257498059852d
-  DCKeyValueObjectMapping: 39adaf0a54ff6368a22d9221db60f0696d81ad7b
-  DTCoreText: 4d56bb74ff05a3b2415fc15fccc4b5689ed3119c
-  DTFoundation: 42939bcb968b331673ae4992289bf0f761b588a4
-  Expecta: 322f1dc42610106a5ba9871b4924cf1635d80833
-  NSDate+Helper: 6f6ab03e05037127c85c2e1f5f6c27021ed2887c
-  PaperFold: a7b0348ac9a48478dcd0b216f7a05fb5e3345961
-  SKUTouchPresenter: 27d2f53554b1965e4b8e807a7ad07fd204de353a
-  Specta: 2d06220591110c6d9757d8be8ecf8e63aa40dc2a
-  Underscore.m: 593ea54a19d3cc4439387a83d36eb7ba6ffd1707
+  AFNetworking: ab63e259fe91eef4519b371ef0a4955af0e73e64
+  AsyncImageView: 388442ae8314a5c99de0d98040c2926826d31da7
+  DCKeyValueObjectMapping: c3561709f296ddffba7768a9d7ccf234307fd3c9
+  DTCoreText: 6bbe9de74e9168b9199d0fd7a4d5da82df1f4897
+  DTFoundation: d8a7f570a0f89c5a81661e6537289c578f4f97a8
+  Expecta: ce8a51b9fad15a2cd573b291cb2909aaed865350
+  NSDate+Helper: ebde22e90dc7ae5e9b49179a0c32e550f7a9cd57
+  PaperFold: 75ccf7b5a7471d828c7c304f947ab2eca36ef4c5
+  SKUTouchPresenter: af7fadbc10718622aa5f28afaae7033d713e6827
+  Specta: 9141310f46b1f68b676650ff2854e1ed0b74163a
+  Underscore.m: f99c166a9fdccfb5069085b6b4263c04b817fc9f
 
 COCOAPODS: 0.32.1
