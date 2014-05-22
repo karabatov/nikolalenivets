@@ -50,8 +50,10 @@ enum {
 {
     [super viewDidLoad];
 
-    _contentView = [[UIView alloc] initWithFrame:self.view.frame];
-    _paperFoldView = [[PaperFoldView alloc] initWithFrame:self.view.frame];
+    CGRect frame = [[UIScreen mainScreen] bounds];
+
+    _contentView = [[UIView alloc] initWithFrame:frame];
+    _paperFoldView = [[PaperFoldView alloc] initWithFrame:frame];
     _paperFoldView.delegate = self;
 
     [self.view addSubview:_paperFoldView];
