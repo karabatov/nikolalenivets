@@ -11,10 +11,6 @@
 #import "NLNewsCell.h"
 #import "NLNewsEntryViewController.h"
 
-enum  {
-    LeftTable  = 0,
-    RightTable = 1
-};
 
 
 @implementation NLNewsListController

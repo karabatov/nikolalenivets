@@ -11,6 +11,7 @@
 #import "AsyncImageView.h"
 #import "NLEventGroup.h"
 #import "NLMainMenuController.h"
+#import "NLEventsListControllerViewController.h"
 #import <NSDate+Helper.h>
 
 @implementation NLEventGroupsViewController
@@ -148,6 +149,14 @@
         _currentPage++;
         [self fillContentForPage:_currentPage];
     }
+}
+
+
+- (IBAction)openEventsList:(id)sender
+{
+    NLEventGroup *group = _eventGroups[_currentPage];
+    NLEventsListControllerViewController *events = [[NLEventsListControllerViewController alloc] initWithGroup:group];
+    [self presentViewController:events animated:YES completion:^{}];
 }
 
 @end

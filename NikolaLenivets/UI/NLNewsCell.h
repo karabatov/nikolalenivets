@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "NLNewsEntry.h"
+#import "NLEvent.h"
 
 #import <DTCoreText.h>
 
@@ -20,6 +21,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *thumbnail;
 
 + (CGFloat)heightForCellWithEntry:(NLNewsEntry *)entry;
++ (CGFloat)heightForCellWithEvent:(NLEvent *)event;
+
 - (void)populateFromNewsEntry:(NLNewsEntry *)entry;
+- (void)populateFromEvent:(NLEvent *)event;
 
 @end

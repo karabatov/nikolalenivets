@@ -13,7 +13,9 @@
 @implementation NLNewsCell
 {
     __strong NLNewsEntry *_entry;
+    __strong NLEvent *_event;
 }
+
 
 - (void)awakeFromNib
 {
@@ -37,12 +39,31 @@
 }
 
 
+- (void)populateFromEvent:(NLEvent *)event
+{
+    _event = event;
+    self.titleLabel.text = _event.title;
+    self.previewLabel.attributedString = [self attributedStringForString:_event.content];
+    if (_event.thumbnail == nil) {
+        self.thumbnail.image = nil;
+    }
+    self.thumbnail.imageURL = [NSURL URLWithString:_event.thumbnail];
+    self.dateLabel.text = [[_event startDate] stringWithFormat:[NSDate dateFormatString]];
+}
+
+
 + (CGFloat)heightForCellWithEntry:(NLNewsEntry *)entry
 {
     if (entry.thumbnail != nil) {
         return 314.0;
     }
     return 89.0;
+}
+
+
++ (CGFloat)heightForCellWithEvent:(NLEvent *)event
+{
+    return [self heightForCellWithEntry:(NLNewsEntry *)event];
 }
 
 

@@ -8,8 +8,16 @@
 
 #import "NLEvent.h"
 #import "NLEventGroup.h"
+#import <NSDate+Helper.h>
 
 @implementation NLEvent
+
+
+- (NSDate *)startDate
+{
+    NSDate *date = [NSDate dateFromString:self.startdate withFormat:[NSDate timestampFormatString]];
+    return date;
+}
 
 
 @end

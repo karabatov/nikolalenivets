@@ -17,6 +17,7 @@
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *poster;
 @property (strong, nonatomic) NSNumber *order;
+@property (strong, nonatomic) NSArray *events;
 
 
 @end

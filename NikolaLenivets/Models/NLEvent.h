@@ -23,4 +23,6 @@
 @property (strong, nonatomic) NSArray *images;
 @property (strong, nonatomic) NSArray *groups;
 
+- (NSDate *)startDate;
+
 @end

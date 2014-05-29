@@ -24,4 +24,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *ticketPriceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *eventDatesLabel;
 
+- (IBAction)openEventsList:(id)sender;
+
 @end
