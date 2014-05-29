@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 Semyon Novikov. All rights reserved.
 //
 
-#import "NLEventsViewController.h"
+#import "NLEventGroupsViewController.h"
 #import "NLStorage.h"
 #import "AsyncImageView.h"
 #import "NLEventGroup.h"
 #import "NLMainMenuController.h"
 #import <NSDate+Helper.h>
 
-@implementation NLEventsViewController
+@implementation NLEventGroupsViewController
 {
     __strong NSArray *_eventGroups;
     NSUInteger _currentPage;
@@ -21,7 +21,7 @@
 
 - (id)init
 {
-    self = [super initWithNibName:@"NLEventsViewController" bundle:nil];
+    self = [super initWithNibName:@"NLEventGroupsViewController" bundle:nil];
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(prepareEventsArray)

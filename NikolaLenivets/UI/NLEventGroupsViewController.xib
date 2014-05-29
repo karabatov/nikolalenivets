@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NLEventsViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NLEventGroupsViewController">
             <connections>
                 <outlet property="currentPageLabel" destination="bla-hA-7Xa" id="v2D-SC-988"/>
                 <outlet property="eventDatesLabel" destination="dVX-7a-e07" id="hjy-z3-lRj"/>
