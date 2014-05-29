@@ -9,6 +9,8 @@
 #import "NLPlacesViewController.h"
 #import "NLStorage.h"
 #import "NLPlaceCell.h"
+#import "NLDetailsViewController.h"
+#import "NLMainMenuController.h"
 
 @implementation NLPlacesViewController
 {
@@ -37,7 +39,6 @@
 - (void)updatePlaces
 {
     _places = [[NLStorage sharedInstance] places];
-    _places = [[[[NSArray arrayWithArray:_places] arrayByAddingObjectsFromArray:_places] arrayByAddingObjectsFromArray:_places] arrayByAddingObjectsFromArray:_places];
     [self.collectionView reloadData];
 }
 
@@ -63,6 +64,22 @@
         [cell populateWithPlace:_places[indexPath.row]];
     }
     return cell;
+}
+
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row < _places.count) {
+        NLPlace *place = _places[indexPath.row];
+        NLDetailsViewController *details = [[NLDetailsViewController alloc] initWithPlace:place];
+        [self presentViewController:details animated:YES completion:^{}];
+    }
+}
+
+
+- (IBAction)back:(id)sender
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_MENU_NOW object:nil];
 }
 
 @end

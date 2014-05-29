@@ -10,8 +10,9 @@
 #import <DTAttributedLabel.h>
 #import "NLNewsEntry.h"
 #import "NLEvent.h"
+#import "NLPlace.h"
 
-@interface NLNewsEntryViewController : UIViewController
+@interface NLDetailsViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet DTAttributedLabel *contentText;
@@ -24,6 +25,8 @@
 
 - (id)initWithEvent:(NLEvent *)event;
 - (id)initWithEntry:(NLNewsEntry *)entry;
+- (id)initWithPlace:(NLPlace *)place;
+
 - (IBAction)back:(id)sender;
 
 @end

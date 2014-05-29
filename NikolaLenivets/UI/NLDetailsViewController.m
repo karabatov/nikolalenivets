@@ -6,22 +6,28 @@
 //  Copyright (c) 2014 Semyon Novikov. All rights reserved.
 //
 
-#import "NLNewsEntryViewController.h"
-#import "NLEvent.h"
+#import "NLDetailsViewController.h"
 
 #import <DTCoreText.h>
 #import <NSDate+Helper.h>
 
-@implementation NLNewsEntryViewController
+typedef enum {
+    ShowingNewsEntry,
+    ShowingEvent,
+    ShowingPlace
+} Mode;
+
+@implementation NLDetailsViewController
 {
     __strong NLNewsEntry *_entry;
     __strong NLEvent *_event;
+    __strong NLPlace *_place;
 }
 
 
 - (id)initWithEntry:(NLNewsEntry *)entry
 {
-    self = [super initWithNibName:@"NLNewsEntryViewController" bundle:nil];
+    self = [super initWithNibName:@"NLDetailsViewController" bundle:nil];
     if (self) {
         _entry = entry;
     }
@@ -31,7 +37,7 @@
 
 - (id)initWithEvent:(NLEvent *)event
 {
-    self = [super initWithNibName:@"NLNewsEntryViewController" bundle:nil];
+    self = [super initWithNibName:@"NLDetailsViewController" bundle:nil];
     if (self) {
         _event = event;
     }
@@ -39,11 +45,25 @@
 }
 
 
-- (BOOL)isShowingEvent
+- (id)initWithPlace:(NLPlace *)place
 {
-    return _event != nil;
+    self = [super initWithNibName:@"NLDetailsViewController" bundle:nil];
+    if (self) {
+        _place = place;
+    }
+    return self;
 }
 
+- (Mode)mode
+{
+    if (_entry)
+        return ShowingNewsEntry;
+    if (_event)
+        return ShowingEvent;
+    if (_place)
+        return ShowingPlace;
+    return -1;
+}
 
 - (void)viewDidLoad
 {
@@ -51,12 +71,32 @@
     
     self.titleLabel.font = [UIFont fontWithName:@"MonoCondensedC" size:18];
 
-    NSString *title = _entry.title;
-    NSString *content = _entry.content;
+    NSString *title = nil;
+    NSString *content = nil;
+    NSString *date = nil;
 
-    if ([self isShowingEvent]) {
-        title = _event.title;
-        content = _event.content;
+    switch ([self mode]) {
+        case ShowingNewsEntry: {
+            title = _entry.title;
+            content = _entry.content;
+            date = [[_entry pubDate] stringWithFormat:[NSDate dateFormatString]];
+            break;
+        }
+        case ShowingEvent: {
+            title = _event.title;
+            content = _event.content;
+            date = [[_event startDate] stringWithFormat:[NSDate dateFormatString]];
+            [self.backButton setTitle:@"< СОБЫТИЯ" forState:UIControlStateNormal];
+            break;
+        }
+        case ShowingPlace: {
+            title = _place.title;
+            content = _place.content;
+            [self.backButton setTitle:@"< МЕСТА" forState:UIControlStateNormal];
+            break;
+        }
+        default:
+            break;
     }
 
     self.titleLabel.text = title;
@@ -73,15 +113,7 @@
 
     self.countView.font = [UIFont fontWithName:@"MonoCondensedC" size:8];
     self.dateLabel.font = [UIFont fontWithName:@"MonoCondensedC" size:8];
-    if ([self isShowingEvent]) {
-        self.dateLabel.text = [[_event startDate] stringWithFormat:[NSDate dateFormatString]];
-    } else {
-        self.dateLabel.text = [[_entry pubDate] stringWithFormat:[NSDate dateFormatString]];
-    }
-
-    if ([self isShowingEvent]) {
-        [self.backButton setTitle:@"< СОБЫТИЯ" forState:UIControlStateNormal];
-    }
+    self.dateLabel.text = date;
 }
 
 

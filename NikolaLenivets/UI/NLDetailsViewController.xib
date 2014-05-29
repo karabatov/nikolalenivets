@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NLNewsEntryViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NLDetailsViewController">
             <connections>
                 <outlet property="backButton" destination="dhA-Pw-YYj" id="WAu-fC-XKD"/>
                 <outlet property="capitalLetter" destination="pat-iS-tqN" id="7XS-h0-v9p"/>

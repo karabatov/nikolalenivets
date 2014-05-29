@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4F18FD3A192212F900032A34 /* NLNewsEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F18FD38192212F900032A34 /* NLNewsEntryViewController.m */; };
-		4F18FD3B192212F900032A34 /* NLNewsEntryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F18FD39192212F900032A34 /* NLNewsEntryViewController.xib */; };
+		4F18FD3A192212F900032A34 /* NLDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F18FD38192212F900032A34 /* NLDetailsViewController.m */; };
+		4F18FD3B192212F900032A34 /* NLDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F18FD39192212F900032A34 /* NLDetailsViewController.xib */; };
 		4F22FD781936E8B30075C1A0 /* NLGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F22FD761936E8B30075C1A0 /* NLGalleryViewController.m */; };
 		4F22FD791936E8B30075C1A0 /* NLGalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F22FD771936E8B30075C1A0 /* NLGalleryViewController.xib */; };
 		4F22FD7C1936ED3E0075C1A0 /* NLGallery.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F22FD7B1936ED3E0075C1A0 /* NLGallery.m */; };
@@ -57,9 +57,9 @@
 /* Begin PBXFileReference section */
 		213D00ACD702461FA5EF0EB3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B21A1ADAF4F4E0BA8ED7C42 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
-		4F18FD37192212F900032A34 /* NLNewsEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLNewsEntryViewController.h; path = UI/NLNewsEntryViewController.h; sourceTree = "<group>"; };
-		4F18FD38192212F900032A34 /* NLNewsEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLNewsEntryViewController.m; path = UI/NLNewsEntryViewController.m; sourceTree = "<group>"; };
-		4F18FD39192212F900032A34 /* NLNewsEntryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLNewsEntryViewController.xib; path = UI/NLNewsEntryViewController.xib; sourceTree = "<group>"; };
+		4F18FD37192212F900032A34 /* NLDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLDetailsViewController.h; path = UI/NLDetailsViewController.h; sourceTree = "<group>"; };
+		4F18FD38192212F900032A34 /* NLDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLDetailsViewController.m; path = UI/NLDetailsViewController.m; sourceTree = "<group>"; };
+		4F18FD39192212F900032A34 /* NLDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLDetailsViewController.xib; path = UI/NLDetailsViewController.xib; sourceTree = "<group>"; };
 		4F22FD751936E8B30075C1A0 /* NLGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLGalleryViewController.h; path = UI/NLGalleryViewController.h; sourceTree = "<group>"; };
 		4F22FD761936E8B30075C1A0 /* NLGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLGalleryViewController.m; path = UI/NLGalleryViewController.m; sourceTree = "<group>"; };
 		4F22FD771936E8B30075C1A0 /* NLGalleryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLGalleryViewController.xib; path = UI/NLGalleryViewController.xib; sourceTree = "<group>"; };
@@ -155,9 +155,9 @@
 		4F18FD36192212DA00032A34 /* NewsEntry */ = {
 			isa = PBXGroup;
 			children = (
-				4F18FD37192212F900032A34 /* NLNewsEntryViewController.h */,
-				4F18FD38192212F900032A34 /* NLNewsEntryViewController.m */,
-				4F18FD39192212F900032A34 /* NLNewsEntryViewController.xib */,
+				4F18FD37192212F900032A34 /* NLDetailsViewController.h */,
+				4F18FD38192212F900032A34 /* NLDetailsViewController.m */,
+				4F18FD39192212F900032A34 /* NLDetailsViewController.xib */,
 			);
 			name = NewsEntry;
 			sourceTree = "<group>";
@@ -433,7 +433,7 @@
 				4FCBE00A1907A054002F37A3 /* MonoCondensedC_Bold.ttf in Resources */,
 				4F22FD871937288B0075C1A0 /* NLPlacesViewController.xib in Resources */,
 				4F61374A1927313700BFDD1C /* NLEventGroupsViewController.xib in Resources */,
-				4F18FD3B192212F900032A34 /* NLNewsEntryViewController.xib in Resources */,
+				4F18FD3B192212F900032A34 /* NLDetailsViewController.xib in Resources */,
 				4FD010F5192CC326002F5836 /* search_icon.png in Resources */,
 				4F8A13051921D5C700F3DA96 /* NLNewsCellView.xib in Resources */,
 				4F454363192E0F810043C3F4 /* Default@2x.png in Resources */,
@@ -503,7 +503,7 @@
 				4F6137491927313700BFDD1C /* NLEventGroupsViewController.m in Sources */,
 				4F7EC305190933B9002C0ECD /* NLNewsListController.m in Sources */,
 				4F390E8C18ED755300131934 /* NLEvent.m in Sources */,
-				4F18FD3A192212F900032A34 /* NLNewsEntryViewController.m in Sources */,
+				4F18FD3A192212F900032A34 /* NLDetailsViewController.m in Sources */,
 				4F390E8618ED753700131934 /* NLPlace.m in Sources */,
 				4F22FD801936F4360075C1A0 /* NLEventsListControllerViewController.m in Sources */,
 				4F390E7D18ED731E00131934 /* NLNewsEntry.m in Sources */,

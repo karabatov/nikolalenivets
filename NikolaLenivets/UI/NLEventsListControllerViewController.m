@@ -10,14 +10,14 @@
 #import "NLEvent.h"
 #import "NLNewsCell.h"
 #import "NLNewsListController.h"
-#import "NLNewsEntryViewController.h"
+#import "NLDetailsViewController.h"
 
 @implementation NLEventsListControllerViewController
 {
     __strong NLEventGroup *_group;
     __strong NSMutableArray *_leftGroup;
     __strong NSMutableArray *_rightGroup;
-    __strong NLNewsEntryViewController *_details;
+    __strong NLDetailsViewController *_details;
 }
 
 - (id)initWithGroup:(NLEventGroup *)group;
@@ -117,7 +117,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NLEvent *event = [self entryForTable:tableView indexPath:indexPath];
-    _details = [[NLNewsEntryViewController alloc] initWithEvent:event];
+    _details = [[NLDetailsViewController alloc] initWithEvent:event];
     [self presentViewController:_details animated:YES completion:^{}];
 }
 

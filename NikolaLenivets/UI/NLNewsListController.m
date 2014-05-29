@@ -9,7 +9,7 @@
 #import "NLNewsListController.h"
 #import "NLMainMenuController.h"
 #import "NLNewsCell.h"
-#import "NLNewsEntryViewController.h"
+#import "NLDetailsViewController.h"
 
 
 
@@ -17,7 +17,7 @@
 {
     __strong NSMutableArray *_leftNews;
     __strong NSMutableArray *_rightNews;
-    __strong NLNewsEntryViewController *_details;
+    __strong NLDetailsViewController *_details;
 }
 
 - (id)init
@@ -119,7 +119,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NLNewsEntry *entry = [self entryForTable:tableView indexPath:indexPath];
-    _details = [[NLNewsEntryViewController alloc] initWithEntry:entry];
+    _details = [[NLDetailsViewController alloc] initWithEntry:entry];
     [self presentViewController:_details animated:YES completion:^{}];
 }
 
