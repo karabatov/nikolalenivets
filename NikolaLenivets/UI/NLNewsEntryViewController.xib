@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NLNewsEntryViewController">
             <connections>
+                <outlet property="backButton" destination="dhA-Pw-YYj" id="WAu-fC-XKD"/>
                 <outlet property="capitalLetter" destination="pat-iS-tqN" id="7XS-h0-v9p"/>
                 <outlet property="contentText" destination="aNp-1K-5GP" id="ees-v7-7Ta"/>
                 <outlet property="contentView" destination="7ce-P0-X8N" id="Ve5-Db-5zt"/>

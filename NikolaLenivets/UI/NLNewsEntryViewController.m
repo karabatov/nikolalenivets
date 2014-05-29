@@ -7,12 +7,15 @@
 //
 
 #import "NLNewsEntryViewController.h"
+#import "NLEvent.h"
+
 #import <DTCoreText.h>
 #import <NSDate+Helper.h>
 
 @implementation NLNewsEntryViewController
 {
     __strong NLNewsEntry *_entry;
+    __strong NLEvent *_event;
 }
 
 
@@ -26,18 +29,43 @@
 }
 
 
+- (id)initWithEvent:(NLEvent *)event
+{
+    self = [super initWithNibName:@"NLNewsEntryViewController" bundle:nil];
+    if (self) {
+        _event = event;
+    }
+    return self;
+}
+
+
+- (BOOL)isShowingEvent
+{
+    return _event != nil;
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     self.titleLabel.font = [UIFont fontWithName:@"MonoCondensedC" size:18];
-    self.titleLabel.text = _entry.title;
-    self.contentText.attributedString = [self attributedStringForString:_entry.content];
+
+    NSString *title = _entry.title;
+    NSString *content = _entry.content;
+
+    if ([self isShowingEvent]) {
+        title = _event.title;
+        content = _event.content;
+    }
+
+    self.titleLabel.text = title;
+    self.contentText.attributedString = [self attributedStringForString:content];
     
     self.contentView.frame = CGRectMake(self.contentView.frame.origin.x,
                                         self.contentView.frame.origin.y,
                                         self.contentView.frame.size.width,
-                                        [self heightForString:_entry.content] + 151);
+                                        [self heightForString:content] + 151);
     self.scrollView.contentSize = self.contentView.frame.size;
 
     NSString *firstLetter = [[self.contentText.attributedString string] substringToIndex:1];
@@ -45,7 +73,15 @@
 
     self.countView.font = [UIFont fontWithName:@"MonoCondensedC" size:8];
     self.dateLabel.font = [UIFont fontWithName:@"MonoCondensedC" size:8];
-    self.dateLabel.text = [[_entry pubDate] stringWithFormat:[NSDate dateFormatString]];
+    if ([self isShowingEvent]) {
+        self.dateLabel.text = [[_event startDate] stringWithFormat:[NSDate dateFormatString]];
+    } else {
+        self.dateLabel.text = [[_entry pubDate] stringWithFormat:[NSDate dateFormatString]];
+    }
+
+    if ([self isShowingEvent]) {
+        [self.backButton setTitle:@"< СОБЫТИЯ" forState:UIControlStateNormal];
+    }
 }
 
 

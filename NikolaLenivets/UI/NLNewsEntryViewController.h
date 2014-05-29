@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <DTAttributedLabel.h>
 #import "NLNewsEntry.h"
-
+#import "NLEvent.h"
 
 @interface NLNewsEntryViewController : UIViewController
 
@@ -20,7 +20,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *countView;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *capitalLetter;
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
 
+- (id)initWithEvent:(NLEvent *)event;
 - (id)initWithEntry:(NLNewsEntry *)entry;
 - (IBAction)back:(id)sender;
 

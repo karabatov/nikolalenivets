@@ -10,6 +10,7 @@
 #import "SKUTouchPresenter.h"
 #import "NLNewsListController.h"
 #import "NLEventGroupsViewController.h"
+#import "NLPlacesViewController.h"
 
 enum {
     News   = 0,
@@ -26,6 +27,7 @@ enum {
     __strong PaperFoldView *_paperFoldView;
     __strong NLNewsListController *_newsList;
     __strong NLEventGroupsViewController *_eventsController;
+    __strong NLPlacesViewController *_placesController;
     __strong UIView *_contentView;
 }
 
@@ -105,6 +107,12 @@ enum {
             [_contentView addSubview:_eventsController.view];
             break;
         }
+        case Places: {
+            _placesController = [NLPlacesViewController new];
+            [_contentView addSubview:_placesController.view];
+            break;
+        }
+
         default:
             [_contentView addSubview:self.childView];
             break;
