@@ -10,8 +10,5 @@ pod 'SKUTouchPresenter', '~> 1.2.0'
 pod 'DTCoreText', '~> 1.6.11'
 pod 'AsyncImageView', '~> 1.5.1'
 pod 'NSDate+Helper', '~> 1.0.0'
+pod 'UIPhotoGallery', '~> 0.1.2'
 
-target :NikolaLenivetsTests do
-    pod 'Specta', '~> 0.2.1'
-    pod 'Expecta', '~> 0.3.0'
-end

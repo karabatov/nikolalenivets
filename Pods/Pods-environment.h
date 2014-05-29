@@ -96,11 +96,29 @@
 #define COCOAPODS_VERSION_MINOR_PaperFold 1
 #define COCOAPODS_VERSION_PATCH_PaperFold 0
 
+// SDWebImage
+#define COCOAPODS_POD_AVAILABLE_SDWebImage
+#define COCOAPODS_VERSION_MAJOR_SDWebImage 3
+#define COCOAPODS_VERSION_MINOR_SDWebImage 6
+#define COCOAPODS_VERSION_PATCH_SDWebImage 0
+
+// SDWebImage/Core
+#define COCOAPODS_POD_AVAILABLE_SDWebImage_Core
+#define COCOAPODS_VERSION_MAJOR_SDWebImage_Core 3
+#define COCOAPODS_VERSION_MINOR_SDWebImage_Core 6
+#define COCOAPODS_VERSION_PATCH_SDWebImage_Core 0
+
 // SKUTouchPresenter
 #define COCOAPODS_POD_AVAILABLE_SKUTouchPresenter
 #define COCOAPODS_VERSION_MAJOR_SKUTouchPresenter 1
 #define COCOAPODS_VERSION_MINOR_SKUTouchPresenter 2
 #define COCOAPODS_VERSION_PATCH_SKUTouchPresenter 0
+
+// UIPhotoGallery
+#define COCOAPODS_POD_AVAILABLE_UIPhotoGallery
+#define COCOAPODS_VERSION_MAJOR_UIPhotoGallery 0
+#define COCOAPODS_VERSION_MINOR_UIPhotoGallery 1
+#define COCOAPODS_VERSION_PATCH_UIPhotoGallery 2
 
 // Underscore.m
 #define COCOAPODS_POD_AVAILABLE_Underscore_m

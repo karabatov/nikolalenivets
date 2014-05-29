@@ -68,6 +68,12 @@
     _screens = _.arrayMap(jsonDictionary[@"screens"], ^(NSDictionary *d) {
         return [NLScreen modelFromDictionary:d];
     });
+
+    _galleries = _.arrayMap(jsonDictionary[@"galleries"], ^(NSDictionary *d) {
+        return [NLGallery modelFromDictionary:d];
+    });
+
+    NSLog(@"Parsing finished");
 }
 
 @end

@@ -29,11 +29,14 @@ PODS:
     - DTFoundation/Core
   - DTFoundation/UIKit (1.6.3):
     - DTFoundation/Core
-  - Expecta (0.3.0)
   - NSDate+Helper (1.0.0)
   - PaperFold (1.1)
+  - SDWebImage (3.6):
+    - SDWebImage/Core
+  - SDWebImage/Core (3.6)
   - SKUTouchPresenter (1.2.0)
-  - Specta (0.2.1)
+  - UIPhotoGallery (0.1.2):
+    - SDWebImage (~> 3.0)
   - Underscore.m (0.2.1)
 
 DEPENDENCIES:
@@ -41,11 +44,10 @@ DEPENDENCIES:
   - AsyncImageView (~> 1.5.1)
   - DCKeyValueObjectMapping (~> 1.4)
   - DTCoreText (~> 1.6.11)
-  - Expecta (~> 0.3.0)
   - NSDate+Helper (~> 1.0.0)
   - PaperFold (~> 1.1)
   - SKUTouchPresenter (~> 1.2.0)
-  - Specta (~> 0.2.1)
+  - UIPhotoGallery (~> 0.1.2)
   - Underscore.m (~> 0.2.1)
 
 SPEC CHECKSUMS:
@@ -54,11 +56,11 @@ SPEC CHECKSUMS:
   DCKeyValueObjectMapping: c3561709f296ddffba7768a9d7ccf234307fd3c9
   DTCoreText: 6bbe9de74e9168b9199d0fd7a4d5da82df1f4897
   DTFoundation: d8a7f570a0f89c5a81661e6537289c578f4f97a8
-  Expecta: ce8a51b9fad15a2cd573b291cb2909aaed865350
   NSDate+Helper: ebde22e90dc7ae5e9b49179a0c32e550f7a9cd57
   PaperFold: 75ccf7b5a7471d828c7c304f947ab2eca36ef4c5
+  SDWebImage: c6989652c1cdf27cbdf3f56957e2030f825af5bc
   SKUTouchPresenter: af7fadbc10718622aa5f28afaae7033d713e6827
-  Specta: 9141310f46b1f68b676650ff2854e1ed0b74163a
+  UIPhotoGallery: 1dd2dbe4ea352ab42f8092ded8c1ac3d9e6be708
   Underscore.m: f99c166a9fdccfb5069085b6b4263c04b817fc9f
 
-COCOAPODS: 0.32.1
+COCOAPODS: 0.33.1

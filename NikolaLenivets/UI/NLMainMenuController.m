@@ -20,6 +20,7 @@ enum {
     About  = 5
 };
 
+
 @implementation NLMainMenuController
 {
     __strong PaperFoldView *_paperFoldView;
