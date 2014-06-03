@@ -9,6 +9,7 @@
 #import "NLDetailsViewController.h"
 #import "NLGallery.h"
 #import "NLStorage.h"
+#import "NLGalleryViewController.h"
 
 #import <DTCoreText.h>
 #import <NSDate+Helper.h>
@@ -25,6 +26,8 @@ typedef enum {
     __strong NLEvent *_event;
     __strong NLPlace *_place;
     __strong NLGallery *_gallery;
+
+    __strong NLGalleryViewController *_galleryVC;
 }
 
 
@@ -57,6 +60,7 @@ typedef enum {
     return self;
 }
 
+
 - (Mode)mode
 {
     if (_entry)
@@ -67,6 +71,7 @@ typedef enum {
         return ShowingPlace;
     return -1;
 }
+
 
 - (void)viewDidLoad
 {
@@ -119,6 +124,7 @@ typedef enum {
                                              self.firstPartLabel.frame.origin.y + self.firstPartLabel.frame.size.height - 60,
                                              self.galleryCover.frame.size.width,
                                              self.galleryCover.frame.size.height);
+        self.showGalleryButton.frame = self.galleryCover.frame;
 
         self.secondPartLabel.frame = CGRectMake(self.secondPartLabel.frame.origin.x,
                                                 self.galleryCover.frame.origin.y + self.galleryCover.frame.size.height + 20,
@@ -127,6 +133,7 @@ typedef enum {
     } else {
         self.galleryCover.frame = CGRectZero;
         self.secondPartLabel.frame = CGRectZero;
+        self.showGalleryButton.frame = CGRectZero;
     }
 
     self.contentView.frame = CGRectMake(self.contentView.frame.origin.x,
@@ -134,7 +141,7 @@ typedef enum {
                                         self.contentView.frame.size.width,
                                         self.firstPartLabel.frame.size.height +
                                         self.galleryCover.frame.size.height +
-                                        self.secondPartLabel.frame.size.height + 151);
+                                        self.secondPartLabel.frame.size.height + 163);
 
     self.scrollView.contentSize = self.contentView.frame.size;
 
@@ -204,6 +211,14 @@ typedef enum {
 - (IBAction)back:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:^{}];
+}
+
+
+- (IBAction)showGallery:(id)sender
+{
+    NSLog(@"Show gallery");
+    _galleryVC = [[NLGalleryViewController alloc] initWithGallery:_gallery];
+    [self presentViewController:_galleryVC animated:YES completion:^{}];
 }
 
 

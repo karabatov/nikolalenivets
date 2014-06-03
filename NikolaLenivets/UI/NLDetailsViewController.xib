@@ -15,6 +15,7 @@
                 <outlet property="galleryCover" destination="Mgw-DY-1Xg" id="9Dd-Vi-Ha8"/>
                 <outlet property="scrollView" destination="U96-SA-MhQ" id="5Fy-ei-S93"/>
                 <outlet property="secondPartLabel" destination="Cdz-Aq-Vf6" id="l4T-be-Jwg"/>
+                <outlet property="showGalleryButton" destination="WcX-qz-D5Q" id="Hcx-IT-Iyl"/>
                 <outlet property="titleLabel" destination="5y1-fk-EJG" id="fZZ-4M-FcX"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
@@ -69,6 +70,16 @@
                                     <rect key="frame" x="0.0" y="198" width="320" height="189"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="WcX-qz-D5Q">
+                                    <rect key="frame" x="0.0" y="201" width="320" height="184"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="showGallery:" destination="-1" eventType="touchUpInside" id="GSM-Z5-Yu4"/>
+                                    </connections>
+                                </button>
                                 <view contentMode="scaleToFill" id="Cdz-Aq-Vf6" userLabel="SecondPart" customClass="DTAttributedLabel">
                                     <rect key="frame" x="20" y="76" width="280" height="372"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

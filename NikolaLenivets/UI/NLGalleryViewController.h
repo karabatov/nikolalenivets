@@ -13,6 +13,10 @@
 @interface NLGalleryViewController : UIViewController <UIPhotoGalleryDataSource, UIPhotoGalleryDelegate>
 
 @property (weak, nonatomic) IBOutlet UIPhotoGalleryView *galleryView;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet UIView *nameView;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 
+- (id)initWithGallery:(NLGallery *)gallery;
 
 @end

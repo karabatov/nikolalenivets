@@ -25,10 +25,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *capitalLetter;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet AsyncImageView *galleryCover;
+@property (weak, nonatomic) IBOutlet UIButton *showGalleryButton;
 
 - (id)initWithEvent:(NLEvent *)event;
 - (id)initWithEntry:(NLNewsEntry *)entry;
 - (id)initWithPlace:(NLPlace *)place;
+- (IBAction)showGallery:(id)sender;
 
 - (IBAction)back:(id)sender;
 
