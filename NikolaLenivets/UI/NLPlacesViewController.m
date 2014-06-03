@@ -30,7 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.frame = [[UIScreen mainScreen] bounds];
+    //self.view.frame = [[UIScreen mainScreen] bounds];
     self.titleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:18];
     [self.collectionView registerNib:[UINib nibWithNibName:@"NLPlaceCell" bundle:[NSBundle mainBundle]]
           forCellWithReuseIdentifier:@"NLPlaceCell"];

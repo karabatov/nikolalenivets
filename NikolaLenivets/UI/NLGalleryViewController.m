@@ -27,7 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.frame = [[UIScreen mainScreen] bounds];
+    //self.view.frame = [[UIScreen mainScreen] bounds];
     self.galleryView.showsScrollIndicator = NO;
     self.galleryView.galleryMode = UIPhotoGalleryModeImageRemote;
 }
