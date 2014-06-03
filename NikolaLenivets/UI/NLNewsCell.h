@@ -11,6 +11,7 @@
 #import "NLEvent.h"
 
 #import <DTCoreText.h>
+#import <AsyncImageView.h>
 
 @interface NLNewsCell : UITableViewCell
 
@@ -18,7 +19,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet DTAttributedLabel *previewLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *thumbnail;
+@property (weak, nonatomic) IBOutlet AsyncImageView *thumbnail;
+@property (weak, nonatomic) IBOutlet UILabel *unreadIndicator;
 
 + (CGFloat)heightForCellWithEntry:(NLNewsEntry *)entry;
 + (CGFloat)heightForCellWithEvent:(NLEvent *)event;

@@ -15,6 +15,7 @@
 
 @implementation NLNewsListController
 {
+    __strong NSArray *_news;
     __strong NSMutableArray *_leftNews;
     __strong NSMutableArray *_rightNews;
     __strong NLDetailsViewController *_details;
@@ -40,7 +41,7 @@
 {
     [super viewDidLoad];
     self.view.frame = [[UIScreen mainScreen] bounds];
-    self.titleLabel.font = [UIFont fontWithName:NLMonospacedFont size:18];
+    self.titleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:18];
 }
 
 
@@ -50,6 +51,7 @@
     [self prepareNewsArrays];
 }
 
+
 #pragma mark - News processing
 
 - (void)prepareNewsArrays
@@ -58,6 +60,7 @@
     _rightNews = [NSMutableArray new];
     
     NSArray *news = [[NLStorage sharedInstance] news];
+    _news = news;
     
     for (int i = 0; i < news.count; i++) {
         if (i % 2 == 0) {
@@ -66,6 +69,7 @@
             [_rightNews addObject:news[i]];
         }
     }
+    self.newsCountLabel.text = [NSString stringWithFormat:@"%02ld", news.count];
     [self.leftTable reloadData];
     [self.rightTable reloadData];
 }
@@ -113,6 +117,7 @@
     
     NLNewsEntry *entry = [self entryForTable:tableView indexPath:indexPath];
     [cell populateFromNewsEntry:entry];
+    cell.counterLabel.text = [NSString stringWithFormat:@"%02ld", [_news indexOfObject:entry] + 1];
     return cell;
 }
 
@@ -143,6 +148,44 @@
             break;
     }
     return entry;
+}
+
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    if ([scrollView isEqual:self.leftTable]) {
+        self.rightShadowView.hidden = NO;
+        [UIView animateWithDuration:0.1 animations:^{
+            self.rightShadowView.alpha = 1.0;
+        }];
+    }
+
+    if ([scrollView isEqual:self.rightTable]) {
+        self.leftShadowView.hidden = NO;
+        [UIView animateWithDuration:0.1 animations:^{
+            self.leftShadowView.alpha = 1.0;
+        }];
+    }
+}
+
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
+{
+    if ([scrollView isEqual:self.leftTable]) {
+        [UIView animateWithDuration:0.1 animations:^{
+            self.rightShadowView.alpha = 0.0;
+        } completion:^(BOOL finished) {
+            self.rightShadowView.hidden = YES;
+        }];
+    }
+
+    if ([scrollView isEqual:self.rightTable]) {
+        [UIView animateWithDuration:0.1 animations:^{
+            self.leftShadowView.alpha = 0.0;
+        } completion:^(BOOL finished) {
+            self.leftShadowView.hidden = YES;
+        }];
+    }
 }
 
 @end

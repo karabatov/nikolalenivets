@@ -13,11 +13,14 @@ enum  {
     RightTable = 1
 };
 
-@interface NLNewsListController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface NLNewsListController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UITableView *leftTable;
 @property (weak, nonatomic) IBOutlet UITableView *rightTable;
+@property (weak, nonatomic) IBOutlet UILabel *newsCountLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *leftShadowView;
+@property (weak, nonatomic) IBOutlet UIImageView *rightShadowView;
 
 - (IBAction)back:(id)sender;
 

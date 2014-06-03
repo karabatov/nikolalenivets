@@ -6,7 +6,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NLNewsListController">
             <connections>
+                <outlet property="leftShadowView" destination="ohb-ea-z3Z" id="1wL-OA-TJf"/>
                 <outlet property="leftTable" destination="GE7-gk-KCr" id="x1I-lb-qgq"/>
+                <outlet property="newsCountLabel" destination="QV7-6e-hdR" id="ryT-gq-kJU"/>
+                <outlet property="rightShadowView" destination="8Sm-qU-54I" id="E1y-Mw-9Ox"/>
                 <outlet property="rightTable" destination="6Y9-Cf-keJ" id="Qcd-Ro-E45"/>
                 <outlet property="titleLabel" destination="nrz-CM-JzS" id="bia-4u-kaD"/>
                 <outlet property="view" destination="1" id="3"/>
@@ -18,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" id="AZ7-5r-ohQ" userLabel="Title Bar">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="54"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="RuV-cP-0AY" userLabel="Back">
@@ -33,17 +36,24 @@
                             </connections>
                         </button>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="НОВОСТИ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nrz-CM-JzS">
-                            <rect key="frame" x="78" y="2" width="164" height="46"/>
+                            <rect key="frame" x="78" y="2" width="164" height="47"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="42" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QV7-6e-hdR">
+                            <rect key="frame" x="139" y="33" width="42" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="7"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" red="0.96470594409999999" green="0.96470594409999999" blue="0.96470594409999999" alpha="1" colorSpace="deviceRGB"/>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="GE7-gk-KCr" userLabel="Left Table">
-                    <rect key="frame" x="0.0" y="45" width="161" height="523"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="GE7-gk-KCr" userLabel="Left Table">
+                    <rect key="frame" x="0.0" y="55" width="161" height="513"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
@@ -51,8 +61,8 @@
                         <outlet property="delegate" destination="-1" id="7bn-pG-pCr"/>
                     </connections>
                 </tableView>
-                <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="6Y9-Cf-keJ" userLabel="Right Table">
-                    <rect key="frame" x="159" y="45" width="161" height="523"/>
+                <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="6Y9-Cf-keJ" userLabel="Right Table">
+                    <rect key="frame" x="159" y="55" width="161" height="513"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
@@ -60,6 +70,14 @@
                         <outlet property="delegate" destination="-1" id="PQk-wy-ymF"/>
                     </connections>
                 </tableView>
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_shadow.png" id="8Sm-qU-54I" userLabel="Right Shadow">
+                    <rect key="frame" x="164" y="55" width="167" height="513"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="left_shadow.png" id="ohb-ea-z3Z" userLabel="Left Shadow">
+                    <rect key="frame" x="-13" y="55" width="174" height="513"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
@@ -67,6 +85,8 @@
         </view>
     </objects>
     <resources>
+        <image name="left_shadow.png" width="174" height="1008"/>
         <image name="menu_button.png" width="77" height="24"/>
+        <image name="right_shadow.png" width="174" height="1008"/>
     </resources>
 </document>

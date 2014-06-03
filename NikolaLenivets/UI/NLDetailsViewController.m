@@ -77,33 +77,41 @@ typedef enum {
 {
     [super viewDidLoad];
     
-    self.titleLabel.font = [UIFont fontWithName:@"MonoCondensedC" size:18];
+    self.titleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:24];
+    self.detailsViewTitleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:12];
+    self.dateLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:10];
+    self.countView.font = [UIFont fontWithName:NLMonospacedBoldFont size:10];
 
     NSString *title = nil;
     NSString *content = nil;
     NSString *date = nil;
+    NSInteger indexNumber = 0;
 
     switch ([self mode]) {
         case ShowingNewsEntry: {
             title = _entry.title;
             content = _entry.content;
-            date = [[_entry pubDate] stringWithFormat:[NSDate dateFormatString]];
+            date = [[_entry pubDate] stringWithFormat:DefaultDateFormat];
+            indexNumber = [[[NLStorage sharedInstance] news] indexOfObject:_entry];
             break;
         }
         case ShowingEvent: {
             title = _event.title;
             content = _event.content;
-            date = [[_event startDate] stringWithFormat:[NSDate dateFormatString]];
-            [self.backButton setTitle:@"< СОБЫТИЯ" forState:UIControlStateNormal];
+            date = [[_event startDate] stringWithFormat:DefaultDateFormat];
+            self.detailsViewTitleLabel.text = @"СОБЫТИЯ";
+            indexNumber = -1;
             break;
         }
         case ShowingPlace: {
             title = _place.title;
             content = _place.content;
-            [self.backButton setTitle:@"< МЕСТА" forState:UIControlStateNormal];
+            self.detailsViewTitleLabel.text = @"МЕСТА";
+            indexNumber = [[[NLStorage sharedInstance] places] indexOfObject:_place];
             break;
         }
         default:
+            indexNumber = -1;
             break;
     }
 
@@ -111,12 +119,17 @@ typedef enum {
     _gallery = [self galleryFromString:content];
     NSArray *textParts = [self textParts:content];
 
+    if (indexNumber > -1) {
+        self.countView.text = [NSString stringWithFormat:@"%02ld", indexNumber + 1];
+    } else {
+        self.countView.text = @"";
+    }
+
     self.firstPartLabel.attributedString = [self attributedStringForString:textParts.firstObject];
     self.firstPartLabel.frame = CGRectMake(self.firstPartLabel.frame.origin.x,
                                            self.firstPartLabel.frame.origin.y,
                                            self.firstPartLabel.frame.size.width,
                                            [self heightForString:textParts.firstObject]);
-
     if (textParts.count > 1) {
         self.galleryCover.imageURL = [NSURL URLWithString:_gallery.cover.image];
         self.secondPartLabel.attributedString = [self attributedStringForString:textParts.lastObject];
@@ -147,9 +160,6 @@ typedef enum {
 
     NSString *firstLetter = [[self.firstPartLabel.attributedString string] substringToIndex:1];
     self.capitalLetter.text = firstLetter;
-
-    self.countView.font = [UIFont fontWithName:@"MonoCondensedC" size:8];
-    self.dateLabel.font = [UIFont fontWithName:@"MonoCondensedC" size:8];
     self.dateLabel.text = date;
 }
 

@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet AsyncImageView *galleryCover;
 @property (weak, nonatomic) IBOutlet UIButton *showGalleryButton;
+@property (weak, nonatomic) IBOutlet UILabel *detailsViewTitleLabel;
 
 - (id)initWithEvent:(NLEvent *)event;
 - (id)initWithEntry:(NLNewsEntry *)entry;

@@ -20,9 +20,9 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    self.counterLabel.font = [UIFont fontWithName:@"MonoCondensedC" size:8];
-    self.dateLabel.font = [UIFont fontWithName:@"MonoCondensedC" size:8];
-    self.titleLabel.font = [UIFont fontWithName:@"MonoCondensedC" size:16];
+    self.counterLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:10];
+    self.dateLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:10];
+    self.titleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:20];
 }
 
 
@@ -35,7 +35,7 @@
         self.thumbnail.image = nil;
     }
     self.thumbnail.imageURL = [NSURL URLWithString:_entry.thumbnail];
-    self.dateLabel.text = [[_entry pubDate] stringWithFormat:[NSDate dateFormatString]];
+    self.dateLabel.text = [[_entry pubDate] stringWithFormat:DefaultDateFormat];
 }
 
 
@@ -48,7 +48,7 @@
         self.thumbnail.image = nil;
     }
     self.thumbnail.imageURL = [NSURL URLWithString:_event.thumbnail];
-    self.dateLabel.text = [[_event startDate] stringWithFormat:[NSDate dateFormatString]];
+    self.dateLabel.text = [[_event startDate] stringWithFormat:DefaultDateFormat];
 }
 
 
@@ -73,7 +73,7 @@
     NSMutableAttributedString *attributed = [[NSMutableAttributedString alloc] initWithHTMLData:htmlData
                                                                              documentAttributes:nil];
     NSRange range = {0, attributed.length};
-    [attributed addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"BookmanC" size:11] range:range];
+    [attributed addAttribute:NSFontAttributeName value:[UIFont fontWithName:NLSerifFont size:10] range:range];
     
     return attributed;
 }

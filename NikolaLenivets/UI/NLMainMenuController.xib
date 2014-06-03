@@ -65,6 +65,10 @@
                     <autoresizingMask key="autoresizingMask"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                 </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search_bg.png" id="G45-3z-Ofi">
+                    <rect key="frame" x="136" y="498" width="48" height="48"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="y1y-8t-No6">
                     <rect key="frame" x="20" y="78" width="80" height="72"/>
                     <autoresizingMask key="autoresizingMask"/>
@@ -138,10 +142,9 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="HyR-n2-fdy">
-                    <rect key="frame" x="149" y="509" width="25" height="26"/>
+                    <rect key="frame" x="153" y="515" width="14" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
-                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
-                    <state key="normal" image="search_icon.png">
+                    <state key="normal" image="search.png">
                         <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                     </state>
                 </button>
@@ -209,6 +212,7 @@
     </objects>
     <resources>
         <image name="picalka.jpg" width="403" height="604"/>
-        <image name="search_icon.png" width="25" height="26"/>
+        <image name="search.png" width="25" height="25"/>
+        <image name="search_bg.png" width="124" height="124"/>
     </resources>
 </document>

@@ -25,3 +25,6 @@
 #define NLMonospacedFont @"MonoCondensedC"
 #define NLMonospacedBoldFont @"MonoCondensedCBold"
 #define NLSerifFont @"BookmanC"
+
+
+#define DefaultDateFormat @"dd MMMM"
