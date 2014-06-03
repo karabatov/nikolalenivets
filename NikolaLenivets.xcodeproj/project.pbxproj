@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F10D2AF19374ABB00F6658D /* NLStaticScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F10D2AD19374ABB00F6658D /* NLStaticScreenViewController.m */; };
+		4F10D2B019374ABB00F6658D /* NLStaticScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F10D2AE19374ABB00F6658D /* NLStaticScreenViewController.xib */; };
 		4F18FD3A192212F900032A34 /* NLDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F18FD38192212F900032A34 /* NLDetailsViewController.m */; };
 		4F18FD3B192212F900032A34 /* NLDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F18FD39192212F900032A34 /* NLDetailsViewController.xib */; };
 		4F22FD781936E8B30075C1A0 /* NLGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F22FD761936E8B30075C1A0 /* NLGalleryViewController.m */; };
@@ -57,6 +59,9 @@
 /* Begin PBXFileReference section */
 		213D00ACD702461FA5EF0EB3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B21A1ADAF4F4E0BA8ED7C42 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		4F10D2AC19374ABB00F6658D /* NLStaticScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLStaticScreenViewController.h; path = UI/NLStaticScreenViewController.h; sourceTree = "<group>"; };
+		4F10D2AD19374ABB00F6658D /* NLStaticScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLStaticScreenViewController.m; path = UI/NLStaticScreenViewController.m; sourceTree = "<group>"; };
+		4F10D2AE19374ABB00F6658D /* NLStaticScreenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLStaticScreenViewController.xib; path = UI/NLStaticScreenViewController.xib; sourceTree = "<group>"; };
 		4F18FD37192212F900032A34 /* NLDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLDetailsViewController.h; path = UI/NLDetailsViewController.h; sourceTree = "<group>"; };
 		4F18FD38192212F900032A34 /* NLDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLDetailsViewController.m; path = UI/NLDetailsViewController.m; sourceTree = "<group>"; };
 		4F18FD39192212F900032A34 /* NLDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLDetailsViewController.xib; path = UI/NLDetailsViewController.xib; sourceTree = "<group>"; };
@@ -152,14 +157,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4F18FD36192212DA00032A34 /* NewsEntry */ = {
+		4F10D2AB19374AA100F6658D /* Static Screens */ = {
+			isa = PBXGroup;
+			children = (
+				4F10D2AC19374ABB00F6658D /* NLStaticScreenViewController.h */,
+				4F10D2AD19374ABB00F6658D /* NLStaticScreenViewController.m */,
+				4F10D2AE19374ABB00F6658D /* NLStaticScreenViewController.xib */,
+			);
+			name = "Static Screens";
+			sourceTree = "<group>";
+		};
+		4F18FD36192212DA00032A34 /* Details */ = {
 			isa = PBXGroup;
 			children = (
 				4F18FD37192212F900032A34 /* NLDetailsViewController.h */,
 				4F18FD38192212F900032A34 /* NLDetailsViewController.m */,
 				4F18FD39192212F900032A34 /* NLDetailsViewController.xib */,
 			);
-			name = NewsEntry;
+			name = Details;
 			sourceTree = "<group>";
 		};
 		4F22FD741936E7680075C1A0 /* Photo Gallery */ = {
@@ -215,6 +230,7 @@
 		4F390E6E18ED510500131934 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				4F10D2AB19374AA100F6658D /* Static Screens */,
 				4F22FD82193726A00075C1A0 /* Places */,
 				4F22FD741936E7680075C1A0 /* Photo Gallery */,
 				4FD010F1192CC316002F5836 /* Assets */,
@@ -335,7 +351,7 @@
 		4FAA131E190A4E90009A0546 /* News */ = {
 			isa = PBXGroup;
 			children = (
-				4F18FD36192212DA00032A34 /* NewsEntry */,
+				4F18FD36192212DA00032A34 /* Details */,
 				4F8A13031921D57D00F3DA96 /* Cell */,
 				4F7EC302190933B9002C0ECD /* NLNewsListController.h */,
 				4F7EC303190933B9002C0ECD /* NLNewsListController.m */,
@@ -424,6 +440,7 @@
 				4F9C414218EA84640038090E /* InfoPlist.strings in Resources */,
 				4FD010F3192CC320002F5836 /* menu_button.png in Resources */,
 				4FCBE0091907A054002F37A3 /* MonoCondensedC.ttf in Resources */,
+				4F10D2B019374ABB00F6658D /* NLStaticScreenViewController.xib in Resources */,
 				4FCBE0081907A054002F37A3 /* BookmanC.otf in Resources */,
 				4F22FD791936E8B30075C1A0 /* NLGalleryViewController.xib in Resources */,
 				4F454360192DE4D20043C3F4 /* Default-568h@2x.png in Resources */,
@@ -505,6 +522,7 @@
 				4F390E8C18ED755300131934 /* NLEvent.m in Sources */,
 				4F18FD3A192212F900032A34 /* NLDetailsViewController.m in Sources */,
 				4F390E8618ED753700131934 /* NLPlace.m in Sources */,
+				4F10D2AF19374ABB00F6658D /* NLStaticScreenViewController.m in Sources */,
 				4F22FD801936F4360075C1A0 /* NLEventsListControllerViewController.m in Sources */,
 				4F390E7D18ED731E00131934 /* NLNewsEntry.m in Sources */,
 				4F22FD861937288B0075C1A0 /* NLPlacesViewController.m in Sources */,

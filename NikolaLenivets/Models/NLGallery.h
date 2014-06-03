@@ -29,4 +29,6 @@
 @property (strong, nonatomic) NSString *content;
 @property (strong, nonatomic) NSArray *images;
 
+- (NLImage *)cover;
+
 @end

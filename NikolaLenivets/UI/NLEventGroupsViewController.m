@@ -37,8 +37,6 @@
 {
     [super viewDidLoad];
 
-    //self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-
     self.view.frame = [[UIScreen mainScreen] bounds];
 
     self.titleLabel.font = [UIFont fontWithName:NLMonospacedFont size:18];

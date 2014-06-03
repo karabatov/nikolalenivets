@@ -35,9 +35,11 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_MENU_NOW object:nil];
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.frame = [[UIScreen mainScreen] bounds];
     self.titleLabel.font = [UIFont fontWithName:NLMonospacedFont size:18];
 }
 

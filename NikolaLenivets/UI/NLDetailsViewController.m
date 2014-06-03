@@ -7,6 +7,8 @@
 //
 
 #import "NLDetailsViewController.h"
+#import "NLGallery.h"
+#import "NLStorage.h"
 
 #import <DTCoreText.h>
 #import <NSDate+Helper.h>
@@ -22,6 +24,7 @@ typedef enum {
     __strong NLNewsEntry *_entry;
     __strong NLEvent *_event;
     __strong NLPlace *_place;
+    __strong NLGallery *_gallery;
 }
 
 
@@ -100,12 +103,14 @@ typedef enum {
     }
 
     self.titleLabel.text = title;
+    _gallery = [self galleryFromString:content];
     self.contentText.attributedString = [self attributedStringForString:content];
     
     self.contentView.frame = CGRectMake(self.contentView.frame.origin.x,
                                         self.contentView.frame.origin.y,
                                         self.contentView.frame.size.width,
                                         [self heightForString:content] + 151);
+
     self.scrollView.contentSize = self.contentView.frame.size;
 
     NSString *firstLetter = [[self.contentText.attributedString string] substringToIndex:1];
@@ -119,6 +124,16 @@ typedef enum {
 
 - (NSAttributedString *)attributedStringForString:(NSString *)htmlString
 {
+    if (_gallery != nil) {
+        NSRange galleryBeginning = [htmlString rangeOfString:@"["];
+        if (galleryBeginning.location != NSNotFound) {
+            NSRange galleryEnding = [htmlString rangeOfString:@"]"];
+            NSString *galleryTag = [htmlString substringWithRange:NSMakeRange(galleryBeginning.location, galleryEnding.location - galleryBeginning.location + 1)];
+            NSString *imagetag = [NSString stringWithFormat:@"<img src='%@'/>", _gallery.cover.image];
+            htmlString = [htmlString stringByReplacingOccurrencesOfString:galleryTag withString:imagetag];
+        }
+    }
+
     NSData *htmlData = [htmlString dataUsingEncoding:NSUTF8StringEncoding];
     NSMutableAttributedString *attributed = [[NSMutableAttributedString alloc] initWithHTMLData:htmlData
                                                                                         options:@{DTUseiOS6Attributes: @(YES)}
@@ -139,6 +154,21 @@ typedef enum {
     
     CGFloat height = rect.size.height;
     return height + 20;
+}
+
+
+- (NLGallery *)galleryFromString:(NSString *)htmlString
+{
+    NSRange galleryBeginning = [htmlString rangeOfString:@"["];
+    NLGallery *gallery = nil;
+    if (galleryBeginning.location != NSNotFound) {
+        NSRange galleryEnding = [htmlString rangeOfString:@"]"];
+        NSString *galleryName = [htmlString substringWithRange:NSMakeRange(galleryBeginning.location + 1, galleryEnding.location - galleryBeginning.location - 1)];
+        gallery = _.array([[NLStorage sharedInstance] galleries]).find(^(NLGallery *gal) {
+            return (BOOL)[gal.shortcut isEqualToString:galleryName];
+        });
+    }
+    return gallery;
 }
 
 

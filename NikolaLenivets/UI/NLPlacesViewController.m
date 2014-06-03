@@ -30,6 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.frame = [[UIScreen mainScreen] bounds];
     [self.collectionView registerNib:[UINib nibWithNibName:@"NLPlaceCell" bundle:[NSBundle mainBundle]]
           forCellWithReuseIdentifier:@"NLPlaceCell"];
     [self updatePlaces];

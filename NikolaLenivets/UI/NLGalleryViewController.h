@@ -12,6 +12,7 @@
 
 @interface NLGalleryViewController : UIViewController <UIPhotoGalleryDataSource, UIPhotoGalleryDelegate>
 
+@property (weak, nonatomic) IBOutlet UIPhotoGalleryView *galleryView;
 
 
 @end

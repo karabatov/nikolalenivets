@@ -11,6 +11,7 @@
 #import "NLNewsListController.h"
 #import "NLEventGroupsViewController.h"
 #import "NLPlacesViewController.h"
+#import "NLStaticScreenViewController.h"
 
 enum {
     News   = 0,
@@ -29,6 +30,7 @@ enum {
     __strong NLEventGroupsViewController *_eventsController;
     __strong NLPlacesViewController *_placesController;
     __strong UIView *_contentView;
+    __strong NLStaticScreenViewController *_driveScreen;
 }
 
 
@@ -112,7 +114,11 @@ enum {
             [_contentView addSubview:_placesController.view];
             break;
         }
-
+        case Way: {
+            _driveScreen = [[NLStaticScreenViewController alloc] initWithScreenNamed:@"drive"];
+            [_contentView addSubview:_driveScreen.view];
+            break;
+        }
         default:
             [_contentView addSubview:self.childView];
             break;

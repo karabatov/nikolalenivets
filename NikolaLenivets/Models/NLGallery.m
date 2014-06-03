@@ -30,4 +30,14 @@
     return [parser parseDictionary:dict];
 }
 
+
+- (NLImage *)cover
+{
+    NLImage *cover = _.array(self.images).find(^(NLImage *i) { return i.iscover.boolValue; });
+    if (cover == nil)
+        return self.images.firstObject;
+
+    return cover;
+}
+
 @end

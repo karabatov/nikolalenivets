@@ -14,5 +14,6 @@
 @property (strong, nonatomic) NSString *fullname;
 @property (strong, nonatomic) NSString *image;
 @property (strong, nonatomic) NSString *url;
+@property (strong, nonatomic) NSString *content;
 
 @end
