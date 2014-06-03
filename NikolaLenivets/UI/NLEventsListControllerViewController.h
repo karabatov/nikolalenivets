@@ -8,14 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "NLEventGroup.h"
+#import "NLItemsListController.h"
 
-@interface NLEventsListControllerViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
-
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UITableView *leftTable;
-@property (weak, nonatomic) IBOutlet UITableView *rightTable;
+@interface NLEventsListControllerViewController : NLItemsListController <UITableViewDataSource, UITableViewDelegate>
 
 - (id)initWithGroup:(NLEventGroup *)group;
-- (IBAction)back:(id)sender;
 
 @end

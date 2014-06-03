@@ -9,7 +9,7 @@
 #import "NLEventsListControllerViewController.h"
 #import "NLEvent.h"
 #import "NLNewsCell.h"
-#import "NLNewsListController.h"
+#import "NLItemsListController.h"
 #import "NLDetailsViewController.h"
 
 @implementation NLEventsListControllerViewController
@@ -22,7 +22,7 @@
 
 - (id)initWithGroup:(NLEventGroup *)group;
 {
-    self = [super initWithNibName:@"NLEventsListControllerViewController" bundle:nil];
+    self = [super init];
     if (self) {
         _group = group;
     }
@@ -33,22 +33,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.frame = [[UIScreen mainScreen] bounds];
-    [self prepareEventArrays];
+    self.titleLabel.text = @"СОБЫТИЯ";
+    [self prepareArrays];
 }
-
-
-#pragma mark - Actions
-
-- (IBAction)back:(id)sender
-{
-    [self dismissViewControllerAnimated:YES completion:^{}];
-}
-
 
 #pragma mark - Grouping
 
-- (void)prepareEventArrays
+- (void)prepareArrays
 {
     _leftGroup = [NSMutableArray new];
     _rightGroup = [NSMutableArray new];
@@ -62,6 +53,7 @@
             [_rightGroup addObject:events[i]];
         }
     }
+    self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)events.count];
     [self.leftTable reloadData];
     [self.rightTable reloadData];
 }

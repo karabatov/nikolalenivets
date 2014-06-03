@@ -8,7 +8,7 @@
 
 #import "NLMainMenuController.h"
 #import "SKUTouchPresenter.h"
-#import "NLNewsListController.h"
+#import "NLItemsListController.h"
 #import "NLEventGroupsViewController.h"
 #import "NLPlacesViewController.h"
 #import "NLStaticScreenViewController.h"
@@ -26,7 +26,7 @@ enum {
 @implementation NLMainMenuController
 {
     __strong PaperFoldView *_paperFoldView;
-    __strong NLNewsListController *_newsList;
+    __strong NLItemsListController *_newsList;
     __strong NLEventGroupsViewController *_eventsController;
     __strong NLPlacesViewController *_placesController;
     __strong UIView *_contentView;
@@ -64,7 +64,7 @@ enum {
     [self.view addSubview:_paperFoldView];
     [_paperFoldView setLeftFoldContentView:self.menuView foldCount:1 pullFactor:0.9];
     [_paperFoldView setCenterContentView:_contentView];
-
+    _paperFoldView.enableLeftFoldDragging = NO;
     [self showMenu];
 }
 
@@ -100,7 +100,7 @@ enum {
     }
     switch (sender.tag) {
         case News: {
-            _newsList = [NLNewsListController new];
+            _newsList = [NLItemsListController new];
             [_contentView addSubview:_newsList.view];
             break;
         }

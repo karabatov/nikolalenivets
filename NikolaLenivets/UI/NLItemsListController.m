@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 Semyon Novikov. All rights reserved.
 //
 
-#import "NLNewsListController.h"
+#import "NLItemsListController.h"
 #import "NLMainMenuController.h"
 #import "NLNewsCell.h"
 #import "NLDetailsViewController.h"
 
 
 
-@implementation NLNewsListController
+@implementation NLItemsListController
 {
     __strong NSArray *_news;
     __strong NSMutableArray *_leftNews;
@@ -23,9 +23,9 @@
 
 - (id)init
 {
-    self = [super initWithNibName:@"NLNewsListController" bundle:nil];
+    self = [super initWithNibName:@"NLItemsListController" bundle:nil];
     if (self) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(prepareNewsArrays) name:STORAGE_DID_UPDATE object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(prepareArrays) name:STORAGE_DID_UPDATE object:nil];
     }
     return self;
 }
@@ -48,13 +48,13 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self prepareNewsArrays];
+    [self prepareArrays];
 }
 
 
 #pragma mark - News processing
 
-- (void)prepareNewsArrays
+- (void)prepareArrays
 {
     _leftNews = [NSMutableArray new];
     _rightNews = [NSMutableArray new];
@@ -69,7 +69,7 @@
             [_rightNews addObject:news[i]];
         }
     }
-    self.newsCountLabel.text = [NSString stringWithFormat:@"%02ld", news.count];
+    self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)news.count];
     [self.leftTable reloadData];
     [self.rightTable reloadData];
 }

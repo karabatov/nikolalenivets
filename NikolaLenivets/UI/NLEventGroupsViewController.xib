@@ -104,16 +104,6 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bcQ-mx-RVI">
-                    <rect key="frame" x="0.0" y="48" width="320" height="477"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="openEventsList:" destination="-1" eventType="touchUpInside" id="LJe-bw-Lik"/>
-                    </connections>
-                </button>
                 <view contentMode="scaleToFill" id="dUC-ez-oiB" userLabel="Preview">
                     <rect key="frame" x="0.0" y="371" width="320" height="154"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>

@@ -21,7 +21,6 @@
 		4F22FD791936E8B30075C1A0 /* NLGalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F22FD771936E8B30075C1A0 /* NLGalleryViewController.xib */; };
 		4F22FD7C1936ED3E0075C1A0 /* NLGallery.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F22FD7B1936ED3E0075C1A0 /* NLGallery.m */; };
 		4F22FD801936F4360075C1A0 /* NLEventsListControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F22FD7E1936F4360075C1A0 /* NLEventsListControllerViewController.m */; };
-		4F22FD811936F4360075C1A0 /* NLEventsListControllerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F22FD7F1936F4360075C1A0 /* NLEventsListControllerViewController.xib */; };
 		4F22FD861937288B0075C1A0 /* NLPlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F22FD841937288B0075C1A0 /* NLPlacesViewController.m */; };
 		4F22FD871937288B0075C1A0 /* NLPlacesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F22FD851937288B0075C1A0 /* NLPlacesViewController.xib */; };
 		4F22FD8919372F260075C1A0 /* NLPlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F22FD8819372F260075C1A0 /* NLPlaceCell.xib */; };
@@ -41,8 +40,8 @@
 		4F6137491927313700BFDD1C /* NLEventGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6137471927313700BFDD1C /* NLEventGroupsViewController.m */; };
 		4F61374A1927313700BFDD1C /* NLEventGroupsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F6137481927313700BFDD1C /* NLEventGroupsViewController.xib */; };
 		4F61374D19273D7700BFDD1C /* NLEventGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F61374C19273D7700BFDD1C /* NLEventGroup.m */; };
-		4F7EC305190933B9002C0ECD /* NLNewsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7EC303190933B9002C0ECD /* NLNewsListController.m */; };
-		4F7EC306190933B9002C0ECD /* NLNewsListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7EC304190933B9002C0ECD /* NLNewsListController.xib */; };
+		4F7EC305190933B9002C0ECD /* NLItemsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7EC303190933B9002C0ECD /* NLItemsListController.m */; };
+		4F7EC306190933B9002C0ECD /* NLItemsListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7EC304190933B9002C0ECD /* NLItemsListController.xib */; };
 		4F7EC30819093E16002C0ECD /* picalka.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4F7EC30719093E16002C0ECD /* picalka.jpg */; };
 		4F8A13051921D5C700F3DA96 /* NLNewsCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F8A13041921D5C700F3DA96 /* NLNewsCellView.xib */; };
 		4F8A13081921D6CE00F3DA96 /* NLNewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8A13071921D6CE00F3DA96 /* NLNewsCell.m */; };
@@ -84,7 +83,6 @@
 		4F22FD7B1936ED3E0075C1A0 /* NLGallery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLGallery.m; path = Models/NLGallery.m; sourceTree = "<group>"; };
 		4F22FD7D1936F4360075C1A0 /* NLEventsListControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLEventsListControllerViewController.h; path = UI/NLEventsListControllerViewController.h; sourceTree = "<group>"; };
 		4F22FD7E1936F4360075C1A0 /* NLEventsListControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLEventsListControllerViewController.m; path = UI/NLEventsListControllerViewController.m; sourceTree = "<group>"; };
-		4F22FD7F1936F4360075C1A0 /* NLEventsListControllerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLEventsListControllerViewController.xib; path = UI/NLEventsListControllerViewController.xib; sourceTree = "<group>"; };
 		4F22FD831937288B0075C1A0 /* NLPlacesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLPlacesViewController.h; path = UI/NLPlacesViewController.h; sourceTree = "<group>"; };
 		4F22FD841937288B0075C1A0 /* NLPlacesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLPlacesViewController.m; path = UI/NLPlacesViewController.m; sourceTree = "<group>"; };
 		4F22FD851937288B0075C1A0 /* NLPlacesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLPlacesViewController.xib; path = UI/NLPlacesViewController.xib; sourceTree = "<group>"; };
@@ -122,9 +120,9 @@
 		4F61374B19273D7700BFDD1C /* NLEventGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLEventGroup.h; path = Models/NLEventGroup.h; sourceTree = "<group>"; };
 		4F61374C19273D7700BFDD1C /* NLEventGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLEventGroup.m; path = Models/NLEventGroup.m; sourceTree = "<group>"; };
 		4F7A321618EA8BC200C75EE5 /* NLBackendSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLBackendSpec.m; sourceTree = "<group>"; };
-		4F7EC302190933B9002C0ECD /* NLNewsListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLNewsListController.h; path = UI/NLNewsListController.h; sourceTree = "<group>"; };
-		4F7EC303190933B9002C0ECD /* NLNewsListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLNewsListController.m; path = UI/NLNewsListController.m; sourceTree = "<group>"; };
-		4F7EC304190933B9002C0ECD /* NLNewsListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLNewsListController.xib; path = UI/NLNewsListController.xib; sourceTree = "<group>"; };
+		4F7EC302190933B9002C0ECD /* NLItemsListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLItemsListController.h; path = UI/NLItemsListController.h; sourceTree = "<group>"; };
+		4F7EC303190933B9002C0ECD /* NLItemsListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLItemsListController.m; path = UI/NLItemsListController.m; sourceTree = "<group>"; };
+		4F7EC304190933B9002C0ECD /* NLItemsListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLItemsListController.xib; path = UI/NLItemsListController.xib; sourceTree = "<group>"; };
 		4F7EC30719093E16002C0ECD /* picalka.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = picalka.jpg; sourceTree = "<group>"; };
 		4F8A13041921D5C700F3DA96 /* NLNewsCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLNewsCellView.xib; path = UI/NLNewsCellView.xib; sourceTree = "<group>"; };
 		4F8A13061921D6CE00F3DA96 /* NLNewsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLNewsCell.h; path = UI/NLNewsCell.h; sourceTree = "<group>"; };
@@ -277,7 +275,6 @@
 				4F6137481927313700BFDD1C /* NLEventGroupsViewController.xib */,
 				4F22FD7D1936F4360075C1A0 /* NLEventsListControllerViewController.h */,
 				4F22FD7E1936F4360075C1A0 /* NLEventsListControllerViewController.m */,
-				4F22FD7F1936F4360075C1A0 /* NLEventsListControllerViewController.xib */,
 			);
 			name = Events;
 			sourceTree = "<group>";
@@ -379,9 +376,9 @@
 				4F0D75A5193DBD0200E78AA5 /* right_shadow@2x.png */,
 				4F18FD36192212DA00032A34 /* Details */,
 				4F8A13031921D57D00F3DA96 /* Cell */,
-				4F7EC302190933B9002C0ECD /* NLNewsListController.h */,
-				4F7EC303190933B9002C0ECD /* NLNewsListController.m */,
-				4F7EC304190933B9002C0ECD /* NLNewsListController.xib */,
+				4F7EC302190933B9002C0ECD /* NLItemsListController.h */,
+				4F7EC303190933B9002C0ECD /* NLItemsListController.m */,
+				4F7EC304190933B9002C0ECD /* NLItemsListController.xib */,
 			);
 			name = News;
 			sourceTree = "<group>";
@@ -462,7 +459,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F7EC306190933B9002C0ECD /* NLNewsListController.xib in Resources */,
+				4F7EC306190933B9002C0ECD /* NLItemsListController.xib in Resources */,
 				4F0D75A7193DBD0200E78AA5 /* right_shadow@2x.png in Resources */,
 				4F9C414218EA84640038090E /* InfoPlist.strings in Resources */,
 				4FD010F3192CC320002F5836 /* menu_button.png in Resources */,
@@ -475,7 +472,6 @@
 				4F22FD8919372F260075C1A0 /* NLPlaceCell.xib in Resources */,
 				4F0D75A2193DB86500E78AA5 /* search_bg@2x.png in Resources */,
 				4F411E7F18FFD8AA00758E30 /* NLMainMenuController.xib in Resources */,
-				4F22FD811936F4360075C1A0 /* NLEventsListControllerViewController.xib in Resources */,
 				4FCBE00A1907A054002F37A3 /* MonoCondensedC_Bold.ttf in Resources */,
 				4F22FD871937288B0075C1A0 /* NLPlacesViewController.xib in Resources */,
 				4F61374A1927313700BFDD1C /* NLEventGroupsViewController.xib in Resources */,
@@ -550,7 +546,7 @@
 				4F9C414818EA84640038090E /* NLAppDelegate.m in Sources */,
 				4F9C414418EA84640038090E /* main.m in Sources */,
 				4F6137491927313700BFDD1C /* NLEventGroupsViewController.m in Sources */,
-				4F7EC305190933B9002C0ECD /* NLNewsListController.m in Sources */,
+				4F7EC305190933B9002C0ECD /* NLItemsListController.m in Sources */,
 				4F390E8C18ED755300131934 /* NLEvent.m in Sources */,
 				4F18FD3A192212F900032A34 /* NLDetailsViewController.m in Sources */,
 				4F390E8618ED753700131934 /* NLPlace.m in Sources */,

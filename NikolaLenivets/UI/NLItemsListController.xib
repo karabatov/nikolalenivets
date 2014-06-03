@@ -4,11 +4,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NLNewsListController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NLItemsListController">
             <connections>
+                <outlet property="itemsCountLabel" destination="QV7-6e-hdR" id="L4l-YX-bi8"/>
                 <outlet property="leftShadowView" destination="ohb-ea-z3Z" id="1wL-OA-TJf"/>
                 <outlet property="leftTable" destination="GE7-gk-KCr" id="x1I-lb-qgq"/>
-                <outlet property="newsCountLabel" destination="QV7-6e-hdR" id="ryT-gq-kJU"/>
                 <outlet property="rightShadowView" destination="8Sm-qU-54I" id="E1y-Mw-9Ox"/>
                 <outlet property="rightTable" destination="6Y9-Cf-keJ" id="Qcd-Ro-E45"/>
                 <outlet property="titleLabel" destination="nrz-CM-JzS" id="bia-4u-kaD"/>

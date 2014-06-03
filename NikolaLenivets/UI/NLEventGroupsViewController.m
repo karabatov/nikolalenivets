@@ -80,7 +80,7 @@
         slideImage.frame = CGRectMake(leftOffset, 0, slideImage.frame.size.width, slideImage.frame.size.height);
         leftOffset += slideImage.frame.size.width;
 
-        return  slideImage;
+        return slideImage;
     })
     .unwrap;
 
@@ -88,6 +88,9 @@
     _.array(self.scrollView.subviews).each(^(UIView *v) { [v removeFromSuperview]; });
     _.array(slides).each(^(UIImageView *slide) {
         [self.scrollView addSubview:slide];
+        UIButton *button = [[UIButton alloc] initWithFrame:slide.frame];
+        [button addTarget:self action:@selector(openEventsList:) forControlEvents:UIControlEventTouchUpInside];
+        [self.scrollView addSubview:button];
     });
 
     self.overallPagesCountLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)slides.count];
@@ -152,6 +155,7 @@
 
 - (IBAction)openEventsList:(id)sender
 {
+    NSLog(@"Open event list");
     NLEventGroup *group = _eventGroups[_currentPage];
     NLEventsListControllerViewController *events = [[NLEventsListControllerViewController alloc] initWithGroup:group];
     [self presentViewController:events animated:YES completion:^{}];
