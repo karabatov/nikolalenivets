@@ -42,7 +42,7 @@
 - (void)updatePlaces
 {
     _places = [[NLStorage sharedInstance] places];
-    self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", _places.count];
+    self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)_places.count];
     [self.collectionView reloadData];
 }
 

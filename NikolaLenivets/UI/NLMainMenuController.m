@@ -55,8 +55,7 @@ enum {
 {
     [super viewDidLoad];
 
-    CGRect frame = [[UIScreen mainScreen] bounds];
-
+    CGRect frame = self.view.frame;
     _contentView = [[UIView alloc] initWithFrame:frame];
     _paperFoldView = [[PaperFoldView alloc] initWithFrame:frame];
     _paperFoldView.delegate = self;
@@ -120,7 +119,6 @@ enum {
             break;
         }
         default:
-            //[_contentView addSubview:self.childView];
             return;
             break;
     }

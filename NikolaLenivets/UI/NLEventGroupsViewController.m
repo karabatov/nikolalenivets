@@ -37,7 +37,7 @@
 {
     [super viewDidLoad];
 
-    self.view.frame = [[UIScreen mainScreen] bounds];
+    self.view.frame = [[[[UIApplication sharedApplication] delegate] window] frame];
 
     self.titleLabel.font = [UIFont fontWithName:NLMonospacedFont size:18];
     self.currentPageLabel.font = [UIFont fontWithName:NLMonospacedFont size:self.currentPageLabel.font.pointSize];
@@ -50,6 +50,11 @@
     self.eventTitleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:24];
     self.eventDatesLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:18];
     self.ticketPriceLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:12];
+
+    self.pagerView.frame = CGRectMake(0,
+                                      self.view.frame.size.height - self.pagerView.frame.size.height,
+                                      self.pagerView.frame.size.width,
+                                      self.pagerView.frame.size.height);
 
     [self prepareEventsArray];
     [self fillContentForPage:0];
@@ -123,6 +128,9 @@
 
         self.eventDatesLabel.text = [NSString stringWithFormat:@" %@\n—%@", startDateString, endDateString];
     }
+
+    self.prevItemButton.enabled = pageIndex != 0;
+    self.nextItemButton.enabled = pageIndex != _eventGroups.count - 1;
 }
 
 

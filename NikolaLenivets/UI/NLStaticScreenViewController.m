@@ -37,7 +37,7 @@
     });
 
     if (screen != nil) {
-        self.titleLabel.text = screen.fullname;
+        self.titleLabel.text = [screen.fullname uppercaseString];
         [self.webView loadHTMLString:screen.content baseURL:[NSURL URLWithString:@"http://"]];
     } else {
         self.titleLabel.text = @"";
@@ -49,6 +49,7 @@
 {
     [super viewDidLoad];
     self.view.frame = [[UIScreen mainScreen] bounds];
+    self.titleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:18];
     [self update];
 }
 

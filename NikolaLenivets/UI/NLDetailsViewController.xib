@@ -99,7 +99,7 @@
                 </scrollView>
                 <view contentMode="scaleToFill" id="gTW-OY-lvk" userLabel="Title Bar">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="54"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                     <subviews>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="НОВОСТИ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CNC-pP-noM">
                             <rect key="frame" x="78" y="31" width="164" height="23"/>

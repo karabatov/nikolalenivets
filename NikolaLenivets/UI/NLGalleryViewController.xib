@@ -58,7 +58,7 @@
                 </view>
                 <view contentMode="scaleToFill" id="7Ot-tE-gZv" userLabel="Title Bar">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="53"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" id="dKc-qN-Omt" userLabel="Background">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="51"/>

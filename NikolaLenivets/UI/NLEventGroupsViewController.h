@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *eventTypeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ticketPriceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *eventDatesLabel;
+@property (weak, nonatomic) IBOutlet UIView *pagerView;
 
 - (IBAction)openEventsList:(id)sender;
 

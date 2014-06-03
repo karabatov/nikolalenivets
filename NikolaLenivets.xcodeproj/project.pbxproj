@@ -14,6 +14,8 @@
 		4F0D75A7193DBD0200E78AA5 /* right_shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F0D75A5193DBD0200E78AA5 /* right_shadow@2x.png */; };
 		4F0D75AB193DD05D00E78AA5 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F0D75AA193DD05D00E78AA5 /* back@2x.png */; };
 		4F0D75AD193DE20400E78AA5 /* back_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F0D75AC193DE20400E78AA5 /* back_white@2x.png */; };
+		4F0D75AF193DEA1900E78AA5 /* forward@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F0D75AE193DEA1900E78AA5 /* forward@2x.png */; };
+		4F0D75B1193DEADF00E78AA5 /* circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F0D75B0193DEADF00E78AA5 /* circle@2x.png */; };
 		4F10D2AF19374ABB00F6658D /* NLStaticScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F10D2AD19374ABB00F6658D /* NLStaticScreenViewController.m */; };
 		4F10D2B019374ABB00F6658D /* NLStaticScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F10D2AE19374ABB00F6658D /* NLStaticScreenViewController.xib */; };
 		4F18FD3A192212F900032A34 /* NLDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F18FD38192212F900032A34 /* NLDetailsViewController.m */; };
@@ -72,6 +74,8 @@
 		4F0D75A5193DBD0200E78AA5 /* right_shadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right_shadow@2x.png"; sourceTree = "<group>"; };
 		4F0D75AA193DD05D00E78AA5 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
 		4F0D75AC193DE20400E78AA5 /* back_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_white@2x.png"; sourceTree = "<group>"; };
+		4F0D75AE193DEA1900E78AA5 /* forward@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forward@2x.png"; sourceTree = "<group>"; };
+		4F0D75B0193DEADF00E78AA5 /* circle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle@2x.png"; sourceTree = "<group>"; };
 		4F10D2AC19374ABB00F6658D /* NLStaticScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLStaticScreenViewController.h; path = UI/NLStaticScreenViewController.h; sourceTree = "<group>"; };
 		4F10D2AD19374ABB00F6658D /* NLStaticScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLStaticScreenViewController.m; path = UI/NLStaticScreenViewController.m; sourceTree = "<group>"; };
 		4F10D2AE19374ABB00F6658D /* NLStaticScreenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLStaticScreenViewController.xib; path = UI/NLStaticScreenViewController.xib; sourceTree = "<group>"; };
@@ -195,6 +199,7 @@
 		4F18FD36192212DA00032A34 /* Details */ = {
 			isa = PBXGroup;
 			children = (
+				4F0D75AE193DEA1900E78AA5 /* forward@2x.png */,
 				4F0D75AA193DD05D00E78AA5 /* back@2x.png */,
 				4F18FD37192212F900032A34 /* NLDetailsViewController.h */,
 				4F18FD38192212F900032A34 /* NLDetailsViewController.m */,
@@ -273,6 +278,7 @@
 		4F6137451927312300BFDD1C /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				4F0D75B0193DEADF00E78AA5 /* circle@2x.png */,
 				4F6137461927313700BFDD1C /* NLEventGroupsViewController.h */,
 				4F6137471927313700BFDD1C /* NLEventGroupsViewController.m */,
 				4F6137481927313700BFDD1C /* NLEventGroupsViewController.xib */,
@@ -479,8 +485,10 @@
 				4FCBE00A1907A054002F37A3 /* MonoCondensedC_Bold.ttf in Resources */,
 				4F22FD871937288B0075C1A0 /* NLPlacesViewController.xib in Resources */,
 				4F61374A1927313700BFDD1C /* NLEventGroupsViewController.xib in Resources */,
+				4F0D75AF193DEA1900E78AA5 /* forward@2x.png in Resources */,
 				4F18FD3B192212F900032A34 /* NLDetailsViewController.xib in Resources */,
 				4FD010F5192CC326002F5836 /* search_icon.png in Resources */,
+				4F0D75B1193DEADF00E78AA5 /* circle@2x.png in Resources */,
 				4F8A13051921D5C700F3DA96 /* NLNewsCellView.xib in Resources */,
 				4F0D759E193D9C6400E78AA5 /* white_menu@2x.png in Resources */,
 				4F0D75AB193DD05D00E78AA5 /* back@2x.png in Resources */,
