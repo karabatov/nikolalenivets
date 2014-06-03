@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <DTAttributedLabel.h>
+#import <AsyncImageView.h>
 #import "NLNewsEntry.h"
 #import "NLEvent.h"
 #import "NLPlace.h"
@@ -15,13 +16,15 @@
 @interface NLDetailsViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet DTAttributedLabel *contentText;
+@property (weak, nonatomic) IBOutlet DTAttributedLabel *firstPartLabel;
+@property (weak, nonatomic) IBOutlet DTAttributedLabel *secondPartLabel;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UILabel *countView;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *capitalLetter;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
+@property (weak, nonatomic) IBOutlet AsyncImageView *galleryCover;
 
 - (id)initWithEvent:(NLEvent *)event;
 - (id)initWithEntry:(NLNewsEntry *)entry;

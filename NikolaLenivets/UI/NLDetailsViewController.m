@@ -104,16 +104,41 @@ typedef enum {
 
     self.titleLabel.text = title;
     _gallery = [self galleryFromString:content];
-    self.contentText.attributedString = [self attributedStringForString:content];
-    
+    NSArray *textParts = [self textParts:content];
+
+    self.firstPartLabel.attributedString = [self attributedStringForString:textParts.firstObject];
+    self.firstPartLabel.frame = CGRectMake(self.firstPartLabel.frame.origin.x,
+                                           self.firstPartLabel.frame.origin.y,
+                                           self.firstPartLabel.frame.size.width,
+                                           [self heightForString:textParts.firstObject]);
+
+    if (textParts.count > 1) {
+        self.galleryCover.imageURL = [NSURL URLWithString:_gallery.cover.image];
+        self.secondPartLabel.attributedString = [self attributedStringForString:textParts.lastObject];
+        self.galleryCover.frame = CGRectMake(self.galleryCover.frame.origin.x,
+                                             self.firstPartLabel.frame.origin.y + self.firstPartLabel.frame.size.height - 60,
+                                             self.galleryCover.frame.size.width,
+                                             self.galleryCover.frame.size.height);
+
+        self.secondPartLabel.frame = CGRectMake(self.secondPartLabel.frame.origin.x,
+                                                self.galleryCover.frame.origin.y + self.galleryCover.frame.size.height + 20,
+                                                self.secondPartLabel.frame.size.width,
+                                                [self heightForString:textParts.lastObject]);
+    } else {
+        self.galleryCover.frame = CGRectZero;
+        self.secondPartLabel.frame = CGRectZero;
+    }
+
     self.contentView.frame = CGRectMake(self.contentView.frame.origin.x,
                                         self.contentView.frame.origin.y,
                                         self.contentView.frame.size.width,
-                                        [self heightForString:content] + 151);
+                                        self.firstPartLabel.frame.size.height +
+                                        self.galleryCover.frame.size.height +
+                                        self.secondPartLabel.frame.size.height + 151);
 
     self.scrollView.contentSize = self.contentView.frame.size;
 
-    NSString *firstLetter = [[self.contentText.attributedString string] substringToIndex:1];
+    NSString *firstLetter = [[self.firstPartLabel.attributedString string] substringToIndex:1];
     self.capitalLetter.text = firstLetter;
 
     self.countView.font = [UIFont fontWithName:@"MonoCondensedC" size:8];
@@ -122,18 +147,38 @@ typedef enum {
 }
 
 
-- (NSAttributedString *)attributedStringForString:(NSString *)htmlString
+
+- (NLGallery *)galleryFromString:(NSString *)htmlString
 {
+    NSRange galleryBeginning = [htmlString rangeOfString:@"["];
+    NLGallery *gallery = nil;
+    if (galleryBeginning.location != NSNotFound) {
+        NSRange galleryEnding = [htmlString rangeOfString:@"]"];
+        NSString *galleryName = [htmlString substringWithRange:NSMakeRange(galleryBeginning.location + 1, galleryEnding.location - galleryBeginning.location - 1)];
+        gallery = _.array([[NLStorage sharedInstance] galleries]).find(^(NLGallery *gal) {
+            return (BOOL)[gal.shortcut isEqualToString:galleryName];
+        });
+    }
+    return gallery;
+}
+
+- (NSArray *)textParts:(NSString *)htmlString
+{
+    NSArray *parts = @[htmlString];
     if (_gallery != nil) {
         NSRange galleryBeginning = [htmlString rangeOfString:@"["];
         if (galleryBeginning.location != NSNotFound) {
             NSRange galleryEnding = [htmlString rangeOfString:@"]"];
             NSString *galleryTag = [htmlString substringWithRange:NSMakeRange(galleryBeginning.location, galleryEnding.location - galleryBeginning.location + 1)];
-            NSString *imagetag = [NSString stringWithFormat:@"<img src='%@'/>", _gallery.cover.image];
-            htmlString = [htmlString stringByReplacingOccurrencesOfString:galleryTag withString:imagetag];
+            parts = [htmlString componentsSeparatedByString:galleryTag];
         }
     }
+    return parts;
+}
 
+
+- (NSAttributedString *)attributedStringForString:(NSString *)htmlString
+{
     NSData *htmlData = [htmlString dataUsingEncoding:NSUTF8StringEncoding];
     NSMutableAttributedString *attributed = [[NSMutableAttributedString alloc] initWithHTMLData:htmlData
                                                                                         options:@{DTUseiOS6Attributes: @(YES)}
@@ -151,24 +196,8 @@ typedef enum {
     CGRect rect = [htmlString boundingRectWithSize:CGSizeMake(300, CGFLOAT_MAX)
                                            options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
                                            context:nil];
-    
     CGFloat height = rect.size.height;
     return height + 20;
-}
-
-
-- (NLGallery *)galleryFromString:(NSString *)htmlString
-{
-    NSRange galleryBeginning = [htmlString rangeOfString:@"["];
-    NLGallery *gallery = nil;
-    if (galleryBeginning.location != NSNotFound) {
-        NSRange galleryEnding = [htmlString rangeOfString:@"]"];
-        NSString *galleryName = [htmlString substringWithRange:NSMakeRange(galleryBeginning.location + 1, galleryEnding.location - galleryBeginning.location - 1)];
-        gallery = _.array([[NLStorage sharedInstance] galleries]).find(^(NLGallery *gal) {
-            return (BOOL)[gal.shortcut isEqualToString:galleryName];
-        });
-    }
-    return gallery;
 }
 
 
