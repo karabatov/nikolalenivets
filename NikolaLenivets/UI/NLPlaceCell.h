@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet AsyncImageView *image;
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *unreadIndicator;
 
 - (void)populateWithPlace:(NLPlace *)place;
 

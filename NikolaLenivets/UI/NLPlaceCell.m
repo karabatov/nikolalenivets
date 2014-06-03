@@ -17,8 +17,11 @@
 - (void)populateWithPlace:(NLPlace *)place
 {
     _place = place;
+    self.unreadIndicator.hidden = _place == nil;
+    self.distanceLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:self.distanceLabel.font.pointSize];
+    self.nameLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:self.nameLabel.font.pointSize];
     self.distanceLabel.text = @"0.0 км";
-    self.nameLabel.text = _place.title;
+    self.nameLabel.text = [_place.title uppercaseString];
     self.image.imageURL = [NSURL URLWithString:_place.thumbnail];
 }
 

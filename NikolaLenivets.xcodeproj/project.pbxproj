@@ -13,6 +13,7 @@
 		4F0D75A6193DBD0200E78AA5 /* left_shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F0D75A4193DBD0200E78AA5 /* left_shadow@2x.png */; };
 		4F0D75A7193DBD0200E78AA5 /* right_shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F0D75A5193DBD0200E78AA5 /* right_shadow@2x.png */; };
 		4F0D75AB193DD05D00E78AA5 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F0D75AA193DD05D00E78AA5 /* back@2x.png */; };
+		4F0D75AD193DE20400E78AA5 /* back_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F0D75AC193DE20400E78AA5 /* back_white@2x.png */; };
 		4F10D2AF19374ABB00F6658D /* NLStaticScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F10D2AD19374ABB00F6658D /* NLStaticScreenViewController.m */; };
 		4F10D2B019374ABB00F6658D /* NLStaticScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F10D2AE19374ABB00F6658D /* NLStaticScreenViewController.xib */; };
 		4F18FD3A192212F900032A34 /* NLDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F18FD38192212F900032A34 /* NLDetailsViewController.m */; };
@@ -70,6 +71,7 @@
 		4F0D75A4193DBD0200E78AA5 /* left_shadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left_shadow@2x.png"; sourceTree = "<group>"; };
 		4F0D75A5193DBD0200E78AA5 /* right_shadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right_shadow@2x.png"; sourceTree = "<group>"; };
 		4F0D75AA193DD05D00E78AA5 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
+		4F0D75AC193DE20400E78AA5 /* back_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_white@2x.png"; sourceTree = "<group>"; };
 		4F10D2AC19374ABB00F6658D /* NLStaticScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLStaticScreenViewController.h; path = UI/NLStaticScreenViewController.h; sourceTree = "<group>"; };
 		4F10D2AD19374ABB00F6658D /* NLStaticScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLStaticScreenViewController.m; path = UI/NLStaticScreenViewController.m; sourceTree = "<group>"; };
 		4F10D2AE19374ABB00F6658D /* NLStaticScreenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLStaticScreenViewController.xib; path = UI/NLStaticScreenViewController.xib; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 		4F22FD741936E7680075C1A0 /* Photo Gallery */ = {
 			isa = PBXGroup;
 			children = (
+				4F0D75AC193DE20400E78AA5 /* back_white@2x.png */,
 				4F0D759D193D9C6400E78AA5 /* white_menu@2x.png */,
 				4F22FD751936E8B30075C1A0 /* NLGalleryViewController.h */,
 				4F22FD761936E8B30075C1A0 /* NLGalleryViewController.m */,
@@ -460,6 +463,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F7EC306190933B9002C0ECD /* NLItemsListController.xib in Resources */,
+				4F0D75AD193DE20400E78AA5 /* back_white@2x.png in Resources */,
 				4F0D75A7193DBD0200E78AA5 /* right_shadow@2x.png in Resources */,
 				4F9C414218EA84640038090E /* InfoPlist.strings in Resources */,
 				4FD010F3192CC320002F5836 /* menu_button.png in Resources */,

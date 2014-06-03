@@ -31,15 +31,18 @@
 {
     [super viewDidLoad];
     self.view.frame = [[UIScreen mainScreen] bounds];
+    self.titleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:18];
     [self.collectionView registerNib:[UINib nibWithNibName:@"NLPlaceCell" bundle:[NSBundle mainBundle]]
           forCellWithReuseIdentifier:@"NLPlaceCell"];
     [self updatePlaces];
+
 }
 
 
 - (void)updatePlaces
 {
     _places = [[NLStorage sharedInstance] places];
+    self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", _places.count];
     [self.collectionView reloadData];
 }
 

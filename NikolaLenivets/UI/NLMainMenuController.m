@@ -120,7 +120,8 @@ enum {
             break;
         }
         default:
-            [_contentView addSubview:self.childView];
+            //[_contentView addSubview:self.childView];
+            return;
             break;
     }
     
