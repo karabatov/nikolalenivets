@@ -46,6 +46,8 @@
 		4F7EC305190933B9002C0ECD /* NLItemsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7EC303190933B9002C0ECD /* NLItemsListController.m */; };
 		4F7EC306190933B9002C0ECD /* NLItemsListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7EC304190933B9002C0ECD /* NLItemsListController.xib */; };
 		4F7EC30819093E16002C0ECD /* picalka.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4F7EC30719093E16002C0ECD /* picalka.jpg */; };
+		4F89A42B1957CFF60045D1A3 /* NLMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F89A4291957CFF60045D1A3 /* NLMapViewController.m */; };
+		4F89A42C1957CFF60045D1A3 /* NLMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F89A42A1957CFF60045D1A3 /* NLMapViewController.xib */; };
 		4F8A13051921D5C700F3DA96 /* NLNewsCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F8A13041921D5C700F3DA96 /* NLNewsCellView.xib */; };
 		4F8A13081921D6CE00F3DA96 /* NLNewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8A13071921D6CE00F3DA96 /* NLNewsCell.m */; };
 		4F9C413818EA84640038090E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9C413718EA84640038090E /* Foundation.framework */; };
@@ -130,6 +132,9 @@
 		4F7EC303190933B9002C0ECD /* NLItemsListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLItemsListController.m; path = UI/NLItemsListController.m; sourceTree = "<group>"; };
 		4F7EC304190933B9002C0ECD /* NLItemsListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLItemsListController.xib; path = UI/NLItemsListController.xib; sourceTree = "<group>"; };
 		4F7EC30719093E16002C0ECD /* picalka.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = picalka.jpg; sourceTree = "<group>"; };
+		4F89A4281957CFF60045D1A3 /* NLMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLMapViewController.h; path = UI/NLMapViewController.h; sourceTree = "<group>"; };
+		4F89A4291957CFF60045D1A3 /* NLMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLMapViewController.m; path = UI/NLMapViewController.m; sourceTree = "<group>"; };
+		4F89A42A1957CFF60045D1A3 /* NLMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLMapViewController.xib; path = UI/NLMapViewController.xib; sourceTree = "<group>"; };
 		4F8A13041921D5C700F3DA96 /* NLNewsCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLNewsCellView.xib; path = UI/NLNewsCellView.xib; sourceTree = "<group>"; };
 		4F8A13061921D6CE00F3DA96 /* NLNewsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLNewsCell.h; path = UI/NLNewsCell.h; sourceTree = "<group>"; };
 		4F8A13071921D6CE00F3DA96 /* NLNewsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLNewsCell.m; path = UI/NLNewsCell.m; sourceTree = "<group>"; };
@@ -263,6 +268,7 @@
 		4F390E6E18ED510500131934 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				4F89A4221957CFAA0045D1A3 /* Map */,
 				4F0D759F193DB85900E78AA5 /* Menu */,
 				4F10D2AB19374AA100F6658D /* Static Screens */,
 				4F22FD82193726A00075C1A0 /* Places */,
@@ -286,6 +292,16 @@
 				4F22FD7E1936F4360075C1A0 /* NLEventsListControllerViewController.m */,
 			);
 			name = Events;
+			sourceTree = "<group>";
+		};
+		4F89A4221957CFAA0045D1A3 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				4F89A4281957CFF60045D1A3 /* NLMapViewController.h */,
+				4F89A4291957CFF60045D1A3 /* NLMapViewController.m */,
+				4F89A42A1957CFF60045D1A3 /* NLMapViewController.xib */,
+			);
+			name = Map;
 			sourceTree = "<group>";
 		};
 		4F8A13031921D57D00F3DA96 /* Cell */ = {
@@ -491,6 +507,7 @@
 				4F0D75B1193DEADF00E78AA5 /* circle@2x.png in Resources */,
 				4F8A13051921D5C700F3DA96 /* NLNewsCellView.xib in Resources */,
 				4F0D759E193D9C6400E78AA5 /* white_menu@2x.png in Resources */,
+				4F89A42C1957CFF60045D1A3 /* NLMapViewController.xib in Resources */,
 				4F0D75AB193DD05D00E78AA5 /* back@2x.png in Resources */,
 				4F454363192E0F810043C3F4 /* Default@2x.png in Resources */,
 				4F0D75A3193DB86500E78AA5 /* search@2x.png in Resources */,
@@ -566,6 +583,7 @@
 				4F22FD801936F4360075C1A0 /* NLEventsListControllerViewController.m in Sources */,
 				4F390E7D18ED731E00131934 /* NLNewsEntry.m in Sources */,
 				4F22FD861937288B0075C1A0 /* NLPlacesViewController.m in Sources */,
+				4F89A42B1957CFF60045D1A3 /* NLMapViewController.m in Sources */,
 				4F390E8318ED752700131934 /* NLTeaser.m in Sources */,
 				4F61374D19273D7700BFDD1C /* NLEventGroup.m in Sources */,
 				4F22FD781936E8B30075C1A0 /* NLGalleryViewController.m in Sources */,
