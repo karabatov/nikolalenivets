@@ -185,4 +185,10 @@
     return self.resizableView;
 }
 
+
+- (IBAction)back:(id)sender
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_MENU_NOW object:nil];
+}
+
 @end

@@ -121,6 +121,7 @@ enum {
             break;
         }
         case Map:
+            return; // UNCOMMENT HERE TO ENABLE MAP
             _mapController = [NLMapViewController new];
             [_contentView addSubview:_mapController.view];
             break;
