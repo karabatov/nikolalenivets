@@ -10,6 +10,7 @@
 
 @interface NLMapViewController : UIViewController <UIScrollViewDelegate>
 
+@property (strong, nonatomic) CLLocation *currentLocation;
 @property (weak, nonatomic) IBOutlet UIScrollView *mapScrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *mapImageView;
 

@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSString *instagram;
 @property (strong, nonatomic) NSString *images;
 
+- (CLLocation *)location;
 - (CLLocationDistance)distanceFromLocation:(CLLocation *)loc;
 
 @end

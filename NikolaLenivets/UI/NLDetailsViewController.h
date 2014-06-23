@@ -30,7 +30,7 @@
 
 - (id)initWithEvent:(NLEvent *)event;
 - (id)initWithEntry:(NLNewsEntry *)entry;
-- (id)initWithPlace:(NLPlace *)place;
+- (id)initWithPlace:(NLPlace *)place currentLocation:(CLLocation *)currentLocation;
 - (IBAction)showGallery:(id)sender;
 
 - (IBAction)back:(id)sender;

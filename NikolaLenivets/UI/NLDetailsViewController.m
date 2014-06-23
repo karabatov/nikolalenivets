@@ -22,12 +22,12 @@ typedef enum {
 
 @implementation NLDetailsViewController
 {
-    __strong NLNewsEntry *_entry;
-    __strong NLEvent *_event;
-    __strong NLPlace *_place;
-    __strong NLGallery *_gallery;
-
-    __strong NLGalleryViewController *_galleryVC;
+    CLLocation *_currentLocation;
+    NLNewsEntry *_entry;
+    NLEvent *_event;
+    NLPlace *_place;
+    NLGallery *_gallery;
+    NLGalleryViewController *_galleryVC;
 }
 
 
@@ -51,11 +51,12 @@ typedef enum {
 }
 
 
-- (id)initWithPlace:(NLPlace *)place
+- (id)initWithPlace:(NLPlace *)place currentLocation:(CLLocation *)currentLocation;
 {
     self = [super initWithNibName:@"NLDetailsViewController" bundle:nil];
     if (self) {
         _place = place;
+        _currentLocation = currentLocation;
     }
     return self;
 }
@@ -107,7 +108,7 @@ typedef enum {
             title = _place.title;
             content = _place.content;
             self.detailsViewTitleLabel.text = @"МЕСТА";
-            indexNumber = [[[NLStorage sharedInstance] places] indexOfObject:_place];
+            indexNumber = -1; //[[[NLStorage sharedInstance] places] indexOfObject:_place];
             break;
         }
         default:
@@ -122,7 +123,14 @@ typedef enum {
     if (indexNumber > -1) {
         self.countView.text = [NSString stringWithFormat:@"%02ld", indexNumber + 1];
     } else {
-        self.countView.text = @"";
+        if ([self mode] == ShowingPlace) {
+            if (_currentLocation) {
+                self.countView.text = [NSString stringWithFormat:@"%.2f км.", [_place distanceFromLocation:_currentLocation] / 1000];
+            }
+        } else {
+            self.countView.text = @"";
+        }
+
     }
 
     self.firstPartLabel.attributedString = [self attributedStringForString:textParts.firstObject];

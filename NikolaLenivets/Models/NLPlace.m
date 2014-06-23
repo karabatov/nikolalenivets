@@ -12,16 +12,22 @@
 
 - (CLLocationDistance)distanceFromLocation:(CLLocation *)loc
 {
+    return [[self location] distanceFromLocation:loc];
+}
+
+
+- (CLLocation *)location
+{
     NSArray *locationComponents = [self.geo componentsSeparatedByString:@","];
     if (locationComponents.count < 2) {
-        return NSNotFound;
+        return nil;
     }
 
     CLLocationDegrees lat = [locationComponents.firstObject doubleValue];
     CLLocationDegrees lon = [locationComponents.lastObject doubleValue];
 
     CLLocation *placeLocation = [[CLLocation alloc] initWithLatitude:lat longitude:lon];
-    return [loc distanceFromLocation:placeLocation];
+    return placeLocation;
 }
 
 @end

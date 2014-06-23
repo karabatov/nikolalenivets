@@ -18,6 +18,13 @@
     __strong CLLocation *_userLoc;
 }
 
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
 - (id)init
 {
     self = [super initWithNibName:@"NLPlacesViewController" bundle:nil];
@@ -81,7 +88,7 @@
 {
     if (indexPath.row < _places.count) {
         NLPlace *place = _places[indexPath.row];
-        NLDetailsViewController *details = [[NLDetailsViewController alloc] initWithPlace:place];
+        NLDetailsViewController *details = [[NLDetailsViewController alloc] initWithPlace:place currentLocation:_userLoc];
         [self presentViewController:details animated:YES completion:^{}];
     }
 }

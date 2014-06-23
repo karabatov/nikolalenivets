@@ -50,6 +50,8 @@
 		4F89A42C1957CFF60045D1A3 /* NLMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F89A42A1957CFF60045D1A3 /* NLMapViewController.xib */; };
 		4F89A42E1957D8260045D1A3 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F89A42D1957D8260045D1A3 /* map.png */; };
 		4F89A4331957DCA30045D1A3 /* NLLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F89A4321957DCA30045D1A3 /* NLLocationManager.m */; };
+		4F89A4351957F0FA0045D1A3 /* userlocation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F89A4341957F0FA0045D1A3 /* userlocation@2x.png */; };
+		4F89A4371957F88B0045D1A3 /* object@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F89A4361957F88B0045D1A3 /* object@2x.png */; };
 		4F8A13051921D5C700F3DA96 /* NLNewsCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F8A13041921D5C700F3DA96 /* NLNewsCellView.xib */; };
 		4F8A13081921D6CE00F3DA96 /* NLNewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8A13071921D6CE00F3DA96 /* NLNewsCell.m */; };
 		4F9C413818EA84640038090E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9C413718EA84640038090E /* Foundation.framework */; };
@@ -140,6 +142,8 @@
 		4F89A42D1957D8260045D1A3 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		4F89A4311957DCA30045D1A3 /* NLLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLLocationManager.h; path = Models/NLLocationManager.h; sourceTree = "<group>"; };
 		4F89A4321957DCA30045D1A3 /* NLLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLLocationManager.m; path = Models/NLLocationManager.m; sourceTree = "<group>"; };
+		4F89A4341957F0FA0045D1A3 /* userlocation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "userlocation@2x.png"; sourceTree = "<group>"; };
+		4F89A4361957F88B0045D1A3 /* object@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "object@2x.png"; sourceTree = "<group>"; };
 		4F8A13041921D5C700F3DA96 /* NLNewsCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLNewsCellView.xib; path = UI/NLNewsCellView.xib; sourceTree = "<group>"; };
 		4F8A13061921D6CE00F3DA96 /* NLNewsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLNewsCell.h; path = UI/NLNewsCell.h; sourceTree = "<group>"; };
 		4F8A13071921D6CE00F3DA96 /* NLNewsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLNewsCell.m; path = UI/NLNewsCell.m; sourceTree = "<group>"; };
@@ -304,6 +308,8 @@
 		4F89A4221957CFAA0045D1A3 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				4F89A4361957F88B0045D1A3 /* object@2x.png */,
+				4F89A4341957F0FA0045D1A3 /* userlocation@2x.png */,
 				4F89A42D1957D8260045D1A3 /* map.png */,
 				4F89A4281957CFF60045D1A3 /* NLMapViewController.h */,
 				4F89A4291957CFF60045D1A3 /* NLMapViewController.m */,
@@ -502,6 +508,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F7EC306190933B9002C0ECD /* NLItemsListController.xib in Resources */,
+				4F89A4371957F88B0045D1A3 /* object@2x.png in Resources */,
 				4F0D75AD193DE20400E78AA5 /* back_white@2x.png in Resources */,
 				4F0D75A7193DBD0200E78AA5 /* right_shadow@2x.png in Resources */,
 				4F9C414218EA84640038090E /* InfoPlist.strings in Resources */,
@@ -519,6 +526,7 @@
 				4F22FD871937288B0075C1A0 /* NLPlacesViewController.xib in Resources */,
 				4F61374A1927313700BFDD1C /* NLEventGroupsViewController.xib in Resources */,
 				4F0D75AF193DEA1900E78AA5 /* forward@2x.png in Resources */,
+				4F89A4351957F0FA0045D1A3 /* userlocation@2x.png in Resources */,
 				4F18FD3B192212F900032A34 /* NLDetailsViewController.xib in Resources */,
 				4FD010F5192CC326002F5836 /* search_icon.png in Resources */,
 				4F0D75B1193DEADF00E78AA5 /* circle@2x.png in Resources */,
