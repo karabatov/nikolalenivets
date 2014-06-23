@@ -50,6 +50,8 @@
     self.mapScrollView.maximumZoomScale = 2.0;
 
     [self.mapImageView addSubview:_currentLocationMarker];
+    self.placeDetailsMenu.center = self.view.center;
+    [self.view addSubview:self.placeDetailsMenu];
     [self updatePlaces];
 }
 
@@ -92,8 +94,56 @@
     [placeButton setImage:[UIImage imageNamed:@"object.png"] forState:UIControlStateNormal];
     [placeButton sizeToFit];
     placeButton.center = center;
-    [self.mapImageView addSubview:placeButton];
+    placeButton.tag = [place.id integerValue];
+    [placeButton addTarget:self action:@selector(showPlaceMenu:) forControlEvents:UIControlEventTouchUpInside];
+    [self.resizableView addSubview:placeButton];
 }
+
+
+- (void)showPlaceMenu:(UIButton *)sender
+{
+    NLPlace *place = _.array(_places).find(^(NLPlace *p) {
+        return (BOOL)(p.id.integerValue == sender.tag);
+    });
+
+    if (place == nil) {
+        return;
+    }
+
+    NSLog(@"PLACE: %@", place.title);
+
+    CGPoint placeCenter = [self pointFromLocation:place.location];
+
+    if (self.placeDetailsMenu.hidden == NO) {
+        self.placeDetailsMenu.hidden = YES;
+        self.placeDetailsMenu.alpha = 0;
+    }
+
+    [self.mapScrollView scrollRectToVisible:CGRectMake(placeCenter.x - self.view.frame.size.width / 2,
+                                                       placeCenter.y - self.view.frame.size.height / 2 - 80,
+                                                       self.view.frame.size.width,
+                                                       self.view.frame.size.height) animated:YES];
+
+    self.placeName.text = place.title;
+    if (_currentLocation) {
+        self.distanceToPlace.text = [NSString stringWithFormat:@"До места %.2f км.", [place distanceFromLocation:_currentLocation] / 100];
+    }
+
+    [UIView animateWithDuration:0.2 animations:^{
+        self.placeDetailsMenu.hidden = NO;
+        self.placeDetailsMenu.alpha = 1.0;
+    }];
+}
+
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [UIView animateWithDuration:0.2 animations:^{
+        self.placeDetailsMenu.alpha = 0.0;
+        self.placeDetailsMenu.hidden = YES;
+    }];
+}
+
 
 #pragma mark - Location Stuff
 
@@ -108,19 +158,17 @@
 {
     CGPoint point = CGPointMake(0, 0);
 
-#warning Implement me
-
     double latDelta = _leftUpperCornerLocation.coordinate.latitude  - _rightBottomCornerLocation.coordinate.latitude;
     double lonDelta = _leftUpperCornerLocation.coordinate.longitude - _rightBottomCornerLocation.coordinate.longitude;
 
-    double latPPD = fabs((double)self.mapImageView.frame.size.width / latDelta);
-    double lonPPD = fabs((double)self.mapImageView.frame.size.height / lonDelta);
+    double latPPD = fabs((double)self.mapScrollView.contentSize.width / latDelta);
+    double lonPPD = fabs((double)self.mapScrollView.contentSize.height / lonDelta);
 
     double locationLatDelta = fabs((double)_leftUpperCornerLocation.coordinate.latitude - location.coordinate.latitude);
     double locationLonDelta = fabs((double)_leftUpperCornerLocation.coordinate.longitude - location.coordinate.longitude);
 
-    double x = locationLatDelta * latPPD;
-    double y = locationLonDelta * lonPPD;
+    double x = (locationLatDelta * latPPD) / self.mapScrollView.zoomScale;
+    double y = (locationLonDelta * lonPPD) / self.mapScrollView.zoomScale;;
 
     point.x = x;
     point.y = y;
@@ -134,7 +182,7 @@
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
-    return self.mapImageView;
+    return self.resizableView;
 }
 
 @end
