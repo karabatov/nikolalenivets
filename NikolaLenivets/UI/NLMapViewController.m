@@ -8,31 +8,32 @@
 
 #import "NLMapViewController.h"
 
-@interface NLMapViewController ()
-
-@end
 
 @implementation NLMapViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)init
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithNibName:@"NLMapViewController" bundle:nil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    self.mapScrollView.contentSize = self.mapImageView.frame.size;
+    self.mapScrollView.minimumZoomScale = 0.3;
+    self.mapScrollView.maximumZoomScale = 2.0;
 }
 
-- (void)didReceiveMemoryWarning
+
+#pragma mark - Scrolling delegate
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    return self.mapImageView;
 }
 
 @end

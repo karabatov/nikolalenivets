@@ -12,6 +12,7 @@
 #import "NLEventGroupsViewController.h"
 #import "NLPlacesViewController.h"
 #import "NLStaticScreenViewController.h"
+#import "NLMapViewController.h"
 
 enum {
     News   = 0,
@@ -31,6 +32,7 @@ enum {
     __strong NLPlacesViewController *_placesController;
     __strong UIView *_contentView;
     __strong NLStaticScreenViewController *_driveScreen;
+    __strong NLMapViewController *_mapController;
 }
 
 
@@ -118,6 +120,10 @@ enum {
             [_contentView addSubview:_driveScreen.view];
             break;
         }
+        case Map:
+            _mapController = [NLMapViewController new];
+            [_contentView addSubview:_mapController.view];
+            break;
         default:
             return;
             break;

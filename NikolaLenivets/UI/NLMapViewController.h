@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NLMapViewController : UIViewController
+@interface NLMapViewController : UIViewController <UIScrollViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UIScrollView *mapScrollView;
+@property (weak, nonatomic) IBOutlet UIImageView *mapImageView;
 
 @end
