@@ -15,6 +15,7 @@
 @implementation NLPlacesViewController
 {
     __strong NSArray *_places;
+    __strong CLLocation *_userLoc;
 }
 
 - (id)init
@@ -22,6 +23,7 @@
     self = [super initWithNibName:@"NLPlacesViewController" bundle:nil];
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePlaces) name:STORAGE_DID_UPDATE object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationUpdated:) name:NLUserLocationUpdated object:nil];
     }
     return self;
 }
@@ -30,7 +32,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //self.view.frame = [[UIScreen mainScreen] bounds];
     self.titleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:18];
     [self.collectionView registerNib:[UINib nibWithNibName:@"NLPlaceCell" bundle:[NSBundle mainBundle]]
           forCellWithReuseIdentifier:@"NLPlaceCell"];
@@ -65,7 +66,12 @@
 {
     NLPlaceCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"NLPlaceCell" forIndexPath:indexPath];
     if (indexPath.row < _places.count) {
-        [cell populateWithPlace:_places[indexPath.row]];
+        NLPlace *place = _places[indexPath.row];
+        [cell populateWithPlace:place];
+        if (_userLoc) {
+            CLLocationDistance distance = [place distanceFromLocation:_userLoc];
+            cell.distanceLabel.text = [NSString stringWithFormat:@"%.1f км.", distance / 1000];
+        }
     }
     return cell;
 }
@@ -78,6 +84,13 @@
         NLDetailsViewController *details = [[NLDetailsViewController alloc] initWithPlace:place];
         [self presentViewController:details animated:YES completion:^{}];
     }
+}
+
+
+- (void)locationUpdated:(NSNotification *)newLocation
+{
+    _userLoc = newLocation.object;
+    [self.collectionView reloadData];
 }
 
 

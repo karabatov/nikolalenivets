@@ -49,6 +49,7 @@
 		4F89A42B1957CFF60045D1A3 /* NLMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F89A4291957CFF60045D1A3 /* NLMapViewController.m */; };
 		4F89A42C1957CFF60045D1A3 /* NLMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F89A42A1957CFF60045D1A3 /* NLMapViewController.xib */; };
 		4F89A42E1957D8260045D1A3 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F89A42D1957D8260045D1A3 /* map.png */; };
+		4F89A4331957DCA30045D1A3 /* NLLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F89A4321957DCA30045D1A3 /* NLLocationManager.m */; };
 		4F8A13051921D5C700F3DA96 /* NLNewsCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F8A13041921D5C700F3DA96 /* NLNewsCellView.xib */; };
 		4F8A13081921D6CE00F3DA96 /* NLNewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8A13071921D6CE00F3DA96 /* NLNewsCell.m */; };
 		4F9C413818EA84640038090E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9C413718EA84640038090E /* Foundation.framework */; };
@@ -137,6 +138,8 @@
 		4F89A4291957CFF60045D1A3 /* NLMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLMapViewController.m; path = UI/NLMapViewController.m; sourceTree = "<group>"; };
 		4F89A42A1957CFF60045D1A3 /* NLMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLMapViewController.xib; path = UI/NLMapViewController.xib; sourceTree = "<group>"; };
 		4F89A42D1957D8260045D1A3 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
+		4F89A4311957DCA30045D1A3 /* NLLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLLocationManager.h; path = Models/NLLocationManager.h; sourceTree = "<group>"; };
+		4F89A4321957DCA30045D1A3 /* NLLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLLocationManager.m; path = Models/NLLocationManager.m; sourceTree = "<group>"; };
 		4F8A13041921D5C700F3DA96 /* NLNewsCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLNewsCellView.xib; path = UI/NLNewsCellView.xib; sourceTree = "<group>"; };
 		4F8A13061921D6CE00F3DA96 /* NLNewsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLNewsCell.h; path = UI/NLNewsCell.h; sourceTree = "<group>"; };
 		4F8A13071921D6CE00F3DA96 /* NLNewsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLNewsCell.m; path = UI/NLNewsCell.m; sourceTree = "<group>"; };
@@ -263,6 +266,8 @@
 				4F61374C19273D7700BFDD1C /* NLEventGroup.m */,
 				4F22FD7A1936ED3E0075C1A0 /* NLGallery.h */,
 				4F22FD7B1936ED3E0075C1A0 /* NLGallery.m */,
+				4F89A4311957DCA30045D1A3 /* NLLocationManager.h */,
+				4F89A4321957DCA30045D1A3 /* NLLocationManager.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -464,6 +469,15 @@
 				CLASSPREFIX = NL;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Semyon Novikov";
+				TargetAttributes = {
+					4F9C413318EA84640038090E = {
+						SystemCapabilities = {
+							com.apple.iOS = {
+								enabled = 0;
+							};
+						};
+					};
+				};
 			};
 			buildConfigurationList = 4F9C412F18EA84640038090E /* Build configuration list for PBXProject "NikolaLenivets" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -593,6 +607,7 @@
 				4F22FD781936E8B30075C1A0 /* NLGalleryViewController.m in Sources */,
 				4F22FD8C19372F530075C1A0 /* NLPlaceCell.m in Sources */,
 				4F390E7818ED684200131934 /* NLDiffIndex.m in Sources */,
+				4F89A4331957DCA30045D1A3 /* NLLocationManager.m in Sources */,
 				4F390E8018ED732D00131934 /* NLModel.m in Sources */,
 				4F411E7E18FFD8AA00758E30 /* NLMainMenuController.m in Sources */,
 				4F8A13081921D6CE00F3DA96 /* NLNewsCell.m in Sources */,

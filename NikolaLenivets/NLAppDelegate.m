@@ -27,6 +27,7 @@
     self.window.rootViewController = main;
     
     [[NLStorage sharedInstance] update];
+    [NLLocationManager sharedInstance];
     
     [self.window makeKeyAndVisible];
     return YES;
