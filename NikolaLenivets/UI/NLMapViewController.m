@@ -9,6 +9,11 @@
 #import "NLMapViewController.h"
 #import "NLMainMenuController.h"
 
+
+#define MaxZoom  2.0
+#define MinZoom  0.5
+#define ZoomStep 0.5
+
 @implementation NLMapViewController
 {
     UIImageView *_currentLocationMarker;
@@ -46,8 +51,8 @@
 {
     [super viewDidLoad];
     self.mapScrollView.contentSize = self.mapImageView.frame.size;
-    self.mapScrollView.minimumZoomScale = 0.3;
-    self.mapScrollView.maximumZoomScale = 2.0;
+    self.mapScrollView.minimumZoomScale = MinZoom;
+    self.mapScrollView.maximumZoomScale = MaxZoom;
 
     [self.mapImageView addSubview:_currentLocationMarker];
     self.placeDetailsMenu.center = self.view.center;
@@ -64,7 +69,7 @@
 
 #pragma mark - Map-like stuff
 
-- (void)cleanMap
+- (void)clearMap
 {
     for (UIView *v in self.mapImageView.subviews) {
         [v removeFromSuperview];
@@ -73,7 +78,7 @@
 
 - (void)redraw
 {
-    [self cleanMap];
+    [self clearMap];
 
     if (self.currentLocation) {
         CGPoint currentLocation = [self pointFromLocation:self.currentLocation];
@@ -112,17 +117,12 @@
 
     NSLog(@"PLACE: %@", place.title);
 
-    CGPoint placeCenter = [self pointFromLocation:place.location];
-
     if (self.placeDetailsMenu.hidden == NO) {
         self.placeDetailsMenu.hidden = YES;
         self.placeDetailsMenu.alpha = 0;
     }
 
-    [self.mapScrollView scrollRectToVisible:CGRectMake(placeCenter.x - self.view.frame.size.width / 2,
-                                                       placeCenter.y - self.view.frame.size.height / 2 - 80,
-                                                       self.view.frame.size.width,
-                                                       self.view.frame.size.height) animated:YES];
+    [self showLocation:place.location];
 
     self.placeName.text = place.title;
     if (_currentLocation) {
@@ -136,7 +136,20 @@
 }
 
 
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+- (void)showLocation:(CLLocation *)location
+{
+    CGPoint placeCenter = [self pointFromLocation:location];
+    placeCenter = [self.resizableView convertPoint:placeCenter toView:self.mapScrollView];
+
+    [self.mapScrollView scrollRectToVisible:CGRectMake(placeCenter.x - self.view.frame.size.width / 2,
+                                                       placeCenter.y - self.view.frame.size.height / 2 - 80,
+                                                       self.view.frame.size.width,
+                                                       self.view.frame.size.height) animated:YES];
+}
+
+
+
+- (void)hideDetailsMenu
 {
     [UIView animateWithDuration:0.2 animations:^{
         self.placeDetailsMenu.alpha = 0.0;
@@ -186,9 +199,51 @@
 }
 
 
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [self hideDetailsMenu];
+}
+
+
+- (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view
+{
+    [self hideDetailsMenu];
+}
+
+
+#pragma mark - Actions
+
 - (IBAction)back:(id)sender
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_MENU_NOW object:nil];
+}
+
+
+- (IBAction)zoomIn:(id)sender
+{
+    double currentZoom = self.mapScrollView.zoomScale;
+
+    if (currentZoom <= MaxZoom) {
+        [self.mapScrollView setZoomScale:currentZoom + ZoomStep animated:YES];
+    }
+}
+
+
+- (IBAction)zoomOut:(id)sender
+{
+    double currentZoom = self.mapScrollView.zoomScale;
+
+    if (currentZoom >= MinZoom) {
+        [self.mapScrollView setZoomScale:currentZoom - ZoomStep animated:YES];
+    }
+}
+
+
+- (IBAction)showMyLocation:(id)sender
+{
+    if (_currentLocation) {
+        [self showLocation:_currentLocation];
+    }
 }
 
 @end

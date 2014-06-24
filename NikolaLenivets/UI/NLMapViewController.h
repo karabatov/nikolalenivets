@@ -18,4 +18,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *placeName;
 @property (weak, nonatomic) IBOutlet UILabel *distanceToPlace;
 
+- (IBAction)zoomIn:(id)sender;
+- (IBAction)zoomOut:(id)sender;
+- (IBAction)showMyLocation:(id)sender;
+
 @end

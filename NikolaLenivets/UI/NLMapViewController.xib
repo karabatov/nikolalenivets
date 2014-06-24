@@ -72,6 +72,43 @@
                     </subviews>
                     <color key="backgroundColor" red="0.96470594409999999" green="0.96470594409999999" blue="0.96470594409999999" alpha="1" colorSpace="deviceRGB"/>
                 </view>
+                <view contentMode="scaleToFill" id="2zD-jX-MGa">
+                    <rect key="frame" x="279" y="219" width="41" height="129"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="FIk-Ol-c9i">
+                            <rect key="frame" x="0.0" y="0.0" width="41" height="43"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <state key="normal" title="+">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="zoomIn:" destination="-1" eventType="touchUpInside" id="RPa-ae-FKk"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bfm-2t-exA">
+                            <rect key="frame" x="0.0" y="43" width="41" height="43"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <state key="normal" title="-">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="zoomOut:" destination="-1" eventType="touchUpInside" id="Pkn-xE-co7"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3G3-no-3Ny">
+                            <rect key="frame" x="0.0" y="86" width="41" height="43"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <state key="normal" title="O">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="showMyLocation:" destination="-1" eventType="touchUpInside" id="uTf-e9-g84"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
