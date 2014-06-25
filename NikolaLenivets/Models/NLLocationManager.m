@@ -34,6 +34,7 @@ static NLLocationManager *_sharedInstance;
         _locationManager.distanceFilter = kCLDistanceFilterNone;
         _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         [_locationManager startUpdatingLocation];
+        [_locationManager startUpdatingHeading];
     }
     return self;
 }
@@ -45,6 +46,12 @@ static NLLocationManager *_sharedInstance;
     if (loc != nil) {
         [[NSNotificationCenter defaultCenter] postNotificationName:NLUserLocationUpdated object:loc userInfo:nil];
     }
+}
+
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:NLUserHeadingUpdated object:newHeading userInfo:nil];
 }
 
 @end

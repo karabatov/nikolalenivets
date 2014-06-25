@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NLMainMenuController">
             <connections>
+                <outlet property="compass" destination="G45-3z-Ofi" id="Ci0-27-ILx"/>
                 <outlet property="contentView" destination="WKI-Yo-0wZ" id="fGh-S4-muF"/>
                 <outlet property="eventsCounter" destination="NIh-Hu-AUg" id="LCQ-el-ScV"/>
                 <outlet property="lenivetsLabel" destination="jez-4c-SGx" id="Qph-VN-N4a"/>
@@ -62,7 +63,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         </view>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search_bg.png" id="G45-3z-Ofi">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="compass_black.png" id="G45-3z-Ofi">
                             <rect key="frame" x="136" y="498" width="48" height="48"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                         </imageView>
@@ -199,7 +200,7 @@
         </view>
     </objects>
     <resources>
+        <image name="compass_black.png" width="124" height="124"/>
         <image name="search.png" width="25" height="25"/>
-        <image name="search_bg.png" width="124" height="124"/>
     </resources>
 </document>

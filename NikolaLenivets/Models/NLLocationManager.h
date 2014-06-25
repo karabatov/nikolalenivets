@@ -10,6 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 
 #define NLUserLocationUpdated @"NLUserLocationUpdated"
+#define NLUserHeadingUpdated @"NLUserHeadingUpdated"
 
 @interface NLLocationManager : NSObject <CLLocationManagerDelegate>
 

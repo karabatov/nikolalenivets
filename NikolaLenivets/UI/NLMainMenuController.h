@@ -26,5 +26,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *eventsCounter;
 @property (weak, nonatomic) IBOutlet UILabel *mapCounter;
 @property (weak, nonatomic) IBOutlet UILabel *placesCounter;
+@property (weak, nonatomic) IBOutlet UIImageView *compass;
 
 @end

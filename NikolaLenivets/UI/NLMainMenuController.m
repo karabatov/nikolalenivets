@@ -40,6 +40,7 @@ enum {
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateMenuState) name:STORAGE_DID_UPDATE object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showMenu) name:SHOW_MENU_NOW object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(headingUpdated:) name:NLUserHeadingUpdated object:nil];
     }
     return self;
 }
@@ -144,6 +145,16 @@ enum {
     self.eventsCounter.text = [NSString stringWithFormat:@"%02lu", (unsigned long)store.eventGroups.count];
     self.mapCounter.text = @"00";
     self.placesCounter.text = [NSString stringWithFormat:@"%02lu", (unsigned long)store.places.count];
+}
+
+
+- (void)headingUpdated:(NSNotification *)notification
+{
+    CLHeading *newHeading = notification.object;
+
+    float heading = newHeading.magneticHeading;
+    float headingDegrees = (heading * M_PI / 180);
+    self.compass.transform = CGAffineTransformMakeRotation(headingDegrees);
 }
 
 @end

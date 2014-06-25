@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		4F0A8BC9195AE58400D59268 /* UIView+Origami.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F0A8BC8195AE58400D59268 /* UIView+Origami.m */; };
+		4F0A8BCE195AFEAA00D59268 /* NLSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F0A8BCC195AFEAA00D59268 /* NLSplashViewController.m */; };
+		4F0A8BCF195AFEAA00D59268 /* NLSplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F0A8BCD195AFEAA00D59268 /* NLSplashViewController.xib */; };
+		4F0A8BD1195B032800D59268 /* compass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F0A8BD0195B032800D59268 /* compass@2x.png */; };
+		4F0A8BD3195B04AD00D59268 /* compass_black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F0A8BD2195B04AD00D59268 /* compass_black@2x.png */; };
 		4F0D759E193D9C6400E78AA5 /* white_menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F0D759D193D9C6400E78AA5 /* white_menu@2x.png */; };
 		4F0D75A2193DB86500E78AA5 /* search_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F0D75A0193DB86500E78AA5 /* search_bg@2x.png */; };
 		4F0D75A3193DB86500E78AA5 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F0D75A1193DB86500E78AA5 /* search@2x.png */; };
@@ -75,6 +79,11 @@
 		3B21A1ADAF4F4E0BA8ED7C42 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		4F0A8BC7195AE58400D59268 /* UIView+Origami.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Origami.h"; sourceTree = "<group>"; };
 		4F0A8BC8195AE58400D59268 /* UIView+Origami.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Origami.m"; sourceTree = "<group>"; };
+		4F0A8BCB195AFEAA00D59268 /* NLSplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLSplashViewController.h; path = UI/NLSplashViewController.h; sourceTree = "<group>"; };
+		4F0A8BCC195AFEAA00D59268 /* NLSplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLSplashViewController.m; path = UI/NLSplashViewController.m; sourceTree = "<group>"; };
+		4F0A8BCD195AFEAA00D59268 /* NLSplashViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLSplashViewController.xib; path = UI/NLSplashViewController.xib; sourceTree = "<group>"; };
+		4F0A8BD0195B032800D59268 /* compass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "compass@2x.png"; sourceTree = "<group>"; };
+		4F0A8BD2195B04AD00D59268 /* compass_black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "compass_black@2x.png"; sourceTree = "<group>"; };
 		4F0D759D193D9C6400E78AA5 /* white_menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_menu@2x.png"; sourceTree = "<group>"; };
 		4F0D75A0193DB86500E78AA5 /* search_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search_bg@2x.png"; sourceTree = "<group>"; };
 		4F0D75A1193DB86500E78AA5 /* search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@2x.png"; sourceTree = "<group>"; };
@@ -205,9 +214,21 @@
 			path = XYOrigami;
 			sourceTree = "<group>";
 		};
+		4F0A8BCA195AFE9300D59268 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				4F0A8BD0195B032800D59268 /* compass@2x.png */,
+				4F0A8BCB195AFEAA00D59268 /* NLSplashViewController.h */,
+				4F0A8BCC195AFEAA00D59268 /* NLSplashViewController.m */,
+				4F0A8BCD195AFEAA00D59268 /* NLSplashViewController.xib */,
+			);
+			name = Splash;
+			sourceTree = "<group>";
+		};
 		4F0D759F193DB85900E78AA5 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				4F0A8BD2195B04AD00D59268 /* compass_black@2x.png */,
 				4F0D75A0193DB86500E78AA5 /* search_bg@2x.png */,
 				4F0D75A1193DB86500E78AA5 /* search@2x.png */,
 				4F411E7B18FFD8AA00758E30 /* NLMainMenuController.h */,
@@ -296,6 +317,7 @@
 		4F390E6E18ED510500131934 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				4F0A8BCA195AFE9300D59268 /* Splash */,
 				4F0A8BC5195AE57900D59268 /* Libraries */,
 				4F89A4221957CFAA0045D1A3 /* Map */,
 				4F0D759F193DB85900E78AA5 /* Menu */,
@@ -533,6 +555,7 @@
 				4FD010F3192CC320002F5836 /* menu_button.png in Resources */,
 				4FCBE0091907A054002F37A3 /* MonoCondensedC.ttf in Resources */,
 				4F10D2B019374ABB00F6658D /* NLStaticScreenViewController.xib in Resources */,
+				4F0A8BD1195B032800D59268 /* compass@2x.png in Resources */,
 				4FCBE0081907A054002F37A3 /* BookmanC.otf in Resources */,
 				4F22FD791936E8B30075C1A0 /* NLGalleryViewController.xib in Resources */,
 				4F0D75A6193DBD0200E78AA5 /* left_shadow@2x.png in Resources */,
@@ -540,6 +563,7 @@
 				4F22FD8919372F260075C1A0 /* NLPlaceCell.xib in Resources */,
 				4F0D75A2193DB86500E78AA5 /* search_bg@2x.png in Resources */,
 				4F411E7F18FFD8AA00758E30 /* NLMainMenuController.xib in Resources */,
+				4F0A8BCF195AFEAA00D59268 /* NLSplashViewController.xib in Resources */,
 				4FCBE00A1907A054002F37A3 /* MonoCondensedC_Bold.ttf in Resources */,
 				4F22FD871937288B0075C1A0 /* NLPlacesViewController.xib in Resources */,
 				4F61374A1927313700BFDD1C /* NLEventGroupsViewController.xib in Resources */,
@@ -554,6 +578,7 @@
 				4F89A42E1957D8260045D1A3 /* map.png in Resources */,
 				4F0D75AB193DD05D00E78AA5 /* back@2x.png in Resources */,
 				4F454363192E0F810043C3F4 /* Default@2x.png in Resources */,
+				4F0A8BD3195B04AD00D59268 /* compass_black@2x.png in Resources */,
 				4F0D75A3193DB86500E78AA5 /* search@2x.png in Resources */,
 				4F9C414A18EA84640038090E /* Images.xcassets in Resources */,
 			);
@@ -625,6 +650,7 @@
 				4F10D2AF19374ABB00F6658D /* NLStaticScreenViewController.m in Sources */,
 				4F22FD801936F4360075C1A0 /* NLEventsListControllerViewController.m in Sources */,
 				4F0A8BC9195AE58400D59268 /* UIView+Origami.m in Sources */,
+				4F0A8BCE195AFEAA00D59268 /* NLSplashViewController.m in Sources */,
 				4F390E7D18ED731E00131934 /* NLNewsEntry.m in Sources */,
 				4F22FD861937288B0075C1A0 /* NLPlacesViewController.m in Sources */,
 				4F89A42B1957CFF60045D1A3 /* NLMapViewController.m in Sources */,
