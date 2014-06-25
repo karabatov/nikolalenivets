@@ -15,7 +15,6 @@
 @interface NLMainMenuController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UIView *menuView;
-@property (strong, nonatomic) IBOutlet UIView *childView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 
 /* Fancy stuff */

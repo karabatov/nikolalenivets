@@ -46,7 +46,6 @@
 		4F61374D19273D7700BFDD1C /* NLEventGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F61374C19273D7700BFDD1C /* NLEventGroup.m */; };
 		4F7EC305190933B9002C0ECD /* NLItemsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7EC303190933B9002C0ECD /* NLItemsListController.m */; };
 		4F7EC306190933B9002C0ECD /* NLItemsListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7EC304190933B9002C0ECD /* NLItemsListController.xib */; };
-		4F7EC30819093E16002C0ECD /* picalka.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4F7EC30719093E16002C0ECD /* picalka.jpg */; };
 		4F89A42B1957CFF60045D1A3 /* NLMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F89A4291957CFF60045D1A3 /* NLMapViewController.m */; };
 		4F89A42C1957CFF60045D1A3 /* NLMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F89A42A1957CFF60045D1A3 /* NLMapViewController.xib */; };
 		4F89A42E1957D8260045D1A3 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F89A42D1957D8260045D1A3 /* map.png */; };
@@ -138,7 +137,6 @@
 		4F7EC302190933B9002C0ECD /* NLItemsListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLItemsListController.h; path = UI/NLItemsListController.h; sourceTree = "<group>"; };
 		4F7EC303190933B9002C0ECD /* NLItemsListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLItemsListController.m; path = UI/NLItemsListController.m; sourceTree = "<group>"; };
 		4F7EC304190933B9002C0ECD /* NLItemsListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLItemsListController.xib; path = UI/NLItemsListController.xib; sourceTree = "<group>"; };
-		4F7EC30719093E16002C0ECD /* picalka.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = picalka.jpg; sourceTree = "<group>"; };
 		4F89A4281957CFF60045D1A3 /* NLMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLMapViewController.h; path = UI/NLMapViewController.h; sourceTree = "<group>"; };
 		4F89A4291957CFF60045D1A3 /* NLMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLMapViewController.m; path = UI/NLMapViewController.m; sourceTree = "<group>"; };
 		4F89A42A1957CFF60045D1A3 /* NLMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLMapViewController.xib; path = UI/NLMapViewController.xib; sourceTree = "<group>"; };
@@ -212,7 +210,6 @@
 			children = (
 				4F0D75A0193DB86500E78AA5 /* search_bg@2x.png */,
 				4F0D75A1193DB86500E78AA5 /* search@2x.png */,
-				4F7EC30719093E16002C0ECD /* picalka.jpg */,
 				4F411E7B18FFD8AA00758E30 /* NLMainMenuController.h */,
 				4F411E7C18FFD8AA00758E30 /* NLMainMenuController.m */,
 				4F411E7D18FFD8AA00758E30 /* NLMainMenuController.xib */,
@@ -559,7 +556,6 @@
 				4F454363192E0F810043C3F4 /* Default@2x.png in Resources */,
 				4F0D75A3193DB86500E78AA5 /* search@2x.png in Resources */,
 				4F9C414A18EA84640038090E /* Images.xcassets in Resources */,
-				4F7EC30819093E16002C0ECD /* picalka.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
