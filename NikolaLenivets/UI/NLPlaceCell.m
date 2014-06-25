@@ -22,7 +22,11 @@
     self.nameLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:self.nameLabel.font.pointSize];
     self.distanceLabel.text = @"∞ км";
     self.nameLabel.text = [_place.title uppercaseString];
-    self.image.imageURL = [NSURL URLWithString:_place.thumbnail];
+    self.activityIndicator.hidden = NO;
+    [self.activityIndicator startAnimating];
+    [self.image setImageWithURL:[NSURL URLWithString:_place.thumbnail] completed:^(UIImage *image, NSError *err, SDImageCacheType cacheType) {
+        self.activityIndicator.hidden = YES;
+    }];
 }
 
 @end

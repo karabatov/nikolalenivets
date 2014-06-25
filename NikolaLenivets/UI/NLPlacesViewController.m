@@ -15,8 +15,8 @@
 @implementation NLPlacesViewController
 {
     NSArray *_placesPairs;
-    __strong NSArray *_places;
-    __strong CLLocation *_userLoc;
+    NSArray *_places;
+    CLLocation *_userLoc;
 }
 
 
@@ -127,8 +127,10 @@
 
 - (void)locationUpdated:(NSNotification *)newLocation
 {
+    if (_userLoc == nil) {
+        [self.collectionView reloadData];
+    }
     _userLoc = newLocation.object;
-    [self.collectionView reloadData];
 }
 
 
