@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F0A8BC9195AE58400D59268 /* UIView+Origami.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F0A8BC8195AE58400D59268 /* UIView+Origami.m */; };
 		4F0D759E193D9C6400E78AA5 /* white_menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F0D759D193D9C6400E78AA5 /* white_menu@2x.png */; };
 		4F0D75A2193DB86500E78AA5 /* search_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F0D75A0193DB86500E78AA5 /* search_bg@2x.png */; };
 		4F0D75A3193DB86500E78AA5 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F0D75A1193DB86500E78AA5 /* search@2x.png */; };
@@ -73,6 +74,8 @@
 /* Begin PBXFileReference section */
 		213D00ACD702461FA5EF0EB3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B21A1ADAF4F4E0BA8ED7C42 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		4F0A8BC7195AE58400D59268 /* UIView+Origami.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Origami.h"; sourceTree = "<group>"; };
+		4F0A8BC8195AE58400D59268 /* UIView+Origami.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Origami.m"; sourceTree = "<group>"; };
 		4F0D759D193D9C6400E78AA5 /* white_menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_menu@2x.png"; sourceTree = "<group>"; };
 		4F0D75A0193DB86500E78AA5 /* search_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search_bg@2x.png"; sourceTree = "<group>"; };
 		4F0D75A1193DB86500E78AA5 /* search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@2x.png"; sourceTree = "<group>"; };
@@ -187,6 +190,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F0A8BC5195AE57900D59268 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				4F0A8BC6195AE58400D59268 /* XYOrigami */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		4F0A8BC6195AE58400D59268 /* XYOrigami */ = {
+			isa = PBXGroup;
+			children = (
+				4F0A8BC7195AE58400D59268 /* UIView+Origami.h */,
+				4F0A8BC8195AE58400D59268 /* UIView+Origami.m */,
+			);
+			path = XYOrigami;
+			sourceTree = "<group>";
+		};
 		4F0D759F193DB85900E78AA5 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -279,6 +299,7 @@
 		4F390E6E18ED510500131934 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				4F0A8BC5195AE57900D59268 /* Libraries */,
 				4F89A4221957CFAA0045D1A3 /* Map */,
 				4F0D759F193DB85900E78AA5 /* Menu */,
 				4F10D2AB19374AA100F6658D /* Static Screens */,
@@ -607,6 +628,7 @@
 				4F390E8618ED753700131934 /* NLPlace.m in Sources */,
 				4F10D2AF19374ABB00F6658D /* NLStaticScreenViewController.m in Sources */,
 				4F22FD801936F4360075C1A0 /* NLEventsListControllerViewController.m in Sources */,
+				4F0A8BC9195AE58400D59268 /* UIView+Origami.m in Sources */,
 				4F390E7D18ED731E00131934 /* NLNewsEntry.m in Sources */,
 				4F22FD861937288B0075C1A0 /* NLPlacesViewController.m in Sources */,
 				4F89A42B1957CFF60045D1A3 /* NLMapViewController.m in Sources */,

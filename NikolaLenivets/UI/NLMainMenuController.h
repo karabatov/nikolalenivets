@@ -7,15 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PaperFoldView.h"
 #import "NLStorage.h"
+#import "UIView+Origami.h"
 
 #define SHOW_MENU_NOW @"SHOW_MENU_NOW"
 
-@interface NLMainMenuController : UIViewController <PaperFoldViewDelegate>
+@interface NLMainMenuController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UIView *menuView;
 @property (strong, nonatomic) IBOutlet UIView *childView;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
 
 /* Fancy stuff */
 @property (weak, nonatomic) IBOutlet UILabel *nikolaLabel;
