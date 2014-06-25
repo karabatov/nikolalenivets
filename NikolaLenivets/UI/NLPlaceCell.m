@@ -10,13 +10,14 @@
 
 @implementation NLPlaceCell
 {
-    __strong NLPlace *_place;
+    NLPlace *_place;
 }
 
 
 - (void)populateWithPlace:(NLPlace *)place
 {
     _place = place;
+    self.hidden = _place == nil;
     self.unreadIndicator.hidden = _place == nil;
     self.distanceLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:self.distanceLabel.font.pointSize];
     self.nameLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:self.nameLabel.font.pointSize];

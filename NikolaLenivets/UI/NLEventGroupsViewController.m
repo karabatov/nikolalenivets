@@ -82,6 +82,7 @@
         AsyncImageView *slideImage = [[AsyncImageView alloc] initWithFrame:self.scrollView.frame];
         slideImage.imageURL = [NSURL URLWithString:group.poster];
         slideImage.showActivityIndicator = YES;
+        //slideImage.contentMode = UIViewContentModeScaleAspectFill;
         slideImage.frame = CGRectMake(leftOffset, 0, slideImage.frame.size.width, slideImage.frame.size.height);
         leftOffset += slideImage.frame.size.width;
 
