@@ -115,6 +115,12 @@
 }
 
 
+- (void)back:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:^{}];
+}
+
+
 #pragma mark - Utils
 
 - (NLEvent *)entryForTable:(UITableView *)table indexPath:(NSIndexPath *)indexPath

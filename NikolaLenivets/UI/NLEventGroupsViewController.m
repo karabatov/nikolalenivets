@@ -8,15 +8,17 @@
 
 #import "NLEventGroupsViewController.h"
 #import "NLStorage.h"
-#import "AsyncImageView.h"
 #import "NLEventGroup.h"
 #import "NLMainMenuController.h"
 #import "NLEventsListControllerViewController.h"
 #import <NSDate+Helper.h>
 
+#import <UIImageView+WebCache.h>
+
 @implementation NLEventGroupsViewController
 {
-    __strong NSArray *_eventGroups;
+    NLEventsListControllerViewController *_events;
+    NSArray *_eventGroups;
     NSUInteger _currentPage;
 }
 
@@ -56,6 +58,22 @@
                                       self.pagerView.frame.size.width,
                                       self.pagerView.frame.size.height);
 
+//    [self prepareEventsArray];
+//    [self fillContentForPage:0];
+}
+
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.scrollView.hidden = YES;
+}
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.scrollView.hidden = NO;
     [self prepareEventsArray];
     [self fillContentForPage:0];
 }
@@ -79,9 +97,18 @@
     __block CGFloat leftOffset = 0.0;
 
     NSArray *slides = _.array(_eventGroups).map(^(NLEventGroup *group) {
-        AsyncImageView *slideImage = [[AsyncImageView alloc] initWithFrame:self.scrollView.frame];
-        slideImage.imageURL = [NSURL URLWithString:group.poster];
-        slideImage.showActivityIndicator = YES;
+        UIImageView *slideImage = [[UIImageView alloc] initWithFrame:self.scrollView.frame];
+
+        __block UIActivityIndicatorView *activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        activity.center = CGPointMake(slideImage.center.x, slideImage.center.y - 40);
+        [slideImage addSubview:activity];
+        [activity startAnimating];
+
+        [slideImage setImageWithURL:[NSURL URLWithString:group.poster]
+                          completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                              [activity removeFromSuperview];
+                          }];
+        //slideImage.contentMode = UIViewContentModeScaleAspectFill;
         slideImage.frame = CGRectMake(leftOffset, 0, slideImage.frame.size.width, slideImage.frame.size.height);
         leftOffset += slideImage.frame.size.width;
 
@@ -165,8 +192,8 @@
 {
     NSLog(@"Open event list");
     NLEventGroup *group = _eventGroups[_currentPage];
-    NLEventsListControllerViewController *events = [[NLEventsListControllerViewController alloc] initWithGroup:group];
-    [self presentViewController:events animated:YES completion:^{}];
+    _events = [[NLEventsListControllerViewController alloc] initWithGroup:group];
+    [self presentViewController:_events animated:YES completion:^{}];
 }
 
 @end

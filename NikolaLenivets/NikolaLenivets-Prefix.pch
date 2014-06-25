@@ -23,9 +23,13 @@
 #define _ Underscore
 
 #import "NLLocationManager.h"
+#import "NLAppDelegate.h"
 
 #define NLMonospacedFont @"MonoCondensedC"
 #define NLMonospacedBoldFont @"MonoCondensedCBold"
 #define NLSerifFont @"BookmanC"
 
 #define DefaultDateFormat @"dd MMMM"
+
+
+#define AppDelegate ((NLAppDelegate *)[[UIApplication sharedApplication] delegate])

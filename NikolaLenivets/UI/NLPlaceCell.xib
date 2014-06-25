@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="3wO-Sy-eYG" customClass="AsyncImageView">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="3wO-Sy-eYG">
                         <rect key="frame" x="20" y="29" width="118" height="121"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </imageView>
@@ -41,12 +41,17 @@
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="xKF-1V-QBc">
+                        <rect key="frame" x="70" y="79" width="20" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </activityIndicatorView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <size key="customSize" width="171" height="163"/>
             <connections>
+                <outlet property="activityIndicator" destination="xKF-1V-QBc" id="vDT-xn-muu"/>
                 <outlet property="distanceLabel" destination="GPp-am-aFf" id="jZN-1k-uQ0"/>
                 <outlet property="image" destination="3wO-Sy-eYG" id="vaH-Cg-4C8"/>
                 <outlet property="nameLabel" destination="gox-w0-YLp" id="QAv-g5-mDh"/>

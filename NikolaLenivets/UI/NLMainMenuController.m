@@ -26,13 +26,11 @@ enum {
 
 @implementation NLMainMenuController
 {
-    __strong PaperFoldView *_paperFoldView;
-    __strong NLItemsListController *_newsList;
-    __strong NLEventGroupsViewController *_eventsController;
-    __strong NLPlacesViewController *_placesController;
-    __strong UIView *_contentView;
-    __strong NLStaticScreenViewController *_driveScreen;
-    __strong NLMapViewController *_mapController;
+    NLItemsListController *_newsList;
+    NLEventGroupsViewController *_eventsController;
+    NLPlacesViewController *_placesController;
+    NLStaticScreenViewController *_driveScreen;
+    NLMapViewController *_mapController;
 }
 
 
@@ -42,6 +40,7 @@ enum {
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateMenuState) name:STORAGE_DID_UPDATE object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showMenu) name:SHOW_MENU_NOW object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(headingUpdated:) name:NLUserHeadingUpdated object:nil];
     }
     return self;
 }
@@ -56,23 +55,19 @@ enum {
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    CGRect frame = self.view.frame;
-    _contentView = [[UIView alloc] initWithFrame:frame];
-    _paperFoldView = [[PaperFoldView alloc] initWithFrame:frame];
-    _paperFoldView.delegate = self;
-
-    [self.view addSubview:_paperFoldView];
-    [_paperFoldView setLeftFoldContentView:self.menuView foldCount:1 pullFactor:0.9];
-    [_paperFoldView setCenterContentView:_contentView];
-    _paperFoldView.enableLeftFoldDragging = NO;
     [self showMenu];
 }
 
 
 - (void)showMenu
 {
-    [_paperFoldView setPaperFoldState:PaperFoldStateLeftUnfolded];
+    [self.contentView showOrigamiTransitionWith:self.menuView
+                           NumberOfFolds:1
+                                Duration:0.3
+                               Direction:XYOrigamiDirectionFromLeft
+                              completion:^(BOOL finished) {
+                                  NSLog(@"Finished animation");
+                              }];
     [self updateMenuState];
 }
 
@@ -92,6 +87,7 @@ enum {
     }
 }
 
+
 #pragma mark - Paper Fold Stuff
 
 - (IBAction)unfoldItem:(UIButton *)sender
@@ -99,6 +95,7 @@ enum {
     for (UIView *v in _contentView.subviews) {
         [v removeFromSuperview];
     }
+
     switch (sender.tag) {
         case News: {
             _newsList = [NLItemsListController new];
@@ -128,17 +125,14 @@ enum {
             return;
             break;
     }
-    
-    [_paperFoldView setPaperFoldState:PaperFoldStateDefault];
-    //[SKUTouchPresenter showTouchesWithColor:nil];
-}
 
-
-- (void)paperFoldView:(id)paperFoldView didFoldAutomatically:(BOOL)automated toState:(PaperFoldState)paperFoldState
-{
-//    if (paperFoldState == PaperFoldStateLeftUnfolded) {
-//        [SKUTouchPresenter showTouchesWithColor:[UIColor colorWithRed:0.2 green:0.3 blue:0.4 alpha:0.2]];
-//    }
+    [self.contentView hideOrigamiTransitionWith:self.menuView
+                           NumberOfFolds:1
+                                Duration:0.3
+                               Direction:XYOrigamiDirectionFromLeft
+                              completion:^(BOOL finished) {
+                                  NSLog(@"Finished transition");
+                              }];
 }
 
 
@@ -151,6 +145,16 @@ enum {
     self.eventsCounter.text = [NSString stringWithFormat:@"%02lu", (unsigned long)store.eventGroups.count];
     self.mapCounter.text = @"00";
     self.placesCounter.text = [NSString stringWithFormat:@"%02lu", (unsigned long)store.places.count];
+}
+
+
+- (void)headingUpdated:(NSNotification *)notification
+{
+    CLHeading *newHeading = notification.object;
+
+    float heading = newHeading.magneticHeading;
+    float headingDegrees = (heading * M_PI / 180);
+    self.compass.transform = CGAffineTransformMakeRotation(headingDegrees);
 }
 
 @end

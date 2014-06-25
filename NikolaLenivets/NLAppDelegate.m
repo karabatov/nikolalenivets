@@ -10,11 +10,16 @@
 #import "AFNetworking.h"
 #import "NLStorage.h"
 
+#import "NLSplashViewController.h"
+
 #import "NLMainMenuController.h"
 
 #import <Crashlytics/Crashlytics.h>
 
 @implementation NLAppDelegate
+{
+    NLSplashViewController *_splash;
+}
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -22,17 +27,25 @@
     [Crashlytics startWithAPIKey:@"2859bb1aae7d9b32942d1d64eebd584fa07a88af"];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
-    
-    NLMainMenuController *main = [NLMainMenuController new];
-    self.window.rootViewController = main;
-    
+
     [[NLStorage sharedInstance] update];
     [NLLocationManager sharedInstance];
+
+    _splash = [NLSplashViewController new];
+    [self.window addSubview:_splash.view];
     
     [self.window makeKeyAndVisible];
     return YES;
 }
 
+
+
+- (void)dismissSplash
+{
+    NLMainMenuController *main = [NLMainMenuController new];
+    self.window.rootViewController = main;
+    [_splash.view removeFromSuperview];
+}
 
 
 - (void)applicationWillResignActive:(UIApplication *)application

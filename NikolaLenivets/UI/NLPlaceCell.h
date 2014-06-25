@@ -8,14 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "NLPlace.h"
-#import "AsyncImageView.h"
+#import <UIImageView+WebCache.h>
 
 @interface NLPlaceCell : UICollectionViewCell
 
-@property (weak, nonatomic) IBOutlet AsyncImageView *image;
+@property (weak, nonatomic) IBOutlet UIImageView *image;
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *unreadIndicator;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 - (void)populateWithPlace:(NLPlace *)place;
 

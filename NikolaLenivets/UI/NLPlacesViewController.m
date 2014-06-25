@@ -14,8 +14,9 @@
 
 @implementation NLPlacesViewController
 {
-    __strong NSArray *_places;
-    __strong CLLocation *_userLoc;
+    NSArray *_placesPairs;
+    NSArray *_places;
+    CLLocation *_userLoc;
 }
 
 
@@ -51,7 +52,33 @@
 {
     _places = [[NLStorage sharedInstance] places];
     self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)_places.count];
+
+    NSMutableArray *pairs = [NSMutableArray new];
+
+    for (NSUInteger i = 0; i < _places.count; i += 2) {
+        NSMutableArray *pair = [NSMutableArray new];
+        [pair addObject:_places[i]];
+        if (i + 1 < _places.count) {
+            [pair addObject:_places[i + 1]];
+        }
+        [pairs addObject:pair];
+    }
+
+    _placesPairs = pairs;
+
     [self.collectionView reloadData];
+}
+
+
+- (NLPlace *)placeForIndexPath:(NSIndexPath *)indexPath
+{
+    NSArray *pair = _placesPairs[indexPath.section];
+
+    if (pair.count <= indexPath.item) {
+        return nil;
+    }
+
+    return pair[indexPath.item];
 }
 
 
@@ -59,7 +86,7 @@
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return _places.count;
+    return _placesPairs.count;
 }
 
 
@@ -72,8 +99,9 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NLPlaceCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"NLPlaceCell" forIndexPath:indexPath];
-    if (indexPath.row < _places.count) {
-        NLPlace *place = _places[indexPath.row];
+
+    if (indexPath.section < _placesPairs.count) {
+        NLPlace *place = [self placeForIndexPath:indexPath];
         [cell populateWithPlace:place];
         if (_userLoc) {
             CLLocationDistance distance = [place distanceFromLocation:_userLoc];
@@ -86,8 +114,11 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row < _places.count) {
-        NLPlace *place = _places[indexPath.row];
+    if (indexPath.section < _placesPairs.count) {
+        NLPlace *place = [self placeForIndexPath:indexPath];
+        if (place == nil) {
+            return;
+        }
         NLDetailsViewController *details = [[NLDetailsViewController alloc] initWithPlace:place currentLocation:_userLoc];
         [self presentViewController:details animated:YES completion:^{}];
     }
@@ -96,8 +127,10 @@
 
 - (void)locationUpdated:(NSNotification *)newLocation
 {
+    if (_userLoc == nil) {
+        [self.collectionView reloadData];
+    }
     _userLoc = newLocation.object;
-    [self.collectionView reloadData];
 }
 
 
