@@ -13,11 +13,11 @@
 #import "NLEvent.h"
 #import "NLPlace.h"
 
-@interface NLDetailsViewController : UIViewController
+@interface NLDetailsViewController : UIViewController <UIWebViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet DTAttributedLabel *firstPartLabel;
-@property (weak, nonatomic) IBOutlet DTAttributedLabel *secondPartLabel;
+@property (weak, nonatomic) IBOutlet UIWebView *firstPartWebView;
+@property (weak, nonatomic) IBOutlet UIWebView *secondPartLabel;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UILabel *countView;

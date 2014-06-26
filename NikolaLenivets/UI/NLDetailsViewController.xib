@@ -12,7 +12,7 @@
                 <outlet property="countView" destination="x4i-v4-Zor" id="poo-bT-mIx"/>
                 <outlet property="dateLabel" destination="hSI-al-Qge" id="cOp-Im-Qg0"/>
                 <outlet property="detailsViewTitleLabel" destination="CNC-pP-noM" id="nvX-q6-esE"/>
-                <outlet property="firstPartLabel" destination="aNp-1K-5GP" id="iVb-6Q-IfL"/>
+                <outlet property="firstPartWebView" destination="KUM-I3-x0a" id="tLD-1q-8p1"/>
                 <outlet property="galleryCover" destination="Mgw-DY-1Xg" id="9Dd-Vi-Ha8"/>
                 <outlet property="scrollView" destination="U96-SA-MhQ" id="5Fy-ei-S93"/>
                 <outlet property="secondPartLabel" destination="Cdz-Aq-Vf6" id="l4T-be-Jwg"/>
@@ -54,19 +54,19 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <view contentMode="scaleToFill" id="aNp-1K-5GP" userLabel="FirstPart" customClass="DTAttributedLabel">
-                                    <rect key="frame" x="20" y="143" width="280" height="372"/>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="T" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pat-iS-tqN">
+                                    <rect key="frame" x="20" y="143" width="320" height="180"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="250"/>
+                                    <color key="textColor" red="1" green="1" blue="0.0" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <webView opaque="NO" contentMode="scaleToFill" id="KUM-I3-x0a">
+                                    <rect key="frame" x="20" y="143" width="280" height="371"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="T" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pat-iS-tqN">
-                                            <rect key="frame" x="-20" y="0.0" width="320" height="180"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="250"/>
-                                            <color key="textColor" red="1" green="1" blue="0.0" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </view>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <dataDetectorType key="dataDetectorTypes"/>
+                                </webView>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Mgw-DY-1Xg" userLabel="Gallery Cover" customClass="AsyncImageView">
                                     <rect key="frame" x="0.0" y="190" width="320" height="189"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -81,7 +81,7 @@
                                         <action selector="showGallery:" destination="-1" eventType="touchUpInside" id="GSM-Z5-Yu4"/>
                                     </connections>
                                 </button>
-                                <view contentMode="scaleToFill" id="Cdz-Aq-Vf6" userLabel="SecondPart" customClass="DTAttributedLabel">
+                                <view contentMode="scaleToFill" id="Cdz-Aq-Vf6" userLabel="SecondPart" customClass="UIWebView">
                                     <rect key="frame" x="20" y="68" width="280" height="372"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
