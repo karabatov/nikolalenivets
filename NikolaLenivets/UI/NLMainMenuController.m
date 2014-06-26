@@ -150,11 +150,7 @@ enum {
 
 - (void)headingUpdated:(NSNotification *)notification
 {
-    CLHeading *newHeading = notification.object;
-
-    float heading = newHeading.magneticHeading;
-    float headingDegrees = (heading * M_PI / 180);
-    self.compass.transform = CGAffineTransformMakeRotation(headingDegrees);
+    self.compass.transform = [[NLLocationManager sharedInstance] compassTransform];;
 }
 
 @end

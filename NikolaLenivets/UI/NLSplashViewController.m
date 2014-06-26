@@ -40,11 +40,7 @@
 
 - (void)headingUpdated:(NSNotification *)notification
 {
-    CLHeading *newHeading = notification.object;
-
-    float heading = newHeading.magneticHeading; //in degrees
-    float headingDegrees = (heading * M_PI / 180); //assuming needle points to top of iphone. convert to radians
-    self.compass.transform = CGAffineTransformMakeRotation(headingDegrees);
+    self.compass.transform = [[NLLocationManager sharedInstance] compassTransform];
 }
 
 @end

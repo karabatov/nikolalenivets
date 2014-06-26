@@ -23,6 +23,10 @@
                     <rect key="frame" x="138" y="504" width="44" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                 </imageView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" id="hXF-KM-8jc">
+                    <rect key="frame" x="142" y="265" width="37" height="37"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
@@ -30,7 +34,7 @@
         </view>
     </objects>
     <resources>
-        <image name="Default-568h@2x.png" width="4613" height="3731"/>
+        <image name="Default-568h@2x.png" width="124" height="124"/>
         <image name="compass.png" width="124" height="124"/>
     </resources>
 </document>

@@ -15,5 +15,6 @@
 @interface NLLocationManager : NSObject <CLLocationManagerDelegate>
 
 + (NLLocationManager *)sharedInstance;
+- (CGAffineTransform)compassTransform;
 
 @end
