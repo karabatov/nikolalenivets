@@ -27,6 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.frame = [[AppDelegate window] frame];
 }
 
 
