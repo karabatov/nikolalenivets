@@ -121,6 +121,10 @@ enum {
             _mapController = [NLMapViewController new];
             [_contentView addSubview:_mapController.view];
             break;
+        case About:
+            _driveScreen = [[NLStaticScreenViewController alloc] initWithScreenNamed:@"about"];
+            [_contentView addSubview:_driveScreen.view];
+            break;
         default:
             return;
             break;
