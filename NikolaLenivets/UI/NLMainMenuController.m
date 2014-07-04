@@ -14,6 +14,8 @@
 #import "NLStaticScreenViewController.h"
 #import "NLMapViewController.h"
 
+#define FOLD_DURATION 0.7
+
 enum {
     News   = 0,
     Events = 1,
@@ -63,7 +65,7 @@ enum {
 {
     [self.contentView showOrigamiTransitionWith:self.menuView
                            NumberOfFolds:1
-                                Duration:0.3
+                                Duration:FOLD_DURATION
                                Direction:XYOrigamiDirectionFromLeft
                               completion:^(BOOL finished) {
                                   NSLog(@"Finished animation");
@@ -132,7 +134,7 @@ enum {
 
     [self.contentView hideOrigamiTransitionWith:self.menuView
                            NumberOfFolds:1
-                                Duration:0.3
+                                Duration:FOLD_DURATION
                                Direction:XYOrigamiDirectionFromLeft
                               completion:^(BOOL finished) {
                                   NSLog(@"Finished transition");
