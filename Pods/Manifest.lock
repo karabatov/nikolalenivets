@@ -20,14 +20,16 @@ PODS:
     - AFNetworking/NSURLSession
   - AsyncImageView (1.5.1)
   - DCKeyValueObjectMapping (1.4)
-  - DTCoreText (1.6.12):
-    - DTFoundation/Core (~> 1.7.0)
-    - DTFoundation/DTHTMLParser (~> 1.7.0)
-    - DTFoundation/UIKit (~> 1.7.0)
-  - DTFoundation/Core (1.7.0)
-  - DTFoundation/DTHTMLParser (1.7.0):
+  - DTCoreText (1.6.13):
+    - DTFoundation/Core (~> 1.7.1)
+    - DTFoundation/DTAnimatedGIF (~> 1.7.1)
+    - DTFoundation/DTHTMLParser (~> 1.7.1)
+    - DTFoundation/UIKit (~> 1.7.1)
+  - DTFoundation/Core (1.7.1)
+  - DTFoundation/DTAnimatedGIF (1.7.1)
+  - DTFoundation/DTHTMLParser (1.7.1):
     - DTFoundation/Core
-  - DTFoundation/UIKit (1.7.0):
+  - DTFoundation/UIKit (1.7.1):
     - DTFoundation/Core
   - NSDate+Helper (1.0.0)
   - SDWebImage (3.6):
@@ -52,8 +54,8 @@ SPEC CHECKSUMS:
   AFNetworking: ab63e259fe91eef4519b371ef0a4955af0e73e64
   AsyncImageView: 388442ae8314a5c99de0d98040c2926826d31da7
   DCKeyValueObjectMapping: c3561709f296ddffba7768a9d7ccf234307fd3c9
-  DTCoreText: ed270c1b5488a31106aeba02297ff15c6c2d7abf
-  DTFoundation: 4041af2f42fd780adaa4f7e18a4b4bc034c2b47a
+  DTCoreText: 84eb8ba2e70448fdd9d837540e371f9f587b65ba
+  DTFoundation: ef6fb95da64f202d1600bc23dde79c6fd74c0c2d
   NSDate+Helper: ebde22e90dc7ae5e9b49179a0c32e550f7a9cd57
   SDWebImage: c6989652c1cdf27cbdf3f56957e2030f825af5bc
   SKUTouchPresenter: af7fadbc10718622aa5f28afaae7033d713e6827

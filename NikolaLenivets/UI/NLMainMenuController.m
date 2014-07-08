@@ -78,13 +78,13 @@ enum {
 {
     [super viewWillAppear:animated];
     
-    self.nikolaLabel.font = [UIFont fontWithName:@"MonoCondensedCBold" size:16];
-    self.lenivetsLabel.font = [UIFont fontWithName:@"MonoCondensedCBold" size:16];
+    self.nikolaLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:16];
+    self.lenivetsLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:16];
     
     for (UIView *v in self.menuView.subviews) {
         if ([v isKindOfClass:[UIButton class]]) {
             UIButton *btn = (UIButton *)v;
-            btn.titleLabel.font = [UIFont fontWithName:@"MonoCondensedCBold" size:16];
+            btn.titleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:16];
         }
     }
 }
