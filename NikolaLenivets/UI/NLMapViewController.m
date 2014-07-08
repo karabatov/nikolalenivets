@@ -50,6 +50,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.view.frame = [[AppDelegate window] frame];
+
     self.mapScrollView.contentSize = self.mapImageView.frame.size;
     self.mapScrollView.minimumZoomScale = MinZoom;
     self.mapScrollView.maximumZoomScale = MaxZoom;

@@ -28,6 +28,11 @@ typedef enum {
     NLPlace *_place;
     NLGallery *_gallery;
     NLGalleryViewController *_galleryVC;
+
+    CGFloat _firstTextPartHeight;
+    CGFloat _secondTextPartHeight;
+
+    NSArray *_textParts;
 }
 
 
@@ -118,7 +123,7 @@ typedef enum {
 
     self.titleLabel.text = title;
     _gallery = [self galleryFromString:content];
-    NSArray *textParts = [self textParts:content];
+    _textParts = [self textParts:content];
 
     if (indexNumber > -1) {
         self.countView.text = [NSString stringWithFormat:@"%02ld", indexNumber + 1];
@@ -133,16 +138,54 @@ typedef enum {
 
     }
 
-    self.firstPartLabel.attributedString = [self attributedStringForString:textParts.firstObject];
-    self.firstPartLabel.frame = CGRectMake(self.firstPartLabel.frame.origin.x,
-                                           self.firstPartLabel.frame.origin.y,
-                                           self.firstPartLabel.frame.size.width,
-                                           [self heightForString:textParts.firstObject]);
-    if (textParts.count > 1) {
+    self.firstPartWebView.delegate = self;
+    self.secondPartLabel.delegate = self;
+    [self.firstPartWebView loadHTMLString:_textParts.firstObject baseURL:[NSURL URLWithString:@"http://"]];
+    if (_textParts.count > 0) {
+        [self.secondPartLabel loadHTMLString:_textParts.lastObject baseURL:[NSURL URLWithString:@"http://"]];
+    }
+
+    self.dateLabel.text = date;
+}
+
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    NSString *output = [webView stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight;"];
+    if ([webView isEqual:self.firstPartWebView]) {
+        _firstTextPartHeight = [output doubleValue] + 50;
+    } else {
+        _secondTextPartHeight = [output doubleValue] + 30;
+    }
+    [self layout];
+    NSLog(@"height: %@", output);
+}
+
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    if (navigationType == UIWebViewNavigationTypeLinkClicked) {
+        [[UIApplication sharedApplication] openURL:request.URL];
+        return NO;
+    }
+    return YES;
+}
+
+
+- (void)layout
+{
+    self.firstPartWebView.frame = CGRectMake(self.firstPartWebView.frame.origin.x,
+                                             self.firstPartWebView.frame.origin.y,
+                                             self.firstPartWebView.frame.size.width,
+                                             _firstTextPartHeight);
+    if (_textParts.count > 1) {
+        self.galleryCover.hidden = NO;
+        self.secondPartLabel.hidden = NO;
+        self.showGalleryButton.hidden = NO;
+
         self.galleryCover.imageURL = [NSURL URLWithString:_gallery.cover.image];
-        self.secondPartLabel.attributedString = [self attributedStringForString:textParts.lastObject];
         self.galleryCover.frame = CGRectMake(self.galleryCover.frame.origin.x,
-                                             self.firstPartLabel.frame.origin.y + self.firstPartLabel.frame.size.height - 60,
+                                             self.firstPartWebView.frame.origin.y + self.firstPartWebView.frame.size.height,
                                              self.galleryCover.frame.size.width,
                                              self.galleryCover.frame.size.height);
         self.showGalleryButton.frame = self.galleryCover.frame;
@@ -150,8 +193,12 @@ typedef enum {
         self.secondPartLabel.frame = CGRectMake(self.secondPartLabel.frame.origin.x,
                                                 self.galleryCover.frame.origin.y + self.galleryCover.frame.size.height + 20,
                                                 self.secondPartLabel.frame.size.width,
-                                                [self heightForString:textParts.lastObject]);
+                                                _secondTextPartHeight);
     } else {
+        self.galleryCover.hidden = YES;
+        self.secondPartLabel.hidden = YES;
+        self.showGalleryButton.hidden = YES;
+
         self.galleryCover.frame = CGRectZero;
         self.secondPartLabel.frame = CGRectZero;
         self.showGalleryButton.frame = CGRectZero;
@@ -160,18 +207,15 @@ typedef enum {
     self.contentView.frame = CGRectMake(self.contentView.frame.origin.x,
                                         self.contentView.frame.origin.y,
                                         self.contentView.frame.size.width,
-                                        self.firstPartLabel.frame.size.height +
+                                        self.firstPartWebView.frame.size.height +
                                         self.galleryCover.frame.size.height +
                                         self.secondPartLabel.frame.size.height + 163);
 
     self.scrollView.contentSize = self.contentView.frame.size;
 
-    NSString *firstLetter = [[self.firstPartLabel.attributedString string] substringToIndex:1];
+    NSString *firstLetter = [[[self attributedStringForString:_textParts[0]] string] substringToIndex:1];
     self.capitalLetter.text = firstLetter;
-    self.dateLabel.text = date;
 }
-
-
 
 - (NLGallery *)galleryFromString:(NSString *)htmlString
 {
