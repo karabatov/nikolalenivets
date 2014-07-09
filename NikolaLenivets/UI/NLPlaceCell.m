@@ -26,6 +26,7 @@
     self.activityIndicator.hidden = NO;
     [self.activityIndicator startAnimating];
     [self.image setImageWithURL:[NSURL URLWithString:_place.thumbnail] completed:^(UIImage *image, NSError *err, SDImageCacheType cacheType) {
+        [self.activityIndicator stopAnimating];
         self.activityIndicator.hidden = YES;
     }];
 }
