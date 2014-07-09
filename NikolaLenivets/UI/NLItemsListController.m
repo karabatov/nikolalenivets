@@ -118,6 +118,10 @@
     NLNewsEntry *entry = [self entryForTable:tableView indexPath:indexPath];
     [cell populateFromNewsEntry:entry];
     cell.counterLabel.text = [NSString stringWithFormat:@"%02ld", [_news indexOfObject:entry] + 1];
+    UIColor *borderGray = [UIColor colorWithRed:246.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1.0f];
+    [cell.contentView.layer setBorderColor:borderGray.CGColor];
+    [cell.contentView.layer setBorderWidth:0.5f];
+
     return cell;
 }
 
