@@ -48,11 +48,11 @@
 
     self.eventTypeLabel.font =
     self.eventDatesTitleLabel.font =
-    self.eventPriceTitleLabel.font = [UIFont fontWithName:NLMonospacedFont size:self.eventTypeLabel.font.pointSize];
+    self.eventPriceTitleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:self.eventTypeLabel.font.pointSize];
 
     self.eventTitleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:24];
-    self.eventDatesLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:18];
-    self.ticketPriceLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:12];
+    self.eventDatesLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:20];
+    self.ticketPriceLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:20];
 
     self.pagerView.frame = CGRectMake(0,
                                       self.view.frame.size.height - self.pagerView.frame.size.height,
