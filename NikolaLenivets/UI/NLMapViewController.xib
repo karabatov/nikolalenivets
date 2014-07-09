@@ -12,6 +12,7 @@
                 <outlet property="placeDetailsMenu" destination="Gbx-OZ-cVO" id="6xa-ah-od2"/>
                 <outlet property="placeName" destination="siY-wh-XEC" id="VqU-0W-eFq"/>
                 <outlet property="resizableView" destination="9gq-ZC-4XE" id="f2Q-Hv-uGS"/>
+                <outlet property="titleLabel" destination="Oza-Vc-h9p" id="ihv-GP-DZV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

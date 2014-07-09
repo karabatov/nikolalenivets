@@ -10,7 +10,7 @@
 #import "NLMainMenuController.h"
 #import "NLNewsCell.h"
 #import "NLDetailsViewController.h"
-
+#import "NSAttributedString+Kerning.h"
 
 
 @implementation NLItemsListController
@@ -41,7 +41,7 @@
 {
     [super viewDidLoad];
     self.view.frame = [[UIScreen mainScreen] bounds];
-    self.titleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:18];
+    self.titleLabel.attributedText = [NSAttributedString kernedStringForString:@"НОВОСТИ"];
 }
 
 

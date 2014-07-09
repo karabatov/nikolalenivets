@@ -11,6 +11,7 @@
 #import "NLPlaceCell.h"
 #import "NLDetailsViewController.h"
 #import "NLMainMenuController.h"
+#import "NSAttributedString+Kerning.h"
 
 @implementation NLPlacesViewController
 {
@@ -41,7 +42,7 @@
 {
     [super viewDidLoad];
     self.view.frame = [[UIScreen mainScreen] bounds];
-    self.titleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:18];
+    self.titleLabel.attributedText = [NSAttributedString kernedStringForString:@"МЕСТА"];
     [self.collectionView registerNib:[UINib nibWithNibName:@"NLPlaceCell" bundle:[NSBundle mainBundle]]
           forCellWithReuseIdentifier:@"NLPlaceCell"];
     [self updatePlaces];
@@ -106,7 +107,7 @@
         [cell populateWithPlace:place];
         if (_userLoc) {
             CLLocationDistance distance = [place distanceFromLocation:_userLoc];
-            cell.distanceLabel.text = [NSString stringWithFormat:@"%.1f км.", distance / 1000];
+            cell.distanceLabel.text = [NSString stringWithFormat:@"%.1f км", distance / 1000];
         }
     }
     return cell;

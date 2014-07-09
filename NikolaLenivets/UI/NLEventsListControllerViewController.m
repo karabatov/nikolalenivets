@@ -11,6 +11,7 @@
 #import "NLNewsCell.h"
 #import "NLItemsListController.h"
 #import "NLDetailsViewController.h"
+#import "NSAttributedString+Kerning.h"
 
 @implementation NLEventsListControllerViewController
 {
@@ -33,7 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.titleLabel.text = @"СОБЫТИЯ";
+    self.titleLabel.attributedText = [NSAttributedString kernedStringForString:@"СОБЫТИЯ"];
     [self prepareArrays];
 }
 

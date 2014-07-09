@@ -8,7 +8,7 @@
 
 #import "NLMapViewController.h"
 #import "NLMainMenuController.h"
-
+#import "NSAttributedString+Kerning.h"
 
 #define MaxZoom  2.0
 #define MinZoom  0.5
@@ -52,6 +52,8 @@
     [super viewDidLoad];
     
     self.view.frame = [[AppDelegate window] frame];
+
+    self.titleLabel.attributedText = [NSAttributedString kernedStringForString:@"КАРТА"];
 
     self.mapScrollView.contentSize = self.mapImageView.frame.size;
     self.mapScrollView.minimumZoomScale = MinZoom;

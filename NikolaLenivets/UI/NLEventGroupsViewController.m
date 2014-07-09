@@ -12,6 +12,7 @@
 #import "NLMainMenuController.h"
 #import "NLEventsListControllerViewController.h"
 #import <NSDate+Helper.h>
+#import "NSAttributedString+Kerning.h"
 
 #import <UIImageView+WebCache.h>
 
@@ -41,7 +42,7 @@
 
     self.view.frame = [[[[UIApplication sharedApplication] delegate] window] frame];
 
-    self.titleLabel.font = [UIFont fontWithName:NLMonospacedFont size:18];
+    self.titleLabel.attributedText = [NSAttributedString kernedStringForString:@"СОБЫТИЯ"];
     self.currentPageLabel.font = [UIFont fontWithName:NLMonospacedFont size:self.currentPageLabel.font.pointSize];
     self.overallPagesCountLabel.font = self.currentPageLabel.font;
 
