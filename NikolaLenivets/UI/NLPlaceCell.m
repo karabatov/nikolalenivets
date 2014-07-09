@@ -23,6 +23,9 @@
     self.nameLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:self.nameLabel.font.pointSize];
     self.distanceLabel.text = @"∞ км";
     self.nameLabel.text = [_place.title uppercaseString];
+    UIColor *borderGray = [UIColor colorWithRed:246.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1.0f];
+    [self.contentView.layer setBorderColor:borderGray.CGColor];
+    [self.contentView.layer setBorderWidth:0.5f];
     self.activityIndicator.hidden = NO;
     [self.activityIndicator startAnimating];
     [self.image setImageWithURL:[NSURL URLWithString:_place.thumbnail] completed:^(UIImage *image, NSError *err, SDImageCacheType cacheType) {
