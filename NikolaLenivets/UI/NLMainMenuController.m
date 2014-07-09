@@ -156,7 +156,7 @@ enum {
 
 - (void)headingUpdated:(NSNotification *)notification
 {
-    self.compass.transform = [[NLLocationManager sharedInstance] compassTransform];;
+    self.compass.transform = [[NLLocationManager sharedInstance] compassTransform];
 }
 
 @end
