@@ -19,6 +19,8 @@
     __strong NSMutableArray *_leftNews;
     __strong NSMutableArray *_rightNews;
     __strong NLDetailsViewController *_details;
+    __strong NSMutableArray *_offsetQueueRight;
+    __strong NSMutableArray *_offsetQueueLeft;
 }
 
 - (id)init
@@ -45,6 +47,8 @@
     self.itemsCountLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:9.0f];
     [self.leftTable setEstimatedRowHeight:315.0f];
     [self.rightTable setEstimatedRowHeight:315.0f];
+    _offsetQueueRight = [[NSMutableArray alloc] init];
+    _offsetQueueLeft = [[NSMutableArray alloc] init];
 }
 
 
@@ -165,6 +169,7 @@
         [UIView animateWithDuration:0.1 animations:^{
             self.rightShadowView.alpha = 1.0;
         }];
+        [self.rightTable setUserInteractionEnabled:NO];
     }
 
     if ([scrollView isEqual:self.rightTable]) {
@@ -172,6 +177,7 @@
         [UIView animateWithDuration:0.1 animations:^{
             self.leftShadowView.alpha = 1.0;
         }];
+        [self.leftTable setUserInteractionEnabled:NO];
     }
 }
 
@@ -193,6 +199,33 @@
             self.leftShadowView.hidden = YES;
         }];
     }
+}
+
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if ((scrollView.tracking || scrollView.dragging || scrollView.decelerating) && scrollView.userInteractionEnabled) {
+        UITableView *anotherTableView = [scrollView isEqual:self.rightTable] ? self.leftTable : self.rightTable;
+        NSMutableArray *offsetQueue = [scrollView isEqual:self.rightTable] ? _offsetQueueLeft : _offsetQueueRight;
+
+        [offsetQueue addObject:[NSValue valueWithCGPoint:scrollView.contentOffset]];
+        if ([offsetQueue count] > 4) {
+            CGPoint newOffset = [(NSValue *)offsetQueue[0] CGPointValue];
+            [offsetQueue removeObjectAtIndex:0];
+            [anotherTableView setContentOffset:newOffset];
+        }
+    }
+}
+
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    UITableView *anotherTableView = [scrollView isEqual:self.rightTable] ? self.leftTable : self.rightTable;
+    NSMutableArray *offsetQueue = [scrollView isEqual:self.rightTable] ? _offsetQueueLeft : _offsetQueueRight;
+
+    [anotherTableView setContentOffset:scrollView.contentOffset animated:YES];
+    [offsetQueue removeAllObjects];
+    [anotherTableView setUserInteractionEnabled:YES];
 }
 
 @end
