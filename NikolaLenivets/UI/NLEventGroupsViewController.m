@@ -82,7 +82,10 @@
     [super viewWillAppear:animated];
     self.scrollView.hidden = NO;
     [self prepareEventsArray];
-    [self fillContentForPage:0];
+    if (_currentPage >= [_eventGroups count]) {
+        _currentPage = 0;
+    }
+    [self fillContentForPage:_currentPage];
 }
 
 
