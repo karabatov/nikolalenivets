@@ -65,6 +65,8 @@
     toolbar.barStyle = UIBarStyleBlack;
     [self.previewView insertSubview:toolbar atIndex:0];
 
+    _currentPage = 0;
+
 //    [self prepareEventsArray];
 //    [self fillContentForPage:0];
 }
