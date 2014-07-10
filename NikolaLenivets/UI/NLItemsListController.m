@@ -42,6 +42,9 @@
     [super viewDidLoad];
     self.view.frame = [[UIScreen mainScreen] bounds];
     self.titleLabel.attributedText = [NSAttributedString kernedStringForString:@"НОВОСТИ"];
+    self.itemsCountLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:9.0f];
+    [self.leftTable setEstimatedRowHeight:315.0f];
+    [self.rightTable setEstimatedRowHeight:315.0f];
 }
 
 

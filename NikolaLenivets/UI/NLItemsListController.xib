@@ -25,7 +25,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="RuV-cP-0AY" userLabel="Back">
-                            <rect key="frame" x="10" y="17" width="34" height="15"/>
+                            <rect key="frame" x="10" y="17" width="38" height="12"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="menu_button.png">
                                 <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -36,7 +36,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="НОВОСТИ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nrz-CM-JzS">
-                            <rect key="frame" x="78" y="2" width="164" height="47"/>
+                            <rect key="frame" x="78" y="2" width="164" height="38"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -71,7 +71,7 @@
                     </connections>
                 </tableView>
                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_shadow.png" id="8Sm-qU-54I" userLabel="Right Shadow">
-                    <rect key="frame" x="164" y="55" width="167" height="513"/>
+                    <rect key="frame" x="161" y="55" width="167" height="513"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="left_shadow.png" id="ohb-ea-z3Z" userLabel="Left Shadow">
