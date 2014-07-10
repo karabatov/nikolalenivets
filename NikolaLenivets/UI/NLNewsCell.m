@@ -37,7 +37,10 @@
 - (void)populateFromNewsEntry:(NLNewsEntry *)entry
 {
     _entry = entry;
-    self.titleLabel.text = _entry.title;
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.hyphenationFactor = 0.1f;
+    NSMutableAttributedString *attributedTitle = [[NSMutableAttributedString alloc] initWithString:_entry.title attributes:@{ NSParagraphStyleAttributeName : paragraphStyle }];
+    self.titleLabel.attributedText = attributedTitle;
     self.previewLabel.attributedString = [self attributedStringForString:_entry.content];
     if ([_entry.thumbnail isEqualToString:@""]) {
         self.thumbnail.image = nil;
@@ -55,7 +58,10 @@
 - (void)populateFromEvent:(NLEvent *)event
 {
     _event = event;
-    self.titleLabel.text = _event.title;
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.hyphenationFactor = 0.1f;
+    NSMutableAttributedString *attributedTitle = [[NSMutableAttributedString alloc] initWithString:_event.title attributes:@{ NSParagraphStyleAttributeName : paragraphStyle }];
+    self.titleLabel.attributedText = attributedTitle;
     self.previewLabel.attributedString = [self attributedStringForString:_event.content];
     if ([_event.thumbnail isEqualToString:@""]) {
         self.thumbnail.image = nil;
