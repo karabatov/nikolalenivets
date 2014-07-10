@@ -57,6 +57,14 @@
     self.eventDateDashLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:18];
     self.ticketPriceLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:20];
 
+    self.previewView.opaque = NO;
+    self.previewView.backgroundColor = [UIColor clearColor];
+
+    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:self.previewView.bounds];
+    toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    toolbar.barStyle = UIBarStyleBlack;
+    [self.previewView insertSubview:toolbar atIndex:0];
+
 //    [self prepareEventsArray];
 //    [self fillContentForPage:0];
 }
