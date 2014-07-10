@@ -120,7 +120,7 @@
                           completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                               [activity removeFromSuperview];
                           }];
-        slideImage.contentMode = UIViewContentModeScaleAspectFill;
+        // slideImage.contentMode = UIViewContentModeScaleAspectFill;
         slideImage.frame = CGRectMake(leftOffset, 0, slideImage.frame.size.width, slideImage.frame.size.height);
         leftOffset += slideImage.frame.size.width;
 
