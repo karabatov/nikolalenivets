@@ -21,7 +21,7 @@
     self.unreadIndicator.hidden = _place == nil;
     self.distanceLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:self.distanceLabel.font.pointSize];
     self.nameLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:self.nameLabel.font.pointSize];
-    self.distanceLabel.text = @"∞ км";
+    self.distanceLabel.text = @"∞ КМ";
     self.nameLabel.text = [_place.title uppercaseString];
     UIColor *borderGray = [UIColor colorWithRed:246.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1.0f];
     [self.contentView.layer setBorderColor:borderGray.CGColor];

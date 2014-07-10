@@ -107,7 +107,7 @@
         [cell populateWithPlace:place];
         if (_userLoc) {
             CLLocationDistance distance = [place distanceFromLocation:_userLoc];
-            cell.distanceLabel.text = [NSString stringWithFormat:@"%.1f км", distance / 1000];
+            cell.distanceLabel.text = [NSString stringWithFormat:@"%.1f КМ", distance / 1000];
         }
     }
     return cell;
