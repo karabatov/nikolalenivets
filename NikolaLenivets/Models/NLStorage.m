@@ -81,6 +81,78 @@
 {
     _index = [NLDiffIndex modelFromDictionary:jsonDictionary[@"index"]];
 
+    // For each item in each _array (existing items w/ new items)
+    // 1. Search index skel array for item with same id
+    // 2. If no item with same id found, delete existing item
+    // 3. If item with same id found, do nothing
+
+    _.array(_news)
+    .each(^(NLNewsEntry *entry) {
+        NLModel *indexItem = _.find(_index.news, ^BOOL (NLModel *item) {
+            return item.id == entry.id;
+        });
+        if (!indexItem) {
+            [_news removeObject:entry];
+        } else {
+            if (entry.itemStatus == NLItemStatusNew) {
+                entry.itemStatus = NLItemStatusUnread;
+            }
+        }
+    });
+
+    _.array(_places)
+    .each(^(NLPlace *entry) {
+        NLModel *indexItem = _.find(_index.places, ^BOOL (NLModel *item) {
+            return item.id == entry.id;
+        });
+        if (!indexItem) {
+            [_places removeObject:entry];
+        }
+    });
+
+    _.array(_teasers)
+    .each(^(NLTeaser *entry) {
+        NLModel *indexItem = _.find(_index.teasers, ^BOOL (NLModel *item) {
+            return item.id == entry.id;
+        });
+        if (!indexItem) {
+            [_teasers removeObject:entry];
+        }
+    });
+
+    _.array(_eventGroups)
+    .each(^(NLEventGroup *group) {
+        _.array(group.events)
+        .each(^(NLEvent *entry) {
+            NLModel *indexItem = _.find(_index.events, ^BOOL (NLModel *item) {
+                return item.id == entry.id;
+            });
+            if (!indexItem) {
+                [group.events removeObject:entry];
+            }
+        });
+    });
+
+    _.array(_screens)
+    .each(^(NLScreen *entry) {
+        NLModel *indexItem = _.find(_index.screens, ^BOOL (NLModel *item) {
+            return item.id == entry.id;
+        });
+        if (!indexItem) {
+            [_screens removeObject:entry];
+        }
+    });
+
+    _.array(_galleries)
+    .each(^(NLGallery *entry) {
+        NLModel *indexItem = _.find(_index.galleries, ^BOOL (NLModel *item) {
+            return item.id == entry.id;
+        });
+        if (!indexItem) {
+            [_galleries removeObject:entry];
+        }
+    });
+
     // For each item in each index side array (actual new items):
     // 1. Search existing array for item with same id
     // 2. If no item with same id found, add item to array
@@ -179,74 +251,6 @@
                 [_galleries replaceObjectAtIndex:galleryIndex withObject:entry];
             } else {
                 [_galleries addObject:entry];
-            }
-        });
-
-    // For each item in each _array (existing items w/ new items)
-    // 1. Search index skel array for item with same id
-    // 2. If no item with same id found, delete existing item
-    // 3. If item with same id found, do nothing
-
-    _.array(_news)
-        .each(^(NLNewsEntry *entry) {
-            NLModel *indexItem = _.find(_index.news, ^BOOL (NLModel *item) {
-                return item.id == entry.id;
-            });
-            if (!indexItem) {
-                [_news removeObject:entry];
-            }
-        });
-
-    _.array(_places)
-        .each(^(NLPlace *entry) {
-            NLModel *indexItem = _.find(_index.places, ^BOOL (NLModel *item) {
-                return item.id == entry.id;
-            });
-            if (!indexItem) {
-                [_places removeObject:entry];
-            }
-        });
-
-    _.array(_teasers)
-        .each(^(NLTeaser *entry) {
-            NLModel *indexItem = _.find(_index.teasers, ^BOOL (NLModel *item) {
-                return item.id == entry.id;
-            });
-            if (!indexItem) {
-                [_teasers removeObject:entry];
-            }
-        });
-
-    _.array(_eventGroups)
-        .each(^(NLEventGroup *group) {
-            _.array(group.events)
-                .each(^(NLEvent *entry) {
-                    NLModel *indexItem = _.find(_index.events, ^BOOL (NLModel *item) {
-                        return item.id == entry.id;
-                    });
-                    if (!indexItem) {
-                        [group.events removeObject:entry];
-                    }
-                });
-        });
-
-    _.array(_screens)
-        .each(^(NLScreen *entry) {
-            NLModel *indexItem = _.find(_index.screens, ^BOOL (NLModel *item) {
-                return item.id == entry.id;
-            });
-            if (!indexItem) {
-                [_screens removeObject:entry];
-            }
-        });
-
-    _.array(_galleries)
-        .each(^(NLGallery *entry) {
-            NLModel *indexItem = _.find(_index.galleries, ^BOOL (NLModel *item) {
-                return item.id == entry.id;
-            });
-            if (!indexItem) {
-                [_galleries removeObject:entry];
             }
         });
 }
