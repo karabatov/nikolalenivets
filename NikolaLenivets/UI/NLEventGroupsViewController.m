@@ -88,6 +88,7 @@
         _currentPage = 0;
     }
     [self fillContentForPage:_currentPage];
+    [self.eventDateDashLabel setTransform:CGAffineTransformMakeRotation(-M_PI_2)];
 }
 
 
