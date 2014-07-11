@@ -75,6 +75,10 @@
 		4FD010F5192CC326002F5836 /* search_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD010F4192CC326002F5836 /* search_icon.png */; };
 		4FD010FA192CC940002F5836 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FD010F9192CC940002F5836 /* Crashlytics.framework */; };
 		4FF31086D2714E0584DB4E63 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 213D00ACD702461FA5EF0EB3 /* libPods.a */; };
+		D17177B3196D047200521D72 /* NSAttributedString+Kerning.m in Sources */ = {isa = PBXBuildFile; fileRef = D17177B2196D047200521D72 /* NSAttributedString+Kerning.m */; };
+		D19C0425196EF44C006A086B /* map-minus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19C0422196EF44C006A086B /* map-minus@2x.png */; };
+		D19C0426196EF44D006A086B /* map-locate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19C0423196EF44C006A086B /* map-locate@2x.png */; };
+		D19C0427196EF44D006A086B /* map-plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19C0424196EF44C006A086B /* map-plus@2x.png */; };
 		D1B7ADD0196BCBCE0057C1E2 /* MonoCondensedC.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1B7ADCF196BCBCE0057C1E2 /* MonoCondensedC.otf */; };
 		D1B7ADD5196BCF9A0057C1E2 /* MonoCondensedCBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1B7ADD4196BCF9A0057C1E2 /* MonoCondensedCBold.otf */; };
 /* End PBXBuildFile section */
@@ -187,6 +191,11 @@
 		4FD010F9192CC940002F5836 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		9F010D930FC743A086F2A9F3 /* libPods-NikolaLenivetsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NikolaLenivetsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CABA2254233B446F8102E8CC /* Pods-NikolaLenivetsTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NikolaLenivetsTests.xcconfig"; path = "Pods/Pods-NikolaLenivetsTests.xcconfig"; sourceTree = "<group>"; };
+		D17177B1196D047200521D72 /* NSAttributedString+Kerning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSAttributedString+Kerning.h"; path = "UI/NSAttributedString+Kerning.h"; sourceTree = "<group>"; };
+		D17177B2196D047200521D72 /* NSAttributedString+Kerning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSAttributedString+Kerning.m"; path = "UI/NSAttributedString+Kerning.m"; sourceTree = "<group>"; };
+		D19C0422196EF44C006A086B /* map-minus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-minus@2x.png"; sourceTree = "<group>"; };
+		D19C0423196EF44C006A086B /* map-locate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-locate@2x.png"; sourceTree = "<group>"; };
+		D19C0424196EF44C006A086B /* map-plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-plus@2x.png"; sourceTree = "<group>"; };
 		D1B7ADCF196BCBCE0057C1E2 /* MonoCondensedC.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MonoCondensedC.otf; sourceTree = "<group>"; };
 		D1B7ADD4196BCF9A0057C1E2 /* MonoCondensedCBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MonoCondensedCBold.otf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -210,6 +219,8 @@
 		4F0A8BC5195AE57900D59268 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				D17177B1196D047200521D72 /* NSAttributedString+Kerning.h */,
+				D17177B2196D047200521D72 /* NSAttributedString+Kerning.m */,
 				4F0A8BC6195AE58400D59268 /* XYOrigami */,
 			);
 			name = Libraries;
@@ -361,6 +372,9 @@
 				4F89A4361957F88B0045D1A3 /* object@2x.png */,
 				4F89A4341957F0FA0045D1A3 /* userlocation@2x.png */,
 				4F89A42D1957D8260045D1A3 /* map.png */,
+				D19C0422196EF44C006A086B /* map-minus@2x.png */,
+				D19C0423196EF44C006A086B /* map-locate@2x.png */,
+				D19C0424196EF44C006A086B /* map-plus@2x.png */,
 				4F89A4281957CFF60045D1A3 /* NLMapViewController.h */,
 				4F89A4291957CFF60045D1A3 /* NLMapViewController.m */,
 				4F89A42A1957CFF60045D1A3 /* NLMapViewController.xib */,
@@ -574,6 +588,7 @@
 				4F174E341966A50300F7F8A2 /* Track on 2014-06-23 at 18-06 GMT+4.gpx in Resources */,
 				4FCBE0081907A054002F37A3 /* BookmanC.otf in Resources */,
 				4F22FD791936E8B30075C1A0 /* NLGalleryViewController.xib in Resources */,
+				D19C0426196EF44D006A086B /* map-locate@2x.png in Resources */,
 				4F174E351966A50300F7F8A2 /* Track on 2014-06-23 at 18-29 GMT+4.gpx in Resources */,
 				4F0D75A6193DBD0200E78AA5 /* left_shadow@2x.png in Resources */,
 				4F454360192DE4D20043C3F4 /* Default-568h@2x.png in Resources */,
@@ -588,6 +603,7 @@
 				4F89A4351957F0FA0045D1A3 /* userlocation@2x.png in Resources */,
 				4F18FD3B192212F900032A34 /* NLDetailsViewController.xib in Resources */,
 				4F174E361966A50300F7F8A2 /* Track on 2014-06-23 at 18-34 GMT+4.gpx in Resources */,
+				D19C0427196EF44D006A086B /* map-plus@2x.png in Resources */,
 				4FD010F5192CC326002F5836 /* search_icon.png in Resources */,
 				4F0D75B1193DEADF00E78AA5 /* circle@2x.png in Resources */,
 				4F8A13051921D5C700F3DA96 /* NLNewsCellView.xib in Resources */,
@@ -598,6 +614,7 @@
 				4F454363192E0F810043C3F4 /* Default@2x.png in Resources */,
 				4F0A8BD3195B04AD00D59268 /* compass_black@2x.png in Resources */,
 				4F174E321966A50300F7F8A2 /* Track on 2014-06-23 at 17-53 GMT+4.gpx in Resources */,
+				D19C0425196EF44C006A086B /* map-minus@2x.png in Resources */,
 				4F0D75A3193DB86500E78AA5 /* search@2x.png in Resources */,
 				D1B7ADD0196BCBCE0057C1E2 /* MonoCondensedC.otf in Resources */,
 				4F9C414A18EA84640038090E /* Images.xcassets in Resources */,
@@ -668,6 +685,7 @@
 				4F18FD3A192212F900032A34 /* NLDetailsViewController.m in Sources */,
 				4F390E8618ED753700131934 /* NLPlace.m in Sources */,
 				4F10D2AF19374ABB00F6658D /* NLStaticScreenViewController.m in Sources */,
+				D17177B3196D047200521D72 /* NSAttributedString+Kerning.m in Sources */,
 				4F22FD801936F4360075C1A0 /* NLEventsListControllerViewController.m in Sources */,
 				4F0A8BC9195AE58400D59268 /* UIView+Origami.m in Sources */,
 				4F0A8BCE195AFEAA00D59268 /* NLSplashViewController.m in Sources */,

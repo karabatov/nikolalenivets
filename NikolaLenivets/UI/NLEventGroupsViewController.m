@@ -12,6 +12,7 @@
 #import "NLMainMenuController.h"
 #import "NLEventsListControllerViewController.h"
 #import <NSDate+Helper.h>
+#import "NSAttributedString+Kerning.h"
 
 #import <UIImageView+WebCache.h>
 
@@ -41,22 +42,30 @@
 
     self.view.frame = [[[[UIApplication sharedApplication] delegate] window] frame];
 
-    self.titleLabel.font = [UIFont fontWithName:NLMonospacedFont size:18];
+    self.titleLabel.attributedText = [NSAttributedString kernedStringForString:@"СОБЫТИЯ"];
+    self.itemsCountLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:9.0f];
+    self.itemsCountLabel.text = @"";
     self.currentPageLabel.font = [UIFont fontWithName:NLMonospacedFont size:self.currentPageLabel.font.pointSize];
     self.overallPagesCountLabel.font = self.currentPageLabel.font;
 
     self.eventTypeLabel.font =
     self.eventDatesTitleLabel.font =
-    self.eventPriceTitleLabel.font = [UIFont fontWithName:NLMonospacedFont size:self.eventTypeLabel.font.pointSize];
+    self.eventPriceTitleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:self.eventTypeLabel.font.pointSize];
 
-    self.eventTitleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:24];
+    self.eventTitleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:40];
     self.eventDatesLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:18];
-    self.ticketPriceLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:12];
+    self.eventDateDashLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:18];
+    self.ticketPriceLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:20];
 
-    self.pagerView.frame = CGRectMake(0,
-                                      self.view.frame.size.height - self.pagerView.frame.size.height,
-                                      self.pagerView.frame.size.width,
-                                      self.pagerView.frame.size.height);
+    self.previewView.opaque = NO;
+    self.previewView.backgroundColor = [UIColor clearColor];
+
+    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:self.previewView.bounds];
+    toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    toolbar.barStyle = UIBarStyleBlack;
+    [self.previewView insertSubview:toolbar atIndex:0];
+
+    _currentPage = 0;
 
 //    [self prepareEventsArray];
 //    [self fillContentForPage:0];
@@ -75,7 +84,10 @@
     [super viewWillAppear:animated];
     self.scrollView.hidden = NO;
     [self prepareEventsArray];
-    [self fillContentForPage:0];
+    if (_currentPage >= [_eventGroups count]) {
+        _currentPage = 0;
+    }
+    [self fillContentForPage:_currentPage];
 }
 
 
@@ -108,7 +120,7 @@
                           completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                               [activity removeFromSuperview];
                           }];
-        //slideImage.contentMode = UIViewContentModeScaleAspectFill;
+        // slideImage.contentMode = UIViewContentModeScaleAspectFill;
         slideImage.frame = CGRectMake(leftOffset, 0, slideImage.frame.size.width, slideImage.frame.size.height);
         leftOffset += slideImage.frame.size.width;
 
@@ -145,15 +157,23 @@
     self.currentPageLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)(_currentPage + 1)];
     if (shouldFill) {
         NLEventGroup *group = _eventGroups[pageIndex];
-        self.eventTitleLabel.text = group.name;
-        self.ticketPriceLabel.text = group.ticketprice;
+        self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)[group.events count]];
+
+        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+        paragraphStyle.hyphenationFactor = 0.1f;
+        NSMutableAttributedString *attributedTitle = [[NSMutableAttributedString alloc] initWithString:group.name attributes:@{ NSParagraphStyleAttributeName : paragraphStyle }];
+        NSMutableAttributedString *attributedPrice = [[NSMutableAttributedString alloc] initWithString:group.ticketprice attributes:@{ NSParagraphStyleAttributeName : paragraphStyle }];
+
+        self.eventTitleLabel.attributedText = attributedTitle;
+        self.ticketPriceLabel.attributedText = attributedPrice;
         NSDate *startDate = [NSDate dateFromString:group.startdate];
         NSDate *endDate = [NSDate dateFromString:group.enddate];
 
         NSString *startDateString = [startDate stringWithFormat:@"d"];
-        NSString *endDateString = [endDate stringWithFormat:@"d MMMM"];
+        NSString *endDateString = [endDate stringWithFormat:@"d"];
+        NSString *endMonthString = [[endDate stringWithFormat:@"MMMM"] uppercaseString];
 
-        self.eventDatesLabel.text = [NSString stringWithFormat:@" %@\n—%@", startDateString, endDateString];
+        self.eventDatesLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@", startDateString, endDateString, endMonthString];
     }
 
     self.prevItemButton.enabled = pageIndex != 0;

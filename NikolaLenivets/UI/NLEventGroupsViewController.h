@@ -11,6 +11,7 @@
 @interface NLEventGroupsViewController : UIViewController <UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *itemsCountLabel;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIButton *prevItemButton;
 @property (weak, nonatomic) IBOutlet UIButton *nextItemButton;
@@ -20,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *eventTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *eventPriceTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *eventDatesTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *eventDateDashLabel;
 @property (weak, nonatomic) IBOutlet UILabel *eventTypeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ticketPriceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *eventDatesLabel;

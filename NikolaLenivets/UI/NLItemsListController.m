@@ -10,7 +10,7 @@
 #import "NLMainMenuController.h"
 #import "NLNewsCell.h"
 #import "NLDetailsViewController.h"
-
+#import "NSAttributedString+Kerning.h"
 
 
 @implementation NLItemsListController
@@ -19,6 +19,8 @@
     __strong NSMutableArray *_leftNews;
     __strong NSMutableArray *_rightNews;
     __strong NLDetailsViewController *_details;
+    __strong NSMutableArray *_offsetQueueRight;
+    __strong NSMutableArray *_offsetQueueLeft;
 }
 
 - (id)init
@@ -41,7 +43,12 @@
 {
     [super viewDidLoad];
     self.view.frame = [[UIScreen mainScreen] bounds];
-    self.titleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:18];
+    self.titleLabel.attributedText = [NSAttributedString kernedStringForString:@"НОВОСТИ"];
+    self.itemsCountLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:9.0f];
+    [self.leftTable setEstimatedRowHeight:315.0f];
+    [self.rightTable setEstimatedRowHeight:315.0f];
+    _offsetQueueRight = [[NSMutableArray alloc] init];
+    _offsetQueueLeft = [[NSMutableArray alloc] init];
 }
 
 
@@ -117,7 +124,11 @@
     
     NLNewsEntry *entry = [self entryForTable:tableView indexPath:indexPath];
     [cell populateFromNewsEntry:entry];
-    cell.counterLabel.text = [NSString stringWithFormat:@"%02ld", [_news indexOfObject:entry] + 1];
+    cell.counterLabel.text = [NSString stringWithFormat:@"%02u", [_news indexOfObject:entry] + 1];
+    UIColor *borderGray = [UIColor colorWithRed:246.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1.0f];
+    [cell.contentView.layer setBorderColor:borderGray.CGColor];
+    [cell.contentView.layer setBorderWidth:0.5f];
+
     return cell;
 }
 
@@ -158,6 +169,7 @@
         [UIView animateWithDuration:0.1 animations:^{
             self.rightShadowView.alpha = 1.0;
         }];
+        [self.rightTable setUserInteractionEnabled:NO];
     }
 
     if ([scrollView isEqual:self.rightTable]) {
@@ -165,6 +177,7 @@
         [UIView animateWithDuration:0.1 animations:^{
             self.leftShadowView.alpha = 1.0;
         }];
+        [self.leftTable setUserInteractionEnabled:NO];
     }
 }
 
@@ -186,6 +199,33 @@
             self.leftShadowView.hidden = YES;
         }];
     }
+}
+
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if ((scrollView.tracking || scrollView.dragging || scrollView.decelerating) && scrollView.userInteractionEnabled) {
+        UITableView *anotherTableView = [scrollView isEqual:self.rightTable] ? self.leftTable : self.rightTable;
+        NSMutableArray *offsetQueue = [scrollView isEqual:self.rightTable] ? _offsetQueueLeft : _offsetQueueRight;
+
+        [offsetQueue addObject:[NSValue valueWithCGPoint:scrollView.contentOffset]];
+        if ([offsetQueue count] > 4) {
+            CGPoint newOffset = [(NSValue *)offsetQueue[0] CGPointValue];
+            [offsetQueue removeObjectAtIndex:0];
+            [anotherTableView setContentOffset:newOffset];
+        }
+    }
+}
+
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    UITableView *anotherTableView = [scrollView isEqual:self.rightTable] ? self.leftTable : self.rightTable;
+    NSMutableArray *offsetQueue = [scrollView isEqual:self.rightTable] ? _offsetQueueLeft : _offsetQueueRight;
+
+    [anotherTableView setContentOffset:scrollView.contentOffset animated:YES];
+    [offsetQueue removeAllObjects];
+    [anotherTableView setUserInteractionEnabled:YES];
 }
 
 @end

@@ -10,6 +10,7 @@
 #import "NLStorage.h"
 #import "NLScreen.h"
 #import "NLMainMenuController.h"
+#import "NSAttributedString+Kerning.h"
 
 
 @implementation NLStaticScreenViewController
@@ -37,7 +38,7 @@
     });
 
     if (screen != nil) {
-        self.titleLabel.text = [screen.fullname uppercaseString];
+        self.titleLabel.attributedText = [NSAttributedString kernedStringForString:[screen.fullname uppercaseString]];
         [self.webView loadHTMLString:screen.content baseURL:[NSURL URLWithString:@"http://"]];
     } else {
         self.titleLabel.text = @"";

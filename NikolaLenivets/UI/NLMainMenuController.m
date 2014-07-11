@@ -57,12 +57,25 @@ enum {
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    // Need to set fonts *before* the view is displayed
+    self.nikolaLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:16];
+    self.lenivetsLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:16];
+
+    for (UIView *v in self.menuView.subviews) {
+        if ([v isKindOfClass:[UIButton class]]) {
+            UIButton *btn = (UIButton *)v;
+            btn.titleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:16];
+        }
+    }
+
     [self showMenu];
 }
 
 
 - (void)showMenu
 {
+    [self updateMenuState];
     [self.contentView showOrigamiTransitionWith:self.menuView
                            NumberOfFolds:1
                                 Duration:FOLD_DURATION
@@ -70,23 +83,12 @@ enum {
                               completion:^(BOOL finished) {
                                   NSLog(@"Finished animation");
                               }];
-    [self updateMenuState];
 }
 
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    self.nikolaLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:16];
-    self.lenivetsLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:16];
-    
-    for (UIView *v in self.menuView.subviews) {
-        if ([v isKindOfClass:[UIButton class]]) {
-            UIButton *btn = (UIButton *)v;
-            btn.titleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:16];
-        }
-    }
 }
 
 
@@ -156,7 +158,7 @@ enum {
 
 - (void)headingUpdated:(NSNotification *)notification
 {
-    self.compass.transform = [[NLLocationManager sharedInstance] compassTransform];;
+    self.compass.transform = [[NLLocationManager sharedInstance] compassTransform];
 }
 
 @end

@@ -21,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet DTAttributedLabel *previewLabel;
 @property (weak, nonatomic) IBOutlet AsyncImageView *thumbnail;
 @property (weak, nonatomic) IBOutlet UILabel *unreadIndicator;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *thumbnailHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *thumbnailBottomMargin;
 
 + (CGFloat)heightForCellWithEntry:(NLNewsEntry *)entry;
 + (CGFloat)heightForCellWithEvent:(NLEvent *)event;

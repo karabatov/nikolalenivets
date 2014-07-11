@@ -17,6 +17,7 @@
 @property (strong, nonatomic) IBOutlet UIView *placeDetailsMenu;
 @property (weak, nonatomic) IBOutlet UILabel *placeName;
 @property (weak, nonatomic) IBOutlet UILabel *distanceToPlace;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 - (IBAction)zoomIn:(id)sender;
 - (IBAction)zoomOut:(id)sender;
