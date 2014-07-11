@@ -46,10 +46,8 @@
              success:^(AFHTTPRequestOperation *op, id response) {
                  [self populateWithDictionary:response];
                  _lastDownloadDate = [NSDate date];
-                 NSData *cachedModel = [NSKeyedArchiver archivedDataWithRootObject:self];
-                 [defaults setObject:cachedModel forKey:CACHED_MODEL];
                  [defaults setObject:response forKey:CACHED_JSON];
-                 [defaults synchronize];
+                 [self archive];
                  [[NSNotificationCenter defaultCenter] postNotificationName:STORAGE_DID_UPDATE object:self];
              }
              failure:^(AFHTTPRequestOperation *op, NSError *error) {
@@ -58,6 +56,7 @@
                  // Where does it come from if we have never loaded? Useful only if unarchive failed.
                  NSDictionary *cachedJSON = [defaults objectForKey:CACHED_JSON];
                  [self populateWithDictionary:cachedJSON];
+                 [self archive];
                  [[NSNotificationCenter defaultCenter] postNotificationName:STORAGE_DID_UPDATE object:self];
              }];
     } else {
@@ -67,9 +66,7 @@
              success:^(AFHTTPRequestOperation *operation, id responseObject) {
                  [self updateWithDictionary:responseObject];
                  _lastDownloadDate = [NSDate date];
-                 NSData *cachedModel = [NSKeyedArchiver archivedDataWithRootObject:self];
-                 [defaults setObject:cachedModel forKey:CACHED_MODEL];
-                 [defaults synchronize];
+                 [self archive];
                  [[NSNotificationCenter defaultCenter] postNotificationName:STORAGE_DID_UPDATE object:self];
              }
              failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -284,6 +281,15 @@
     })];
 
     NSLog(@"Parsing finished");
+}
+
+
+- (void)archive
+{
+    NSData *cachedModel = [NSKeyedArchiver archivedDataWithRootObject:self];
+    [[NSUserDefaults standardUserDefaults] setObject:cachedModel forKey:CACHED_MODEL];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    NSLog(@"Model archived.");
 }
 
 

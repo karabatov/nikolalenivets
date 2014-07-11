@@ -70,4 +70,9 @@
  */
 - (void)populateWithDictionary:(NSDictionary *)jsonDictionary;
 
+/**
+ Cache current model state to disk.
+ */
+- (void)archive;
+
 @end

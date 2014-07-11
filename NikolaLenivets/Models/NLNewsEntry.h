@@ -16,7 +16,7 @@
 @property (strong, nonatomic) NSString *pubdate;
 @property (strong, nonatomic) NSArray *images;
 @property (strong, nonatomic) NSString *thumbnail;
-
+@property (nonatomic) NLItemStatus itemStatus;
 
 - (NSDate *)pubDate;
 

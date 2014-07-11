@@ -34,6 +34,28 @@
 }
 
 
+- (void)setUnreadStatus:(NLItemStatus)status
+{
+    switch (status) {
+        case NLItemStatusNew:
+            [self.unreadIndicator setTextColor:[UIColor colorWithRed:255.0f green:127.0f/255.0f blue:127.0f/255.0f alpha:1.0f]];
+            [self.unreadIndicator setHidden:NO];
+            break;
+        case NLItemStatusUnread:
+            [self.unreadIndicator setTextColor:[UIColor colorWithRed:199.0f/255.0f green:199.0f/255.0f blue:199.0f/255.0f alpha:1.0f]];
+            [self.unreadIndicator setHidden:NO];
+            break;
+        case NLItemStatusRead:
+            [self.unreadIndicator setTextColor:[UIColor colorWithRed:199.0f/255.0f green:199.0f/255.0f blue:199.0f/255.0f alpha:1.0f]];
+            [self.unreadIndicator setHidden:YES];
+            break;
+
+        default:
+            break;
+    }
+}
+
+
 - (void)populateFromNewsEntry:(NLNewsEntry *)entry
 {
     _entry = entry;
@@ -52,6 +74,7 @@
         self.thumbnail.imageURL = [NSURL URLWithString:_entry.thumbnail];
     }
     self.dateLabel.text = [[[_entry pubDate] stringWithFormat:DefaultDateFormat] uppercaseString];
+    [self setUnreadStatus:entry.itemStatus];
 }
 
 

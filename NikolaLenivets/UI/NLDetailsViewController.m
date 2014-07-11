@@ -99,6 +99,7 @@ typedef enum {
             content = _entry.content;
             date = [[_entry pubDate] stringWithFormat:DefaultDateFormat];
             indexNumber = [[[NLStorage sharedInstance] news] indexOfObject:_entry];
+            [self setUnreadStatus:_entry.itemStatus];
             break;
         }
         case ShowingEvent: {
@@ -146,6 +147,45 @@ typedef enum {
     }
 
     self.dateLabel.text = date;
+}
+
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    switch ([self mode]) {
+        case ShowingNewsEntry:
+            if (_entry.itemStatus == NLItemStatusNew || _entry.itemStatus == NLItemStatusUnread) {
+                _entry.itemStatus = NLItemStatusRead;
+                [self setUnreadStatus:_entry.itemStatus];
+                [[NLStorage sharedInstance] archive];
+            }
+            break;
+
+        default:
+            break;
+    }
+}
+
+
+- (void)setUnreadStatus:(NLItemStatus)status
+{
+    switch (status) {
+        case NLItemStatusNew:
+            [self.unreadIndicator setTextColor:[UIColor colorWithRed:255.0f green:127.0f/255.0f blue:127.0f/255.0f alpha:1.0f]];
+            [self.unreadIndicator setHidden:NO];
+            break;
+        case NLItemStatusUnread:
+            [self.unreadIndicator setTextColor:[UIColor colorWithRed:199.0f/255.0f green:199.0f/255.0f blue:199.0f/255.0f alpha:1.0f]];
+            [self.unreadIndicator setHidden:NO];
+            break;
+        case NLItemStatusRead:
+            [self.unreadIndicator setTextColor:[UIColor colorWithRed:199.0f/255.0f green:199.0f/255.0f blue:199.0f/255.0f alpha:1.0f]];
+            [self.unreadIndicator setHidden:YES];
+            break;
+
+        default:
+            break;
+    }
 }
 
 
