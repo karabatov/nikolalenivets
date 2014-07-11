@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "DCKeyValueObjectMapping.h"
 
-@interface NLModel : NSObject
+@interface NLModel : NSObject <NSSecureCoding>
 
 @property (strong, nonatomic) NSNumber *id;
 

@@ -18,4 +18,37 @@
     return date;
 }
 
+
+#pragma mark - Secure Coding
+
+- (void)encodeWithCoder:(NSCoder *)coder
+{
+    [super encodeWithCoder:coder];
+    [coder encodeObject:_title forKey:@"title"];
+    [coder encodeObject:_content forKey:@"content"];
+    [coder encodeObject:_pubdate forKey:@"pubdate"];
+    [coder encodeObject:_images forKey:@"images"];
+    [coder encodeObject:_thumbnail forKey:@"thumbnail"];
+}
+
+
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        _title = [coder decodeObjectOfClass:[NSString class] forKey:@"title"];
+        _content = [coder decodeObjectOfClass:[NSString class] forKey:@"content"];
+        _pubdate = [coder decodeObjectOfClass:[NSString class] forKey:@"pubdate"];
+        _images = [coder decodeObjectOfClass:[NSArray class] forKey:@"images"];
+        _thumbnail = [coder decodeObjectOfClass:[NSString class] forKey:@"thumbnail"];
+    }
+    return self;
+}
+
+
++ (BOOL)supportsSecureCoding
+{
+    return YES;
+}
+
 @end

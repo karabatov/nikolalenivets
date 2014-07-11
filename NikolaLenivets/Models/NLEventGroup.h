@@ -10,14 +10,13 @@
 
 @interface NLEventGroup : NLModel
 
-@property (strong, nonatomic) NSNumber *id;
 @property (strong, nonatomic) NSString *ticketprice;
 @property (strong, nonatomic) NSString *startdate;
 @property (strong, nonatomic) NSString *enddate;
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *poster;
 @property (strong, nonatomic) NSNumber *order;
-@property (strong, nonatomic) NSArray *events;
+@property (strong, nonatomic) NSMutableArray *events;
 
 
 @end
