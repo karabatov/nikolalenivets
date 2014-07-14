@@ -37,6 +37,7 @@
     [coder encodeObject:_instagram forKey:@"instagram"];
     [coder encodeObject:_images forKey:@"images"];
     [coder encodeObject:_groups forKey:@"groups"];
+    [coder encodeInteger:_itemStatus forKey:@"itemstatus"];
 }
 
 
@@ -56,6 +57,7 @@
         _instagram = [coder decodeObjectOfClass:[NSString class] forKey:@"instagram"];
         _images = [coder decodeObjectOfClass:[NSArray class] forKey:@"images"];
         _groups = [coder decodeObjectOfClass:[NSArray class] forKey:@"groups"];
+        _itemStatus = [coder decodeIntegerForKey:@"itemstatus"];
     }
     return self;
 }

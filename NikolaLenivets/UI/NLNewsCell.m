@@ -96,6 +96,7 @@
         self.thumbnail.imageURL = [NSURL URLWithString:_event.thumbnail];
     }
     self.dateLabel.text = [[[_event startDate] stringWithFormat:DefaultDateFormat] uppercaseString];
+    [self setUnreadStatus:event.itemStatus];
 }
 
 

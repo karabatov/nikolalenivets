@@ -127,7 +127,7 @@ typedef enum {
     _textParts = [self textParts:content];
 
     if (indexNumber > -1) {
-        self.countView.text = [NSString stringWithFormat:@"%02ld", indexNumber + 1];
+        self.countView.text = [NSString stringWithFormat:@"%02ld", (long)indexNumber + 1];
     } else {
         if ([self mode] == ShowingPlace) {
             if (_currentLocation) {
@@ -157,6 +157,14 @@ typedef enum {
             if (_entry.itemStatus == NLItemStatusNew || _entry.itemStatus == NLItemStatusUnread) {
                 _entry.itemStatus = NLItemStatusRead;
                 [self setUnreadStatus:_entry.itemStatus];
+                [[NLStorage sharedInstance] archive];
+            }
+            break;
+
+        case ShowingEvent:
+            if (_event.itemStatus == NLItemStatusNew || _event.itemStatus == NLItemStatusUnread) {
+                _event.itemStatus = NLItemStatusRead;
+                [self setUnreadStatus:_event.itemStatus];
                 [[NLStorage sharedInstance] archive];
             }
             break;
