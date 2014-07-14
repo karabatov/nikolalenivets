@@ -131,7 +131,7 @@
                     NLModel *indexItem = _.find(_index.events, ^BOOL (NLModel *item) {
                         return [item.id isEqualToNumber:entry.id];
                     });
-                    return indexItem ? YES : NO;
+                    return indexItem ? NO : YES;
                 }).unwrap];
         });
 
