@@ -31,6 +31,9 @@
     [self.previewLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.thumbnail setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.unreadIndicator setTranslatesAutoresizingMaskIntoConstraints:NO];
+
+    self.previewLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    self.previewLabel.layoutFrameHeightIsConstrainedByBounds = YES;
 }
 
 
@@ -85,7 +88,11 @@
     paragraphStyle.hyphenationFactor = 0.1f;
     NSMutableAttributedString *attributedTitle = [[NSMutableAttributedString alloc] initWithString:_event.title attributes:@{ NSParagraphStyleAttributeName : paragraphStyle }];
     self.titleLabel.attributedText = attributedTitle;
-    self.previewLabel.attributedString = [self attributedStringForString:_event.content];
+    if ([_event.summary isEqualToString:@""]) {
+        self.previewLabel.attributedString = [self attributedStringForString:_event.content];
+    } else {
+        self.previewLabel.attributedString = [self attributedStringForString:_event.summary];
+    }
     if ([_event.thumbnail isEqualToString:@""]) {
         self.thumbnail.image = nil;
         self.thumbnailHeight.constant = 0.0f;
@@ -143,6 +150,7 @@
     NSData *htmlData = [htmlString dataUsingEncoding:NSUTF8StringEncoding];
     NSMutableAttributedString *attributed = [[NSMutableAttributedString alloc] initWithHTMLData:htmlData
                                                                              documentAttributes:nil];
+    CFStringTrimWhitespace((CFMutableStringRef)[attributed mutableString]);
     NSRange range = {0, attributed.length};
     [attributed addAttribute:NSFontAttributeName value:[UIFont fontWithName:NLSerifFont size:12] range:range];
     
