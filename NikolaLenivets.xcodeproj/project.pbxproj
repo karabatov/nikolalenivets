@@ -79,6 +79,7 @@
 		D19C0425196EF44C006A086B /* map-minus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19C0422196EF44C006A086B /* map-minus@2x.png */; };
 		D19C0426196EF44D006A086B /* map-locate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19C0423196EF44C006A086B /* map-locate@2x.png */; };
 		D19C0427196EF44D006A086B /* map-plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19C0424196EF44C006A086B /* map-plus@2x.png */; };
+		D19C04331973FF7E006A086B /* NLAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D19C04321973FF7E006A086B /* NLAttributedLabel.m */; };
 		D1B7ADD0196BCBCE0057C1E2 /* MonoCondensedC.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1B7ADCF196BCBCE0057C1E2 /* MonoCondensedC.otf */; };
 		D1B7ADD5196BCF9A0057C1E2 /* MonoCondensedCBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1B7ADD4196BCF9A0057C1E2 /* MonoCondensedCBold.otf */; };
 /* End PBXBuildFile section */
@@ -196,6 +197,8 @@
 		D19C0422196EF44C006A086B /* map-minus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-minus@2x.png"; sourceTree = "<group>"; };
 		D19C0423196EF44C006A086B /* map-locate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-locate@2x.png"; sourceTree = "<group>"; };
 		D19C0424196EF44C006A086B /* map-plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-plus@2x.png"; sourceTree = "<group>"; };
+		D19C04311973FF7E006A086B /* NLAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLAttributedLabel.h; path = UI/NLAttributedLabel.h; sourceTree = "<group>"; };
+		D19C04321973FF7E006A086B /* NLAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLAttributedLabel.m; path = UI/NLAttributedLabel.m; sourceTree = "<group>"; };
 		D1B7ADCF196BCBCE0057C1E2 /* MonoCondensedC.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MonoCondensedC.otf; sourceTree = "<group>"; };
 		D1B7ADD4196BCF9A0057C1E2 /* MonoCondensedCBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MonoCondensedCBold.otf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -386,6 +389,8 @@
 			isa = PBXGroup;
 			children = (
 				4F8A13041921D5C700F3DA96 /* NLNewsCellView.xib */,
+				D19C04311973FF7E006A086B /* NLAttributedLabel.h */,
+				D19C04321973FF7E006A086B /* NLAttributedLabel.m */,
 				4F8A13061921D6CE00F3DA96 /* NLNewsCell.h */,
 				4F8A13071921D6CE00F3DA96 /* NLNewsCell.m */,
 			);
@@ -686,6 +691,7 @@
 				4F390E8618ED753700131934 /* NLPlace.m in Sources */,
 				4F10D2AF19374ABB00F6658D /* NLStaticScreenViewController.m in Sources */,
 				D17177B3196D047200521D72 /* NSAttributedString+Kerning.m in Sources */,
+				D19C04331973FF7E006A086B /* NLAttributedLabel.m in Sources */,
 				4F22FD801936F4360075C1A0 /* NLEventsListControllerViewController.m in Sources */,
 				4F0A8BC9195AE58400D59268 /* UIView+Origami.m in Sources */,
 				4F0A8BCE195AFEAA00D59268 /* NLSplashViewController.m in Sources */,

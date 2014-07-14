@@ -33,7 +33,9 @@
     [self.unreadIndicator setTranslatesAutoresizingMaskIntoConstraints:NO];
 
     self.previewLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    self.previewLabel.layoutFrameHeightIsConstrainedByBounds = YES;
+    self.previewLabel.layoutFrameHeightIsConstrainedByBounds = NO;
+    [self.contentView sendSubviewToBack:self.previewLabel];
+    [self setClipsToBounds:YES];
 }
 
 
@@ -153,8 +155,22 @@
     CFStringTrimWhitespace((CFMutableStringRef)[attributed mutableString]);
     NSRange range = {0, attributed.length};
     [attributed addAttribute:NSFontAttributeName value:[UIFont fontWithName:NLSerifFont size:12] range:range];
-    
-    return attributed;
+    __block NSRange trimmedRange = {0, 0};
+    [[attributed string] enumerateSubstringsInRange:range options:NSStringEnumerationBySentences usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
+        NSUInteger last = substringRange.location + substringRange.length;
+        trimmedRange = NSMakeRange(0, last);
+        if (last > 50) {
+            *stop = YES;
+        }
+    }];
+
+    NSRange zero = {0, 0};
+    if (!NSEqualRanges(trimmedRange, zero)) {
+        NSAttributedString *trimmed = [attributed attributedSubstringFromRange:trimmedRange];
+        return trimmed;
+    } else {
+        return attributed;
+    }
 }
 
 @end
