@@ -122,7 +122,9 @@
             return;
         }
         NLDetailsViewController *details = [[NLDetailsViewController alloc] initWithPlace:place currentLocation:_userLoc];
-        [self presentViewController:details animated:YES completion:^{}];
+        [self presentViewController:details animated:YES completion:^{
+            [self.collectionView reloadItemsAtIndexPaths:@[ indexPath ]];
+        }];
     }
 }
 

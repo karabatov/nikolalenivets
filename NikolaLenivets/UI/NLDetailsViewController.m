@@ -107,6 +107,7 @@ typedef enum {
             content = _event.content;
             date = [[_event startDate] stringWithFormat:DefaultDateFormat];
             self.detailsViewTitleLabel.text = @"СОБЫТИЯ";
+            [self setUnreadStatus:_event.itemStatus];
             indexNumber = -1;
             break;
         }
@@ -114,6 +115,7 @@ typedef enum {
             title = _place.title;
             content = _place.content;
             self.detailsViewTitleLabel.text = @"МЕСТА";
+            [self setUnreadStatus:_place.itemStatus];
             indexNumber = -1; //[[[NLStorage sharedInstance] places] indexOfObject:_place];
             break;
         }
@@ -165,6 +167,14 @@ typedef enum {
             if (_event.itemStatus == NLItemStatusNew || _event.itemStatus == NLItemStatusUnread) {
                 _event.itemStatus = NLItemStatusRead;
                 [self setUnreadStatus:_event.itemStatus];
+                [[NLStorage sharedInstance] archive];
+            }
+            break;
+
+        case ShowingPlace:
+            if (_place.itemStatus == NLItemStatusNew || _place.itemStatus == NLItemStatusUnread) {
+                _place.itemStatus = NLItemStatusRead;
+                [self setUnreadStatus:_place.itemStatus];
                 [[NLStorage sharedInstance] archive];
             }
             break;
