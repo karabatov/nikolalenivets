@@ -75,4 +75,12 @@
  */
 - (void)archive;
 
+/**
+ Number of unread items in a given array.
+ 
+ @param array Array to search for unread items.
+ @return Number of unread items.
+ */
+- (NSUInteger)unreadCountInArray:(NSArray *)array;
+
 @end

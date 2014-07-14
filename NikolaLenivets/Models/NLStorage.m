@@ -299,6 +299,38 @@
 }
 
 
+- (NSUInteger)unreadCountInArray:(NSArray *)array
+{
+    NSUInteger count = 0;
+    NLItemStatus status = NLItemStatusRead;
+    for (id item in array) {
+        if ([item class] == [NLNewsEntry class]) {
+            status = ((NLNewsEntry *)item).itemStatus;
+            if (status == NLItemStatusNew || status == NLItemStatusUnread) {
+                count++;
+            }
+        } else if ([item class] == [NLEventGroup class]) {
+            for (NLEvent *event in ((NLEventGroup *)item).events) {
+                if (event.itemStatus == NLItemStatusNew || event.itemStatus == NLItemStatusUnread) {
+                    count++;
+                }
+            }
+        } else if ([item class] == [NLPlace class]) {
+            status = ((NLPlace *)item).itemStatus;
+            if (status == NLItemStatusNew || status == NLItemStatusUnread) {
+                count++;
+            }
+        } else if ([item class] == [NLEvent class]) {
+            status = ((NLEvent *)item).itemStatus;
+            if (status == NLItemStatusNew || status == NLItemStatusUnread) {
+                count++;
+            }
+        }
+    }
+    return count;
+}
+
+
 #pragma mark - Secure Coding
 
 - (void)encodeWithCoder:(NSCoder *)coder

@@ -12,6 +12,7 @@
 #import "NLItemsListController.h"
 #import "NLDetailsViewController.h"
 #import "NSAttributedString+Kerning.h"
+#import "NLStorage.h"
 
 @implementation NLEventsListControllerViewController
 {
@@ -40,6 +41,14 @@
 
 #pragma mark - Grouping
 
+
+- (void)updateUnreadCount
+{
+    self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)[[NLStorage sharedInstance] unreadCountInArray:_group.events]];
+    // TODO: Animate title bar folding animation if the counter is “00”.
+}
+
+
 - (void)prepareArrays
 {
     _leftGroup = [NSMutableArray new];
@@ -54,7 +63,7 @@
             [_rightGroup addObject:events[i]];
         }
     }
-    self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)events.count];
+    [self updateUnreadCount];
     [self.leftTable reloadData];
     [self.rightTable reloadData];
 }
@@ -116,7 +125,10 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NLEvent *event = [self entryForTable:tableView indexPath:indexPath];
     _details = [[NLDetailsViewController alloc] initWithEvent:event];
-    [self presentViewController:_details animated:YES completion:^{}];
+    [self presentViewController:_details animated:YES completion:^{
+        [tableView reloadRowsAtIndexPaths:@[ indexPath ] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self updateUnreadCount];
+    }];
 }
 
 
