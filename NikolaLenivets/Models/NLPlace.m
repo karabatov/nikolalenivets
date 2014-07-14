@@ -44,6 +44,7 @@
     [coder encodeObject:_foursquare forKey:@"foursquare"];
     [coder encodeObject:_instagram forKey:@"instagram"];
     [coder encodeObject:_images forKey:@"images"];
+    [coder encodeInteger:_itemStatus forKey:@"itemstatus"];
 }
 
 
@@ -59,6 +60,7 @@
         _foursquare = [coder decodeObjectOfClass:[NSString class] forKey:@"foursquare"];
         _instagram = [coder decodeObjectOfClass:[NSString class] forKey:@"instagram"];
         _images = [coder decodeObjectOfClass:[NSString class] forKey:@"images"];
+        _itemStatus = [coder decodeIntegerForKey:@"itemstatus"];
     }
     return self;
 }

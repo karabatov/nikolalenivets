@@ -89,7 +89,7 @@
     _.array(_news)
         .each(^(NLNewsEntry *entry) {
             NLModel *indexItem = _.find(_index.news, ^BOOL (NLModel *item) {
-                return item.id == entry.id;
+                return [item.id isEqualToNumber:entry.id];
             });
             if (!indexItem) {
                 [_news removeObject:entry];
@@ -103,17 +103,21 @@
     _.array(_places)
         .each(^(NLPlace *entry) {
             NLModel *indexItem = _.find(_index.places, ^BOOL (NLModel *item) {
-                return item.id == entry.id;
+                return [item.id isEqualToNumber:entry.id];
             });
             if (!indexItem) {
                 [_places removeObject:entry];
+            } else {
+                if (entry.itemStatus == NLItemStatusNew) {
+                    entry.itemStatus = NLItemStatusUnread;
+                }
             }
         });
 
     _.array(_teasers)
         .each(^(NLTeaser *entry) {
             NLModel *indexItem = _.find(_index.teasers, ^BOOL (NLModel *item) {
-                return item.id == entry.id;
+                return [item.id isEqualToNumber:entry.id];
             });
             if (!indexItem) {
                 [_teasers removeObject:entry];
@@ -125,7 +129,7 @@
             group.events = [NSMutableArray arrayWithArray:_.array(group.events)
                 .reject(^BOOL (NLEvent *entry) {
                     NLModel *indexItem = _.find(_index.events, ^BOOL (NLModel *item) {
-                        return item.id == entry.id;
+                        return [item.id isEqualToNumber:entry.id];
                     });
                     return indexItem ? YES : NO;
                 }).unwrap];
@@ -134,7 +138,7 @@
     _.array(_screens)
         .each(^(NLScreen *entry) {
             NLModel *indexItem = _.find(_index.screens, ^BOOL (NLModel *item) {
-                return item.id == entry.id;
+                return [item.id isEqualToNumber:entry.id];
             });
             if (!indexItem) {
                 [_screens removeObject:entry];
@@ -144,7 +148,7 @@
     _.array(_galleries)
         .each(^(NLGallery *entry) {
             NLModel *indexItem = _.find(_index.galleries, ^BOOL (NLModel *item) {
-                return item.id == entry.id;
+                return [item.id isEqualToNumber:entry.id];
             });
             if (!indexItem) {
                 [_galleries removeObject:entry];
@@ -162,7 +166,7 @@
         })
         .each(^(NLNewsEntry *entry) {
             NLNewsEntry *oldNews = _.find(_news, ^BOOL (NLNewsEntry *item) {
-                return item.id == entry.id;
+                return [item.id isEqualToNumber:entry.id];
             });
             if (oldNews) {
                 NSUInteger newsIndex = _.indexOf(_news, oldNews);
@@ -178,7 +182,7 @@
         })
         .each(^(NLPlace *entry) {
             NLPlace *oldPlace = _.find(_places, ^BOOL (NLPlace *item) {
-                return item.id == entry.id;
+                return [item.id isEqualToNumber:entry.id];
             });
             if (oldPlace) {
                 NSUInteger placeIndex = _.indexOf(_places, oldPlace);
@@ -194,7 +198,7 @@
         })
         .each(^(NLTeaser *entry) {
             NLTeaser *oldTeaser = _.find(_teasers, ^BOOL (NLTeaser *item) {
-                return item.id == entry.id;
+                return [item.id isEqualToNumber:entry.id];
             });
             if (oldTeaser) {
                 NSUInteger teaserIndex = _.indexOf(_teasers, oldTeaser);
@@ -210,7 +214,7 @@
         })
         .each(^(NLEventGroup *entry) {
             NLEventGroup *oldEventGroup = _.find(_eventGroups, ^BOOL (NLEventGroup *item) {
-                return item.id == entry.id;
+                return [item.id isEqualToNumber:entry.id];
             });
             if (oldEventGroup) {
                 NSUInteger eventGroupIndex = _.indexOf(_eventGroups, oldEventGroup);
@@ -226,7 +230,7 @@
         })
         .each(^(NLScreen *entry) {
             NLScreen *oldScreen = _.find(_screens, ^BOOL (NLScreen *item) {
-                return item.id == entry.id;
+                return [item.id isEqualToNumber:entry.id];
             });
             if (oldScreen) {
                 NSUInteger screenIndex = _.indexOf(_screens, oldScreen);
@@ -242,7 +246,7 @@
         })
         .each(^(NLGallery *entry) {
             NLGallery *oldGallery = _.find(_galleries, ^BOOL (NLGallery *item) {
-                return item.id == entry.id;
+                return [item.id isEqualToNumber:entry.id];
             });
             if (oldGallery) {
                 NSUInteger galleryIndex = _.indexOf(_galleries, oldGallery);
