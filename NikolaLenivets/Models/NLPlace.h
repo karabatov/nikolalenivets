@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSString *foursquare;
 @property (strong, nonatomic) NSString *instagram;
 @property (strong, nonatomic) NSString *images;
+@property (nonatomic) NLItemStatus itemStatus;
 
 - (CLLocation *)location;
 - (CLLocationDistance)distanceFromLocation:(CLLocation *)loc;

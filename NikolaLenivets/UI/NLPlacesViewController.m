@@ -50,10 +50,16 @@
 }
 
 
+- (void)updateUnreadCount
+{
+    self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)[[NLStorage sharedInstance] unreadCountInArray:_places]];
+}
+
+
 - (void)updatePlaces
 {
     _places = [[NLStorage sharedInstance] places];
-    self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)_places.count];
+    [self updateUnreadCount];
 
     NSMutableArray *pairs = [NSMutableArray new];
 
@@ -105,6 +111,7 @@
     if (indexPath.section < _placesPairs.count) {
         NLPlace *place = [self placeForIndexPath:indexPath];
         [cell populateWithPlace:place];
+        // TODO: km, m and “You are here!”
         if (_userLoc) {
             CLLocationDistance distance = [place distanceFromLocation:_userLoc];
             cell.distanceLabel.text = [NSString stringWithFormat:@"%.1f КМ", distance / 1000];
@@ -122,7 +129,10 @@
             return;
         }
         NLDetailsViewController *details = [[NLDetailsViewController alloc] initWithPlace:place currentLocation:_userLoc];
-        [self presentViewController:details animated:YES completion:^{}];
+        [self presentViewController:details animated:YES completion:^{
+            [self.collectionView reloadItemsAtIndexPaths:@[ indexPath ]];
+            [self updateUnreadCount];
+        }];
     }
 }
 

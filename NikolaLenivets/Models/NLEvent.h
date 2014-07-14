@@ -22,6 +22,7 @@
 @property (strong, nonatomic) NSString *instagram;
 @property (strong, nonatomic) NSArray *images;
 @property (strong, nonatomic) NSArray *groups;
+@property (nonatomic) NLItemStatus itemStatus;
 
 - (NSDate *)startDate;
 

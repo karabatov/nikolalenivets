@@ -16,5 +16,6 @@
 @property (strong, nonatomic) NSArray *teasers;
 @property (strong, nonatomic) NSArray *places;
 @property (strong, nonatomic) NSArray *screens;
+@property (strong, nonatomic) NSArray *galleries;
 
 @end

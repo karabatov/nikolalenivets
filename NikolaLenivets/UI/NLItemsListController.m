@@ -76,7 +76,7 @@
             [_rightNews addObject:news[i]];
         }
     }
-    self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)news.count];
+    self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)[[NLStorage sharedInstance] unreadCountInArray:news]];
     [self.leftTable reloadData];
     [self.rightTable reloadData];
 }
@@ -124,7 +124,7 @@
     
     NLNewsEntry *entry = [self entryForTable:tableView indexPath:indexPath];
     [cell populateFromNewsEntry:entry];
-    cell.counterLabel.text = [NSString stringWithFormat:@"%02u", [_news indexOfObject:entry] + 1];
+    cell.counterLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)[_news indexOfObject:entry] + 1];
     UIColor *borderGray = [UIColor colorWithRed:246.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1.0f];
     [cell.contentView.layer setBorderColor:borderGray.CGColor];
     [cell.contentView.layer setBorderWidth:0.5f];

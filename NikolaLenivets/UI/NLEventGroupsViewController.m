@@ -88,6 +88,7 @@
         _currentPage = 0;
     }
     [self fillContentForPage:_currentPage];
+    [self.eventDateDashLabel setTransform:CGAffineTransformMakeRotation(-M_PI_2)];
 }
 
 
@@ -157,7 +158,7 @@
     self.currentPageLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)(_currentPage + 1)];
     if (shouldFill) {
         NLEventGroup *group = _eventGroups[pageIndex];
-        self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)[group.events count]];
+        self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)(unsigned long)[[NLStorage sharedInstance] unreadCountInArray:group.events]];
 
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
         paragraphStyle.hyphenationFactor = 0.1f;

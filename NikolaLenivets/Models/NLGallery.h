@@ -11,7 +11,6 @@
 
 @interface NLImage : NLModel
 
-@property (strong, nonatomic) NSNumber *id;
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSString *content;
 @property (strong, nonatomic) NSString *image;
@@ -23,7 +22,6 @@
 
 @interface NLGallery : NLModel
 
-@property (strong, nonatomic) NSNumber *id;
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSString *shortcut;
 @property (strong, nonatomic) NSString *content;

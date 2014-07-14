@@ -148,11 +148,12 @@ enum {
 
 - (void)updateMenuState
 {
+    // TODO: Quick running count animation
     NLStorage *store = [NLStorage sharedInstance];
-    self.newsCounter.text = [NSString stringWithFormat:@"%02lu", (unsigned long)store.news.count];
-    self.eventsCounter.text = [NSString stringWithFormat:@"%02lu", (unsigned long)store.eventGroups.count];
+    self.newsCounter.text = [NSString stringWithFormat:@"%02lu", (unsigned long)[store unreadCountInArray:store.news]];
+    self.eventsCounter.text = [NSString stringWithFormat:@"%02lu", (unsigned long)[store unreadCountInArray:store.eventGroups]];
     self.mapCounter.text = @"00";
-    self.placesCounter.text = [NSString stringWithFormat:@"%02lu", (unsigned long)store.places.count];
+    self.placesCounter.text = [NSString stringWithFormat:@"%02lu", (unsigned long)[store unreadCountInArray:store.places]];
 }
 
 

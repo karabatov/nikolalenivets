@@ -32,6 +32,30 @@
         [self.activityIndicator stopAnimating];
         self.activityIndicator.hidden = YES;
     }];
+    [self setUnreadStatus:place.itemStatus];
 }
+
+
+- (void)setUnreadStatus:(NLItemStatus)status
+{
+    switch (status) {
+        case NLItemStatusNew:
+            [self.unreadIndicator setTextColor:[UIColor colorWithRed:255.0f green:127.0f/255.0f blue:127.0f/255.0f alpha:1.0f]];
+            [self.unreadIndicator setHidden:NO];
+            break;
+        case NLItemStatusUnread:
+            [self.unreadIndicator setTextColor:[UIColor colorWithRed:199.0f/255.0f green:199.0f/255.0f blue:199.0f/255.0f alpha:1.0f]];
+            [self.unreadIndicator setHidden:NO];
+            break;
+        case NLItemStatusRead:
+            [self.unreadIndicator setTextColor:[UIColor colorWithRed:199.0f/255.0f green:199.0f/255.0f blue:199.0f/255.0f alpha:1.0f]];
+            [self.unreadIndicator setHidden:YES];
+            break;
+
+        default:
+            break;
+    }
+}
+
 
 @end

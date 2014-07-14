@@ -12,13 +12,14 @@
 
 #import <DTCoreText.h>
 #import <AsyncImageView.h>
+#import "NLAttributedLabel.h"
 
 @interface NLNewsCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *counterLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet DTAttributedLabel *previewLabel;
+@property (weak, nonatomic) IBOutlet NLAttributedLabel *previewLabel;
 @property (weak, nonatomic) IBOutlet AsyncImageView *thumbnail;
 @property (weak, nonatomic) IBOutlet UILabel *unreadIndicator;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *thumbnailHeight;

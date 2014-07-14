@@ -14,6 +14,39 @@
 @implementation NLImage
 
 
+#pragma mark - Secure Coding
+
+- (void)encodeWithCoder:(NSCoder *)coder
+{
+    [super encodeWithCoder:coder];
+    [coder encodeObject:_title forKey:@"title"];
+    [coder encodeObject:_content forKey:@"content"];
+    [coder encodeObject:_image forKey:@"image"];
+    [coder encodeObject:_iscover forKey:@"iscover"];
+    [coder encodeObject:_order forKey:@"order"];
+}
+
+
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        _title = [coder decodeObjectOfClass:[NSString class] forKey:@"title"];
+        _content = [coder decodeObjectOfClass:[NSString class] forKey:@"content"];
+        _image = [coder decodeObjectOfClass:[NSString class] forKey:@"image"];
+        _iscover = [coder decodeObjectOfClass:[NSNumber class] forKey:@"iscover"];
+        _order = [coder decodeObjectOfClass:[NSNumber class] forKey:@"order"];
+    }
+    return self;
+}
+
+
++ (BOOL)supportsSecureCoding
+{
+    return YES;
+}
+
+
 @end
 
 
@@ -38,6 +71,37 @@
         return self.images.firstObject;
 
     return cover;
+}
+
+
+#pragma mark - Secure Coding
+
+- (void)encodeWithCoder:(NSCoder *)coder
+{
+    [super encodeWithCoder:coder];
+    [coder encodeObject:_title forKey:@"title"];
+    [coder encodeObject:_shortcut forKey:@"shortcut"];
+    [coder encodeObject:_content forKey:@"content"];
+    [coder encodeObject:_images forKey:@"images"];
+}
+
+
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        _title = [coder decodeObjectOfClass:[NSString class] forKey:@"title"];
+        _shortcut = [coder decodeObjectOfClass:[NSString class] forKey:@"shortcut"];
+        _content = [coder decodeObjectOfClass:[NSString class] forKey:@"content"];
+        _images = [coder decodeObjectOfClass:[NSArray class] forKey:@"images"];
+    }
+    return self;
+}
+
+
++ (BOOL)supportsSecureCoding
+{
+    return YES;
 }
 
 @end

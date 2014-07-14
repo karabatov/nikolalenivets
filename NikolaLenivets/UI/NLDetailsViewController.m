@@ -99,6 +99,7 @@ typedef enum {
             content = _entry.content;
             date = [[_entry pubDate] stringWithFormat:DefaultDateFormat];
             indexNumber = [[[NLStorage sharedInstance] news] indexOfObject:_entry];
+            [self setUnreadStatus:_entry.itemStatus];
             break;
         }
         case ShowingEvent: {
@@ -106,6 +107,7 @@ typedef enum {
             content = _event.content;
             date = [[_event startDate] stringWithFormat:DefaultDateFormat];
             self.detailsViewTitleLabel.text = @"СОБЫТИЯ";
+            [self setUnreadStatus:_event.itemStatus];
             indexNumber = -1;
             break;
         }
@@ -113,6 +115,7 @@ typedef enum {
             title = _place.title;
             content = _place.content;
             self.detailsViewTitleLabel.text = @"МЕСТА";
+            [self setUnreadStatus:_place.itemStatus];
             indexNumber = -1; //[[[NLStorage sharedInstance] places] indexOfObject:_place];
             break;
         }
@@ -126,7 +129,7 @@ typedef enum {
     _textParts = [self textParts:content];
 
     if (indexNumber > -1) {
-        self.countView.text = [NSString stringWithFormat:@"%02ld", indexNumber + 1];
+        self.countView.text = [NSString stringWithFormat:@"%02ld", (long)indexNumber + 1];
     } else {
         if ([self mode] == ShowingPlace) {
             if (_currentLocation) {
@@ -146,6 +149,61 @@ typedef enum {
     }
 
     self.dateLabel.text = date;
+}
+
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    switch ([self mode]) {
+        case ShowingNewsEntry:
+            if (_entry.itemStatus == NLItemStatusNew || _entry.itemStatus == NLItemStatusUnread) {
+                _entry.itemStatus = NLItemStatusRead;
+                [self setUnreadStatus:_entry.itemStatus];
+                [[NLStorage sharedInstance] archive];
+            }
+            break;
+
+        case ShowingEvent:
+            if (_event.itemStatus == NLItemStatusNew || _event.itemStatus == NLItemStatusUnread) {
+                _event.itemStatus = NLItemStatusRead;
+                [self setUnreadStatus:_event.itemStatus];
+                [[NLStorage sharedInstance] archive];
+            }
+            break;
+
+        case ShowingPlace:
+            if (_place.itemStatus == NLItemStatusNew || _place.itemStatus == NLItemStatusUnread) {
+                _place.itemStatus = NLItemStatusRead;
+                [self setUnreadStatus:_place.itemStatus];
+                [[NLStorage sharedInstance] archive];
+            }
+            break;
+
+        default:
+            break;
+    }
+}
+
+
+- (void)setUnreadStatus:(NLItemStatus)status
+{
+    switch (status) {
+        case NLItemStatusNew:
+            [self.unreadIndicator setTextColor:[UIColor colorWithRed:255.0f green:127.0f/255.0f blue:127.0f/255.0f alpha:1.0f]];
+            [self.unreadIndicator setHidden:NO];
+            break;
+        case NLItemStatusUnread:
+            [self.unreadIndicator setTextColor:[UIColor colorWithRed:199.0f/255.0f green:199.0f/255.0f blue:199.0f/255.0f alpha:1.0f]];
+            [self.unreadIndicator setHidden:NO];
+            break;
+        case NLItemStatusRead:
+            [self.unreadIndicator setTextColor:[UIColor colorWithRed:199.0f/255.0f green:199.0f/255.0f blue:199.0f/255.0f alpha:1.0f]];
+            [self.unreadIndicator setHidden:YES];
+            break;
+
+        default:
+            break;
+    }
 }
 
 
