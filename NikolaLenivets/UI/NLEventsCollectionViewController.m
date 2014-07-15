@@ -26,6 +26,7 @@
     __strong NSDate *_startDate;
     __strong NSDate *_endDate;
     __strong NSMutableArray *_eventsByDay;
+    __strong NSMutableDictionary *_sizeCache;
     NSInteger _days;
 }
 
@@ -199,10 +200,20 @@ static NSString *const reuseSectionId = @"collectionsection";
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake([UIScreen mainScreen].bounds.size.width / 2.0f, 315.0f);
-    // TODO: Implement cache
-    NLEvent *event = [self eventForIndexPath:indexPath];
-    CGSize cellSize = CGSizeMake([UIScreen mainScreen].bounds.size.width / 2.0f, [NLCollectionCell heightForCellWithEvent:event]);
+    if (!_sizeCache) {
+        _sizeCache = [[NSMutableDictionary alloc] init];
+    }
+    CGFloat height;
+    CGFloat width = [UIScreen mainScreen].bounds.size.width / 2.0f;
+    CGSize cellSize;
+    if (![_sizeCache objectForKey:indexPath]) {
+        NLEvent *event = [self eventForIndexPath:indexPath];
+        height = [NLCollectionCell heightForCellWithEvent:event];
+        [_sizeCache setObject:[NSNumber numberWithFloat:height] forKey:indexPath];
+    } else {
+        height = [[_sizeCache objectForKey:indexPath] floatValue];
+    }
+    cellSize = CGSizeMake(width, height);
     return cellSize;
 }
 
