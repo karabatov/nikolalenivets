@@ -52,9 +52,9 @@ static NSString *const reuseSectionId = @"collectionsection";
     self.view.frame = [UIScreen mainScreen].bounds;
     self.titleLabel.attributedText = [NSAttributedString kernedStringForString:@"СОБЫТИЯ"];
     self.itemsCountLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:9.0f];
-    NSUInteger unreadCount = [[NLStorage sharedInstance] unreadCountInArray:_group.events];
-    [self updateUnreadCountWithCount:unreadCount];
 
+    self.collectionView.dataSource = self;
+    self.collectionView.delegate = self;
     [self.collectionView registerNib:[UINib nibWithNibName:@"NLCollectionCellView" bundle:nil] forCellWithReuseIdentifier:reuseId];
     [self.collectionView registerClass:[NLSectionHeader class] forSupplementaryViewOfKind:CHTCollectionElementKindSectionHeader withReuseIdentifier:reuseSectionId];
     NLFlowLayout *layout = [[NLFlowLayout alloc] init];
@@ -65,34 +65,36 @@ static NSString *const reuseSectionId = @"collectionsection";
     layout.minimumColumnSpacing = 0;
     layout.minimumInteritemSpacing = 0;
     self.collectionView.collectionViewLayout = layout;
-    self.collectionView.dataSource = self;
-    self.collectionView.delegate = self;
     [self.collectionView setBackgroundColor:[UIColor whiteColor]];
+    NSUInteger unreadCount = [[NLStorage sharedInstance] unreadCountInArray:_group.events];
+    [self updateUnreadCountWithCount:unreadCount];
 }
 
 
 - (void)updateUnreadCountWithCount:(NSInteger)unreadCount
 {
-    self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)unreadCount];
     if (unreadCount == 0) {
-        [UIView animateWithDuration:0.25f animations:^{
-            self.titleBarHeight.constant = 52.0f;
-            [self.itemsCountLabel setTransform:CGAffineTransformMakeScale(0.1f, 0.1f)];
+        self.titleBarHeight.constant = 52.0f;
+        [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:10.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            [self.view layoutIfNeeded];
             self.itemsCountLabel.alpha = 0.0f;
         } completion:^(BOOL finished) {
             [self.itemsCountLabel setHidden:YES];
-            [self.itemsCountLabel setTransform:CGAffineTransformIdentity];
             self.itemsCountLabel.alpha = 1.0f;
+            self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)unreadCount];
         }];
     } else {
-        [self.itemsCountLabel setTransform:CGAffineTransformMakeScale(0.1f, 0.1f)];
-        self.itemsCountLabel.alpha = 0.0f;
-        [self.itemsCountLabel setHidden:NO];
-        [UIView animateWithDuration:0.25f animations:^{
-            self.titleBarHeight.constant = 64.0f;
+        self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)unreadCount];
+        self.titleBarHeight.constant = 64.0f;
+        [self.itemsCountLabel setTransform:CGAffineTransformMakeScale(0.05f, 0.05f)];
+        [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:10.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            [self.itemsCountLabel setHidden:NO];
             self.itemsCountLabel.alpha = 1.0f;
             [self.itemsCountLabel setTransform:CGAffineTransformIdentity];
-        } completion:NULL];
+            [self.view layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            //
+        }];
     }
 }
 
