@@ -31,6 +31,11 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 /**
+ Title bar height constraint.
+ */
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleBarHeight;
+
+/**
  `Double cheeseburger` menu button pressed.
  */
 - (IBAction)back:(id)sender;

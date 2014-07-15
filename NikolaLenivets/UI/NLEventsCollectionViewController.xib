@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="collectionView" destination="XbA-Pp-edB" id="qSP-S2-BlR"/>
                 <outlet property="itemsCountLabel" destination="B6Y-US-Vb3" id="fJg-bd-XRt"/>
+                <outlet property="titleBarHeight" destination="yDA-6u-c79" id="d1E-0F-woV"/>
                 <outlet property="titleLabel" destination="YXR-Ch-4dk" id="UPy-lF-9E2"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="3aA-lm-aX5"/>
             </connections>

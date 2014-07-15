@@ -52,7 +52,8 @@ static NSString *const reuseSectionId = @"collectionsection";
     self.view.frame = [UIScreen mainScreen].bounds;
     self.titleLabel.attributedText = [NSAttributedString kernedStringForString:@"СОБЫТИЯ"];
     self.itemsCountLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:9.0f];
-    self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)[[NLStorage sharedInstance] unreadCountInArray:_group.events]];
+    NSUInteger unreadCount = [[NLStorage sharedInstance] unreadCountInArray:_group.events];
+    [self updateUnreadCountWithCount:unreadCount];
 
     [self.collectionView registerNib:[UINib nibWithNibName:@"NLCollectionCellView" bundle:nil] forCellWithReuseIdentifier:reuseId];
     [self.collectionView registerClass:[NLSectionHeader class] forSupplementaryViewOfKind:CHTCollectionElementKindSectionHeader withReuseIdentifier:reuseSectionId];
@@ -67,6 +68,32 @@ static NSString *const reuseSectionId = @"collectionsection";
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     [self.collectionView setBackgroundColor:[UIColor whiteColor]];
+}
+
+
+- (void)updateUnreadCountWithCount:(NSInteger)unreadCount
+{
+    self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)unreadCount];
+    if (unreadCount == 0) {
+        [UIView animateWithDuration:0.25f animations:^{
+            self.titleBarHeight.constant = 52.0f;
+            [self.itemsCountLabel setTransform:CGAffineTransformMakeScale(0.1f, 0.1f)];
+            self.itemsCountLabel.alpha = 0.0f;
+        } completion:^(BOOL finished) {
+            [self.itemsCountLabel setHidden:YES];
+            [self.itemsCountLabel setTransform:CGAffineTransformIdentity];
+            self.itemsCountLabel.alpha = 1.0f;
+        }];
+    } else {
+        [self.itemsCountLabel setTransform:CGAffineTransformMakeScale(0.1f, 0.1f)];
+        self.itemsCountLabel.alpha = 0.0f;
+        [self.itemsCountLabel setHidden:NO];
+        [UIView animateWithDuration:0.25f animations:^{
+            self.titleBarHeight.constant = 64.0f;
+            self.itemsCountLabel.alpha = 1.0f;
+            [self.itemsCountLabel setTransform:CGAffineTransformIdentity];
+        } completion:NULL];
+    }
 }
 
 
@@ -107,6 +134,7 @@ static NSString *const reuseSectionId = @"collectionsection";
     _details = [[NLDetailsViewController alloc] initWithEvent:event];
     [self presentViewController:_details animated:YES completion:^{
         [collectionView reloadItemsAtIndexPaths:@[ indexPath ]];
+        [self updateUnreadCountWithCount:[[NLStorage sharedInstance] unreadCountInArray:_group.events]];
     }];
 }
 
