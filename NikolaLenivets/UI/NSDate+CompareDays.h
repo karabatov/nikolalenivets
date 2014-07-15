@@ -23,6 +23,15 @@
 + (BOOL)isSameDayWithDate1:(NSDate *)date1 date2:(NSDate *)date2;
 
 /**
+ Check if date is on the same month as another date.
+
+ @param date1 First date.
+ @param date2 second date.
+ @return YES if dates are on the same month, NO otherwise.
+ */
++ (BOOL)isSameMonthWithDate1:(NSDate *)date1 date2:(NSDate *)date2;
+
+/**
  Get number of days between two dates.
  
  @param date1 First date.

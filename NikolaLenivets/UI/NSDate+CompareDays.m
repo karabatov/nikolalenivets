@@ -13,7 +13,7 @@
 
 + (BOOL)isSameDayWithDate1:(NSDate *)date1 date2:(NSDate *)date2
 {
-    NSCalendar* calendar = [NSCalendar currentCalendar];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
 
     unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit;
     NSDateComponents* comp1 = [calendar components:unitFlags fromDate:date1];
@@ -25,12 +25,24 @@
 }
 
 
++ (BOOL)isSameMonthWithDate1:(NSDate *)date1 date2:(NSDate *)date2
+{
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+
+    unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit;
+    NSDateComponents* comp1 = [calendar components:unitFlags fromDate:date1];
+    NSDateComponents* comp2 = [calendar components:unitFlags fromDate:date2];
+
+    return [comp1 month] == [comp2 month] && [comp1 year] == [comp2 year];
+}
+
+
 + (NSInteger)daysBetween:(NSDate *)date1 andDate:(NSDate *)date2
 {
     NSUInteger unitFlags = NSDayCalendarUnit;
     NSCalendar* calendar = [NSCalendar currentCalendar];
     NSDateComponents *components = [calendar components:unitFlags fromDate:date1 toDate:date2 options:0];
-    NSInteger daysBetween = llabs([components day]);
+    NSInteger daysBetween = abs([components day]);
     return daysBetween + 1;
 }
 
