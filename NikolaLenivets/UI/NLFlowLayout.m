@@ -36,7 +36,7 @@
     self.dynamic = [[UIDynamicItemBehavior alloc] init];
     self.dynamic.elasticity = 0.0f;
     self.dynamic.friction = 1.0f;
-    self.dynamic.density = 1.0f;
+    self.dynamic.density = 0.5f;
     self.dynamic.resistance = 0.1f;
     self.dynamic.allowsRotation = NO;
     [self.animator addBehavior:self.dynamic];
