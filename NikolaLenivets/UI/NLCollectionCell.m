@@ -104,7 +104,7 @@
         self.thumbnailBottomMargin.constant = 8.0f;
         self.thumbnail.imageURL = [NSURL URLWithString:_event.thumbnail];
     }
-    self.dateLabel.text = [[[_event startDate] stringWithFormat:DefaultDateFormat] uppercaseString];
+    self.dateLabel.text = [[_event startDate] stringWithFormat:DefaultTimeFormat];
     [self setUnreadStatus:event.itemStatus];
 }
 

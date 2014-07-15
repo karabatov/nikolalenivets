@@ -27,11 +27,11 @@
         [self addConstraint:[NSLayoutConstraint constraintWithItem:self.dayOrderLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.dateLabel attribute:NSLayoutAttributeCenterY multiplier:1.0f constant:0.0f]];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:self.dateLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f]];
 
-        self.dayOrderLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:9.0f];
+        self.dayOrderLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:10];
         self.dayOrderLabel.textColor = [UIColor darkGrayColor];
         [self.dayOrderLabel setAdjustsFontSizeToFitWidth:YES];
         [self.dayOrderLabel setMinimumScaleFactor:0.2f];
-        self.dateLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:11.0f];
+        self.dateLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:13];
     }
     return self;
 }

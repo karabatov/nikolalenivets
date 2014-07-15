@@ -131,6 +131,7 @@ static NSString *const reuseSectionId = @"collectionsection";
 
     NLEvent *event = [self eventForIndexPath:indexPath];
     [cell populateFromEvent:event];
+    cell.counterLabel.text = [NSString stringWithFormat:@"%02lu", (unsigned long)indexPath.item + 1];
     UIColor *borderGray = [UIColor colorWithRed:246.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1.0f];
     [cell.layer setBorderColor:borderGray.CGColor];
     [cell.layer setBorderWidth:0.5f];
