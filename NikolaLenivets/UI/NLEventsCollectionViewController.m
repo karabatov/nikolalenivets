@@ -14,6 +14,8 @@
 #import "NSDate+Helper.h"
 #import "Underscore.h"
 #import "NLCollectionCell.h"
+#import "NLSectionHeader.h"
+#import "NSString+Ordinal.h"
 
 @implementation NLEventsCollectionViewController
 {
@@ -27,6 +29,7 @@
 
 
 static NSString *const reuseId = @"collectioncell";
+static NSString *const reuseSectionId = @"collectionsection";
 
 
 - (instancetype)initWithGroup:(NLEventGroup *)group
@@ -49,6 +52,7 @@ static NSString *const reuseId = @"collectioncell";
     self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)[[NLStorage sharedInstance] unreadCountInArray:_group.events]];
 
     [self.collectionView registerNib:[UINib nibWithNibName:@"NLCollectionCellView" bundle:nil] forCellWithReuseIdentifier:reuseId];
+    [self.collectionView registerClass:[NLSectionHeader class] forSupplementaryViewOfKind:CHTCollectionElementKindSectionHeader withReuseIdentifier:reuseSectionId];
     CHTCollectionViewWaterfallLayout *layout = [[CHTCollectionViewWaterfallLayout alloc] init];
     layout.columnCount = 2;
     layout.headerHeight = 0.0f;
@@ -143,9 +147,23 @@ static NSString *const reuseId = @"collectioncell";
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionReusableView *view = [[UICollectionReusableView alloc] initWithFrame:CGRectZero];
-    [view setBackgroundColor:[UIColor blackColor]];
-    return view;
+    if ([kind isEqualToString:CHTCollectionElementKindSectionHeader]) {
+        NLSectionHeader *sectionView = (NLSectionHeader *)[self.collectionView dequeueReusableSupplementaryViewOfKind:CHTCollectionElementKindSectionHeader withReuseIdentifier:reuseSectionId forIndexPath:indexPath];
+        if (!sectionView) {
+            sectionView = [[NLSectionHeader alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, 26.0f)];
+        }
+        if ([_eventsByDay[indexPath.section] count] != 0) {
+            NLEvent *event = [_eventsByDay[indexPath.section] firstObject];
+            sectionView.dateLabel.text = [[[event startDate] stringWithFormat:DefaultDateFormat] uppercaseString];
+            sectionView.dayOrderLabel.text = [[NSString stringWithFormat:@"%@ %@", @"день", [NSString ordinalRepresentationWithNumber:indexPath.section + 1]] uppercaseString];
+            UIColor *borderGray = [UIColor colorWithRed:246.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1.0f];
+            [sectionView.layer setBorderColor:borderGray.CGColor];
+            [sectionView.layer setBorderWidth:0.5f];
+        }
+        return sectionView;
+    } else {
+        return nil;
+    }
 }
 
 
@@ -166,7 +184,11 @@ static NSString *const reuseId = @"collectioncell";
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout heightForHeaderInSection:(NSInteger)section
 {
-    return 0.0f;
+    if ([_eventsByDay[section] count] != 0) {
+        return 26.0f;
+    } else {
+        return 0.0f;
+    }
 }
 
 

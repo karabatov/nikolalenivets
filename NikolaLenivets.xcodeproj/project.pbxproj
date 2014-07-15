@@ -84,6 +84,8 @@
 		D19C043D1975253C006A086B /* NLNewsCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D19C043B1975253C006A086B /* NLNewsCellView.xib */; };
 		D19C04401975319E006A086B /* NLEventsCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D19C043619750589006A086B /* NLEventsCollectionViewController.xib */; };
 		D1A3D7B81975415700C53E06 /* NLCollectionCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F8A13041921D5C700F3DA96 /* NLCollectionCellView.xib */; };
+		D1A3D7C01975734000C53E06 /* NLSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A3D7BF1975734000C53E06 /* NLSectionHeader.m */; };
+		D1A3D7C319757D5600C53E06 /* NSString+Ordinal.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A3D7C219757D5600C53E06 /* NSString+Ordinal.m */; };
 		D1B7ADD0196BCBCE0057C1E2 /* MonoCondensedC.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1B7ADCF196BCBCE0057C1E2 /* MonoCondensedC.otf */; };
 		D1B7ADD5196BCF9A0057C1E2 /* MonoCondensedCBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1B7ADD4196BCF9A0057C1E2 /* MonoCondensedCBold.otf */; };
 /* End PBXBuildFile section */
@@ -209,6 +211,10 @@
 		D19C04391975253C006A086B /* NLNewsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLNewsCell.h; path = UI/NLNewsCell.h; sourceTree = "<group>"; };
 		D19C043A1975253C006A086B /* NLNewsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLNewsCell.m; path = UI/NLNewsCell.m; sourceTree = "<group>"; };
 		D19C043B1975253C006A086B /* NLNewsCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLNewsCellView.xib; path = UI/NLNewsCellView.xib; sourceTree = "<group>"; };
+		D1A3D7BE1975734000C53E06 /* NLSectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLSectionHeader.h; path = UI/NLSectionHeader.h; sourceTree = "<group>"; };
+		D1A3D7BF1975734000C53E06 /* NLSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLSectionHeader.m; path = UI/NLSectionHeader.m; sourceTree = "<group>"; };
+		D1A3D7C119757D5600C53E06 /* NSString+Ordinal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Ordinal.h"; path = "UI/NSString+Ordinal.h"; sourceTree = "<group>"; };
+		D1A3D7C219757D5600C53E06 /* NSString+Ordinal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Ordinal.m"; path = "UI/NSString+Ordinal.m"; sourceTree = "<group>"; };
 		D1B7ADCF196BCBCE0057C1E2 /* MonoCondensedC.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MonoCondensedC.otf; sourceTree = "<group>"; };
 		D1B7ADD4196BCF9A0057C1E2 /* MonoCondensedCBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MonoCondensedCBold.otf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -234,6 +240,8 @@
 			children = (
 				D17177B1196D047200521D72 /* NSAttributedString+Kerning.h */,
 				D17177B2196D047200521D72 /* NSAttributedString+Kerning.m */,
+				D1A3D7C119757D5600C53E06 /* NSString+Ordinal.h */,
+				D1A3D7C219757D5600C53E06 /* NSString+Ordinal.m */,
 				4F0A8BC6195AE58400D59268 /* XYOrigami */,
 			);
 			name = Libraries;
@@ -379,6 +387,8 @@
 				D19C043419750589006A086B /* NLEventsCollectionViewController.h */,
 				D19C043519750589006A086B /* NLEventsCollectionViewController.m */,
 				D19C043619750589006A086B /* NLEventsCollectionViewController.xib */,
+				D1A3D7BE1975734000C53E06 /* NLSectionHeader.h */,
+				D1A3D7BF1975734000C53E06 /* NLSectionHeader.m */,
 			);
 			name = Events;
 			sourceTree = "<group>";
@@ -730,11 +740,13 @@
 				4F61374D19273D7700BFDD1C /* NLEventGroup.m in Sources */,
 				4F22FD781936E8B30075C1A0 /* NLGalleryViewController.m in Sources */,
 				4F22FD8C19372F530075C1A0 /* NLPlaceCell.m in Sources */,
+				D1A3D7C319757D5600C53E06 /* NSString+Ordinal.m in Sources */,
 				4F390E7818ED684200131934 /* NLDiffIndex.m in Sources */,
 				4F89A4331957DCA30045D1A3 /* NLLocationManager.m in Sources */,
 				4F390E8018ED732D00131934 /* NLModel.m in Sources */,
 				4F411E7E18FFD8AA00758E30 /* NLMainMenuController.m in Sources */,
 				4F8A13081921D6CE00F3DA96 /* NLCollectionCell.m in Sources */,
+				D1A3D7C01975734000C53E06 /* NLSectionHeader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
