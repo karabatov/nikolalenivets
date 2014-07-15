@@ -61,8 +61,7 @@
 		4F89A4331957DCA30045D1A3 /* NLLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F89A4321957DCA30045D1A3 /* NLLocationManager.m */; };
 		4F89A4351957F0FA0045D1A3 /* userlocation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F89A4341957F0FA0045D1A3 /* userlocation@2x.png */; };
 		4F89A4371957F88B0045D1A3 /* object@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F89A4361957F88B0045D1A3 /* object@2x.png */; };
-		4F8A13051921D5C700F3DA96 /* NLNewsCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F8A13041921D5C700F3DA96 /* NLNewsCellView.xib */; };
-		4F8A13081921D6CE00F3DA96 /* NLNewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8A13071921D6CE00F3DA96 /* NLNewsCell.m */; };
+		4F8A13081921D6CE00F3DA96 /* NLCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8A13071921D6CE00F3DA96 /* NLCollectionCell.m */; };
 		4F9C413818EA84640038090E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9C413718EA84640038090E /* Foundation.framework */; };
 		4F9C413A18EA84640038090E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9C413918EA84640038090E /* CoreGraphics.framework */; };
 		4F9C413C18EA84640038090E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9C413B18EA84640038090E /* UIKit.framework */; };
@@ -80,6 +79,11 @@
 		D19C0426196EF44D006A086B /* map-locate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19C0423196EF44C006A086B /* map-locate@2x.png */; };
 		D19C0427196EF44D006A086B /* map-plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19C0424196EF44C006A086B /* map-plus@2x.png */; };
 		D19C04331973FF7E006A086B /* NLAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D19C04321973FF7E006A086B /* NLAttributedLabel.m */; };
+		D19C043719750589006A086B /* NLEventsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D19C043519750589006A086B /* NLEventsCollectionViewController.m */; };
+		D19C043C1975253C006A086B /* NLNewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D19C043A1975253C006A086B /* NLNewsCell.m */; };
+		D19C043D1975253C006A086B /* NLNewsCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D19C043B1975253C006A086B /* NLNewsCellView.xib */; };
+		D19C04401975319E006A086B /* NLEventsCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D19C043619750589006A086B /* NLEventsCollectionViewController.xib */; };
+		D1A3D7B81975415700C53E06 /* NLCollectionCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F8A13041921D5C700F3DA96 /* NLCollectionCellView.xib */; };
 		D1B7ADD0196BCBCE0057C1E2 /* MonoCondensedC.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1B7ADCF196BCBCE0057C1E2 /* MonoCondensedC.otf */; };
 		D1B7ADD5196BCF9A0057C1E2 /* MonoCondensedCBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1B7ADD4196BCF9A0057C1E2 /* MonoCondensedCBold.otf */; };
 /* End PBXBuildFile section */
@@ -169,9 +173,9 @@
 		4F89A4321957DCA30045D1A3 /* NLLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLLocationManager.m; path = Models/NLLocationManager.m; sourceTree = "<group>"; };
 		4F89A4341957F0FA0045D1A3 /* userlocation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "userlocation@2x.png"; sourceTree = "<group>"; };
 		4F89A4361957F88B0045D1A3 /* object@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "object@2x.png"; sourceTree = "<group>"; };
-		4F8A13041921D5C700F3DA96 /* NLNewsCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLNewsCellView.xib; path = UI/NLNewsCellView.xib; sourceTree = "<group>"; };
-		4F8A13061921D6CE00F3DA96 /* NLNewsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLNewsCell.h; path = UI/NLNewsCell.h; sourceTree = "<group>"; };
-		4F8A13071921D6CE00F3DA96 /* NLNewsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLNewsCell.m; path = UI/NLNewsCell.m; sourceTree = "<group>"; };
+		4F8A13041921D5C700F3DA96 /* NLCollectionCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLCollectionCellView.xib; path = UI/NLCollectionCellView.xib; sourceTree = "<group>"; };
+		4F8A13061921D6CE00F3DA96 /* NLCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLCollectionCell.h; path = UI/NLCollectionCell.h; sourceTree = "<group>"; };
+		4F8A13071921D6CE00F3DA96 /* NLCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLCollectionCell.m; path = UI/NLCollectionCell.m; sourceTree = "<group>"; };
 		4F9C413418EA84640038090E /* NikolaLenivets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NikolaLenivets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F9C413718EA84640038090E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4F9C413918EA84640038090E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -199,6 +203,12 @@
 		D19C0424196EF44C006A086B /* map-plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-plus@2x.png"; sourceTree = "<group>"; };
 		D19C04311973FF7E006A086B /* NLAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLAttributedLabel.h; path = UI/NLAttributedLabel.h; sourceTree = "<group>"; };
 		D19C04321973FF7E006A086B /* NLAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLAttributedLabel.m; path = UI/NLAttributedLabel.m; sourceTree = "<group>"; };
+		D19C043419750589006A086B /* NLEventsCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLEventsCollectionViewController.h; path = UI/NLEventsCollectionViewController.h; sourceTree = "<group>"; };
+		D19C043519750589006A086B /* NLEventsCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLEventsCollectionViewController.m; path = UI/NLEventsCollectionViewController.m; sourceTree = "<group>"; };
+		D19C043619750589006A086B /* NLEventsCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLEventsCollectionViewController.xib; path = UI/NLEventsCollectionViewController.xib; sourceTree = "<group>"; };
+		D19C04391975253C006A086B /* NLNewsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLNewsCell.h; path = UI/NLNewsCell.h; sourceTree = "<group>"; };
+		D19C043A1975253C006A086B /* NLNewsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLNewsCell.m; path = UI/NLNewsCell.m; sourceTree = "<group>"; };
+		D19C043B1975253C006A086B /* NLNewsCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLNewsCellView.xib; path = UI/NLNewsCellView.xib; sourceTree = "<group>"; };
 		D1B7ADCF196BCBCE0057C1E2 /* MonoCondensedC.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MonoCondensedC.otf; sourceTree = "<group>"; };
 		D1B7ADD4196BCF9A0057C1E2 /* MonoCondensedCBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MonoCondensedCBold.otf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -359,12 +369,16 @@
 		4F6137451927312300BFDD1C /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				4F8A13031921D57D00F3DA96 /* Cell */,
 				4F0D75B0193DEADF00E78AA5 /* circle@2x.png */,
 				4F6137461927313700BFDD1C /* NLEventGroupsViewController.h */,
 				4F6137471927313700BFDD1C /* NLEventGroupsViewController.m */,
 				4F6137481927313700BFDD1C /* NLEventGroupsViewController.xib */,
 				4F22FD7D1936F4360075C1A0 /* NLEventsListControllerViewController.h */,
 				4F22FD7E1936F4360075C1A0 /* NLEventsListControllerViewController.m */,
+				D19C043419750589006A086B /* NLEventsCollectionViewController.h */,
+				D19C043519750589006A086B /* NLEventsCollectionViewController.m */,
+				D19C043619750589006A086B /* NLEventsCollectionViewController.xib */,
 			);
 			name = Events;
 			sourceTree = "<group>";
@@ -388,11 +402,11 @@
 		4F8A13031921D57D00F3DA96 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				4F8A13041921D5C700F3DA96 /* NLNewsCellView.xib */,
+				4F8A13041921D5C700F3DA96 /* NLCollectionCellView.xib */,
 				D19C04311973FF7E006A086B /* NLAttributedLabel.h */,
 				D19C04321973FF7E006A086B /* NLAttributedLabel.m */,
-				4F8A13061921D6CE00F3DA96 /* NLNewsCell.h */,
-				4F8A13071921D6CE00F3DA96 /* NLNewsCell.m */,
+				4F8A13061921D6CE00F3DA96 /* NLCollectionCell.h */,
+				4F8A13071921D6CE00F3DA96 /* NLCollectionCell.m */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -483,10 +497,10 @@
 				4F0D75A4193DBD0200E78AA5 /* left_shadow@2x.png */,
 				4F0D75A5193DBD0200E78AA5 /* right_shadow@2x.png */,
 				4F18FD36192212DA00032A34 /* Details */,
-				4F8A13031921D57D00F3DA96 /* Cell */,
 				4F7EC302190933B9002C0ECD /* NLItemsListController.h */,
 				4F7EC303190933B9002C0ECD /* NLItemsListController.m */,
 				4F7EC304190933B9002C0ECD /* NLItemsListController.xib */,
+				D19C043E19752546006A086B /* Cell */,
 			);
 			name = News;
 			sourceTree = "<group>";
@@ -515,6 +529,16 @@
 				4FD010F2192CC320002F5836 /* menu_button.png */,
 			);
 			name = Assets;
+			sourceTree = "<group>";
+		};
+		D19C043E19752546006A086B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D19C04391975253C006A086B /* NLNewsCell.h */,
+				D19C043A1975253C006A086B /* NLNewsCell.m */,
+				D19C043B1975253C006A086B /* NLNewsCellView.xib */,
+			);
+			name = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -598,7 +622,9 @@
 				4F0D75A6193DBD0200E78AA5 /* left_shadow@2x.png in Resources */,
 				4F454360192DE4D20043C3F4 /* Default-568h@2x.png in Resources */,
 				4F22FD8919372F260075C1A0 /* NLPlaceCell.xib in Resources */,
+				D19C043D1975253C006A086B /* NLNewsCellView.xib in Resources */,
 				4F0D75A2193DB86500E78AA5 /* search_bg@2x.png in Resources */,
+				D19C04401975319E006A086B /* NLEventsCollectionViewController.xib in Resources */,
 				4F174E331966A50300F7F8A2 /* Track on 2014-06-23 at 18-00 GMT+4.gpx in Resources */,
 				4F411E7F18FFD8AA00758E30 /* NLMainMenuController.xib in Resources */,
 				4F0A8BCF195AFEAA00D59268 /* NLSplashViewController.xib in Resources */,
@@ -611,13 +637,13 @@
 				D19C0427196EF44D006A086B /* map-plus@2x.png in Resources */,
 				4FD010F5192CC326002F5836 /* search_icon.png in Resources */,
 				4F0D75B1193DEADF00E78AA5 /* circle@2x.png in Resources */,
-				4F8A13051921D5C700F3DA96 /* NLNewsCellView.xib in Resources */,
 				4F0D759E193D9C6400E78AA5 /* white_menu@2x.png in Resources */,
 				4F89A42C1957CFF60045D1A3 /* NLMapViewController.xib in Resources */,
 				4F89A42E1957D8260045D1A3 /* map.png in Resources */,
 				4F0D75AB193DD05D00E78AA5 /* back@2x.png in Resources */,
 				4F454363192E0F810043C3F4 /* Default@2x.png in Resources */,
 				4F0A8BD3195B04AD00D59268 /* compass_black@2x.png in Resources */,
+				D1A3D7B81975415700C53E06 /* NLCollectionCellView.xib in Resources */,
 				4F174E321966A50300F7F8A2 /* Track on 2014-06-23 at 17-53 GMT+4.gpx in Resources */,
 				D19C0425196EF44C006A086B /* map-minus@2x.png in Resources */,
 				4F0D75A3193DB86500E78AA5 /* search@2x.png in Resources */,
@@ -683,6 +709,8 @@
 				4F390E8918ED754700131934 /* NLScreen.m in Sources */,
 				4F22FD7C1936ED3E0075C1A0 /* NLGallery.m in Sources */,
 				4F9C414818EA84640038090E /* NLAppDelegate.m in Sources */,
+				D19C043C1975253C006A086B /* NLNewsCell.m in Sources */,
+				D19C043719750589006A086B /* NLEventsCollectionViewController.m in Sources */,
 				4F9C414418EA84640038090E /* main.m in Sources */,
 				4F6137491927313700BFDD1C /* NLEventGroupsViewController.m in Sources */,
 				4F7EC305190933B9002C0ECD /* NLItemsListController.m in Sources */,
@@ -706,7 +734,7 @@
 				4F89A4331957DCA30045D1A3 /* NLLocationManager.m in Sources */,
 				4F390E8018ED732D00131934 /* NLModel.m in Sources */,
 				4F411E7E18FFD8AA00758E30 /* NLMainMenuController.m in Sources */,
-				4F8A13081921D6CE00F3DA96 /* NLNewsCell.m in Sources */,
+				4F8A13081921D6CE00F3DA96 /* NLCollectionCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

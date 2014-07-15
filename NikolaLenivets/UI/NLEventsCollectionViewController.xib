@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NLEventsCollectionViewController">
+            <connections>
+                <outlet property="collectionView" destination="XbA-Pp-edB" id="qSP-S2-BlR"/>
+                <outlet property="itemsCountLabel" destination="B6Y-US-Vb3" id="fJg-bd-XRt"/>
+                <outlet property="titleLabel" destination="YXR-Ch-4dk" id="UPy-lF-9E2"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="3aA-lm-aX5"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cob-Ml-p3D" userLabel="Title Bar">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UwT-V9-24v" userLabel="Back">
+                            <rect key="frame" x="13" y="3" width="44" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="d3W-pv-WxX"/>
+                                <constraint firstAttribute="width" constant="44" id="fH8-k8-Y5T"/>
+                            </constraints>
+                            <inset key="contentEdgeInsets" minX="3" minY="16" maxX="3" maxY="16"/>
+                            <state key="normal" image="menu_button.png">
+                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="back:" destination="-1" eventType="touchUpInside" id="uvS-mn-sDP"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="СОБЫТИЯ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YXR-Ch-4dk">
+                            <rect key="frame" x="117" y="13" width="86" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="42" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6Y-US-Vb3">
+                            <rect key="frame" x="156" y="40" width="9" height="9"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="7"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.96470594409999999" green="0.96470594409999999" blue="0.96470594409999999" alpha="1" colorSpace="deviceRGB"/>
+                    <constraints>
+                        <constraint firstItem="UwT-V9-24v" firstAttribute="leading" secondItem="cob-Ml-p3D" secondAttribute="leading" constant="13" id="4jh-pX-fJd"/>
+                        <constraint firstItem="B6Y-US-Vb3" firstAttribute="centerX" secondItem="YXR-Ch-4dk" secondAttribute="centerX" id="7zd-jZ-87f"/>
+                        <constraint firstItem="B6Y-US-Vb3" firstAttribute="top" secondItem="YXR-Ch-4dk" secondAttribute="bottom" constant="6" id="Lx0-hW-4HL"/>
+                        <constraint firstItem="YXR-Ch-4dk" firstAttribute="centerY" secondItem="UwT-V9-24v" secondAttribute="centerY" constant="-2" id="QW3-jb-2Vv"/>
+                        <constraint firstAttribute="centerX" secondItem="YXR-Ch-4dk" secondAttribute="centerX" id="imQ-Kd-Go2"/>
+                        <constraint firstItem="UwT-V9-24v" firstAttribute="top" secondItem="cob-Ml-p3D" secondAttribute="top" constant="3" id="uar-KB-JqY"/>
+                        <constraint firstAttribute="height" constant="64" id="yDA-6u-c79"/>
+                    </constraints>
+                </view>
+                <collectionView clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="XbA-Pp-edB">
+                    <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="0Hl-h6-wKf">
+                        <size key="itemSize" width="0.0" height="0.0"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <cells/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="hzC-hi-jdt"/>
+                        <outlet property="delegate" destination="-1" id="aWK-zJ-wwh"/>
+                    </connections>
+                </collectionView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="XbA-Pp-edB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="4v4-QO-1pA"/>
+                <constraint firstItem="cob-Ml-p3D" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="7AH-As-cI1"/>
+                <constraint firstAttribute="trailing" secondItem="XbA-Pp-edB" secondAttribute="trailing" id="AMy-eV-cn1"/>
+                <constraint firstAttribute="bottom" secondItem="XbA-Pp-edB" secondAttribute="bottom" id="Mvt-UC-zeJ"/>
+                <constraint firstItem="cob-Ml-p3D" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="eC4-fA-lcM"/>
+                <constraint firstAttribute="trailing" secondItem="cob-Ml-p3D" secondAttribute="trailing" id="v3Q-Zg-NWp"/>
+                <constraint firstItem="XbA-Pp-edB" firstAttribute="top" secondItem="cob-Ml-p3D" secondAttribute="bottom" id="xCe-ZL-r6A"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="menu_button.png" width="77" height="24"/>
+    </resources>
+</document>

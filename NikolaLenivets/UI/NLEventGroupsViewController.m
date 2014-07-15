@@ -11,6 +11,7 @@
 #import "NLEventGroup.h"
 #import "NLMainMenuController.h"
 #import "NLEventsListControllerViewController.h"
+#import "NLEventsCollectionViewController.h"
 #import <NSDate+Helper.h>
 #import "NSAttributedString+Kerning.h"
 
@@ -18,7 +19,7 @@
 
 @implementation NLEventGroupsViewController
 {
-    NLEventsListControllerViewController *_events;
+    NLEventsCollectionViewController *_events;
     NSArray *_eventGroups;
     NSUInteger _currentPage;
 }
@@ -117,8 +118,8 @@
         [slideImage addSubview:activity];
         [activity startAnimating];
 
-        [slideImage setImageWithURL:[NSURL URLWithString:group.poster]
-                          completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+        [slideImage sd_setImageWithURL:[NSURL URLWithString:group.poster]
+                          completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *url) {
                               [activity removeFromSuperview];
                           }];
         // slideImage.contentMode = UIViewContentModeScaleAspectFill;
@@ -213,7 +214,7 @@
 {
     NSLog(@"Open event list");
     NLEventGroup *group = _eventGroups[_currentPage];
-    _events = [[NLEventsListControllerViewController alloc] initWithGroup:group];
+    _events = [[NLEventsCollectionViewController alloc] initWithGroup:group];
     [self presentViewController:_events animated:YES completion:^{}];
 }
 

@@ -1,5 +1,5 @@
 //
-//  NLNewsCell.h
+//  NLCollectionCell.h
 //  NikolaLenivets
 //
 //  Created by Semyon Novikov on 13.05.14.
@@ -14,7 +14,7 @@
 #import <AsyncImageView.h>
 #import "NLAttributedLabel.h"
 
-@interface NLNewsCell : UITableViewCell
+@interface NLCollectionCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *counterLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;

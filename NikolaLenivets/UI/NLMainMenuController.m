@@ -83,6 +83,9 @@ enum {
                               completion:^(BOOL finished) {
                                   NSLog(@"Finished animation");
                               }];
+    for (UIView *v in _contentView.subviews) {
+        [v removeFromSuperview];
+    }
 }
 
 
