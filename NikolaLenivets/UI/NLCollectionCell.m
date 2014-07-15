@@ -9,6 +9,7 @@
 #import "NLCollectionCell.h"
 #import <AsyncImageView.h>
 #import <NSDate+Helper.h>
+#import "NSDate+CompareDays.h"
 
 @implementation NLCollectionCell
 {
@@ -105,6 +106,11 @@
         self.thumbnail.imageURL = [NSURL URLWithString:_event.thumbnail];
     }
     self.dateLabel.text = [[_event startDate] stringWithFormat:DefaultTimeFormat];
+    if ([NSDate isSameDayWithDate1:[NSDate date] date2:[_event startDate]]) {
+        [self.alarmIcon setHidden:NO];
+    } else {
+        [self.alarmIcon setHidden:YES];
+    }
     [self setUnreadStatus:event.itemStatus];
 }
 

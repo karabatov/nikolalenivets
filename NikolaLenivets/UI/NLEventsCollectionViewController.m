@@ -16,6 +16,7 @@
 #import "NLCollectionCell.h"
 #import "NLSectionHeader.h"
 #import "NSString+Ordinal.h"
+#import "NSDate+CompareDays.h"
 
 @implementation NLEventsCollectionViewController
 {
@@ -71,7 +72,7 @@ static NSString *const reuseSectionId = @"collectionsection";
 {
     _startDate = [NSDate dateFromString:_group.startdate];
     _endDate = [NSDate dateFromString:_group.enddate];
-    _days = [self daysBetween:_startDate andDate:_endDate];
+    _days = [NSDate daysBetween:_startDate andDate:_endDate];
     _eventsByDay = [[NSMutableArray alloc] initWithCapacity:[_group.events count]];
     for (NSInteger i = 0; i < _days; i++) {
         NSArray *eventsThatDay = _.array(_group.events)
@@ -98,22 +99,12 @@ static NSString *const reuseSectionId = @"collectionsection";
 }
 
 
-- (NSInteger)daysBetween:(NSDate *)dt1 andDate:(NSDate *)dt2
-{
-    NSUInteger unitFlags = NSDayCalendarUnit;
-    NSCalendar* calendar = [NSCalendar currentCalendar];
-    NSDateComponents *components = [calendar components:unitFlags fromDate:dt1 toDate:dt2 options:0];
-    NSInteger daysBetween = llabs([components day]);
-    return daysBetween + 1;
-}
-
-
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NLEvent *event = [self eventForIndexPath:indexPath];
     _details = [[NLDetailsViewController alloc] initWithEvent:event];
     [self presentViewController:_details animated:YES completion:^{
-        [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+        [collectionView reloadItemsAtIndexPaths:@[ indexPath ]];
     }];
 }
 

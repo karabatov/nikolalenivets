@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *unreadIndicator;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *thumbnailHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *thumbnailBottomMargin;
+@property (weak, nonatomic) IBOutlet UIImageView *alarmIcon;
 
 + (CGFloat)heightForCellWithEntry:(NLNewsEntry *)entry;
 + (CGFloat)heightForCellWithEvent:(NLEvent *)event;
