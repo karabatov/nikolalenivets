@@ -89,6 +89,7 @@
 		D1A3D7C619758B4C00C53E06 /* NSDate+CompareDays.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A3D7C519758B4C00C53E06 /* NSDate+CompareDays.m */; };
 		D1A3D7C919758CF600C53E06 /* event-alarm.png in Resources */ = {isa = PBXBuildFile; fileRef = D1A3D7C719758CF600C53E06 /* event-alarm.png */; };
 		D1A3D7CA19758CF600C53E06 /* event-alarm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1A3D7C819758CF600C53E06 /* event-alarm@2x.png */; };
+		D1A3D7CD1975930D00C53E06 /* NLFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A3D7CC1975930D00C53E06 /* NLFlowLayout.m */; };
 		D1B7ADD0196BCBCE0057C1E2 /* MonoCondensedC.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1B7ADCF196BCBCE0057C1E2 /* MonoCondensedC.otf */; };
 		D1B7ADD5196BCF9A0057C1E2 /* MonoCondensedCBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1B7ADD4196BCF9A0057C1E2 /* MonoCondensedCBold.otf */; };
 /* End PBXBuildFile section */
@@ -222,6 +223,8 @@
 		D1A3D7C519758B4C00C53E06 /* NSDate+CompareDays.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+CompareDays.m"; path = "UI/NSDate+CompareDays.m"; sourceTree = "<group>"; };
 		D1A3D7C719758CF600C53E06 /* event-alarm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event-alarm.png"; sourceTree = "<group>"; };
 		D1A3D7C819758CF600C53E06 /* event-alarm@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event-alarm@2x.png"; sourceTree = "<group>"; };
+		D1A3D7CB1975930D00C53E06 /* NLFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLFlowLayout.h; path = UI/NLFlowLayout.h; sourceTree = "<group>"; };
+		D1A3D7CC1975930D00C53E06 /* NLFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLFlowLayout.m; path = UI/NLFlowLayout.m; sourceTree = "<group>"; };
 		D1B7ADCF196BCBCE0057C1E2 /* MonoCondensedC.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MonoCondensedC.otf; sourceTree = "<group>"; };
 		D1B7ADD4196BCF9A0057C1E2 /* MonoCondensedCBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MonoCondensedCBold.otf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -398,6 +401,8 @@
 				D19C043619750589006A086B /* NLEventsCollectionViewController.xib */,
 				D1A3D7BE1975734000C53E06 /* NLSectionHeader.h */,
 				D1A3D7BF1975734000C53E06 /* NLSectionHeader.m */,
+				D1A3D7CB1975930D00C53E06 /* NLFlowLayout.h */,
+				D1A3D7CC1975930D00C53E06 /* NLFlowLayout.m */,
 			);
 			name = Events;
 			sourceTree = "<group>";
@@ -757,6 +762,7 @@
 				4F390E7818ED684200131934 /* NLDiffIndex.m in Sources */,
 				D1A3D7C619758B4C00C53E06 /* NSDate+CompareDays.m in Sources */,
 				4F89A4331957DCA30045D1A3 /* NLLocationManager.m in Sources */,
+				D1A3D7CD1975930D00C53E06 /* NLFlowLayout.m in Sources */,
 				4F390E8018ED732D00131934 /* NLModel.m in Sources */,
 				4F411E7E18FFD8AA00758E30 /* NLMainMenuController.m in Sources */,
 				4F8A13081921D6CE00F3DA96 /* NLCollectionCell.m in Sources */,

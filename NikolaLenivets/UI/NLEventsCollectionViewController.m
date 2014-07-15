@@ -17,6 +17,7 @@
 #import "NLSectionHeader.h"
 #import "NSString+Ordinal.h"
 #import "NSDate+CompareDays.h"
+#import "NLFlowLayout.h"
 
 @implementation NLEventsCollectionViewController
 {
@@ -54,7 +55,7 @@ static NSString *const reuseSectionId = @"collectionsection";
 
     [self.collectionView registerNib:[UINib nibWithNibName:@"NLCollectionCellView" bundle:nil] forCellWithReuseIdentifier:reuseId];
     [self.collectionView registerClass:[NLSectionHeader class] forSupplementaryViewOfKind:CHTCollectionElementKindSectionHeader withReuseIdentifier:reuseSectionId];
-    CHTCollectionViewWaterfallLayout *layout = [[CHTCollectionViewWaterfallLayout alloc] init];
+    NLFlowLayout *layout = [[NLFlowLayout alloc] init];
     layout.columnCount = 2;
     layout.headerHeight = 0.0f;
     layout.footerHeight = 0.0f;
@@ -198,6 +199,8 @@ static NSString *const reuseSectionId = @"collectionsection";
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    return CGSizeMake([UIScreen mainScreen].bounds.size.width / 2.0f, 315.0f);
+    // TODO: Implement cache
     NLEvent *event = [self eventForIndexPath:indexPath];
     CGSize cellSize = CGSizeMake([UIScreen mainScreen].bounds.size.width / 2.0f, [NLCollectionCell heightForCellWithEvent:event]);
     return cellSize;

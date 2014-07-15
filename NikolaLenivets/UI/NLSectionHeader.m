@@ -24,7 +24,7 @@
         NSDictionary *metrics = @{ @"left": @23, @"top": @4, @"bottom": @6 ,@"hrsp": @10 };
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(left)-[day]-(>=hrsp)-[date]-(>=hrsp)-|" options:kNilOptions metrics:metrics views:views]];
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(top)-[date]-(bottom)-|" options:kNilOptions metrics:metrics views:views]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.dayOrderLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.dateLabel attribute:NSLayoutAttributeCenterY multiplier:1.0f constant:0.0f]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.dayOrderLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.dateLabel attribute:NSLayoutAttributeCenterY multiplier:1.0f constant:1.0f]];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:self.dateLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f]];
 
         self.dayOrderLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:10];
