@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NLEventGroupsViewController">
             <connections>
                 <outlet property="currentPageLabel" destination="bla-hA-7Xa" id="v2D-SC-988"/>
+                <outlet property="dashOffset" destination="Af3-Zr-I99" id="jgB-Kn-rTN"/>
                 <outlet property="eventDateDashLabel" destination="XIg-Sy-T76" id="Jsy-Kr-DIO"/>
                 <outlet property="eventDatesLabel" destination="dVX-7a-e07" id="hjy-z3-lRj"/>
                 <outlet property="eventDatesTitleLabel" destination="ot7-Ol-Y9d" id="Jk2-Bo-66o"/>

@@ -14,6 +14,7 @@
 #import "NLEventsCollectionViewController.h"
 #import <NSDate+Helper.h>
 #import "NSAttributedString+Kerning.h"
+#import "NSDate+CompareDays.h"
 
 #import <UIImageView+WebCache.h>
 
@@ -200,10 +201,17 @@
         NSDate *endDate = [NSDate dateFromString:group.enddate];
 
         NSString *startDateString = [startDate stringWithFormat:@"d"];
+        NSString *startMonthString = [[startDate stringWithFormat:@"MMMM"] uppercaseString];
         NSString *endDateString = [endDate stringWithFormat:@"d"];
         NSString *endMonthString = [[endDate stringWithFormat:@"MMMM"] uppercaseString];
 
-        self.eventDatesLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@", startDateString, endDateString, endMonthString];
+        if ([startMonthString isEqualToString:endMonthString]) {
+            self.eventDatesLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@", startDateString, endDateString, endMonthString];
+            self.dashOffset.constant = 3.0f;
+        } else {
+            self.eventDatesLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@\n%@", startDateString, startMonthString, endDateString, endMonthString];
+            self.dashOffset.constant = 14.0f;
+        }
     }
 
     self.prevItemButton.enabled = pageIndex != 0;
