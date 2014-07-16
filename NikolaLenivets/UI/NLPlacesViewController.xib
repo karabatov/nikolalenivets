@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="collectionView" destination="679-Xa-pfJ" id="hxs-Mz-ccz"/>
                 <outlet property="itemsCountLabel" destination="hsF-TR-eQB" id="G68-YR-lZC"/>
+                <outlet property="titleBarHeight" destination="Amy-FN-iSI" id="gUX-qe-aOZ"/>
                 <outlet property="titleLabel" destination="AXJ-bS-5CK" id="Fxq-JW-VdV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -95,6 +96,6 @@
         </view>
     </objects>
     <resources>
-        <image name="menu_button.png" width="77" height="24"/>
+        <image name="menu_button.png" width="38" height="12"/>
     </resources>
 </document>
