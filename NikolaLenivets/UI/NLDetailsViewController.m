@@ -13,6 +13,7 @@
 
 #import <DTCoreText.h>
 #import <NSDate+Helper.h>
+#import "NSString+Distance.h"
 
 typedef enum {
     ShowingNewsEntry,
@@ -28,10 +29,6 @@ typedef enum {
     NLPlace *_place;
     NLGallery *_gallery;
     NLGalleryViewController *_galleryVC;
-
-    CGFloat _firstTextPartHeight;
-    CGFloat _secondTextPartHeight;
-
     NSArray *_textParts;
 }
 
@@ -83,10 +80,11 @@ typedef enum {
 {
     [super viewDidLoad];
     
-    self.titleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:24];
-    self.detailsViewTitleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:12];
-    self.dateLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:10];
+    self.titleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:30];
+    self.detailsViewTitleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:10];
+    self.dateLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:13];
     self.countView.font = [UIFont fontWithName:NLMonospacedBoldFont size:10];
+    self.capitalLetter.font = [UIFont systemFontOfSize:250];
 
     NSString *title = nil;
     NSString *content = nil;
@@ -97,17 +95,19 @@ typedef enum {
         case ShowingNewsEntry: {
             title = _entry.title;
             content = _entry.content;
-            date = [[_entry pubDate] stringWithFormat:DefaultDateFormat];
+            date = [[[_entry pubDate] stringWithFormat:DefaultDateFormat] uppercaseString];
             indexNumber = [[[NLStorage sharedInstance] news] indexOfObject:_entry];
             [self setUnreadStatus:_entry.itemStatus];
+            self.capitalLetter.textColor = [UIColor colorWithRed:247.0f/255.0f green:250.0f/255.0f blue:140.0f/255.0f alpha:1.0f];
             break;
         }
         case ShowingEvent: {
             title = _event.title;
             content = _event.content;
-            date = [[_event startDate] stringWithFormat:DefaultDateFormat];
+            date = [[[_event startDate] stringWithFormat:DefaultTimeFormat] uppercaseString];
             self.detailsViewTitleLabel.text = @"СОБЫТИЯ";
             [self setUnreadStatus:_event.itemStatus];
+            self.capitalLetter.textColor = [UIColor colorWithRed:135.0f/255.0f green:163.0f/255.0f blue:1.0f alpha:1.0f];
             indexNumber = -1;
             break;
         }
@@ -116,6 +116,7 @@ typedef enum {
             content = _place.content;
             self.detailsViewTitleLabel.text = @"МЕСТА";
             [self setUnreadStatus:_place.itemStatus];
+            self.capitalLetter.textColor = [UIColor colorWithRed:192.0f/255.0f green:192.0f/255.0f blue:192.0f/255.0f alpha:1.0f];
             indexNumber = -1; //[[[NLStorage sharedInstance] places] indexOfObject:_place];
             break;
         }
@@ -133,7 +134,7 @@ typedef enum {
     } else {
         if ([self mode] == ShowingPlace) {
             if (_currentLocation) {
-                self.countView.text = [NSString stringWithFormat:@"%.2f км.", [_place distanceFromLocation:_currentLocation] / 1000];
+                self.countView.text = [[NSString stringFromDistance:[_place distanceFromLocation:_currentLocation]] uppercaseString];
             }
         } else {
             self.countView.text = @"";
@@ -147,7 +148,6 @@ typedef enum {
     if (_textParts.count > 0) {
         [self.secondPartLabel loadHTMLString:_textParts.lastObject baseURL:[NSURL URLWithString:@"http://"]];
     }
-
     self.dateLabel.text = date;
 }
 
@@ -209,14 +209,16 @@ typedef enum {
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    NSString *output = [webView stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight;"];
+    // TODO: Попробовать обернуть запрос в HTML
+    NSString *padding = @"document.body.style.margin='0';document.body.style.padding ='0';document.body.style.font='12pt BookmanC,serif'";
+    [webView stringByEvaluatingJavaScriptFromString:padding];
+    CGFloat jsHeight = [[webView stringByEvaluatingJavaScriptFromString:@"document.height"] floatValue];
     if ([webView isEqual:self.firstPartWebView]) {
-        _firstTextPartHeight = [output doubleValue] + 50;
+        self.firstTextHeight.constant = jsHeight;
     } else {
-        _secondTextPartHeight = [output doubleValue] + 30;
+        self.secondTextHeight.constant = jsHeight;
     }
     [self layout];
-    NSLog(@"height: %@", output);
 }
 
 
@@ -232,47 +234,25 @@ typedef enum {
 
 - (void)layout
 {
-    self.firstPartWebView.frame = CGRectMake(self.firstPartWebView.frame.origin.x,
-                                             self.firstPartWebView.frame.origin.y,
-                                             self.firstPartWebView.frame.size.width,
-                                             _firstTextPartHeight);
     if (_textParts.count > 1) {
         self.galleryCover.hidden = NO;
         self.secondPartLabel.hidden = NO;
         self.showGalleryButton.hidden = NO;
 
+        self.galleryHeight.constant = 240;
         self.galleryCover.imageURL = [NSURL URLWithString:_gallery.cover.image];
-        self.galleryCover.frame = CGRectMake(self.galleryCover.frame.origin.x,
-                                             self.firstPartWebView.frame.origin.y + self.firstPartWebView.frame.size.height,
-                                             self.galleryCover.frame.size.width,
-                                             self.galleryCover.frame.size.height);
-        self.showGalleryButton.frame = self.galleryCover.frame;
-
-        self.secondPartLabel.frame = CGRectMake(self.secondPartLabel.frame.origin.x,
-                                                self.galleryCover.frame.origin.y + self.galleryCover.frame.size.height + 20,
-                                                self.secondPartLabel.frame.size.width,
-                                                _secondTextPartHeight);
     } else {
         self.galleryCover.hidden = YES;
         self.secondPartLabel.hidden = YES;
         self.showGalleryButton.hidden = YES;
 
-        self.galleryCover.frame = CGRectZero;
-        self.secondPartLabel.frame = CGRectZero;
-        self.showGalleryButton.frame = CGRectZero;
+        self.secondTextHeight.constant = 0;
+        self.galleryHeight.constant = 0;
     }
-
-    self.contentView.frame = CGRectMake(self.contentView.frame.origin.x,
-                                        self.contentView.frame.origin.y,
-                                        self.contentView.frame.size.width,
-                                        self.firstPartWebView.frame.size.height +
-                                        self.galleryCover.frame.size.height +
-                                        self.secondPartLabel.frame.size.height + 163);
-
-    self.scrollView.contentSize = self.contentView.frame.size;
 
     NSString *firstLetter = [[[self attributedStringForString:_textParts[0]] string] substringToIndex:1];
     self.capitalLetter.text = firstLetter;
+    [self.contentView sendSubviewToBack:self.capitalLetter];
 }
 
 - (NLGallery *)galleryFromString:(NSString *)htmlString
@@ -310,21 +290,7 @@ typedef enum {
     NSMutableAttributedString *attributed = [[NSMutableAttributedString alloc] initWithHTMLData:htmlData
                                                                                         options:@{DTUseiOS6Attributes: @(YES)}
                                                                              documentAttributes:nil];
-    NSRange range = {0, attributed.length};
-    [attributed addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"BookmanC" size:14] range:range];    
     return attributed;
-}
-
-
-- (CGFloat)heightForString:(NSString *)string
-{
-    NSAttributedString *htmlString = [self attributedStringForString:string];
-    
-    CGRect rect = [htmlString boundingRectWithSize:CGSizeMake(300, CGFLOAT_MAX)
-                                           options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
-                                           context:nil];
-    CGFloat height = rect.size.height;
-    return height + 20;
 }
 
 

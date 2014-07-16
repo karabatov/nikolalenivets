@@ -17,7 +17,9 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIWebView *firstPartWebView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *firstTextHeight;
 @property (weak, nonatomic) IBOutlet UIWebView *secondPartLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *secondTextHeight;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UILabel *countView;
@@ -25,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *capitalLetter;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet AsyncImageView *galleryCover;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *galleryHeight;
 @property (weak, nonatomic) IBOutlet UIButton *showGalleryButton;
 @property (weak, nonatomic) IBOutlet UILabel *detailsViewTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *unreadIndicator;

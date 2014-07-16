@@ -123,7 +123,7 @@
     </objects>
     <resources>
         <image name="left_shadow.png" width="174" height="1008"/>
-        <image name="menu_button.png" width="77" height="24"/>
+        <image name="menu_button.png" width="38" height="12"/>
         <image name="right_shadow.png" width="174" height="1008"/>
     </resources>
 </document>
