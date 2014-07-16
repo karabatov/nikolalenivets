@@ -90,6 +90,6 @@
         </view>
     </objects>
     <resources>
-        <image name="menu_button.png" width="77" height="24"/>
+        <image name="menu_button.png" width="38" height="12"/>
     </resources>
 </document>

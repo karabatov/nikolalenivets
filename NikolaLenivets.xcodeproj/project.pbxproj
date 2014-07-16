@@ -70,7 +70,6 @@
 		4F9C414818EA84640038090E /* NLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9C414718EA84640038090E /* NLAppDelegate.m */; };
 		4F9C414A18EA84640038090E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F9C414918EA84640038090E /* Images.xcassets */; };
 		4FCBE0081907A054002F37A3 /* BookmanC.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBE0051907A054002F37A3 /* BookmanC.otf */; };
-		4FD010F3192CC320002F5836 /* menu_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD010F2192CC320002F5836 /* menu_button.png */; };
 		4FD010F5192CC326002F5836 /* search_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD010F4192CC326002F5836 /* search_icon.png */; };
 		4FD010FA192CC940002F5836 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FD010F9192CC940002F5836 /* Crashlytics.framework */; };
 		4FF31086D2714E0584DB4E63 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 213D00ACD702461FA5EF0EB3 /* libPods.a */; };
@@ -90,6 +89,8 @@
 		D1A3D7C919758CF600C53E06 /* event-alarm.png in Resources */ = {isa = PBXBuildFile; fileRef = D1A3D7C719758CF600C53E06 /* event-alarm.png */; };
 		D1A3D7CA19758CF600C53E06 /* event-alarm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1A3D7C819758CF600C53E06 /* event-alarm@2x.png */; };
 		D1A3D7CD1975930D00C53E06 /* NLFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A3D7CC1975930D00C53E06 /* NLFlowLayout.m */; };
+		D1A3D7CF197634AD00C53E06 /* menu_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1A3D7CE197634AD00C53E06 /* menu_button@2x.png */; };
+		D1A3D7D1197634F700C53E06 /* menu_button.png in Resources */ = {isa = PBXBuildFile; fileRef = D1A3D7D0197634F700C53E06 /* menu_button.png */; };
 		D1B7ADD0196BCBCE0057C1E2 /* MonoCondensedC.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1B7ADCF196BCBCE0057C1E2 /* MonoCondensedC.otf */; };
 		D1B7ADD5196BCF9A0057C1E2 /* MonoCondensedCBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1B7ADD4196BCF9A0057C1E2 /* MonoCondensedCBold.otf */; };
 /* End PBXBuildFile section */
@@ -197,7 +198,6 @@
 		4F9C415818EA84640038090E /* NikolaLenivetsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NikolaLenivetsTests-Info.plist"; sourceTree = "<group>"; };
 		4F9C415A18EA84640038090E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4FCBE0051907A054002F37A3 /* BookmanC.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BookmanC.otf; sourceTree = "<group>"; };
-		4FD010F2192CC320002F5836 /* menu_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_button.png; sourceTree = "<group>"; };
 		4FD010F4192CC326002F5836 /* search_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search_icon.png; sourceTree = "<group>"; };
 		4FD010F9192CC940002F5836 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		9F010D930FC743A086F2A9F3 /* libPods-NikolaLenivetsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NikolaLenivetsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -225,6 +225,8 @@
 		D1A3D7C819758CF600C53E06 /* event-alarm@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event-alarm@2x.png"; sourceTree = "<group>"; };
 		D1A3D7CB1975930D00C53E06 /* NLFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLFlowLayout.h; path = UI/NLFlowLayout.h; sourceTree = "<group>"; };
 		D1A3D7CC1975930D00C53E06 /* NLFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLFlowLayout.m; path = UI/NLFlowLayout.m; sourceTree = "<group>"; };
+		D1A3D7CE197634AD00C53E06 /* menu_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_button@2x.png"; sourceTree = "<group>"; };
+		D1A3D7D0197634F700C53E06 /* menu_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_button.png; sourceTree = "<group>"; };
 		D1B7ADCF196BCBCE0057C1E2 /* MonoCondensedC.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MonoCondensedC.otf; sourceTree = "<group>"; };
 		D1B7ADD4196BCF9A0057C1E2 /* MonoCondensedCBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MonoCondensedCBold.otf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -552,7 +554,8 @@
 				4F454362192E0F810043C3F4 /* Default@2x.png */,
 				4F45435E192DE4D20043C3F4 /* Default-568h@2x.png */,
 				4FD010F4192CC326002F5836 /* search_icon.png */,
-				4FD010F2192CC320002F5836 /* menu_button.png */,
+				D1A3D7D0197634F700C53E06 /* menu_button.png */,
+				D1A3D7CE197634AD00C53E06 /* menu_button@2x.png */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -636,7 +639,6 @@
 				4F0D75AD193DE20400E78AA5 /* back_white@2x.png in Resources */,
 				4F0D75A7193DBD0200E78AA5 /* right_shadow@2x.png in Resources */,
 				4F9C414218EA84640038090E /* InfoPlist.strings in Resources */,
-				4FD010F3192CC320002F5836 /* menu_button.png in Resources */,
 				4F10D2B019374ABB00F6658D /* NLStaticScreenViewController.xib in Resources */,
 				D1B7ADD5196BCF9A0057C1E2 /* MonoCondensedCBold.otf in Resources */,
 				4F0A8BD1195B032800D59268 /* compass@2x.png in Resources */,
@@ -655,6 +657,7 @@
 				4F174E331966A50300F7F8A2 /* Track on 2014-06-23 at 18-00 GMT+4.gpx in Resources */,
 				4F411E7F18FFD8AA00758E30 /* NLMainMenuController.xib in Resources */,
 				4F0A8BCF195AFEAA00D59268 /* NLSplashViewController.xib in Resources */,
+				D1A3D7D1197634F700C53E06 /* menu_button.png in Resources */,
 				4F22FD871937288B0075C1A0 /* NLPlacesViewController.xib in Resources */,
 				4F61374A1927313700BFDD1C /* NLEventGroupsViewController.xib in Resources */,
 				4F0D75AF193DEA1900E78AA5 /* forward@2x.png in Resources */,
@@ -671,6 +674,7 @@
 				4F0D75AB193DD05D00E78AA5 /* back@2x.png in Resources */,
 				4F454363192E0F810043C3F4 /* Default@2x.png in Resources */,
 				4F0A8BD3195B04AD00D59268 /* compass_black@2x.png in Resources */,
+				D1A3D7CF197634AD00C53E06 /* menu_button@2x.png in Resources */,
 				D1A3D7B81975415700C53E06 /* NLCollectionCellView.xib in Resources */,
 				4F174E321966A50300F7F8A2 /* Track on 2014-06-23 at 17-53 GMT+4.gpx in Resources */,
 				D19C0425196EF44C006A086B /* map-minus@2x.png in Resources */,
