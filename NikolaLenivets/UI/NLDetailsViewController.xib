@@ -52,8 +52,11 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dhA-Pw-YYj" userLabel="Back">
-                            <rect key="frame" x="113" y="-1" width="95" height="65"/>
+                            <rect key="frame" x="113" y="0.0" width="95" height="64"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="95" id="P4O-GO-he4"/>
+                            </constraints>
                             <state key="normal">
                                 <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -65,12 +68,11 @@
                     </subviews>
                     <color key="backgroundColor" red="0.9647059440612793" green="0.9647059440612793" blue="0.9647059440612793" alpha="1" colorSpace="deviceRGB"/>
                     <constraints>
-                        <constraint firstItem="CNC-pP-noM" firstAttribute="trailing" secondItem="dhA-Pw-YYj" secondAttribute="trailing" constant="-5" id="0xw-WA-47e"/>
-                        <constraint firstItem="dhA-Pw-YYj" firstAttribute="top" secondItem="gTW-OY-lvk" secondAttribute="top" constant="-1" id="Kd2-Yk-MpW"/>
+                        <constraint firstItem="dhA-Pw-YYj" firstAttribute="top" secondItem="gTW-OY-lvk" secondAttribute="top" id="Kd2-Yk-MpW"/>
                         <constraint firstItem="CNC-pP-noM" firstAttribute="centerX" secondItem="d1z-xb-nuL" secondAttribute="centerX" id="Ld8-Li-r0O"/>
                         <constraint firstItem="d1z-xb-nuL" firstAttribute="top" secondItem="gTW-OY-lvk" secondAttribute="top" constant="18" id="TmF-IP-v80"/>
+                        <constraint firstItem="dhA-Pw-YYj" firstAttribute="centerX" secondItem="d1z-xb-nuL" secondAttribute="centerX" id="c05-eT-YA3"/>
                         <constraint firstAttribute="centerX" secondItem="d1z-xb-nuL" secondAttribute="centerX" id="d5i-N6-0Eg"/>
-                        <constraint firstItem="CNC-pP-noM" firstAttribute="leading" secondItem="dhA-Pw-YYj" secondAttribute="leading" constant="5" id="eoK-Eq-J3v"/>
                         <constraint firstAttribute="height" constant="64" id="tag-ld-f6u"/>
                         <constraint firstAttribute="bottom" secondItem="dhA-Pw-YYj" secondAttribute="bottom" id="vxh-hj-Qkh"/>
                         <constraint firstItem="CNC-pP-noM" firstAttribute="top" secondItem="d1z-xb-nuL" secondAttribute="bottom" constant="4" id="yau-CY-JdW"/>
