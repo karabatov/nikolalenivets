@@ -332,6 +332,7 @@ typedef enum {
 {
     NSLog(@"Show gallery");
     _galleryVC = [[NLGalleryViewController alloc] initWithGallery:_gallery];
+    _galleryVC.backTitleLabel.text = self.titleLabel.text;
     [self presentViewController:_galleryVC animated:YES completion:^{}];
 }
 
