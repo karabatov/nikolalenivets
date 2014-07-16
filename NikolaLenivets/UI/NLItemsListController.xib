@@ -11,6 +11,7 @@
                 <outlet property="leftTable" destination="GE7-gk-KCr" id="x1I-lb-qgq"/>
                 <outlet property="rightShadowView" destination="8Sm-qU-54I" id="E1y-Mw-9Ox"/>
                 <outlet property="rightTable" destination="6Y9-Cf-keJ" id="Qcd-Ro-E45"/>
+                <outlet property="titleBarHeight" destination="efx-Hr-dgI" id="Tfx-ED-Lnp"/>
                 <outlet property="titleLabel" destination="nrz-CM-JzS" id="bia-4u-kaD"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
