@@ -21,7 +21,7 @@
 {
     [super awakeFromNib];
     self.counterLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:10];
-    self.dateLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:13];
+    self.dateLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:10];
     self.titleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:22];
 
     [self.contentView setTranslatesAutoresizingMaskIntoConstraints:NO];

@@ -42,7 +42,7 @@
     NSUInteger unitFlags = NSDayCalendarUnit;
     NSCalendar* calendar = [NSCalendar currentCalendar];
     NSDateComponents *components = [calendar components:unitFlags fromDate:date1 toDate:date2 options:0];
-    NSInteger daysBetween = abs([components day]);
+    NSInteger daysBetween = ABS([components day]);
     return daysBetween + 1;
 }
 

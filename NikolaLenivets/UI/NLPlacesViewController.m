@@ -12,6 +12,7 @@
 #import "NLDetailsViewController.h"
 #import "NLMainMenuController.h"
 #import "NSAttributedString+Kerning.h"
+#import "NSString+Distance.h"
 
 @implementation NLPlacesViewController
 {
@@ -43,6 +44,7 @@
     [super viewDidLoad];
     self.view.frame = [[UIScreen mainScreen] bounds];
     self.titleLabel.attributedText = [NSAttributedString kernedStringForString:@"МЕСТА"];
+    self.itemsCountLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
     [self.collectionView registerNib:[UINib nibWithNibName:@"NLPlaceCell" bundle:[NSBundle mainBundle]]
           forCellWithReuseIdentifier:@"NLPlaceCell"];
     [self updatePlaces];
@@ -52,7 +54,30 @@
 
 - (void)updateUnreadCount
 {
-    self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)[[NLStorage sharedInstance] unreadCountInArray:_places]];
+    NSInteger unreadCount = [[NLStorage sharedInstance] unreadCountInArray:_places];
+    if (unreadCount == 0) {
+        self.titleBarHeight.constant = 52.0f;
+        [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:10.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            [self.view layoutIfNeeded];
+            self.itemsCountLabel.alpha = 0.0f;
+        } completion:^(BOOL finished) {
+            [self.itemsCountLabel setHidden:YES];
+            self.itemsCountLabel.alpha = 1.0f;
+            self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)unreadCount];
+        }];
+    } else {
+        self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)unreadCount];
+        self.titleBarHeight.constant = 64.0f;
+        [self.itemsCountLabel setTransform:CGAffineTransformMakeScale(0.05f, 0.05f)];
+        [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:10.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            [self.itemsCountLabel setHidden:NO];
+            self.itemsCountLabel.alpha = 1.0f;
+            [self.itemsCountLabel setTransform:CGAffineTransformIdentity];
+            [self.view layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            //
+        }];
+    }
 }
 
 
@@ -111,10 +136,9 @@
     if (indexPath.section < _placesPairs.count) {
         NLPlace *place = [self placeForIndexPath:indexPath];
         [cell populateWithPlace:place];
-        // TODO: km, m and “You are here!”
         if (_userLoc) {
             CLLocationDistance distance = [place distanceFromLocation:_userLoc];
-            cell.distanceLabel.text = [NSString stringWithFormat:@"%.1f КМ", distance / 1000];
+            cell.distanceLabel.text = [[NSString stringFromDistance:distance] uppercaseString];
         }
     }
     return cell;

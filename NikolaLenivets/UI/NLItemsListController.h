@@ -21,6 +21,7 @@ enum  {
 @property (weak, nonatomic) IBOutlet UILabel *itemsCountLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *leftShadowView;
 @property (weak, nonatomic) IBOutlet UIImageView *rightShadowView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleBarHeight;
 
 - (IBAction)back:(id)sender;
 - (void)prepareArrays;

@@ -133,7 +133,7 @@ static NSString *const reuseSectionId = @"collectionsection";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NLEvent *event = [self eventForIndexPath:indexPath];
-    _details = [[NLDetailsViewController alloc] initWithEvent:event];
+    _details = [[NLDetailsViewController alloc] initWithEvent:event withOrderInGroup:indexPath.section + 1];
     [self presentViewController:_details animated:YES completion:^{
         [collectionView reloadItemsAtIndexPaths:@[ indexPath ]];
         [self updateUnreadCountWithCount:[[NLStorage sharedInstance] unreadCountInArray:_group.events]];

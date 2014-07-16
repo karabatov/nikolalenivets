@@ -13,6 +13,7 @@
 #import "NLPlacesViewController.h"
 #import "NLStaticScreenViewController.h"
 #import "NLMapViewController.h"
+#import "NSAttributedString+Kerning.h"
 
 #define FOLD_DURATION 0.7
 
@@ -59,8 +60,12 @@ enum {
     [super viewDidLoad];
 
     // Need to set fonts *before* the view is displayed
-    self.nikolaLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:16];
-    self.lenivetsLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:16];
+    self.nikolaLabel.attributedText = [NSAttributedString kernedStringForString:@"НИКОЛА"];
+    self.lenivetsLabel.attributedText = [NSAttributedString kernedStringForString:@"ЛЕНИВЕЦ"];
+    self.newsCounter.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
+    self.mapCounter.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
+    self.eventsCounter.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
+    self.placesCounter.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
 
     for (UIView *v in self.menuView.subviews) {
         if ([v isKindOfClass:[UIButton class]]) {

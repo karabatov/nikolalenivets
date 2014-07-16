@@ -12,13 +12,15 @@
 @implementation NLGalleryViewController
 {
     __strong NLGallery *_gallery;
+    __strong NSString *_backTitle;
 }
 
-- (id)initWithGallery:(NLGallery *)gallery
+- (id)initWithGallery:(NLGallery *)gallery andTitle:(NSString *)title
 {
     self = [super initWithNibName:@"NLGalleryViewController" bundle:nil];
     if (self) {
         _gallery = gallery;
+        _backTitle = [title uppercaseString];
     }
     return self;
 }
@@ -27,9 +29,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //self.view.frame = [[UIScreen mainScreen] bounds];
     self.galleryView.showsScrollIndicator = NO;
     self.galleryView.galleryMode = UIPhotoGalleryModeImageRemote;
+
+    self.backTitleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:10];
+    self.nameLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:10];
+    self.descriptionLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:10];
+
+    UIColor *borderColor = [UIColor colorWithRed:225.0f/255.0f green:230.0f/255.0f blue:169.0f/255.0f alpha:1.0f];
+    [self.nameView.layer setBorderColor:[borderColor CGColor]];
+    [self.nameView.layer setBorderWidth:1.5f];
+
+    [self.view sendSubviewToBack:self.galleryView];
+
+    self.backTitleLabel.text = _backTitle;
 }
 
 
@@ -53,8 +66,8 @@
     self.nameView.hidden = image.title.length == 0;
     self.descriptionLabel.hidden = image.content.length == 0;
 
-    self.descriptionLabel.text = image.content;
-    self.nameLabel.text = image.title;
+    self.descriptionLabel.text = [image.content uppercaseString];
+    self.nameLabel.text = [image.title uppercaseString];
 }
 
 

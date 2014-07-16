@@ -13,6 +13,8 @@
 
 #import <DTCoreText.h>
 #import <NSDate+Helper.h>
+#import "NSString+Distance.h"
+#import "NSString+Ordinal.h"
 
 typedef enum {
     ShowingNewsEntry,
@@ -28,11 +30,8 @@ typedef enum {
     NLPlace *_place;
     NLGallery *_gallery;
     NLGalleryViewController *_galleryVC;
-
-    CGFloat _firstTextPartHeight;
-    CGFloat _secondTextPartHeight;
-
     NSArray *_textParts;
+    NSInteger _eventGroupOrder;
 }
 
 
@@ -46,11 +45,12 @@ typedef enum {
 }
 
 
-- (id)initWithEvent:(NLEvent *)event
+- (id)initWithEvent:(NLEvent *)event withOrderInGroup:(NSInteger)order;
 {
     self = [super initWithNibName:@"NLDetailsViewController" bundle:nil];
     if (self) {
         _event = event;
+        _eventGroupOrder = order;
     }
     return self;
 }
@@ -83,10 +83,12 @@ typedef enum {
 {
     [super viewDidLoad];
     
-    self.titleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:24];
-    self.detailsViewTitleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:12];
-    self.dateLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:10];
+    self.titleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:30];
+    self.detailsViewTitleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:10];
+    self.dateLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:13];
     self.countView.font = [UIFont fontWithName:NLMonospacedBoldFont size:10];
+    self.capitalLetter.font = [UIFont systemFontOfSize:250];
+    [self.capitalLetter setHidden:YES];
 
     NSString *title = nil;
     NSString *content = nil;
@@ -97,25 +99,46 @@ typedef enum {
         case ShowingNewsEntry: {
             title = _entry.title;
             content = _entry.content;
-            date = [[_entry pubDate] stringWithFormat:DefaultDateFormat];
+            date = [[[_entry pubDate] stringWithFormat:DefaultDateFormat] uppercaseString];
             indexNumber = [[[NLStorage sharedInstance] news] indexOfObject:_entry];
             [self setUnreadStatus:_entry.itemStatus];
+            self.capitalLetter.textColor = [UIColor colorWithRed:247.0f/255.0f green:250.0f/255.0f blue:140.0f/255.0f alpha:1.0f];
+            for (UIView *view in [self.eventDayView subviews]) {
+                [view removeFromSuperview];
+            }
             break;
         }
         case ShowingEvent: {
             title = _event.title;
             content = _event.content;
-            date = [[_event startDate] stringWithFormat:DefaultDateFormat];
+            date = [[[_event startDate] stringWithFormat:DefaultTimeFormat] uppercaseString];
             self.detailsViewTitleLabel.text = @"СОБЫТИЯ";
             [self setUnreadStatus:_event.itemStatus];
+            self.capitalLetter.textColor = [UIColor colorWithRed:135.0f/255.0f green:163.0f/255.0f blue:1.0f alpha:1.0f];
+            self.eventDayHeight.constant = 26;
+            self.eventDayView.dateLabel.text = [[[_event startDate] stringWithFormat:DefaultDateFormat] uppercaseString];
+            self.eventDayView.dayOrderLabel.text = [[NSString stringWithFormat:@"%@ %@", @"день", [NSString ordinalRepresentationWithNumber:_eventGroupOrder]] uppercaseString];
+            UIColor *borderGray = [UIColor colorWithRed:246.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1.0f];
+            [self.eventDayView.layer setBorderColor:borderGray.CGColor];
+            [self.eventDayView.layer setBorderWidth:0.5f];
             indexNumber = -1;
             break;
         }
         case ShowingPlace: {
             title = _place.title;
             content = _place.content;
+            if (_currentLocation) {
+                CLLocationDistance distance = [_place distanceFromLocation:_currentLocation];
+                self.countView.text = [[NSString stringFromDistance:distance] uppercaseString];
+            } else {
+                self.countView.text = @"∞ КМ";
+            }
             self.detailsViewTitleLabel.text = @"МЕСТА";
             [self setUnreadStatus:_place.itemStatus];
+            self.capitalLetter.textColor = [UIColor colorWithRed:192.0f/255.0f green:192.0f/255.0f blue:192.0f/255.0f alpha:1.0f];
+            for (UIView *view in [self.eventDayView subviews]) {
+                [view removeFromSuperview];
+            }
             indexNumber = -1; //[[[NLStorage sharedInstance] places] indexOfObject:_place];
             break;
         }
@@ -133,7 +156,7 @@ typedef enum {
     } else {
         if ([self mode] == ShowingPlace) {
             if (_currentLocation) {
-                self.countView.text = [NSString stringWithFormat:@"%.2f км.", [_place distanceFromLocation:_currentLocation] / 1000];
+                self.countView.text = [[NSString stringFromDistance:[_place distanceFromLocation:_currentLocation]] uppercaseString];
             }
         } else {
             self.countView.text = @"";
@@ -143,11 +166,12 @@ typedef enum {
 
     self.firstPartWebView.delegate = self;
     self.secondPartLabel.delegate = self;
+    self.firstPartWebView.scrollView.bounces = NO;
+    self.secondPartLabel.scrollView.bounces = NO;
     [self.firstPartWebView loadHTMLString:_textParts.firstObject baseURL:[NSURL URLWithString:@"http://"]];
     if (_textParts.count > 0) {
         [self.secondPartLabel loadHTMLString:_textParts.lastObject baseURL:[NSURL URLWithString:@"http://"]];
     }
-
     self.dateLabel.text = date;
 }
 
@@ -209,14 +233,20 @@ typedef enum {
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    NSString *output = [webView stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight;"];
+    // TODO: Попробовать обернуть запрос в HTML
+    NSString *padding = @"document.body.style.margin='0';document.body.style.padding ='0';document.body.style.font='12pt BookmanC,serif'";
+    [webView stringByEvaluatingJavaScriptFromString:padding];
     if ([webView isEqual:self.firstPartWebView]) {
-        _firstTextPartHeight = [output doubleValue] + 50;
+        NSString *moveParagraph = [NSString stringWithFormat:@"var p=document.getElementsByTagName('p').item(0);p.style.textIndent='%gpx';p.innerText=p.innerText.substring(1)", floorf((self.capitalLetter.bounds.size.width + 30) / 2)];
+        [webView stringByEvaluatingJavaScriptFromString:moveParagraph];
+    }
+    CGFloat jsHeight = [[webView stringByEvaluatingJavaScriptFromString:@"document.height"] floatValue];
+    if ([webView isEqual:self.firstPartWebView]) {
+        self.firstTextHeight.constant = jsHeight;
     } else {
-        _secondTextPartHeight = [output doubleValue] + 30;
+        self.secondTextHeight.constant = jsHeight;
     }
     [self layout];
-    NSLog(@"height: %@", output);
 }
 
 
@@ -232,60 +262,44 @@ typedef enum {
 
 - (void)layout
 {
-    self.firstPartWebView.frame = CGRectMake(self.firstPartWebView.frame.origin.x,
-                                             self.firstPartWebView.frame.origin.y,
-                                             self.firstPartWebView.frame.size.width,
-                                             _firstTextPartHeight);
     if (_textParts.count > 1) {
         self.galleryCover.hidden = NO;
         self.secondPartLabel.hidden = NO;
         self.showGalleryButton.hidden = NO;
 
-        self.galleryCover.imageURL = [NSURL URLWithString:_gallery.cover.image];
-        self.galleryCover.frame = CGRectMake(self.galleryCover.frame.origin.x,
-                                             self.firstPartWebView.frame.origin.y + self.firstPartWebView.frame.size.height,
-                                             self.galleryCover.frame.size.width,
-                                             self.galleryCover.frame.size.height);
-        self.showGalleryButton.frame = self.galleryCover.frame;
-
-        self.secondPartLabel.frame = CGRectMake(self.secondPartLabel.frame.origin.x,
-                                                self.galleryCover.frame.origin.y + self.galleryCover.frame.size.height + 20,
-                                                self.secondPartLabel.frame.size.width,
-                                                _secondTextPartHeight);
+        self.galleryHeight.constant = 240;
+        self.galleryCover.imageURL = [NSURL URLWithString:[_gallery cover].image];
     } else {
         self.galleryCover.hidden = YES;
         self.secondPartLabel.hidden = YES;
         self.showGalleryButton.hidden = YES;
 
-        self.galleryCover.frame = CGRectZero;
-        self.secondPartLabel.frame = CGRectZero;
-        self.showGalleryButton.frame = CGRectZero;
+        self.secondTextHeight.constant = 0;
+        self.galleryHeight.constant = 0;
     }
-
-    self.contentView.frame = CGRectMake(self.contentView.frame.origin.x,
-                                        self.contentView.frame.origin.y,
-                                        self.contentView.frame.size.width,
-                                        self.firstPartWebView.frame.size.height +
-                                        self.galleryCover.frame.size.height +
-                                        self.secondPartLabel.frame.size.height + 163);
-
-    self.scrollView.contentSize = self.contentView.frame.size;
 
     NSString *firstLetter = [[[self attributedStringForString:_textParts[0]] string] substringToIndex:1];
     self.capitalLetter.text = firstLetter;
+    [self.contentView sendSubviewToBack:self.capitalLetter];
+    [self.capitalLetter setHidden:NO];
 }
 
 - (NLGallery *)galleryFromString:(NSString *)htmlString
 {
-    NSRange galleryBeginning = [htmlString rangeOfString:@"["];
-    NLGallery *gallery = nil;
-    if (galleryBeginning.location != NSNotFound) {
-        NSRange galleryEnding = [htmlString rangeOfString:@"]"];
-        NSString *galleryName = [htmlString substringWithRange:NSMakeRange(galleryBeginning.location + 1, galleryEnding.location - galleryBeginning.location - 1)];
-        gallery = _.array([[NLStorage sharedInstance] galleries]).find(^(NLGallery *gal) {
-            return (BOOL)[gal.shortcut isEqualToString:galleryName];
+    __block NLGallery *gallery = nil;
+    NSError *error = nil;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\[.+\\]" options:NSRegularExpressionCaseInsensitive error:&error];
+    [regex enumerateMatchesInString:htmlString options:0 range:NSMakeRange(0, [htmlString length]) usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+        NSRange galleryRange = {.location = result.range.location + 1, .length = result.range.length - 2};
+        NSString *galleryName = [htmlString substringWithRange:galleryRange];
+        gallery = _.array([[NLStorage sharedInstance] galleries]).find(^BOOL (NLGallery *gal) {
+            return [gal.shortcut isEqualToString:galleryName];
         });
-    }
+        if (gallery) {
+            *stop = YES;
+        }
+    }];
+
     return gallery;
 }
 
@@ -293,12 +307,8 @@ typedef enum {
 {
     NSArray *parts = @[htmlString];
     if (_gallery != nil) {
-        NSRange galleryBeginning = [htmlString rangeOfString:@"["];
-        if (galleryBeginning.location != NSNotFound) {
-            NSRange galleryEnding = [htmlString rangeOfString:@"]"];
-            NSString *galleryTag = [htmlString substringWithRange:NSMakeRange(galleryBeginning.location, galleryEnding.location - galleryBeginning.location + 1)];
-            parts = [htmlString componentsSeparatedByString:galleryTag];
-        }
+        NSString *galleryTag = [NSString stringWithFormat:@"[%@]", _gallery.shortcut];
+        parts = [htmlString componentsSeparatedByString:galleryTag];
     }
     return parts;
 }
@@ -310,21 +320,7 @@ typedef enum {
     NSMutableAttributedString *attributed = [[NSMutableAttributedString alloc] initWithHTMLData:htmlData
                                                                                         options:@{DTUseiOS6Attributes: @(YES)}
                                                                              documentAttributes:nil];
-    NSRange range = {0, attributed.length};
-    [attributed addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"BookmanC" size:14] range:range];    
     return attributed;
-}
-
-
-- (CGFloat)heightForString:(NSString *)string
-{
-    NSAttributedString *htmlString = [self attributedStringForString:string];
-    
-    CGRect rect = [htmlString boundingRectWithSize:CGSizeMake(300, CGFLOAT_MAX)
-                                           options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
-                                           context:nil];
-    CGFloat height = rect.size.height;
-    return height + 20;
 }
 
 
@@ -337,7 +333,7 @@ typedef enum {
 - (IBAction)showGallery:(id)sender
 {
     NSLog(@"Show gallery");
-    _galleryVC = [[NLGalleryViewController alloc] initWithGallery:_gallery];
+    _galleryVC = [[NLGalleryViewController alloc] initWithGallery:_gallery andTitle:self.titleLabel.text];
     [self presentViewController:_galleryVC animated:YES completion:^{}];
 }
 

@@ -76,7 +76,7 @@
             [_rightNews addObject:news[i]];
         }
     }
-    self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)[[NLStorage sharedInstance] unreadCountInArray:news]];
+    [self updateUnreadCountWithCount:[[NLStorage sharedInstance] unreadCountInArray:_news]];
     [self.leftTable reloadData];
     [self.rightTable reloadData];
 }
@@ -138,11 +138,42 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NLNewsEntry *entry = [self entryForTable:tableView indexPath:indexPath];
     _details = [[NLDetailsViewController alloc] initWithEntry:entry];
-    [self presentViewController:_details animated:YES completion:^{}];
+    [self presentViewController:_details animated:YES completion:^{
+        [self updateUnreadCountWithCount:[[NLStorage sharedInstance] unreadCountInArray:_news]];
+    }];
 }
 
 
 #pragma mark - Utils 
+
+
+- (void)updateUnreadCountWithCount:(NSInteger)unreadCount
+{
+    if (unreadCount == 0) {
+        self.titleBarHeight.constant = 52.0f;
+        [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:10.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            [self.view layoutIfNeeded];
+            self.itemsCountLabel.alpha = 0.0f;
+        } completion:^(BOOL finished) {
+            [self.itemsCountLabel setHidden:YES];
+            self.itemsCountLabel.alpha = 1.0f;
+            self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)unreadCount];
+        }];
+    } else {
+        self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)unreadCount];
+        self.titleBarHeight.constant = 64.0f;
+        [self.itemsCountLabel setTransform:CGAffineTransformMakeScale(0.05f, 0.05f)];
+        [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:10.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            [self.itemsCountLabel setHidden:NO];
+            self.itemsCountLabel.alpha = 1.0f;
+            [self.itemsCountLabel setTransform:CGAffineTransformIdentity];
+            [self.view layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            //
+        }];
+    }
+}
+
 
 - (NLNewsEntry *)entryForTable:(UITableView *)table indexPath:(NSIndexPath *)indexPath
 {

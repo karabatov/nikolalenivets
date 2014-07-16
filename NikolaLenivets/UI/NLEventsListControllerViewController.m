@@ -124,7 +124,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NLEvent *event = [self entryForTable:tableView indexPath:indexPath];
-    _details = [[NLDetailsViewController alloc] initWithEvent:event];
+    _details = [[NLDetailsViewController alloc] initWithEvent:event withOrderInGroup:indexPath.section + 1];
     [self presentViewController:_details animated:YES completion:^{
         [tableView reloadRowsAtIndexPaths:@[ indexPath ] withRowAnimation:UITableViewRowAnimationAutomatic];
         [self updateUnreadCount];
