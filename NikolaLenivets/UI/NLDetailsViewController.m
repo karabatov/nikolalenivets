@@ -88,6 +88,7 @@ typedef enum {
     self.dateLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:13];
     self.countView.font = [UIFont fontWithName:NLMonospacedBoldFont size:10];
     self.capitalLetter.font = [UIFont systemFontOfSize:250];
+    [self.capitalLetter setHidden:YES];
 
     NSString *title = nil;
     NSString *content = nil;
@@ -280,6 +281,7 @@ typedef enum {
     NSString *firstLetter = [[[self attributedStringForString:_textParts[0]] string] substringToIndex:1];
     self.capitalLetter.text = firstLetter;
     [self.contentView sendSubviewToBack:self.capitalLetter];
+    [self.capitalLetter setHidden:NO];
 }
 
 - (NLGallery *)galleryFromString:(NSString *)htmlString
