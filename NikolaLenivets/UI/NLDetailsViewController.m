@@ -214,6 +214,10 @@ typedef enum {
     // TODO: Попробовать обернуть запрос в HTML
     NSString *padding = @"document.body.style.margin='0';document.body.style.padding ='0';document.body.style.font='12pt BookmanC,serif'";
     [webView stringByEvaluatingJavaScriptFromString:padding];
+    if ([webView isEqual:self.firstPartWebView]) {
+        NSString *moveParagraph = [NSString stringWithFormat:@"var p=document.getElementsByTagName('p').item(0);p.style.textIndent='%gpx';p.innerText=p.innerText.substring(1)", floorf((self.capitalLetter.bounds.size.width + 30) / 2)];
+        [webView stringByEvaluatingJavaScriptFromString:moveParagraph];
+    }
     CGFloat jsHeight = [[webView stringByEvaluatingJavaScriptFromString:@"document.height"] floatValue];
     if ([webView isEqual:self.firstPartWebView]) {
         self.firstTextHeight.constant = jsHeight;
