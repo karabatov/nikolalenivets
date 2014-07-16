@@ -144,6 +144,8 @@ typedef enum {
 
     self.firstPartWebView.delegate = self;
     self.secondPartLabel.delegate = self;
+    self.firstPartWebView.scrollView.bounces = NO;
+    self.secondPartLabel.scrollView.bounces = NO;
     [self.firstPartWebView loadHTMLString:_textParts.firstObject baseURL:[NSURL URLWithString:@"http://"]];
     if (_textParts.count > 0) {
         [self.secondPartLabel loadHTMLString:_textParts.lastObject baseURL:[NSURL URLWithString:@"http://"]];
@@ -240,7 +242,7 @@ typedef enum {
         self.showGalleryButton.hidden = NO;
 
         self.galleryHeight.constant = 240;
-        self.galleryCover.imageURL = [NSURL URLWithString:_gallery.cover.image];
+        self.galleryCover.imageURL = [NSURL URLWithString:[_gallery cover].image];
     } else {
         self.galleryCover.hidden = YES;
         self.secondPartLabel.hidden = YES;
@@ -257,15 +259,20 @@ typedef enum {
 
 - (NLGallery *)galleryFromString:(NSString *)htmlString
 {
-    NSRange galleryBeginning = [htmlString rangeOfString:@"["];
-    NLGallery *gallery = nil;
-    if (galleryBeginning.location != NSNotFound) {
-        NSRange galleryEnding = [htmlString rangeOfString:@"]"];
-        NSString *galleryName = [htmlString substringWithRange:NSMakeRange(galleryBeginning.location + 1, galleryEnding.location - galleryBeginning.location - 1)];
+    __block NLGallery *gallery = nil;
+    NSError *error = nil;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\[.+\\]" options:NSRegularExpressionCaseInsensitive error:&error];
+    [regex enumerateMatchesInString:htmlString options:0 range:NSMakeRange(0, [htmlString length]) usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+        NSRange galleryRange = {.location = result.range.location + 1, .length = result.range.length - 2};
+        NSString *galleryName = [htmlString substringWithRange:galleryRange];
         gallery = _.array([[NLStorage sharedInstance] galleries]).find(^(NLGallery *gal) {
             return (BOOL)[gal.shortcut isEqualToString:galleryName];
         });
-    }
+        if (gallery) {
+            *stop = YES;
+        }
+    }];
+
     return gallery;
 }
 
@@ -273,12 +280,8 @@ typedef enum {
 {
     NSArray *parts = @[htmlString];
     if (_gallery != nil) {
-        NSRange galleryBeginning = [htmlString rangeOfString:@"["];
-        if (galleryBeginning.location != NSNotFound) {
-            NSRange galleryEnding = [htmlString rangeOfString:@"]"];
-            NSString *galleryTag = [htmlString substringWithRange:NSMakeRange(galleryBeginning.location, galleryEnding.location - galleryBeginning.location + 1)];
-            parts = [htmlString componentsSeparatedByString:galleryTag];
-        }
+        NSString *galleryTag = [NSString stringWithFormat:@"[%@]", _gallery.shortcut];
+        parts = [htmlString componentsSeparatedByString:galleryTag];
     }
     return parts;
 }

@@ -15,10 +15,10 @@
                 <outlet property="firstPartWebView" destination="KUM-I3-x0a" id="tLD-1q-8p1"/>
                 <outlet property="firstTextHeight" destination="z7F-4Z-aCD" id="wsh-TH-Yrf"/>
                 <outlet property="galleryCover" destination="Mgw-DY-1Xg" id="9Dd-Vi-Ha8"/>
-                <outlet property="galleryHeight" destination="l5G-05-Nzs" id="PCS-4w-hMv"/>
+                <outlet property="galleryHeight" destination="64k-GY-hhM" id="07Q-6x-Kh5"/>
                 <outlet property="scrollView" destination="U96-SA-MhQ" id="5Fy-ei-S93"/>
-                <outlet property="secondPartLabel" destination="Cdz-Aq-Vf6" id="l4T-be-Jwg"/>
-                <outlet property="secondTextHeight" destination="l5G-05-Nzs" id="FPA-kq-VXi"/>
+                <outlet property="secondPartLabel" destination="duO-fi-ES1" id="4Pd-MQ-L3G"/>
+                <outlet property="secondTextHeight" destination="wEB-mA-uAr" id="peV-8Z-Gb8"/>
                 <outlet property="showGalleryButton" destination="WcX-qz-D5Q" id="Hcx-IT-Iyl"/>
                 <outlet property="titleLabel" destination="5y1-fk-EJG" id="wwv-H3-u1T"/>
                 <outlet property="unreadIndicator" destination="JuF-KG-VzW" id="TCL-lj-9RP"/>
@@ -79,7 +79,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7ce-P0-X8N">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="171"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="334"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="●" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JuF-KG-VzW">
@@ -128,14 +128,14 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mgw-DY-1Xg" userLabel="Gallery Cover" customClass="AsyncImageView">
-                                    <rect key="frame" x="0.0" y="131" width="320" height="0.0"/>
+                                    <rect key="frame" x="0.0" y="294" width="320" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <constraints>
                                         <constraint firstAttribute="height" id="64k-GY-hhM"/>
                                     </constraints>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WcX-qz-D5Q">
-                                    <rect key="frame" x="0.0" y="131" width="320" height="0.0"/>
+                                    <rect key="frame" x="0.0" y="294" width="320" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -144,40 +144,44 @@
                                         <action selector="showGallery:" destination="-1" eventType="touchUpInside" id="GSM-Z5-Yu4"/>
                                     </connections>
                                 </button>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cdz-Aq-Vf6" userLabel="SecondPart" customClass="UIWebView">
-                                    <rect key="frame" x="20" y="143" width="277" height="20"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <webView contentMode="scaleToFill" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" keyboardDisplayRequiresUserAction="NO" translatesAutoresizingMaskIntoConstraints="NO" id="duO-fi-ES1" userLabel="Web View 2">
+                                    <rect key="frame" x="20" y="306" width="284" height="20"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="20" id="l5G-05-Nzs"/>
+                                        <constraint firstAttribute="height" constant="20" id="wEB-mA-uAr"/>
                                     </constraints>
-                                </view>
+                                    <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES"/>
+                                </webView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="WcX-qz-D5Q" firstAttribute="height" secondItem="Mgw-DY-1Xg" secondAttribute="height" id="2dR-4g-avC"/>
+                                <constraint firstItem="Mgw-DY-1Xg" firstAttribute="top" secondItem="KUM-I3-x0a" secondAttribute="bottom" constant="175" placeholder="YES" id="4GP-QE-HUj"/>
                                 <constraint firstItem="5y1-fk-EJG" firstAttribute="top" secondItem="x4i-v4-Zor" secondAttribute="bottom" constant="30" id="5W9-eL-hnm"/>
                                 <constraint firstItem="pat-iS-tqN" firstAttribute="top" secondItem="KUM-I3-x0a" secondAttribute="top" constant="-52" id="7Zu-Hj-y4N"/>
+                                <constraint firstItem="hSI-al-Qge" firstAttribute="trailing" secondItem="duO-fi-ES1" secondAttribute="trailing" id="8w6-FD-yyu"/>
                                 <constraint firstItem="JuF-KG-VzW" firstAttribute="top" secondItem="7ce-P0-X8N" secondAttribute="top" constant="6" id="BdI-yM-pd8"/>
-                                <constraint firstItem="x4i-v4-Zor" firstAttribute="leading" secondItem="Cdz-Aq-Vf6" secondAttribute="leading" id="Kq2-lb-OdB"/>
                                 <constraint firstItem="KUM-I3-x0a" firstAttribute="top" secondItem="5y1-fk-EJG" secondAttribute="bottom" constant="30" id="KrO-t4-lr2"/>
-                                <constraint firstItem="Cdz-Aq-Vf6" firstAttribute="top" secondItem="Mgw-DY-1Xg" secondAttribute="bottom" constant="12" id="L2h-rU-YQ3"/>
+                                <constraint firstItem="x4i-v4-Zor" firstAttribute="leading" secondItem="duO-fi-ES1" secondAttribute="leading" id="Lgz-1B-N6j"/>
                                 <constraint firstItem="hSI-al-Qge" firstAttribute="centerY" secondItem="JuF-KG-VzW" secondAttribute="centerY" constant="-1" id="Oyg-l9-l64"/>
                                 <constraint firstAttribute="width" constant="320" placeholder="YES" id="PRN-ZD-jle"/>
                                 <constraint firstAttribute="trailing" secondItem="Mgw-DY-1Xg" secondAttribute="trailing" id="Qij-Le-Q24"/>
                                 <constraint firstItem="5y1-fk-EJG" firstAttribute="leading" secondItem="x4i-v4-Zor" secondAttribute="leading" id="Rbj-Th-NHj"/>
-                                <constraint firstItem="Mgw-DY-1Xg" firstAttribute="top" secondItem="KUM-I3-x0a" secondAttribute="bottom" constant="12" id="Shv-uT-ucI"/>
-                                <constraint firstItem="hSI-al-Qge" firstAttribute="trailing" secondItem="Cdz-Aq-Vf6" secondAttribute="trailing" constant="7" id="TGG-7d-3lV"/>
+                                <constraint firstItem="Mgw-DY-1Xg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="KUM-I3-x0a" secondAttribute="bottom" constant="12" id="Shv-uT-ucI"/>
                                 <constraint firstItem="hSI-al-Qge" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="x4i-v4-Zor" secondAttribute="trailing" constant="2" id="WyY-SG-drC"/>
+                                <constraint firstAttribute="bottom" secondItem="duO-fi-ES1" secondAttribute="bottom" constant="8" id="YMQ-eb-Hd8"/>
                                 <constraint firstAttribute="trailing" secondItem="hSI-al-Qge" secondAttribute="trailing" constant="16" id="ber-QZ-jD3"/>
                                 <constraint firstItem="WcX-qz-D5Q" firstAttribute="centerX" secondItem="Mgw-DY-1Xg" secondAttribute="centerX" id="cNs-u2-HbI"/>
                                 <constraint firstItem="WcX-qz-D5Q" firstAttribute="width" secondItem="Mgw-DY-1Xg" secondAttribute="width" id="eTm-pi-sxD"/>
                                 <constraint firstItem="5y1-fk-EJG" firstAttribute="trailing" secondItem="hSI-al-Qge" secondAttribute="trailing" id="ekr-Nf-xfv"/>
+                                <constraint firstItem="duO-fi-ES1" firstAttribute="top" secondItem="Mgw-DY-1Xg" secondAttribute="bottom" constant="12" id="j5z-wc-dhv"/>
                                 <constraint firstItem="x4i-v4-Zor" firstAttribute="leading" secondItem="JuF-KG-VzW" secondAttribute="trailing" id="l7f-wp-OU4"/>
                                 <constraint firstItem="hSI-al-Qge" firstAttribute="trailing" secondItem="KUM-I3-x0a" secondAttribute="trailing" id="nRL-uD-pt6"/>
+                                <constraint firstItem="Mgw-DY-1Xg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="pat-iS-tqN" secondAttribute="bottom" constant="-52" id="ohK-7U-dmd"/>
                                 <constraint firstItem="x4i-v4-Zor" firstAttribute="centerY" secondItem="JuF-KG-VzW" secondAttribute="centerY" constant="-1" id="r4t-Ke-KZd"/>
                                 <constraint firstItem="pat-iS-tqN" firstAttribute="leading" secondItem="KUM-I3-x0a" secondAttribute="leading" constant="-10" id="uLh-dB-UEt"/>
                                 <constraint firstItem="x4i-v4-Zor" firstAttribute="leading" secondItem="KUM-I3-x0a" secondAttribute="leading" id="udv-GI-9nU"/>
-                                <constraint firstAttribute="bottom" secondItem="Cdz-Aq-Vf6" secondAttribute="bottom" constant="8" id="wDX-ua-nid"/>
                                 <constraint firstItem="WcX-qz-D5Q" firstAttribute="centerY" secondItem="Mgw-DY-1Xg" secondAttribute="centerY" id="wVC-5M-E0w"/>
                                 <constraint firstItem="JuF-KG-VzW" firstAttribute="leading" secondItem="7ce-P0-X8N" secondAttribute="leading" constant="12" id="xe4-5d-wiZ"/>
                                 <constraint firstItem="Mgw-DY-1Xg" firstAttribute="leading" secondItem="7ce-P0-X8N" secondAttribute="leading" id="zjC-EP-aO0"/>
