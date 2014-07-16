@@ -290,8 +290,8 @@ typedef enum {
     [regex enumerateMatchesInString:htmlString options:0 range:NSMakeRange(0, [htmlString length]) usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
         NSRange galleryRange = {.location = result.range.location + 1, .length = result.range.length - 2};
         NSString *galleryName = [htmlString substringWithRange:galleryRange];
-        gallery = _.array([[NLStorage sharedInstance] galleries]).find(^(NLGallery *gal) {
-            return (BOOL)[gal.shortcut isEqualToString:galleryName];
+        gallery = _.array([[NLStorage sharedInstance] galleries]).find(^BOOL (NLGallery *gal) {
+            return [gal.shortcut isEqualToString:galleryName];
         });
         if (gallery) {
             *stop = YES;
