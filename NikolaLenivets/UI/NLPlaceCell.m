@@ -58,4 +58,10 @@
 }
 
 
+- (void)prepareForReuse
+{
+    self.image.image = nil;
+}
+
+
 @end
