@@ -91,6 +91,7 @@
 		D1A3D7CD1975930D00C53E06 /* NLFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A3D7CC1975930D00C53E06 /* NLFlowLayout.m */; };
 		D1A3D7CF197634AD00C53E06 /* menu_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1A3D7CE197634AD00C53E06 /* menu_button@2x.png */; };
 		D1A3D7D1197634F700C53E06 /* menu_button.png in Resources */ = {isa = PBXBuildFile; fileRef = D1A3D7D0197634F700C53E06 /* menu_button.png */; };
+		D1A3D7D7197641D900C53E06 /* NSString+Distance.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A3D7D6197641D900C53E06 /* NSString+Distance.m */; };
 		D1B7ADD0196BCBCE0057C1E2 /* MonoCondensedC.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1B7ADCF196BCBCE0057C1E2 /* MonoCondensedC.otf */; };
 		D1B7ADD5196BCF9A0057C1E2 /* MonoCondensedCBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1B7ADD4196BCF9A0057C1E2 /* MonoCondensedCBold.otf */; };
 /* End PBXBuildFile section */
@@ -227,6 +228,8 @@
 		D1A3D7CC1975930D00C53E06 /* NLFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLFlowLayout.m; path = UI/NLFlowLayout.m; sourceTree = "<group>"; };
 		D1A3D7CE197634AD00C53E06 /* menu_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_button@2x.png"; sourceTree = "<group>"; };
 		D1A3D7D0197634F700C53E06 /* menu_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_button.png; sourceTree = "<group>"; };
+		D1A3D7D5197641D900C53E06 /* NSString+Distance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Distance.h"; path = "UI/NSString+Distance.h"; sourceTree = "<group>"; };
+		D1A3D7D6197641D900C53E06 /* NSString+Distance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Distance.m"; path = "UI/NSString+Distance.m"; sourceTree = "<group>"; };
 		D1B7ADCF196BCBCE0057C1E2 /* MonoCondensedC.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MonoCondensedC.otf; sourceTree = "<group>"; };
 		D1B7ADD4196BCF9A0057C1E2 /* MonoCondensedCBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MonoCondensedCBold.otf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -256,6 +259,8 @@
 				D1A3D7C219757D5600C53E06 /* NSString+Ordinal.m */,
 				D1A3D7C419758B4C00C53E06 /* NSDate+CompareDays.h */,
 				D1A3D7C519758B4C00C53E06 /* NSDate+CompareDays.m */,
+				D1A3D7D5197641D900C53E06 /* NSString+Distance.h */,
+				D1A3D7D6197641D900C53E06 /* NSString+Distance.m */,
 				4F0A8BC6195AE58400D59268 /* XYOrigami */,
 			);
 			name = Libraries;
@@ -766,6 +771,7 @@
 				4F390E7818ED684200131934 /* NLDiffIndex.m in Sources */,
 				D1A3D7C619758B4C00C53E06 /* NSDate+CompareDays.m in Sources */,
 				4F89A4331957DCA30045D1A3 /* NLLocationManager.m in Sources */,
+				D1A3D7D7197641D900C53E06 /* NSString+Distance.m in Sources */,
 				D1A3D7CD1975930D00C53E06 /* NLFlowLayout.m in Sources */,
 				4F390E8018ED732D00131934 /* NLModel.m in Sources */,
 				4F411E7E18FFD8AA00758E30 /* NLMainMenuController.m in Sources */,

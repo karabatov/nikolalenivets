@@ -12,6 +12,7 @@
 #import "NLDetailsViewController.h"
 #import "NLMainMenuController.h"
 #import "NSAttributedString+Kerning.h"
+#import "NSString+Distance.h"
 
 @implementation NLPlacesViewController
 {
@@ -138,7 +139,7 @@
         // TODO: km, m and “You are here!”
         if (_userLoc) {
             CLLocationDistance distance = [place distanceFromLocation:_userLoc];
-            cell.distanceLabel.text = [NSString stringWithFormat:@"%.1f КМ", distance / 1000];
+            cell.distanceLabel.text = [[NSString stringFromDistance:distance] uppercaseString];
         }
     }
     return cell;
