@@ -272,6 +272,6 @@
         <image name="back.png" width="32" height="32"/>
         <image name="circle.png" width="43" height="43"/>
         <image name="forward.png" width="32" height="32"/>
-        <image name="menu_button.png" width="77" height="24"/>
+        <image name="menu_button.png" width="38" height="12"/>
     </resources>
 </document>
