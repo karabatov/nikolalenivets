@@ -136,7 +136,6 @@
     if (indexPath.section < _placesPairs.count) {
         NLPlace *place = [self placeForIndexPath:indexPath];
         [cell populateWithPlace:place];
-        // TODO: km, m and “You are here!”
         if (_userLoc) {
             CLLocationDistance distance = [place distanceFromLocation:_userLoc];
             cell.distanceLabel.text = [[NSString stringFromDistance:distance] uppercaseString];

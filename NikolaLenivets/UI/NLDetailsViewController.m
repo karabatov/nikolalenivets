@@ -102,6 +102,9 @@ typedef enum {
             indexNumber = [[[NLStorage sharedInstance] news] indexOfObject:_entry];
             [self setUnreadStatus:_entry.itemStatus];
             self.capitalLetter.textColor = [UIColor colorWithRed:247.0f/255.0f green:250.0f/255.0f blue:140.0f/255.0f alpha:1.0f];
+            for (UIView *view in [self.eventDayView subviews]) {
+                [view removeFromSuperview];
+            }
             break;
         }
         case ShowingEvent: {
@@ -123,9 +126,18 @@ typedef enum {
         case ShowingPlace: {
             title = _place.title;
             content = _place.content;
+            if (_currentLocation) {
+                CLLocationDistance distance = [_place distanceFromLocation:_currentLocation];
+                self.countView.text = [[NSString stringFromDistance:distance] uppercaseString];
+            } else {
+                self.countView.text = @"∞ КМ";
+            }
             self.detailsViewTitleLabel.text = @"МЕСТА";
             [self setUnreadStatus:_place.itemStatus];
             self.capitalLetter.textColor = [UIColor colorWithRed:192.0f/255.0f green:192.0f/255.0f blue:192.0f/255.0f alpha:1.0f];
+            for (UIView *view in [self.eventDayView subviews]) {
+                [view removeFromSuperview];
+            }
             indexNumber = -1; //[[[NLStorage sharedInstance] places] indexOfObject:_place];
             break;
         }
