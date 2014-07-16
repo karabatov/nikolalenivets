@@ -12,14 +12,15 @@
 @implementation NLGalleryViewController
 {
     __strong NLGallery *_gallery;
+    __strong NSString *_backTitle;
 }
 
-- (id)initWithGallery:(NLGallery *)gallery
+- (id)initWithGallery:(NLGallery *)gallery andTitle:(NSString *)title
 {
     self = [super initWithNibName:@"NLGalleryViewController" bundle:nil];
     if (self) {
         _gallery = gallery;
-        self.backTitleLabel.text = @"";
+        _backTitle = [title uppercaseString];
     }
     return self;
 }
@@ -40,6 +41,8 @@
     [self.nameView.layer setBorderWidth:1.5f];
 
     [self.view sendSubviewToBack:self.galleryView];
+
+    self.backTitleLabel.text = _backTitle;
 }
 
 

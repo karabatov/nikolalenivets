@@ -18,6 +18,6 @@
 @property (weak, nonatomic) IBOutlet UIView *nameView;
 @property (weak, nonatomic) IBOutlet UILabel *backTitleLabel;
 
-- (id)initWithGallery:(NLGallery *)gallery;
+- (id)initWithGallery:(NLGallery *)gallery andTitle:(NSString *)title;
 
 @end
