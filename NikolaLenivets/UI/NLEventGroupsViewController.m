@@ -11,14 +11,16 @@
 #import "NLEventGroup.h"
 #import "NLMainMenuController.h"
 #import "NLEventsListControllerViewController.h"
+#import "NLEventsCollectionViewController.h"
 #import <NSDate+Helper.h>
 #import "NSAttributedString+Kerning.h"
+#import "NSDate+CompareDays.h"
 
 #import <UIImageView+WebCache.h>
 
 @implementation NLEventGroupsViewController
 {
-    NLEventsListControllerViewController *_events;
+    NLEventsCollectionViewController *_events;
     NSArray *_eventGroups;
     NSUInteger _currentPage;
 }
@@ -117,8 +119,8 @@
         [slideImage addSubview:activity];
         [activity startAnimating];
 
-        [slideImage setImageWithURL:[NSURL URLWithString:group.poster]
-                          completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+        [slideImage sd_setImageWithURL:[NSURL URLWithString:group.poster]
+                          completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *url) {
                               [activity removeFromSuperview];
                           }];
         // slideImage.contentMode = UIViewContentModeScaleAspectFill;
@@ -142,6 +144,34 @@
 }
 
 
+- (void)updateUnreadCountWithCount:(NSInteger)unreadCount
+{
+    if (unreadCount == 0) {
+        self.titleBarHeight.constant = 52.0f;
+        [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:10.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            [self.view layoutIfNeeded];
+            self.itemsCountLabel.alpha = 0.0f;
+        } completion:^(BOOL finished) {
+            [self.itemsCountLabel setHidden:YES];
+            self.itemsCountLabel.alpha = 1.0f;
+            self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)unreadCount];
+        }];
+    } else {
+        self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)unreadCount];
+        self.titleBarHeight.constant = 64.0f;
+        [self.itemsCountLabel setTransform:CGAffineTransformMakeScale(0.05f, 0.05f)];
+        [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:10.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            [self.itemsCountLabel setHidden:NO];
+            self.itemsCountLabel.alpha = 1.0f;
+            [self.itemsCountLabel setTransform:CGAffineTransformIdentity];
+            [self.view layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            //
+        }];
+    }
+}
+
+
 #pragma mark - Scroll delegate
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
@@ -158,7 +188,7 @@
     self.currentPageLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)(_currentPage + 1)];
     if (shouldFill) {
         NLEventGroup *group = _eventGroups[pageIndex];
-        self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)(unsigned long)[[NLStorage sharedInstance] unreadCountInArray:group.events]];
+        [self updateUnreadCountWithCount:[[NLStorage sharedInstance] unreadCountInArray:group.events]];
 
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
         paragraphStyle.hyphenationFactor = 0.1f;
@@ -171,10 +201,17 @@
         NSDate *endDate = [NSDate dateFromString:group.enddate];
 
         NSString *startDateString = [startDate stringWithFormat:@"d"];
+        NSString *startMonthString = [[startDate stringWithFormat:@"MMMM"] uppercaseString];
         NSString *endDateString = [endDate stringWithFormat:@"d"];
         NSString *endMonthString = [[endDate stringWithFormat:@"MMMM"] uppercaseString];
 
-        self.eventDatesLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@", startDateString, endDateString, endMonthString];
+        if ([startMonthString isEqualToString:endMonthString]) {
+            self.eventDatesLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@", startDateString, endDateString, endMonthString];
+            self.dashOffset.constant = 3.0f;
+        } else {
+            self.eventDatesLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@\n%@", startDateString, startMonthString, endDateString, endMonthString];
+            self.dashOffset.constant = 14.0f;
+        }
     }
 
     self.prevItemButton.enabled = pageIndex != 0;
@@ -213,8 +250,10 @@
 {
     NSLog(@"Open event list");
     NLEventGroup *group = _eventGroups[_currentPage];
-    _events = [[NLEventsListControllerViewController alloc] initWithGroup:group];
-    [self presentViewController:_events animated:YES completion:^{}];
+    _events = [[NLEventsCollectionViewController alloc] initWithGroup:group];
+    [self presentViewController:_events animated:YES completion:^{
+        [self updateUnreadCountWithCount:[[NLStorage sharedInstance] unreadCountInArray:group.events]];
+    }];
 }
 
 @end

@@ -10,4 +10,5 @@ pod 'DTCoreText', '~> 1.6.11'
 pod 'AsyncImageView', '~> 1.5.1'
 pod 'NSDate+Helper', '~> 1.0.0'
 pod 'UIPhotoGallery', '~> 0.1.2'
+pod 'CHTCollectionViewWaterfallLayout', '~> 0.7'
 

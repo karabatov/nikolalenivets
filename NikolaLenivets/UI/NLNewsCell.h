@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Semyon Novikov. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 #import "NLNewsEntry.h"
 #import "NLEvent.h"
 

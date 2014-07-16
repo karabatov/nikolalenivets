@@ -30,6 +30,7 @@
 #define NLSerifFont @"BookmanC"
 
 #define DefaultDateFormat @"dd MMMM"
+#define DefaultTimeFormat @"HH:mm"
 
 
 #define AppDelegate ((NLAppDelegate *)[[UIApplication sharedApplication] delegate])

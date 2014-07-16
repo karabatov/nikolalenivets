@@ -19,6 +19,7 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - AsyncImageView (1.5.1)
+  - CHTCollectionViewWaterfallLayout (0.7)
   - DCKeyValueObjectMapping (1.4)
   - DTCoreText (1.6.13):
     - DTFoundation/Core (~> 1.7.1)
@@ -32,9 +33,9 @@ PODS:
   - DTFoundation/UIKit (1.7.1):
     - DTFoundation/Core
   - NSDate+Helper (1.0.0)
-  - SDWebImage (3.6):
+  - SDWebImage (3.7.0):
     - SDWebImage/Core
-  - SDWebImage/Core (3.6)
+  - SDWebImage/Core (3.7.0)
   - SKUTouchPresenter (1.2.0)
   - UIPhotoGallery (0.1.2):
     - SDWebImage (~> 3.0)
@@ -43,6 +44,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 2.2.1)
   - AsyncImageView (~> 1.5.1)
+  - CHTCollectionViewWaterfallLayout (~> 0.7)
   - DCKeyValueObjectMapping (~> 1.4)
   - DTCoreText (~> 1.6.11)
   - NSDate+Helper (~> 1.0.0)
@@ -53,11 +55,12 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: ab63e259fe91eef4519b371ef0a4955af0e73e64
   AsyncImageView: 388442ae8314a5c99de0d98040c2926826d31da7
+  CHTCollectionViewWaterfallLayout: 184d3b6d5456b48e93ac97e93e606bd8b68aedcc
   DCKeyValueObjectMapping: c3561709f296ddffba7768a9d7ccf234307fd3c9
   DTCoreText: 84eb8ba2e70448fdd9d837540e371f9f587b65ba
   DTFoundation: ef6fb95da64f202d1600bc23dde79c6fd74c0c2d
   NSDate+Helper: ebde22e90dc7ae5e9b49179a0c32e550f7a9cd57
-  SDWebImage: c6989652c1cdf27cbdf3f56957e2030f825af5bc
+  SDWebImage: 791cb0f588046cb0bb7802ae8ae8f5462947b773
   SKUTouchPresenter: af7fadbc10718622aa5f28afaae7033d713e6827
   UIPhotoGallery: 1dd2dbe4ea352ab42f8092ded8c1ac3d9e6be708
   Underscore.m: f99c166a9fdccfb5069085b6b4263c04b817fc9f

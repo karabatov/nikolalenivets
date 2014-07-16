@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NLEventGroupsViewController">
             <connections>
                 <outlet property="currentPageLabel" destination="bla-hA-7Xa" id="v2D-SC-988"/>
+                <outlet property="dashOffset" destination="Af3-Zr-I99" id="jgB-Kn-rTN"/>
                 <outlet property="eventDateDashLabel" destination="XIg-Sy-T76" id="Jsy-Kr-DIO"/>
                 <outlet property="eventDatesLabel" destination="dVX-7a-e07" id="hjy-z3-lRj"/>
                 <outlet property="eventDatesTitleLabel" destination="ot7-Ol-Y9d" id="Jk2-Bo-66o"/>
@@ -22,6 +23,7 @@
                 <outlet property="previewView" destination="dUC-ez-oiB" id="6z5-kI-dpG"/>
                 <outlet property="scrollView" destination="EsH-x0-13N" id="pEA-4L-XR5"/>
                 <outlet property="ticketPriceLabel" destination="Xa8-ir-0AD" id="ORo-15-jv7"/>
+                <outlet property="titleBarHeight" destination="d4u-vP-cf9" id="ouF-Gr-gTQ"/>
                 <outlet property="titleLabel" destination="a2R-E8-QNB" id="WuL-9n-wjN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -270,6 +272,6 @@
         <image name="back.png" width="32" height="32"/>
         <image name="circle.png" width="43" height="43"/>
         <image name="forward.png" width="32" height="32"/>
-        <image name="menu_button.png" width="77" height="24"/>
+        <image name="menu_button.png" width="38" height="12"/>
     </resources>
 </document>

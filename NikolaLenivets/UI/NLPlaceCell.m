@@ -28,7 +28,7 @@
     [self.contentView.layer setBorderWidth:0.5f];
     self.activityIndicator.hidden = NO;
     [self.activityIndicator startAnimating];
-    [self.image setImageWithURL:[NSURL URLWithString:_place.thumbnail] completed:^(UIImage *image, NSError *err, SDImageCacheType cacheType) {
+    [self.image sd_setImageWithURL:[NSURL URLWithString:_place.thumbnail] completed:^(UIImage *image, NSError *err, SDImageCacheType cacheType, NSURL *url) {
         [self.activityIndicator stopAnimating];
         self.activityIndicator.hidden = YES;
     }];
