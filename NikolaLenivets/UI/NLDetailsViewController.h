@@ -12,6 +12,7 @@
 #import "NLNewsEntry.h"
 #import "NLEvent.h"
 #import "NLPlace.h"
+#import "NLSectionHeader.h"
 
 @interface NLDetailsViewController : UIViewController <UIWebViewDelegate>
 
@@ -31,8 +32,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *showGalleryButton;
 @property (weak, nonatomic) IBOutlet UILabel *detailsViewTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *unreadIndicator;
+@property (weak, nonatomic) IBOutlet NLSectionHeader *eventDayView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *eventDayHeight;
 
-- (id)initWithEvent:(NLEvent *)event;
+- (id)initWithEvent:(NLEvent *)event withOrderInGroup:(NSInteger)order;
 - (id)initWithEntry:(NLNewsEntry *)entry;
 - (id)initWithPlace:(NLPlace *)place currentLocation:(CLLocation *)currentLocation;
 - (IBAction)showGallery:(id)sender;

@@ -14,6 +14,7 @@
 #import <DTCoreText.h>
 #import <NSDate+Helper.h>
 #import "NSString+Distance.h"
+#import "NSString+Ordinal.h"
 
 typedef enum {
     ShowingNewsEntry,
@@ -30,6 +31,7 @@ typedef enum {
     NLGallery *_gallery;
     NLGalleryViewController *_galleryVC;
     NSArray *_textParts;
+    NSInteger _eventGroupOrder;
 }
 
 
@@ -43,11 +45,12 @@ typedef enum {
 }
 
 
-- (id)initWithEvent:(NLEvent *)event
+- (id)initWithEvent:(NLEvent *)event withOrderInGroup:(NSInteger)order;
 {
     self = [super initWithNibName:@"NLDetailsViewController" bundle:nil];
     if (self) {
         _event = event;
+        _eventGroupOrder = order;
     }
     return self;
 }
@@ -108,6 +111,12 @@ typedef enum {
             self.detailsViewTitleLabel.text = @"СОБЫТИЯ";
             [self setUnreadStatus:_event.itemStatus];
             self.capitalLetter.textColor = [UIColor colorWithRed:135.0f/255.0f green:163.0f/255.0f blue:1.0f alpha:1.0f];
+            self.eventDayHeight.constant = 26;
+            self.eventDayView.dateLabel.text = [[[_event startDate] stringWithFormat:DefaultDateFormat] uppercaseString];
+            self.eventDayView.dayOrderLabel.text = [[NSString stringWithFormat:@"%@ %@", @"день", [NSString ordinalRepresentationWithNumber:_eventGroupOrder]] uppercaseString];
+            UIColor *borderGray = [UIColor colorWithRed:246.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1.0f];
+            [self.eventDayView.layer setBorderColor:borderGray.CGColor];
+            [self.eventDayView.layer setBorderWidth:0.5f];
             indexNumber = -1;
             break;
         }

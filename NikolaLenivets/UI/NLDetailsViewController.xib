@@ -12,6 +12,8 @@
                 <outlet property="countView" destination="x4i-v4-Zor" id="poo-bT-mIx"/>
                 <outlet property="dateLabel" destination="hSI-al-Qge" id="cOp-Im-Qg0"/>
                 <outlet property="detailsViewTitleLabel" destination="CNC-pP-noM" id="nvX-q6-esE"/>
+                <outlet property="eventDayHeight" destination="7aH-RQ-7Vc" id="q3H-5d-TjC"/>
+                <outlet property="eventDayView" destination="4kO-AR-0xe" id="PpQ-Bb-Dua"/>
                 <outlet property="firstPartWebView" destination="KUM-I3-x0a" id="tLD-1q-8p1"/>
                 <outlet property="firstTextHeight" destination="z7F-4Z-aCD" id="wsh-TH-Yrf"/>
                 <outlet property="galleryCover" destination="Mgw-DY-1Xg" id="9Dd-Vi-Ha8"/>
@@ -72,6 +74,14 @@
                         <constraint firstAttribute="height" constant="64" id="tag-ld-f6u"/>
                         <constraint firstAttribute="bottom" secondItem="dhA-Pw-YYj" secondAttribute="bottom" id="vxh-hj-Qkh"/>
                         <constraint firstItem="CNC-pP-noM" firstAttribute="top" secondItem="d1z-xb-nuL" secondAttribute="bottom" constant="4" id="yau-CY-JdW"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4kO-AR-0xe" userLabel="Event Day" customClass="NLSectionHeader">
+                    <rect key="frame" x="0.0" y="64" width="320" height="0.0"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" id="7aH-RQ-7Vc"/>
                     </constraints>
                 </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U96-SA-MhQ">
@@ -199,13 +209,16 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="U96-SA-MhQ" firstAttribute="top" secondItem="gTW-OY-lvk" secondAttribute="bottom" id="1GT-ww-JSW"/>
+                <constraint firstAttribute="trailing" secondItem="4kO-AR-0xe" secondAttribute="trailing" id="7lO-J3-0Kq"/>
                 <constraint firstItem="U96-SA-MhQ" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="CNS-B0-wGz"/>
+                <constraint firstItem="U96-SA-MhQ" firstAttribute="top" secondItem="4kO-AR-0xe" secondAttribute="bottom" id="DJc-wp-nj1"/>
                 <constraint firstItem="gTW-OY-lvk" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="LVG-Qa-LZz"/>
                 <constraint firstItem="gTW-OY-lvk" firstAttribute="top" secondItem="1" secondAttribute="top" id="Q7o-rP-iDw"/>
                 <constraint firstAttribute="bottom" secondItem="U96-SA-MhQ" secondAttribute="bottom" id="aWo-HL-6GI"/>
+                <constraint firstItem="4kO-AR-0xe" firstAttribute="top" secondItem="gTW-OY-lvk" secondAttribute="bottom" id="cIE-eV-XkZ"/>
                 <constraint firstAttribute="trailing" secondItem="gTW-OY-lvk" secondAttribute="trailing" id="dPQ-Xn-yWF"/>
                 <constraint firstAttribute="trailing" secondItem="U96-SA-MhQ" secondAttribute="trailing" id="l80-NN-D98"/>
+                <constraint firstItem="4kO-AR-0xe" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="tK6-Xh-lhv"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
