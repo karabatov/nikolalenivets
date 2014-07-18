@@ -16,6 +16,7 @@
 
 @implementation NLMapViewController
 {
+    MKTileOverlay *_tileOverlay;
     UIImageView *_currentLocationMarker;
     CLLocation *_leftUpperCornerLocation;
     CLLocation *_rightBottomCornerLocation;
@@ -37,11 +38,11 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationUpdated:) name:NLUserLocationUpdated object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePlaces) name:STORAGE_DID_UPDATE object:nil];
 
-        _leftUpperCornerLocation = [[CLLocation alloc] initWithLatitude:54.749725 longitude:35.600477];
-        _rightBottomCornerLocation = [[CLLocation alloc] initWithLatitude:54.75782 longitude:35.60123];
+        // _leftUpperCornerLocation = [[CLLocation alloc] initWithLatitude:54.749725 longitude:35.600477];
+        // _rightBottomCornerLocation = [[CLLocation alloc] initWithLatitude:54.75782 longitude:35.60123];
 
-        _currentLocationMarker = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"userlocation.png"]];
-        _currentLocationMarker.frame = CGRectMake(0, 0, 37/2, 50);
+        // _currentLocationMarker = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"userlocation.png"]];
+        // _currentLocationMarker.frame = CGRectMake(0, 0, 37/2, 50);
     }
     return self;
 }
@@ -55,30 +56,44 @@
 
     self.titleLabel.attributedText = [NSAttributedString kernedStringForString:@"КАРТА"];
 
-    self.mapScrollView.contentSize = self.mapImageView.frame.size;
-    self.mapScrollView.minimumZoomScale = MinZoom;
-    self.mapScrollView.maximumZoomScale = MaxZoom;
+    // self.mapScrollView.contentSize = self.mapImageView.frame.size;
+    // self.mapScrollView.minimumZoomScale = MinZoom;
+    // self.mapScrollView.maximumZoomScale = MaxZoom;
 
-    [self.mapImageView addSubview:_currentLocationMarker];
+    // [self.mapImageView addSubview:_currentLocationMarker];
     self.placeDetailsMenu.center = self.view.center;
     [self.view addSubview:self.placeDetailsMenu];
-    [self updatePlaces];
+    // [self updatePlaces];
+
+    self.mapView.region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(54.755106, 35.620437), MKCoordinateSpanMake(0.014, 0.036));
+    self.mapView.mapType = MKMapTypeStandard;
+
+    NSString *baseURL = [[[NSBundle mainBundle] bundleURL] absoluteString];
+    NSString *urlTemplate = [baseURL stringByAppendingString:@"tiles/{z}/{x}/{y}.png"];
+    _tileOverlay = [[MKTileOverlay alloc] initWithURLTemplate:urlTemplate];
+    _tileOverlay.canReplaceMapContent = YES;
+    _tileOverlay.minimumZ = 12;
+    _tileOverlay.maximumZ = 16;
+    _tileOverlay.geometryFlipped = YES;
+    [self.mapView addOverlay:_tileOverlay level:MKOverlayLevelAboveLabels];
+    self.mapView.showsUserLocation = YES;
+    self.mapView.delegate = self;
 }
 
 
 - (void)updatePlaces
 {
     _places = [[NLStorage sharedInstance] places];
-    [self redraw];
+    // [self redraw];
 }
 
 #pragma mark - Map-like stuff
 
 - (void)clearMap
 {
-    for (UIView *v in self.mapImageView.subviews) {
-        [v removeFromSuperview];
-    }
+//    for (UIView *v in self.mapImageView.subviews) {
+//        [v removeFromSuperview];
+//    }
 }
 
 - (void)redraw
@@ -106,7 +121,7 @@
     placeButton.center = center;
     placeButton.tag = [place.id integerValue];
     [placeButton addTarget:self action:@selector(showPlaceMenu:) forControlEvents:UIControlEventTouchUpInside];
-    [self.resizableView addSubview:placeButton];
+    // [self.resizableView addSubview:placeButton];
 }
 
 
@@ -131,7 +146,7 @@
 
     self.placeName.text = place.title;
     if (_currentLocation) {
-        self.distanceToPlace.text = [NSString stringWithFormat:@"До места %.2f км.", [place distanceFromLocation:_currentLocation] / 100];
+        self.distanceToPlace.text = [NSString stringWithFormat:@"%.2f км.", [place distanceFromLocation:_currentLocation] / 100];
     }
 
     [UIView animateWithDuration:0.2 animations:^{
@@ -143,13 +158,13 @@
 
 - (void)showLocation:(CLLocation *)location
 {
-    CGPoint placeCenter = [self pointFromLocation:location];
-    placeCenter = [self.resizableView convertPoint:placeCenter toView:self.mapScrollView];
-
-    [self.mapScrollView scrollRectToVisible:CGRectMake(placeCenter.x - self.view.frame.size.width / 2,
-                                                       placeCenter.y - self.view.frame.size.height / 2 - 80,
-                                                       self.view.frame.size.width,
-                                                       self.view.frame.size.height) animated:YES];
+//    CGPoint placeCenter = [self pointFromLocation:location];
+//    placeCenter = [self.resizableView convertPoint:placeCenter toView:self.mapScrollView];
+//
+//    [self.mapScrollView scrollRectToVisible:CGRectMake(placeCenter.x - self.view.frame.size.width / 2,
+//                                                       placeCenter.y - self.view.frame.size.height / 2 - 80,
+//                                                       self.view.frame.size.width,
+//                                                       self.view.frame.size.height) animated:YES];
 }
 
 
@@ -168,40 +183,35 @@
 - (void)locationUpdated:(NSNotification *)notification
 {
     self.currentLocation = notification.object;
-    [self redraw];
+    // [self redraw];
 }
 
 
 - (CGPoint)pointFromLocation:(CLLocation *)location
 {
-    CGPoint point = CGPointMake(0, 0);
+//    CGPoint point = CGPointMake(0, 0);
+//
+//    double latDelta = _leftUpperCornerLocation.coordinate.latitude  - _rightBottomCornerLocation.coordinate.latitude;
+//    double lonDelta = _leftUpperCornerLocation.coordinate.longitude - _rightBottomCornerLocation.coordinate.longitude;
+//
+//    double latPPD = fabs((double)self.mapScrollView.contentSize.width / latDelta);
+//    double lonPPD = fabs((double)self.mapScrollView.contentSize.height / lonDelta);
+//
+//    double locationLatDelta = fabs((double)_leftUpperCornerLocation.coordinate.latitude - location.coordinate.latitude);
+//    double locationLonDelta = fabs((double)_leftUpperCornerLocation.coordinate.longitude - location.coordinate.longitude);
+//
+//    double x = (locationLatDelta * latPPD) / self.mapScrollView.zoomScale;
+//    double y = (locationLonDelta * lonPPD) / self.mapScrollView.zoomScale;;
+//
+//    point.x = x;
+//    point.y = y;
 
-    double latDelta = _leftUpperCornerLocation.coordinate.latitude  - _rightBottomCornerLocation.coordinate.latitude;
-    double lonDelta = _leftUpperCornerLocation.coordinate.longitude - _rightBottomCornerLocation.coordinate.longitude;
-
-    double latPPD = fabs((double)self.mapScrollView.contentSize.width / latDelta);
-    double lonPPD = fabs((double)self.mapScrollView.contentSize.height / lonDelta);
-
-    double locationLatDelta = fabs((double)_leftUpperCornerLocation.coordinate.latitude - location.coordinate.latitude);
-    double locationLonDelta = fabs((double)_leftUpperCornerLocation.coordinate.longitude - location.coordinate.longitude);
-
-    double x = (locationLatDelta * latPPD) / self.mapScrollView.zoomScale;
-    double y = (locationLonDelta * lonPPD) / self.mapScrollView.zoomScale;;
-
-    point.x = x;
-    point.y = y;
-
-    return point;
+    return CGPointZero;
 }
 
 
 
 #pragma mark - Scrolling delegate
-
-- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
-{
-    return self.resizableView;
-}
 
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
@@ -226,21 +236,25 @@
 
 - (IBAction)zoomIn:(id)sender
 {
-    double currentZoom = self.mapScrollView.zoomScale;
-
-    if (currentZoom <= MaxZoom) {
-        [self.mapScrollView setZoomScale:currentZoom + ZoomStep animated:YES];
-    }
+    MKCoordinateRegion region;
+    MKCoordinateSpan span;
+    region.center = self.mapView.region.center;
+    span.latitudeDelta = self.mapView.region.span.latitudeDelta / 1.5;
+    span.longitudeDelta = self.mapView.region.span.longitudeDelta / 1.5;
+    region.span = span;
+    [self.mapView setRegion:region animated:YES];
 }
 
 
 - (IBAction)zoomOut:(id)sender
 {
-    double currentZoom = self.mapScrollView.zoomScale;
-
-    if (currentZoom >= MinZoom) {
-        [self.mapScrollView setZoomScale:currentZoom - ZoomStep animated:YES];
-    }
+    MKCoordinateRegion region;
+    MKCoordinateSpan span;
+    region.center = self.mapView.region.center;
+    span.latitudeDelta = self.mapView.region.span.latitudeDelta * 1.5;
+    span.longitudeDelta = self.mapView.region.span.longitudeDelta * 1.5;
+    region.span = span;
+    [self.mapView setRegion:region animated:TRUE];
 }
 
 
@@ -250,5 +264,18 @@
         [self showLocation:_currentLocation];
     }
 }
+
+
+#pragma mark - MKMapViewDelegate
+
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
+{
+    if ([overlay isKindOfClass:[MKTileOverlay class]]) {
+        return [[MKTileOverlayRenderer alloc] initWithOverlay:_tileOverlay];
+    } else {
+        return nil;
+    }
+}
+
 
 @end

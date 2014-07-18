@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -7,11 +7,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NLMapViewController">
             <connections>
                 <outlet property="distanceToPlace" destination="elV-ek-JvZ" id="vjq-fe-rSt"/>
-                <outlet property="mapImageView" destination="r0S-uz-RtB" id="Wyd-gz-VwF"/>
-                <outlet property="mapScrollView" destination="PJk-RB-nNR" id="rTQ-Xj-pQa"/>
+                <outlet property="mapView" destination="q77-Py-xHD" id="gKM-X2-pmV"/>
                 <outlet property="placeDetailsMenu" destination="Gbx-OZ-cVO" id="6xa-ah-od2"/>
                 <outlet property="placeName" destination="siY-wh-XEC" id="VqU-0W-eFq"/>
-                <outlet property="resizableView" destination="9gq-ZC-4XE" id="f2Q-Hv-uGS"/>
                 <outlet property="titleLabel" destination="Oza-Vc-h9p" id="ihv-GP-DZV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -21,26 +19,6 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" canCancelContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJk-RB-nNR">
-                    <rect key="frame" x="0.0" y="65" width="320" height="503"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <subviews>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9gq-ZC-4XE" userLabel="ResizableView">
-                            <rect key="frame" x="0.0" y="0.0" width="2307" height="1866"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="map.png" translatesAutoresizingMaskIntoConstraints="NO" id="r0S-uz-RtB">
-                                    <rect key="frame" x="0.0" y="0.0" width="2307" height="1866"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                </imageView>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        </view>
-                    </subviews>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="leO-fp-3qC"/>
-                    </connections>
-                </scrollView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mdg-Wm-4bt" userLabel="Title Bar">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -87,6 +65,10 @@
                         <constraint firstItem="Oza-Vc-h9p" firstAttribute="centerY" secondItem="JLL-5q-75G" secondAttribute="centerY" constant="-2" id="wEZ-VC-9Me"/>
                     </constraints>
                 </view>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="q77-Py-xHD">
+                    <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </mapView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2zD-jX-MGa" userLabel="Map Controls">
                     <rect key="frame" x="276" y="217" width="44" height="134"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
@@ -156,14 +138,14 @@
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="centerY" secondItem="2zD-jX-MGa" secondAttribute="centerY" constant="0.5" id="6w2-QR-heE"/>
-                <constraint firstAttribute="trailing" secondItem="PJk-RB-nNR" secondAttribute="trailing" id="AaR-HB-8SQ"/>
-                <constraint firstAttribute="bottom" secondItem="PJk-RB-nNR" secondAttribute="bottom" id="EBX-HG-f34"/>
-                <constraint firstItem="PJk-RB-nNR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="OEB-lz-dLh"/>
-                <constraint firstItem="PJk-RB-nNR" firstAttribute="top" secondItem="Mdg-Wm-4bt" secondAttribute="bottom" constant="1" id="Q9q-Zf-xfj"/>
+                <constraint firstAttribute="bottom" secondItem="q77-Py-xHD" secondAttribute="bottom" id="Eea-LT-lGs"/>
                 <constraint firstItem="Mdg-Wm-4bt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Txu-gl-lFE"/>
                 <constraint firstAttribute="trailing" secondItem="2zD-jX-MGa" secondAttribute="trailing" id="bA0-qR-hUf"/>
+                <constraint firstItem="q77-Py-xHD" firstAttribute="top" secondItem="Mdg-Wm-4bt" secondAttribute="bottom" id="dKt-pl-ktb"/>
                 <constraint firstAttribute="trailing" secondItem="Mdg-Wm-4bt" secondAttribute="trailing" id="dLE-oa-5zN"/>
                 <constraint firstItem="Mdg-Wm-4bt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="j1g-mz-Ib8"/>
+                <constraint firstItem="q77-Py-xHD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="jyZ-wA-RnS"/>
+                <constraint firstAttribute="trailing" secondItem="q77-Py-xHD" secondAttribute="trailing" id="zgc-D7-2jY"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -276,7 +258,6 @@
         <image name="map-locate.png" width="32" height="32"/>
         <image name="map-minus.png" width="32" height="32"/>
         <image name="map-plus.png" width="32" height="32"/>
-        <image name="map.png" width="4613" height="3731"/>
-        <image name="menu_button.png" width="77" height="24"/>
+        <image name="menu_button.png" width="38" height="12"/>
     </resources>
 </document>

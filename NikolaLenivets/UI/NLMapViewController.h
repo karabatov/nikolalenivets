@@ -6,18 +6,17 @@
 //  Copyright (c) 2014 Semyon Novikov. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
+@import MapKit;
 
-@interface NLMapViewController : UIViewController <UIScrollViewDelegate>
+@interface NLMapViewController : UIViewController <MKMapViewDelegate>
 
 @property (strong, nonatomic) CLLocation *currentLocation;
-@property (weak, nonatomic) IBOutlet UIScrollView *mapScrollView;
-@property (weak, nonatomic) IBOutlet UIImageView *mapImageView;
-@property (weak, nonatomic) IBOutlet UIView *resizableView;
 @property (strong, nonatomic) IBOutlet UIView *placeDetailsMenu;
 @property (weak, nonatomic) IBOutlet UILabel *placeName;
 @property (weak, nonatomic) IBOutlet UILabel *distanceToPlace;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 - (IBAction)zoomIn:(id)sender;
 - (IBAction)zoomOut:(id)sender;
