@@ -169,6 +169,7 @@ typedef enum {
     self.firstPartWebView.scrollView.bounces = NO;
     self.secondPartLabel.scrollView.bounces = NO;
     [self.firstPartWebView loadHTMLString:_textParts.firstObject baseURL:[NSURL URLWithString:@"http://"]];
+    NSLog(@"html string = %@", _textParts.firstObject);
     if (_textParts.count > 0) {
         [self.secondPartLabel loadHTMLString:_textParts.lastObject baseURL:[NSURL URLWithString:@"http://"]];
     }
@@ -237,7 +238,11 @@ typedef enum {
     NSString *padding = @"document.body.style.margin='0';document.body.style.padding ='0';document.body.style.font='12pt BookmanC,serif'";
     [webView stringByEvaluatingJavaScriptFromString:padding];
     if ([webView isEqual:self.firstPartWebView]) {
-        NSString *moveParagraph = [NSString stringWithFormat:@"var p=document.getElementsByTagName('p').item(0);p.style.textIndent='%gpx';p.innerText=p.innerText.substring(1)", floorf((self.capitalLetter.bounds.size.width + 30) / 2)];
+        NSString *firstLetter = [[[self attributedStringForString:_textParts[0]] string] substringToIndex:1];
+        self.capitalLetter.text = firstLetter;
+        [self.contentView sendSubviewToBack:self.capitalLetter];
+        [self.capitalLetter setHidden:NO];
+        NSString *moveParagraph = [NSString stringWithFormat:@"var p=document.getElementsByTagName('p').item(0);p.style.textIndent='%gpx';p.innerHTML=p.innerHTML.replace('%@','')", floorf((self.capitalLetter.bounds.size.width + 30) / 2), firstLetter];
         [webView stringByEvaluatingJavaScriptFromString:moveParagraph];
     }
     CGFloat jsHeight = [[webView stringByEvaluatingJavaScriptFromString:@"document.height"] floatValue];
@@ -277,11 +282,6 @@ typedef enum {
         self.secondTextHeight.constant = 0;
         self.galleryHeight.constant = 0;
     }
-
-    NSString *firstLetter = [[[self attributedStringForString:_textParts[0]] string] substringToIndex:1];
-    self.capitalLetter.text = firstLetter;
-    [self.contentView sendSubviewToBack:self.capitalLetter];
-    [self.capitalLetter setHidden:NO];
 }
 
 - (NLGallery *)galleryFromString:(NSString *)htmlString
