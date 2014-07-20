@@ -66,7 +66,7 @@
     // self.placeDetailsMenu.center = self.view.center;
     // [self.view addSubview:self.placeDetailsMenu];
 
-    self.mapView.region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(54.755106, 35.620437), MKCoordinateSpanMake(0.014, 0.036));
+    self.mapView.region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(54.7555, 35.6113), MKCoordinateSpanMake(0.0333783, 0.0367246));
     self.mapView.mapType = MKMapTypeStandard;
 
     NSString *baseURL = [[[NSBundle mainBundle] bundleURL] absoluteString];
