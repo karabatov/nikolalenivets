@@ -16,6 +16,7 @@
     if (self) {
         self.place = place;
         self.coordinate = [place location].coordinate;
+        self.title = place.title;
     }
     return self;
 }

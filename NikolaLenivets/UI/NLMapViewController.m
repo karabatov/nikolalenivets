@@ -10,6 +10,7 @@
 #import "NLMainMenuController.h"
 #import "NSAttributedString+Kerning.h"
 #import "NLPlaceAnnotation.h"
+#import "NSString+Distance.h"
 
 #define MaxZoom  2.0
 #define MinZoom  0.5
@@ -62,7 +63,8 @@
     // self.mapScrollView.minimumZoomScale = MinZoom;
     // self.mapScrollView.maximumZoomScale = MaxZoom;
 
-    // [self.mapImageView addSubview:_currentLocationMarker];
+    _shouldResetSelectedView = YES;
+
     [self.mapView addSubview:self.placeDetailsMenu];
     [self.placeDetailsMenu setHidden:YES];
     self.placeDetailsMenu.alpha = 0.0f;
@@ -118,19 +120,18 @@
 {
     NLPlace *place = sender.place;
 
-    NSLog(@"PLACE: %@", place.title);
-
     if (self.placeDetailsMenu.hidden == NO) {
         self.placeDetailsMenu.hidden = YES;
         self.placeDetailsMenu.alpha = 0.0f;
     }
 
-    [self showLocation:place.location];
-
     self.placeName.text = [place.title uppercaseString];
-    // if (_currentLocation) {
-    //     self.distanceToPlace.text = [NSString stringWithFormat:@"%.2f км.", [place distanceFromLocation:_currentLocation] / 100];
-    // }
+    if (_currentLocation) {
+        self.distanceToPlaceHeight.constant = 14.0f;
+        self.distanceToPlace.text = [[NSString stringFromDistance:[place distanceFromLocation:_currentLocation]] uppercaseString];
+    } else {
+        self.distanceToPlaceHeight.constant = 0.0f;
+    }
 
     [UIView animateWithDuration:0.25 delay:0.4f usingSpringWithDamping:0.5 initialSpringVelocity:1.0f options:UIViewAnimationOptionBeginFromCurrentState animations:^{
         self.placeDetailsMenu.hidden = NO;
@@ -154,8 +155,9 @@
 
 - (void)hidePlaceMenu
 {
-    [UIView animateWithDuration:0.2 animations:^{
+    [UIView animateWithDuration:0.25 delay:0.0f usingSpringWithDamping:0.5 initialSpringVelocity:1.0f options:UIViewAnimationOptionBeginFromCurrentState animations:^{
         self.placeDetailsMenu.alpha = 0.0;
+    } completion:^(BOOL finished){
         self.placeDetailsMenu.hidden = YES;
     }];
 }
@@ -166,7 +168,6 @@
 - (void)locationUpdated:(NSNotification *)notification
 {
     self.currentLocation = notification.object;
-    // [self redraw];
 }
 
 
@@ -198,6 +199,7 @@
 - (IBAction)back:(id)sender
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_MENU_NOW object:nil];
+    [self dismissViewControllerAnimated:NO completion:NULL];
 }
 
 
@@ -227,8 +229,8 @@
 
 - (IBAction)showMyLocation:(id)sender
 {
-    if (_currentLocation) {
-        [self showLocation:_currentLocation];
+    if (self.mapView.userLocation) {
+        [self.mapView setCenterCoordinate:self.mapView.userLocation.coordinate animated:YES];
     }
 }
 
@@ -263,6 +265,8 @@
             placeLocationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:placeReuseId];
             placeLocationView.image = [UIImage imageNamed:@"object.png"];
             placeLocationView.centerOffset = CGPointMake(0, placeLocationView.centerOffset.y - placeLocationView.image.size.height / 2);
+            placeLocationView.canShowCallout = NO;
+            placeLocationView.enabled = YES;
         }
         return placeLocationView;
     } else {
@@ -276,7 +280,7 @@
     NSLog(@"selected view with coordinate lat %g, lon %g", view.annotation.coordinate.latitude, view.annotation.coordinate.longitude);
     if ([view.annotation isKindOfClass:[NLPlaceAnnotation class]]) {
         if (_selectedView) {
-            [_selectedView setSelected:NO];
+            [self.mapView selectAnnotation:nil animated:NO];
             _selectedView.image = [UIImage imageNamed:@"object.png"];
         }
         _selectedView = view;
@@ -285,8 +289,8 @@
         MKCoordinateRegion region = {.center = newCenter, .span = MKCoordinateSpanMake(0.01, 0.01)};
         _shouldResetSelectedView = NO;
         [mapView setRegion:region animated:YES];
-        _shouldResetSelectedView = YES;
         [self showPlaceMenu:view.annotation];
+        _shouldResetSelectedView = YES;
     }
 }
 
@@ -294,8 +298,8 @@
 - (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view
 {
     if ([view.annotation isKindOfClass:[NLPlaceAnnotation class]]) {
+        [self.mapView selectAnnotation:nil animated:NO];
         view.image = [UIImage imageNamed:@"object.png"];
-        [self hidePlaceMenu];
     }
 }
 
@@ -303,9 +307,16 @@
 - (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated
 {
     if (_selectedView && _shouldResetSelectedView) {
-        [_selectedView setSelected:NO];
+        [self.mapView selectAnnotation:nil animated:NO];
         _selectedView.image = [UIImage imageNamed:@"object.png"];
         [self hidePlaceMenu];
+    }
+}
+
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
+{
+    if (!MKMapRectContainsPoint(_tileOverlay.boundingMapRect, MKMapPointForCoordinate(mapView.centerCoordinate))) {
+        NSLog(@"Off limits!");
     }
 }
 
