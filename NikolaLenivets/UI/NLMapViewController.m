@@ -63,8 +63,19 @@
     // self.mapScrollView.maximumZoomScale = MaxZoom;
 
     // [self.mapImageView addSubview:_currentLocationMarker];
-    // self.placeDetailsMenu.center = self.view.center;
-    // [self.view addSubview:self.placeDetailsMenu];
+    [self.mapView addSubview:self.placeDetailsMenu];
+    [self.placeDetailsMenu setHidden:YES];
+    self.placeDetailsMenu.alpha = 0.0f;
+    [self.placeDetailsMenu setTranslatesAutoresizingMaskIntoConstraints:NO];
+    NSLayoutConstraint *centerX = [NSLayoutConstraint constraintWithItem:self.placeDetailsMenu attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.mapView attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:-6.0f];
+    NSLayoutConstraint *bottomY = [NSLayoutConstraint constraintWithItem:self.placeDetailsMenu attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.mapView attribute:NSLayoutAttributeBottom multiplier:1.0f constant:-180.0f];
+    [self.view addConstraints:@[ centerX, bottomY ]];
+
+    [self.placeUnreadIndicator setHidden:YES];
+    self.placeInfoIconsHeight.constant = 0;
+    self.placeName.font = [UIFont fontWithName:NLMonospacedBoldFont size:13];
+    self.distanceToPlace.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
+    self.distanceToPlaceLegend.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
 
     self.mapView.region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(54.7555, 35.6113), MKCoordinateSpanMake(0.0333783, 0.0367246));
     self.mapView.mapType = MKMapTypeStandard;
@@ -102,63 +113,29 @@
 //    }
 }
 
-- (void)redraw
+
+- (void)showPlaceMenu:(NLPlaceAnnotation *)sender
 {
-    [self clearMap];
-
-    if (self.currentLocation) {
-        CGPoint currentLocation = [self pointFromLocation:self.currentLocation];
-        _currentLocationMarker.center = CGPointMake(currentLocation.x,
-                                                    currentLocation.y - _currentLocationMarker.frame.size.height / 2);
-    }
-
-    for (NLPlace *place in _places) {
-        [self drawPlace:place];
-    }
-}
-
-
-- (void)drawPlace:(NLPlace *)place
-{
-    CGPoint center = [self pointFromLocation:place.location];
-    UIButton *placeButton = [[UIButton alloc] init];
-    [placeButton setImage:[UIImage imageNamed:@"object.png"] forState:UIControlStateNormal];
-    [placeButton sizeToFit];
-    placeButton.center = center;
-    placeButton.tag = [place.id integerValue];
-    [placeButton addTarget:self action:@selector(showPlaceMenu:) forControlEvents:UIControlEventTouchUpInside];
-    // [self.resizableView addSubview:placeButton];
-}
-
-
-- (void)showPlaceMenu:(UIButton *)sender
-{
-    NLPlace *place = _.array(_places).find(^(NLPlace *p) {
-        return (BOOL)(p.id.integerValue == sender.tag);
-    });
-
-    if (place == nil) {
-        return;
-    }
+    NLPlace *place = sender.place;
 
     NSLog(@"PLACE: %@", place.title);
 
     if (self.placeDetailsMenu.hidden == NO) {
         self.placeDetailsMenu.hidden = YES;
-        self.placeDetailsMenu.alpha = 0;
+        self.placeDetailsMenu.alpha = 0.0f;
     }
 
     [self showLocation:place.location];
 
-    self.placeName.text = place.title;
-    if (_currentLocation) {
-        self.distanceToPlace.text = [NSString stringWithFormat:@"%.2f км.", [place distanceFromLocation:_currentLocation] / 100];
-    }
+    self.placeName.text = [place.title uppercaseString];
+    // if (_currentLocation) {
+    //     self.distanceToPlace.text = [NSString stringWithFormat:@"%.2f км.", [place distanceFromLocation:_currentLocation] / 100];
+    // }
 
-    [UIView animateWithDuration:0.2 animations:^{
+    [UIView animateWithDuration:0.25 delay:0.4f usingSpringWithDamping:0.5 initialSpringVelocity:1.0f options:UIViewAnimationOptionBeginFromCurrentState animations:^{
         self.placeDetailsMenu.hidden = NO;
         self.placeDetailsMenu.alpha = 1.0;
-    }];
+    } completion:NULL];
 }
 
 
@@ -175,7 +152,7 @@
 
 
 
-- (void)hideDetailsMenu
+- (void)hidePlaceMenu
 {
     [UIView animateWithDuration:0.2 animations:^{
         self.placeDetailsMenu.alpha = 0.0;
@@ -216,22 +193,6 @@
 }
 
 
-
-#pragma mark - Scrolling delegate
-
-
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-{
-    [self hideDetailsMenu];
-}
-
-
-- (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view
-{
-    [self hideDetailsMenu];
-}
-
-
 #pragma mark - Actions
 
 - (IBAction)back:(id)sender
@@ -260,7 +221,7 @@
     span.latitudeDelta = self.mapView.region.span.latitudeDelta * 1.5;
     span.longitudeDelta = self.mapView.region.span.longitudeDelta * 1.5;
     region.span = span;
-    [self.mapView setRegion:region animated:TRUE];
+    [self.mapView setRegion:region animated:YES];
 }
 
 
@@ -325,6 +286,7 @@
         _shouldResetSelectedView = NO;
         [mapView setRegion:region animated:YES];
         _shouldResetSelectedView = YES;
+        [self showPlaceMenu:view.annotation];
     }
 }
 
@@ -333,6 +295,7 @@
 {
     if ([view.annotation isKindOfClass:[NLPlaceAnnotation class]]) {
         view.image = [UIImage imageNamed:@"object.png"];
+        [self hidePlaceMenu];
     }
 }
 
@@ -342,6 +305,7 @@
     if (_selectedView && _shouldResetSelectedView) {
         [_selectedView setSelected:NO];
         _selectedView.image = [UIImage imageNamed:@"object.png"];
+        [self hidePlaceMenu];
     }
 }
 
