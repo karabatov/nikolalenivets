@@ -9,6 +9,7 @@
 #import "NLMapViewController.h"
 #import "NLMainMenuController.h"
 #import "NSAttributedString+Kerning.h"
+#import "NLPlaceAnnotation.h"
 
 #define MaxZoom  2.0
 #define MinZoom  0.5
@@ -61,9 +62,8 @@
     // self.mapScrollView.maximumZoomScale = MaxZoom;
 
     // [self.mapImageView addSubview:_currentLocationMarker];
-    self.placeDetailsMenu.center = self.view.center;
-    [self.view addSubview:self.placeDetailsMenu];
-    // [self updatePlaces];
+    // self.placeDetailsMenu.center = self.view.center;
+    // [self.view addSubview:self.placeDetailsMenu];
 
     self.mapView.region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(54.755106, 35.620437), MKCoordinateSpanMake(0.014, 0.036));
     self.mapView.mapType = MKMapTypeStandard;
@@ -78,13 +78,18 @@
     [self.mapView addOverlay:_tileOverlay level:MKOverlayLevelAboveLabels];
     self.mapView.showsUserLocation = YES;
     self.mapView.delegate = self;
+
+    [self updatePlaces];
 }
 
 
 - (void)updatePlaces
 {
     _places = [[NLStorage sharedInstance] places];
-    // [self redraw];
+    for (NLPlace *place in _places) {
+        NLPlaceAnnotation *annotation = [[NLPlaceAnnotation alloc] initWithPlace:place];
+        [self.mapView addAnnotation:annotation];
+    }
 }
 
 #pragma mark - Map-like stuff
@@ -277,5 +282,36 @@
     }
 }
 
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+    static NSString *userReuseId = @"com.nikola-lenivets.annotation.user";
+    static NSString *placeReuseId = @"com.nikola-lenivets.annotation.place";
+    if ([annotation isKindOfClass:[MKUserLocation class]]) {
+        MKAnnotationView *userLocationView = [mapView dequeueReusableAnnotationViewWithIdentifier:userReuseId];
+        if (!userLocationView) {
+            userLocationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:userReuseId];
+            userLocationView.image = [UIImage imageNamed:@"userlocation.png"];
+            userLocationView.centerOffset = CGPointMake(-9, -25);
+        }
+        return userLocationView;
+    } else if ([annotation isKindOfClass:[NLPlaceAnnotation class]]) {
+        MKAnnotationView *placeLocationView = [mapView dequeueReusableAnnotationViewWithIdentifier:placeReuseId];
+        if (!placeLocationView) {
+            placeLocationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:placeReuseId];
+            placeLocationView.image = [UIImage imageNamed:@"object.png"];
+            placeLocationView.centerOffset = CGPointMake(-15, -14);
+        }
+        return placeLocationView;
+    } else {
+        return nil;
+    }
+}
+
+
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
+{
+    NSLog(@"selected view with coordinate lat %g, lon %g", view.annotation.coordinate.latitude, view.annotation.coordinate.longitude);
+}
 
 @end
