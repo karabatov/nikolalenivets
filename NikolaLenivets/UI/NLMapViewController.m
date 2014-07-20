@@ -21,7 +21,8 @@
     UIImageView *_currentLocationMarker;
     CLLocation *_leftUpperCornerLocation;
     CLLocation *_rightBottomCornerLocation;
-
+    MKAnnotationView *_selectedView;
+    BOOL _shouldResetSelectedView;
     NSArray *_places;
 }
 
@@ -292,7 +293,7 @@
         if (!userLocationView) {
             userLocationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:userReuseId];
             userLocationView.image = [UIImage imageNamed:@"userlocation.png"];
-            userLocationView.centerOffset = CGPointMake(-9, -25);
+            userLocationView.centerOffset = CGPointMake(0, userLocationView.centerOffset.y - userLocationView.image.size.height / 2);
         }
         return userLocationView;
     } else if ([annotation isKindOfClass:[NLPlaceAnnotation class]]) {
@@ -300,7 +301,7 @@
         if (!placeLocationView) {
             placeLocationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:placeReuseId];
             placeLocationView.image = [UIImage imageNamed:@"object.png"];
-            placeLocationView.centerOffset = CGPointMake(-15, -14);
+            placeLocationView.centerOffset = CGPointMake(0, placeLocationView.centerOffset.y - placeLocationView.image.size.height / 2);
         }
         return placeLocationView;
     } else {
@@ -312,6 +313,36 @@
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
     NSLog(@"selected view with coordinate lat %g, lon %g", view.annotation.coordinate.latitude, view.annotation.coordinate.longitude);
+    if ([view.annotation isKindOfClass:[NLPlaceAnnotation class]]) {
+        if (_selectedView) {
+            [_selectedView setSelected:NO];
+            _selectedView.image = [UIImage imageNamed:@"object.png"];
+        }
+        _selectedView = view;
+        view.image = [UIImage imageNamed:@"object-selected.png"];
+        CLLocationCoordinate2D newCenter = CLLocationCoordinate2DMake(view.annotation.coordinate.latitude + 0.0025f, view.annotation.coordinate.longitude);
+        MKCoordinateRegion region = {.center = newCenter, .span = MKCoordinateSpanMake(0.01, 0.01)};
+        _shouldResetSelectedView = NO;
+        [mapView setRegion:region animated:YES];
+        _shouldResetSelectedView = YES;
+    }
+}
+
+
+- (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view
+{
+    if ([view.annotation isKindOfClass:[NLPlaceAnnotation class]]) {
+        view.image = [UIImage imageNamed:@"object.png"];
+    }
+}
+
+
+- (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated
+{
+    if (_selectedView && _shouldResetSelectedView) {
+        [_selectedView setSelected:NO];
+        _selectedView.image = [UIImage imageNamed:@"object.png"];
+    }
 }
 
 @end
