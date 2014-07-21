@@ -12,10 +12,6 @@
 #import "NLPlaceAnnotation.h"
 #import "NSString+Distance.h"
 
-#define MaxZoom  2.0
-#define MinZoom  0.5
-#define ZoomStep 0.5
-
 @implementation NLMapViewController
 {
     MKTileOverlay *_tileOverlay;
@@ -41,12 +37,6 @@
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationUpdated:) name:NLUserLocationUpdated object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePlaces) name:STORAGE_DID_UPDATE object:nil];
-
-        // _leftUpperCornerLocation = [[CLLocation alloc] initWithLatitude:54.749725 longitude:35.600477];
-        // _rightBottomCornerLocation = [[CLLocation alloc] initWithLatitude:54.75782 longitude:35.60123];
-
-        // _currentLocationMarker = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"userlocation.png"]];
-        // _currentLocationMarker.frame = CGRectMake(0, 0, 37/2, 50);
     }
     return self;
 }
@@ -59,10 +49,6 @@
     self.view.frame = [[AppDelegate window] frame];
 
     self.titleLabel.attributedText = [NSAttributedString kernedStringForString:@"КАРТА"];
-
-    // self.mapScrollView.contentSize = self.mapImageView.frame.size;
-    // self.mapScrollView.minimumZoomScale = MinZoom;
-    // self.mapScrollView.maximumZoomScale = MaxZoom;
 
     _shouldResetSelectedView = YES;
 
@@ -109,13 +95,6 @@
 
 #pragma mark - Map-like stuff
 
-- (void)clearMap
-{
-//    for (UIView *v in self.mapImageView.subviews) {
-//        [v removeFromSuperview];
-//    }
-}
-
 
 - (void)showPlaceMenu:(NLPlaceAnnotation *)sender
 {
@@ -141,19 +120,6 @@
 }
 
 
-- (void)showLocation:(CLLocation *)location
-{
-//    CGPoint placeCenter = [self pointFromLocation:location];
-//    placeCenter = [self.resizableView convertPoint:placeCenter toView:self.mapScrollView];
-//
-//    [self.mapScrollView scrollRectToVisible:CGRectMake(placeCenter.x - self.view.frame.size.width / 2,
-//                                                       placeCenter.y - self.view.frame.size.height / 2 - 80,
-//                                                       self.view.frame.size.width,
-//                                                       self.view.frame.size.height) animated:YES];
-}
-
-
-
 - (void)hidePlaceMenu
 {
     [UIView animateWithDuration:0.25 delay:0.0f usingSpringWithDamping:0.5 initialSpringVelocity:1.0f options:UIViewAnimationOptionBeginFromCurrentState animations:^{
@@ -169,29 +135,6 @@
 - (void)locationUpdated:(NSNotification *)notification
 {
     self.currentLocation = notification.object;
-}
-
-
-- (CGPoint)pointFromLocation:(CLLocation *)location
-{
-//    CGPoint point = CGPointMake(0, 0);
-//
-//    double latDelta = _leftUpperCornerLocation.coordinate.latitude  - _rightBottomCornerLocation.coordinate.latitude;
-//    double lonDelta = _leftUpperCornerLocation.coordinate.longitude - _rightBottomCornerLocation.coordinate.longitude;
-//
-//    double latPPD = fabs((double)self.mapScrollView.contentSize.width / latDelta);
-//    double lonPPD = fabs((double)self.mapScrollView.contentSize.height / lonDelta);
-//
-//    double locationLatDelta = fabs((double)_leftUpperCornerLocation.coordinate.latitude - location.coordinate.latitude);
-//    double locationLonDelta = fabs((double)_leftUpperCornerLocation.coordinate.longitude - location.coordinate.longitude);
-//
-//    double x = (locationLatDelta * latPPD) / self.mapScrollView.zoomScale;
-//    double y = (locationLonDelta * lonPPD) / self.mapScrollView.zoomScale;;
-//
-//    point.x = x;
-//    point.y = y;
-
-    return CGPointZero;
 }
 
 
