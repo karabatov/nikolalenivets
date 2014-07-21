@@ -11,6 +11,7 @@
 #import "NSAttributedString+Kerning.h"
 #import "NLPlaceAnnotation.h"
 #import "NSString+Distance.h"
+#import "NLDetailsViewController.h"
 
 @implementation NLMapViewController
 {
@@ -317,6 +318,15 @@
             }
         }
     }
+}
+
+
+- (IBAction)openPlaceFromPopup:(UIButton *)sender {
+    NLPlace *place = ((NLPlaceAnnotation *)(_selectedView.annotation)).place;
+    NLDetailsViewController *details = [[NLDetailsViewController alloc] initWithPlace:place currentLocation:self.currentLocation];
+    [self presentViewController:details animated:YES completion:^{
+        NSLog(@"Details dismissed.");
+    }];
 }
 
 
