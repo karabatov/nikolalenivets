@@ -249,10 +249,73 @@
 }
 
 
+- (BOOL)isCoordinateWithinNL:(CLLocationCoordinate2D)location
+{
+    MKCoordinateRegion region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(54.755071, 35.620443), MKCoordinateSpanMake(0.04, 0.08));
+
+    CLLocationCoordinate2D center = region.center;
+    CLLocationCoordinate2D northWestCorner, southEastCorner;
+
+    northWestCorner.latitude  = center.latitude  - (region.span.latitudeDelta  / 2.0);
+    northWestCorner.longitude = center.longitude - (region.span.longitudeDelta / 2.0);
+    southEastCorner.latitude  = center.latitude  + (region.span.latitudeDelta  / 2.0);
+    southEastCorner.longitude = center.longitude + (region.span.longitudeDelta / 2.0);
+
+    if (
+        location.latitude  >= northWestCorner.latitude &&
+        location.latitude  <= southEastCorner.latitude &&
+
+        location.longitude >= northWestCorner.longitude &&
+        location.longitude <= southEastCorner.longitude
+        )
+    {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
 - (IBAction)showMyLocation:(id)sender
 {
+    static BOOL isShowingCover;
     if (self.mapView.userLocation) {
-        [self.mapView setCenterCoordinate:self.mapView.userLocation.coordinate animated:YES];
+        if ([self isCoordinateWithinNL:self.mapView.userLocation.coordinate]) {
+            [self.mapView setCenterCoordinate:self.mapView.userLocation.coordinate animated:YES];
+        } else {
+            if (!isShowingCover) {
+                isShowingCover = YES;
+                UIView *coverView = [[UIView alloc] initWithFrame:self.mapView.bounds];
+                UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:coverView.bounds];
+                toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+                toolbar.barStyle = UIBarStyleBlack;
+                [coverView addSubview:toolbar];
+                UILabel *coverMessage = [[UILabel alloc] initWithFrame:CGRectZero];
+                coverMessage.font = [UIFont fontWithName:NLMonospacedBoldFont size:18];
+                coverMessage.textColor = [UIColor whiteColor];
+                coverMessage.numberOfLines = 0;
+                coverMessage.text = @"ВЫ НАХОДИТЕСЬ\nЗА ПРЕДЕЛАМИ\nПАРКА\nНИКОЛА-ЛЕНИВЕЦ";
+                [coverView addSubview:coverMessage];
+                [coverMessage setFrame:CGRectMake(13.0f, 12.0f, 200.0f, 200.0f)];
+                [coverMessage sizeToFit];
+                coverView.alpha = 0.0f;
+                [self.mapView insertSubview:coverView atIndex:0];
+                [self.mapView bringSubviewToFront:coverView];
+                CGRect origFrame = CGRectMake(0.0f, 0.0f, self.mapView.bounds.size.width, self.mapView.bounds.size.height + 100.0f);
+                CGRect targetFrame = CGRectMake(0.0f, self.mapView.bounds.size.height, self.mapView.bounds.size.width, self.mapView.bounds.size.height + 100.0f);
+                [coverView setFrame:targetFrame];
+                coverView.alpha = 1.0f;
+                [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.5f initialSpringVelocity:1.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
+                    coverView.frame = origFrame;
+                } completion:^(BOOL finished) {
+                    [UIView animateWithDuration:0.5f delay:3.0f usingSpringWithDamping:0.5f initialSpringVelocity:1.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
+                        coverView.frame = targetFrame;
+                    } completion:^(BOOL finished) {
+                        [coverView removeFromSuperview];
+                        isShowingCover = NO;
+                    }];
+                }];
+            }
+        }
     }
 }
 
