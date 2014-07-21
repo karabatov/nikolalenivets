@@ -8,6 +8,7 @@
 
 @import UIKit;
 @import MapKit;
+#import "NLPlaceAnnotation.h"
 
 @interface NLMapViewController : UIViewController <MKMapViewDelegate>
 
@@ -27,5 +28,6 @@
 - (IBAction)zoomIn:(id)sender;
 - (IBAction)zoomOut:(id)sender;
 - (IBAction)showMyLocation:(id)sender;
+- (instancetype)initWithPlace:(NLPlace *)place;
 
 @end

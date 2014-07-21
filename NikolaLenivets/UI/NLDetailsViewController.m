@@ -346,7 +346,7 @@ typedef enum {
     switch ([self mode]) {
         case ShowingPlace:
         {
-            _mapVC = [NLMapViewController new];
+            _mapVC = [[NLMapViewController alloc] initWithPlace:_place];
             [self.navigationController pushViewController:_mapVC animated:YES];
             break;
         }

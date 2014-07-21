@@ -9,7 +9,6 @@
 #import "NLMapViewController.h"
 #import "NLMainMenuController.h"
 #import "NSAttributedString+Kerning.h"
-#import "NLPlaceAnnotation.h"
 #import "NSString+Distance.h"
 #import "NLDetailsViewController.h"
 
@@ -23,6 +22,7 @@
     BOOL _shouldResetSelectedView;
     BOOL _manuallyChangingRegion;
     NSArray *_places;
+    NLPlace *_showingPlace;
 }
 
 
@@ -38,6 +38,16 @@
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationUpdated:) name:NLUserLocationUpdated object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePlaces) name:STORAGE_DID_UPDATE object:nil];
+    }
+    return self;
+}
+
+
+- (instancetype)initWithPlace:(NLPlace *)place
+{
+    self = [[NLMapViewController alloc] init];
+    if (self) {
+        _showingPlace = place;
     }
     return self;
 }
@@ -167,6 +177,8 @@
 - (void)showPlaceMenu:(NLPlaceAnnotation *)sender
 {
     NLPlace *place = sender.place;
+
+    NSLog(@"showing place with id %@ and title %@", place.id, place.title);
 
     if (self.placeDetailsMenu.hidden == NO) {
         self.placeDetailsMenu.hidden = YES;
@@ -358,6 +370,9 @@
             placeLocationView.canShowCallout = NO;
             placeLocationView.enabled = YES;
         }
+        if (_showingPlace && ((NLPlaceAnnotation *)annotation).place.id == _showingPlace.id) {
+            _selectedView = placeLocationView;
+        }
         return placeLocationView;
     } else {
         return nil;
@@ -368,6 +383,7 @@
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
     if ([view.annotation isKindOfClass:[NLPlaceAnnotation class]]) {
+        NSLog(@"did select view with place id %@", ((NLPlaceAnnotation *)view.annotation).place.id);
         if (_selectedView) {
             [self.mapView selectAnnotation:nil animated:NO];
             _selectedView.image = [UIImage imageNamed:@"object.png"];
