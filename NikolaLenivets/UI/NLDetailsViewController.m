@@ -169,7 +169,6 @@ typedef enum {
     self.firstPartWebView.scrollView.bounces = NO;
     self.secondPartLabel.scrollView.bounces = NO;
     [self.firstPartWebView loadHTMLString:_textParts.firstObject baseURL:[NSURL URLWithString:@"http://"]];
-    NSLog(@"html string = %@", _textParts.firstObject);
     if (_textParts.count > 0) {
         [self.secondPartLabel loadHTMLString:_textParts.lastObject baseURL:[NSURL URLWithString:@"http://"]];
     }
