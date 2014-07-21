@@ -49,8 +49,6 @@
     self.view.frame = [[AppDelegate window] frame];
 
     self.titleLabel.attributedText = [NSAttributedString kernedStringForString:@"КАРТА"];
-    NSInteger unreadCount = [[NLStorage sharedInstance] unreadCountInArray:_places];
-    [self updateUnreadCountWithCount:unreadCount];
 
     _shouldResetSelectedView = YES;
 
@@ -67,6 +65,7 @@
     self.placeName.font = [UIFont fontWithName:NLMonospacedBoldFont size:13];
     self.distanceToPlace.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
     self.distanceToPlaceLegend.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
+    self.itemsCountLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
 
     MKTileOverlay *bgOverlay = [[MKTileOverlay alloc] initWithURLTemplate:[[[[NSBundle mainBundle] bundleURL] URLByAppendingPathComponent:@"tile-empty.png"] absoluteString]];
     bgOverlay.canReplaceMapContent = YES;
@@ -86,6 +85,13 @@
 
     self.mapView.region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(54.7555, 35.6113), MKCoordinateSpanMake(0.0333783, 0.0367246));
     self.mapView.mapType = MKMapTypeStandard;
+}
+
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    NSInteger unreadCount = [[NLStorage sharedInstance] unreadCountInArray:_places];
+    [self updateUnreadCountWithCount:unreadCount];
 }
 
 
@@ -110,6 +116,9 @@
             [self.itemsCountLabel setHidden:YES];
             self.itemsCountLabel.alpha = 1.0f;
             self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)unreadCount];
+            if (_selectedView) {
+                [self.mapView selectAnnotation:_selectedView.annotation animated:NO];
+            }
         }];
     } else {
         self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)unreadCount];
@@ -121,8 +130,32 @@
             [self.itemsCountLabel setTransform:CGAffineTransformIdentity];
             [self.view layoutIfNeeded];
         } completion:^(BOOL finished) {
-            //
+            if (_selectedView) {
+                [self.mapView selectAnnotation:_selectedView.annotation animated:NO];
+            }
         }];
+    }
+}
+
+
+- (void)setPlaceUnreadStatus:(NLItemStatus)status
+{
+    switch (status) {
+        case NLItemStatusNew:
+            [self.placeUnreadIndicator setTextColor:[UIColor colorWithRed:255.0f green:127.0f/255.0f blue:127.0f/255.0f alpha:1.0f]];
+            [self.placeUnreadIndicator setHidden:NO];
+            break;
+        case NLItemStatusUnread:
+            [self.placeUnreadIndicator setTextColor:[UIColor colorWithRed:199.0f/255.0f green:199.0f/255.0f blue:199.0f/255.0f alpha:1.0f]];
+            [self.placeUnreadIndicator setHidden:NO];
+            break;
+        case NLItemStatusRead:
+            [self.placeUnreadIndicator setTextColor:[UIColor colorWithRed:199.0f/255.0f green:199.0f/255.0f blue:199.0f/255.0f alpha:1.0f]];
+            [self.placeUnreadIndicator setHidden:YES];
+            break;
+
+        default:
+            break;
     }
 }
 
@@ -140,6 +173,7 @@
     }
 
     self.placeName.text = [place.title uppercaseString];
+    [self setPlaceUnreadStatus:place.itemStatus];
     if (_currentLocation) {
         self.distanceToPlaceHeight.constant = 14.0f;
         self.distanceToPlace.text = [[NSString stringFromDistance:[place distanceFromLocation:_currentLocation]] uppercaseString];
@@ -150,7 +184,17 @@
     [UIView animateWithDuration:0.25 delay:0.4f usingSpringWithDamping:0.5 initialSpringVelocity:1.0f options:UIViewAnimationOptionBeginFromCurrentState animations:^{
         self.placeDetailsMenu.hidden = NO;
         self.placeDetailsMenu.alpha = 1.0;
-    } completion:NULL];
+    } completion:^(BOOL finished){
+        if (finished) {
+            if (place.itemStatus == NLItemStatusNew || place.itemStatus == NLItemStatusUnread) {
+                place.itemStatus = NLItemStatusRead;
+                [self setPlaceUnreadStatus:place.itemStatus];
+                [[NLStorage sharedInstance] archive];
+                NSInteger unreadCount = [[NLStorage sharedInstance] unreadCountInArray:_places];
+                [self updateUnreadCountWithCount:unreadCount];
+            }
+        }
+    }];
 }
 
 

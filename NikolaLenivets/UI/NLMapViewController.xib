@@ -204,7 +204,7 @@
                                 <constraint firstAttribute="height" constant="32" id="Aq6-WU-GOc"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gq1-8h-m09" userLabel="Distance">
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gq1-8h-m09" userLabel="Distance">
                             <rect key="frame" x="0.0" y="61" width="164" height="14"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
