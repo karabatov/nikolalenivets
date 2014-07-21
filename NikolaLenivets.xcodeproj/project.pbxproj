@@ -84,6 +84,8 @@
 		D1783EEF197C438200A92AA3 /* userlocation.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783EED197C438200A92AA3 /* userlocation.png */; };
 		D1783EF0197C438200A92AA3 /* userlocation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783EEE197C438200A92AA3 /* userlocation@2x.png */; };
 		D1783EF8197CFFF000A92AA3 /* tile-empty.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783EF7197CFFF000A92AA3 /* tile-empty.png */; };
+		D1783EFE197D54F000A92AA3 /* NLOrigamiSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = D1783EFD197D54F000A92AA3 /* NLOrigamiSegue.m */; };
+		D1783F01197D616D00A92AA3 /* UINavigationController+OrigamiTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = D1783F00197D616D00A92AA3 /* UINavigationController+OrigamiTransition.m */; };
 		D19C0425196EF44C006A086B /* map-minus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19C0422196EF44C006A086B /* map-minus@2x.png */; };
 		D19C0426196EF44D006A086B /* map-locate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19C0423196EF44C006A086B /* map-locate@2x.png */; };
 		D19C0427196EF44D006A086B /* map-plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19C0424196EF44C006A086B /* map-plus@2x.png */; };
@@ -226,6 +228,10 @@
 		D1783EED197C438200A92AA3 /* userlocation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = userlocation.png; sourceTree = "<group>"; };
 		D1783EEE197C438200A92AA3 /* userlocation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "userlocation@2x.png"; sourceTree = "<group>"; };
 		D1783EF7197CFFF000A92AA3 /* tile-empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tile-empty.png"; sourceTree = "<group>"; };
+		D1783EFC197D54F000A92AA3 /* NLOrigamiSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLOrigamiSegue.h; path = UI/NLOrigamiSegue.h; sourceTree = "<group>"; };
+		D1783EFD197D54F000A92AA3 /* NLOrigamiSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLOrigamiSegue.m; path = UI/NLOrigamiSegue.m; sourceTree = "<group>"; };
+		D1783EFF197D616D00A92AA3 /* UINavigationController+OrigamiTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+OrigamiTransition.h"; path = "UI/UINavigationController+OrigamiTransition.h"; sourceTree = "<group>"; };
+		D1783F00197D616D00A92AA3 /* UINavigationController+OrigamiTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+OrigamiTransition.m"; path = "UI/UINavigationController+OrigamiTransition.m"; sourceTree = "<group>"; };
 		D19C0422196EF44C006A086B /* map-minus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-minus@2x.png"; sourceTree = "<group>"; };
 		D19C0423196EF44C006A086B /* map-locate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-locate@2x.png"; sourceTree = "<group>"; };
 		D19C0424196EF44C006A086B /* map-plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-plus@2x.png"; sourceTree = "<group>"; };
@@ -284,6 +290,10 @@
 				D1A3D7D5197641D900C53E06 /* NSString+Distance.h */,
 				D1A3D7D6197641D900C53E06 /* NSString+Distance.m */,
 				4F0A8BC6195AE58400D59268 /* XYOrigami */,
+				D1783EFC197D54F000A92AA3 /* NLOrigamiSegue.h */,
+				D1783EFD197D54F000A92AA3 /* NLOrigamiSegue.m */,
+				D1783EFF197D616D00A92AA3 /* UINavigationController+OrigamiTransition.h */,
+				D1783F00197D616D00A92AA3 /* UINavigationController+OrigamiTransition.m */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -784,6 +794,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F390E7518ED589200131934 /* NLStorage.m in Sources */,
+				D1783F01197D616D00A92AA3 /* UINavigationController+OrigamiTransition.m in Sources */,
 				4F390E8918ED754700131934 /* NLScreen.m in Sources */,
 				4F22FD7C1936ED3E0075C1A0 /* NLGallery.m in Sources */,
 				4F9C414818EA84640038090E /* NLAppDelegate.m in Sources */,
@@ -800,6 +811,7 @@
 				D19C04331973FF7E006A086B /* NLAttributedLabel.m in Sources */,
 				4F22FD801936F4360075C1A0 /* NLEventsListControllerViewController.m in Sources */,
 				4F0A8BC9195AE58400D59268 /* UIView+Origami.m in Sources */,
+				D1783EFE197D54F000A92AA3 /* NLOrigamiSegue.m in Sources */,
 				4F0A8BCE195AFEAA00D59268 /* NLSplashViewController.m in Sources */,
 				4F390E7D18ED731E00131934 /* NLNewsEntry.m in Sources */,
 				4F22FD861937288B0075C1A0 /* NLPlacesViewController.m in Sources */,
