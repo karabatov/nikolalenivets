@@ -69,6 +69,9 @@
     self.mapView.region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(54.7555, 35.6113), MKCoordinateSpanMake(0.0333783, 0.0367246));
     self.mapView.mapType = MKMapTypeStandard;
 
+    MKTileOverlay *bgOverlay = [[MKTileOverlay alloc] initWithURLTemplate:[[[[NSBundle mainBundle] bundleURL] URLByAppendingPathComponent:@"tile-empty.png"] absoluteString]];
+    bgOverlay.canReplaceMapContent = YES;
+    [self.mapView addOverlay:bgOverlay level:MKOverlayLevelAboveRoads];
     NSString *baseURL = [[[NSBundle mainBundle] bundleURL] absoluteString];
     NSString *urlTemplate = [baseURL stringByAppendingString:@"tiles/{z}/{x}/{y}.png"];
     _tileOverlay = [[MKTileOverlay alloc] initWithURLTemplate:urlTemplate];
@@ -183,11 +186,7 @@
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
 {
-    if ([overlay isKindOfClass:[MKTileOverlay class]]) {
-        return [[MKTileOverlayRenderer alloc] initWithOverlay:_tileOverlay];
-    } else {
-        return nil;
-    }
+    return [[MKTileOverlayRenderer alloc] initWithOverlay:overlay];
 }
 
 
