@@ -68,9 +68,6 @@
     self.distanceToPlace.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
     self.distanceToPlaceLegend.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
 
-    self.mapView.region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(54.7555, 35.6113), MKCoordinateSpanMake(0.0333783, 0.0367246));
-    self.mapView.mapType = MKMapTypeStandard;
-
     MKTileOverlay *bgOverlay = [[MKTileOverlay alloc] initWithURLTemplate:[[[[NSBundle mainBundle] bundleURL] URLByAppendingPathComponent:@"tile-empty.png"] absoluteString]];
     bgOverlay.canReplaceMapContent = YES;
     [self.mapView addOverlay:bgOverlay level:MKOverlayLevelAboveRoads];
@@ -86,6 +83,9 @@
     self.mapView.delegate = self;
 
     [self updatePlaces];
+
+    self.mapView.region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(54.7555, 35.6113), MKCoordinateSpanMake(0.0333783, 0.0367246));
+    self.mapView.mapType = MKMapTypeStandard;
 }
 
 
@@ -217,7 +217,8 @@
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
 {
-    return [[MKTileOverlayRenderer alloc] initWithOverlay:overlay];
+    MKTileOverlayRenderer *renderer = [[MKTileOverlayRenderer alloc] initWithOverlay:overlay];
+    return renderer;
 }
 
 
