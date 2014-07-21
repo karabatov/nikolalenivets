@@ -23,6 +23,7 @@
     BOOL _manuallyChangingRegion;
     NSArray *_places;
     NLPlace *_showingPlace;
+    NLPlaceAnnotation *_showingAnnotation;
 }
 
 
@@ -77,6 +78,7 @@
     self.distanceToPlace.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
     self.distanceToPlaceLegend.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
     self.itemsCountLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
+    self.backPlaceTitle.font = [UIFont fontWithName:NLMonospacedBoldFont size:10];
 
     MKTileOverlay *bgOverlay = [[MKTileOverlay alloc] initWithURLTemplate:[[[[NSBundle mainBundle] bundleURL] URLByAppendingPathComponent:@"tile-empty.png"] absoluteString]];
     bgOverlay.canReplaceMapContent = YES;
@@ -96,6 +98,17 @@
 
     self.mapView.region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(54.7555, 35.6113), MKCoordinateSpanMake(0.0333783, 0.0367246));
     self.mapView.mapType = MKMapTypeStandard;
+
+    if (_showingPlace) {
+        [self.titleLabel setHidden:YES];
+        [self.itemsCountLabel setHidden:YES];
+        [self.backPlaceView setHidden:NO];
+        self.backPlaceTitle.text = [_showingPlace.title uppercaseString];
+    } else {
+        [self.titleLabel setHidden:NO];
+        [self.itemsCountLabel setHidden:NO];
+        [self.backPlaceView setHidden:YES];
+    }
 }
 
 
@@ -103,6 +116,9 @@
 {
     NSInteger unreadCount = [[NLStorage sharedInstance] unreadCountInArray:_places];
     [self updateUnreadCountWithCount:unreadCount];
+    if (_showingAnnotation) {
+        [self.mapView selectAnnotation:_showingAnnotation animated:YES];
+    }
 }
 
 
@@ -112,39 +128,44 @@
     for (NLPlace *place in _places) {
         NLPlaceAnnotation *annotation = [[NLPlaceAnnotation alloc] initWithPlace:place];
         [self.mapView addAnnotation:annotation];
+        if (_showingPlace && _showingPlace.id == annotation.place.id) {
+            _showingAnnotation = annotation;
+        }
     }
 }
 
 
 - (void)updateUnreadCountWithCount:(NSInteger)unreadCount
 {
-    if (unreadCount == 0) {
-        self.titleBarHeight.constant = 52.0f;
-        [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:10.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            [self.view layoutIfNeeded];
-            self.itemsCountLabel.alpha = 0.0f;
-        } completion:^(BOOL finished) {
-            [self.itemsCountLabel setHidden:YES];
-            self.itemsCountLabel.alpha = 1.0f;
+    if (!_showingPlace) {
+        if (unreadCount == 0) {
+            self.titleBarHeight.constant = 52.0f;
+            [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:10.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                [self.view layoutIfNeeded];
+                self.itemsCountLabel.alpha = 0.0f;
+            } completion:^(BOOL finished) {
+                [self.itemsCountLabel setHidden:YES];
+                self.itemsCountLabel.alpha = 1.0f;
+                self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)unreadCount];
+                if (_selectedView) {
+                    [self.mapView selectAnnotation:_selectedView.annotation animated:NO];
+                }
+            }];
+        } else {
             self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)unreadCount];
-            if (_selectedView) {
-                [self.mapView selectAnnotation:_selectedView.annotation animated:NO];
-            }
-        }];
-    } else {
-        self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)unreadCount];
-        self.titleBarHeight.constant = 64.0f;
-        [self.itemsCountLabel setTransform:CGAffineTransformMakeScale(0.05f, 0.05f)];
-        [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:10.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            [self.itemsCountLabel setHidden:NO];
-            self.itemsCountLabel.alpha = 1.0f;
-            [self.itemsCountLabel setTransform:CGAffineTransformIdentity];
-            [self.view layoutIfNeeded];
-        } completion:^(BOOL finished) {
-            if (_selectedView) {
-                [self.mapView selectAnnotation:_selectedView.annotation animated:NO];
-            }
-        }];
+            self.titleBarHeight.constant = 64.0f;
+            [self.itemsCountLabel setTransform:CGAffineTransformMakeScale(0.05f, 0.05f)];
+            [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:10.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                [self.itemsCountLabel setHidden:NO];
+                self.itemsCountLabel.alpha = 1.0f;
+                [self.itemsCountLabel setTransform:CGAffineTransformIdentity];
+                [self.view layoutIfNeeded];
+            } completion:^(BOOL finished) {
+                if (_selectedView) {
+                    [self.mapView selectAnnotation:_selectedView.annotation animated:NO];
+                }
+            }];
+        }
     }
 }
 
@@ -177,8 +198,6 @@
 - (void)showPlaceMenu:(NLPlaceAnnotation *)sender
 {
     NLPlace *place = sender.place;
-
-    NSLog(@"showing place with id %@ and title %@", place.id, place.title);
 
     if (self.placeDetailsMenu.hidden == NO) {
         self.placeDetailsMenu.hidden = YES;
@@ -333,12 +352,17 @@
 }
 
 
-- (IBAction)openPlaceFromPopup:(UIButton *)sender {
+- (IBAction)openPlaceFromPopup:(UIButton *)sender
+{
     NLPlace *place = ((NLPlaceAnnotation *)(_selectedView.annotation)).place;
     NLDetailsViewController *details = [[NLDetailsViewController alloc] initWithPlace:place currentLocation:self.currentLocation];
-    [((NLAppDelegate *)[[UIApplication sharedApplication] delegate]).navigation pushViewController:details animated:YES];
+    [self.navigationController pushViewController:details animated:YES];
 }
 
+- (IBAction)backToPlace:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 #pragma mark - MKMapViewDelegate
 
@@ -383,7 +407,6 @@
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
     if ([view.annotation isKindOfClass:[NLPlaceAnnotation class]]) {
-        NSLog(@"did select view with place id %@", ((NLPlaceAnnotation *)view.annotation).place.id);
         if (_selectedView) {
             [self.mapView selectAnnotation:nil animated:NO];
             _selectedView.image = [UIImage imageNamed:@"object.png"];

@@ -24,6 +24,9 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *placeInfoIconsHeight;
 @property (weak, nonatomic) IBOutlet UILabel *itemsCountLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleBarHeight;
+@property (weak, nonatomic) IBOutlet UIView *backPlaceView;
+@property (weak, nonatomic) IBOutlet UILabel *backPlaceTitle;
+
 
 - (IBAction)zoomIn:(id)sender;
 - (IBAction)zoomOut:(id)sender;
