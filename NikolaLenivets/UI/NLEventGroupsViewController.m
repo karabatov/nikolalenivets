@@ -97,6 +97,7 @@
 - (IBAction)back:(id)sender
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_MENU_NOW object:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 
@@ -251,9 +252,7 @@
     NSLog(@"Open event list");
     NLEventGroup *group = _eventGroups[_currentPage];
     _events = [[NLEventsCollectionViewController alloc] initWithGroup:group];
-    [self presentViewController:_events animated:YES completion:^{
-        [self updateUnreadCountWithCount:[[NLStorage sharedInstance] unreadCountInArray:group.events]];
-    }];
+    [((NLAppDelegate *)[[UIApplication sharedApplication] delegate]).navigation pushViewController:_events animated:YES];
 }
 
 @end

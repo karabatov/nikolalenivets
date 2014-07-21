@@ -222,7 +222,7 @@
 - (IBAction)back:(id)sender
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_MENU_NOW object:nil];
-    [self dismissViewControllerAnimated:NO completion:NULL];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 
@@ -324,9 +324,7 @@
 - (IBAction)openPlaceFromPopup:(UIButton *)sender {
     NLPlace *place = ((NLPlaceAnnotation *)(_selectedView.annotation)).place;
     NLDetailsViewController *details = [[NLDetailsViewController alloc] initWithPlace:place currentLocation:self.currentLocation];
-    [self presentViewController:details animated:YES completion:^{
-        NSLog(@"Details dismissed.");
-    }];
+    [((NLAppDelegate *)[[UIApplication sharedApplication] delegate]).navigation pushViewController:details animated:YES];
 }
 
 

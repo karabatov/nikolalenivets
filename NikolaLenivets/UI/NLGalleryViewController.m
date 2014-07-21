@@ -95,13 +95,14 @@
 
 - (IBAction)back:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:^{}];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
 - (IBAction)showMenu:(id)sender
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_MENU_NOW object:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 

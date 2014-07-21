@@ -119,8 +119,9 @@ static NSString *const reuseSectionId = @"collectionsection";
 }
 
 
-- (IBAction)back:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:^{}];
+- (IBAction)back:(id)sender
+{
+    [((NLAppDelegate *)[[UIApplication sharedApplication] delegate]).navigation popViewControllerAnimated:YES];
 }
 
 
@@ -134,10 +135,7 @@ static NSString *const reuseSectionId = @"collectionsection";
 {
     NLEvent *event = [self eventForIndexPath:indexPath];
     _details = [[NLDetailsViewController alloc] initWithEvent:event withOrderInGroup:indexPath.section + 1];
-    [self presentViewController:_details animated:YES completion:^{
-        [collectionView reloadItemsAtIndexPaths:@[ indexPath ]];
-        [self updateUnreadCountWithCount:[[NLStorage sharedInstance] unreadCountInArray:_group.events]];
-    }];
+    [((NLAppDelegate *)[[UIApplication sharedApplication] delegate]).navigation pushViewController:_details animated:YES];
 }
 
 

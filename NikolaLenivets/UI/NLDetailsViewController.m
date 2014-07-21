@@ -10,11 +10,14 @@
 #import "NLGallery.h"
 #import "NLStorage.h"
 #import "NLGalleryViewController.h"
+#import "NLMapViewController.h"
 
 #import <DTCoreText.h>
 #import <NSDate+Helper.h>
 #import "NSString+Distance.h"
 #import "NSString+Ordinal.h"
+#import "UIView+Origami.h"
+#import "NLOrigamiSegue.h"
 
 typedef enum {
     ShowingNewsEntry,
@@ -30,6 +33,7 @@ typedef enum {
     NLPlace *_place;
     NLGallery *_gallery;
     NLGalleryViewController *_galleryVC;
+    NLMapViewController *_mapVC;
     NSArray *_textParts;
     NSInteger _eventGroupOrder;
 }
@@ -325,7 +329,7 @@ typedef enum {
 
 - (IBAction)back:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:^{}];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
@@ -333,7 +337,23 @@ typedef enum {
 {
     NSLog(@"Show gallery");
     _galleryVC = [[NLGalleryViewController alloc] initWithGallery:_gallery andTitle:self.titleLabel.text];
-    [self presentViewController:_galleryVC animated:YES completion:^{}];
+    [self.navigationController pushViewController:_galleryVC animated:YES];
+}
+
+
+- (IBAction)openPlaceOnMap:(UIButton *)sender {
+    NSLog(@"openPlaceOnMap");
+    switch ([self mode]) {
+        case ShowingPlace:
+        {
+            _mapVC = [NLMapViewController new];
+            [self.navigationController pushViewController:_mapVC animated:YES];
+            break;
+        }
+
+        default:
+            break;
+    }
 }
 
 

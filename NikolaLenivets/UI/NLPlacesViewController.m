@@ -153,10 +153,7 @@
             return;
         }
         NLDetailsViewController *details = [[NLDetailsViewController alloc] initWithPlace:place currentLocation:_userLoc];
-        [self presentViewController:details animated:YES completion:^{
-            [self.collectionView reloadItemsAtIndexPaths:@[ indexPath ]];
-            [self updateUnreadCount];
-        }];
+        [((NLAppDelegate *)[[UIApplication sharedApplication] delegate]).navigation pushViewController:details animated:YES];
     }
 }
 
@@ -173,6 +170,7 @@
 - (IBAction)back:(id)sender
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_MENU_NOW object:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 @end

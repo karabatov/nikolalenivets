@@ -36,6 +36,7 @@
 - (IBAction)back:(id)sender
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_MENU_NOW object:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 
@@ -138,9 +139,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NLNewsEntry *entry = [self entryForTable:tableView indexPath:indexPath];
     _details = [[NLDetailsViewController alloc] initWithEntry:entry];
-    [self presentViewController:_details animated:YES completion:^{
-        [self updateUnreadCountWithCount:[[NLStorage sharedInstance] unreadCountInArray:_news]];
-    }];
+    [((NLAppDelegate *)[[UIApplication sharedApplication] delegate]).navigation pushViewController:_details animated:YES];
 }
 
 

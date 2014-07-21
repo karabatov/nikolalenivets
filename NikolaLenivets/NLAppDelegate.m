@@ -43,7 +43,9 @@
 - (void)dismissSplash
 {
     NLMainMenuController *main = [NLMainMenuController new];
-    self.window.rootViewController = main;
+    self.navigation = [[UINavigationController alloc] initWithRootViewController:main];
+    [self.navigation setNavigationBarHidden:YES];
+    self.window.rootViewController = self.navigation;
     [_splash.view removeFromSuperview];
 }
 
