@@ -24,6 +24,7 @@
     CLLocation *_rightBottomCornerLocation;
     MKAnnotationView *_selectedView;
     BOOL _shouldResetSelectedView;
+    BOOL _manuallyChangingRegion;
     NSArray *_places;
 }
 
@@ -277,7 +278,6 @@
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
-    NSLog(@"selected view with coordinate lat %g, lon %g", view.annotation.coordinate.latitude, view.annotation.coordinate.longitude);
     if ([view.annotation isKindOfClass:[NLPlaceAnnotation class]]) {
         if (_selectedView) {
             [self.mapView selectAnnotation:nil animated:NO];
@@ -315,8 +315,29 @@
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
-    if (!MKMapRectContainsPoint(_tileOverlay.boundingMapRect, MKMapPointForCoordinate(mapView.centerCoordinate))) {
-        NSLog(@"Off limits!");
+    if (_manuallyChangingRegion) {
+        _manuallyChangingRegion = NO;
+        return;
+    }
+
+    BOOL needToCenter = NO;
+
+    if ((mapView.region.span.latitudeDelta > 0.04 ) || (mapView.region.span.longitudeDelta > 0.08) ) {
+        needToCenter = YES;
+    }
+    if (fabs(fabs(mapView.region.center.latitude) - 54.755071) > 0.02) {
+        needToCenter = YES;
+    }
+    if (fabs(fabs(mapView.region.center.longitude) - 35.620443) > 0.04) {
+        needToCenter = YES;
+    }
+
+    if (needToCenter) {
+        CLLocationCoordinate2D centerCoord = CLLocationCoordinate2DMake(54.755071, 35.620443);
+        MKCoordinateSpan spanOfNL = MKCoordinateSpanMake(0.035162, 0.0367246);
+        MKCoordinateRegion NLRegion = MKCoordinateRegionMake(centerCoord, spanOfNL);
+        _manuallyChangingRegion = YES;
+        [mapView setRegion:NLRegion animated:YES];
     }
 }
 
