@@ -21,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UILabel *placeUnreadIndicator;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *placeInfoIconsHeight;
+@property (weak, nonatomic) IBOutlet UILabel *itemsCountLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleBarHeight;
 
 - (IBAction)zoomIn:(id)sender;
 - (IBAction)zoomOut:(id)sender;

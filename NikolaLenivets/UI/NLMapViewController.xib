@@ -9,11 +9,13 @@
                 <outlet property="distanceToPlace" destination="elV-ek-JvZ" id="vjq-fe-rSt"/>
                 <outlet property="distanceToPlaceHeight" destination="qpy-WY-0Ob" id="LvH-8g-Sjg"/>
                 <outlet property="distanceToPlaceLegend" destination="iHF-Lp-mBf" id="j6i-0y-QfY"/>
+                <outlet property="itemsCountLabel" destination="hrO-te-X4g" id="OYr-7f-LEa"/>
                 <outlet property="mapView" destination="q77-Py-xHD" id="gKM-X2-pmV"/>
                 <outlet property="placeDetailsMenu" destination="Gbx-OZ-cVO" id="6xa-ah-od2"/>
                 <outlet property="placeInfoIconsHeight" destination="Aq6-WU-GOc" id="Z6X-Xm-UES"/>
                 <outlet property="placeName" destination="siY-wh-XEC" id="VqU-0W-eFq"/>
                 <outlet property="placeUnreadIndicator" destination="oym-ZV-cBt" id="a19-eB-aoa"/>
+                <outlet property="titleBarHeight" destination="NGb-LU-heE" id="Ssm-zT-Dqb"/>
                 <outlet property="titleLabel" destination="Oza-Vc-h9p" id="ihv-GP-DZV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
