@@ -141,6 +141,10 @@
     _details = [[NLDetailsViewController alloc] initWithEntry:entry];
     self.title = @"НОВОСТИ";
     [((NLAppDelegate *)[[UIApplication sharedApplication] delegate]).navigation pushViewController:_details animated:YES];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [tableView reloadRowsAtIndexPaths:@[ indexPath ] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self updateUnreadCountWithCount:[[NLStorage sharedInstance] unreadCountInArray:_news]];
+    });
 }
 
 

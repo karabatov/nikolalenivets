@@ -10,7 +10,6 @@
 #import "NLStorage.h"
 #import "NLEventGroup.h"
 #import "NLMainMenuController.h"
-#import "NLEventsListControllerViewController.h"
 #import "NLEventsCollectionViewController.h"
 #import <NSDate+Helper.h>
 #import "NSAttributedString+Kerning.h"
@@ -74,13 +73,6 @@
 }
 
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    self.scrollView.hidden = YES;
-}
-
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -91,6 +83,11 @@
     }
     [self fillContentForPage:_currentPage];
     [self.eventDateDashLabel setTransform:CGAffineTransformMakeRotation(-M_PI_2)];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    NSLog(@"view did appear");
 }
 
 
@@ -253,6 +250,9 @@
     NLEventGroup *group = _eventGroups[_currentPage];
     _events = [[NLEventsCollectionViewController alloc] initWithGroup:group];
     [((NLAppDelegate *)[[UIApplication sharedApplication] delegate]).navigation pushViewController:_events animated:YES];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self updateUnreadCountWithCount:[[NLStorage sharedInstance] unreadCountInArray:group.events]];
+    });
 }
 
 @end

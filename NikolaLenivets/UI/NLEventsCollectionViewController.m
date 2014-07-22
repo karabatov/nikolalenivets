@@ -137,6 +137,10 @@ static NSString *const reuseSectionId = @"collectionsection";
     _details = [[NLDetailsViewController alloc] initWithEvent:event withOrderInGroup:indexPath.section + 1];
     self.title = @"СОБЫТИЯ";
     [self.navigationController pushViewController:_details animated:YES];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [collectionView reloadItemsAtIndexPaths:@[ indexPath ]];
+        [self updateUnreadCountWithCount:[[NLStorage sharedInstance] unreadCountInArray:_group.events]];
+    });
 }
 
 

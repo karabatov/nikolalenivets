@@ -33,7 +33,6 @@
 		4F22FD781936E8B30075C1A0 /* NLGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F22FD761936E8B30075C1A0 /* NLGalleryViewController.m */; };
 		4F22FD791936E8B30075C1A0 /* NLGalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F22FD771936E8B30075C1A0 /* NLGalleryViewController.xib */; };
 		4F22FD7C1936ED3E0075C1A0 /* NLGallery.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F22FD7B1936ED3E0075C1A0 /* NLGallery.m */; };
-		4F22FD801936F4360075C1A0 /* NLEventsListControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F22FD7E1936F4360075C1A0 /* NLEventsListControllerViewController.m */; };
 		4F22FD861937288B0075C1A0 /* NLPlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F22FD841937288B0075C1A0 /* NLPlacesViewController.m */; };
 		4F22FD871937288B0075C1A0 /* NLPlacesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F22FD851937288B0075C1A0 /* NLPlacesViewController.xib */; };
 		4F22FD8919372F260075C1A0 /* NLPlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F22FD8819372F260075C1A0 /* NLPlaceCell.xib */; };
@@ -146,8 +145,6 @@
 		4F22FD771936E8B30075C1A0 /* NLGalleryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLGalleryViewController.xib; path = UI/NLGalleryViewController.xib; sourceTree = "<group>"; };
 		4F22FD7A1936ED3E0075C1A0 /* NLGallery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLGallery.h; path = Models/NLGallery.h; sourceTree = "<group>"; };
 		4F22FD7B1936ED3E0075C1A0 /* NLGallery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLGallery.m; path = Models/NLGallery.m; sourceTree = "<group>"; };
-		4F22FD7D1936F4360075C1A0 /* NLEventsListControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLEventsListControllerViewController.h; path = UI/NLEventsListControllerViewController.h; sourceTree = "<group>"; };
-		4F22FD7E1936F4360075C1A0 /* NLEventsListControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLEventsListControllerViewController.m; path = UI/NLEventsListControllerViewController.m; sourceTree = "<group>"; };
 		4F22FD831937288B0075C1A0 /* NLPlacesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLPlacesViewController.h; path = UI/NLPlacesViewController.h; sourceTree = "<group>"; };
 		4F22FD841937288B0075C1A0 /* NLPlacesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLPlacesViewController.m; path = UI/NLPlacesViewController.m; sourceTree = "<group>"; };
 		4F22FD851937288B0075C1A0 /* NLPlacesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLPlacesViewController.xib; path = UI/NLPlacesViewController.xib; sourceTree = "<group>"; };
@@ -442,8 +439,6 @@
 				4F6137461927313700BFDD1C /* NLEventGroupsViewController.h */,
 				4F6137471927313700BFDD1C /* NLEventGroupsViewController.m */,
 				4F6137481927313700BFDD1C /* NLEventGroupsViewController.xib */,
-				4F22FD7D1936F4360075C1A0 /* NLEventsListControllerViewController.h */,
-				4F22FD7E1936F4360075C1A0 /* NLEventsListControllerViewController.m */,
 				D19C043419750589006A086B /* NLEventsCollectionViewController.h */,
 				D19C043519750589006A086B /* NLEventsCollectionViewController.m */,
 				D19C043619750589006A086B /* NLEventsCollectionViewController.xib */,
@@ -823,7 +818,6 @@
 				4F10D2AF19374ABB00F6658D /* NLStaticScreenViewController.m in Sources */,
 				D17177B3196D047200521D72 /* NSAttributedString+Kerning.m in Sources */,
 				D19C04331973FF7E006A086B /* NLAttributedLabel.m in Sources */,
-				4F22FD801936F4360075C1A0 /* NLEventsListControllerViewController.m in Sources */,
 				4F0A8BC9195AE58400D59268 /* UIView+Origami.m in Sources */,
 				D1783EFE197D54F000A92AA3 /* NLOrigamiSegue.m in Sources */,
 				4F0A8BCE195AFEAA00D59268 /* NLSplashViewController.m in Sources */,
