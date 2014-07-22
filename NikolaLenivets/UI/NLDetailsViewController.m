@@ -145,7 +145,7 @@ typedef enum {
             self.capitalLetter.textColor = [UIColor colorWithRed:192.0f/255.0f green:192.0f/255.0f blue:192.0f/255.0f alpha:1.0f];
             self.titleLabelBottomSpace.constant = 0;
             [self.titleLabel setHidden:YES];
-            self.placeImageHeight.constant = [UIScreen mainScreen].bounds.size.height * 0.71;
+            self.placeImageHeight.constant = [UIScreen mainScreen].bounds.size.height * 0.7;
             self.placeImage.imageURL = [NSURL URLWithString:_place.thumbnail];
             self.eventDayHeight.constant = 26;
             self.eventDayView.dateLabel.text = [_place.title uppercaseString];
