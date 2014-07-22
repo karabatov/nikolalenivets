@@ -14,9 +14,11 @@
 #import "NLPlace.h"
 #import "NLSectionHeader.h"
 
-@interface NLDetailsViewController : UIViewController <UIWebViewDelegate>
+@interface NLDetailsViewController : UIViewController <UIWebViewDelegate, UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleLabelTopSpace;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleLabelBottomSpace;
 @property (weak, nonatomic) IBOutlet UIWebView *firstPartWebView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *firstTextHeight;
 @property (weak, nonatomic) IBOutlet UIWebView *secondPartLabel;
@@ -34,6 +36,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *unreadIndicator;
 @property (weak, nonatomic) IBOutlet NLSectionHeader *eventDayView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *eventDayHeight;
+@property (weak, nonatomic) IBOutlet UIImageView *placeImage;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *placeImageHeight;
+@property (weak, nonatomic) IBOutlet UIImageView *blueGradient;
 
 - (id)initWithEvent:(NLEvent *)event withOrderInGroup:(NSInteger)order;
 - (id)initWithEntry:(NLNewsEntry *)entry;

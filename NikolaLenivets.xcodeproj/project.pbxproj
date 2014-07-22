@@ -87,6 +87,8 @@
 		D1783EFE197D54F000A92AA3 /* NLOrigamiSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = D1783EFD197D54F000A92AA3 /* NLOrigamiSegue.m */; };
 		D1783F01197D616D00A92AA3 /* UINavigationController+OrigamiTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = D1783F00197D616D00A92AA3 /* UINavigationController+OrigamiTransition.m */; };
 		D1783F04197E398900A92AA3 /* UIViewController+BackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1783F03197E398900A92AA3 /* UIViewController+BackViewController.m */; };
+		D1783F07197E622B00A92AA3 /* blue-gradient.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783F05197E622B00A92AA3 /* blue-gradient.png */; };
+		D1783F08197E622B00A92AA3 /* blue-gradient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783F06197E622B00A92AA3 /* blue-gradient@2x.png */; };
 		D19C0425196EF44C006A086B /* map-minus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19C0422196EF44C006A086B /* map-minus@2x.png */; };
 		D19C0426196EF44D006A086B /* map-locate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19C0423196EF44C006A086B /* map-locate@2x.png */; };
 		D19C0427196EF44D006A086B /* map-plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19C0424196EF44C006A086B /* map-plus@2x.png */; };
@@ -235,6 +237,8 @@
 		D1783F00197D616D00A92AA3 /* UINavigationController+OrigamiTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+OrigamiTransition.m"; path = "UI/UINavigationController+OrigamiTransition.m"; sourceTree = "<group>"; };
 		D1783F02197E398900A92AA3 /* UIViewController+BackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+BackViewController.h"; path = "UI/UIViewController+BackViewController.h"; sourceTree = "<group>"; };
 		D1783F03197E398900A92AA3 /* UIViewController+BackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+BackViewController.m"; path = "UI/UIViewController+BackViewController.m"; sourceTree = "<group>"; };
+		D1783F05197E622B00A92AA3 /* blue-gradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue-gradient.png"; sourceTree = "<group>"; };
+		D1783F06197E622B00A92AA3 /* blue-gradient@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue-gradient@2x.png"; sourceTree = "<group>"; };
 		D19C0422196EF44C006A086B /* map-minus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-minus@2x.png"; sourceTree = "<group>"; };
 		D19C0423196EF44C006A086B /* map-locate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-locate@2x.png"; sourceTree = "<group>"; };
 		D19C0424196EF44C006A086B /* map-plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-plus@2x.png"; sourceTree = "<group>"; };
@@ -468,6 +472,8 @@
 				D1783EEA197C417000A92AA3 /* route-b@2x.png */,
 				D1783EED197C438200A92AA3 /* userlocation.png */,
 				D1783EEE197C438200A92AA3 /* userlocation@2x.png */,
+				D1783F05197E622B00A92AA3 /* blue-gradient.png */,
+				D1783F06197E622B00A92AA3 /* blue-gradient@2x.png */,
 				4F89A4281957CFF60045D1A3 /* NLMapViewController.h */,
 				4F89A4291957CFF60045D1A3 /* NLMapViewController.m */,
 				4F89A42A1957CFF60045D1A3 /* NLMapViewController.xib */,
@@ -702,6 +708,7 @@
 				D19C0426196EF44D006A086B /* map-locate@2x.png in Resources */,
 				D1A3D7CA19758CF600C53E06 /* event-alarm@2x.png in Resources */,
 				4F174E351966A50300F7F8A2 /* Track on 2014-06-23 at 18-29 GMT+4.gpx in Resources */,
+				D1783F07197E622B00A92AA3 /* blue-gradient.png in Resources */,
 				D1783EEC197C417000A92AA3 /* route-b@2x.png in Resources */,
 				D1783EF0197C438200A92AA3 /* userlocation@2x.png in Resources */,
 				4F0D75A6193DBD0200E78AA5 /* left_shadow@2x.png in Resources */,
@@ -714,6 +721,7 @@
 				4F174E331966A50300F7F8A2 /* Track on 2014-06-23 at 18-00 GMT+4.gpx in Resources */,
 				4F411E7F18FFD8AA00758E30 /* NLMainMenuController.xib in Resources */,
 				4F0A8BCF195AFEAA00D59268 /* NLSplashViewController.xib in Resources */,
+				D1783F08197E622B00A92AA3 /* blue-gradient@2x.png in Resources */,
 				D1783EE4197C2C5B00A92AA3 /* object-selected@2x.png in Resources */,
 				D1A3D7D1197634F700C53E06 /* menu_button.png in Resources */,
 				4F22FD871937288B0075C1A0 /* NLPlacesViewController.xib in Resources */,

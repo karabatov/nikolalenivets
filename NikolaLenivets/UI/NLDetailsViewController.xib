@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NLDetailsViewController">
             <connections>
                 <outlet property="backButton" destination="dhA-Pw-YYj" id="WAu-fC-XKD"/>
+                <outlet property="blueGradient" destination="t1q-pq-u48" id="3le-Ym-qKt"/>
                 <outlet property="capitalLetter" destination="pat-iS-tqN" id="7XS-h0-v9p"/>
                 <outlet property="contentView" destination="7ce-P0-X8N" id="Ve5-Db-5zt"/>
                 <outlet property="countView" destination="x4i-v4-Zor" id="poo-bT-mIx"/>
@@ -18,11 +19,15 @@
                 <outlet property="firstTextHeight" destination="z7F-4Z-aCD" id="wsh-TH-Yrf"/>
                 <outlet property="galleryCover" destination="Mgw-DY-1Xg" id="9Dd-Vi-Ha8"/>
                 <outlet property="galleryHeight" destination="64k-GY-hhM" id="07Q-6x-Kh5"/>
+                <outlet property="placeImage" destination="vvp-B6-tKE" id="LMz-J4-0qC"/>
+                <outlet property="placeImageHeight" destination="mN7-hY-lVO" id="saC-gd-tBu"/>
                 <outlet property="scrollView" destination="U96-SA-MhQ" id="5Fy-ei-S93"/>
                 <outlet property="secondPartLabel" destination="duO-fi-ES1" id="4Pd-MQ-L3G"/>
                 <outlet property="secondTextHeight" destination="wEB-mA-uAr" id="peV-8Z-Gb8"/>
                 <outlet property="showGalleryButton" destination="WcX-qz-D5Q" id="Hcx-IT-Iyl"/>
                 <outlet property="titleLabel" destination="5y1-fk-EJG" id="wwv-H3-u1T"/>
+                <outlet property="titleLabelBottomSpace" destination="KrO-t4-lr2" id="Vme-DX-dTI"/>
+                <outlet property="titleLabelTopSpace" destination="MQA-ns-lHJ" id="SZh-7T-HFl"/>
                 <outlet property="unreadIndicator" destination="JuF-KG-VzW" id="TCL-lj-9RP"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
@@ -132,6 +137,21 @@
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vvp-B6-tKE" userLabel="Place Image">
+                                    <rect key="frame" x="0.0" y="26" width="320" height="0.0"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" id="mN7-hY-lVO"/>
+                                    </constraints>
+                                </imageView>
+                                <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blue-gradient.png" translatesAutoresizingMaskIntoConstraints="NO" id="t1q-pq-u48" userLabel="Blue gradient">
+                                    <rect key="frame" x="0.0" y="26" width="320" height="0.0"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" id="AK1-1K-YgU"/>
+                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="233" id="oMA-uf-ks4"/>
+                                    </constraints>
+                                </imageView>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="284" translatesAutoresizingMaskIntoConstraints="NO" id="5y1-fk-EJG" userLabel="Label - News Title">
                                     <rect key="frame" x="20" y="48" width="284" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -185,15 +205,19 @@
                             <constraints>
                                 <constraint firstItem="WcX-qz-D5Q" firstAttribute="height" secondItem="Mgw-DY-1Xg" secondAttribute="height" id="2dR-4g-avC"/>
                                 <constraint firstItem="Mgw-DY-1Xg" firstAttribute="top" secondItem="KUM-I3-x0a" secondAttribute="bottom" constant="175" placeholder="YES" id="4GP-QE-HUj"/>
-                                <constraint firstItem="5y1-fk-EJG" firstAttribute="top" secondItem="x4i-v4-Zor" secondAttribute="bottom" constant="30" id="5W9-eL-hnm"/>
                                 <constraint firstItem="pat-iS-tqN" firstAttribute="top" secondItem="KUM-I3-x0a" secondAttribute="top" constant="-52" id="7Zu-Hj-y4N"/>
                                 <constraint firstItem="hSI-al-Qge" firstAttribute="trailing" secondItem="duO-fi-ES1" secondAttribute="trailing" id="8w6-FD-yyu"/>
+                                <constraint firstItem="vvp-B6-tKE" firstAttribute="leading" secondItem="7ce-P0-X8N" secondAttribute="leading" id="9ql-g3-P5v"/>
                                 <constraint firstItem="JuF-KG-VzW" firstAttribute="top" secondItem="7ce-P0-X8N" secondAttribute="top" constant="6" id="BdI-yM-pd8"/>
                                 <constraint firstItem="x4i-v4-Zor" firstAttribute="trailing" secondItem="gvb-JY-XM7" secondAttribute="trailing" constant="5" id="CPC-p5-Ln7"/>
+                                <constraint firstItem="t1q-pq-u48" firstAttribute="bottom" secondItem="vvp-B6-tKE" secondAttribute="bottom" id="IYP-50-Ig1"/>
                                 <constraint firstItem="KUM-I3-x0a" firstAttribute="top" secondItem="5y1-fk-EJG" secondAttribute="bottom" constant="30" id="KrO-t4-lr2"/>
                                 <constraint firstItem="x4i-v4-Zor" firstAttribute="leading" secondItem="duO-fi-ES1" secondAttribute="leading" id="Lgz-1B-N6j"/>
+                                <constraint firstItem="5y1-fk-EJG" firstAttribute="top" secondItem="vvp-B6-tKE" secondAttribute="bottom" constant="22" id="MQA-ns-lHJ"/>
                                 <constraint firstItem="hSI-al-Qge" firstAttribute="centerY" secondItem="JuF-KG-VzW" secondAttribute="centerY" constant="-1" id="Oyg-l9-l64"/>
                                 <constraint firstAttribute="width" constant="320" placeholder="YES" id="PRN-ZD-jle"/>
+                                <constraint firstItem="vvp-B6-tKE" firstAttribute="top" secondItem="x4i-v4-Zor" secondAttribute="bottom" constant="8" id="Puu-BA-ITa"/>
+                                <constraint firstItem="t1q-pq-u48" firstAttribute="leading" secondItem="vvp-B6-tKE" secondAttribute="leading" id="QOW-Ii-0R3"/>
                                 <constraint firstAttribute="trailing" secondItem="Mgw-DY-1Xg" secondAttribute="trailing" id="Qij-Le-Q24"/>
                                 <constraint firstItem="5y1-fk-EJG" firstAttribute="leading" secondItem="x4i-v4-Zor" secondAttribute="leading" id="Rbj-Th-NHj"/>
                                 <constraint firstItem="Mgw-DY-1Xg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="KUM-I3-x0a" secondAttribute="bottom" constant="12" id="Shv-uT-ucI"/>
@@ -204,11 +228,14 @@
                                 <constraint firstItem="WcX-qz-D5Q" firstAttribute="centerX" secondItem="Mgw-DY-1Xg" secondAttribute="centerX" id="cNs-u2-HbI"/>
                                 <constraint firstItem="WcX-qz-D5Q" firstAttribute="width" secondItem="Mgw-DY-1Xg" secondAttribute="width" id="eTm-pi-sxD"/>
                                 <constraint firstItem="5y1-fk-EJG" firstAttribute="trailing" secondItem="hSI-al-Qge" secondAttribute="trailing" id="ekr-Nf-xfv"/>
+                                <constraint firstItem="t1q-pq-u48" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vvp-B6-tKE" secondAttribute="top" id="hAA-xh-C60"/>
                                 <constraint firstItem="duO-fi-ES1" firstAttribute="top" secondItem="Mgw-DY-1Xg" secondAttribute="bottom" constant="12" id="j5z-wc-dhv"/>
                                 <constraint firstItem="x4i-v4-Zor" firstAttribute="leading" secondItem="JuF-KG-VzW" secondAttribute="trailing" id="l7f-wp-OU4"/>
+                                <constraint firstItem="t1q-pq-u48" firstAttribute="trailing" secondItem="vvp-B6-tKE" secondAttribute="trailing" id="mEe-1h-Eny"/>
                                 <constraint firstItem="hSI-al-Qge" firstAttribute="trailing" secondItem="KUM-I3-x0a" secondAttribute="trailing" id="nRL-uD-pt6"/>
                                 <constraint firstItem="Mgw-DY-1Xg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="pat-iS-tqN" secondAttribute="bottom" constant="-52" id="ohK-7U-dmd"/>
                                 <constraint firstItem="x4i-v4-Zor" firstAttribute="centerY" secondItem="JuF-KG-VzW" secondAttribute="centerY" constant="-1" id="r4t-Ke-KZd"/>
+                                <constraint firstAttribute="trailing" secondItem="vvp-B6-tKE" secondAttribute="trailing" id="sbO-ZG-jgS"/>
                                 <constraint firstItem="pat-iS-tqN" firstAttribute="leading" secondItem="KUM-I3-x0a" secondAttribute="leading" constant="-10" id="uLh-dB-UEt"/>
                                 <constraint firstItem="gvb-JY-XM7" firstAttribute="top" secondItem="7ce-P0-X8N" secondAttribute="top" id="ubJ-Mc-yy5"/>
                                 <constraint firstItem="x4i-v4-Zor" firstAttribute="leading" secondItem="KUM-I3-x0a" secondAttribute="leading" id="udv-GI-9nU"/>
@@ -246,5 +273,6 @@
     </objects>
     <resources>
         <image name="back.png" width="32" height="32"/>
+        <image name="blue-gradient.png" width="320" height="233"/>
     </resources>
 </document>

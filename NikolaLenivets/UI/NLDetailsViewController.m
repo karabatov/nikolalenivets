@@ -94,6 +94,7 @@ typedef enum {
     self.countView.font = [UIFont fontWithName:NLMonospacedBoldFont size:10];
     self.capitalLetter.font = [UIFont systemFontOfSize:250];
     [self.capitalLetter setHidden:YES];
+    self.scrollView.delegate = self;
 
     NSString *title = nil;
     NSString *content = nil;
@@ -131,7 +132,7 @@ typedef enum {
             break;
         }
         case ShowingPlace: {
-            title = _place.title;
+            title = @"";
             content = _place.content;
             if (_currentLocation) {
                 CLLocationDistance distance = [_place distanceFromLocation:_currentLocation];
@@ -142,9 +143,16 @@ typedef enum {
             self.detailsViewTitleLabel.text = [self backViewController] ? [self backViewController].title : @"МЕСТА";
             [self setUnreadStatus:_place.itemStatus];
             self.capitalLetter.textColor = [UIColor colorWithRed:192.0f/255.0f green:192.0f/255.0f blue:192.0f/255.0f alpha:1.0f];
-            for (UIView *view in [self.eventDayView subviews]) {
-                [view removeFromSuperview];
-            }
+            self.titleLabelBottomSpace.constant = 0;
+            [self.titleLabel setHidden:YES];
+            self.placeImageHeight.constant = [UIScreen mainScreen].bounds.size.height * 0.71;
+            self.placeImage.imageURL = [NSURL URLWithString:_place.thumbnail];
+            self.eventDayHeight.constant = 26;
+            self.eventDayView.dateLabel.text = [_place.title uppercaseString];
+            [self.eventDayView.dayOrderLabel setHidden:YES];
+            UIColor *borderGray = [UIColor colorWithRed:246.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1.0f];
+            [self.eventDayView.layer setBorderColor:borderGray.CGColor];
+            [self.eventDayView.layer setBorderWidth:0.5f];
             indexNumber = -1; //[[[NLStorage sharedInstance] places] indexOfObject:_place];
             break;
         }
@@ -358,5 +366,22 @@ typedef enum {
     }
 }
 
+
+#pragma mark - UIScrollViewDelegate
+
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [UIView animateWithDuration:0.05f animations:^{
+        self.blueGradient.alpha = 0.65f;
+    }];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    [UIView animateWithDuration:0.25f animations:^{
+        self.blueGradient.alpha = 0.0f;
+    }];
+}
 
 @end
