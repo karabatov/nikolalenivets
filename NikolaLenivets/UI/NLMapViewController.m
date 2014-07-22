@@ -356,7 +356,8 @@
 {
     NLPlace *place = ((NLPlaceAnnotation *)(_selectedView.annotation)).place;
     NLDetailsViewController *details = [[NLDetailsViewController alloc] initWithPlace:place currentLocation:self.currentLocation];
-    [self.navigationController pushViewController:details animated:YES];
+    self.title = @"КАРТА";
+    [((NLAppDelegate *)[[UIApplication sharedApplication] delegate]).navigation pushViewController:details animated:YES];
 }
 
 - (IBAction)backToPlace:(id)sender

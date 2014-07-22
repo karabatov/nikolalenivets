@@ -112,31 +112,37 @@ enum {
         case News: {
             _newsList = [NLItemsListController new];
             [_contentView addSubview:_newsList.view];
+            self.title = @"НОВОСТИ";
             break;
         }
         case Events: {
             _eventsController = [NLEventGroupsViewController new];
+            self.title = @"СОБЫТИЯ";
             [_contentView addSubview:_eventsController.view];
             break;
         }
         case Places: {
             _placesController = [NLPlacesViewController new];
             [_contentView addSubview:_placesController.view];
+            self.title = @"МЕСТА";
             break;
         }
         case Way: {
             _driveScreen = [[NLStaticScreenViewController alloc] initWithScreenNamed:@"drive"];
             [_contentView addSubview:_driveScreen.view];
+            self.title = @"КАК ДОБРАТЬСЯ";
             break;
         }
         case Map: {
             _mapController = [NLMapViewController new];
             [_contentView addSubview:_mapController.view];
+            self.title = @"КАРТА";
             break;
         }
         case About:
             _driveScreen = [[NLStaticScreenViewController alloc] initWithScreenNamed:@"about"];
             [_contentView addSubview:_driveScreen.view];
+            self.title = @"О ПАРКЕ";
             break;
         default:
             return;

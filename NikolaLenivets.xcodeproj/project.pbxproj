@@ -86,6 +86,7 @@
 		D1783EF8197CFFF000A92AA3 /* tile-empty.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783EF7197CFFF000A92AA3 /* tile-empty.png */; };
 		D1783EFE197D54F000A92AA3 /* NLOrigamiSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = D1783EFD197D54F000A92AA3 /* NLOrigamiSegue.m */; };
 		D1783F01197D616D00A92AA3 /* UINavigationController+OrigamiTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = D1783F00197D616D00A92AA3 /* UINavigationController+OrigamiTransition.m */; };
+		D1783F04197E398900A92AA3 /* UIViewController+BackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1783F03197E398900A92AA3 /* UIViewController+BackViewController.m */; };
 		D19C0425196EF44C006A086B /* map-minus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19C0422196EF44C006A086B /* map-minus@2x.png */; };
 		D19C0426196EF44D006A086B /* map-locate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19C0423196EF44C006A086B /* map-locate@2x.png */; };
 		D19C0427196EF44D006A086B /* map-plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19C0424196EF44C006A086B /* map-plus@2x.png */; };
@@ -232,6 +233,8 @@
 		D1783EFD197D54F000A92AA3 /* NLOrigamiSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLOrigamiSegue.m; path = UI/NLOrigamiSegue.m; sourceTree = "<group>"; };
 		D1783EFF197D616D00A92AA3 /* UINavigationController+OrigamiTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+OrigamiTransition.h"; path = "UI/UINavigationController+OrigamiTransition.h"; sourceTree = "<group>"; };
 		D1783F00197D616D00A92AA3 /* UINavigationController+OrigamiTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+OrigamiTransition.m"; path = "UI/UINavigationController+OrigamiTransition.m"; sourceTree = "<group>"; };
+		D1783F02197E398900A92AA3 /* UIViewController+BackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+BackViewController.h"; path = "UI/UIViewController+BackViewController.h"; sourceTree = "<group>"; };
+		D1783F03197E398900A92AA3 /* UIViewController+BackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+BackViewController.m"; path = "UI/UIViewController+BackViewController.m"; sourceTree = "<group>"; };
 		D19C0422196EF44C006A086B /* map-minus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-minus@2x.png"; sourceTree = "<group>"; };
 		D19C0423196EF44C006A086B /* map-locate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-locate@2x.png"; sourceTree = "<group>"; };
 		D19C0424196EF44C006A086B /* map-plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-plus@2x.png"; sourceTree = "<group>"; };
@@ -281,6 +284,8 @@
 		4F0A8BC5195AE57900D59268 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				D1783F02197E398900A92AA3 /* UIViewController+BackViewController.h */,
+				D1783F03197E398900A92AA3 /* UIViewController+BackViewController.m */,
 				D17177B1196D047200521D72 /* NSAttributedString+Kerning.h */,
 				D17177B2196D047200521D72 /* NSAttributedString+Kerning.m */,
 				D1A3D7C119757D5600C53E06 /* NSString+Ordinal.h */,
@@ -797,6 +802,7 @@
 				D1783F01197D616D00A92AA3 /* UINavigationController+OrigamiTransition.m in Sources */,
 				4F390E8918ED754700131934 /* NLScreen.m in Sources */,
 				4F22FD7C1936ED3E0075C1A0 /* NLGallery.m in Sources */,
+				D1783F04197E398900A92AA3 /* UIViewController+BackViewController.m in Sources */,
 				4F9C414818EA84640038090E /* NLAppDelegate.m in Sources */,
 				D19C043C1975253C006A086B /* NLNewsCell.m in Sources */,
 				D19C043719750589006A086B /* NLEventsCollectionViewController.m in Sources */,

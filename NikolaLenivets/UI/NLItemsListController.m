@@ -139,6 +139,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NLNewsEntry *entry = [self entryForTable:tableView indexPath:indexPath];
     _details = [[NLDetailsViewController alloc] initWithEntry:entry];
+    self.title = @"НОВОСТИ";
     [((NLAppDelegate *)[[UIApplication sharedApplication] delegate]).navigation pushViewController:_details animated:YES];
 }
 

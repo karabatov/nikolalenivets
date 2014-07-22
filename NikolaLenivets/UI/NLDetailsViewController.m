@@ -18,6 +18,7 @@
 #import "NSString+Ordinal.h"
 #import "UIView+Origami.h"
 #import "NLOrigamiSegue.h"
+#import "UIViewController+BackViewController.h"
 
 typedef enum {
     ShowingNewsEntry,
@@ -104,6 +105,7 @@ typedef enum {
             title = _entry.title;
             content = _entry.content;
             date = [[[_entry pubDate] stringWithFormat:DefaultDateFormat] uppercaseString];
+            self.detailsViewTitleLabel.text = [self backViewController] ? [self backViewController].title : @"НОВОСТИ";
             indexNumber = [[[NLStorage sharedInstance] news] indexOfObject:_entry];
             [self setUnreadStatus:_entry.itemStatus];
             self.capitalLetter.textColor = [UIColor colorWithRed:247.0f/255.0f green:250.0f/255.0f blue:140.0f/255.0f alpha:1.0f];
@@ -116,7 +118,7 @@ typedef enum {
             title = _event.title;
             content = _event.content;
             date = [[[_event startDate] stringWithFormat:DefaultTimeFormat] uppercaseString];
-            self.detailsViewTitleLabel.text = @"СОБЫТИЯ";
+            self.detailsViewTitleLabel.text = [self backViewController].title;
             [self setUnreadStatus:_event.itemStatus];
             self.capitalLetter.textColor = [UIColor colorWithRed:135.0f/255.0f green:163.0f/255.0f blue:1.0f alpha:1.0f];
             self.eventDayHeight.constant = 26;
@@ -137,7 +139,7 @@ typedef enum {
             } else {
                 self.countView.text = @"∞ КМ";
             }
-            self.detailsViewTitleLabel.text = @"МЕСТА";
+            self.detailsViewTitleLabel.text = [self backViewController] ? [self backViewController].title : @"МЕСТА";
             [self setUnreadStatus:_place.itemStatus];
             self.capitalLetter.textColor = [UIColor colorWithRed:192.0f/255.0f green:192.0f/255.0f blue:192.0f/255.0f alpha:1.0f];
             for (UIView *view in [self.eventDayView subviews]) {

@@ -121,7 +121,7 @@ static NSString *const reuseSectionId = @"collectionsection";
 
 - (IBAction)back:(id)sender
 {
-    [((NLAppDelegate *)[[UIApplication sharedApplication] delegate]).navigation popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
@@ -135,7 +135,8 @@ static NSString *const reuseSectionId = @"collectionsection";
 {
     NLEvent *event = [self eventForIndexPath:indexPath];
     _details = [[NLDetailsViewController alloc] initWithEvent:event withOrderInGroup:indexPath.section + 1];
-    [((NLAppDelegate *)[[UIApplication sharedApplication] delegate]).navigation pushViewController:_details animated:YES];
+    self.title = @"СОБЫТИЯ";
+    [self.navigationController pushViewController:_details animated:YES];
 }
 
 

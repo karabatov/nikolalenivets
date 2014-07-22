@@ -153,6 +153,7 @@
             return;
         }
         NLDetailsViewController *details = [[NLDetailsViewController alloc] initWithPlace:place currentLocation:_userLoc];
+        self.title = @"МЕСТА";
         [((NLAppDelegate *)[[UIApplication sharedApplication] delegate]).navigation pushViewController:details animated:YES];
     }
 }
