@@ -88,6 +88,10 @@
 		D1783F04197E398900A92AA3 /* UIViewController+BackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1783F03197E398900A92AA3 /* UIViewController+BackViewController.m */; };
 		D1783F07197E622B00A92AA3 /* blue-gradient.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783F05197E622B00A92AA3 /* blue-gradient.png */; };
 		D1783F08197E622B00A92AA3 /* blue-gradient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783F06197E622B00A92AA3 /* blue-gradient@2x.png */; };
+		D1783F0B197E74D200A92AA3 /* NLPlaceHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = D1783F0A197E74D200A92AA3 /* NLPlaceHeader.m */; };
+		D1783F0E197E8C2500A92AA3 /* NLCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = D1783F0D197E8C2500A92AA3 /* NLCategory.m */; };
+		D1783F19197EBA8800A92AA3 /* object-count.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783F17197EBA8800A92AA3 /* object-count.png */; };
+		D1783F1A197EBA8800A92AA3 /* object-count@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783F18197EBA8800A92AA3 /* object-count@2x.png */; };
 		D19C0425196EF44C006A086B /* map-minus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19C0422196EF44C006A086B /* map-minus@2x.png */; };
 		D19C0426196EF44D006A086B /* map-locate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19C0423196EF44C006A086B /* map-locate@2x.png */; };
 		D19C0427196EF44D006A086B /* map-plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19C0424196EF44C006A086B /* map-plus@2x.png */; };
@@ -236,6 +240,12 @@
 		D1783F03197E398900A92AA3 /* UIViewController+BackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+BackViewController.m"; path = "UI/UIViewController+BackViewController.m"; sourceTree = "<group>"; };
 		D1783F05197E622B00A92AA3 /* blue-gradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue-gradient.png"; sourceTree = "<group>"; };
 		D1783F06197E622B00A92AA3 /* blue-gradient@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue-gradient@2x.png"; sourceTree = "<group>"; };
+		D1783F09197E74D200A92AA3 /* NLPlaceHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLPlaceHeader.h; path = UI/NLPlaceHeader.h; sourceTree = "<group>"; };
+		D1783F0A197E74D200A92AA3 /* NLPlaceHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLPlaceHeader.m; path = UI/NLPlaceHeader.m; sourceTree = "<group>"; };
+		D1783F0C197E8C2500A92AA3 /* NLCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLCategory.h; path = Models/NLCategory.h; sourceTree = "<group>"; };
+		D1783F0D197E8C2500A92AA3 /* NLCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLCategory.m; path = Models/NLCategory.m; sourceTree = "<group>"; };
+		D1783F17197EBA8800A92AA3 /* object-count.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "object-count.png"; sourceTree = "<group>"; };
+		D1783F18197EBA8800A92AA3 /* object-count@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "object-count@2x.png"; sourceTree = "<group>"; };
 		D19C0422196EF44C006A086B /* map-minus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-minus@2x.png"; sourceTree = "<group>"; };
 		D19C0423196EF44C006A086B /* map-locate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-locate@2x.png"; sourceTree = "<group>"; };
 		D19C0424196EF44C006A086B /* map-plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-plus@2x.png"; sourceTree = "<group>"; };
@@ -374,6 +384,10 @@
 		4F22FD82193726A00075C1A0 /* Places */ = {
 			isa = PBXGroup;
 			children = (
+				D1783F17197EBA8800A92AA3 /* object-count.png */,
+				D1783F18197EBA8800A92AA3 /* object-count@2x.png */,
+				D1783F09197E74D200A92AA3 /* NLPlaceHeader.h */,
+				D1783F0A197E74D200A92AA3 /* NLPlaceHeader.m */,
 				4F22FD831937288B0075C1A0 /* NLPlacesViewController.h */,
 				4F22FD841937288B0075C1A0 /* NLPlacesViewController.m */,
 				4F22FD851937288B0075C1A0 /* NLPlacesViewController.xib */,
@@ -387,6 +401,8 @@
 		4F390E6D18ED50F100131934 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D1783F0C197E8C2500A92AA3 /* NLCategory.h */,
+				D1783F0D197E8C2500A92AA3 /* NLCategory.m */,
 				4F390E7318ED589200131934 /* NLStorage.h */,
 				4F390E7418ED589200131934 /* NLStorage.m */,
 				4F390E7618ED684200131934 /* NLDiffIndex.h */,
@@ -713,6 +729,7 @@
 				4F0D75A2193DB86500E78AA5 /* search_bg@2x.png in Resources */,
 				D19C04401975319E006A086B /* NLEventsCollectionViewController.xib in Resources */,
 				D1783EF8197CFFF000A92AA3 /* tile-empty.png in Resources */,
+				D1783F1A197EBA8800A92AA3 /* object-count@2x.png in Resources */,
 				4F174E331966A50300F7F8A2 /* Track on 2014-06-23 at 18-00 GMT+4.gpx in Resources */,
 				4F411E7F18FFD8AA00758E30 /* NLMainMenuController.xib in Resources */,
 				4F0A8BCF195AFEAA00D59268 /* NLSplashViewController.xib in Resources */,
@@ -728,6 +745,7 @@
 				D19C0427196EF44D006A086B /* map-plus@2x.png in Resources */,
 				D1A3D7C919758CF600C53E06 /* event-alarm.png in Resources */,
 				D1783EDC197C195100A92AA3 /* object@2x.png in Resources */,
+				D1783F19197EBA8800A92AA3 /* object-count.png in Resources */,
 				D1783EE3197C2C5B00A92AA3 /* object-selected.png in Resources */,
 				4FD010F5192CC326002F5836 /* search_icon.png in Resources */,
 				4F0D75B1193DEADF00E78AA5 /* circle@2x.png in Resources */,
@@ -811,10 +829,12 @@
 				D19C043719750589006A086B /* NLEventsCollectionViewController.m in Sources */,
 				4F9C414418EA84640038090E /* main.m in Sources */,
 				4F6137491927313700BFDD1C /* NLEventGroupsViewController.m in Sources */,
+				D1783F0B197E74D200A92AA3 /* NLPlaceHeader.m in Sources */,
 				4F7EC305190933B9002C0ECD /* NLItemsListController.m in Sources */,
 				4F390E8C18ED755300131934 /* NLEvent.m in Sources */,
 				4F18FD3A192212F900032A34 /* NLDetailsViewController.m in Sources */,
 				4F390E8618ED753700131934 /* NLPlace.m in Sources */,
+				D1783F0E197E8C2500A92AA3 /* NLCategory.m in Sources */,
 				4F10D2AF19374ABB00F6658D /* NLStaticScreenViewController.m in Sources */,
 				D17177B3196D047200521D72 /* NSAttributedString+Kerning.m in Sources */,
 				D19C04331973FF7E006A086B /* NLAttributedLabel.m in Sources */,
