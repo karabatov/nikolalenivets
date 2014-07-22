@@ -111,6 +111,7 @@
 
     NSArray *slides = _.array(_eventGroups).map(^(NLEventGroup *group) {
         UIImageView *slideImage = [[UIImageView alloc] initWithFrame:self.scrollView.frame];
+        [slideImage setClipsToBounds:YES];
 
         __block UIActivityIndicatorView *activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         activity.center = CGPointMake(slideImage.center.x, slideImage.center.y - 40);
@@ -121,7 +122,7 @@
                           completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *url) {
                               [activity removeFromSuperview];
                           }];
-        // slideImage.contentMode = UIViewContentModeScaleAspectFill;
+        slideImage.contentMode = UIViewContentModeScaleAspectFill;
         slideImage.frame = CGRectMake(leftOffset, 0, slideImage.frame.size.width, slideImage.frame.size.height);
         leftOffset += slideImage.frame.size.width;
 
