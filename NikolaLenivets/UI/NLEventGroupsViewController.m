@@ -214,6 +214,8 @@
 
     self.prevItemButton.enabled = pageIndex != 0;
     self.nextItemButton.enabled = pageIndex != _eventGroups.count - 1;
+    [self.previewView setNeedsLayout];
+    [self.previewView layoutIfNeeded];
 }
 
 
