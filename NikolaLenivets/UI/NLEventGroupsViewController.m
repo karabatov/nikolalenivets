@@ -66,6 +66,8 @@
     toolbar.barStyle = UIBarStyleBlack;
     [self.previewView insertSubview:toolbar atIndex:0];
 
+    self.scrollView.delegate = self;
+
     _currentPage = 0;
 
 //    [self prepareEventsArray];
@@ -83,11 +85,6 @@
     }
     [self fillContentForPage:_currentPage];
     [self.eventDateDashLabel setTransform:CGAffineTransformMakeRotation(-M_PI_2)];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    NSLog(@"view did appear");
 }
 
 
@@ -175,8 +172,8 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    _currentPage = floor(scrollView.contentOffset.x / scrollView.bounds.size.width);
-	[self fillContentForPage:_currentPage];
+    // _currentPage = floor((scrollView.contentOffset.x + scrollView.bounds.size.width / 2) / scrollView.bounds.size.width);
+	// [self fillContentForPage:_currentPage];
 }
 
 
@@ -217,6 +214,24 @@
     self.nextItemButton.enabled = pageIndex != _eventGroups.count - 1;
     [self.previewView setNeedsLayout];
     [self.previewView layoutIfNeeded];
+}
+
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (scrollView.contentOffset.x > 0 && scrollView.contentOffset.x < scrollView.contentSize.width) {
+        CGFloat offset = -fmod(self.scrollView.contentOffset.x, self.scrollView.frame.size.width);
+        if (-offset > self.scrollView.frame.size.width / 2) {
+            offset += (fmod(self.scrollView.contentOffset.x, self.scrollView.frame.size.width) - self.scrollView.frame.size.width / 2) * 2;
+        }
+        self.previewBottomSpace.constant = offset;
+        NSUInteger nextPage = floor((scrollView.contentOffset.x + scrollView.bounds.size.width / 2) / scrollView.bounds.size.width);
+        if (_currentPage != nextPage) {
+            _currentPage = nextPage;
+            [self fillContentForPage:_currentPage];
+        }
+        [self.previewView setNeedsLayout];
+    }
 }
 
 

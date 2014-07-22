@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -24,50 +24,50 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" id="0FX-H9-7Wt" userLabel="Menu">
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0FX-H9-7Wt" userLabel="Menu">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <view contentMode="scaleToFill" id="N8P-IG-e4X">
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N8P-IG-e4X">
                             <rect key="frame" x="20" y="78" width="113" height="4"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         </view>
-                        <view contentMode="scaleToFill" id="upQ-ac-gty">
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="upQ-ac-gty">
                             <rect key="frame" x="137" y="0.0" width="48" height="4"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         </view>
-                        <view contentMode="scaleToFill" id="XrB-6D-v33">
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XrB-6D-v33">
                             <rect key="frame" x="20" y="220" width="113" height="4"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         </view>
-                        <view contentMode="scaleToFill" id="lFX-Y1-7xe">
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lFX-Y1-7xe">
                             <rect key="frame" x="187" y="220" width="113" height="4"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         </view>
-                        <view contentMode="scaleToFill" id="Age-Ta-kfa">
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Age-Ta-kfa">
                             <rect key="frame" x="20" y="367" width="113" height="4"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         </view>
-                        <view contentMode="scaleToFill" id="95u-z8-0VU">
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="95u-z8-0VU">
                             <rect key="frame" x="187" y="367" width="113" height="4"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         </view>
-                        <view contentMode="scaleToFill" id="GxT-e5-3yF">
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GxT-e5-3yF">
                             <rect key="frame" x="187" y="78" width="113" height="4"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         </view>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="compass_black.png" id="G45-3z-Ofi">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="compass_black.png" translatesAutoresizingMaskIntoConstraints="NO" id="G45-3z-Ofi">
                             <rect key="frame" x="136" y="498" width="48" height="48"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                         </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="y1y-8t-No6">
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y1y-8t-No6">
                             <rect key="frame" x="20" y="78" width="113" height="94"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -80,7 +80,7 @@
                                 <action selector="unfoldItem:" destination="-1" eventType="touchUpInside" id="Acm-ta-RVw"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TVT-MF-j5Y">
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TVT-MF-j5Y">
                             <rect key="frame" x="187" y="78" width="113" height="96"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -93,7 +93,7 @@
                                 <action selector="unfoldItem:" destination="-1" eventType="touchUpInside" id="XPn-qG-adR"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="V9J-KU-Gef">
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V9J-KU-Gef">
                             <rect key="frame" x="20" y="220" width="113" height="93"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -106,7 +106,7 @@
                                 <action selector="unfoldItem:" destination="-1" eventType="touchUpInside" id="Qbm-ZX-hTu"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lYA-Dh-4SQ">
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lYA-Dh-4SQ">
                             <rect key="frame" x="187" y="220" width="113" height="93"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -119,7 +119,7 @@
                                 <action selector="unfoldItem:" destination="-1" eventType="touchUpInside" id="vSp-9y-J6E"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ypS-Jz-Ziy">
+                        <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ypS-Jz-Ziy">
                             <rect key="frame" x="20" y="367" width="113" height="93"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -132,7 +132,7 @@
                                 <action selector="unfoldItem:" destination="-1" eventType="touchUpInside" id="wWr-XO-4D7"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cr8-ht-eg6">
+                        <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cr8-ht-eg6">
                             <rect key="frame" x="189" y="367" width="111" height="93"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -145,46 +145,46 @@
                                 <action selector="unfoldItem:" destination="-1" eventType="touchUpInside" id="kRP-s2-tg8"/>
                             </connections>
                         </button>
-                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="HyR-n2-fdy">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HyR-n2-fdy">
                             <rect key="frame" x="153" y="515" width="14" height="14"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                             <state key="normal" image="search.png">
                                 <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                             </state>
                         </button>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="НИКОЛА" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="g6H-k6-VZn">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="НИКОЛА" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g6H-k6-VZn">
                             <rect key="frame" x="61" y="4" width="78" height="31"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ЛЕНИВЕЦ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jez-4c-SGx">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ЛЕНИВЕЦ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jez-4c-SGx">
                             <rect key="frame" x="184" y="4" width="78" height="31"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="c9f-te-yCq" userLabel="news count">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9f-te-yCq" userLabel="news count">
                             <rect key="frame" x="131" y="78" width="30" height="21"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <fontDescription key="fontDescription" type="system" pointSize="7"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NIh-Hu-AUg" userLabel="events count">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NIh-Hu-AUg" userLabel="events count">
                             <rect key="frame" x="156" y="78" width="30" height="21"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <fontDescription key="fontDescription" type="system" pointSize="7"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="csF-5D-XU0" userLabel="map count">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="csF-5D-XU0" userLabel="map count">
                             <rect key="frame" x="132" y="220" width="30" height="21"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <fontDescription key="fontDescription" type="system" pointSize="7"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ctx-fw-7yb" userLabel="places count">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctx-fw-7yb" userLabel="places count">
                             <rect key="frame" x="157" y="220" width="30" height="21"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <fontDescription key="fontDescription" type="system" pointSize="7"/>
@@ -194,13 +194,19 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </view>
-                <view contentMode="scaleToFill" id="WKI-Yo-0wZ" userLabel="Content View">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WKI-Yo-0wZ" userLabel="Content View">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="WKI-Yo-0wZ" secondAttribute="bottom" id="axn-Do-GoJ"/>
+                <constraint firstItem="WKI-Yo-0wZ" firstAttribute="top" secondItem="1" secondAttribute="top" id="kQg-gX-xXf"/>
+                <constraint firstItem="WKI-Yo-0wZ" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="oTP-M3-xuR"/>
+                <constraint firstAttribute="trailing" secondItem="WKI-Yo-0wZ" secondAttribute="trailing" id="wow-Qm-QmJ"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>

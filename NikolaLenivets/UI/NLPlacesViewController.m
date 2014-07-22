@@ -189,7 +189,7 @@ static NSString * const reuseSectionId = @"placeSectionHeader";
         if (!sectionView) {
             sectionView = [[NLPlaceHeader alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, 50.0f)];
         }
-        sectionView.objectCountLabel.text = [NSString stringWithFormat:@"%02lu", [_catPlaces[indexPath.section] count]];
+        sectionView.objectCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)[_catPlaces[indexPath.section] count]];
         sectionView.categoryNameLabel.text = [((NLCategory *)(_categories[indexPath.section])).name uppercaseString];
         return sectionView;
     } else {

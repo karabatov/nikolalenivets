@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *currentPageLabel;
 @property (weak, nonatomic) IBOutlet UILabel *overallPagesCountLabel;
 @property (weak, nonatomic) IBOutlet UIView *previewView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *previewBottomSpace;
 @property (weak, nonatomic) IBOutlet UILabel *eventTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *eventPriceTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *eventDatesTitleLabel;
