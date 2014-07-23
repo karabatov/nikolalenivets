@@ -38,7 +38,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gTW-OY-lvk" userLabel="Title Bar">
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gTW-OY-lvk" userLabel="Title Bar">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                     <subviews>
@@ -84,7 +84,7 @@
                         <constraint firstItem="CNC-pP-noM" firstAttribute="top" secondItem="d1z-xb-nuL" secondAttribute="bottom" constant="4" id="yau-CY-JdW"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4kO-AR-0xe" userLabel="Event Day" customClass="NLSectionHeader">
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4kO-AR-0xe" userLabel="Event Day" customClass="NLSectionHeader">
                     <rect key="frame" x="0.0" y="64" width="320" height="0.0"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

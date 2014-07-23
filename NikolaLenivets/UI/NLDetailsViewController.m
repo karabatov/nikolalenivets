@@ -86,6 +86,9 @@ typedef enum {
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    [self.view bringSubviewToFront:self.scrollView];
+    [self.view bringSubviewToFront:self.eventDayView];
     
     self.titleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:30];
     self.detailsViewTitleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:10];
@@ -155,9 +158,6 @@ typedef enum {
             self.eventDayHeight.constant = 26;
             self.eventDayView.dateLabel.text = [_place.title uppercaseString];
             [self.eventDayView.dayOrderLabel setHidden:YES];
-            UIColor *borderGray = [UIColor colorWithRed:246.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1.0f];
-            [self.eventDayView.layer setBorderColor:borderGray.CGColor];
-            [self.eventDayView.layer setBorderWidth:0.5f];
             indexNumber = -1; //[[[NLStorage sharedInstance] places] indexOfObject:_place];
             break;
         }

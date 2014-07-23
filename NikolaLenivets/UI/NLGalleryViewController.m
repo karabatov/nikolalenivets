@@ -29,6 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.clipsToBounds = YES;
     self.galleryView.showsScrollIndicator = NO;
     self.galleryView.galleryMode = UIPhotoGalleryModeImageRemote;
 
@@ -51,13 +52,6 @@
     [super viewWillAppear:animated];
     [self updateInfoForPhotoAtIndex:0];
     self.galleryView.hidden = NO;
-}
-
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    self.galleryView.hidden = YES;
 }
 
 - (void)updateInfoForPhotoAtIndex:(NSInteger)index
