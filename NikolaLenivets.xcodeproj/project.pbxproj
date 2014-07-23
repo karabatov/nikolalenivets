@@ -69,7 +69,6 @@
 		4FD010F5192CC326002F5836 /* search_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD010F4192CC326002F5836 /* search_icon.png */; };
 		4FD010FA192CC940002F5836 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FD010F9192CC940002F5836 /* Crashlytics.framework */; };
 		4FF31086D2714E0584DB4E63 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 213D00ACD702461FA5EF0EB3 /* libPods.a */; };
-		D12B05F21979346300AA4CDD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12B05F11979346300AA4CDD /* MapKit.framework */; };
 		D12B05F61979A5E700AA4CDD /* tiles in Resources */ = {isa = PBXBuildFile; fileRef = D12B05F51979A5E700AA4CDD /* tiles */; };
 		D17177B3196D047200521D72 /* NSAttributedString+Kerning.m in Sources */ = {isa = PBXBuildFile; fileRef = D17177B2196D047200521D72 /* NSAttributedString+Kerning.m */; };
 		D1783ED8197C141F00A92AA3 /* NLPlaceAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D1783ED7197C141F00A92AA3 /* NLPlaceAnnotation.m */; };
@@ -90,6 +89,7 @@
 		D1783F19197EBA8800A92AA3 /* object-count.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783F17197EBA8800A92AA3 /* object-count.png */; };
 		D1783F1A197EBA8800A92AA3 /* object-count@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783F18197EBA8800A92AA3 /* object-count@2x.png */; };
 		D1783F20197FB9E200A92AA3 /* NLFoldAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = D1783F1F197FB9E200A92AA3 /* NLFoldAnimation.m */; };
+		D1783F221980042E00A92AA3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1783F211980042E00A92AA3 /* MapKit.framework */; };
 		D19C0425196EF44C006A086B /* map-minus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19C0422196EF44C006A086B /* map-minus@2x.png */; };
 		D19C0426196EF44D006A086B /* map-locate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19C0423196EF44C006A086B /* map-locate@2x.png */; };
 		D19C0427196EF44D006A086B /* map-plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19C0424196EF44C006A086B /* map-plus@2x.png */; };
@@ -213,7 +213,6 @@
 		4FD010F9192CC940002F5836 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		9F010D930FC743A086F2A9F3 /* libPods-NikolaLenivetsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NikolaLenivetsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CABA2254233B446F8102E8CC /* Pods-NikolaLenivetsTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NikolaLenivetsTests.xcconfig"; path = "Pods/Pods-NikolaLenivetsTests.xcconfig"; sourceTree = "<group>"; };
-		D12B05F11979346300AA4CDD /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D12B05F51979A5E700AA4CDD /* tiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tiles; sourceTree = "<group>"; };
 		D17177B1196D047200521D72 /* NSAttributedString+Kerning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSAttributedString+Kerning.h"; path = "UI/NSAttributedString+Kerning.h"; sourceTree = "<group>"; };
 		D17177B2196D047200521D72 /* NSAttributedString+Kerning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSAttributedString+Kerning.m"; path = "UI/NSAttributedString+Kerning.m"; sourceTree = "<group>"; };
@@ -240,6 +239,7 @@
 		D1783F18197EBA8800A92AA3 /* object-count@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "object-count@2x.png"; sourceTree = "<group>"; };
 		D1783F1E197FB9E200A92AA3 /* NLFoldAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLFoldAnimation.h; path = UI/NLFoldAnimation.h; sourceTree = "<group>"; };
 		D1783F1F197FB9E200A92AA3 /* NLFoldAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLFoldAnimation.m; path = UI/NLFoldAnimation.m; sourceTree = "<group>"; };
+		D1783F211980042E00A92AA3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D19C0422196EF44C006A086B /* map-minus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-minus@2x.png"; sourceTree = "<group>"; };
 		D19C0423196EF44C006A086B /* map-locate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-locate@2x.png"; sourceTree = "<group>"; };
 		D19C0424196EF44C006A086B /* map-plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-plus@2x.png"; sourceTree = "<group>"; };
@@ -274,11 +274,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D12B05F21979346300AA4CDD /* MapKit.framework in Frameworks */,
 				4F9C413A18EA84640038090E /* CoreGraphics.framework in Frameworks */,
 				4FD010FA192CC940002F5836 /* Crashlytics.framework in Frameworks */,
 				4F9C413C18EA84640038090E /* UIKit.framework in Frameworks */,
 				4F9C413818EA84640038090E /* Foundation.framework in Frameworks */,
+				D1783F221980042E00A92AA3 /* MapKit.framework in Frameworks */,
 				4FF31086D2714E0584DB4E63 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -511,7 +511,7 @@
 		4F9C413618EA84640038090E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D12B05F11979346300AA4CDD /* MapKit.framework */,
+				D1783F211980042E00A92AA3 /* MapKit.framework */,
 				4FD010F9192CC940002F5836 /* Crashlytics.framework */,
 				4F9C413718EA84640038090E /* Foundation.framework */,
 				4F9C413918EA84640038090E /* CoreGraphics.framework */,
@@ -658,7 +658,7 @@
 					4F9C413318EA84640038090E = {
 						SystemCapabilities = {
 							com.apple.iOS = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
