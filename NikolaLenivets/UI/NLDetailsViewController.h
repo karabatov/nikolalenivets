@@ -36,7 +36,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *unreadIndicator;
 @property (weak, nonatomic) IBOutlet NLSectionHeader *eventDayView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *eventDayHeight;
-@property (weak, nonatomic) IBOutlet UIImageView *placeImage;
+@property (weak, nonatomic) IBOutlet AsyncImageView *placeImage;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *placeImageHeight;
 @property (weak, nonatomic) IBOutlet UIImageView *blueGradient;
 
