@@ -101,7 +101,6 @@
 
 - (IBAction)showMenu:(id)sender
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_MENU_NOW object:nil];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

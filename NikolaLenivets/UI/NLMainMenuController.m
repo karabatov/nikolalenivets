@@ -44,7 +44,6 @@ enum {
     self = [super initWithNibName:@"NLMainMenuController" bundle:nil];
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateMenuState) name:STORAGE_DID_UPDATE object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showMenu) name:SHOW_MENU_NOW object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(headingUpdated:) name:NLUserHeadingUpdated object:nil];
     }
     return self;
@@ -76,27 +75,7 @@ enum {
         }
     }
 
-    [self showMenu];
-}
-
-
-- (void)showMenu
-{
     [self updateMenuState];
-}
-
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    NSLog(@"menu view will appear");
-    [super viewWillAppear:animated];
-}
-
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    NSLog(@"menu view did appear");
-    [super viewDidAppear:animated];
 }
 
 

@@ -9,8 +9,6 @@
 @import UIKit;
 #import "NLStorage.h"
 
-#define SHOW_MENU_NOW @"SHOW_MENU_NOW"
-
 @interface NLMainMenuController : UIViewController <UINavigationControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *menuView;
