@@ -15,6 +15,7 @@
 #import "NLMapViewController.h"
 #import "NSAttributedString+Kerning.h"
 #import "NLFoldAnimation.h"
+#import "NLSplashViewController.h"
 
 #define FOLD_DURATION 0.7
 
@@ -175,8 +176,9 @@ enum {
     if ([toVC isKindOfClass:[NLMainMenuController class]] || [fromVC isKindOfClass:[NLMainMenuController class]] ||
         [toVC isKindOfClass:[NLMapViewController class]]  || [fromVC isKindOfClass:[NLMapViewController class]]) {
         NLFoldAnimation *animationController = [[NLFoldAnimation alloc] init];
-        if ([toVC isKindOfClass:[NLMapViewController class]] && ![fromVC isKindOfClass:[NLMainMenuController class]]) {
-            animationController.folds = 4;
+        if ([fromVC isKindOfClass:[NLSplashViewController class]]) {
+            animationController.reverse = YES;
+            return animationController;
         }
         switch (operation) {
             case UINavigationControllerOperationPush:

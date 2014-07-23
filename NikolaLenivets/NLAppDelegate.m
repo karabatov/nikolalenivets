@@ -32,7 +32,12 @@
     [NLLocationManager sharedInstance];
 
     _splash = [NLSplashViewController new];
-    [self.window addSubview:_splash.view];
+    NLMainMenuController *main = [NLMainMenuController new];
+    self.navigation = [[UINavigationController alloc] initWithRootViewController:main];
+    [self.navigation setNavigationBarHidden:YES];
+    self.navigation.delegate = main;
+    [self.navigation pushViewController:_splash animated:NO];
+    self.window.rootViewController = self.navigation;
     
     [self.window makeKeyAndVisible];
     return YES;
@@ -42,12 +47,7 @@
 
 - (void)dismissSplash
 {
-    NLMainMenuController *main = [NLMainMenuController new];
-    self.navigation = [[UINavigationController alloc] initWithRootViewController:main];
-    [self.navigation setNavigationBarHidden:YES];
-    self.navigation.delegate = main;
-    self.window.rootViewController = self.navigation;
-    [_splash.view removeFromSuperview];
+    [self.navigation popToRootViewControllerAnimated:YES];
 }
 
 
