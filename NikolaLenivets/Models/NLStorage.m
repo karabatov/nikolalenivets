@@ -9,6 +9,7 @@
 #import "NLStorage.h"
 #import "Underscore.h"
 #import "AFNetworking.h"
+#import "NLCategory.h"
 
 /** Key for cached server response. */
 #define CACHED_JSON @"CACHED_JSON"
@@ -39,8 +40,17 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
+    // Check if there are categories in the model. If no, redownload without crashing.
+    // TODO: Remove check in next release.
+    BOOL hasCategories = NO;
+    if ([_places firstObject]) {
+        id catTest = [((NLPlace *)[_places firstObject]).categories firstObject];
+        if ([catTest isKindOfClass:[NLCategory class]]) {
+            hasCategories = YES;
+        }
+    }
     // If there's lastDownloadDate, get `/timestamp/`. Otherwise, get `/`.
-    if (!_lastDownloadDate) {
+    if (!_lastDownloadDate || !hasCategories) {
         [manager GET:BACKEND_URL
           parameters:nil
              success:^(AFHTTPRequestOperation *op, id response) {
