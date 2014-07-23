@@ -16,8 +16,6 @@
 #import <NSDate+Helper.h>
 #import "NSString+Distance.h"
 #import "NSString+Ordinal.h"
-#import "UIView+Origami.h"
-#import "NLOrigamiSegue.h"
 #import "UIViewController+BackViewController.h"
 
 typedef enum {

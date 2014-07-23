@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4F0A8BC9195AE58400D59268 /* UIView+Origami.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F0A8BC8195AE58400D59268 /* UIView+Origami.m */; };
 		4F0A8BCE195AFEAA00D59268 /* NLSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F0A8BCC195AFEAA00D59268 /* NLSplashViewController.m */; };
 		4F0A8BCF195AFEAA00D59268 /* NLSplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F0A8BCD195AFEAA00D59268 /* NLSplashViewController.xib */; };
 		4F0A8BD1195B032800D59268 /* compass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F0A8BD0195B032800D59268 /* compass@2x.png */; };
@@ -83,8 +82,6 @@
 		D1783EEF197C438200A92AA3 /* userlocation.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783EED197C438200A92AA3 /* userlocation.png */; };
 		D1783EF0197C438200A92AA3 /* userlocation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783EEE197C438200A92AA3 /* userlocation@2x.png */; };
 		D1783EF8197CFFF000A92AA3 /* tile-empty.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783EF7197CFFF000A92AA3 /* tile-empty.png */; };
-		D1783EFE197D54F000A92AA3 /* NLOrigamiSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = D1783EFD197D54F000A92AA3 /* NLOrigamiSegue.m */; };
-		D1783F01197D616D00A92AA3 /* UINavigationController+OrigamiTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = D1783F00197D616D00A92AA3 /* UINavigationController+OrigamiTransition.m */; };
 		D1783F04197E398900A92AA3 /* UIViewController+BackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1783F03197E398900A92AA3 /* UIViewController+BackViewController.m */; };
 		D1783F07197E622B00A92AA3 /* blue-gradient.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783F05197E622B00A92AA3 /* blue-gradient.png */; };
 		D1783F08197E622B00A92AA3 /* blue-gradient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783F06197E622B00A92AA3 /* blue-gradient@2x.png */; };
@@ -92,6 +89,7 @@
 		D1783F0E197E8C2500A92AA3 /* NLCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = D1783F0D197E8C2500A92AA3 /* NLCategory.m */; };
 		D1783F19197EBA8800A92AA3 /* object-count.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783F17197EBA8800A92AA3 /* object-count.png */; };
 		D1783F1A197EBA8800A92AA3 /* object-count@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783F18197EBA8800A92AA3 /* object-count@2x.png */; };
+		D1783F20197FB9E200A92AA3 /* NLFoldAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = D1783F1F197FB9E200A92AA3 /* NLFoldAnimation.m */; };
 		D19C0425196EF44C006A086B /* map-minus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19C0422196EF44C006A086B /* map-minus@2x.png */; };
 		D19C0426196EF44D006A086B /* map-locate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19C0423196EF44C006A086B /* map-locate@2x.png */; };
 		D19C0427196EF44D006A086B /* map-plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19C0424196EF44C006A086B /* map-plus@2x.png */; };
@@ -117,8 +115,6 @@
 /* Begin PBXFileReference section */
 		213D00ACD702461FA5EF0EB3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B21A1ADAF4F4E0BA8ED7C42 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
-		4F0A8BC7195AE58400D59268 /* UIView+Origami.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Origami.h"; sourceTree = "<group>"; };
-		4F0A8BC8195AE58400D59268 /* UIView+Origami.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Origami.m"; sourceTree = "<group>"; };
 		4F0A8BCB195AFEAA00D59268 /* NLSplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLSplashViewController.h; path = UI/NLSplashViewController.h; sourceTree = "<group>"; };
 		4F0A8BCC195AFEAA00D59268 /* NLSplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLSplashViewController.m; path = UI/NLSplashViewController.m; sourceTree = "<group>"; };
 		4F0A8BCD195AFEAA00D59268 /* NLSplashViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLSplashViewController.xib; path = UI/NLSplashViewController.xib; sourceTree = "<group>"; };
@@ -232,10 +228,6 @@
 		D1783EED197C438200A92AA3 /* userlocation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = userlocation.png; sourceTree = "<group>"; };
 		D1783EEE197C438200A92AA3 /* userlocation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "userlocation@2x.png"; sourceTree = "<group>"; };
 		D1783EF7197CFFF000A92AA3 /* tile-empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tile-empty.png"; sourceTree = "<group>"; };
-		D1783EFC197D54F000A92AA3 /* NLOrigamiSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLOrigamiSegue.h; path = UI/NLOrigamiSegue.h; sourceTree = "<group>"; };
-		D1783EFD197D54F000A92AA3 /* NLOrigamiSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLOrigamiSegue.m; path = UI/NLOrigamiSegue.m; sourceTree = "<group>"; };
-		D1783EFF197D616D00A92AA3 /* UINavigationController+OrigamiTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+OrigamiTransition.h"; path = "UI/UINavigationController+OrigamiTransition.h"; sourceTree = "<group>"; };
-		D1783F00197D616D00A92AA3 /* UINavigationController+OrigamiTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+OrigamiTransition.m"; path = "UI/UINavigationController+OrigamiTransition.m"; sourceTree = "<group>"; };
 		D1783F02197E398900A92AA3 /* UIViewController+BackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+BackViewController.h"; path = "UI/UIViewController+BackViewController.h"; sourceTree = "<group>"; };
 		D1783F03197E398900A92AA3 /* UIViewController+BackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+BackViewController.m"; path = "UI/UIViewController+BackViewController.m"; sourceTree = "<group>"; };
 		D1783F05197E622B00A92AA3 /* blue-gradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue-gradient.png"; sourceTree = "<group>"; };
@@ -246,6 +238,8 @@
 		D1783F0D197E8C2500A92AA3 /* NLCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLCategory.m; path = Models/NLCategory.m; sourceTree = "<group>"; };
 		D1783F17197EBA8800A92AA3 /* object-count.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "object-count.png"; sourceTree = "<group>"; };
 		D1783F18197EBA8800A92AA3 /* object-count@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "object-count@2x.png"; sourceTree = "<group>"; };
+		D1783F1E197FB9E200A92AA3 /* NLFoldAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLFoldAnimation.h; path = UI/NLFoldAnimation.h; sourceTree = "<group>"; };
+		D1783F1F197FB9E200A92AA3 /* NLFoldAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLFoldAnimation.m; path = UI/NLFoldAnimation.m; sourceTree = "<group>"; };
 		D19C0422196EF44C006A086B /* map-minus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-minus@2x.png"; sourceTree = "<group>"; };
 		D19C0423196EF44C006A086B /* map-locate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-locate@2x.png"; sourceTree = "<group>"; };
 		D19C0424196EF44C006A086B /* map-plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-plus@2x.png"; sourceTree = "<group>"; };
@@ -295,6 +289,8 @@
 		4F0A8BC5195AE57900D59268 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				D1783F1E197FB9E200A92AA3 /* NLFoldAnimation.h */,
+				D1783F1F197FB9E200A92AA3 /* NLFoldAnimation.m */,
 				D1783F02197E398900A92AA3 /* UIViewController+BackViewController.h */,
 				D1783F03197E398900A92AA3 /* UIViewController+BackViewController.m */,
 				D17177B1196D047200521D72 /* NSAttributedString+Kerning.h */,
@@ -305,22 +301,8 @@
 				D1A3D7C519758B4C00C53E06 /* NSDate+CompareDays.m */,
 				D1A3D7D5197641D900C53E06 /* NSString+Distance.h */,
 				D1A3D7D6197641D900C53E06 /* NSString+Distance.m */,
-				4F0A8BC6195AE58400D59268 /* XYOrigami */,
-				D1783EFC197D54F000A92AA3 /* NLOrigamiSegue.h */,
-				D1783EFD197D54F000A92AA3 /* NLOrigamiSegue.m */,
-				D1783EFF197D616D00A92AA3 /* UINavigationController+OrigamiTransition.h */,
-				D1783F00197D616D00A92AA3 /* UINavigationController+OrigamiTransition.m */,
 			);
 			name = Libraries;
-			sourceTree = "<group>";
-		};
-		4F0A8BC6195AE58400D59268 /* XYOrigami */ = {
-			isa = PBXGroup;
-			children = (
-				4F0A8BC7195AE58400D59268 /* UIView+Origami.h */,
-				4F0A8BC8195AE58400D59268 /* UIView+Origami.m */,
-			);
-			path = XYOrigami;
 			sourceTree = "<group>";
 		};
 		4F0A8BCA195AFE9300D59268 /* Splash */ = {
@@ -820,9 +802,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F390E7518ED589200131934 /* NLStorage.m in Sources */,
-				D1783F01197D616D00A92AA3 /* UINavigationController+OrigamiTransition.m in Sources */,
 				4F390E8918ED754700131934 /* NLScreen.m in Sources */,
 				4F22FD7C1936ED3E0075C1A0 /* NLGallery.m in Sources */,
+				D1783F20197FB9E200A92AA3 /* NLFoldAnimation.m in Sources */,
 				D1783F04197E398900A92AA3 /* UIViewController+BackViewController.m in Sources */,
 				4F9C414818EA84640038090E /* NLAppDelegate.m in Sources */,
 				D19C043C1975253C006A086B /* NLNewsCell.m in Sources */,
@@ -838,8 +820,6 @@
 				4F10D2AF19374ABB00F6658D /* NLStaticScreenViewController.m in Sources */,
 				D17177B3196D047200521D72 /* NSAttributedString+Kerning.m in Sources */,
 				D19C04331973FF7E006A086B /* NLAttributedLabel.m in Sources */,
-				4F0A8BC9195AE58400D59268 /* UIView+Origami.m in Sources */,
-				D1783EFE197D54F000A92AA3 /* NLOrigamiSegue.m in Sources */,
 				4F0A8BCE195AFEAA00D59268 /* NLSplashViewController.m in Sources */,
 				4F390E7D18ED731E00131934 /* NLNewsEntry.m in Sources */,
 				4F22FD861937288B0075C1A0 /* NLPlacesViewController.m in Sources */,

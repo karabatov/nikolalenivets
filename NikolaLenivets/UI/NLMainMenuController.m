@@ -14,6 +14,7 @@
 #import "NLStaticScreenViewController.h"
 #import "NLMapViewController.h"
 #import "NSAttributedString+Kerning.h"
+#import "NLFoldAnimation.h"
 
 #define FOLD_DURATION 0.7
 
@@ -81,22 +82,20 @@ enum {
 - (void)showMenu
 {
     [self updateMenuState];
-    [self.contentView showOrigamiTransitionWith:self.menuView
-                           NumberOfFolds:1
-                                Duration:FOLD_DURATION
-                               Direction:XYOrigamiDirectionFromLeft
-                              completion:^(BOOL finished) {
-                                  NSLog(@"Finished animation");
-                              }];
-    for (UIView *v in _contentView.subviews) {
-        [v removeFromSuperview];
-    }
 }
 
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    NSLog(@"menu view will appear");
     [super viewWillAppear:animated];
+}
+
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    NSLog(@"menu view did appear");
+    [super viewDidAppear:animated];
 }
 
 
@@ -104,58 +103,46 @@ enum {
 
 - (IBAction)unfoldItem:(UIButton *)sender
 {
-    for (UIView *v in _contentView.subviews) {
-        [v removeFromSuperview];
-    }
-
     switch (sender.tag) {
         case News: {
             _newsList = [NLItemsListController new];
-            [_contentView addSubview:_newsList.view];
             self.title = @"НОВОСТИ";
+            [self.navigationController pushViewController:_newsList animated:YES];
             break;
         }
         case Events: {
             _eventsController = [NLEventGroupsViewController new];
             self.title = @"СОБЫТИЯ";
-            [_contentView addSubview:_eventsController.view];
+            [self.navigationController pushViewController:_eventsController animated:YES];
             break;
         }
         case Places: {
             _placesController = [NLPlacesViewController new];
-            [_contentView addSubview:_placesController.view];
             self.title = @"МЕСТА";
+            [self.navigationController pushViewController:_placesController animated:YES];
             break;
         }
         case Way: {
             _driveScreen = [[NLStaticScreenViewController alloc] initWithScreenNamed:@"drive"];
-            [_contentView addSubview:_driveScreen.view];
             self.title = @"КАК ДОБРАТЬСЯ";
+            [self.navigationController pushViewController:_driveScreen animated:YES];
             break;
         }
         case Map: {
             _mapController = [NLMapViewController new];
-            [_contentView addSubview:_mapController.view];
             self.title = @"КАРТА";
+            [self.navigationController pushViewController:_mapController animated:YES];
             break;
         }
         case About:
             _driveScreen = [[NLStaticScreenViewController alloc] initWithScreenNamed:@"about"];
-            [_contentView addSubview:_driveScreen.view];
             self.title = @"О ПАРКЕ";
+            [self.navigationController pushViewController:_driveScreen animated:YES];
             break;
         default:
             return;
             break;
     }
-
-    [self.contentView hideOrigamiTransitionWith:self.menuView
-                           NumberOfFolds:1
-                                Duration:FOLD_DURATION
-                               Direction:XYOrigamiDirectionFromLeft
-                              completion:^(BOOL finished) {
-                                  NSLog(@"Finished transition");
-                              }];
 }
 
 
@@ -175,6 +162,35 @@ enum {
 - (void)headingUpdated:(NSNotification *)notification
 {
     self.compass.transform = [[NLLocationManager sharedInstance] compassTransform];
+}
+
+
+#pragma mark - UINavigationControllerDelegate
+
+- (id <UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                   animationControllerForOperation:(UINavigationControllerOperation)operation
+                                                fromViewController:(UIViewController *)fromVC
+                                                  toViewController:(UIViewController *)toVC
+{
+    if ([toVC isKindOfClass:[NLMainMenuController class]] || [fromVC isKindOfClass:[NLMainMenuController class]] ||
+        [toVC isKindOfClass:[NLMapViewController class]]  || [fromVC isKindOfClass:[NLMapViewController class]]) {
+        NLFoldAnimation *animationController = [[NLFoldAnimation alloc] init];
+        if ([toVC isKindOfClass:[NLMapViewController class]] && ![fromVC isKindOfClass:[NLMainMenuController class]]) {
+            animationController.folds = 4;
+        }
+        switch (operation) {
+            case UINavigationControllerOperationPush:
+                animationController.reverse = YES;
+                return  animationController;
+            case UINavigationControllerOperationPop:
+                animationController.reverse = NO;
+                return animationController;
+            default:
+                return nil;
+        }
+    } else {
+        return nil;
+    }
 }
 
 @end

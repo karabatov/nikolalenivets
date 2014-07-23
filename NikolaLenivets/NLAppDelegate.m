@@ -45,6 +45,7 @@
     NLMainMenuController *main = [NLMainMenuController new];
     self.navigation = [[UINavigationController alloc] initWithRootViewController:main];
     [self.navigation setNavigationBarHidden:YES];
+    self.navigation.delegate = main;
     self.window.rootViewController = self.navigation;
     [_splash.view removeFromSuperview];
 }

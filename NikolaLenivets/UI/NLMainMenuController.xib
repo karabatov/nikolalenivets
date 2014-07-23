@@ -7,7 +7,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NLMainMenuController">
             <connections>
                 <outlet property="compass" destination="G45-3z-Ofi" id="Ci0-27-ILx"/>
-                <outlet property="contentView" destination="WKI-Yo-0wZ" id="fGh-S4-muF"/>
                 <outlet property="eventsCounter" destination="NIh-Hu-AUg" id="LCQ-el-ScV"/>
                 <outlet property="lenivetsLabel" destination="jez-4c-SGx" id="Qph-VN-N4a"/>
                 <outlet property="mapCounter" destination="csF-5D-XU0" id="dWI-Lx-o40"/>
@@ -24,7 +23,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0FX-H9-7Wt" userLabel="Menu">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0FX-H9-7Wt" userLabel="Menu">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
@@ -194,18 +193,13 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WKI-Yo-0wZ" userLabel="Content View">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                </view>
             </subviews>
             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="WKI-Yo-0wZ" secondAttribute="bottom" id="axn-Do-GoJ"/>
-                <constraint firstItem="WKI-Yo-0wZ" firstAttribute="top" secondItem="1" secondAttribute="top" id="kQg-gX-xXf"/>
-                <constraint firstItem="WKI-Yo-0wZ" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="oTP-M3-xuR"/>
-                <constraint firstAttribute="trailing" secondItem="WKI-Yo-0wZ" secondAttribute="trailing" id="wow-Qm-QmJ"/>
+                <constraint firstItem="0FX-H9-7Wt" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="1uC-gW-I94"/>
+                <constraint firstItem="0FX-H9-7Wt" firstAttribute="top" secondItem="1" secondAttribute="top" id="Bl2-Uq-AzJ"/>
+                <constraint firstAttribute="bottom" secondItem="0FX-H9-7Wt" secondAttribute="bottom" id="DFg-UR-ePs"/>
+                <constraint firstAttribute="trailing" secondItem="0FX-H9-7Wt" secondAttribute="trailing" id="kFs-2I-XP5"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
