@@ -124,6 +124,7 @@
 
 - (void)updatePlaces
 {
+    [self.mapView removeAnnotations:self.mapView.annotations];
     _places = [[NLStorage sharedInstance] places];
     for (NLPlace *place in _places) {
         NLPlaceAnnotation *annotation = [[NLPlaceAnnotation alloc] initWithPlace:place];
@@ -245,6 +246,10 @@
 - (void)locationUpdated:(NSNotification *)notification
 {
     self.currentLocation = notification.object;
+    if (_selectedView.selected) {
+        [self.mapView selectAnnotation:nil animated:NO];
+        [self.mapView selectAnnotation:_selectedView.annotation animated:NO];
+    }
 }
 
 
