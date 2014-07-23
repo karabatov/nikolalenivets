@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *itemsCountLabel;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIView *titleBarView;
 @property (weak, nonatomic) IBOutlet UIButton *prevItemButton;
 @property (weak, nonatomic) IBOutlet UIButton *nextItemButton;
 @property (weak, nonatomic) IBOutlet UILabel *currentPageLabel;

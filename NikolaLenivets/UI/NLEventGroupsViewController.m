@@ -143,8 +143,8 @@
 {
     if (unreadCount == 0) {
         self.titleBarHeight.constant = 52.0f;
-        [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:10.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            [self.view layoutIfNeeded];
+        [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            [self.titleBarView layoutIfNeeded];
             self.itemsCountLabel.alpha = 0.0f;
         } completion:^(BOOL finished) {
             [self.itemsCountLabel setHidden:YES];
@@ -155,11 +155,11 @@
         self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)unreadCount];
         self.titleBarHeight.constant = 64.0f;
         [self.itemsCountLabel setTransform:CGAffineTransformMakeScale(0.05f, 0.05f)];
-        [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:10.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
             [self.itemsCountLabel setHidden:NO];
             self.itemsCountLabel.alpha = 1.0f;
             [self.itemsCountLabel setTransform:CGAffineTransformIdentity];
-            [self.view layoutIfNeeded];
+            [self.titleBarView layoutIfNeeded];
         } completion:^(BOOL finished) {
             //
         }];
@@ -219,9 +219,9 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (scrollView.contentOffset.x > 0 && scrollView.contentOffset.x < scrollView.contentSize.width) {
-        CGFloat offset = -fmod(self.scrollView.contentOffset.x, self.scrollView.frame.size.width);
-        if (-offset > self.scrollView.frame.size.width / 2) {
-            offset += (fmod(self.scrollView.contentOffset.x, self.scrollView.frame.size.width) - self.scrollView.frame.size.width / 2) * 2;
+        CGFloat offset = -fmod(self.scrollView.contentOffset.x, self.scrollView.frame.size.width) * 2;
+        if (-offset > self.scrollView.frame.size.width) {
+            offset += (fmod(self.scrollView.contentOffset.x, self.scrollView.frame.size.width) * 2 - self.scrollView.frame.size.width) * 2;
         }
         self.previewBottomSpace.constant = offset;
         NSUInteger nextPage = floor((scrollView.contentOffset.x + scrollView.bounds.size.width / 2) / scrollView.bounds.size.width);
@@ -240,8 +240,6 @@
         [self.scrollView setContentOffset:CGPointMake(self.scrollView.contentOffset.x - self.scrollView.frame.size.width,
                                                        self.scrollView.contentOffset.y)
                                   animated:YES];
-        _currentPage--;
-        [self fillContentForPage:_currentPage];
     }
 }
 
@@ -255,8 +253,6 @@
         [self.scrollView setContentOffset:CGPointMake(self.scrollView.contentOffset.x + self.scrollView.frame.size.width,
                                                        self.scrollView.contentOffset.y)
                                   animated:YES];
-        _currentPage++;
-        [self fillContentForPage:_currentPage];
     }
 }
 

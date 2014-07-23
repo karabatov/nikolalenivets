@@ -25,6 +25,7 @@
                 <outlet property="scrollView" destination="EsH-x0-13N" id="pEA-4L-XR5"/>
                 <outlet property="ticketPriceLabel" destination="Xa8-ir-0AD" id="ORo-15-jv7"/>
                 <outlet property="titleBarHeight" destination="d4u-vP-cf9" id="ouF-Gr-gTQ"/>
+                <outlet property="titleBarView" destination="koy-dl-ffj" id="kvq-aa-Iga"/>
                 <outlet property="titleLabel" destination="a2R-E8-QNB" id="WuL-9n-wjN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
