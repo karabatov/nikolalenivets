@@ -39,6 +39,7 @@
 @property (weak, nonatomic) IBOutlet AsyncImageView *placeImage;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *placeImageHeight;
 @property (weak, nonatomic) IBOutlet UIImageView *blueGradient;
+@property (weak, nonatomic) IBOutlet UIImageView *alarmIcon;
 
 - (id)initWithEvent:(NLEvent *)event withOrderInGroup:(NSInteger)order;
 - (id)initWithEntry:(NLNewsEntry *)entry;

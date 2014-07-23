@@ -17,6 +17,7 @@
 #import "NSString+Distance.h"
 #import "NSString+Ordinal.h"
 #import "UIViewController+BackViewController.h"
+#import "NSDate+CompareDays.h"
 
 typedef enum {
     ShowingNewsEntry,
@@ -117,6 +118,11 @@ typedef enum {
             title = _event.title;
             content = _event.content;
             date = [[[_event startDate] stringWithFormat:DefaultTimeFormat] uppercaseString];
+            if ([NSDate isSameDayWithDate1:[NSDate date] date2:[_event startDate]]) {
+                [self.alarmIcon setHidden:NO];
+            } else {
+                [self.alarmIcon setHidden:YES];
+            }
             self.detailsViewTitleLabel.text = [self backViewController].title;
             [self setUnreadStatus:_event.itemStatus];
             self.capitalLetter.textColor = [UIColor colorWithRed:135.0f/255.0f green:163.0f/255.0f blue:1.0f alpha:1.0f];

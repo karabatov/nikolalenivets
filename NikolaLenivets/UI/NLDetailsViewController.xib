@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NLDetailsViewController">
             <connections>
+                <outlet property="alarmIcon" destination="UBo-GA-EGG" id="lc6-7n-bLt"/>
                 <outlet property="backButton" destination="dhA-Pw-YYj" id="WAu-fC-XKD"/>
                 <outlet property="blueGradient" destination="t1q-pq-u48" id="3le-Ym-qKt"/>
                 <outlet property="capitalLetter" destination="pat-iS-tqN" id="7XS-h0-v9p"/>
@@ -116,6 +117,14 @@
                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="event-alarm.png" translatesAutoresizingMaskIntoConstraints="NO" id="UBo-GA-EGG">
+                                    <rect key="frame" x="238" y="7" width="9" height="12"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="9" id="28h-hk-iNT"/>
+                                        <constraint firstAttribute="height" constant="12" id="ak3-Xl-t9O"/>
+                                    </constraints>
+                                </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvb-JY-XM7" userLabel="Button - Place distance">
                                     <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -222,7 +231,6 @@
                                 <constraint firstAttribute="trailing" secondItem="Mgw-DY-1Xg" secondAttribute="trailing" id="Qij-Le-Q24"/>
                                 <constraint firstItem="5y1-fk-EJG" firstAttribute="leading" secondItem="x4i-v4-Zor" secondAttribute="leading" id="Rbj-Th-NHj"/>
                                 <constraint firstItem="Mgw-DY-1Xg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="KUM-I3-x0a" secondAttribute="bottom" constant="12" id="Shv-uT-ucI"/>
-                                <constraint firstItem="hSI-al-Qge" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="x4i-v4-Zor" secondAttribute="trailing" constant="2" id="WyY-SG-drC"/>
                                 <constraint firstAttribute="bottom" secondItem="duO-fi-ES1" secondAttribute="bottom" constant="8" id="YMQ-eb-Hd8"/>
                                 <constraint firstItem="gvb-JY-XM7" firstAttribute="leading" secondItem="7ce-P0-X8N" secondAttribute="leading" id="bD1-5I-3l4"/>
                                 <constraint firstAttribute="trailing" secondItem="hSI-al-Qge" secondAttribute="trailing" constant="16" id="ber-QZ-jD3"/>
@@ -237,11 +245,14 @@
                                 <constraint firstItem="Mgw-DY-1Xg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="pat-iS-tqN" secondAttribute="bottom" constant="-52" id="ohK-7U-dmd"/>
                                 <constraint firstItem="x4i-v4-Zor" firstAttribute="centerY" secondItem="JuF-KG-VzW" secondAttribute="centerY" constant="-1" id="r4t-Ke-KZd"/>
                                 <constraint firstAttribute="trailing" secondItem="vvp-B6-tKE" secondAttribute="trailing" id="sbO-ZG-jgS"/>
+                                <constraint firstItem="hSI-al-Qge" firstAttribute="leading" secondItem="UBo-GA-EGG" secondAttribute="trailing" constant="8" id="t0z-Wc-SZp"/>
                                 <constraint firstItem="pat-iS-tqN" firstAttribute="leading" secondItem="KUM-I3-x0a" secondAttribute="leading" constant="-10" id="uLh-dB-UEt"/>
                                 <constraint firstItem="gvb-JY-XM7" firstAttribute="top" secondItem="7ce-P0-X8N" secondAttribute="top" id="ubJ-Mc-yy5"/>
                                 <constraint firstItem="x4i-v4-Zor" firstAttribute="leading" secondItem="KUM-I3-x0a" secondAttribute="leading" id="udv-GI-9nU"/>
+                                <constraint firstItem="UBo-GA-EGG" firstAttribute="centerY" secondItem="JuF-KG-VzW" secondAttribute="centerY" id="vct-mq-7Mv"/>
                                 <constraint firstItem="WcX-qz-D5Q" firstAttribute="centerY" secondItem="Mgw-DY-1Xg" secondAttribute="centerY" id="wVC-5M-E0w"/>
                                 <constraint firstItem="JuF-KG-VzW" firstAttribute="leading" secondItem="7ce-P0-X8N" secondAttribute="leading" constant="12" id="xe4-5d-wiZ"/>
+                                <constraint firstItem="UBo-GA-EGG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="x4i-v4-Zor" secondAttribute="trailing" constant="2" id="yJO-al-o78"/>
                                 <constraint firstItem="Mgw-DY-1Xg" firstAttribute="leading" secondItem="7ce-P0-X8N" secondAttribute="leading" id="zjC-EP-aO0"/>
                             </constraints>
                         </view>
@@ -275,5 +286,6 @@
     <resources>
         <image name="back.png" width="32" height="32"/>
         <image name="blue-gradient.png" width="320" height="233"/>
+        <image name="event-alarm.png" width="18" height="25"/>
     </resources>
 </document>
