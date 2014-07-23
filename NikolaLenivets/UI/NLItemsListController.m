@@ -262,4 +262,17 @@
     [anotherTableView setUserInteractionEnabled:YES];
 }
 
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if (!decelerate) {
+        UITableView *anotherTableView = [scrollView isEqual:self.rightTable] ? self.leftTable : self.rightTable;
+        NSMutableArray *offsetQueue = [scrollView isEqual:self.rightTable] ? _offsetQueueLeft : _offsetQueueRight;
+
+        [anotherTableView setContentOffset:scrollView.contentOffset animated:YES];
+        [offsetQueue removeAllObjects];
+        [anotherTableView setUserInteractionEnabled:YES];
+    }
+}
+
 @end
