@@ -6,16 +6,12 @@
 //  Copyright (c) 2014 Semyon Novikov. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 #import "NLStorage.h"
-#import "UIView+Origami.h"
 
-#define SHOW_MENU_NOW @"SHOW_MENU_NOW"
-
-@interface NLMainMenuController : UIViewController
+@interface NLMainMenuController : UIViewController <UINavigationControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *menuView;
-@property (weak, nonatomic) IBOutlet UIView *contentView;
 
 /* Fancy stuff */
 @property (weak, nonatomic) IBOutlet UILabel *nikolaLabel;

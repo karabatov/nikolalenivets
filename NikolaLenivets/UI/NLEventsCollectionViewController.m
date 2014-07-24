@@ -119,8 +119,9 @@ static NSString *const reuseSectionId = @"collectionsection";
 }
 
 
-- (IBAction)back:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:^{}];
+- (IBAction)back:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
@@ -134,10 +135,12 @@ static NSString *const reuseSectionId = @"collectionsection";
 {
     NLEvent *event = [self eventForIndexPath:indexPath];
     _details = [[NLDetailsViewController alloc] initWithEvent:event withOrderInGroup:indexPath.section + 1];
-    [self presentViewController:_details animated:YES completion:^{
+    self.title = @"СОБЫТИЯ";
+    [self.navigationController pushViewController:_details animated:YES];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [collectionView reloadItemsAtIndexPaths:@[ indexPath ]];
         [self updateUnreadCountWithCount:[[NLStorage sharedInstance] unreadCountInArray:_group.events]];
-    }];
+    });
 }
 
 

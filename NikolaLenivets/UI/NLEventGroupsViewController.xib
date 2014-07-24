@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -20,10 +20,12 @@
                 <outlet property="overallPagesCountLabel" destination="aK8-7j-fTQ" id="WKR-mQ-Q2b"/>
                 <outlet property="pagerView" destination="uCr-p8-mG1" id="Ugk-cz-1ap"/>
                 <outlet property="prevItemButton" destination="NH9-5B-Qzh" id="hKM-z2-qGz"/>
+                <outlet property="previewBottomSpace" destination="nCe-fL-Ast" id="fME-7G-x43"/>
                 <outlet property="previewView" destination="dUC-ez-oiB" id="6z5-kI-dpG"/>
                 <outlet property="scrollView" destination="EsH-x0-13N" id="pEA-4L-XR5"/>
                 <outlet property="ticketPriceLabel" destination="Xa8-ir-0AD" id="ORo-15-jv7"/>
                 <outlet property="titleBarHeight" destination="d4u-vP-cf9" id="ouF-Gr-gTQ"/>
+                <outlet property="titleBarView" destination="koy-dl-ffj" id="kvq-aa-Iga"/>
                 <outlet property="titleLabel" destination="a2R-E8-QNB" id="WuL-9n-wjN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

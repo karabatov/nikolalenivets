@@ -10,7 +10,6 @@
 #import "NLStorage.h"
 #import "NLEventGroup.h"
 #import "NLMainMenuController.h"
-#import "NLEventsListControllerViewController.h"
 #import "NLEventsCollectionViewController.h"
 #import <NSDate+Helper.h>
 #import "NSAttributedString+Kerning.h"
@@ -67,17 +66,12 @@
     toolbar.barStyle = UIBarStyleBlack;
     [self.previewView insertSubview:toolbar atIndex:0];
 
+    self.scrollView.delegate = self;
+
     _currentPage = 0;
 
 //    [self prepareEventsArray];
 //    [self fillContentForPage:0];
-}
-
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    self.scrollView.hidden = YES;
 }
 
 
@@ -96,7 +90,7 @@
 
 - (IBAction)back:(id)sender
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_MENU_NOW object:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 
@@ -113,6 +107,7 @@
 
     NSArray *slides = _.array(_eventGroups).map(^(NLEventGroup *group) {
         UIImageView *slideImage = [[UIImageView alloc] initWithFrame:self.scrollView.frame];
+        [slideImage setClipsToBounds:YES];
 
         __block UIActivityIndicatorView *activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         activity.center = CGPointMake(slideImage.center.x, slideImage.center.y - 40);
@@ -123,7 +118,7 @@
                           completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *url) {
                               [activity removeFromSuperview];
                           }];
-        // slideImage.contentMode = UIViewContentModeScaleAspectFill;
+        slideImage.contentMode = UIViewContentModeScaleAspectFill;
         slideImage.frame = CGRectMake(leftOffset, 0, slideImage.frame.size.width, slideImage.frame.size.height);
         leftOffset += slideImage.frame.size.width;
 
@@ -148,8 +143,8 @@
 {
     if (unreadCount == 0) {
         self.titleBarHeight.constant = 52.0f;
-        [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:10.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            [self.view layoutIfNeeded];
+        [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            [self.titleBarView layoutIfNeeded];
             self.itemsCountLabel.alpha = 0.0f;
         } completion:^(BOOL finished) {
             [self.itemsCountLabel setHidden:YES];
@@ -160,11 +155,11 @@
         self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)unreadCount];
         self.titleBarHeight.constant = 64.0f;
         [self.itemsCountLabel setTransform:CGAffineTransformMakeScale(0.05f, 0.05f)];
-        [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:10.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
             [self.itemsCountLabel setHidden:NO];
             self.itemsCountLabel.alpha = 1.0f;
             [self.itemsCountLabel setTransform:CGAffineTransformIdentity];
-            [self.view layoutIfNeeded];
+            [self.titleBarView layoutIfNeeded];
         } completion:^(BOOL finished) {
             //
         }];
@@ -176,8 +171,8 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    _currentPage = floor(scrollView.contentOffset.x / scrollView.bounds.size.width);
-	[self fillContentForPage:_currentPage];
+    // _currentPage = floor((scrollView.contentOffset.x + scrollView.bounds.size.width / 2) / scrollView.bounds.size.width);
+	// [self fillContentForPage:_currentPage];
 }
 
 
@@ -216,6 +211,26 @@
 
     self.prevItemButton.enabled = pageIndex != 0;
     self.nextItemButton.enabled = pageIndex != _eventGroups.count - 1;
+    [self.previewView setNeedsLayout];
+    [self.previewView layoutIfNeeded];
+}
+
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (scrollView.contentOffset.x > 0 && scrollView.contentOffset.x < scrollView.contentSize.width) {
+        CGFloat offset = -fmod(self.scrollView.contentOffset.x, self.scrollView.frame.size.width) * 2;
+        if (-offset > self.scrollView.frame.size.width) {
+            offset += (fmod(self.scrollView.contentOffset.x, self.scrollView.frame.size.width) * 2 - self.scrollView.frame.size.width) * 2;
+        }
+        self.previewBottomSpace.constant = offset;
+        NSUInteger nextPage = floor((scrollView.contentOffset.x + scrollView.bounds.size.width / 2) / scrollView.bounds.size.width);
+        if (_currentPage != nextPage) {
+            _currentPage = nextPage;
+            [self fillContentForPage:_currentPage];
+        }
+        [self.previewView setNeedsLayout];
+    }
 }
 
 
@@ -225,8 +240,6 @@
         [self.scrollView setContentOffset:CGPointMake(self.scrollView.contentOffset.x - self.scrollView.frame.size.width,
                                                        self.scrollView.contentOffset.y)
                                   animated:YES];
-        _currentPage--;
-        [self fillContentForPage:_currentPage];
     }
 }
 
@@ -240,8 +253,6 @@
         [self.scrollView setContentOffset:CGPointMake(self.scrollView.contentOffset.x + self.scrollView.frame.size.width,
                                                        self.scrollView.contentOffset.y)
                                   animated:YES];
-        _currentPage++;
-        [self fillContentForPage:_currentPage];
     }
 }
 
@@ -251,9 +262,10 @@
     NSLog(@"Open event list");
     NLEventGroup *group = _eventGroups[_currentPage];
     _events = [[NLEventsCollectionViewController alloc] initWithGroup:group];
-    [self presentViewController:_events animated:YES completion:^{
+    [((NLAppDelegate *)[[UIApplication sharedApplication] delegate]).navigation pushViewController:_events animated:YES];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self updateUnreadCountWithCount:[[NLStorage sharedInstance] unreadCountInArray:group.events]];
-    }];
+    });
 }
 
 @end

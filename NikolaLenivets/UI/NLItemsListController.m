@@ -35,7 +35,7 @@
 
 - (IBAction)back:(id)sender
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_MENU_NOW object:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 
@@ -138,9 +138,12 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NLNewsEntry *entry = [self entryForTable:tableView indexPath:indexPath];
     _details = [[NLDetailsViewController alloc] initWithEntry:entry];
-    [self presentViewController:_details animated:YES completion:^{
+    self.title = @"НОВОСТИ";
+    [((NLAppDelegate *)[[UIApplication sharedApplication] delegate]).navigation pushViewController:_details animated:YES];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [tableView reloadRowsAtIndexPaths:@[ indexPath ] withRowAnimation:UITableViewRowAnimationAutomatic];
         [self updateUnreadCountWithCount:[[NLStorage sharedInstance] unreadCountInArray:_news]];
-    }];
+    });
 }
 
 
@@ -257,6 +260,19 @@
     [anotherTableView setContentOffset:scrollView.contentOffset animated:YES];
     [offsetQueue removeAllObjects];
     [anotherTableView setUserInteractionEnabled:YES];
+}
+
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if (!decelerate) {
+        UITableView *anotherTableView = [scrollView isEqual:self.rightTable] ? self.leftTable : self.rightTable;
+        NSMutableArray *offsetQueue = [scrollView isEqual:self.rightTable] ? _offsetQueueLeft : _offsetQueueRight;
+
+        [anotherTableView setContentOffset:scrollView.contentOffset animated:YES];
+        [offsetQueue removeAllObjects];
+        [anotherTableView setUserInteractionEnabled:YES];
+    }
 }
 
 @end

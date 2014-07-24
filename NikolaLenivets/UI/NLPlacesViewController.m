@@ -13,11 +13,17 @@
 #import "NLMainMenuController.h"
 #import "NSAttributedString+Kerning.h"
 #import "NSString+Distance.h"
+#import "NLPlaceHeader.h"
+#import "NLCategory.h"
+#import <Underscore.h>
+
+static NSString * const reuseSectionId = @"placeSectionHeader";
 
 @implementation NLPlacesViewController
 {
-    NSArray *_placesPairs;
     NSArray *_places;
+    NSArray *_categories;
+    NSMutableArray *_catPlaces;
     CLLocation *_userLoc;
 }
 
@@ -47,8 +53,18 @@
     self.itemsCountLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
     [self.collectionView registerNib:[UINib nibWithNibName:@"NLPlaceCell" bundle:[NSBundle mainBundle]]
           forCellWithReuseIdentifier:@"NLPlaceCell"];
-    [self updatePlaces];
+    [self.collectionView registerClass:[NLPlaceHeader class] forSupplementaryViewOfKind:CHTCollectionElementKindSectionHeader withReuseIdentifier:reuseSectionId];
+    NLFlowLayout *layout = [[NLFlowLayout alloc] init];
+    layout.columnCount = 2;
+    layout.headerHeight = 0.0f;
+    layout.footerHeight = 0.0f;
+    layout.sectionInset = UIEdgeInsetsZero;
+    layout.minimumColumnSpacing = 0;
+    layout.minimumInteritemSpacing = 0;
+    self.collectionView.collectionViewLayout = layout;
+    [self.collectionView setBackgroundColor:[UIColor whiteColor]];
 
+    [self updatePlaces];
 }
 
 
@@ -84,20 +100,29 @@
 - (void)updatePlaces
 {
     _places = [[NLStorage sharedInstance] places];
+    if (!_catPlaces) {
+        _catPlaces = [[NSMutableArray alloc] init];
+    } else {
+        [_catPlaces removeAllObjects];
+    }
     [self updateUnreadCount];
 
-    NSMutableArray *pairs = [NSMutableArray new];
+    _categories = _.array(_places)
+        .map(^(NLPlace *place){
+            return place.categories;
+        })
+        .flatten
+        .uniq
+        .unwrap;
 
-    for (NSUInteger i = 0; i < _places.count; i += 2) {
-        NSMutableArray *pair = [NSMutableArray new];
-        [pair addObject:_places[i]];
-        if (i + 1 < _places.count) {
-            [pair addObject:_places[i + 1]];
-        }
-        [pairs addObject:pair];
+    for (NLCategory *category in _categories) {
+        NSArray *placesForCat = [[NSArray alloc] init];
+        placesForCat = _.array(_places)
+            .filter(^BOOL (NLPlace *place){
+                return  [category.id isEqualToNumber:((NLCategory *)[place.categories firstObject]).id];
+            }).unwrap;
+        [_catPlaces addObject:placesForCat];
     }
-
-    _placesPairs = pairs;
 
     [self.collectionView reloadData];
 }
@@ -105,13 +130,7 @@
 
 - (NLPlace *)placeForIndexPath:(NSIndexPath *)indexPath
 {
-    NSArray *pair = _placesPairs[indexPath.section];
-
-    if (pair.count <= indexPath.item) {
-        return nil;
-    }
-
-    return pair[indexPath.item];
+    return _catPlaces[indexPath.section][indexPath.item];
 }
 
 
@@ -119,13 +138,13 @@
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return _placesPairs.count;
+    return [_categories count];
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 2;
+    return [_catPlaces[section] count];
 }
 
 
@@ -133,7 +152,7 @@
 {
     NLPlaceCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"NLPlaceCell" forIndexPath:indexPath];
 
-    if (indexPath.section < _placesPairs.count) {
+    if (indexPath.section < [_categories count]) {
         NLPlace *place = [self placeForIndexPath:indexPath];
         [cell populateWithPlace:place];
         if (_userLoc) {
@@ -147,16 +166,34 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section < _placesPairs.count) {
+    if (indexPath.section < [_categories count]) {
         NLPlace *place = [self placeForIndexPath:indexPath];
         if (place == nil) {
             return;
         }
         NLDetailsViewController *details = [[NLDetailsViewController alloc] initWithPlace:place currentLocation:_userLoc];
-        [self presentViewController:details animated:YES completion:^{
-            [self.collectionView reloadItemsAtIndexPaths:@[ indexPath ]];
+        self.title = @"МЕСТА";
+        [((NLAppDelegate *)[[UIApplication sharedApplication] delegate]).navigation pushViewController:details animated:YES];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [collectionView reloadItemsAtIndexPaths:@[ indexPath ]];
             [self updateUnreadCount];
-        }];
+        });
+    }
+}
+
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    if ([kind isEqualToString:CHTCollectionElementKindSectionHeader]) {
+        NLPlaceHeader *sectionView = (NLPlaceHeader *)[self.collectionView dequeueReusableSupplementaryViewOfKind:CHTCollectionElementKindSectionHeader withReuseIdentifier:reuseSectionId forIndexPath:indexPath];
+        if (!sectionView) {
+            sectionView = [[NLPlaceHeader alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, 50.0f)];
+        }
+        sectionView.objectCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)[_catPlaces[indexPath.section] count]];
+        sectionView.categoryNameLabel.text = [((NLCategory *)(_categories[indexPath.section])).name uppercaseString];
+        return sectionView;
+    } else {
+        return nil;
     }
 }
 
@@ -172,7 +209,40 @@
 
 - (IBAction)back:(id)sender
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:SHOW_MENU_NOW object:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+
+#pragma mark - CHTCollectionViewDelegateWaterfallLayout
+
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout heightForFooterInSection:(NSInteger)section
+{
+    return 0.0f;
+}
+
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout heightForHeaderInSection:(NSInteger)section
+{
+    return 50.0f;
+}
+
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    return UIEdgeInsetsZero;
+}
+
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 0.0f;
+}
+
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGSizeMake(160, 194);
 }
 
 @end

@@ -6,9 +6,10 @@
 //  Copyright (c) 2014 Semyon Novikov. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
+#import "NLFlowLayout.h"
 
-@interface NLPlacesViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface NLPlacesViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, CHTCollectionViewDelegateWaterfallLayout>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;

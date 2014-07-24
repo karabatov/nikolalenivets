@@ -7,8 +7,26 @@
 //
 
 #import "NLPlace.h"
+#import "NLCategory.h"
+
+#import <DCKeyValueObjectMapping.h>
+#import <DCArrayMapping.h>
+#import <DCParserConfiguration.h>
 
 @implementation NLPlace
+
+
++ (id)modelFromDictionary:(NSDictionary *)dict
+{
+    DCArrayMapping *mapper = [DCArrayMapping mapperForClassElements:[NLCategory class] forAttribute:@"categories" onClass:[NLPlace class]];
+
+    DCParserConfiguration *config = [DCParserConfiguration configuration];
+    [config addArrayMapper:mapper];
+
+    DCKeyValueObjectMapping *parser = [DCKeyValueObjectMapping mapperForClass:[self class] andConfiguration:config];
+    return [parser parseDictionary:dict];
+}
+
 
 - (CLLocationDistance)distanceFromLocation:(CLLocation *)loc
 {

@@ -10,11 +10,14 @@
 #import "NLGallery.h"
 #import "NLStorage.h"
 #import "NLGalleryViewController.h"
+#import "NLMapViewController.h"
 
 #import <DTCoreText.h>
 #import <NSDate+Helper.h>
 #import "NSString+Distance.h"
 #import "NSString+Ordinal.h"
+#import "UIViewController+BackViewController.h"
+#import "NSDate+CompareDays.h"
 
 typedef enum {
     ShowingNewsEntry,
@@ -30,6 +33,7 @@ typedef enum {
     NLPlace *_place;
     NLGallery *_gallery;
     NLGalleryViewController *_galleryVC;
+    NLMapViewController *_mapVC;
     NSArray *_textParts;
     NSInteger _eventGroupOrder;
 }
@@ -82,6 +86,9 @@ typedef enum {
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    [self.view bringSubviewToFront:self.scrollView];
+    [self.view bringSubviewToFront:self.eventDayView];
     
     self.titleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:30];
     self.detailsViewTitleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:10];
@@ -89,6 +96,7 @@ typedef enum {
     self.countView.font = [UIFont fontWithName:NLMonospacedBoldFont size:10];
     self.capitalLetter.font = [UIFont systemFontOfSize:250];
     [self.capitalLetter setHidden:YES];
+    self.scrollView.delegate = self;
 
     NSString *title = nil;
     NSString *content = nil;
@@ -100,6 +108,7 @@ typedef enum {
             title = _entry.title;
             content = _entry.content;
             date = [[[_entry pubDate] stringWithFormat:DefaultDateFormat] uppercaseString];
+            self.detailsViewTitleLabel.text = [self backViewController] ? [self backViewController].title : @"НОВОСТИ";
             indexNumber = [[[NLStorage sharedInstance] news] indexOfObject:_entry];
             [self setUnreadStatus:_entry.itemStatus];
             self.capitalLetter.textColor = [UIColor colorWithRed:247.0f/255.0f green:250.0f/255.0f blue:140.0f/255.0f alpha:1.0f];
@@ -112,7 +121,12 @@ typedef enum {
             title = _event.title;
             content = _event.content;
             date = [[[_event startDate] stringWithFormat:DefaultTimeFormat] uppercaseString];
-            self.detailsViewTitleLabel.text = @"СОБЫТИЯ";
+            if ([NSDate isSameDayWithDate1:[NSDate date] date2:[_event startDate]]) {
+                [self.alarmIcon setHidden:NO];
+            } else {
+                [self.alarmIcon setHidden:YES];
+            }
+            self.detailsViewTitleLabel.text = [self backViewController].title;
             [self setUnreadStatus:_event.itemStatus];
             self.capitalLetter.textColor = [UIColor colorWithRed:135.0f/255.0f green:163.0f/255.0f blue:1.0f alpha:1.0f];
             self.eventDayHeight.constant = 26;
@@ -125,7 +139,7 @@ typedef enum {
             break;
         }
         case ShowingPlace: {
-            title = _place.title;
+            title = @"";
             content = _place.content;
             if (_currentLocation) {
                 CLLocationDistance distance = [_place distanceFromLocation:_currentLocation];
@@ -133,12 +147,17 @@ typedef enum {
             } else {
                 self.countView.text = @"∞ КМ";
             }
-            self.detailsViewTitleLabel.text = @"МЕСТА";
+            self.detailsViewTitleLabel.text = [self backViewController] ? [self backViewController].title : @"МЕСТА";
             [self setUnreadStatus:_place.itemStatus];
             self.capitalLetter.textColor = [UIColor colorWithRed:192.0f/255.0f green:192.0f/255.0f blue:192.0f/255.0f alpha:1.0f];
-            for (UIView *view in [self.eventDayView subviews]) {
-                [view removeFromSuperview];
-            }
+            self.titleLabelBottomSpace.constant = 0;
+            [self.titleLabel setHidden:YES];
+            self.placeImageHeight.constant = [UIScreen mainScreen].bounds.size.height * 0.7;
+            [self.placeImage setShowActivityIndicator:YES];
+            self.placeImage.imageURL = [NSURL URLWithString:_place.thumbnail];
+            self.eventDayHeight.constant = 26;
+            self.eventDayView.dateLabel.text = [_place.title uppercaseString];
+            [self.eventDayView.dayOrderLabel setHidden:YES];
             indexNumber = -1; //[[[NLStorage sharedInstance] places] indexOfObject:_place];
             break;
         }
@@ -237,7 +256,11 @@ typedef enum {
     NSString *padding = @"document.body.style.margin='0';document.body.style.padding ='0';document.body.style.font='12pt BookmanC,serif'";
     [webView stringByEvaluatingJavaScriptFromString:padding];
     if ([webView isEqual:self.firstPartWebView]) {
-        NSString *moveParagraph = [NSString stringWithFormat:@"var p=document.getElementsByTagName('p').item(0);p.style.textIndent='%gpx';p.innerText=p.innerText.substring(1)", floorf((self.capitalLetter.bounds.size.width + 30) / 2)];
+        NSString *firstLetter = [[[self attributedStringForString:_textParts[0]] string] substringToIndex:1];
+        self.capitalLetter.text = firstLetter;
+        [self.contentView sendSubviewToBack:self.capitalLetter];
+        [self.capitalLetter setHidden:NO];
+        NSString *moveParagraph = [NSString stringWithFormat:@"var p=document.getElementsByTagName('p').item(0);p.style.textIndent='%gpx';p.innerHTML=p.innerHTML.replace('%@','')", floorf((self.capitalLetter.bounds.size.width + 30) / 2), firstLetter];
         [webView stringByEvaluatingJavaScriptFromString:moveParagraph];
     }
     CGFloat jsHeight = [[webView stringByEvaluatingJavaScriptFromString:@"document.height"] floatValue];
@@ -277,11 +300,6 @@ typedef enum {
         self.secondTextHeight.constant = 0;
         self.galleryHeight.constant = 0;
     }
-
-    NSString *firstLetter = [[[self attributedStringForString:_textParts[0]] string] substringToIndex:1];
-    self.capitalLetter.text = firstLetter;
-    [self.contentView sendSubviewToBack:self.capitalLetter];
-    [self.capitalLetter setHidden:NO];
 }
 
 - (NLGallery *)galleryFromString:(NSString *)htmlString
@@ -326,7 +344,7 @@ typedef enum {
 
 - (IBAction)back:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:^{}];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
@@ -334,8 +352,41 @@ typedef enum {
 {
     NSLog(@"Show gallery");
     _galleryVC = [[NLGalleryViewController alloc] initWithGallery:_gallery andTitle:self.titleLabel.text];
-    [self presentViewController:_galleryVC animated:YES completion:^{}];
+    [self.navigationController pushViewController:_galleryVC animated:YES];
 }
 
+
+- (IBAction)openPlaceOnMap:(UIButton *)sender {
+    NSLog(@"openPlaceOnMap");
+    switch ([self mode]) {
+        case ShowingPlace:
+        {
+            _mapVC = [[NLMapViewController alloc] initWithPlace:_place];
+            [self.navigationController pushViewController:_mapVC animated:YES];
+            break;
+        }
+
+        default:
+            break;
+    }
+}
+
+
+#pragma mark - UIScrollViewDelegate
+
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [UIView animateWithDuration:0.05f animations:^{
+        self.blueGradient.alpha = 0.65f;
+    }];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    [UIView animateWithDuration:0.25f animations:^{
+        self.blueGradient.alpha = 0.0f;
+    }];
+}
 
 @end

@@ -36,8 +36,8 @@ static NLLocationManager *_sharedInstance;
     if ((self = [super init])) {
         _locationManager = [CLLocationManager new];
         _locationManager.delegate = self;
-        _locationManager.distanceFilter = kCLDistanceFilterNone;
         _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        _locationManager.distanceFilter = kCLDistanceFilterNone;
         [_locationManager startUpdatingLocation];
         [_locationManager startUpdatingHeading];
 

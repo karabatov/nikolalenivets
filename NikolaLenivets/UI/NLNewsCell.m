@@ -74,7 +74,7 @@
         self.thumbnailHeight.constant = 0.0f;
         self.thumbnailBottomMargin.constant = 0.0f;
     } else {
-        self.thumbnailHeight.constant = 123.0f;
+        self.thumbnailHeight.constant = 125.0f;
         self.thumbnailBottomMargin.constant = 8.0f;
         self.thumbnail.imageURL = [NSURL URLWithString:_entry.thumbnail];
     }
@@ -100,7 +100,7 @@
         self.thumbnailHeight.constant = 0.0f;
         self.thumbnailBottomMargin.constant = 0.0f;
     } else {
-        self.thumbnailHeight.constant = 123.0f;
+        self.thumbnailHeight.constant = 125.0f;
         self.thumbnailBottomMargin.constant = 8.0f;
         self.thumbnail.imageURL = [NSURL URLWithString:_event.thumbnail];
     }

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4F0A8BC9195AE58400D59268 /* UIView+Origami.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F0A8BC8195AE58400D59268 /* UIView+Origami.m */; };
 		4F0A8BCE195AFEAA00D59268 /* NLSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F0A8BCC195AFEAA00D59268 /* NLSplashViewController.m */; };
 		4F0A8BCF195AFEAA00D59268 /* NLSplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F0A8BCD195AFEAA00D59268 /* NLSplashViewController.xib */; };
 		4F0A8BD1195B032800D59268 /* compass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F0A8BD0195B032800D59268 /* compass@2x.png */; };
@@ -33,7 +32,6 @@
 		4F22FD781936E8B30075C1A0 /* NLGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F22FD761936E8B30075C1A0 /* NLGalleryViewController.m */; };
 		4F22FD791936E8B30075C1A0 /* NLGalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F22FD771936E8B30075C1A0 /* NLGalleryViewController.xib */; };
 		4F22FD7C1936ED3E0075C1A0 /* NLGallery.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F22FD7B1936ED3E0075C1A0 /* NLGallery.m */; };
-		4F22FD801936F4360075C1A0 /* NLEventsListControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F22FD7E1936F4360075C1A0 /* NLEventsListControllerViewController.m */; };
 		4F22FD861937288B0075C1A0 /* NLPlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F22FD841937288B0075C1A0 /* NLPlacesViewController.m */; };
 		4F22FD871937288B0075C1A0 /* NLPlacesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F22FD851937288B0075C1A0 /* NLPlacesViewController.xib */; };
 		4F22FD8919372F260075C1A0 /* NLPlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F22FD8819372F260075C1A0 /* NLPlaceCell.xib */; };
@@ -59,8 +57,6 @@
 		4F89A42C1957CFF60045D1A3 /* NLMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F89A42A1957CFF60045D1A3 /* NLMapViewController.xib */; };
 		4F89A42E1957D8260045D1A3 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F89A42D1957D8260045D1A3 /* map.png */; };
 		4F89A4331957DCA30045D1A3 /* NLLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F89A4321957DCA30045D1A3 /* NLLocationManager.m */; };
-		4F89A4351957F0FA0045D1A3 /* userlocation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F89A4341957F0FA0045D1A3 /* userlocation@2x.png */; };
-		4F89A4371957F88B0045D1A3 /* object@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F89A4361957F88B0045D1A3 /* object@2x.png */; };
 		4F8A13081921D6CE00F3DA96 /* NLCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8A13071921D6CE00F3DA96 /* NLCollectionCell.m */; };
 		4F9C413818EA84640038090E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9C413718EA84640038090E /* Foundation.framework */; };
 		4F9C413A18EA84640038090E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9C413918EA84640038090E /* CoreGraphics.framework */; };
@@ -73,7 +69,27 @@
 		4FD010F5192CC326002F5836 /* search_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD010F4192CC326002F5836 /* search_icon.png */; };
 		4FD010FA192CC940002F5836 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FD010F9192CC940002F5836 /* Crashlytics.framework */; };
 		4FF31086D2714E0584DB4E63 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 213D00ACD702461FA5EF0EB3 /* libPods.a */; };
+		D12B05F61979A5E700AA4CDD /* tiles in Resources */ = {isa = PBXBuildFile; fileRef = D12B05F51979A5E700AA4CDD /* tiles */; };
 		D17177B3196D047200521D72 /* NSAttributedString+Kerning.m in Sources */ = {isa = PBXBuildFile; fileRef = D17177B2196D047200521D72 /* NSAttributedString+Kerning.m */; };
+		D1783ED8197C141F00A92AA3 /* NLPlaceAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D1783ED7197C141F00A92AA3 /* NLPlaceAnnotation.m */; };
+		D1783EDB197C195100A92AA3 /* object.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783ED9197C195100A92AA3 /* object.png */; };
+		D1783EDC197C195100A92AA3 /* object@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783EDA197C195100A92AA3 /* object@2x.png */; };
+		D1783EE3197C2C5B00A92AA3 /* object-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783EE1197C2C5B00A92AA3 /* object-selected.png */; };
+		D1783EE4197C2C5B00A92AA3 /* object-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783EE2197C2C5B00A92AA3 /* object-selected@2x.png */; };
+		D1783EEB197C417000A92AA3 /* route-b.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783EE9197C417000A92AA3 /* route-b.png */; };
+		D1783EEC197C417000A92AA3 /* route-b@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783EEA197C417000A92AA3 /* route-b@2x.png */; };
+		D1783EEF197C438200A92AA3 /* userlocation.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783EED197C438200A92AA3 /* userlocation.png */; };
+		D1783EF0197C438200A92AA3 /* userlocation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783EEE197C438200A92AA3 /* userlocation@2x.png */; };
+		D1783EF8197CFFF000A92AA3 /* tile-empty.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783EF7197CFFF000A92AA3 /* tile-empty.png */; };
+		D1783F04197E398900A92AA3 /* UIViewController+BackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1783F03197E398900A92AA3 /* UIViewController+BackViewController.m */; };
+		D1783F07197E622B00A92AA3 /* blue-gradient.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783F05197E622B00A92AA3 /* blue-gradient.png */; };
+		D1783F08197E622B00A92AA3 /* blue-gradient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783F06197E622B00A92AA3 /* blue-gradient@2x.png */; };
+		D1783F0B197E74D200A92AA3 /* NLPlaceHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = D1783F0A197E74D200A92AA3 /* NLPlaceHeader.m */; };
+		D1783F0E197E8C2500A92AA3 /* NLCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = D1783F0D197E8C2500A92AA3 /* NLCategory.m */; };
+		D1783F19197EBA8800A92AA3 /* object-count.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783F17197EBA8800A92AA3 /* object-count.png */; };
+		D1783F1A197EBA8800A92AA3 /* object-count@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783F18197EBA8800A92AA3 /* object-count@2x.png */; };
+		D1783F20197FB9E200A92AA3 /* NLFoldAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = D1783F1F197FB9E200A92AA3 /* NLFoldAnimation.m */; };
+		D1783F221980042E00A92AA3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1783F211980042E00A92AA3 /* MapKit.framework */; };
 		D19C0425196EF44C006A086B /* map-minus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19C0422196EF44C006A086B /* map-minus@2x.png */; };
 		D19C0426196EF44D006A086B /* map-locate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19C0423196EF44C006A086B /* map-locate@2x.png */; };
 		D19C0427196EF44D006A086B /* map-plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19C0424196EF44C006A086B /* map-plus@2x.png */; };
@@ -99,8 +115,6 @@
 /* Begin PBXFileReference section */
 		213D00ACD702461FA5EF0EB3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B21A1ADAF4F4E0BA8ED7C42 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
-		4F0A8BC7195AE58400D59268 /* UIView+Origami.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Origami.h"; sourceTree = "<group>"; };
-		4F0A8BC8195AE58400D59268 /* UIView+Origami.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Origami.m"; sourceTree = "<group>"; };
 		4F0A8BCB195AFEAA00D59268 /* NLSplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLSplashViewController.h; path = UI/NLSplashViewController.h; sourceTree = "<group>"; };
 		4F0A8BCC195AFEAA00D59268 /* NLSplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLSplashViewController.m; path = UI/NLSplashViewController.m; sourceTree = "<group>"; };
 		4F0A8BCD195AFEAA00D59268 /* NLSplashViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLSplashViewController.xib; path = UI/NLSplashViewController.xib; sourceTree = "<group>"; };
@@ -131,8 +145,6 @@
 		4F22FD771936E8B30075C1A0 /* NLGalleryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLGalleryViewController.xib; path = UI/NLGalleryViewController.xib; sourceTree = "<group>"; };
 		4F22FD7A1936ED3E0075C1A0 /* NLGallery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLGallery.h; path = Models/NLGallery.h; sourceTree = "<group>"; };
 		4F22FD7B1936ED3E0075C1A0 /* NLGallery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLGallery.m; path = Models/NLGallery.m; sourceTree = "<group>"; };
-		4F22FD7D1936F4360075C1A0 /* NLEventsListControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLEventsListControllerViewController.h; path = UI/NLEventsListControllerViewController.h; sourceTree = "<group>"; };
-		4F22FD7E1936F4360075C1A0 /* NLEventsListControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLEventsListControllerViewController.m; path = UI/NLEventsListControllerViewController.m; sourceTree = "<group>"; };
 		4F22FD831937288B0075C1A0 /* NLPlacesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLPlacesViewController.h; path = UI/NLPlacesViewController.h; sourceTree = "<group>"; };
 		4F22FD841937288B0075C1A0 /* NLPlacesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLPlacesViewController.m; path = UI/NLPlacesViewController.m; sourceTree = "<group>"; };
 		4F22FD851937288B0075C1A0 /* NLPlacesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLPlacesViewController.xib; path = UI/NLPlacesViewController.xib; sourceTree = "<group>"; };
@@ -179,8 +191,6 @@
 		4F89A42D1957D8260045D1A3 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		4F89A4311957DCA30045D1A3 /* NLLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLLocationManager.h; path = Models/NLLocationManager.h; sourceTree = "<group>"; };
 		4F89A4321957DCA30045D1A3 /* NLLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLLocationManager.m; path = Models/NLLocationManager.m; sourceTree = "<group>"; };
-		4F89A4341957F0FA0045D1A3 /* userlocation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "userlocation@2x.png"; sourceTree = "<group>"; };
-		4F89A4361957F88B0045D1A3 /* object@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "object@2x.png"; sourceTree = "<group>"; };
 		4F8A13041921D5C700F3DA96 /* NLCollectionCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLCollectionCellView.xib; path = UI/NLCollectionCellView.xib; sourceTree = "<group>"; };
 		4F8A13061921D6CE00F3DA96 /* NLCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLCollectionCell.h; path = UI/NLCollectionCell.h; sourceTree = "<group>"; };
 		4F8A13071921D6CE00F3DA96 /* NLCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLCollectionCell.m; path = UI/NLCollectionCell.m; sourceTree = "<group>"; };
@@ -203,8 +213,33 @@
 		4FD010F9192CC940002F5836 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		9F010D930FC743A086F2A9F3 /* libPods-NikolaLenivetsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NikolaLenivetsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CABA2254233B446F8102E8CC /* Pods-NikolaLenivetsTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NikolaLenivetsTests.xcconfig"; path = "Pods/Pods-NikolaLenivetsTests.xcconfig"; sourceTree = "<group>"; };
+		D12B05F51979A5E700AA4CDD /* tiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tiles; sourceTree = "<group>"; };
 		D17177B1196D047200521D72 /* NSAttributedString+Kerning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSAttributedString+Kerning.h"; path = "UI/NSAttributedString+Kerning.h"; sourceTree = "<group>"; };
 		D17177B2196D047200521D72 /* NSAttributedString+Kerning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSAttributedString+Kerning.m"; path = "UI/NSAttributedString+Kerning.m"; sourceTree = "<group>"; };
+		D1783ED6197C141F00A92AA3 /* NLPlaceAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLPlaceAnnotation.h; path = UI/NLPlaceAnnotation.h; sourceTree = "<group>"; };
+		D1783ED7197C141F00A92AA3 /* NLPlaceAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLPlaceAnnotation.m; path = UI/NLPlaceAnnotation.m; sourceTree = "<group>"; };
+		D1783ED9197C195100A92AA3 /* object.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = object.png; sourceTree = "<group>"; };
+		D1783EDA197C195100A92AA3 /* object@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "object@2x.png"; sourceTree = "<group>"; };
+		D1783EE1197C2C5B00A92AA3 /* object-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "object-selected.png"; sourceTree = "<group>"; };
+		D1783EE2197C2C5B00A92AA3 /* object-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "object-selected@2x.png"; sourceTree = "<group>"; };
+		D1783EE9197C417000A92AA3 /* route-b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "route-b.png"; sourceTree = "<group>"; };
+		D1783EEA197C417000A92AA3 /* route-b@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "route-b@2x.png"; sourceTree = "<group>"; };
+		D1783EED197C438200A92AA3 /* userlocation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = userlocation.png; sourceTree = "<group>"; };
+		D1783EEE197C438200A92AA3 /* userlocation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "userlocation@2x.png"; sourceTree = "<group>"; };
+		D1783EF7197CFFF000A92AA3 /* tile-empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tile-empty.png"; sourceTree = "<group>"; };
+		D1783F02197E398900A92AA3 /* UIViewController+BackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+BackViewController.h"; path = "UI/UIViewController+BackViewController.h"; sourceTree = "<group>"; };
+		D1783F03197E398900A92AA3 /* UIViewController+BackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+BackViewController.m"; path = "UI/UIViewController+BackViewController.m"; sourceTree = "<group>"; };
+		D1783F05197E622B00A92AA3 /* blue-gradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue-gradient.png"; sourceTree = "<group>"; };
+		D1783F06197E622B00A92AA3 /* blue-gradient@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue-gradient@2x.png"; sourceTree = "<group>"; };
+		D1783F09197E74D200A92AA3 /* NLPlaceHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLPlaceHeader.h; path = UI/NLPlaceHeader.h; sourceTree = "<group>"; };
+		D1783F0A197E74D200A92AA3 /* NLPlaceHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLPlaceHeader.m; path = UI/NLPlaceHeader.m; sourceTree = "<group>"; };
+		D1783F0C197E8C2500A92AA3 /* NLCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLCategory.h; path = Models/NLCategory.h; sourceTree = "<group>"; };
+		D1783F0D197E8C2500A92AA3 /* NLCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLCategory.m; path = Models/NLCategory.m; sourceTree = "<group>"; };
+		D1783F17197EBA8800A92AA3 /* object-count.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "object-count.png"; sourceTree = "<group>"; };
+		D1783F18197EBA8800A92AA3 /* object-count@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "object-count@2x.png"; sourceTree = "<group>"; };
+		D1783F1E197FB9E200A92AA3 /* NLFoldAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLFoldAnimation.h; path = UI/NLFoldAnimation.h; sourceTree = "<group>"; };
+		D1783F1F197FB9E200A92AA3 /* NLFoldAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLFoldAnimation.m; path = UI/NLFoldAnimation.m; sourceTree = "<group>"; };
+		D1783F211980042E00A92AA3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D19C0422196EF44C006A086B /* map-minus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-minus@2x.png"; sourceTree = "<group>"; };
 		D19C0423196EF44C006A086B /* map-locate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-locate@2x.png"; sourceTree = "<group>"; };
 		D19C0424196EF44C006A086B /* map-plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-plus@2x.png"; sourceTree = "<group>"; };
@@ -243,6 +278,7 @@
 				4FD010FA192CC940002F5836 /* Crashlytics.framework in Frameworks */,
 				4F9C413C18EA84640038090E /* UIKit.framework in Frameworks */,
 				4F9C413818EA84640038090E /* Foundation.framework in Frameworks */,
+				D1783F221980042E00A92AA3 /* MapKit.framework in Frameworks */,
 				4FF31086D2714E0584DB4E63 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -253,6 +289,10 @@
 		4F0A8BC5195AE57900D59268 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				D1783F1E197FB9E200A92AA3 /* NLFoldAnimation.h */,
+				D1783F1F197FB9E200A92AA3 /* NLFoldAnimation.m */,
+				D1783F02197E398900A92AA3 /* UIViewController+BackViewController.h */,
+				D1783F03197E398900A92AA3 /* UIViewController+BackViewController.m */,
 				D17177B1196D047200521D72 /* NSAttributedString+Kerning.h */,
 				D17177B2196D047200521D72 /* NSAttributedString+Kerning.m */,
 				D1A3D7C119757D5600C53E06 /* NSString+Ordinal.h */,
@@ -261,18 +301,8 @@
 				D1A3D7C519758B4C00C53E06 /* NSDate+CompareDays.m */,
 				D1A3D7D5197641D900C53E06 /* NSString+Distance.h */,
 				D1A3D7D6197641D900C53E06 /* NSString+Distance.m */,
-				4F0A8BC6195AE58400D59268 /* XYOrigami */,
 			);
 			name = Libraries;
-			sourceTree = "<group>";
-		};
-		4F0A8BC6195AE58400D59268 /* XYOrigami */ = {
-			isa = PBXGroup;
-			children = (
-				4F0A8BC7195AE58400D59268 /* UIView+Origami.h */,
-				4F0A8BC8195AE58400D59268 /* UIView+Origami.m */,
-			);
-			path = XYOrigami;
 			sourceTree = "<group>";
 		};
 		4F0A8BCA195AFE9300D59268 /* Splash */ = {
@@ -336,6 +366,10 @@
 		4F22FD82193726A00075C1A0 /* Places */ = {
 			isa = PBXGroup;
 			children = (
+				D1783F17197EBA8800A92AA3 /* object-count.png */,
+				D1783F18197EBA8800A92AA3 /* object-count@2x.png */,
+				D1783F09197E74D200A92AA3 /* NLPlaceHeader.h */,
+				D1783F0A197E74D200A92AA3 /* NLPlaceHeader.m */,
 				4F22FD831937288B0075C1A0 /* NLPlacesViewController.h */,
 				4F22FD841937288B0075C1A0 /* NLPlacesViewController.m */,
 				4F22FD851937288B0075C1A0 /* NLPlacesViewController.xib */,
@@ -349,6 +383,8 @@
 		4F390E6D18ED50F100131934 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D1783F0C197E8C2500A92AA3 /* NLCategory.h */,
+				D1783F0D197E8C2500A92AA3 /* NLCategory.m */,
 				4F390E7318ED589200131934 /* NLStorage.h */,
 				4F390E7418ED589200131934 /* NLStorage.m */,
 				4F390E7618ED684200131934 /* NLDiffIndex.h */,
@@ -401,8 +437,6 @@
 				4F6137461927313700BFDD1C /* NLEventGroupsViewController.h */,
 				4F6137471927313700BFDD1C /* NLEventGroupsViewController.m */,
 				4F6137481927313700BFDD1C /* NLEventGroupsViewController.xib */,
-				4F22FD7D1936F4360075C1A0 /* NLEventsListControllerViewController.h */,
-				4F22FD7E1936F4360075C1A0 /* NLEventsListControllerViewController.m */,
 				D19C043419750589006A086B /* NLEventsCollectionViewController.h */,
 				D19C043519750589006A086B /* NLEventsCollectionViewController.m */,
 				D19C043619750589006A086B /* NLEventsCollectionViewController.xib */,
@@ -417,12 +451,22 @@
 		4F89A4221957CFAA0045D1A3 /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				4F89A4361957F88B0045D1A3 /* object@2x.png */,
-				4F89A4341957F0FA0045D1A3 /* userlocation@2x.png */,
+				D1783ED6197C141F00A92AA3 /* NLPlaceAnnotation.h */,
+				D1783ED7197C141F00A92AA3 /* NLPlaceAnnotation.m */,
+				D1783ED9197C195100A92AA3 /* object.png */,
+				D1783EDA197C195100A92AA3 /* object@2x.png */,
+				D1783EE1197C2C5B00A92AA3 /* object-selected.png */,
+				D1783EE2197C2C5B00A92AA3 /* object-selected@2x.png */,
 				4F89A42D1957D8260045D1A3 /* map.png */,
 				D19C0422196EF44C006A086B /* map-minus@2x.png */,
 				D19C0423196EF44C006A086B /* map-locate@2x.png */,
 				D19C0424196EF44C006A086B /* map-plus@2x.png */,
+				D1783EE9197C417000A92AA3 /* route-b.png */,
+				D1783EEA197C417000A92AA3 /* route-b@2x.png */,
+				D1783EED197C438200A92AA3 /* userlocation.png */,
+				D1783EEE197C438200A92AA3 /* userlocation@2x.png */,
+				D1783F05197E622B00A92AA3 /* blue-gradient.png */,
+				D1783F06197E622B00A92AA3 /* blue-gradient@2x.png */,
 				4F89A4281957CFF60045D1A3 /* NLMapViewController.h */,
 				4F89A4291957CFF60045D1A3 /* NLMapViewController.m */,
 				4F89A42A1957CFF60045D1A3 /* NLMapViewController.xib */,
@@ -467,6 +511,7 @@
 		4F9C413618EA84640038090E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D1783F211980042E00A92AA3 /* MapKit.framework */,
 				4FD010F9192CC940002F5836 /* Crashlytics.framework */,
 				4F9C413718EA84640038090E /* Foundation.framework */,
 				4F9C413918EA84640038090E /* CoreGraphics.framework */,
@@ -551,6 +596,7 @@
 		4FD010F1192CC316002F5836 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				D12B05F51979A5E700AA4CDD /* tiles */,
 				4F174E2D1966A50300F7F8A2 /* Track on 2014-06-23 at 17-53 GMT+4.gpx */,
 				4F174E2E1966A50300F7F8A2 /* Track on 2014-06-23 at 18-00 GMT+4.gpx */,
 				4F174E2F1966A50300F7F8A2 /* Track on 2014-06-23 at 18-06 GMT+4.gpx */,
@@ -561,6 +607,7 @@
 				4FD010F4192CC326002F5836 /* search_icon.png */,
 				D1A3D7D0197634F700C53E06 /* menu_button.png */,
 				D1A3D7CE197634AD00C53E06 /* menu_button@2x.png */,
+				D1783EF7197CFFF000A92AA3 /* tile-empty.png */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -611,7 +658,7 @@
 					4F9C413318EA84640038090E = {
 						SystemCapabilities = {
 							com.apple.iOS = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -640,11 +687,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F7EC306190933B9002C0ECD /* NLItemsListController.xib in Resources */,
-				4F89A4371957F88B0045D1A3 /* object@2x.png in Resources */,
 				4F0D75AD193DE20400E78AA5 /* back_white@2x.png in Resources */,
 				4F0D75A7193DBD0200E78AA5 /* right_shadow@2x.png in Resources */,
 				4F9C414218EA84640038090E /* InfoPlist.strings in Resources */,
+				D1783EDB197C195100A92AA3 /* object.png in Resources */,
 				4F10D2B019374ABB00F6658D /* NLStaticScreenViewController.xib in Resources */,
+				D12B05F61979A5E700AA4CDD /* tiles in Resources */,
 				D1B7ADD5196BCF9A0057C1E2 /* MonoCondensedCBold.otf in Resources */,
 				4F0A8BD1195B032800D59268 /* compass@2x.png in Resources */,
 				4F174E341966A50300F7F8A2 /* Track on 2014-06-23 at 18-06 GMT+4.gpx in Resources */,
@@ -653,29 +701,40 @@
 				D19C0426196EF44D006A086B /* map-locate@2x.png in Resources */,
 				D1A3D7CA19758CF600C53E06 /* event-alarm@2x.png in Resources */,
 				4F174E351966A50300F7F8A2 /* Track on 2014-06-23 at 18-29 GMT+4.gpx in Resources */,
+				D1783F07197E622B00A92AA3 /* blue-gradient.png in Resources */,
+				D1783EEC197C417000A92AA3 /* route-b@2x.png in Resources */,
+				D1783EF0197C438200A92AA3 /* userlocation@2x.png in Resources */,
 				4F0D75A6193DBD0200E78AA5 /* left_shadow@2x.png in Resources */,
 				4F454360192DE4D20043C3F4 /* Default-568h@2x.png in Resources */,
 				4F22FD8919372F260075C1A0 /* NLPlaceCell.xib in Resources */,
 				D19C043D1975253C006A086B /* NLNewsCellView.xib in Resources */,
 				4F0D75A2193DB86500E78AA5 /* search_bg@2x.png in Resources */,
 				D19C04401975319E006A086B /* NLEventsCollectionViewController.xib in Resources */,
+				D1783EF8197CFFF000A92AA3 /* tile-empty.png in Resources */,
+				D1783F1A197EBA8800A92AA3 /* object-count@2x.png in Resources */,
 				4F174E331966A50300F7F8A2 /* Track on 2014-06-23 at 18-00 GMT+4.gpx in Resources */,
 				4F411E7F18FFD8AA00758E30 /* NLMainMenuController.xib in Resources */,
 				4F0A8BCF195AFEAA00D59268 /* NLSplashViewController.xib in Resources */,
+				D1783F08197E622B00A92AA3 /* blue-gradient@2x.png in Resources */,
+				D1783EE4197C2C5B00A92AA3 /* object-selected@2x.png in Resources */,
 				D1A3D7D1197634F700C53E06 /* menu_button.png in Resources */,
 				4F22FD871937288B0075C1A0 /* NLPlacesViewController.xib in Resources */,
 				4F61374A1927313700BFDD1C /* NLEventGroupsViewController.xib in Resources */,
 				4F0D75AF193DEA1900E78AA5 /* forward@2x.png in Resources */,
-				4F89A4351957F0FA0045D1A3 /* userlocation@2x.png in Resources */,
 				4F18FD3B192212F900032A34 /* NLDetailsViewController.xib in Resources */,
+				D1783EEB197C417000A92AA3 /* route-b.png in Resources */,
 				4F174E361966A50300F7F8A2 /* Track on 2014-06-23 at 18-34 GMT+4.gpx in Resources */,
 				D19C0427196EF44D006A086B /* map-plus@2x.png in Resources */,
 				D1A3D7C919758CF600C53E06 /* event-alarm.png in Resources */,
+				D1783EDC197C195100A92AA3 /* object@2x.png in Resources */,
+				D1783F19197EBA8800A92AA3 /* object-count.png in Resources */,
+				D1783EE3197C2C5B00A92AA3 /* object-selected.png in Resources */,
 				4FD010F5192CC326002F5836 /* search_icon.png in Resources */,
 				4F0D75B1193DEADF00E78AA5 /* circle@2x.png in Resources */,
 				4F0D759E193D9C6400E78AA5 /* white_menu@2x.png in Resources */,
 				4F89A42C1957CFF60045D1A3 /* NLMapViewController.xib in Resources */,
 				4F89A42E1957D8260045D1A3 /* map.png in Resources */,
+				D1783EEF197C438200A92AA3 /* userlocation.png in Resources */,
 				4F0D75AB193DD05D00E78AA5 /* back@2x.png in Resources */,
 				4F454363192E0F810043C3F4 /* Default@2x.png in Resources */,
 				4F0A8BD3195B04AD00D59268 /* compass_black@2x.png in Resources */,
@@ -745,20 +804,22 @@
 				4F390E7518ED589200131934 /* NLStorage.m in Sources */,
 				4F390E8918ED754700131934 /* NLScreen.m in Sources */,
 				4F22FD7C1936ED3E0075C1A0 /* NLGallery.m in Sources */,
+				D1783F20197FB9E200A92AA3 /* NLFoldAnimation.m in Sources */,
+				D1783F04197E398900A92AA3 /* UIViewController+BackViewController.m in Sources */,
 				4F9C414818EA84640038090E /* NLAppDelegate.m in Sources */,
 				D19C043C1975253C006A086B /* NLNewsCell.m in Sources */,
 				D19C043719750589006A086B /* NLEventsCollectionViewController.m in Sources */,
 				4F9C414418EA84640038090E /* main.m in Sources */,
 				4F6137491927313700BFDD1C /* NLEventGroupsViewController.m in Sources */,
+				D1783F0B197E74D200A92AA3 /* NLPlaceHeader.m in Sources */,
 				4F7EC305190933B9002C0ECD /* NLItemsListController.m in Sources */,
 				4F390E8C18ED755300131934 /* NLEvent.m in Sources */,
 				4F18FD3A192212F900032A34 /* NLDetailsViewController.m in Sources */,
 				4F390E8618ED753700131934 /* NLPlace.m in Sources */,
+				D1783F0E197E8C2500A92AA3 /* NLCategory.m in Sources */,
 				4F10D2AF19374ABB00F6658D /* NLStaticScreenViewController.m in Sources */,
 				D17177B3196D047200521D72 /* NSAttributedString+Kerning.m in Sources */,
 				D19C04331973FF7E006A086B /* NLAttributedLabel.m in Sources */,
-				4F22FD801936F4360075C1A0 /* NLEventsListControllerViewController.m in Sources */,
-				4F0A8BC9195AE58400D59268 /* UIView+Origami.m in Sources */,
 				4F0A8BCE195AFEAA00D59268 /* NLSplashViewController.m in Sources */,
 				4F390E7D18ED731E00131934 /* NLNewsEntry.m in Sources */,
 				4F22FD861937288B0075C1A0 /* NLPlacesViewController.m in Sources */,
@@ -766,6 +827,7 @@
 				4F390E8318ED752700131934 /* NLTeaser.m in Sources */,
 				4F61374D19273D7700BFDD1C /* NLEventGroup.m in Sources */,
 				4F22FD781936E8B30075C1A0 /* NLGalleryViewController.m in Sources */,
+				D1783ED8197C141F00A92AA3 /* NLPlaceAnnotation.m in Sources */,
 				4F22FD8C19372F530075C1A0 /* NLPlaceCell.m in Sources */,
 				D1A3D7C319757D5600C53E06 /* NSString+Ordinal.m in Sources */,
 				4F390E7818ED684200131934 /* NLDiffIndex.m in Sources */,

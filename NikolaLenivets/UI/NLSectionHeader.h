@@ -23,4 +23,9 @@
  */
 @property (strong, nonatomic) UILabel *dateLabel;
 
+/**
+ Reset border color.
+ */
+- (void)resetBorderColor;
+
 @end

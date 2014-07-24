@@ -6,21 +6,31 @@
 //  Copyright (c) 2014 Semyon Novikov. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
+@import MapKit;
+#import "NLPlaceAnnotation.h"
 
-@interface NLMapViewController : UIViewController <UIScrollViewDelegate>
+@interface NLMapViewController : UIViewController <MKMapViewDelegate>
 
 @property (strong, nonatomic) CLLocation *currentLocation;
-@property (weak, nonatomic) IBOutlet UIScrollView *mapScrollView;
-@property (weak, nonatomic) IBOutlet UIImageView *mapImageView;
-@property (weak, nonatomic) IBOutlet UIView *resizableView;
 @property (strong, nonatomic) IBOutlet UIView *placeDetailsMenu;
 @property (weak, nonatomic) IBOutlet UILabel *placeName;
 @property (weak, nonatomic) IBOutlet UILabel *distanceToPlace;
+@property (weak, nonatomic) IBOutlet UILabel *distanceToPlaceLegend;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *distanceToPlaceHeight;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet UILabel *placeUnreadIndicator;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *placeInfoIconsHeight;
+@property (weak, nonatomic) IBOutlet UILabel *itemsCountLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleBarHeight;
+@property (weak, nonatomic) IBOutlet UIView *backPlaceView;
+@property (weak, nonatomic) IBOutlet UILabel *backPlaceTitle;
+
 
 - (IBAction)zoomIn:(id)sender;
 - (IBAction)zoomOut:(id)sender;
 - (IBAction)showMyLocation:(id)sender;
+- (instancetype)initWithPlace:(NLPlace *)place;
 
 @end

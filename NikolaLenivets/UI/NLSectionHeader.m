@@ -10,6 +10,7 @@
 
 @implementation NLSectionHeader
 
+
 - (instancetype)init
 {
     self = [super init];
@@ -18,6 +19,7 @@
     }
     return self;
 }
+
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
@@ -28,6 +30,7 @@
     return self;
 }
 
+
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -37,8 +40,10 @@
     return self;
 }
 
+
 - (void)initialSetup
 {
+    self.clipsToBounds = YES;
     self.dayOrderLabel = [[UILabel alloc] init];
     self.dateLabel = [[UILabel alloc] init];
     [self addSubview:self.dayOrderLabel];
@@ -57,6 +62,16 @@
     [self.dayOrderLabel setAdjustsFontSizeToFitWidth:YES];
     [self.dayOrderLabel setMinimumScaleFactor:0.2f];
     self.dateLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:13];
+
+    [self resetBorderColor];
+}
+
+
+- (void)resetBorderColor
+{
+    UIColor *borderGray = [UIColor colorWithRed:246.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1.0f];
+    [self.layer setBorderColor:borderGray.CGColor];
+    [self.layer setBorderWidth:0.5f];
 }
 
 @end
