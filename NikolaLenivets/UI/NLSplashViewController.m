@@ -17,7 +17,6 @@
 {
     self = [super initWithNibName:@"NLSplashViewController" bundle:nil];
     if (self) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dataReceived) name:STORAGE_DID_UPDATE object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(headingUpdated:) name:NLUserHeadingUpdated object:nil];
     }
     return self;
@@ -31,7 +30,13 @@
 }
 
 
-- (void)dataReceived
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self performSelector:@selector(dismissSplash) withObject:nil afterDelay:4];
+}
+
+
+- (void)dismissSplash
 {
     [AppDelegate dismissSplash];
 }

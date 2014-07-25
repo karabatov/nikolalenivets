@@ -267,6 +267,8 @@
         });
 
     _categories = [self categoriesFromPlaces];
+
+    NSLog(@"Parsing of diff finished.");
 }
 
 
@@ -300,7 +302,7 @@
 
     _categories = [self categoriesFromPlaces];
 
-    NSLog(@"Parsing finished");
+    NSLog(@"Parsing finished.");
 }
 
 
