@@ -23,4 +23,14 @@
  */
 + (NSAttributedString *)kernedStringForString:(NSString *)string;
 
+/**
+ Make a kerned string for input string with selected font size and color.
+
+ @param string Input string.
+ @param fontSize Font size.
+ @param color Desired color.
+ @return Kerned NSAttributedString.
+ */
++ (NSAttributedString *)kernedStringForString:(NSString *)string withFontSize:(CGFloat)fontSize andColor:(UIColor *)color;
+
 @end

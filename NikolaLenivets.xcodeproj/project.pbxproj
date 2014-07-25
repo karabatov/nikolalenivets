@@ -46,8 +46,6 @@
 		4F390E8C18ED755300131934 /* NLEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F390E8B18ED755300131934 /* NLEvent.m */; };
 		4F411E7E18FFD8AA00758E30 /* NLMainMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F411E7C18FFD8AA00758E30 /* NLMainMenuController.m */; };
 		4F411E7F18FFD8AA00758E30 /* NLMainMenuController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F411E7D18FFD8AA00758E30 /* NLMainMenuController.xib */; };
-		4F454360192DE4D20043C3F4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F45435E192DE4D20043C3F4 /* Default-568h@2x.png */; };
-		4F454363192E0F810043C3F4 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F454362192E0F810043C3F4 /* Default@2x.png */; };
 		4F6137491927313700BFDD1C /* NLEventGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6137471927313700BFDD1C /* NLEventGroupsViewController.m */; };
 		4F61374A1927313700BFDD1C /* NLEventGroupsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F6137481927313700BFDD1C /* NLEventGroupsViewController.xib */; };
 		4F61374D19273D7700BFDD1C /* NLEventGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F61374C19273D7700BFDD1C /* NLEventGroup.m */; };
@@ -97,6 +95,9 @@
 		D1783F351982921500A92AA3 /* NLMapFilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1783F331982921500A92AA3 /* NLMapFilterCell.xib */; };
 		D1783F381982934E00A92AA3 /* map-checked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783F361982934E00A92AA3 /* map-checked@2x.png */; };
 		D1783F391982934E00A92AA3 /* map-unchecked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783F371982934E00A92AA3 /* map-unchecked@2x.png */; };
+		D1783F411982CEF600A92AA3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783F3E1982CEF600A92AA3 /* Default-568h@2x.png */; };
+		D1783F421982CEF600A92AA3 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783F3F1982CEF600A92AA3 /* Default@2x.png */; };
+		D1783F431982CEF600A92AA3 /* splash-top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783F401982CEF600A92AA3 /* splash-top@2x.png */; };
 		D19C0425196EF44C006A086B /* map-minus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19C0422196EF44C006A086B /* map-minus@2x.png */; };
 		D19C0426196EF44D006A086B /* map-locate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19C0423196EF44C006A086B /* map-locate@2x.png */; };
 		D19C0427196EF44D006A086B /* map-plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19C0424196EF44C006A086B /* map-plus@2x.png */; };
@@ -181,8 +182,6 @@
 		4F411E7B18FFD8AA00758E30 /* NLMainMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLMainMenuController.h; path = UI/NLMainMenuController.h; sourceTree = "<group>"; };
 		4F411E7C18FFD8AA00758E30 /* NLMainMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLMainMenuController.m; path = UI/NLMainMenuController.m; sourceTree = "<group>"; };
 		4F411E7D18FFD8AA00758E30 /* NLMainMenuController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLMainMenuController.xib; path = UI/NLMainMenuController.xib; sourceTree = "<group>"; };
-		4F45435E192DE4D20043C3F4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		4F454362192E0F810043C3F4 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		4F6137461927313700BFDD1C /* NLEventGroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLEventGroupsViewController.h; path = UI/NLEventGroupsViewController.h; sourceTree = "<group>"; };
 		4F6137471927313700BFDD1C /* NLEventGroupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLEventGroupsViewController.m; path = UI/NLEventGroupsViewController.m; sourceTree = "<group>"; };
 		4F6137481927313700BFDD1C /* NLEventGroupsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLEventGroupsViewController.xib; path = UI/NLEventGroupsViewController.xib; sourceTree = "<group>"; };
@@ -256,6 +255,9 @@
 		D1783F331982921500A92AA3 /* NLMapFilterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLMapFilterCell.xib; path = UI/NLMapFilterCell.xib; sourceTree = "<group>"; };
 		D1783F361982934E00A92AA3 /* map-checked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-checked@2x.png"; sourceTree = "<group>"; };
 		D1783F371982934E00A92AA3 /* map-unchecked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-unchecked@2x.png"; sourceTree = "<group>"; };
+		D1783F3E1982CEF600A92AA3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		D1783F3F1982CEF600A92AA3 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		D1783F401982CEF600A92AA3 /* splash-top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-top@2x.png"; sourceTree = "<group>"; };
 		D19C0422196EF44C006A086B /* map-minus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-minus@2x.png"; sourceTree = "<group>"; };
 		D19C0423196EF44C006A086B /* map-locate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-locate@2x.png"; sourceTree = "<group>"; };
 		D19C0424196EF44C006A086B /* map-plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-plus@2x.png"; sourceTree = "<group>"; };
@@ -627,8 +629,9 @@
 				4F174E2F1966A50300F7F8A2 /* Track on 2014-06-23 at 18-06 GMT+4.gpx */,
 				4F174E301966A50300F7F8A2 /* Track on 2014-06-23 at 18-29 GMT+4.gpx */,
 				4F174E311966A50300F7F8A2 /* Track on 2014-06-23 at 18-34 GMT+4.gpx */,
-				4F454362192E0F810043C3F4 /* Default@2x.png */,
-				4F45435E192DE4D20043C3F4 /* Default-568h@2x.png */,
+				D1783F3E1982CEF600A92AA3 /* Default-568h@2x.png */,
+				D1783F3F1982CEF600A92AA3 /* Default@2x.png */,
+				D1783F401982CEF600A92AA3 /* splash-top@2x.png */,
 				4FD010F4192CC326002F5836 /* search_icon.png */,
 				D1A3D7D0197634F700C53E06 /* menu_button.png */,
 				D1A3D7CE197634AD00C53E06 /* menu_button@2x.png */,
@@ -733,7 +736,6 @@
 				D1783EEC197C417000A92AA3 /* route-b@2x.png in Resources */,
 				D1783EF0197C438200A92AA3 /* userlocation@2x.png in Resources */,
 				4F0D75A6193DBD0200E78AA5 /* left_shadow@2x.png in Resources */,
-				4F454360192DE4D20043C3F4 /* Default-568h@2x.png in Resources */,
 				4F22FD8919372F260075C1A0 /* NLPlaceCell.xib in Resources */,
 				D19C043D1975253C006A086B /* NLNewsCellView.xib in Resources */,
 				4F0D75A2193DB86500E78AA5 /* search_bg@2x.png in Resources */,
@@ -759,6 +761,9 @@
 				D1783EDC197C195100A92AA3 /* object@2x.png in Resources */,
 				D1783F19197EBA8800A92AA3 /* object-count.png in Resources */,
 				D1783EE3197C2C5B00A92AA3 /* object-selected.png in Resources */,
+				D1783F411982CEF600A92AA3 /* Default-568h@2x.png in Resources */,
+				D1783F431982CEF600A92AA3 /* splash-top@2x.png in Resources */,
+				D1783F421982CEF600A92AA3 /* Default@2x.png in Resources */,
 				4FD010F5192CC326002F5836 /* search_icon.png in Resources */,
 				4F0D75B1193DEADF00E78AA5 /* circle@2x.png in Resources */,
 				4F0D759E193D9C6400E78AA5 /* white_menu@2x.png in Resources */,
@@ -766,7 +771,6 @@
 				4F89A42E1957D8260045D1A3 /* map.png in Resources */,
 				D1783EEF197C438200A92AA3 /* userlocation.png in Resources */,
 				4F0D75AB193DD05D00E78AA5 /* back@2x.png in Resources */,
-				4F454363192E0F810043C3F4 /* Default@2x.png in Resources */,
 				4F0A8BD3195B04AD00D59268 /* compass_black@2x.png in Resources */,
 				D1A3D7CF197634AD00C53E06 /* menu_button@2x.png in Resources */,
 				D1A3D7B81975415700C53E06 /* NLCollectionCellView.xib in Resources */,
