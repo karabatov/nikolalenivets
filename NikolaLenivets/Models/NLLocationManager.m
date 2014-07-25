@@ -31,7 +31,7 @@ static NLLocationManager *_sharedInstance;
 }
 
 
-- (id)init
+- (instancetype)init
 {
     if ((self = [super init])) {
         _locationManager = [CLLocationManager new];
@@ -67,6 +67,12 @@ static NLLocationManager *_sharedInstance;
 - (CGAffineTransform)compassTransform
 {
     return CGAffineTransformMakeRotation((_angle - _lastHeading.trueHeading) * M_PI / 180);
+}
+
+
+- (CATransform3D)compassTransform3D
+{
+    return CATransform3DMakeRotation((_angle - _lastHeading.trueHeading) * M_PI / 180, 0, 0, 1);
 }
 
 

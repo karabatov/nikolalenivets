@@ -16,5 +16,6 @@
 
 + (NLLocationManager *)sharedInstance;
 - (CGAffineTransform)compassTransform;
+- (CATransform3D)compassTransform3D;
 
 @end
