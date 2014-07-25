@@ -158,6 +158,7 @@ typedef enum {
             self.eventDayHeight.constant = 26;
             self.eventDayView.dateLabel.text = [_place.title uppercaseString];
             [self.eventDayView.dayOrderLabel setHidden:YES];
+            [self.infoButton setHidden:NO];
             indexNumber = -1; //[[[NLStorage sharedInstance] places] indexOfObject:_place];
             break;
         }
@@ -356,7 +357,8 @@ typedef enum {
 }
 
 
-- (IBAction)openPlaceOnMap:(UIButton *)sender {
+- (IBAction)openPlaceOnMap:(UIButton *)sender
+{
     NSLog(@"openPlaceOnMap");
     switch ([self mode]) {
         case ShowingPlace:
@@ -371,6 +373,13 @@ typedef enum {
     }
 }
 
+- (IBAction)infoButtonAction:(UIButton *)sender
+{
+    CGPoint offset = self.firstPartWebView.frame.origin;
+    offset.x = 0;
+    offset.y -= 6;
+    [self.scrollView setContentOffset:offset animated:YES];
+}
 
 #pragma mark - UIScrollViewDelegate
 
