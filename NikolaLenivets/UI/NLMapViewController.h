@@ -26,11 +26,13 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleBarHeight;
 @property (weak, nonatomic) IBOutlet UIView *backPlaceView;
 @property (weak, nonatomic) IBOutlet UILabel *backPlaceTitle;
+@property (weak, nonatomic) IBOutlet UIButton *filterButton;
 
 
 - (IBAction)zoomIn:(id)sender;
 - (IBAction)zoomOut:(id)sender;
 - (IBAction)showMyLocation:(id)sender;
 - (instancetype)initWithPlace:(NLPlace *)place;
+- (void)filterWantsToDismissWithReload:(BOOL)reload;
 
 @end

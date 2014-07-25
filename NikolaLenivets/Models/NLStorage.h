@@ -50,6 +50,9 @@
 /** Galleries array. */
 @property (strong, nonatomic, readonly) NSMutableArray *galleries;
 
+/** Categories array. */
+@property (strong, nonatomic, readonly) NSArray *categories;
+
 /** Last download date */
 @property (strong, nonatomic, readonly) NSDate *lastDownloadDate;
 

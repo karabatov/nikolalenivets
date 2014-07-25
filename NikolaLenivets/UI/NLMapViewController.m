@@ -11,6 +11,8 @@
 #import "NSAttributedString+Kerning.h"
 #import "NSString+Distance.h"
 #import "NLDetailsViewController.h"
+#import "NLMapFilter.h"
+#import "NLCategory.h"
 
 @implementation NLMapViewController
 {
@@ -18,12 +20,16 @@
     UIImageView *_currentLocationMarker;
     CLLocation *_leftUpperCornerLocation;
     CLLocation *_rightBottomCornerLocation;
-    MKAnnotationView *_selectedView;
+    __weak MKAnnotationView *_selectedView;
     BOOL _shouldResetSelectedView;
     BOOL _manuallyChangingRegion;
+    NSArray *_storagePlaces;
     NSArray *_places;
     NLPlace *_showingPlace;
-    NLPlaceAnnotation *_showingAnnotation;
+    __weak NLPlaceAnnotation *_showingAnnotation;
+    NLMapFilter *_mapFilterView;
+    NSArray *_categories;
+    NSMutableArray *_selectedCat;
 }
 
 
@@ -39,6 +45,8 @@
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationUpdated:) name:NLUserLocationUpdated object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePlaces) name:STORAGE_DID_UPDATE object:nil];
+        _categories = [NLStorage sharedInstance].categories;
+        _selectedCat = [NSMutableArray arrayWithArray:_categories];
     }
     return self;
 }
@@ -125,7 +133,18 @@
 - (void)updatePlaces
 {
     [self.mapView removeAnnotations:self.mapView.annotations];
-    _places = [[NLStorage sharedInstance] places];
+    _selectedView = nil;
+    _storagePlaces = [[NLStorage sharedInstance] places];
+    _places = _.array(_storagePlaces)
+        .filter(^BOOL (NLPlace *storagePlace){
+            NLCategory *category = (NLCategory *)[storagePlace.categories firstObject];
+            if (category) {
+                return [_selectedCat containsObject:category];
+            } else {
+                return NO;
+            }
+        })
+        .unwrap;
     for (NLPlace *place in _places) {
         NLPlaceAnnotation *annotation = [[NLPlaceAnnotation alloc] initWithPlace:place];
         [self.mapView addAnnotation:annotation];
@@ -365,9 +384,44 @@
     [self.navigationController pushViewController:details animated:YES];
 }
 
+
 - (IBAction)backToPlace:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+- (IBAction)showMapFilter:(UIButton *)sender
+{
+    if (!_mapFilterView) {
+        _mapFilterView = [[NLMapFilter alloc] initWithFrame:self.view.frame andCategories:_categories selected:_selectedCat];
+    }
+    _mapFilterView.alpha = 0.0f;
+    [_mapFilterView setHidden:NO];
+    [self.view addSubview:_mapFilterView];
+    _mapFilterView.parentMap = self;
+    [UIView animateWithDuration:0.15f animations:^{
+        _mapFilterView.alpha = 1.0f;
+        self.filterButton.alpha = 0.0f;
+    } completion:^(BOOL finished) {
+        [_mapFilterView displayAnimated];
+    }];
+}
+
+- (void)filterWantsToDismissWithReload:(BOOL)reload
+{
+    [UIView animateWithDuration:0.15f animations:^{
+        self.filterButton.alpha = 1.0f;
+    }];
+    if (reload) {
+        if (_selectedView) {
+            [self.mapView selectAnnotation:nil animated:NO];
+            _selectedView.image = [UIImage imageNamed:@"object.png"];
+        }
+        [self hidePlaceMenu];
+        [self updatePlaces];
+        [self updateUnreadCountWithCount:[[NLStorage sharedInstance] unreadCountInArray:_places]];
+    }
 }
 
 #pragma mark - MKMapViewDelegate

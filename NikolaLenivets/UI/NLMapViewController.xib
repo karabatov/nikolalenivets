@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NLMapViewController">
@@ -11,6 +12,7 @@
                 <outlet property="distanceToPlace" destination="elV-ek-JvZ" id="vjq-fe-rSt"/>
                 <outlet property="distanceToPlaceHeight" destination="qpy-WY-0Ob" id="LvH-8g-Sjg"/>
                 <outlet property="distanceToPlaceLegend" destination="iHF-Lp-mBf" id="j6i-0y-QfY"/>
+                <outlet property="filterButton" destination="fij-4Q-ehm" id="DJ3-1y-yXl"/>
                 <outlet property="itemsCountLabel" destination="hrO-te-X4g" id="OYr-7f-LEa"/>
                 <outlet property="mapView" destination="q77-Py-xHD" id="gKM-X2-pmV"/>
                 <outlet property="placeDetailsMenu" destination="Gbx-OZ-cVO" id="6xa-ah-od2"/>
@@ -125,7 +127,7 @@
                     </constraints>
                 </view>
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="q77-Py-xHD">
-                    <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                    <rect key="frame" x="0.0" y="64" width="320" height="452"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </mapView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2zD-jX-MGa" userLabel="Map Controls">
@@ -193,18 +195,51 @@
                         <constraint firstItem="FIk-Ol-c9i" firstAttribute="leading" secondItem="3G3-no-3Ny" secondAttribute="leading" id="xC3-kb-cis"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hMP-QT-J5C" userLabel="Toolbar">
+                    <rect key="frame" x="0.0" y="516" width="320" height="52"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fij-4Q-ehm" userLabel="Filter button">
+                            <rect key="frame" x="214" y="0.0" width="52" height="52"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="52" id="5Eo-Da-Ka3"/>
+                                <constraint firstAttribute="height" constant="52" id="h39-Yy-XLZ"/>
+                            </constraints>
+                            <inset key="contentEdgeInsets" minX="9" minY="8" maxX="9" maxY="8"/>
+                            <state key="normal" title="Button" image="map-filter.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="disabled" image="map-filter.png"/>
+                            <state key="selected" image="map-filter.png"/>
+                            <state key="highlighted" image="map-filter.png"/>
+                            <connections>
+                                <action selector="showMapFilter:" destination="-1" eventType="touchUpInside" id="bVE-WL-cfr"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="fij-4Q-ehm" firstAttribute="centerX" secondItem="hMP-QT-J5C" secondAttribute="centerX" multiplier="1.5" id="7Px-aw-Kga"/>
+                        <constraint firstAttribute="centerY" secondItem="fij-4Q-ehm" secondAttribute="centerY" id="NW9-gu-qWO"/>
+                        <constraint firstAttribute="height" constant="52" id="adj-ZA-U9l"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="hMP-QT-J5C" secondAttribute="bottom" id="0Rj-EL-ab7"/>
                 <constraint firstAttribute="centerY" secondItem="2zD-jX-MGa" secondAttribute="centerY" constant="0.5" id="6w2-QR-heE"/>
-                <constraint firstAttribute="bottom" secondItem="q77-Py-xHD" secondAttribute="bottom" id="Eea-LT-lGs"/>
                 <constraint firstItem="Mdg-Wm-4bt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Txu-gl-lFE"/>
+                <constraint firstItem="hMP-QT-J5C" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UhZ-vG-Krc"/>
+                <constraint firstAttribute="trailing" secondItem="q77-Py-xHD" secondAttribute="trailing" id="X0K-sa-p9x"/>
                 <constraint firstAttribute="trailing" secondItem="2zD-jX-MGa" secondAttribute="trailing" id="bA0-qR-hUf"/>
                 <constraint firstItem="q77-Py-xHD" firstAttribute="top" secondItem="Mdg-Wm-4bt" secondAttribute="bottom" id="dKt-pl-ktb"/>
                 <constraint firstAttribute="trailing" secondItem="Mdg-Wm-4bt" secondAttribute="trailing" id="dLE-oa-5zN"/>
                 <constraint firstItem="Mdg-Wm-4bt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="j1g-mz-Ib8"/>
                 <constraint firstItem="q77-Py-xHD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="jyZ-wA-RnS"/>
-                <constraint firstAttribute="trailing" secondItem="q77-Py-xHD" secondAttribute="trailing" id="zgc-D7-2jY"/>
+                <constraint firstAttribute="trailing" secondItem="hMP-QT-J5C" secondAttribute="trailing" id="qmK-ob-hTY"/>
+                <constraint firstItem="hMP-QT-J5C" firstAttribute="top" secondItem="q77-Py-xHD" secondAttribute="bottom" id="rkB-Wf-iIv"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -344,6 +379,7 @@
     </objects>
     <resources>
         <image name="back.png" width="32" height="32"/>
+        <image name="map-filter.png" width="34" height="18"/>
         <image name="map-locate.png" width="32" height="32"/>
         <image name="map-minus.png" width="32" height="32"/>
         <image name="map-plus.png" width="32" height="32"/>
