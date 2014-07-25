@@ -74,7 +74,10 @@ enum {
             btn.titleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:16];
         }
     }
+}
 
+- (void)viewWillAppear:(BOOL)animated
+{
     [self updateMenuState];
 }
 

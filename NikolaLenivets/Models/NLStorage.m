@@ -265,6 +265,8 @@
                 [_galleries addObject:entry];
             }
         });
+
+    _categories = [self categoriesFromPlaces];
 }
 
 
@@ -295,6 +297,8 @@
     _galleries = [NSMutableArray arrayWithArray:_.arrayMap(jsonDictionary[@"galleries"], ^(NSDictionary *d) {
         return [NLGallery modelFromDictionary:d];
     })];
+
+    _categories = [self categoriesFromPlaces];
 
     NSLog(@"Parsing finished");
 }
@@ -341,6 +345,20 @@
 }
 
 
+- (NSArray *)categoriesFromPlaces
+{
+    NSArray *categories = _.array(_places)
+        .map(^(NLPlace *place){
+            return place.categories;
+        })
+        .flatten
+        .uniq
+        .unwrap;
+
+    return categories;
+}
+
+
 #pragma mark - Secure Coding
 
 - (void)encodeWithCoder:(NSCoder *)coder
@@ -353,6 +371,7 @@
     [coder encodeObject:_eventGroups forKey:@"eventGroups"];
     [coder encodeObject:_screens forKey:@"screens"];
     [coder encodeObject:_galleries forKey:@"galleries"];
+    [coder encodeObject:_categories forKey:@"categories"];
 }
 
 
@@ -368,6 +387,7 @@
         _eventGroups = [coder decodeObjectOfClass:[NSMutableArray class] forKey:@"eventGroups"];
         _screens = [coder decodeObjectOfClass:[NSMutableArray class] forKey:@"screens"];
         _galleries = [coder decodeObjectOfClass:[NSMutableArray class] forKey:@"galleries"];
+        _categories = [coder decodeObjectOfClass:[NSMutableArray class] forKey:@"categories"];
     }
     return self;
 }
