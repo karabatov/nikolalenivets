@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NLEventGroupsViewController">
             <connections>
                 <outlet property="currentPageLabel" destination="bla-hA-7Xa" id="v2D-SC-988"/>
+                <outlet property="currentPageLabelOffset" destination="KaN-1w-RG3" id="qh9-Ap-5h7"/>
                 <outlet property="dashOffset" destination="Af3-Zr-I99" id="jgB-Kn-rTN"/>
                 <outlet property="eventDateDashLabel" destination="XIg-Sy-T76" id="Jsy-Kr-DIO"/>
                 <outlet property="eventDatesLabel" destination="dVX-7a-e07" id="hjy-z3-lRj"/>
@@ -17,6 +18,8 @@
                 <outlet property="eventTypeLabel" destination="FSN-ss-hnX" id="R86-t6-wlY"/>
                 <outlet property="itemsCountLabel" destination="R6l-bv-Jld" id="wbN-Bu-s42"/>
                 <outlet property="nextItemButton" destination="Tls-sF-jqO" id="cU8-30-je8"/>
+                <outlet property="otherPageLabel" destination="9Gn-yw-8hA" id="djn-XT-Fwh"/>
+                <outlet property="otherPageLabelOffset" destination="ejG-iO-xTd" id="yXI-Dt-s1f"/>
                 <outlet property="overallPagesCountLabel" destination="aK8-7j-fTQ" id="WKR-mQ-Q2b"/>
                 <outlet property="pagerView" destination="uCr-p8-mG1" id="Ugk-cz-1ap"/>
                 <outlet property="prevItemButton" destination="NH9-5B-Qzh" id="hKM-z2-qGz"/>
@@ -226,6 +229,12 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Gn-yw-8hA" userLabel="Label - 2">
+                            <rect key="frame" x="157" y="16" width="7" height="14"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aK8-7j-fTQ">
                             <rect key="frame" x="170" y="16" width="13" height="14"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
@@ -237,15 +246,17 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="09O-o3-02z"/>
+                        <constraint firstAttribute="centerY" secondItem="3eB-DT-EF0" secondAttribute="centerY" id="96v-Ep-VpW"/>
                         <constraint firstAttribute="centerY" secondItem="bla-hA-7Xa" secondAttribute="centerY" constant="1" id="B2v-GK-ojC"/>
                         <constraint firstAttribute="centerY" secondItem="NH9-5B-Qzh" secondAttribute="centerY" constant="-1" id="BOF-UA-liQ"/>
+                        <constraint firstAttribute="centerY" secondItem="9Gn-yw-8hA" secondAttribute="centerY" constant="1" id="BXb-bC-uls"/>
                         <constraint firstAttribute="centerY" secondItem="Tls-sF-jqO" secondAttribute="centerY" id="IOq-6k-ZlJ"/>
                         <constraint firstAttribute="centerX" secondItem="bla-hA-7Xa" secondAttribute="centerX" constant="12" id="KaN-1w-RG3"/>
-                        <constraint firstItem="bla-hA-7Xa" firstAttribute="centerY" secondItem="3eB-DT-EF0" secondAttribute="centerY" constant="-1" id="MHy-6c-R03"/>
                         <constraint firstAttribute="centerX" secondItem="aK8-7j-fTQ" secondAttribute="centerX" constant="-16.5" id="QI5-ec-2yP"/>
+                        <constraint firstAttribute="centerX" secondItem="3eB-DT-EF0" secondAttribute="centerX" constant="12" id="Z3b-Ly-3Ni"/>
                         <constraint firstItem="NH9-5B-Qzh" firstAttribute="leading" secondItem="uCr-p8-mG1" secondAttribute="leading" id="bjg-IC-FdB"/>
+                        <constraint firstAttribute="centerX" secondItem="9Gn-yw-8hA" secondAttribute="centerX" id="ejG-iO-xTd"/>
                         <constraint firstAttribute="trailing" secondItem="Tls-sF-jqO" secondAttribute="trailing" id="om6-zs-geV"/>
-                        <constraint firstItem="bla-hA-7Xa" firstAttribute="centerX" secondItem="3eB-DT-EF0" secondAttribute="centerX" id="se1-Er-Y8F"/>
                         <constraint firstAttribute="centerY" secondItem="aK8-7j-fTQ" secondAttribute="centerY" constant="1.5" id="ujD-hN-7QB"/>
                     </constraints>
                 </view>

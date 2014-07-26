@@ -17,6 +17,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *prevItemButton;
 @property (weak, nonatomic) IBOutlet UIButton *nextItemButton;
 @property (weak, nonatomic) IBOutlet UILabel *currentPageLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *currentPageLabelOffset;
+@property (weak, nonatomic) IBOutlet UILabel *otherPageLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *otherPageLabelOffset;
 @property (weak, nonatomic) IBOutlet UILabel *overallPagesCountLabel;
 @property (weak, nonatomic) IBOutlet UIView *previewView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *previewBottomSpace;

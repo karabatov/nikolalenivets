@@ -47,7 +47,7 @@
     self.itemsCountLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:9.0f];
     self.itemsCountLabel.text = @"";
     self.currentPageLabel.font = [UIFont fontWithName:NLMonospacedFont size:self.currentPageLabel.font.pointSize];
-    self.overallPagesCountLabel.font = self.currentPageLabel.font;
+    self.overallPagesCountLabel.font = self.otherPageLabel.font = self.currentPageLabel.font;
 
     self.eventTypeLabel.font =
     self.eventDatesTitleLabel.font =
@@ -180,7 +180,7 @@
 {
     BOOL shouldFill = _eventGroups.count > pageIndex;
     self.previewView.hidden = !shouldFill;
-    self.currentPageLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)(_currentPage + 1)];
+    // self.currentPageLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)(_currentPage + 1)];
     if (shouldFill) {
         NLEventGroup *group = _eventGroups[pageIndex];
         [self updateUnreadCountWithCount:[[NLStorage sharedInstance] unreadCountInArray:group.events]];
@@ -219,17 +219,41 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (scrollView.contentOffset.x > 0 && scrollView.contentOffset.x < scrollView.contentSize.width) {
-        CGFloat offset = -fmod(self.scrollView.contentOffset.x, self.scrollView.frame.size.width) * 2;
-        if (-offset > self.scrollView.frame.size.width) {
-            offset += (fmod(self.scrollView.contentOffset.x, self.scrollView.frame.size.width) * 2 - self.scrollView.frame.size.width) * 2;
+        CGFloat frameWidth = scrollView.frame.size.width;
+        CGFloat previewOffset = -fmod(self.scrollView.contentOffset.x, frameWidth) * 2;
+        if (-previewOffset > frameWidth) {
+            previewOffset += (fmod(self.scrollView.contentOffset.x, frameWidth) * 2 - frameWidth) * 2;
         }
-        self.previewBottomSpace.constant = offset;
-        NSUInteger nextPage = floor((scrollView.contentOffset.x + scrollView.bounds.size.width / 2) / scrollView.bounds.size.width);
+        self.previewBottomSpace.constant = previewOffset;
+
+        NSUInteger nextPage = floor((scrollView.contentOffset.x + frameWidth / 2) / frameWidth);
         if (_currentPage != nextPage) {
             _currentPage = nextPage;
             [self fillContentForPage:_currentPage];
         }
         [self.previewView setNeedsLayout];
+
+        CGFloat offset = fmod(self.scrollView.contentOffset.x, frameWidth) / frameWidth;
+        if (offset >= 0.5) {
+            if ((_currentPage + 1) <= [_eventGroups count]) {
+                self.otherPageLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)(_currentPage + 1)];
+            } else {
+                self.otherPageLabel.text = @"";
+            }
+            self.currentPageLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)_currentPage];
+        } else {
+            if ((_currentPage + 2) <= [_eventGroups count]) {
+                self.otherPageLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)(_currentPage + 2)];
+            } else {
+                self.otherPageLabel.text = @"";
+            }
+            self.currentPageLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)(_currentPage + 1)];
+        }
+        self.otherPageLabel.alpha = offset;
+        self.otherPageLabelOffset.constant = 12 * offset;
+        self.currentPageLabel.alpha = 1 - offset;
+        self.currentPageLabelOffset.constant = 12 + 12 * offset;
+        [self.pagerView setNeedsLayout];
     }
 }
 
