@@ -201,7 +201,8 @@
     if ([scrollView isEqual:self.leftTable]) {
         self.rightShadowView.hidden = NO;
         [UIView animateWithDuration:0.1 animations:^{
-            self.rightShadowView.alpha = 1.0;
+            self.rightShadowView.alpha = 0.8;
+            self.rightTable.alpha = 0.8;
         }];
         [self.rightTable setUserInteractionEnabled:NO];
     }
@@ -209,7 +210,8 @@
     if ([scrollView isEqual:self.rightTable]) {
         self.leftShadowView.hidden = NO;
         [UIView animateWithDuration:0.1 animations:^{
-            self.leftShadowView.alpha = 1.0;
+            self.leftShadowView.alpha = 0.8;
+            self.leftTable.alpha = 0.8;
         }];
         [self.leftTable setUserInteractionEnabled:NO];
     }
@@ -221,6 +223,7 @@
     if ([scrollView isEqual:self.leftTable]) {
         [UIView animateWithDuration:0.1 animations:^{
             self.rightShadowView.alpha = 0.0;
+            self.rightTable.alpha = 1.0;
         } completion:^(BOOL finished) {
             self.rightShadowView.hidden = YES;
         }];
@@ -229,6 +232,7 @@
     if ([scrollView isEqual:self.rightTable]) {
         [UIView animateWithDuration:0.1 animations:^{
             self.leftShadowView.alpha = 0.0;
+            self.leftTable.alpha = 1.0;
         } completion:^(BOOL finished) {
             self.leftShadowView.hidden = YES;
         }];
