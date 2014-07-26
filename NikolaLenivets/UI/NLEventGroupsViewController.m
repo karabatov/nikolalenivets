@@ -261,9 +261,7 @@
 - (IBAction)scrollBack:(id)sender
 {
     if (self.scrollView.contentOffset.x > 0) {
-        [self.scrollView setContentOffset:CGPointMake(self.scrollView.contentOffset.x - self.scrollView.frame.size.width,
-                                                       self.scrollView.contentOffset.y)
-                                  animated:YES];
+        [self.scrollView setContentOffset:CGPointMake(self.scrollView.contentOffset.x - fmod(self.scrollView.contentOffset.x, self.scrollView.frame.size.width) - self.scrollView.frame.size.width, self.scrollView.contentOffset.y) animated:YES];
     }
 }
 
@@ -274,9 +272,7 @@
         return;
     }
     if (self.scrollView.contentOffset.x < self.scrollView.contentSize.width - self.scrollView.frame.size.width) {
-        [self.scrollView setContentOffset:CGPointMake(self.scrollView.contentOffset.x + self.scrollView.frame.size.width,
-                                                       self.scrollView.contentOffset.y)
-                                  animated:YES];
+        [self.scrollView setContentOffset:CGPointMake(self.scrollView.contentOffset.x - fmod(self.scrollView.contentOffset.x, self.scrollView.frame.size.width) + self.scrollView.frame.size.width, self.scrollView.contentOffset.y) animated:YES];
     }
 }
 
