@@ -154,7 +154,7 @@ typedef enum {
             [self.titleLabel setHidden:YES];
             self.placeImageHeight.constant = [UIScreen mainScreen].bounds.size.height * 0.7;
             [self.placeImage setShowActivityIndicator:YES];
-            self.placeImage.imageURL = [NSURL URLWithString:_place.thumbnail];
+            self.placeImage.imageURL = _place.picture && ![_place.picture isEqualToString:@""] ? [NSURL URLWithString:_place.picture] : [NSURL URLWithString:_place.thumbnail];
             self.eventDayHeight.constant = 26;
             self.eventDayView.dateLabel.text = [_place.title uppercaseString];
             [self.eventDayView.dayOrderLabel setHidden:YES];

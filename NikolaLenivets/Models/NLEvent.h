@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) NSString *startdate;
 @property (strong, nonatomic) NSString *thumbnail;
+@property (strong, nonatomic) NSString *picture;
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSArray *categories;
 @property (strong, nonatomic) NSString *summary;

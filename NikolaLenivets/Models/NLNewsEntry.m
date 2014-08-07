@@ -29,6 +29,7 @@
     [coder encodeObject:_pubdate forKey:@"pubdate"];
     [coder encodeObject:_images forKey:@"images"];
     [coder encodeObject:_thumbnail forKey:@"thumbnail"];
+    [coder encodeObject:_picture forKey:@"picture"];
     [coder encodeInteger:_itemStatus forKey:@"itemstatus"];
 }
 
@@ -42,6 +43,7 @@
         _pubdate = [coder decodeObjectOfClass:[NSString class] forKey:@"pubdate"];
         _images = [coder decodeObjectOfClass:[NSArray class] forKey:@"images"];
         _thumbnail = [coder decodeObjectOfClass:[NSString class] forKey:@"thumbnail"];
+        _picture = [coder decodeObjectOfClass:[NSString class] forKey:@"picture"];
         _itemStatus = [coder decodeIntegerForKey:@"itemstatus"];
     }
     return self;

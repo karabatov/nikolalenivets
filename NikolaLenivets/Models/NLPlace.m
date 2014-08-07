@@ -58,6 +58,7 @@
     [coder encodeObject:_content forKey:@"content"];
     [coder encodeObject:_categories forKey:@"categories"];
     [coder encodeObject:_thumbnail forKey:@"thumbnail"];
+    [coder encodeObject:_picture forKey:@"picture"];
     [coder encodeObject:_geo forKey:@"geo"];
     [coder encodeObject:_foursquare forKey:@"foursquare"];
     [coder encodeObject:_instagram forKey:@"instagram"];
@@ -74,6 +75,7 @@
         _content = [coder decodeObjectOfClass:[NSString class] forKey:@"content"];
         _categories = [coder decodeObjectOfClass:[NSArray class] forKey:@"categories"];
         _thumbnail = [coder decodeObjectOfClass:[NSString class] forKey:@"thumbnail"];
+        _picture = [coder decodeObjectOfClass:[NSString class] forKey:@"picture"];
         _geo = [coder decodeObjectOfClass:[NSString class] forKey:@"geo"];
         _foursquare = [coder decodeObjectOfClass:[NSString class] forKey:@"foursquare"];
         _instagram = [coder decodeObjectOfClass:[NSString class] forKey:@"instagram"];

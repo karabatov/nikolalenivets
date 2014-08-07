@@ -27,6 +27,7 @@
     [super encodeWithCoder:coder];
     [coder encodeObject:_startdate forKey:@"startdate"];
     [coder encodeObject:_thumbnail forKey:@"thumbnail"];
+    [coder encodeObject:_picture forKey:@"picture"];
     [coder encodeObject:_title forKey:@"title"];
     [coder encodeObject:_categories forKey:@"categories"];
     [coder encodeObject:_summary forKey:@"summary"];
@@ -47,6 +48,7 @@
     if (self) {
         _startdate = [coder decodeObjectOfClass:[NSString class] forKey:@"startdate"];
         _thumbnail = [coder decodeObjectOfClass:[NSString class] forKey:@"thumbnail"];
+        _picture = [coder decodeObjectOfClass:[NSString class] forKey:@"picture"];
         _title = [coder decodeObjectOfClass:[NSString class] forKey:@"title"];
         _categories = [coder decodeObjectOfClass:[NSArray class] forKey:@"categories"];
         _summary = [coder decodeObjectOfClass:[NSString class] forKey:@"summary"];

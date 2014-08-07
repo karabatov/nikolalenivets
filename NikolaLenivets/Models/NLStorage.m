@@ -40,17 +40,17 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
-    // Check if there are categories in the model. If no, redownload without crashing.
+    // Check if there are big pictures in the model. If no, redownload without crashing.
     // TODO: Remove check in next release.
-    BOOL hasCategories = NO;
+    BOOL hasBigPictures = NO;
     if ([_places firstObject]) {
-        id catTest = [((NLPlace *)[_places firstObject]).categories firstObject];
-        if ([catTest isKindOfClass:[NLCategory class]]) {
-            hasCategories = YES;
+        NLPlace *testPlace = (NLPlace *)[_places firstObject];
+        if (testPlace.picture && ![testPlace.picture isEqualToString:@""]) {
+            hasBigPictures = YES;
         }
     }
     // If there's lastDownloadDate, get `/timestamp/`. Otherwise, get `/`.
-    if (!_lastDownloadDate || !hasCategories) {
+    if (!_lastDownloadDate || !hasBigPictures) {
         [manager GET:BACKEND_URL
           parameters:nil
              success:^(AFHTTPRequestOperation *op, id response) {
