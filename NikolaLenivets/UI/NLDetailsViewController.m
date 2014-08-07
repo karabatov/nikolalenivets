@@ -352,7 +352,22 @@ typedef enum {
 - (IBAction)showGallery:(id)sender
 {
     NSLog(@"Show gallery");
-    _galleryVC = [[NLGalleryViewController alloc] initWithGallery:_gallery andTitle:self.titleLabel.text];
+    NSString *title = @"";
+    switch ([self mode]) {
+        case ShowingPlace:
+            title = _place.title;
+            break;
+        case ShowingEvent:
+            title = _event.title;
+            break;
+        case ShowingNewsEntry:
+            title = _entry.title;
+            break;
+
+        default:
+            break;
+    }
+    _galleryVC = [[NLGalleryViewController alloc] initWithGallery:_gallery andTitle:title];
     [self.navigationController pushViewController:_galleryVC animated:YES];
 }
 
