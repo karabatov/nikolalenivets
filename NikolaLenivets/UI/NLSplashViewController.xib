@@ -42,10 +42,6 @@
                         <constraint firstAttribute="width" constant="44" id="wSe-JN-BhP"/>
                     </constraints>
                 </imageView>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="hXF-KM-8jc">
-                    <rect key="frame" x="142" y="265" width="37" height="37"/>
-                    <autoresizingMask key="autoresizingMask"/>
-                </activityIndicatorView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dAp-ni-k27" userLabel="Black Strip">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="4"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -79,10 +75,8 @@
                 <constraint firstItem="lbT-xj-00o" firstAttribute="top" secondItem="dAp-ni-k27" secondAttribute="bottom" constant="8" id="EuX-fI-AgB"/>
                 <constraint firstItem="JbP-Z1-dKk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="NAO-0b-GIP"/>
                 <constraint firstAttribute="centerX" secondItem="MnS-VS-2P0" secondAttribute="centerX" id="O0G-Nm-wqS"/>
-                <constraint firstAttribute="centerY" secondItem="hXF-KM-8jc" secondAttribute="centerY" constant="0.5" id="S9p-SY-isn"/>
                 <constraint firstItem="dAp-ni-k27" firstAttribute="trailing" secondItem="yIV-QF-0KJ" secondAttribute="leading" id="apj-xO-bKI"/>
                 <constraint firstAttribute="trailing" secondItem="JbP-Z1-dKk" secondAttribute="trailing" id="fET-hw-YLr"/>
-                <constraint firstAttribute="centerX" secondItem="hXF-KM-8jc" secondAttribute="centerX" constant="-0.5" id="onE-tY-e8o"/>
                 <constraint firstItem="dAp-ni-k27" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="qnA-J6-InK"/>
                 <constraint firstItem="dAp-ni-k27" firstAttribute="leading" secondItem="lbT-xj-00o" secondAttribute="trailing" id="uMH-yi-uQa"/>
                 <constraint firstItem="gRJ-IX-Ax6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="yXh-74-ZZH"/>
