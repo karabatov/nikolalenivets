@@ -119,6 +119,7 @@
 		D1A3D7D7197641D900C53E06 /* NSString+Distance.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A3D7D6197641D900C53E06 /* NSString+Distance.m */; };
 		D1B7ADD0196BCBCE0057C1E2 /* MonoCondensedC.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1B7ADCF196BCBCE0057C1E2 /* MonoCondensedC.otf */; };
 		D1B7ADD5196BCF9A0057C1E2 /* MonoCondensedCBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1B7ADD4196BCF9A0057C1E2 /* MonoCondensedCBold.otf */; };
+		D1C57547199B6D4A00FFB310 /* photo-count@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1C57546199B6D4A00FFB310 /* photo-count@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -288,6 +289,7 @@
 		D1A3D7D6197641D900C53E06 /* NSString+Distance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Distance.m"; path = "UI/NSString+Distance.m"; sourceTree = "<group>"; };
 		D1B7ADCF196BCBCE0057C1E2 /* MonoCondensedC.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MonoCondensedC.otf; sourceTree = "<group>"; };
 		D1B7ADD4196BCF9A0057C1E2 /* MonoCondensedCBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MonoCondensedCBold.otf; sourceTree = "<group>"; };
+		D1C57546199B6D4A00FFB310 /* photo-count@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo-count@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -382,6 +384,7 @@
 			children = (
 				4F0D75AC193DE20400E78AA5 /* back_white@2x.png */,
 				4F0D759D193D9C6400E78AA5 /* white_menu@2x.png */,
+				D1C57546199B6D4A00FFB310 /* photo-count@2x.png */,
 				4F22FD751936E8B30075C1A0 /* NLGalleryViewController.h */,
 				4F22FD761936E8B30075C1A0 /* NLGalleryViewController.m */,
 				4F22FD771936E8B30075C1A0 /* NLGalleryViewController.xib */,
@@ -768,6 +771,7 @@
 				D1783F411982CEF600A92AA3 /* Default-568h@2x.png in Resources */,
 				D1783F431982CEF600A92AA3 /* splash-top@2x.png in Resources */,
 				D1783F421982CEF600A92AA3 /* Default@2x.png in Resources */,
+				D1C57547199B6D4A00FFB310 /* photo-count@2x.png in Resources */,
 				4FD010F5192CC326002F5836 /* search_icon.png in Resources */,
 				4F0D75B1193DEADF00E78AA5 /* circle@2x.png in Resources */,
 				4F0D759E193D9C6400E78AA5 /* white_menu@2x.png in Resources */,

@@ -36,6 +36,9 @@
     self.backTitleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:10];
     self.nameLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:10];
     self.descriptionLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:10];
+    self.currentPageLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
+    self.otherPageLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
+    self.totalPagesLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
 
     UIColor *borderColor = [UIColor colorWithRed:225.0f/255.0f green:230.0f/255.0f blue:169.0f/255.0f alpha:1.0f];
     [self.nameView.layer setBorderColor:[borderColor CGColor]];
@@ -52,6 +55,7 @@
     [super viewWillAppear:animated];
     [self updateInfoForPhotoAtIndex:0];
     self.galleryView.hidden = NO;
+    self.totalPagesLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)[_gallery.images count]];
 }
 
 - (void)updateInfoForPhotoAtIndex:(NSInteger)index
@@ -62,6 +66,8 @@
 
     self.descriptionLabel.text = [image.content uppercaseString];
     self.nameLabel.text = [image.title uppercaseString];
+
+    self.currentPageLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)(index + 1)];
 }
 
 
