@@ -105,6 +105,8 @@ typedef enum {
     NSString *date = nil;
     NSInteger indexNumber = 0;
 
+    UIColor *borderGray = [UIColor colorWithRed:246.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1.0f];
+
     switch ([self mode]) {
         case ShowingNewsEntry: {
             title = _entry.title;
@@ -117,6 +119,8 @@ typedef enum {
             for (UIView *view in [self.eventDayView subviews]) {
                 [view removeFromSuperview];
             }
+            [self.eventDayView setBackgroundColor:borderGray];
+            self.eventDayHeight.constant = 1;
             break;
         }
         case ShowingEvent: {
@@ -134,7 +138,6 @@ typedef enum {
             self.eventDayHeight.constant = 26;
             self.eventDayView.dateLabel.text = [[[_event startDate] stringWithFormat:DefaultDateFormat] uppercaseString];
             self.eventDayView.dayOrderLabel.text = [[NSString stringWithFormat:@"%@ %@", @"день", [NSString ordinalRepresentationWithNumber:_eventGroupOrder]] uppercaseString];
-            UIColor *borderGray = [UIColor colorWithRed:246.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1.0f];
             [self.eventDayView.layer setBorderColor:borderGray.CGColor];
             [self.eventDayView.layer setBorderWidth:0.5f];
             indexNumber = -1;
