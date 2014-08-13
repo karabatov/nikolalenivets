@@ -74,7 +74,7 @@
 - (void)headingUpdated:(NSNotification *)notification
 {
     [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.3f initialSpringVelocity:1.0f options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-        [self.compass layer].transform = [[NLLocationManager sharedInstance] compassTransform3D];
+        self.compass.transform = [[NLLocationManager sharedInstance] compassTransform];
     } completion:NULL];
 }
 
