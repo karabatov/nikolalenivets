@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -85,11 +85,11 @@
                         <outlet property="delegate" destination="-1" id="PQk-wy-ymF"/>
                     </connections>
                 </tableView>
-                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="left_shadow.png" translatesAutoresizingMaskIntoConstraints="NO" id="ohb-ea-z3Z" userLabel="Left Shadow">
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="red_left_shadow.png" translatesAutoresizingMaskIntoConstraints="NO" id="ohb-ea-z3Z" userLabel="Left Shadow">
                     <rect key="frame" x="0.0" y="64" width="160" height="504"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_shadow.png" translatesAutoresizingMaskIntoConstraints="NO" id="8Sm-qU-54I" userLabel="Right Shadow">
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="red_right_shadow.png" translatesAutoresizingMaskIntoConstraints="NO" id="8Sm-qU-54I" userLabel="Right Shadow">
                     <rect key="frame" x="160" y="64" width="160" height="504"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
@@ -123,8 +123,8 @@
         </view>
     </objects>
     <resources>
-        <image name="left_shadow.png" width="174" height="1008"/>
         <image name="menu_button.png" width="38" height="12"/>
-        <image name="right_shadow.png" width="174" height="1008"/>
+        <image name="red_left_shadow.png" width="174" height="1008"/>
+        <image name="red_right_shadow.png" width="174" height="1008"/>
     </resources>
 </document>
