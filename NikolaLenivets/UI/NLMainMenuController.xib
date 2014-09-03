@@ -27,38 +27,8 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N8P-IG-e4X">
-                            <rect key="frame" x="20" y="78" width="113" height="4"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                        </view>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="upQ-ac-gty">
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="upQ-ac-gty" userLabel="Top bar">
                             <rect key="frame" x="137" y="0.0" width="48" height="4"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                        </view>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XrB-6D-v33">
-                            <rect key="frame" x="20" y="220" width="113" height="4"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                        </view>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lFX-Y1-7xe">
-                            <rect key="frame" x="187" y="220" width="113" height="4"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                        </view>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Age-Ta-kfa">
-                            <rect key="frame" x="20" y="367" width="113" height="4"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                        </view>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="95u-z8-0VU">
-                            <rect key="frame" x="187" y="367" width="113" height="4"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                        </view>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GxT-e5-3yF">
-                            <rect key="frame" x="187" y="78" width="113" height="4"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         </view>
@@ -66,84 +36,6 @@
                             <rect key="frame" x="136" y="498" width="48" height="48"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                         </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y1y-8t-No6">
-                            <rect key="frame" x="20" y="78" width="113" height="94"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <inset key="contentEdgeInsets" minX="0.0" minY="-20" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" title="НОВОСТИ">
-                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="unfoldItem:" destination="-1" eventType="touchUpInside" id="Acm-ta-RVw"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TVT-MF-j5Y">
-                            <rect key="frame" x="187" y="78" width="113" height="96"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <inset key="contentEdgeInsets" minX="0.0" minY="-20" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" title="СОБЫТИЯ">
-                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="unfoldItem:" destination="-1" eventType="touchUpInside" id="XPn-qG-adR"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V9J-KU-Gef">
-                            <rect key="frame" x="20" y="220" width="113" height="93"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <inset key="contentEdgeInsets" minX="0.0" minY="-20" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" title="КАРТА">
-                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="unfoldItem:" destination="-1" eventType="touchUpInside" id="Qbm-ZX-hTu"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lYA-Dh-4SQ">
-                            <rect key="frame" x="187" y="220" width="113" height="93"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <inset key="contentEdgeInsets" minX="0.0" minY="-20" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" title="МЕСТА">
-                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="unfoldItem:" destination="-1" eventType="touchUpInside" id="vSp-9y-J6E"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ypS-Jz-Ziy">
-                            <rect key="frame" x="20" y="367" width="113" height="93"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <inset key="contentEdgeInsets" minX="0.0" minY="-20" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" title="КАК ДОБРАТЬСЯ">
-                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="unfoldItem:" destination="-1" eventType="touchUpInside" id="wWr-XO-4D7"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cr8-ht-eg6">
-                            <rect key="frame" x="189" y="367" width="111" height="93"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <inset key="contentEdgeInsets" minX="0.0" minY="-20" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" title="О ПАРКЕ">
-                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="unfoldItem:" destination="-1" eventType="touchUpInside" id="kRP-s2-tg8"/>
-                            </connections>
-                        </button>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HyR-n2-fdy">
                             <rect key="frame" x="153" y="515" width="14" height="14"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>

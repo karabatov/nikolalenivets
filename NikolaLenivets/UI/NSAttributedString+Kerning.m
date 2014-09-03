@@ -17,21 +17,28 @@
 
 + (NSAttributedString *)kernedStringForString:(NSString *)string withFontSize:(CGFloat)fontSize andColor:(UIColor *)color
 {
+    return [NSAttributedString kernedStringForString:string withFontSize:fontSize kerning:2.0 andColor:color];
+}
+
++ (NSAttributedString *)kernedStringForString:(NSString *)string withFontSize:(CGFloat)fontSize kerning:(CGFloat)kerning andColor:(UIColor *)color
+{
     NSMutableAttributedString *attributedString;
 
     attributedString = [[NSMutableAttributedString alloc] initWithString:string];
 
-    [attributedString addAttribute:NSKernAttributeName
-                             value:[NSNumber numberWithFloat:2.0]
-                             range:NSMakeRange(0, [string length])];
+    if ([attributedString length] > 1) {
+        [attributedString addAttribute:NSKernAttributeName
+                                 value:[NSNumber numberWithFloat:kerning]
+                                 range:NSMakeRange(0, [attributedString length])];
 
-    [attributedString addAttribute:NSFontAttributeName
-                             value:[UIFont fontWithName:NLMonospacedBoldFont size:fontSize]
-                             range:NSMakeRange(0, [string length])];
+        [attributedString addAttribute:NSFontAttributeName
+                                 value:[UIFont fontWithName:NLMonospacedBoldFont size:fontSize]
+                                 range:NSMakeRange(0, [attributedString length])];
 
-    [attributedString addAttribute:NSForegroundColorAttributeName
-                             value:color
-                             range:NSMakeRange(0, [string length])];
+        [attributedString addAttribute:NSForegroundColorAttributeName
+                                 value:color
+                                 range:NSMakeRange(0, [attributedString length])];
+    }
 
     return [[NSAttributedString alloc] initWithAttributedString:attributedString];
 }

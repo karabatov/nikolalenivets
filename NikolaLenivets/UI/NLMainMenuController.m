@@ -16,6 +16,7 @@
 #import "NSAttributedString+Kerning.h"
 #import "NLFoldAnimation.h"
 #import "NLSplashViewController.h"
+#import "NLMenuButton.h"
 
 #define FOLD_DURATION 0.7
 
@@ -36,10 +37,16 @@ enum {
     NLPlacesViewController *_placesController;
     NLStaticScreenViewController *_driveScreen;
     NLMapViewController *_mapController;
+    NLMenuButton *_newsButton;
+    NLMenuButton *_eventsButton;
+    NLMenuButton *_mapButton;
+    NLMenuButton *_placesButton;
+    NLMenuButton *_directionsButton;
+    NLMenuButton *_aboutButton;
 }
 
 
-- (id)init
+- (instancetype)init
 {
     self = [super initWithNibName:@"NLMainMenuController" bundle:nil];
     if (self) {
@@ -60,20 +67,49 @@ enum {
 {
     [super viewDidLoad];
 
+    _newsButton = [[NLMenuButton alloc] init];
+    _eventsButton = [[NLMenuButton alloc] init];
+    _mapButton = [[NLMenuButton alloc] init];
+    _placesButton = [[NLMenuButton alloc] init];
+    _directionsButton = [[NLMenuButton alloc] init];
+    _aboutButton = [[NLMenuButton alloc] init];
+
+    [self.menuView addSubview:_newsButton];
+    [self.menuView addSubview:_eventsButton];
+    [self.menuView addSubview:_mapButton];
+    [self.menuView addSubview:_placesButton];
+    [self.menuView addSubview:_directionsButton];
+    [self.menuView addSubview:_aboutButton];
+
+    _newsButton.tag = News;
+    _eventsButton.tag = Events;
+    _mapButton.tag = Map;
+    _placesButton.tag = Places;
+    _directionsButton.tag = Way;
+    _aboutButton.tag = About;
+
+    _newsButton.title = @"НОВОСТИ";
+    _eventsButton.title = @"СОБЫТИЯ";
+    _mapButton.title = @"КАРТА";
+    _placesButton.title = @"МЕСТА";
+    _directionsButton.title = @"ДОБРАТЬСЯ";
+    _aboutButton.title = @"О ПАРКЕ";
+
     // Need to set fonts *before* the view is displayed
     self.nikolaLabel.attributedText = [NSAttributedString kernedStringForString:@"НИКОЛА"];
     self.lenivetsLabel.attributedText = [NSAttributedString kernedStringForString:@"ЛЕНИВЕЦ"];
-    self.newsCounter.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
-    self.mapCounter.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
-    self.eventsCounter.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
-    self.placesCounter.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
+    self.newsCounter.font = [UIFont fontWithName:NLMonospacedBoldFont size:12];
+    self.mapCounter.font = [UIFont fontWithName:NLMonospacedBoldFont size:12];
+    self.eventsCounter.font = [UIFont fontWithName:NLMonospacedBoldFont size:12];
+    self.placesCounter.font = [UIFont fontWithName:NLMonospacedBoldFont size:12];
 
-    for (UIView *v in self.menuView.subviews) {
-        if ([v isKindOfClass:[UIButton class]]) {
-            UIButton *btn = (UIButton *)v;
-            btn.titleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:16];
-        }
-    }
+    NSDictionary *views = @{ @"news": _newsButton, @"events": _eventsButton, @"map": _mapButton, @"places": _placesButton, @"way": _directionsButton, @"about": _aboutButton };
+    NSDictionary *metrics = @{ @"btnTop": @81, @"btnH": @121, @"btnV": @135, @"btnMargin": @17 };
+    [self.menuView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-btnMargin-[news(btnH)]-(>=btnMargin)-[events(btnH)]-btnMargin-|" options:kNilOptions metrics:metrics views:views]];
+    [self.menuView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-btnMargin-[map(btnH)]-(>=btnMargin)-[places(btnH)]-btnMargin-|" options:kNilOptions metrics:metrics views:views]];
+    [self.menuView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-btnMargin-[way(btnH)]-(>=btnMargin)-[about(btnH)]-btnMargin-|" options:kNilOptions metrics:metrics views:views]];
+    [self.menuView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-btnTop-[news(btnV)][map(btnV)][way(btnV)]-(>=btnMargin)-|" options:kNilOptions metrics:metrics views:views]];
+    [self.menuView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-btnTop-[events(btnV)][places(btnV)][about(btnV)]-(>=btnMargin)-|" options:kNilOptions metrics:metrics views:views]];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -107,7 +143,7 @@ enum {
         }
         case Way: {
             _driveScreen = [[NLStaticScreenViewController alloc] initWithScreenNamed:@"drive"];
-            self.title = @"КАК ДОБРАТЬСЯ";
+            self.title = @"ДОБРАТЬСЯ";
             [self.navigationController pushViewController:_driveScreen animated:YES];
             break;
         }
