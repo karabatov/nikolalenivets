@@ -49,6 +49,8 @@
     [self.rightTable setEstimatedRowHeight:315.0f];
     _offsetQueueRight = [[NSMutableArray alloc] init];
     _offsetQueueLeft = [[NSMutableArray alloc] init];
+    [self.leftShadowView setBackgroundColor:[UIColor colorWithWhite:0.25f alpha:0.15f]];
+    [self.rightShadowView setBackgroundColor:[UIColor colorWithWhite:0.25f alpha:0.15f]];
 }
 
 

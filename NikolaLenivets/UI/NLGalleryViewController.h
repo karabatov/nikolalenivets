@@ -17,6 +17,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UIView *nameView;
 @property (weak, nonatomic) IBOutlet UILabel *backTitleLabel;
+@property (weak, nonatomic) IBOutlet UIView *pagerView;
+@property (weak, nonatomic) IBOutlet UILabel *currentPageLabel;
+@property (weak, nonatomic) IBOutlet UILabel *otherPageLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalPagesLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *currentPageLabelOffset;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *otherPageLabelOffset;
 
 - (id)initWithGallery:(NLGallery *)gallery andTitle:(NSString *)title;
 

@@ -37,13 +37,30 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [self performSelector:@selector(dismissSplash) withObject:nil afterDelay:4];
-    self.blackStripWidth.constant = 64;
-    [UIView animateWithDuration:1.0f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
-        [self.view layoutIfNeeded];
+    [UIView animateWithDuration:1.0f animations:^{
         self.compass.alpha = 1.0f;
+    }];
+
+    srand48(time(0));
+    CGFloat anim1 = drand48() * 2;
+    CGFloat anim2 = drand48() * 5;
+    CGFloat anim3 = drand48() * 2;
+
+    self.blackStripWidth.constant = 160;
+    [UIView animateWithDuration:anim1 delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
+        [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
-        //
+        self.blackStripWidth.constant = 128;
+        [UIView animateWithDuration:anim2 delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
+            [self.view layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            self.blackStripWidth.constant = 64;
+            [UIView animateWithDuration:anim3 delay:0.0f options:UIViewAnimationOptionCurveEaseIn animations:^{
+                [self.view layoutIfNeeded];
+            } completion:^(BOOL finished) {
+                [self performSelector:@selector(dismissSplash) withObject:nil afterDelay:3];
+            }];
+        }];
     }];
 }
 
@@ -57,7 +74,7 @@
 - (void)headingUpdated:(NSNotification *)notification
 {
     [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.3f initialSpringVelocity:1.0f options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-        [self.compass layer].transform = [[NLLocationManager sharedInstance] compassTransform3D];
+        self.compass.transform = [[NLLocationManager sharedInstance] compassTransform];
     } completion:NULL];
 }
 

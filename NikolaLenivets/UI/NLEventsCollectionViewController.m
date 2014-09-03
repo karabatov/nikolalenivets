@@ -40,6 +40,7 @@ static NSString *const reuseSectionId = @"collectionsection";
     self = [super initWithNibName:@"NLEventsCollectionViewController" bundle:nil];
     if (self) {
         _group = group;
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(prepareState) name:STORAGE_DID_UPDATE object:nil];
     }
     return self;
 }

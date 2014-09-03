@@ -167,7 +167,7 @@ enum {
         switch (operation) {
             case UINavigationControllerOperationPush:
                 animationController.reverse = YES;
-                return  animationController;
+                return animationController;
             case UINavigationControllerOperationPop:
                 animationController.reverse = NO;
                 return animationController;

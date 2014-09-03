@@ -18,6 +18,7 @@
 #import "NSString+Ordinal.h"
 #import "UIViewController+BackViewController.h"
 #import "NSDate+CompareDays.h"
+#import "NLGalleryTransition.h"
 
 typedef enum {
     ShowingNewsEntry,
@@ -36,6 +37,7 @@ typedef enum {
     NLMapViewController *_mapVC;
     NSArray *_textParts;
     NSInteger _eventGroupOrder;
+    NLGalleryTransition *_galleryTransition;
 }
 
 
@@ -103,6 +105,8 @@ typedef enum {
     NSString *date = nil;
     NSInteger indexNumber = 0;
 
+    UIColor *borderGray = [UIColor colorWithRed:246.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1.0f];
+
     switch ([self mode]) {
         case ShowingNewsEntry: {
             title = _entry.title;
@@ -115,6 +119,8 @@ typedef enum {
             for (UIView *view in [self.eventDayView subviews]) {
                 [view removeFromSuperview];
             }
+            [self.eventDayView setBackgroundColor:borderGray];
+            self.eventDayHeight.constant = 1;
             break;
         }
         case ShowingEvent: {
@@ -132,14 +138,13 @@ typedef enum {
             self.eventDayHeight.constant = 26;
             self.eventDayView.dateLabel.text = [[[_event startDate] stringWithFormat:DefaultDateFormat] uppercaseString];
             self.eventDayView.dayOrderLabel.text = [[NSString stringWithFormat:@"%@ %@", @"день", [NSString ordinalRepresentationWithNumber:_eventGroupOrder]] uppercaseString];
-            UIColor *borderGray = [UIColor colorWithRed:246.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1.0f];
             [self.eventDayView.layer setBorderColor:borderGray.CGColor];
             [self.eventDayView.layer setBorderWidth:0.5f];
             indexNumber = -1;
             break;
         }
         case ShowingPlace: {
-            title = @"";
+            title = _place.title;
             content = _place.content;
             if (_currentLocation) {
                 CLLocationDistance distance = [_place distanceFromLocation:_currentLocation];
@@ -170,6 +175,16 @@ typedef enum {
     self.titleLabel.text = title;
     _gallery = [self galleryFromString:content];
     _textParts = [self textParts:content];
+
+    if (_gallery) {
+        _galleryVC = [[NLGalleryViewController alloc] initWithGallery:_gallery andTitle:title];
+        _galleryTransition = [[NLGalleryTransition alloc] initWithParentViewController:self andGalleryController:_galleryVC];
+        // UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:_galleryTransition action:@selector(userDidPan:)];
+        // [self.galleryCover addGestureRecognizer:panGesture];
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:_galleryTransition action:@selector(presentGallery)];
+        [self.galleryCover addGestureRecognizer:tapGesture];
+        [self.galleryCover setUserInteractionEnabled:YES];
+    }
 
     if (indexNumber > -1) {
         self.countView.text = [NSString stringWithFormat:@"%02ld", (long)indexNumber + 1];
@@ -289,7 +304,8 @@ typedef enum {
     if (_textParts.count > 1) {
         self.galleryCover.hidden = NO;
         self.secondPartLabel.hidden = NO;
-        self.showGalleryButton.hidden = NO;
+        // self.showGalleryButton.hidden = NO;
+        self.showGalleryButton.hidden = YES;
 
         self.galleryHeight.constant = 240;
         self.galleryCover.imageURL = [NSURL URLWithString:[_gallery cover].image];
@@ -301,6 +317,7 @@ typedef enum {
         self.secondTextHeight.constant = 0;
         self.galleryHeight.constant = 0;
     }
+    [self.contentView setNeedsLayout];
 }
 
 - (NLGallery *)galleryFromString:(NSString *)htmlString
@@ -352,7 +369,22 @@ typedef enum {
 - (IBAction)showGallery:(id)sender
 {
     NSLog(@"Show gallery");
-    _galleryVC = [[NLGalleryViewController alloc] initWithGallery:_gallery andTitle:self.titleLabel.text];
+    NSString *title = @"";
+    switch ([self mode]) {
+        case ShowingPlace:
+            title = _place.title;
+            break;
+        case ShowingEvent:
+            title = _event.title;
+            break;
+        case ShowingNewsEntry:
+            title = _entry.title;
+            break;
+
+        default:
+            break;
+    }
+    _galleryVC = [[NLGalleryViewController alloc] initWithGallery:_gallery andTitle:title];
     [self.navigationController pushViewController:_galleryVC animated:YES];
 }
 
