@@ -95,21 +95,49 @@ enum {
     _directionsButton.title = @"ДОБРАТЬСЯ";
     _aboutButton.title = @"О ПАРКЕ";
 
+    self.newsCounter = [[UILabel alloc] init];
+    self.eventsCounter = [[UILabel alloc] init];
+    self.mapCounter = [[UILabel alloc] init];
+    self.placesCounter = [[UILabel alloc] init];
+    [self.newsCounter setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.mapCounter setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.eventsCounter setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.placesCounter setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.menuView addSubview:self.newsCounter];
+    [self.menuView addSubview:self.eventsCounter];
+    [self.menuView addSubview:self.mapCounter];
+    [self.menuView addSubview:self.placesCounter];
+
     // Need to set fonts *before* the view is displayed
     self.nikolaLabel.attributedText = [NSAttributedString kernedStringForString:@"НИКОЛА"];
     self.lenivetsLabel.attributedText = [NSAttributedString kernedStringForString:@"ЛЕНИВЕЦ"];
-    self.newsCounter.font = [UIFont fontWithName:NLMonospacedBoldFont size:12];
-    self.mapCounter.font = [UIFont fontWithName:NLMonospacedBoldFont size:12];
-    self.eventsCounter.font = [UIFont fontWithName:NLMonospacedBoldFont size:12];
-    self.placesCounter.font = [UIFont fontWithName:NLMonospacedBoldFont size:12];
+    self.newsCounter.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
+    self.mapCounter.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
+    self.eventsCounter.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
+    [self.eventsCounter setTextAlignment:NSTextAlignmentRight];
+    self.placesCounter.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
+    [self.placesCounter setTextAlignment:NSTextAlignmentRight];
 
-    NSDictionary *views = @{ @"news": _newsButton, @"events": _eventsButton, @"map": _mapButton, @"places": _placesButton, @"way": _directionsButton, @"about": _aboutButton };
-    NSDictionary *metrics = @{ @"btnTop": @81, @"btnH": @121, @"btnV": @135, @"btnMargin": @17 };
-    [self.menuView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-btnMargin-[news(btnH)]-(>=btnMargin)-[events(btnH)]-btnMargin-|" options:kNilOptions metrics:metrics views:views]];
-    [self.menuView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-btnMargin-[map(btnH)]-(>=btnMargin)-[places(btnH)]-btnMargin-|" options:kNilOptions metrics:metrics views:views]];
-    [self.menuView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-btnMargin-[way(btnH)]-(>=btnMargin)-[about(btnH)]-btnMargin-|" options:kNilOptions metrics:metrics views:views]];
-    [self.menuView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-btnTop-[news(btnV)][map(btnV)][way(btnV)]-(>=btnMargin)-|" options:kNilOptions metrics:metrics views:views]];
-    [self.menuView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-btnTop-[events(btnV)][places(btnV)][about(btnV)]-(>=btnMargin)-|" options:kNilOptions metrics:metrics views:views]];
+    NSDictionary *views = @{ @"news": _newsButton,
+                             @"events": _eventsButton,
+                             @"map": _mapButton,
+                             @"places": _placesButton,
+                             @"way": _directionsButton,
+                             @"about": _aboutButton,
+                             @"cntNews": self.newsCounter,
+                             @"cntEvents": self.eventsCounter,
+                             @"cntMap": self.mapCounter,
+                             @"cntPlaces": self.placesCounter };
+    NSDictionary *metrics = @{ @"btnTop": @81, @"btnH": @122, @"btnV": @135, @"btnV2": @136, @"btnMargin": @17 };
+    [self.menuView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-btnMargin-[news(btnH)][cntNews]-(>=0)-[cntEvents][events(btnH)]-btnMargin-|" options:kNilOptions metrics:metrics views:views]];
+    [self.menuView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-btnMargin-[map(btnH)][cntMap]-(>=0)-[cntPlaces][places(btnH)]-btnMargin-|" options:kNilOptions metrics:metrics views:views]];
+    [self.menuView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-btnMargin-[way(btnH)]-(>=0)-[about(btnH)]-btnMargin-|" options:kNilOptions metrics:metrics views:views]];
+    [self.menuView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-btnTop-[news(btnV)][map(btnV2)][way(btnV)]-(>=btnMargin)-|" options:kNilOptions metrics:metrics views:views]];
+    [self.menuView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-btnTop-[events(btnV)][places(btnV2)][about(btnV)]-(>=btnMargin)-|" options:kNilOptions metrics:metrics views:views]];
+    [self.menuView addConstraint:[NSLayoutConstraint constraintWithItem:self.newsCounter attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_newsButton attribute:NSLayoutAttributeTop multiplier:1.f constant:8.f]];
+    [self.menuView addConstraint:[NSLayoutConstraint constraintWithItem:self.mapCounter attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_mapButton attribute:NSLayoutAttributeTop multiplier:1.f constant:8.f]];
+    [self.menuView addConstraint:[NSLayoutConstraint constraintWithItem:self.eventsCounter attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_eventsButton attribute:NSLayoutAttributeTop multiplier:1.f constant:8.f]];
+    [self.menuView addConstraint:[NSLayoutConstraint constraintWithItem:self.placesCounter attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_placesButton attribute:NSLayoutAttributeTop multiplier:1.f constant:8.f]];
 }
 
 - (void)viewWillAppear:(BOOL)animated

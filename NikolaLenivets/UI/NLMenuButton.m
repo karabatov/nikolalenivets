@@ -67,9 +67,9 @@
     [self addSubview:self.buttonTitle];
 
     NSDictionary *views = @{ @"bar": self.topBar, @"title": self.buttonTitle };
-    NSDictionary *metrics = @{ @"barHeight": @4, @"titleTop": @15, @"margin": @1 };
+    NSDictionary *metrics = @{ @"barHeight": @4, @"titleTop": @16, @"margin": @1 };
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[bar]|" options:kNilOptions metrics:metrics views:views]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[title]-(>=margin)-|" options:kNilOptions metrics:metrics views:views]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(-1)-[title]-(>=margin)-|" options:kNilOptions metrics:metrics views:views]];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[bar(barHeight)]-titleTop-[title]-(>=margin)-|" options:kNilOptions metrics:metrics views:views]];
 
      // TODO: Static UIImage on self.colorSplash.
@@ -78,7 +78,7 @@
 - (void)setTitle:(NSString *)title
 {
     _title = title;
-    self.buttonTitle.attributedText = [NSAttributedString kernedStringForString:_title withFontSize:18 kerning:2.f andColor:[UIColor colorWithRed:37.f/255.f green:37.f/255.f blue:37.f/255.f alpha:1.f]];
+    self.buttonTitle.attributedText = [NSAttributedString kernedStringForString:_title withFontSize:18 kerning:2.2f andColor:[UIColor colorWithRed:37.f/255.f green:37.f/255.f blue:37.f/255.f alpha:1.f]];
 }
 
 - (void)setHighlighted:(BOOL)highlighted

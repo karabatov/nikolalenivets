@@ -7,13 +7,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NLMainMenuController">
             <connections>
                 <outlet property="compass" destination="G45-3z-Ofi" id="Ci0-27-ILx"/>
-                <outlet property="eventsCounter" destination="NIh-Hu-AUg" id="LCQ-el-ScV"/>
                 <outlet property="lenivetsLabel" destination="jez-4c-SGx" id="Qph-VN-N4a"/>
-                <outlet property="mapCounter" destination="csF-5D-XU0" id="dWI-Lx-o40"/>
                 <outlet property="menuView" destination="0FX-H9-7Wt" id="9kY-vu-sbS"/>
-                <outlet property="newsCounter" destination="c9f-te-yCq" id="yD7-Mw-hhY"/>
                 <outlet property="nikolaLabel" destination="g6H-k6-VZn" id="v9e-kX-Bsj"/>
-                <outlet property="placesCounter" destination="ctx-fw-7yb" id="zsE-RS-qt7"/>
                 <outlet property="searchButton" destination="HyR-n2-fdy" id="lfc-Du-Q6E"/>
                 <outlet property="view" destination="1" id="aD5-Bm-eTq"/>
             </connections>
@@ -55,30 +51,6 @@
                             <autoresizingMask key="autoresizingMask"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9f-te-yCq" userLabel="news count">
-                            <rect key="frame" x="131" y="78" width="30" height="21"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NIh-Hu-AUg" userLabel="events count">
-                            <rect key="frame" x="156" y="78" width="30" height="21"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="csF-5D-XU0" userLabel="map count">
-                            <rect key="frame" x="132" y="220" width="30" height="21"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctx-fw-7yb" userLabel="places count">
-                            <rect key="frame" x="157" y="220" width="30" height="21"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="7"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>

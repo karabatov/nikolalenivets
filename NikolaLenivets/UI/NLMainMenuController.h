@@ -18,10 +18,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *lenivetsLabel;
 @property (weak, nonatomic) IBOutlet UIButton *searchButton;
 
-@property (weak, nonatomic) IBOutlet UILabel *newsCounter;
-@property (weak, nonatomic) IBOutlet UILabel *eventsCounter;
-@property (weak, nonatomic) IBOutlet UILabel *mapCounter;
-@property (weak, nonatomic) IBOutlet UILabel *placesCounter;
+@property (strong, nonatomic) UILabel *newsCounter;
+@property (strong, nonatomic) UILabel *eventsCounter;
+@property (strong, nonatomic) UILabel *mapCounter;
+@property (strong, nonatomic) UILabel *placesCounter;
 @property (weak, nonatomic) IBOutlet UIImageView *compass;
 
 @end
