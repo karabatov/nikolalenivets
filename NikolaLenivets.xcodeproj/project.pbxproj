@@ -12,8 +12,6 @@
 		4F0A8BD1195B032800D59268 /* compass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F0A8BD0195B032800D59268 /* compass@2x.png */; };
 		4F0A8BD3195B04AD00D59268 /* compass_black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F0A8BD2195B04AD00D59268 /* compass_black@2x.png */; };
 		4F0D759E193D9C6400E78AA5 /* white_menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F0D759D193D9C6400E78AA5 /* white_menu@2x.png */; };
-		4F0D75A2193DB86500E78AA5 /* search_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F0D75A0193DB86500E78AA5 /* search_bg@2x.png */; };
-		4F0D75A3193DB86500E78AA5 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F0D75A1193DB86500E78AA5 /* search@2x.png */; };
 		4F0D75AB193DD05D00E78AA5 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F0D75AA193DD05D00E78AA5 /* back@2x.png */; };
 		4F0D75AD193DE20400E78AA5 /* back_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F0D75AC193DE20400E78AA5 /* back_white@2x.png */; };
 		4F0D75AF193DEA1900E78AA5 /* forward@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F0D75AE193DEA1900E78AA5 /* forward@2x.png */; };
@@ -67,6 +65,7 @@
 		4FF31086D2714E0584DB4E63 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 213D00ACD702461FA5EF0EB3 /* libPods.a */; };
 		D12B05F61979A5E700AA4CDD /* tiles in Resources */ = {isa = PBXBuildFile; fileRef = D12B05F51979A5E700AA4CDD /* tiles */; };
 		D16373AB19B76B9700A89A98 /* NLMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D16373AA19B76B9700A89A98 /* NLMenuButton.m */; };
+		D16373AD19B8910C00A89A98 /* menu-circle-green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D16373AC19B8910C00A89A98 /* menu-circle-green@2x.png */; };
 		D17177B3196D047200521D72 /* NSAttributedString+Kerning.m in Sources */ = {isa = PBXBuildFile; fileRef = D17177B2196D047200521D72 /* NSAttributedString+Kerning.m */; };
 		D1783ED8197C141F00A92AA3 /* NLPlaceAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D1783ED7197C141F00A92AA3 /* NLPlaceAnnotation.m */; };
 		D1783EDB197C195100A92AA3 /* object.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783ED9197C195100A92AA3 /* object.png */; };
@@ -132,8 +131,6 @@
 		4F0A8BD0195B032800D59268 /* compass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "compass@2x.png"; sourceTree = "<group>"; };
 		4F0A8BD2195B04AD00D59268 /* compass_black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "compass_black@2x.png"; sourceTree = "<group>"; };
 		4F0D759D193D9C6400E78AA5 /* white_menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_menu@2x.png"; sourceTree = "<group>"; };
-		4F0D75A0193DB86500E78AA5 /* search_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search_bg@2x.png"; sourceTree = "<group>"; };
-		4F0D75A1193DB86500E78AA5 /* search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@2x.png"; sourceTree = "<group>"; };
 		4F0D75AA193DD05D00E78AA5 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
 		4F0D75AC193DE20400E78AA5 /* back_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_white@2x.png"; sourceTree = "<group>"; };
 		4F0D75AE193DEA1900E78AA5 /* forward@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forward@2x.png"; sourceTree = "<group>"; };
@@ -223,6 +220,7 @@
 		D12B05F51979A5E700AA4CDD /* tiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tiles; sourceTree = "<group>"; };
 		D16373A919B76B9700A89A98 /* NLMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLMenuButton.h; path = UI/NLMenuButton.h; sourceTree = "<group>"; };
 		D16373AA19B76B9700A89A98 /* NLMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLMenuButton.m; path = UI/NLMenuButton.m; sourceTree = "<group>"; };
+		D16373AC19B8910C00A89A98 /* menu-circle-green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-circle-green@2x.png"; sourceTree = "<group>"; };
 		D17177B1196D047200521D72 /* NSAttributedString+Kerning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSAttributedString+Kerning.h"; path = "UI/NSAttributedString+Kerning.h"; sourceTree = "<group>"; };
 		D17177B2196D047200521D72 /* NSAttributedString+Kerning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSAttributedString+Kerning.m"; path = "UI/NSAttributedString+Kerning.m"; sourceTree = "<group>"; };
 		D1783ED6197C141F00A92AA3 /* NLPlaceAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLPlaceAnnotation.h; path = UI/NLPlaceAnnotation.h; sourceTree = "<group>"; };
@@ -348,8 +346,7 @@
 			isa = PBXGroup;
 			children = (
 				4F0A8BD2195B04AD00D59268 /* compass_black@2x.png */,
-				4F0D75A0193DB86500E78AA5 /* search_bg@2x.png */,
-				4F0D75A1193DB86500E78AA5 /* search@2x.png */,
+				D16373AC19B8910C00A89A98 /* menu-circle-green@2x.png */,
 				D16373A919B76B9700A89A98 /* NLMenuButton.h */,
 				D16373AA19B76B9700A89A98 /* NLMenuButton.m */,
 				4F411E7B18FFD8AA00758E30 /* NLMainMenuController.h */,
@@ -750,11 +747,11 @@
 				D1783EF0197C438200A92AA3 /* userlocation@2x.png in Resources */,
 				4F22FD8919372F260075C1A0 /* NLPlaceCell.xib in Resources */,
 				D19C043D1975253C006A086B /* NLNewsCellView.xib in Resources */,
-				4F0D75A2193DB86500E78AA5 /* search_bg@2x.png in Resources */,
 				D19C04401975319E006A086B /* NLEventsCollectionViewController.xib in Resources */,
 				D1783EF8197CFFF000A92AA3 /* tile-empty.png in Resources */,
 				D1783F1A197EBA8800A92AA3 /* object-count@2x.png in Resources */,
 				4F174E331966A50300F7F8A2 /* Track on 2014-06-23 at 18-00 GMT+4.gpx in Resources */,
+				D16373AD19B8910C00A89A98 /* menu-circle-green@2x.png in Resources */,
 				D1783F351982921500A92AA3 /* NLMapFilterCell.xib in Resources */,
 				4F411E7F18FFD8AA00758E30 /* NLMainMenuController.xib in Resources */,
 				D1783F2719826F1B00A92AA3 /* place-info@2x.png in Resources */,
@@ -790,7 +787,6 @@
 				D1A3D7B81975415700C53E06 /* NLCollectionCellView.xib in Resources */,
 				4F174E321966A50300F7F8A2 /* Track on 2014-06-23 at 17-53 GMT+4.gpx in Resources */,
 				D19C0425196EF44C006A086B /* map-minus@2x.png in Resources */,
-				4F0D75A3193DB86500E78AA5 /* search@2x.png in Resources */,
 				D1B7ADD0196BCBCE0057C1E2 /* MonoCondensedC.otf in Resources */,
 				4F9C414A18EA84640038090E /* Images.xcassets in Resources */,
 			);

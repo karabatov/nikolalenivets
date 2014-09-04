@@ -52,6 +52,7 @@
 {
     [self setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self setBackgroundColor:[UIColor clearColor]];
+    [self setClipsToBounds:NO];
 
     UIColor *textColor = [UIColor colorWithRed:37.f/255.f green:37.f/255.f blue:37.f/255.f alpha:1.f];
 
@@ -87,7 +88,44 @@
     if (highlighted) {
         self.alpha = 0.5f;
     } else {
+        if (self.colorSplash) {
+            [self.colorSplash setHidden:YES];
+            self.colorSplash = nil;
+        }
         self.alpha = 1.f;
+    }
+}
+
+- (BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    if (!self.colorSplash) {
+        self.colorSplash = [[UIImageView alloc] initWithFrame:CGRectMake(0.f, 0.f, 113.f, 113.f)];
+        [self.colorSplash setHidden:YES];
+        [self.colorSplash setImage:[UIImage imageNamed:@"menu-circle-green.png"]];
+        [self addSubview:self.colorSplash];
+        [self sendSubviewToBack:self.colorSplash];
+    }
+
+    [self.colorSplash setCenter:[touch locationInView:self]];
+    [self.colorSplash setHidden:NO];
+
+    return [super beginTrackingWithTouch:touch withEvent:event];
+}
+
+- (BOOL)continueTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    CGPoint loc = [touch locationInView:self];
+    if (self.colorSplash && loc.x >= 0 && loc.x <= self.frame.size.width && loc.y >= 0 && loc.y <= self.frame.size.height) {
+        [self.colorSplash setCenter:loc];
+    }
+    return [super continueTrackingWithTouch:touch withEvent:event];
+}
+
+- (void)endTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    if (self.colorSplash) {
+        [self.colorSplash setHidden:YES];
+        self.colorSplash = nil;
     }
 }
 
