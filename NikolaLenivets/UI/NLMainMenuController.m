@@ -118,6 +118,17 @@ enum {
     self.placesCounter.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
     [self.placesCounter setTextAlignment:NSTextAlignmentRight];
 
+    _newsButton.counter = self.newsCounter;
+    _eventsButton.counter = self.eventsCounter;
+    _mapButton.counter = self.mapCounter;
+    _placesButton.counter = self.placesCounter;
+
+    for (UIView *view in [self.menuView subviews]) {
+        if ([view isKindOfClass:[NLMenuButton class]]) {
+            [(NLMenuButton *)view addTarget:self action:@selector(unfoldItem:) forControlEvents:UIControlEventTouchUpInside];
+        }
+    }
+
     NSDictionary *views = @{ @"news": _newsButton,
                              @"events": _eventsButton,
                              @"map": _mapButton,
@@ -148,7 +159,7 @@ enum {
 
 #pragma mark - Paper Fold Stuff
 
-- (IBAction)unfoldItem:(UIButton *)sender
+- (void)unfoldItem:(NLMenuButton *)sender
 {
     switch (sender.tag) {
         case News: {

@@ -87,12 +87,18 @@
     [super setHighlighted:highlighted];
     if (highlighted) {
         self.alpha = 0.5f;
+        if (self.counter) {
+            self.counter.alpha = 0.5f;
+        }
     } else {
+        self.alpha = 1.f;
         if (self.colorSplash) {
             [self.colorSplash setHidden:YES];
             self.colorSplash = nil;
         }
-        self.alpha = 1.f;
+        if (self.counter) {
+            self.counter.alpha = 1.f;
+        }
     }
 }
 

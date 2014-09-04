@@ -18,4 +18,9 @@
  */
 @property (strong, nonatomic) NSString *title;
 
+/**
+ External counter label to set its alpha.
+ */
+@property (weak, nonatomic) UILabel *counter;
+
 @end
