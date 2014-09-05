@@ -9,17 +9,11 @@
 #import "NLAppDelegate.h"
 #import "AFNetworking.h"
 #import "NLStorage.h"
-
-#import "NLSplashViewController.h"
-
 #import "NLMainMenuController.h"
 
 #import <Crashlytics/Crashlytics.h>
 
 @implementation NLAppDelegate
-{
-    NLSplashViewController *_splash;
-}
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -31,23 +25,14 @@
     [[NLStorage sharedInstance] update];
     [NLLocationManager sharedInstance];
 
-    _splash = [NLSplashViewController new];
-    NLMainMenuController *main = [NLMainMenuController new];
+    NLMainMenuController *main = [[NLMainMenuController alloc] init];
     self.navigation = [[UINavigationController alloc] initWithRootViewController:main];
     [self.navigation setNavigationBarHidden:YES];
     self.navigation.delegate = main;
-    [self.navigation pushViewController:_splash animated:NO];
     self.window.rootViewController = self.navigation;
     
     [self.window makeKeyAndVisible];
     return YES;
-}
-
-
-
-- (void)dismissSplash
-{
-    [self.navigation popToRootViewControllerAnimated:YES];
 }
 
 

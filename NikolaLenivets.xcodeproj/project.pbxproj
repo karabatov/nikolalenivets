@@ -41,7 +41,6 @@
 		4F390E8918ED754700131934 /* NLScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F390E8818ED754700131934 /* NLScreen.m */; };
 		4F390E8C18ED755300131934 /* NLEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F390E8B18ED755300131934 /* NLEvent.m */; };
 		4F411E7E18FFD8AA00758E30 /* NLMainMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F411E7C18FFD8AA00758E30 /* NLMainMenuController.m */; };
-		4F411E7F18FFD8AA00758E30 /* NLMainMenuController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F411E7D18FFD8AA00758E30 /* NLMainMenuController.xib */; };
 		4F6137491927313700BFDD1C /* NLEventGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6137471927313700BFDD1C /* NLEventGroupsViewController.m */; };
 		4F61374A1927313700BFDD1C /* NLEventGroupsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F6137481927313700BFDD1C /* NLEventGroupsViewController.xib */; };
 		4F61374D19273D7700BFDD1C /* NLEventGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F61374C19273D7700BFDD1C /* NLEventGroup.m */; };
@@ -179,7 +178,6 @@
 		4F390E8E18ED8FAF00131934 /* NLModelsSpecs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLModelsSpecs.m; sourceTree = "<group>"; };
 		4F411E7B18FFD8AA00758E30 /* NLMainMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLMainMenuController.h; path = UI/NLMainMenuController.h; sourceTree = "<group>"; };
 		4F411E7C18FFD8AA00758E30 /* NLMainMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLMainMenuController.m; path = UI/NLMainMenuController.m; sourceTree = "<group>"; };
-		4F411E7D18FFD8AA00758E30 /* NLMainMenuController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLMainMenuController.xib; path = UI/NLMainMenuController.xib; sourceTree = "<group>"; };
 		4F6137461927313700BFDD1C /* NLEventGroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLEventGroupsViewController.h; path = UI/NLEventGroupsViewController.h; sourceTree = "<group>"; };
 		4F6137471927313700BFDD1C /* NLEventGroupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLEventGroupsViewController.m; path = UI/NLEventGroupsViewController.m; sourceTree = "<group>"; };
 		4F6137481927313700BFDD1C /* NLEventGroupsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLEventGroupsViewController.xib; path = UI/NLEventGroupsViewController.xib; sourceTree = "<group>"; };
@@ -351,7 +349,6 @@
 				D16373AA19B76B9700A89A98 /* NLMenuButton.m */,
 				4F411E7B18FFD8AA00758E30 /* NLMainMenuController.h */,
 				4F411E7C18FFD8AA00758E30 /* NLMainMenuController.m */,
-				4F411E7D18FFD8AA00758E30 /* NLMainMenuController.xib */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
@@ -753,7 +750,6 @@
 				4F174E331966A50300F7F8A2 /* Track on 2014-06-23 at 18-00 GMT+4.gpx in Resources */,
 				D16373AD19B8910C00A89A98 /* menu-circle-green@2x.png in Resources */,
 				D1783F351982921500A92AA3 /* NLMapFilterCell.xib in Resources */,
-				4F411E7F18FFD8AA00758E30 /* NLMainMenuController.xib in Resources */,
 				D1783F2719826F1B00A92AA3 /* place-info@2x.png in Resources */,
 				4F0A8BCF195AFEAA00D59268 /* NLSplashViewController.xib in Resources */,
 				D1783F08197E622B00A92AA3 /* blue-gradient@2x.png in Resources */,

@@ -7,14 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SKUTouchPresenter.h"
 
 @interface NLAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) UINavigationController *navigation;
-
-
-- (void)dismissSplash;
 
 @end

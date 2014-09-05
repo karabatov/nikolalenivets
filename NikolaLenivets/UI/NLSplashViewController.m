@@ -67,7 +67,7 @@
 
 - (void)dismissSplash
 {
-    [AppDelegate dismissSplash];
+    // [AppDelegate dismissSplash];
 }
 
 

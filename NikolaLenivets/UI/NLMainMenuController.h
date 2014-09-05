@@ -11,17 +11,9 @@
 
 @interface NLMainMenuController : UIViewController <UINavigationControllerDelegate>
 
-@property (strong, nonatomic) IBOutlet UIView *menuView;
-
-/* Fancy stuff */
-@property (weak, nonatomic) IBOutlet UILabel *nikolaLabel;
-@property (weak, nonatomic) IBOutlet UILabel *lenivetsLabel;
-@property (weak, nonatomic) IBOutlet UIButton *searchButton;
-
 @property (strong, nonatomic) UILabel *newsCounter;
 @property (strong, nonatomic) UILabel *eventsCounter;
 @property (strong, nonatomic) UILabel *mapCounter;
 @property (strong, nonatomic) UILabel *placesCounter;
-@property (weak, nonatomic) IBOutlet UIImageView *compass;
 
 @end

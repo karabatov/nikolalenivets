@@ -114,12 +114,6 @@
 #define COCOAPODS_VERSION_MINOR_SDWebImage_Core 7
 #define COCOAPODS_VERSION_PATCH_SDWebImage_Core 1
 
-// SKUTouchPresenter
-#define COCOAPODS_POD_AVAILABLE_SKUTouchPresenter
-#define COCOAPODS_VERSION_MAJOR_SKUTouchPresenter 1
-#define COCOAPODS_VERSION_MINOR_SKUTouchPresenter 2
-#define COCOAPODS_VERSION_PATCH_SKUTouchPresenter 0
-
 // UIPhotoGallery
 #define COCOAPODS_POD_AVAILABLE_UIPhotoGallery
 #define COCOAPODS_VERSION_MAJOR_UIPhotoGallery 0
