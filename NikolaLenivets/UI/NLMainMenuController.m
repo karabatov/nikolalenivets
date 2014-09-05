@@ -93,7 +93,6 @@ enum {
 
     _splashTopBar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"splash-top.png"]];
     [_splashTopBar setTranslatesAutoresizingMaskIntoConstraints:NO];
-    _splashTopBar.opaque = YES;
 
     _blackTopBar = [[UIView alloc] init];
     [_blackTopBar setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -102,10 +101,12 @@ enum {
     _nikolaLabel = [[UILabel alloc] init];
     [_nikolaLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     _nikolaLabel.attributedText = [NSAttributedString kernedStringForString:@"НИКОЛА" withFontSize:18 kerning:2.2f andColor:[UIColor colorWithRed:37.f/255.f green:37.f/255.f blue:37.f/255.f alpha:1.f]];
+    [_nikolaLabel setBackgroundColor:[UIColor clearColor]];
 
     _lenivetsLabel = [[UILabel alloc] init];
     [_lenivetsLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     _lenivetsLabel.attributedText = [NSAttributedString kernedStringForString:@"ЛЕНИВЕЦ" withFontSize:18 kerning:2.2f andColor:[UIColor colorWithRed:37.f/255.f green:37.f/255.f blue:37.f/255.f alpha:1.f]];
+    [_lenivetsLabel setBackgroundColor:[UIColor clearColor]];
 
     _compass = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"compass-white.png"]];
     [_compass setTranslatesAutoresizingMaskIntoConstraints:NO];

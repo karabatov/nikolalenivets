@@ -116,6 +116,7 @@
 		D1F5018A19BA1BDC00CDFA5E /* search-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1F5018819BA1BDC00CDFA5E /* search-selected@2x.png */; };
 		D1F5018E19BA1F0C00CDFA5E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1F5018C19BA1F0C00CDFA5E /* Default@2x.png */; };
 		D1F5019019BA1F7600CDFA5E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1F5018F19BA1F7600CDFA5E /* Default-568h@2x.png */; };
+		D1F5019219BA24C900CDFA5E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D1F5019119BA24C900CDFA5E /* Default.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -282,6 +283,7 @@
 		D1F5018819BA1BDC00CDFA5E /* search-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-selected@2x.png"; sourceTree = "<group>"; };
 		D1F5018C19BA1F0C00CDFA5E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		D1F5018F19BA1F7600CDFA5E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		D1F5019119BA24C900CDFA5E /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -624,6 +626,7 @@
 				D1783EF7197CFFF000A92AA3 /* tile-empty.png */,
 				D1F5018F19BA1F7600CDFA5E /* Default-568h@2x.png */,
 				D1F5018C19BA1F0C00CDFA5E /* Default@2x.png */,
+				D1F5019119BA24C900CDFA5E /* Default.png */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -748,6 +751,7 @@
 				D1783EE3197C2C5B00A92AA3 /* object-selected.png in Resources */,
 				D1783F431982CEF600A92AA3 /* splash-top@2x.png in Resources */,
 				D1C57547199B6D4A00FFB310 /* photo-count@2x.png in Resources */,
+				D1F5019219BA24C900CDFA5E /* Default.png in Resources */,
 				D1F5019019BA1F7600CDFA5E /* Default-568h@2x.png in Resources */,
 				D1F5018919BA1BDC00CDFA5E /* search-normal@2x.png in Resources */,
 				4F0D75B1193DEADF00E78AA5 /* circle@2x.png in Resources */,
@@ -968,6 +972,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NikolaLenivets/NikolaLenivets-Prefix.pch";
 				INFOPLIST_FILE = "NikolaLenivets/NikolaLenivets-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -987,6 +992,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NikolaLenivets/NikolaLenivets-Prefix.pch";
 				INFOPLIST_FILE = "NikolaLenivets/NikolaLenivets-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;

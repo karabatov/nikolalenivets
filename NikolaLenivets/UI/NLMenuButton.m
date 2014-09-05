@@ -63,7 +63,7 @@
     self.buttonTitle = [[UILabel alloc] init];
     [self.buttonTitle setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.buttonTitle setTextColor:textColor];
-
+    [self.buttonTitle setBackgroundColor:[UIColor clearColor]];
     [self addSubview:self.topBar];
     [self addSubview:self.buttonTitle];
 
