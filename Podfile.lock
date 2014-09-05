@@ -36,7 +36,6 @@ PODS:
   - SDWebImage (3.7.1):
     - SDWebImage/Core
   - SDWebImage/Core (3.7.1)
-  - SKUTouchPresenter (1.2.0)
   - UIPhotoGallery (0.1.2):
     - SDWebImage (~> 3.0)
   - Underscore.m (0.2.1)
@@ -48,7 +47,6 @@ DEPENDENCIES:
   - DCKeyValueObjectMapping (~> 1.4)
   - DTCoreText (~> 1.6.11)
   - NSDate+Helper (~> 1.0.0)
-  - SKUTouchPresenter (~> 1.2.0)
   - UIPhotoGallery (~> 0.1.2)
   - Underscore.m (~> 0.2.1)
 
@@ -61,7 +59,6 @@ SPEC CHECKSUMS:
   DTFoundation: 126729614911ae7dbab3dcc1c078f189943bee66
   NSDate+Helper: ebde22e90dc7ae5e9b49179a0c32e550f7a9cd57
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
-  SKUTouchPresenter: af7fadbc10718622aa5f28afaae7033d713e6827
   UIPhotoGallery: 1dd2dbe4ea352ab42f8092ded8c1ac3d9e6be708
   Underscore.m: f99c166a9fdccfb5069085b6b4263c04b817fc9f
 

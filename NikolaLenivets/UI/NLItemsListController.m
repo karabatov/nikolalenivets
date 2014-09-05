@@ -45,8 +45,10 @@
     self.view.frame = [[UIScreen mainScreen] bounds];
     self.titleLabel.attributedText = [NSAttributedString kernedStringForString:@"НОВОСТИ"];
     self.itemsCountLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:9.0f];
-    [self.leftTable setEstimatedRowHeight:315.0f];
-    [self.rightTable setEstimatedRowHeight:315.0f];
+    if ([self.leftTable respondsToSelector:@selector(setEstimatedRowHeight:)]) {
+        [self.leftTable setEstimatedRowHeight:315.0f];
+        [self.rightTable setEstimatedRowHeight:315.0f];
+    }
     _offsetQueueRight = [[NSMutableArray alloc] init];
     _offsetQueueLeft = [[NSMutableArray alloc] init];
     [self.leftShadowView setBackgroundColor:[UIColor colorWithWhite:0.25f alpha:0.15f]];
