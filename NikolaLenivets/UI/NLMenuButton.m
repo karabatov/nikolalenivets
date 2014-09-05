@@ -68,7 +68,7 @@
     [self addSubview:self.buttonTitle];
 
     NSDictionary *views = @{ @"bar": self.topBar, @"title": self.buttonTitle };
-    NSDictionary *metrics = @{ @"barHeight": @4, @"titleTop": @16, @"margin": @1 };
+    NSDictionary *metrics = @{ @"barHeight": @3.5, @"titleTop": @16.5, @"margin": @1 };
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[bar]|" options:kNilOptions metrics:metrics views:views]];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(-1)-[title]-(>=margin)-|" options:kNilOptions metrics:metrics views:views]];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[bar(barHeight)]-titleTop-[title]-(>=margin)-|" options:kNilOptions metrics:metrics views:views]];
