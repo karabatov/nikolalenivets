@@ -7,7 +7,6 @@
 //
 
 #import "NLNewsCell.h"
-#import <AsyncImageView.h>
 #import <NSDate+Helper.h>
 
 @implementation NLNewsCell
@@ -17,25 +16,65 @@
 }
 
 
-- (void)awakeFromNib
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    [super awakeFromNib];
-    self.counterLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:10];
-    self.dateLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:10];
-    self.titleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:22];
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        [self.contentView setTranslatesAutoresizingMaskIntoConstraints:NO];
 
-    [self.contentView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.counterLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.dateLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.titleLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.previewLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.thumbnail setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.unreadIndicator setTranslatesAutoresizingMaskIntoConstraints:NO];
+        self.counterLabel = [[UILabel alloc] init];
+        [self.counterLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
 
-    self.previewLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    self.previewLabel.layoutFrameHeightIsConstrainedByBounds = NO;
-    [self.contentView sendSubviewToBack:self.previewLabel];
-    [self setClipsToBounds:YES];
+        self.dateLabel = [[UILabel alloc] init];
+        [self.dateLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+
+        self.titleLabel = [[UILabel alloc] init];
+        self.titleLabel.numberOfLines = 0;
+        self.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        [self.titleLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+
+        self.previewLabel = [[UILabel alloc] init];
+        self.previewLabel.numberOfLines = 0;
+        self.previewLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        [self.previewLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+
+        self.thumbnail = [[AsyncImageView alloc] init];
+        [self.thumbnail setContentMode:UIViewContentModeScaleAspectFill];
+        [self.thumbnail setClipsToBounds:YES];
+        [self.thumbnail setTranslatesAutoresizingMaskIntoConstraints:NO];
+
+        self.unreadIndicator = [[UIImageView alloc] init];
+        [self.unreadIndicator setTranslatesAutoresizingMaskIntoConstraints:NO];
+        self.unreadIndicator.opaque = NO;
+
+        [self.contentView addSubview:self.counterLabel];
+        [self.contentView addSubview:self.dateLabel];
+        [self.contentView addSubview:self.titleLabel];
+        [self.contentView addSubview:self.previewLabel];
+        [self.contentView addSubview:self.thumbnail];
+        [self.contentView addSubview:self.unreadIndicator];
+
+        // TODO: Check if this is still necessary.
+        // self.previewLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        // self.previewLabel.layoutFrameHeightIsConstrainedByBounds = NO;
+        // [self.contentView sendSubviewToBack:self.previewLabel];
+        [self setClipsToBounds:YES];
+
+        NSDictionary *views = @{ @"cntr": self.counterLabel, @"date": self.dateLabel, @"title": self.titleLabel, @"pre": self.previewLabel, @"thumb": self.thumbnail, @"unread": self.unreadIndicator };
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-17-[thumb(125.5)]-17-|" options:kNilOptions metrics:nil views:views]];
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-5.5-[unread(6)]-5.5-[cntr]-(>=0)-[date]-17-|" options:kNilOptions metrics:nil views:views]];
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-17-[title]-17-|" options:kNilOptions metrics:nil views:views]];
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-17-[pre]-13-|" options:kNilOptions metrics:nil views:views]];
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-17-[thumb]" options:kNilOptions metrics:nil views:views]];
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[unread(6)]-18-[title]-16-[pre]-17-|" options:kNilOptions metrics:nil views:views]];
+        self.thumbnailHeight = [NSLayoutConstraint constraintWithItem:self.thumbnail attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.f constant:0.f];
+        [self.contentView addConstraint:self.thumbnailHeight];
+        self.thumbnailBottomMargin = [NSLayoutConstraint constraintWithItem:self.thumbnail attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.unreadIndicator attribute:NSLayoutAttributeTop multiplier:1.f constant:-17.f];
+        [self.contentView addConstraint:self.thumbnailBottomMargin];
+        [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.counterLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.unreadIndicator attribute:NSLayoutAttributeCenterY multiplier:1.f constant:0.f]];
+        [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.dateLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.unreadIndicator attribute:NSLayoutAttributeCenterY multiplier:1.f constant:0.f]];
+    }
+    return self;
 }
 
 
@@ -43,15 +82,15 @@
 {
     switch (status) {
         case NLItemStatusNew:
-            [self.unreadIndicator setTextColor:[UIColor colorWithRed:255.0f green:127.0f/255.0f blue:127.0f/255.0f alpha:1.0f]];
+            [self.unreadIndicator setImage:[UIImage imageNamed:@"unread-indicator-red.png"]];
             [self.unreadIndicator setHidden:NO];
             break;
         case NLItemStatusUnread:
-            [self.unreadIndicator setTextColor:[UIColor colorWithRed:199.0f/255.0f green:199.0f/255.0f blue:199.0f/255.0f alpha:1.0f]];
+            [self.unreadIndicator setImage:[UIImage imageNamed:@"unread-indicator-gray.png"]];
             [self.unreadIndicator setHidden:NO];
             break;
         case NLItemStatusRead:
-            [self.unreadIndicator setTextColor:[UIColor colorWithRed:199.0f/255.0f green:199.0f/255.0f blue:199.0f/255.0f alpha:1.0f]];
+            [self.unreadIndicator setImage:nil];
             [self.unreadIndicator setHidden:YES];
             break;
 
@@ -68,14 +107,14 @@
     paragraphStyle.hyphenationFactor = 0.1f;
     NSMutableAttributedString *attributedTitle = [[NSMutableAttributedString alloc] initWithString:_entry.title attributes:@{ NSParagraphStyleAttributeName : paragraphStyle }];
     self.titleLabel.attributedText = attributedTitle;
-    self.previewLabel.attributedString = [self attributedStringForString:_entry.content];
+    self.previewLabel.attributedText = [self attributedStringForString:_entry.content];
     if ([_entry.thumbnail isEqualToString:@""]) {
         self.thumbnail.image = nil;
         self.thumbnailHeight.constant = 0.0f;
         self.thumbnailBottomMargin.constant = 0.0f;
     } else {
-        self.thumbnailHeight.constant = 125.0f;
-        self.thumbnailBottomMargin.constant = 8.0f;
+        self.thumbnailHeight.constant = 125.5f;
+        self.thumbnailBottomMargin.constant = -17.0f;
         self.thumbnail.imageURL = [NSURL URLWithString:_entry.thumbnail];
     }
     self.dateLabel.text = [[[_entry pubDate] stringWithFormat:DefaultDateFormat] uppercaseString];
@@ -91,17 +130,17 @@
     NSMutableAttributedString *attributedTitle = [[NSMutableAttributedString alloc] initWithString:_event.title attributes:@{ NSParagraphStyleAttributeName : paragraphStyle }];
     self.titleLabel.attributedText = attributedTitle;
     if ([_event.summary isEqualToString:@""]) {
-        self.previewLabel.attributedString = [self attributedStringForString:_event.content];
+        self.previewLabel.attributedText = [self attributedStringForString:_event.content];
     } else {
-        self.previewLabel.attributedString = [self attributedStringForString:_event.summary];
+        self.previewLabel.attributedText = [self attributedStringForString:_event.summary];
     }
     if ([_event.thumbnail isEqualToString:@""]) {
         self.thumbnail.image = nil;
         self.thumbnailHeight.constant = 0.0f;
         self.thumbnailBottomMargin.constant = 0.0f;
     } else {
-        self.thumbnailHeight.constant = 125.0f;
-        self.thumbnailBottomMargin.constant = 8.0f;
+        self.thumbnailHeight.constant = 125.5f;
+        self.thumbnailBottomMargin.constant = 17.0f;
         self.thumbnail.imageURL = [NSURL URLWithString:_event.thumbnail];
     }
     self.dateLabel.text = [[[_event startDate] stringWithFormat:DefaultDateFormat] uppercaseString];
@@ -114,13 +153,13 @@
     static NLNewsCell *cell;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"NLNewsCellView" owner:self options:nil] firstObject];
+        cell = [[NLNewsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NLNewsCell reuseIdentifier]];
     });
 
     [cell populateFromNewsEntry:entry];
 
-    [cell setNeedsLayout];
-    [cell layoutIfNeeded];
+    [cell.contentView setNeedsLayout];
+    [cell.contentView layoutIfNeeded];
 
     CGFloat height = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
 
@@ -133,7 +172,7 @@
     static NLNewsCell *cell;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"NLNewsCellView" owner:self options:nil] firstObject];
+        cell = [[NLNewsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NLNewsCell reuseIdentifier]];
     });
 
     [cell populateFromEvent:event];
@@ -150,8 +189,9 @@
 - (NSAttributedString *)attributedStringForString:(NSString *)htmlString
 {
     NSData *htmlData = [htmlString dataUsingEncoding:NSUTF8StringEncoding];
-    NSMutableAttributedString *attributed = [[NSMutableAttributedString alloc] initWithHTMLData:htmlData
-                                                                             documentAttributes:nil];
+    // NSMutableAttributedString *attributed = [[NSMutableAttributedString alloc] initWithHTMLData:htmlData documentAttributes:nil];
+    NSDictionary *options = @{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: [NSNumber numberWithInt:NSUTF8StringEncoding] };
+    NSMutableAttributedString *attributed = [[NSMutableAttributedString alloc] initWithData:htmlData options:options documentAttributes:nil error:nil];
     CFStringTrimWhitespace((CFMutableStringRef)[attributed mutableString]);
     NSRange range = {0, attributed.length};
     [attributed addAttribute:NSFontAttributeName value:[UIFont fontWithName:NLSerifFont size:12] range:range];
@@ -166,11 +206,16 @@
 
     NSRange zero = {0, 0};
     if (!NSEqualRanges(trimmedRange, zero)) {
-        NSAttributedString *trimmed = [attributed attributedSubstringFromRange:trimmedRange];
+        NSMutableAttributedString *trimmed = [[attributed attributedSubstringFromRange:trimmedRange] mutableCopy];
         return trimmed;
     } else {
         return attributed;
     }
+}
+
++ (NSString *)reuseIdentifier
+{
+    return @"newscell";
 }
 
 @end

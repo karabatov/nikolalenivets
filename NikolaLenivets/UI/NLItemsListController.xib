@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
+        <deployment defaultVersion="1552" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
@@ -71,6 +72,9 @@
                     <rect key="frame" x="0.0" y="64" width="160" height="504"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="160" placeholder="YES" id="UHG-il-KKG"/>
+                    </constraints>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="RRT-ju-V3j"/>
                         <outlet property="delegate" destination="-1" id="7bn-pG-pCr"/>
@@ -80,6 +84,9 @@
                     <rect key="frame" x="160" y="64" width="160" height="504"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="160" placeholder="YES" id="1Z3-wB-fHE"/>
+                    </constraints>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="kc6-iH-9fH"/>
                         <outlet property="delegate" destination="-1" id="PQk-wy-ymF"/>
@@ -96,7 +103,6 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="6Y9-Cf-keJ" firstAttribute="leading" secondItem="GE7-gk-KCr" secondAttribute="trailing" id="32G-EN-FmT"/>
                 <constraint firstItem="GE7-gk-KCr" firstAttribute="width" secondItem="ohb-ea-z3Z" secondAttribute="width" id="4jr-qP-RgK"/>
                 <constraint firstAttribute="trailing" secondItem="6Y9-Cf-keJ" secondAttribute="trailing" id="4z0-6z-Xsh"/>
                 <constraint firstItem="6Y9-Cf-keJ" firstAttribute="height" secondItem="8Sm-qU-54I" secondAttribute="height" id="Av9-fV-EtE"/>
@@ -112,11 +118,9 @@
                 <constraint firstItem="6Y9-Cf-keJ" firstAttribute="centerX" secondItem="8Sm-qU-54I" secondAttribute="centerX" id="ev1-WP-TAK"/>
                 <constraint firstItem="6Y9-Cf-keJ" firstAttribute="centerY" secondItem="8Sm-qU-54I" secondAttribute="centerY" id="kIE-XW-ecW"/>
                 <constraint firstItem="6Y9-Cf-keJ" firstAttribute="width" secondItem="8Sm-qU-54I" secondAttribute="width" id="mP1-md-hlr"/>
-                <constraint firstItem="GE7-gk-KCr" firstAttribute="width" secondItem="6Y9-Cf-keJ" secondAttribute="width" id="mRI-cg-9Q3"/>
                 <constraint firstItem="AZ7-5r-ohQ" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="oUe-M6-I7d"/>
                 <constraint firstItem="AZ7-5r-ohQ" firstAttribute="top" secondItem="1" secondAttribute="top" id="tU9-Gk-hQa"/>
                 <constraint firstItem="GE7-gk-KCr" firstAttribute="height" secondItem="ohb-ea-z3Z" secondAttribute="height" id="v6o-IG-tkr"/>
-                <constraint firstItem="6Y9-Cf-keJ" firstAttribute="width" secondItem="8Sm-qU-54I" secondAttribute="width" id="wTs-Xb-skl"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

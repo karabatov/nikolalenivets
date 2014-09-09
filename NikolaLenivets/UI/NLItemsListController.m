@@ -43,16 +43,27 @@
 {
     [super viewDidLoad];
     self.view.frame = [[UIScreen mainScreen] bounds];
+    UIColor *bgColor = [UIColor colorWithRed:246.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1.0f];
+    [self.view setBackgroundColor:bgColor];
     self.titleLabel.attributedText = [NSAttributedString kernedStringForString:@"НОВОСТИ"];
-    self.itemsCountLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:9.0f];
+    self.itemsCountLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
     if ([self.leftTable respondsToSelector:@selector(setEstimatedRowHeight:)]) {
         [self.leftTable setEstimatedRowHeight:315.0f];
         [self.rightTable setEstimatedRowHeight:315.0f];
     }
+    [self.leftTable registerClass:[NLNewsCell class] forCellReuseIdentifier:[NLNewsCell reuseIdentifier]];
+    [self.rightTable registerClass:[NLNewsCell class] forCellReuseIdentifier:[NLNewsCell reuseIdentifier]];
+    self.leftTable.separatorInset = self.rightTable.separatorInset = UIEdgeInsetsZero;
+    self.leftTable.separatorStyle = self.rightTable.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    self.leftTable.separatorColor = self.rightTable.separatorColor = bgColor;
+
     _offsetQueueRight = [[NSMutableArray alloc] init];
     _offsetQueueLeft = [[NSMutableArray alloc] init];
     [self.leftShadowView setBackgroundColor:[UIColor colorWithWhite:0.25f alpha:0.15f]];
     [self.rightShadowView setBackgroundColor:[UIColor colorWithWhite:0.25f alpha:0.15f]];
+
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.leftTable attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.f constant:159.5f]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.rightTable attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.f constant:159.5f]];
 }
 
 
@@ -118,20 +129,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *reuseId = @"newscell";
-    
-    NLNewsCell *cell = (NLNewsCell *)[tableView dequeueReusableCellWithIdentifier:reuseId];
-    
-    if (cell == nil) {
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"NLNewsCellView" owner:self options:nil] firstObject];
-    }
+    NLNewsCell *cell = (NLNewsCell *)[tableView dequeueReusableCellWithIdentifier:[NLNewsCell reuseIdentifier]];
     
     NLNewsEntry *entry = [self entryForTable:tableView indexPath:indexPath];
     [cell populateFromNewsEntry:entry];
     cell.counterLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)[_news indexOfObject:entry] + 1];
-    UIColor *borderGray = [UIColor colorWithRed:246.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1.0f];
-    [cell.contentView.layer setBorderColor:borderGray.CGColor];
-    [cell.contentView.layer setBorderWidth:0.5f];
+    // UIColor *borderGray = [UIColor colorWithRed:246.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1.0f];
+    // [cell.contentView.layer setBorderColor:borderGray.CGColor];
+    // [cell.contentView.layer setBorderWidth:0.5f];
 
     return cell;
 }
