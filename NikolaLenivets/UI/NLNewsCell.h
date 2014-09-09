@@ -16,7 +16,8 @@
 @interface NLNewsCell : UITableViewCell
 
 @property (strong, nonatomic) UILabel *counterLabel;
-@property (strong, nonatomic) UILabel *dateLabel;
+@property (strong, nonatomic) UILabel *dayLabel;
+@property (strong, nonatomic) UILabel *monthLabel;
 @property (strong, nonatomic) UILabel *titleLabel;
 @property (strong, nonatomic) UILabel *previewLabel;
 @property (strong, nonatomic) AsyncImageView *thumbnail;

@@ -20,13 +20,23 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        [self setClipsToBounds:YES];
         [self.contentView setTranslatesAutoresizingMaskIntoConstraints:NO];
 
+        UIColor *textColor = [UIColor colorWithRed:127.f/255.f green:127.f/255.f blue:127.f/255.f alpha:1.f];
+
         self.counterLabel = [[UILabel alloc] init];
+        self.counterLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
+        self.counterLabel.textColor = textColor;
         [self.counterLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
 
-        self.dateLabel = [[UILabel alloc] init];
-        [self.dateLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+        self.dayLabel = [[UILabel alloc] init];
+        self.dayLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
+        self.dayLabel.textColor = textColor;
+        [self.dayLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+
+        self.monthLabel = [[UILabel alloc] init];
+        [self.monthLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
 
         self.titleLabel = [[UILabel alloc] init];
         self.titleLabel.numberOfLines = 0;
@@ -48,21 +58,22 @@
         self.unreadIndicator.opaque = NO;
 
         [self.contentView addSubview:self.counterLabel];
-        [self.contentView addSubview:self.dateLabel];
+        [self.contentView addSubview:self.monthLabel];
         [self.contentView addSubview:self.titleLabel];
         [self.contentView addSubview:self.previewLabel];
         [self.contentView addSubview:self.thumbnail];
         [self.contentView addSubview:self.unreadIndicator];
+        [self.contentView addSubview:self.dayLabel];
 
-        // TODO: Check if this is still necessary.
-        // self.previewLabel.lineBreakMode = NSLineBreakByWordWrapping;
-        // self.previewLabel.layoutFrameHeightIsConstrainedByBounds = NO;
-        // [self.contentView sendSubviewToBack:self.previewLabel];
-        [self setClipsToBounds:YES];
-
-        NSDictionary *views = @{ @"cntr": self.counterLabel, @"date": self.dateLabel, @"title": self.titleLabel, @"pre": self.previewLabel, @"thumb": self.thumbnail, @"unread": self.unreadIndicator };
+        NSDictionary *views = @{ @"cntr": self.counterLabel,
+                                 @"day": self.dayLabel,
+                                 @"month": self.monthLabel,
+                                 @"title": self.titleLabel,
+                                 @"pre": self.previewLabel,
+                                 @"thumb": self.thumbnail,
+                                 @"unread": self.unreadIndicator };
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-17-[thumb(125.5)]-17-|" options:kNilOptions metrics:nil views:views]];
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-5.5-[unread(6)]-5.5-[cntr]-(>=0)-[date]-17-|" options:kNilOptions metrics:nil views:views]];
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-5.5-[unread(6)]-5.5-[cntr]-(>=0)-[day]-6-[month]-17-|" options:kNilOptions metrics:nil views:views]];
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-17-[title]-17-|" options:kNilOptions metrics:nil views:views]];
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-17-[pre]-13-|" options:kNilOptions metrics:nil views:views]];
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-17-[thumb]" options:kNilOptions metrics:nil views:views]];
@@ -71,8 +82,9 @@
         [self.contentView addConstraint:self.thumbnailHeight];
         self.thumbnailBottomMargin = [NSLayoutConstraint constraintWithItem:self.thumbnail attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.unreadIndicator attribute:NSLayoutAttributeTop multiplier:1.f constant:-17.f];
         [self.contentView addConstraint:self.thumbnailBottomMargin];
-        [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.counterLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.unreadIndicator attribute:NSLayoutAttributeCenterY multiplier:1.f constant:0.f]];
-        [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.dateLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.unreadIndicator attribute:NSLayoutAttributeCenterY multiplier:1.f constant:0.f]];
+        [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.counterLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.unreadIndicator attribute:NSLayoutAttributeCenterY multiplier:1.f constant:-1.f]];
+        [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.monthLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.unreadIndicator attribute:NSLayoutAttributeCenterY multiplier:1.f constant:-1.f]];
+        [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.dayLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.unreadIndicator attribute:NSLayoutAttributeCenterY multiplier:1.f constant:-1.f]];
     }
     return self;
 }
@@ -103,10 +115,7 @@
 - (void)populateFromNewsEntry:(NLNewsEntry *)entry
 {
     _entry = entry;
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.hyphenationFactor = 0.1f;
-    NSMutableAttributedString *attributedTitle = [[NSMutableAttributedString alloc] initWithString:_entry.title attributes:@{ NSParagraphStyleAttributeName : paragraphStyle }];
-    self.titleLabel.attributedText = attributedTitle;
+    self.titleLabel.attributedText = [self attributedStringForTitle:_entry.title];
     self.previewLabel.attributedText = [self attributedStringForString:_entry.content];
     if ([_entry.thumbnail isEqualToString:@""]) {
         self.thumbnail.image = nil;
@@ -117,7 +126,8 @@
         self.thumbnailBottomMargin.constant = -17.0f;
         self.thumbnail.imageURL = [NSURL URLWithString:_entry.thumbnail];
     }
-    self.dateLabel.text = [[[_entry pubDate] stringWithFormat:DefaultDateFormat] uppercaseString];
+    self.monthLabel.attributedText = [self attributedStringForDateMonth:[[[_entry pubDate] stringWithFormat:DefaultMonthFormat] uppercaseString]];
+    self.dayLabel.text = [[_entry pubDate] stringWithFormat:DefaultDayFormat];
     [self setUnreadStatus:entry.itemStatus];
 }
 
@@ -125,10 +135,7 @@
 - (void)populateFromEvent:(NLEvent *)event
 {
     _event = event;
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.hyphenationFactor = 0.1f;
-    NSMutableAttributedString *attributedTitle = [[NSMutableAttributedString alloc] initWithString:_event.title attributes:@{ NSParagraphStyleAttributeName : paragraphStyle }];
-    self.titleLabel.attributedText = attributedTitle;
+    self.titleLabel.attributedText = [self attributedStringForTitle:_event.title];
     if ([_event.summary isEqualToString:@""]) {
         self.previewLabel.attributedText = [self attributedStringForString:_event.content];
     } else {
@@ -143,7 +150,7 @@
         self.thumbnailBottomMargin.constant = 17.0f;
         self.thumbnail.imageURL = [NSURL URLWithString:_event.thumbnail];
     }
-    self.dateLabel.text = [[[_event startDate] stringWithFormat:DefaultDateFormat] uppercaseString];
+    self.monthLabel.text = [[[_event startDate] stringWithFormat:DefaultDateFormat] uppercaseString];
     [self setUnreadStatus:event.itemStatus];
 }
 
@@ -186,10 +193,35 @@
 }
 
 
+- (NSAttributedString *)attributedStringForTitle:(NSString *)titleString
+{
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.hyphenationFactor = 0.1f;
+    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraphStyle.lineSpacing = 0.0f;
+    paragraphStyle.maximumLineHeight = 19.f;
+    NSDictionary *attributes = @{ NSFontAttributeName: [UIFont fontWithName:NLMonospacedBoldFont size:24],
+                                  NSForegroundColorAttributeName: [UIColor colorWithRed:37.f/255.f green:37.f/255.f blue:37.f/255.f alpha:1.f],
+                                  NSKernAttributeName: [NSNumber numberWithFloat:0.f],
+                                  NSParagraphStyleAttributeName: paragraphStyle };
+    NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString:titleString attributes:attributes];
+    return title;
+}
+
+
+- (NSAttributedString *)attributedStringForDateMonth:(NSString *)monthString
+{
+    NSDictionary *attributes = @{ NSFontAttributeName: [UIFont fontWithName:NLMonospacedBoldFont size:9],
+                                  NSForegroundColorAttributeName: [UIColor colorWithRed:127.f/255.f green:127.f/255.f blue:127.f/255.f alpha:1.f],
+                                  NSKernAttributeName: [NSNumber numberWithFloat:1.1f] };
+    NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString:monthString attributes:attributes];
+    return title;
+}
+
+
 - (NSAttributedString *)attributedStringForString:(NSString *)htmlString
 {
     NSData *htmlData = [htmlString dataUsingEncoding:NSUTF8StringEncoding];
-    // NSMutableAttributedString *attributed = [[NSMutableAttributedString alloc] initWithHTMLData:htmlData documentAttributes:nil];
     NSDictionary *options = @{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: [NSNumber numberWithInt:NSUTF8StringEncoding] };
     NSMutableAttributedString *attributed = [[NSMutableAttributedString alloc] initWithData:htmlData options:options documentAttributes:nil error:nil];
     CFStringTrimWhitespace((CFMutableStringRef)[attributed mutableString]);
