@@ -113,7 +113,7 @@ typedef enum {
             content = _entry.content;
             date = [[[_entry pubDate] stringWithFormat:DefaultDateFormat] uppercaseString];
             self.detailsViewTitleLabel.text = [self backViewController] ? [self backViewController].title : @"НОВОСТИ";
-            indexNumber = [[[NLStorage sharedInstance] news] indexOfObject:_entry];
+            indexNumber = [[[NLStorage sharedInstance] news] count] - [[[NLStorage sharedInstance] news] indexOfObject:_entry];
             [self setUnreadStatus:_entry.itemStatus];
             self.capitalLetter.textColor = [UIColor colorWithRed:247.0f/255.0f green:250.0f/255.0f blue:140.0f/255.0f alpha:1.0f];
             for (UIView *view in [self.eventDayView subviews]) {
