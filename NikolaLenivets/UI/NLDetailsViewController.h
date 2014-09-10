@@ -33,7 +33,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *galleryHeight;
 @property (weak, nonatomic) IBOutlet UIButton *showGalleryButton;
 @property (weak, nonatomic) IBOutlet UILabel *detailsViewTitleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *unreadIndicator;
+@property (weak, nonatomic) IBOutlet UIImageView *unreadIndicator;
 @property (weak, nonatomic) IBOutlet NLSectionHeader *eventDayView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *eventDayHeight;
 @property (weak, nonatomic) IBOutlet AsyncImageView *placeImage;

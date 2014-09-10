@@ -91,12 +91,18 @@ typedef enum {
 
     [self.view bringSubviewToFront:self.scrollView];
     [self.view bringSubviewToFront:self.eventDayView];
-    
-    self.titleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:30];
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.capitalLetter attribute:NSLayoutAttributeBaseline relatedBy:NSLayoutRelationEqual toItem:self.firstPartWebView attribute:NSLayoutAttributeTop multiplier:1.f constant:209.f]];
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.unreadIndicator attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeTop multiplier:1.f constant:16.5f]];
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.unreadIndicator attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.countView attribute:NSLayoutAttributeCenterY multiplier:1.f constant:1.f]];
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.unreadIndicator attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.dateLabel attribute:NSLayoutAttributeCenterY multiplier:1.f constant:1.f]];
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.dateLabel attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeRight multiplier:1.f constant:-15.f]];
+
+    UIColor *textColor = [UIColor colorWithRed:127.f/255.f green:127.f/255.f blue:127.f/255.f alpha:1.f];
+
     self.detailsViewTitleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:10];
-    self.dateLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:13];
-    self.countView.font = [UIFont fontWithName:NLMonospacedBoldFont size:10];
-    self.capitalLetter.font = [UIFont systemFontOfSize:250];
+    self.countView.font = [UIFont fontWithName:NLMonospacedBoldFont size:12];
+    self.countView.textColor = textColor;
+    self.capitalLetter.font = [UIFont fontWithName:NLMonospacedBoldFont size:315];
     [self.capitalLetter setHidden:YES];
     self.scrollView.delegate = self;
 
@@ -172,7 +178,7 @@ typedef enum {
             break;
     }
 
-    self.titleLabel.text = title;
+    self.titleLabel.attributedText = [self attributedStringForTitle:title];
     _gallery = [self galleryFromString:content];
     _textParts = [self textParts:content];
 
@@ -187,7 +193,7 @@ typedef enum {
     }
 
     if (indexNumber > -1) {
-        self.countView.text = [NSString stringWithFormat:@"%02ld", (long)indexNumber + 1];
+        self.countView.text = [NSString stringWithFormat:@"%02ld", (long)indexNumber];
     } else {
         if ([self mode] == ShowingPlace) {
             if (_currentLocation) {
@@ -207,7 +213,7 @@ typedef enum {
     if (_textParts.count > 0) {
         [self.secondPartLabel loadHTMLString:_textParts.lastObject baseURL:[NSURL URLWithString:@"http://"]];
     }
-    self.dateLabel.text = date;
+    self.dateLabel.attributedText = [self attributedStringForDateMonth:date];
 }
 
 
@@ -248,20 +254,114 @@ typedef enum {
 {
     switch (status) {
         case NLItemStatusNew:
-            [self.unreadIndicator setTextColor:[UIColor colorWithRed:255.0f green:127.0f/255.0f blue:127.0f/255.0f alpha:1.0f]];
+            [self.unreadIndicator setImage:[UIImage imageNamed:@"unread-indicator-red.png"]];
             [self.unreadIndicator setHidden:NO];
             break;
         case NLItemStatusUnread:
-            [self.unreadIndicator setTextColor:[UIColor colorWithRed:199.0f/255.0f green:199.0f/255.0f blue:199.0f/255.0f alpha:1.0f]];
+            [self.unreadIndicator setImage:[UIImage imageNamed:@"unread-indicator-gray.png"]];
             [self.unreadIndicator setHidden:NO];
             break;
         case NLItemStatusRead:
-            [self.unreadIndicator setTextColor:[UIColor colorWithRed:199.0f/255.0f green:199.0f/255.0f blue:199.0f/255.0f alpha:1.0f]];
-            [self.unreadIndicator setHidden:YES];
+            [self.unreadIndicator setImage:[UIImage imageNamed:@"unread-indicator-red.png"]];
+            // [self.unreadIndicator setImage:nil];
+            // [self.unreadIndicator setHidden:YES];
             break;
 
         default:
             break;
+    }
+}
+
+
+- (NSAttributedString *)attributedStringForTitle:(NSString *)titleString
+{
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.hyphenationFactor = 0.1f;
+    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraphStyle.lineSpacing = 0.0f;
+    paragraphStyle.maximumLineHeight = 35.f;
+    NSDictionary *attributes = @{ NSFontAttributeName: [UIFont fontWithName:NLMonospacedBoldFont size:40],
+                                  NSForegroundColorAttributeName: [UIColor colorWithRed:37.f/255.f green:37.f/255.f blue:37.f/255.f alpha:1.f],
+                                  // TODO: Make text tighter somehow.
+                                  NSKernAttributeName: [NSNumber numberWithFloat:0.f],
+                                  NSParagraphStyleAttributeName: paragraphStyle };
+    NSAttributedString *title = [[NSAttributedString alloc] initWithString:titleString attributes:attributes];
+    return title;
+}
+
+
+- (NSAttributedString *)attributedStringForCapitalLetter:(NSString *)letter
+{
+    NSDictionary *attributes = @{ NSFontAttributeName: [UIFont fontWithName:NLMonospacedBoldFont size:315],
+                                  NSForegroundColorAttributeName: self.capitalLetter.textColor };
+    NSAttributedString *capitalLetter = [[NSAttributedString alloc] initWithString:letter attributes:attributes];
+    CTLineRef line = CTLineCreateWithAttributedString((CFAttributedStringRef)capitalLetter);
+    CFArrayRef runArray = CTLineGetGlyphRuns(line);
+
+    // for each RUN
+    for (CFIndex runIndex = 0; runIndex < CFArrayGetCount(runArray); runIndex++)
+    {
+        // Get FONT for this run
+        CTRunRef run = (CTRunRef)CFArrayGetValueAtIndex(runArray, runIndex);
+        CTFontRef runFont = CFDictionaryGetValue(CTRunGetAttributes(run), kCTFontAttributeName);
+
+        // for each GLYPH in run
+        for (CFIndex runGlyphIndex = 0; runGlyphIndex < CTRunGetGlyphCount(run); runGlyphIndex++)
+        {
+            // get Glyph & Glyph-data
+            CFRange thisGlyphRange = CFRangeMake(runGlyphIndex, 1);
+            CGGlyph glyph;
+            CGPoint position;
+            CTRunGetGlyphs(run, thisGlyphRange, &glyph);
+            CTRunGetPositions(run, thisGlyphRange, &position);
+
+            // Get PATH of outline
+            {
+                CGPathRef letter = CTFontCreatePathForGlyph(runFont, glyph, NULL);
+                UIView *capitalView = [[UIView alloc] init];
+                [capitalView setTranslatesAutoresizingMaskIntoConstraints:NO];
+                [self.contentView addSubview:capitalView];
+                [self.contentView sendSubviewToBack:capitalView];
+                NSDictionary *views = @{ @"cap": capitalView };
+                [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[cap]|" options:kNilOptions metrics:nil views:views]];
+                [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[cap(210)]" options:kNilOptions metrics:nil views:views]];
+                [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:capitalView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.firstPartWebView attribute:NSLayoutAttributeTop multiplier:1.f constant:0.f]];
+                CGRect boundingBox = CGPathGetBoundingBox(letter);
+                CGFloat scaleFactor = 210.f / CGRectGetHeight(boundingBox);
+                // Scaling the path ...
+                CGAffineTransform scaleTransform = CGAffineTransformIdentity;
+                // Scale down the path first
+                scaleTransform = CGAffineTransformScale(scaleTransform, scaleFactor, -scaleFactor);
+                // Then translate the path to the upper left corner
+                scaleTransform = CGAffineTransformTranslate(scaleTransform, -CGRectGetMinX(boundingBox), -CGRectGetMaxY(boundingBox) - 5);
+                CGPathRef scaledPath = CGPathCreateCopyByTransformingPath(letter, &scaleTransform);
+                // Create a new shape layer and assign the new path
+                CAShapeLayer *scaledShapeLayer = [CAShapeLayer layer];
+                scaledShapeLayer.path = scaledPath;
+                scaledShapeLayer.fillColor = [self.capitalLetter.textColor CGColor];
+                [capitalView.layer addSublayer:scaledShapeLayer];
+                
+                CGPathRelease(scaledPath); // release the copied path
+                CGPathRelease(letter);
+                break;
+            }
+        }
+    }
+    CFRelease(line);
+    return capitalLetter;
+}
+
+
+- (NSAttributedString *)attributedStringForDateMonth:(NSString *)monthString
+{
+    if (monthString) {
+        NSDictionary *attributes = @{ NSFontAttributeName: [UIFont fontWithName:NLMonospacedBoldFont size:12],
+                                      NSForegroundColorAttributeName: [UIColor colorWithRed:127.f/255.f green:127.f/255.f blue:127.f/255.f alpha:1.f],
+                                      NSKernAttributeName: [NSNumber numberWithFloat:1.1f] };
+        NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString:monthString attributes:attributes];
+        return title;
+    } else {
+        return [[NSAttributedString alloc] initWithString:@""];
     }
 }
 
@@ -273,9 +373,10 @@ typedef enum {
     [webView stringByEvaluatingJavaScriptFromString:padding];
     if ([webView isEqual:self.firstPartWebView]) {
         NSString *firstLetter = [[[self attributedStringForString:_textParts[0]] string] substringToIndex:1];
-        self.capitalLetter.text = firstLetter;
-        [self.contentView sendSubviewToBack:self.capitalLetter];
-        [self.capitalLetter setHidden:NO];
+        [self attributedStringForCapitalLetter:firstLetter];
+//        self.capitalLetter.text = firstLetter;
+//        [self.contentView sendSubviewToBack:self.capitalLetter];
+//        [self.capitalLetter setHidden:NO];
         NSString *moveParagraph = [NSString stringWithFormat:@"var p=document.getElementsByTagName('p').item(0);p.style.textIndent='%gpx';p.innerHTML=p.innerHTML.replace('%@','')", floorf((self.capitalLetter.bounds.size.width + 30) / 2), firstLetter];
         [webView stringByEvaluatingJavaScriptFromString:moveParagraph];
     }
