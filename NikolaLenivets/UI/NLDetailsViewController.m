@@ -162,7 +162,7 @@ typedef enum {
             self.titleLabelBottomSpace.constant = 0;
             [self.titleLabel setHidden:YES];
             [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.f constant:0.f]];
-            self.placeImageHeight.constant = [UIScreen mainScreen].bounds.size.height * 0.7;
+            self.placeImageHeight.constant = [UIScreen mainScreen].bounds.size.height * 0.65;
             [self.placeImage setShowActivityIndicator:YES];
             self.placeImage.imageURL = _place.picture && ![_place.picture isEqualToString:@""] ? [NSURL URLWithString:_place.picture] : [NSURL URLWithString:_place.thumbnail];
             self.eventDayHeight.constant = 26;
