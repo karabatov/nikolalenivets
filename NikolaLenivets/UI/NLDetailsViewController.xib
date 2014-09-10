@@ -10,7 +10,6 @@
                 <outlet property="alarmIcon" destination="UBo-GA-EGG" id="lc6-7n-bLt"/>
                 <outlet property="backButton" destination="dhA-Pw-YYj" id="WAu-fC-XKD"/>
                 <outlet property="blueGradient" destination="t1q-pq-u48" id="3le-Ym-qKt"/>
-                <outlet property="capitalLetter" destination="pat-iS-tqN" id="7XS-h0-v9p"/>
                 <outlet property="contentView" destination="7ce-P0-X8N" id="Ve5-Db-5zt"/>
                 <outlet property="countView" destination="x4i-v4-Zor" id="poo-bT-mIx"/>
                 <outlet property="dateLabel" destination="hSI-al-Qge" id="cOp-Im-Qg0"/>
@@ -99,7 +98,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7ce-P0-X8N">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="350"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="503"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cva-WF-w8s" userLabel="Unread Indicator">
@@ -184,7 +183,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <webView opaque="NO" contentMode="scaleToFill" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" keyboardDisplayRequiresUserAction="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUM-I3-x0a">
-                                    <rect key="frame" x="16" y="115" width="289" height="20"/>
+                                    <rect key="frame" x="16" y="268" width="289" height="20"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
@@ -192,22 +191,15 @@
                                     </constraints>
                                     <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES"/>
                                 </webView>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="T" lineBreakMode="tailTruncation" minimumScaleFactor="0.20000000000000007" translatesAutoresizingMaskIntoConstraints="NO" id="pat-iS-tqN">
-                                    <rect key="frame" x="0.0" y="-23" width="148" height="299"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="250"/>
-                                    <color key="textColor" red="1" green="1" blue="0.0" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mgw-DY-1Xg" userLabel="Gallery Cover" customClass="AsyncImageView">
-                                    <rect key="frame" x="0.0" y="310" width="320" height="0.0"/>
+                                    <rect key="frame" x="0.0" y="463" width="320" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <constraints>
                                         <constraint firstAttribute="height" id="64k-GY-hhM"/>
                                     </constraints>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WcX-qz-D5Q">
-                                    <rect key="frame" x="0.0" y="310" width="320" height="0.0"/>
+                                    <rect key="frame" x="0.0" y="463" width="320" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -217,7 +209,7 @@
                                     </connections>
                                 </button>
                                 <webView contentMode="scaleToFill" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" keyboardDisplayRequiresUserAction="NO" translatesAutoresizingMaskIntoConstraints="NO" id="duO-fi-ES1" userLabel="Web View 2">
-                                    <rect key="frame" x="16" y="322" width="289" height="20"/>
+                                    <rect key="frame" x="16" y="475" width="289" height="20"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
@@ -231,14 +223,14 @@
                                 <constraint firstAttribute="trailing" secondItem="lIJ-X2-TRd" secondAttribute="trailing" constant="2" id="2Qe-mv-ShS"/>
                                 <constraint firstItem="WcX-qz-D5Q" firstAttribute="height" secondItem="Mgw-DY-1Xg" secondAttribute="height" id="2dR-4g-avC"/>
                                 <constraint firstItem="Mgw-DY-1Xg" firstAttribute="top" secondItem="KUM-I3-x0a" secondAttribute="bottom" constant="175" placeholder="YES" id="4GP-QE-HUj"/>
-                                <constraint firstItem="pat-iS-tqN" firstAttribute="top" secondItem="KUM-I3-x0a" secondAttribute="top" constant="-138" placeholder="YES" id="7Zu-Hj-y4N"/>
                                 <constraint firstItem="hSI-al-Qge" firstAttribute="trailing" secondItem="duO-fi-ES1" secondAttribute="trailing" id="8w6-FD-yyu"/>
                                 <constraint firstItem="vvp-B6-tKE" firstAttribute="leading" secondItem="7ce-P0-X8N" secondAttribute="leading" id="9ql-g3-P5v"/>
                                 <constraint firstItem="x4i-v4-Zor" firstAttribute="trailing" secondItem="gvb-JY-XM7" secondAttribute="trailing" constant="5" id="CPC-p5-Ln7"/>
                                 <constraint firstItem="cva-WF-w8s" firstAttribute="top" secondItem="7ce-P0-X8N" secondAttribute="top" constant="17" placeholder="YES" id="FKO-qq-Uiw"/>
                                 <constraint firstItem="hSI-al-Qge" firstAttribute="centerY" secondItem="cva-WF-w8s" secondAttribute="centerY" placeholder="YES" id="GhF-Y8-XK7"/>
                                 <constraint firstItem="t1q-pq-u48" firstAttribute="bottom" secondItem="vvp-B6-tKE" secondAttribute="bottom" id="IYP-50-Ig1"/>
-                                <constraint firstItem="KUM-I3-x0a" firstAttribute="top" secondItem="5y1-fk-EJG" secondAttribute="bottom" constant="30" id="KrO-t4-lr2"/>
+                                <constraint firstItem="KUM-I3-x0a" firstAttribute="top" relation="greaterThanOrEqual" secondItem="7ce-P0-X8N" secondAttribute="top" constant="268" placeholder="YES" id="K0y-Ln-4cC"/>
+                                <constraint firstItem="KUM-I3-x0a" firstAttribute="top" secondItem="5y1-fk-EJG" secondAttribute="bottom" priority="250" constant="30" id="KrO-t4-lr2"/>
                                 <constraint firstItem="x4i-v4-Zor" firstAttribute="leading" secondItem="cva-WF-w8s" secondAttribute="trailing" constant="4" id="L1M-Xq-cxu"/>
                                 <constraint firstItem="x4i-v4-Zor" firstAttribute="leading" secondItem="duO-fi-ES1" secondAttribute="leading" id="Lgz-1B-N6j"/>
                                 <constraint firstItem="5y1-fk-EJG" firstAttribute="top" secondItem="vvp-B6-tKE" secondAttribute="bottom" constant="32" id="MQA-ns-lHJ"/>
@@ -257,11 +249,9 @@
                                 <constraint firstItem="5y1-fk-EJG" firstAttribute="trailing" secondItem="hSI-al-Qge" secondAttribute="trailing" id="ekr-Nf-xfv"/>
                                 <constraint firstItem="t1q-pq-u48" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vvp-B6-tKE" secondAttribute="top" id="hAA-xh-C60"/>
                                 <constraint firstItem="duO-fi-ES1" firstAttribute="top" secondItem="Mgw-DY-1Xg" secondAttribute="bottom" constant="12" id="j5z-wc-dhv"/>
-                                <constraint firstItem="pat-iS-tqN" firstAttribute="leading" secondItem="7ce-P0-X8N" secondAttribute="leading" id="lSe-0k-YFY"/>
                                 <constraint firstItem="cva-WF-w8s" firstAttribute="leading" secondItem="7ce-P0-X8N" secondAttribute="leading" constant="5" id="m3r-AJ-j9n"/>
                                 <constraint firstItem="t1q-pq-u48" firstAttribute="trailing" secondItem="vvp-B6-tKE" secondAttribute="trailing" id="mEe-1h-Eny"/>
                                 <constraint firstItem="hSI-al-Qge" firstAttribute="trailing" secondItem="KUM-I3-x0a" secondAttribute="trailing" id="nRL-uD-pt6"/>
-                                <constraint firstItem="Mgw-DY-1Xg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="pat-iS-tqN" secondAttribute="bottom" constant="-52" id="ohK-7U-dmd"/>
                                 <constraint firstAttribute="trailing" secondItem="vvp-B6-tKE" secondAttribute="trailing" id="sbO-ZG-jgS"/>
                                 <constraint firstItem="hSI-al-Qge" firstAttribute="leading" secondItem="UBo-GA-EGG" secondAttribute="trailing" constant="8" id="t0z-Wc-SZp"/>
                                 <constraint firstItem="gvb-JY-XM7" firstAttribute="top" secondItem="7ce-P0-X8N" secondAttribute="top" constant="10" id="ubJ-Mc-yy5"/>

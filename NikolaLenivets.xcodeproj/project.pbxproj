@@ -113,6 +113,7 @@
 		D1CAF02819C05F94001C5270 /* red_left_shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1CAF02619C05F94001C5270 /* red_left_shadow@2x.png */; };
 		D1CAF02919C05F94001C5270 /* red_right_shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1CAF02719C05F94001C5270 /* red_right_shadow@2x.png */; };
 		D1CAF02C19C06666001C5270 /* UIImage+Grayscale.m in Sources */ = {isa = PBXBuildFile; fileRef = D1CAF02B19C06666001C5270 /* UIImage+Grayscale.m */; };
+		D1CAF02F19C0E294001C5270 /* UIColor+HexValues.m in Sources */ = {isa = PBXBuildFile; fileRef = D1CAF02E19C0E294001C5270 /* UIColor+HexValues.m */; };
 		D1F5018619BA169E00CDFA5E /* compass-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1F5018519BA169E00CDFA5E /* compass-white@2x.png */; };
 		D1F5018919BA1BDC00CDFA5E /* search-normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1F5018719BA1BDC00CDFA5E /* search-normal@2x.png */; };
 		D1F5018A19BA1BDC00CDFA5E /* search-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1F5018819BA1BDC00CDFA5E /* search-selected@2x.png */; };
@@ -283,6 +284,8 @@
 		D1CAF02719C05F94001C5270 /* red_right_shadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red_right_shadow@2x.png"; sourceTree = "<group>"; };
 		D1CAF02A19C06666001C5270 /* UIImage+Grayscale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Grayscale.h"; path = "UI/UIImage+Grayscale.h"; sourceTree = "<group>"; };
 		D1CAF02B19C06666001C5270 /* UIImage+Grayscale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Grayscale.m"; path = "UI/UIImage+Grayscale.m"; sourceTree = "<group>"; };
+		D1CAF02D19C0E294001C5270 /* UIColor+HexValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+HexValues.h"; path = "UI/UIColor+HexValues.h"; sourceTree = "<group>"; };
+		D1CAF02E19C0E294001C5270 /* UIColor+HexValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+HexValues.m"; path = "UI/UIColor+HexValues.m"; sourceTree = "<group>"; };
 		D1F5018519BA169E00CDFA5E /* compass-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "compass-white@2x.png"; sourceTree = "<group>"; };
 		D1F5018719BA1BDC00CDFA5E /* search-normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-normal@2x.png"; sourceTree = "<group>"; };
 		D1F5018819BA1BDC00CDFA5E /* search-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-selected@2x.png"; sourceTree = "<group>"; };
@@ -327,6 +330,8 @@
 				D1A3D7D6197641D900C53E06 /* NSString+Distance.m */,
 				D1CAF02A19C06666001C5270 /* UIImage+Grayscale.h */,
 				D1CAF02B19C06666001C5270 /* UIImage+Grayscale.m */,
+				D1CAF02D19C0E294001C5270 /* UIColor+HexValues.h */,
+				D1CAF02E19C0E294001C5270 /* UIColor+HexValues.m */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -862,6 +867,7 @@
 				D1783ED8197C141F00A92AA3 /* NLPlaceAnnotation.m in Sources */,
 				4F22FD8C19372F530075C1A0 /* NLPlaceCell.m in Sources */,
 				D1783F30198285C200A92AA3 /* NLMapFilter.m in Sources */,
+				D1CAF02F19C0E294001C5270 /* UIColor+HexValues.m in Sources */,
 				D1A3D7C319757D5600C53E06 /* NSString+Ordinal.m in Sources */,
 				D16373AB19B76B9700A89A98 /* NLMenuButton.m in Sources */,
 				D17B62581993E5300074298B /* NLGalleryTransition.m in Sources */,
