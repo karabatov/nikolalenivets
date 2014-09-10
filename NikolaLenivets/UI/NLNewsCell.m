@@ -8,11 +8,13 @@
 
 #import "NLNewsCell.h"
 #import <NSDate+Helper.h>
+#import "UIImage+Grayscale.h"
 
 @implementation NLNewsCell
 {
     __strong NLNewsEntry *_entry;
     __strong NLEvent *_event;
+    __strong UIImage *_coloredImage;
 }
 
 
@@ -253,6 +255,31 @@
         return attributed;
     }
 }
+
+
+- (void)makeImageGrayscale:(BOOL)shouldMakeImageGrayscale
+{
+    if (self.thumbnail.image && shouldMakeImageGrayscale) {
+        _coloredImage = self.thumbnail.image;
+        [UIView animateWithDuration:0.25f animations:^{
+            [self.thumbnail setImage:[_coloredImage convertImageToGrayscale]];
+        }];
+    } else {
+        if (_coloredImage) {
+            [UIView animateWithDuration:0.25f animations:^{
+                [self.thumbnail setImage:_coloredImage];
+            }];
+        }
+    }
+}
+
+
+- (void)prepareForReuse
+{
+    _coloredImage = nil;
+    self.thumbnail.image = nil;
+}
+
 
 + (NSString *)reuseIdentifier
 {

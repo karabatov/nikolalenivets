@@ -92,35 +92,38 @@
                         <outlet property="delegate" destination="-1" id="PQk-wy-ymF"/>
                     </connections>
                 </tableView>
-                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="red_left_shadow.png" translatesAutoresizingMaskIntoConstraints="NO" id="ohb-ea-z3Z" userLabel="Left Shadow">
-                    <rect key="frame" x="0.0" y="64" width="160" height="504"/>
+                <imageView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="red_left_shadow.png" translatesAutoresizingMaskIntoConstraints="NO" id="ohb-ea-z3Z" userLabel="Left Shadow">
+                    <rect key="frame" x="73" y="64" width="87" height="504"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="87" id="5dK-09-BK8"/>
+                    </constraints>
                 </imageView>
-                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="red_right_shadow.png" translatesAutoresizingMaskIntoConstraints="NO" id="8Sm-qU-54I" userLabel="Right Shadow">
-                    <rect key="frame" x="160" y="64" width="160" height="504"/>
+                <imageView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="red_right_shadow.png" translatesAutoresizingMaskIntoConstraints="NO" id="8Sm-qU-54I" userLabel="Right Shadow">
+                    <rect key="frame" x="160" y="64" width="87" height="504"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="87" id="yn0-aA-9ox"/>
+                    </constraints>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="GE7-gk-KCr" firstAttribute="width" secondItem="ohb-ea-z3Z" secondAttribute="width" id="4jr-qP-RgK"/>
                 <constraint firstAttribute="trailing" secondItem="6Y9-Cf-keJ" secondAttribute="trailing" id="4z0-6z-Xsh"/>
-                <constraint firstItem="6Y9-Cf-keJ" firstAttribute="height" secondItem="8Sm-qU-54I" secondAttribute="height" id="Av9-fV-EtE"/>
                 <constraint firstItem="GE7-gk-KCr" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="OnU-z7-pEA"/>
-                <constraint firstItem="GE7-gk-KCr" firstAttribute="centerX" secondItem="ohb-ea-z3Z" secondAttribute="centerX" id="QBW-bc-pDH"/>
                 <constraint firstItem="6Y9-Cf-keJ" firstAttribute="top" secondItem="AZ7-5r-ohQ" secondAttribute="bottom" id="RyT-ps-rrn"/>
-                <constraint firstItem="6Y9-Cf-keJ" firstAttribute="height" secondItem="8Sm-qU-54I" secondAttribute="height" id="S28-sT-hv3"/>
                 <constraint firstAttribute="bottom" secondItem="6Y9-Cf-keJ" secondAttribute="bottom" id="VpO-Rx-mdI"/>
                 <constraint firstAttribute="bottom" secondItem="GE7-gk-KCr" secondAttribute="bottom" id="Wjr-p0-G5d"/>
-                <constraint firstItem="GE7-gk-KCr" firstAttribute="centerY" secondItem="ohb-ea-z3Z" secondAttribute="centerY" id="Wrr-HK-ZA5"/>
+                <constraint firstItem="8Sm-qU-54I" firstAttribute="top" secondItem="6Y9-Cf-keJ" secondAttribute="top" id="YZV-e1-qjD"/>
+                <constraint firstItem="8Sm-qU-54I" firstAttribute="bottom" secondItem="6Y9-Cf-keJ" secondAttribute="bottom" id="Yab-wP-PPG"/>
                 <constraint firstItem="GE7-gk-KCr" firstAttribute="top" secondItem="AZ7-5r-ohQ" secondAttribute="bottom" id="bOb-jD-fm4"/>
                 <constraint firstAttribute="trailing" secondItem="AZ7-5r-ohQ" secondAttribute="trailing" id="c2x-ul-ekx"/>
-                <constraint firstItem="6Y9-Cf-keJ" firstAttribute="centerX" secondItem="8Sm-qU-54I" secondAttribute="centerX" id="ev1-WP-TAK"/>
-                <constraint firstItem="6Y9-Cf-keJ" firstAttribute="centerY" secondItem="8Sm-qU-54I" secondAttribute="centerY" id="kIE-XW-ecW"/>
-                <constraint firstItem="6Y9-Cf-keJ" firstAttribute="width" secondItem="8Sm-qU-54I" secondAttribute="width" id="mP1-md-hlr"/>
+                <constraint firstItem="GE7-gk-KCr" firstAttribute="bottom" secondItem="ohb-ea-z3Z" secondAttribute="bottom" id="cpJ-oS-tuv"/>
+                <constraint firstItem="GE7-gk-KCr" firstAttribute="top" secondItem="ohb-ea-z3Z" secondAttribute="top" id="oH6-xI-LDI"/>
                 <constraint firstItem="AZ7-5r-ohQ" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="oUe-M6-I7d"/>
+                <constraint firstItem="8Sm-qU-54I" firstAttribute="leading" secondItem="6Y9-Cf-keJ" secondAttribute="leading" id="plN-wk-1xQ"/>
+                <constraint firstItem="GE7-gk-KCr" firstAttribute="trailing" secondItem="ohb-ea-z3Z" secondAttribute="trailing" id="rlI-Nb-7dS"/>
                 <constraint firstItem="AZ7-5r-ohQ" firstAttribute="top" secondItem="1" secondAttribute="top" id="tU9-Gk-hQa"/>
-                <constraint firstItem="GE7-gk-KCr" firstAttribute="height" secondItem="ohb-ea-z3Z" secondAttribute="height" id="v6o-IG-tkr"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -128,7 +131,7 @@
     </objects>
     <resources>
         <image name="menu_button.png" width="38" height="12"/>
-        <image name="red_left_shadow.png" width="174" height="1008"/>
-        <image name="red_right_shadow.png" width="174" height="1008"/>
+        <image name="red_left_shadow.png" width="87" height="568"/>
+        <image name="red_right_shadow.png" width="87" height="568"/>
     </resources>
 </document>

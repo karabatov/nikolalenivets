@@ -19,8 +19,6 @@
     __strong NSMutableArray *_leftNews;
     __strong NSMutableArray *_rightNews;
     __strong NLDetailsViewController *_details;
-    __strong NSMutableArray *_offsetQueueRight;
-    __strong NSMutableArray *_offsetQueueLeft;
 }
 
 - (id)init
@@ -56,11 +54,6 @@
     self.leftTable.separatorInset = self.rightTable.separatorInset = UIEdgeInsetsZero;
     self.leftTable.separatorStyle = self.rightTable.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.leftTable.separatorColor = self.rightTable.separatorColor = bgColor;
-
-    _offsetQueueRight = [[NSMutableArray alloc] init];
-    _offsetQueueLeft = [[NSMutableArray alloc] init];
-    [self.leftShadowView setBackgroundColor:[UIColor colorWithWhite:0.25f alpha:0.15f]];
-    [self.rightShadowView setBackgroundColor:[UIColor colorWithWhite:0.25f alpha:0.15f]];
 
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.leftTable attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.f constant:159.5f]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.rightTable attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.f constant:159.5f]];
@@ -205,24 +198,34 @@
 }
 
 
+- (void)makeVisibleImagesGrayscale:(BOOL)grayscale forTableview:(UITableView *)tableView
+{
+    for (NLNewsCell *cell in [tableView visibleCells]) {
+        [cell makeImageGrayscale:grayscale];
+    }
+}
+
+
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     if ([scrollView isEqual:self.leftTable]) {
         self.rightShadowView.hidden = NO;
-        [UIView animateWithDuration:0.1 animations:^{
-            self.rightShadowView.alpha = 0.8;
-            self.rightTable.alpha = 0.8;
+        [UIView animateWithDuration:0.25f animations:^{
+            self.rightShadowView.alpha = 1.f;
+            self.rightTable.alpha = 0.5f;
         }];
         [self.rightTable setUserInteractionEnabled:NO];
+        [self makeVisibleImagesGrayscale:YES forTableview:self.rightTable];
     }
 
     if ([scrollView isEqual:self.rightTable]) {
         self.leftShadowView.hidden = NO;
-        [UIView animateWithDuration:0.1 animations:^{
-            self.leftShadowView.alpha = 0.8;
-            self.leftTable.alpha = 0.8;
+        [UIView animateWithDuration:0.25f animations:^{
+            self.leftShadowView.alpha = 1.f;
+            self.leftTable.alpha = 0.5f;
         }];
         [self.leftTable setUserInteractionEnabled:NO];
+        [self makeVisibleImagesGrayscale:YES forTableview:self.leftTable];
     }
 }
 
@@ -230,18 +233,18 @@
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
 {
     if ([scrollView isEqual:self.leftTable]) {
-        [UIView animateWithDuration:0.1 animations:^{
-            self.rightShadowView.alpha = 0.0;
-            self.rightTable.alpha = 1.0;
+        [UIView animateWithDuration:0.25f animations:^{
+            self.rightShadowView.alpha = 0.f;
+            self.rightTable.alpha = 1.f;
         } completion:^(BOOL finished) {
             self.rightShadowView.hidden = YES;
         }];
     }
 
     if ([scrollView isEqual:self.rightTable]) {
-        [UIView animateWithDuration:0.1 animations:^{
-            self.leftShadowView.alpha = 0.0;
-            self.leftTable.alpha = 1.0;
+        [UIView animateWithDuration:0.25f animations:^{
+            self.leftShadowView.alpha = 0.f;
+            self.leftTable.alpha = 1.f;
         } completion:^(BOOL finished) {
             self.leftShadowView.hidden = YES;
         }];
@@ -249,30 +252,11 @@
 }
 
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    if ((scrollView.tracking || scrollView.dragging || scrollView.decelerating) && scrollView.userInteractionEnabled) {
-        UITableView *anotherTableView = [scrollView isEqual:self.rightTable] ? self.leftTable : self.rightTable;
-        NSMutableArray *offsetQueue = [scrollView isEqual:self.rightTable] ? _offsetQueueLeft : _offsetQueueRight;
-
-        [offsetQueue addObject:[NSValue valueWithCGPoint:scrollView.contentOffset]];
-        if ([offsetQueue count] > 4) {
-            CGPoint newOffset = [(NSValue *)offsetQueue[0] CGPointValue];
-            [offsetQueue removeObjectAtIndex:0];
-            [anotherTableView setContentOffset:newOffset];
-        }
-    }
-}
-
-
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     UITableView *anotherTableView = [scrollView isEqual:self.rightTable] ? self.leftTable : self.rightTable;
-    NSMutableArray *offsetQueue = [scrollView isEqual:self.rightTable] ? _offsetQueueLeft : _offsetQueueRight;
-
-    [anotherTableView setContentOffset:scrollView.contentOffset animated:YES];
-    [offsetQueue removeAllObjects];
     [anotherTableView setUserInteractionEnabled:YES];
+    [self makeVisibleImagesGrayscale:NO forTableview:anotherTableView];
 }
 
 
@@ -280,11 +264,8 @@
 {
     if (!decelerate) {
         UITableView *anotherTableView = [scrollView isEqual:self.rightTable] ? self.leftTable : self.rightTable;
-        NSMutableArray *offsetQueue = [scrollView isEqual:self.rightTable] ? _offsetQueueLeft : _offsetQueueRight;
-
-        [anotherTableView setContentOffset:scrollView.contentOffset animated:YES];
-        [offsetQueue removeAllObjects];
         [anotherTableView setUserInteractionEnabled:YES];
+        [self makeVisibleImagesGrayscale:NO forTableview:anotherTableView];
     }
 }
 

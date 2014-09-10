@@ -31,6 +31,8 @@
 - (void)populateFromNewsEntry:(NLNewsEntry *)entry;
 - (void)populateFromEvent:(NLEvent *)event;
 
+- (void)makeImageGrayscale:(BOOL)shouldMakeImageGrayscale;
+
 + (NSString *)reuseIdentifier;
 
 @end
