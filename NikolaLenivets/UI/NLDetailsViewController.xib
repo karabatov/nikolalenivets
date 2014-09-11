@@ -110,7 +110,7 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4i-v4-Zor">
-                                    <rect key="frame" x="16" y="15" width="35" height="12"/>
+                                    <rect key="frame" x="17" y="15" width="34" height="12"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -176,14 +176,14 @@
                                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="233" id="oMA-uf-ks4"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="289" translatesAutoresizingMaskIntoConstraints="NO" id="5y1-fk-EJG" userLabel="Label - News Title">
-                                    <rect key="frame" x="16" y="64" width="289" height="21"/>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="288" translatesAutoresizingMaskIntoConstraints="NO" id="5y1-fk-EJG" userLabel="Label - News Title">
+                                    <rect key="frame" x="17" y="64" width="288" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <webView opaque="NO" contentMode="scaleToFill" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" keyboardDisplayRequiresUserAction="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUM-I3-x0a">
-                                    <rect key="frame" x="16" y="268" width="289" height="20"/>
+                                    <rect key="frame" x="17" y="268" width="288" height="20"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
@@ -209,7 +209,7 @@
                                     </connections>
                                 </button>
                                 <webView contentMode="scaleToFill" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" keyboardDisplayRequiresUserAction="NO" translatesAutoresizingMaskIntoConstraints="NO" id="duO-fi-ES1" userLabel="Web View 2">
-                                    <rect key="frame" x="16" y="475" width="289" height="20"/>
+                                    <rect key="frame" x="17" y="475" width="288" height="20"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
@@ -231,7 +231,7 @@
                                 <constraint firstItem="t1q-pq-u48" firstAttribute="bottom" secondItem="vvp-B6-tKE" secondAttribute="bottom" id="IYP-50-Ig1"/>
                                 <constraint firstItem="KUM-I3-x0a" firstAttribute="top" relation="greaterThanOrEqual" secondItem="7ce-P0-X8N" secondAttribute="top" constant="268" placeholder="YES" id="K0y-Ln-4cC"/>
                                 <constraint firstItem="KUM-I3-x0a" firstAttribute="top" secondItem="5y1-fk-EJG" secondAttribute="bottom" priority="250" constant="30" id="KrO-t4-lr2"/>
-                                <constraint firstItem="x4i-v4-Zor" firstAttribute="leading" secondItem="cva-WF-w8s" secondAttribute="trailing" constant="4" id="L1M-Xq-cxu"/>
+                                <constraint firstItem="x4i-v4-Zor" firstAttribute="leading" secondItem="cva-WF-w8s" secondAttribute="trailing" constant="5" id="L1M-Xq-cxu"/>
                                 <constraint firstItem="x4i-v4-Zor" firstAttribute="leading" secondItem="duO-fi-ES1" secondAttribute="leading" id="Lgz-1B-N6j"/>
                                 <constraint firstItem="5y1-fk-EJG" firstAttribute="top" secondItem="vvp-B6-tKE" secondAttribute="bottom" constant="32" id="MQA-ns-lHJ"/>
                                 <constraint firstAttribute="width" constant="320" placeholder="YES" id="PRN-ZD-jle"/>

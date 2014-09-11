@@ -213,7 +213,7 @@ typedef enum {
     self.secondPartLabel.scrollView.bounces = NO;
 
     // @"document.body.style.margin='0';document.body.style.padding ='0';document.body.style.font='12pt BookmanC,serif'"
-    NSString *HTMLFormat = @"<html><head><style type=\"text/css\">* { margin:0 !important; margin-left:1px !important; padding:0 !important; -webkit-hyphens:auto !important; font-family:BookmanC !important; font-size:13pt !important; line-height:22px !important} p { color:#252525 !important; } a { color:#252525 !important; background-color:#%@ !important; text-decoration:none !important; }</style></head><body>%@</body></html>";
+    NSString *HTMLFormat = @"<html><head><style type=\"text/css\">* { margin:0 !important; padding:0 !important; -webkit-hyphens:auto !important; font-family:BookmanC !important; font-size:13pt !important; line-height:22px !important} p { color:#252525 !important; } a { color:#252525 !important; background-color:#%@ !important; text-decoration:none !important; }</style></head><body>%@</body></html>";
     NSString *hex = [[self capitalLetterColor] stringWithHexValue];
     [self.firstPartWebView loadHTMLString:[NSString stringWithFormat:HTMLFormat, hex, _textParts.firstObject] baseURL:[NSURL URLWithString:@"http://"]];
     if (_textParts.count > 0) {
