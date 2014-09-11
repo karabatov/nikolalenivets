@@ -30,6 +30,8 @@
 #define NLSerifFont @"BookmanC"
 
 #define DefaultDateFormat @"dd MMMM"
+#define DefaultMonthFormat @"MMMM"
+#define DefaultDayFormat @"dd"
 #define DefaultTimeFormat @"HH:mm"
 
 
