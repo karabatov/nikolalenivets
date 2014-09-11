@@ -373,15 +373,30 @@ enum {
                                                 fromViewController:(UIViewController *)fromVC
                                                   toViewController:(UIViewController *)toVC
 {
-    if ([toVC isKindOfClass:[NLMainMenuController class]] || [fromVC isKindOfClass:[NLMainMenuController class]] ||
-        [toVC isKindOfClass:[NLMapViewController class]]  || [fromVC isKindOfClass:[NLMapViewController class]]) {
+    if ([fromVC isKindOfClass:[NLMapViewController class]] || [toVC isKindOfClass:[NLMapViewController class]]) {
         NLFoldAnimation *animationController = [[NLFoldAnimation alloc] init];
+        animationController.folds = 3;
+        animationController.duration = 1.4;
         switch (operation) {
             case UINavigationControllerOperationPush:
+                animationController.direction = XYOrigamiDirectionFromRight;
                 animationController.reverse = YES;
                 return animationController;
             case UINavigationControllerOperationPop:
+                animationController.direction = XYOrigamiDirectionFromRight;
                 animationController.reverse = NO;
+                return animationController;
+            default:
+                return nil;
+        }
+    } else if ([toVC isKindOfClass:[NLMainMenuController class]] || [fromVC isKindOfClass:[NLMainMenuController class]]) {
+        NLFoldAnimation *animationController = [[NLFoldAnimation alloc] init];
+        switch (operation) {
+            case UINavigationControllerOperationPush:
+                animationController.reverse = NO;
+                return animationController;
+            case UINavigationControllerOperationPop:
+                animationController.reverse = YES;
                 return animationController;
             default:
                 return nil;
