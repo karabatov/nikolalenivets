@@ -20,6 +20,16 @@
  */
 @property (strong, nonatomic) UIButton *backButton;
 
+/**
+ Top space for search image.
+ */
+@property (strong, nonatomic) NSLayoutConstraint *searchImageTop;
+
+/**
+ Side size for search image.
+ */
+@property (strong, nonatomic) NSLayoutConstraint *searchImageSide;
+
 @end
 
 @implementation NLSearchViewController
@@ -49,22 +59,64 @@
     self.backButton.hidden = YES;
     self.backButton.alpha = 0.f;
 
-    [self.view addSubview:self.backButton];
     [self.view addSubview:self.searchImageView];
+    [self.view addSubview:self.backButton];
 
     NSDictionary *views = @{ @"sImg": self.searchImageView, @"back": self.backButton };
-    NSDictionary *metrics = @{ @"sImgSize": @62, @"backSize": @44, @"sImgTop": @15.5, @"backTop": @4 };
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[sImg(sImgSize)]" options:kNilOptions metrics:metrics views:views]];
+    NSDictionary *metrics = @{ @"backSize": @44, @"backTop": @3.5 };
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[back(backSize)]" options:kNilOptions metrics:metrics views:views]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-sImgTop-[sImg(sImgSize)]" options:kNilOptions metrics:metrics views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-backTop-[back(backSize)]" options:kNilOptions metrics:metrics views:views]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.backButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0.f]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.searchImageView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0.f]];
+    CGFloat searchTop = [UIScreen mainScreen].bounds.size.height / 6.f - 17.f - 62.f;
+    self.searchImageTop = [NSLayoutConstraint constraintWithItem:self.searchImageView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.f constant:searchTop];
+    [self.view addConstraint:self.searchImageTop];
+    self.searchImageSide = [NSLayoutConstraint constraintWithItem:self.searchImageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.f constant:62.f];
+    [self.view addConstraint:self.searchImageSide];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.searchImageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.searchImageView attribute:NSLayoutAttributeHeight multiplier:1.f constant:0.f]];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    BOOL firstTime = YES;
+
+    if (firstTime) {
+        self.searchImageView.tintColor = [UIColor blackColor];
+        self.searchImageTop.constant = 16.f;
+        self.searchImageSide.constant = 19.f;
+        [UIView animateWithDuration:0.25f animations:^{
+            self.searchImageView.alpha = 1.f;
+            [self.view layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            self.searchImageView.image = [self.searchImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+            self.backButton.hidden = NO;
+            [UIView animateWithDuration:0.15f animations:^{
+                self.backButton.alpha = 1.f;
+                self.searchImageView.alpha = 0.5f;
+            } completion:^(BOOL finished) {
+                self.searchImageView.hidden = YES;
+            }];
+        }];
+    }
 }
 
 - (void)goBack:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    self.searchImageView.hidden = NO;
+    [UIView animateWithDuration:0.15f animations:^{
+        self.backButton.alpha = 0.f;
+        self.searchImageView.alpha = 1.0f;
+    } completion:^(BOOL finished) {
+        self.backButton.hidden = YES;
+        self.searchImageView.image = [self.searchImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        self.searchImageTop.constant = [UIScreen mainScreen].bounds.size.height / 6.f - 17.f - 62.f;
+        self.searchImageSide.constant = 62.f;
+        [UIView animateWithDuration:0.25f animations:^{
+            [self.view layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+    }];
 }
 
 @end

@@ -180,7 +180,7 @@ KeyframeParametricBlock closeFunction = ^double(double time) {
         }];
 
         [CATransaction setValue:[NSNumber numberWithFloat:[self transitionDuration:transitionContext]] forKey:kCATransactionAnimationDuration];
-        CAAnimation *openAnimation = (self.direction < 2) ? [CAKeyframeAnimation animationWithKeyPath:@"position.x" function:openFunction fromValue:fromView.frame.origin.x + fromView.frame.size.width / 2 toValue:selfFrame.origin.x + fromView.frame.size.width / 2] : [CAKeyframeAnimation animationWithKeyPath:@"position.y" function:openFunction fromValue:fromView.frame.origin.y + fromView.frame.size.height / 2 toValue:selfFrame.origin.y + fromView.frame.size.height / 2];
+        CAAnimation *openAnimation = (self.direction < 2) ? [CAKeyframeAnimation animationWithKeyPath:@"position.x" function:openFunction fromValue:fromView.frame.origin.x + fromView.frame.size.width / 2 toValue:selfFrame.origin.x + fromView.frame.size.width / 2] : [CAKeyframeAnimation animationWithKeyPath:@"position.y" function:openFunction fromValue:fromView.frame.origin.y + fromView.frame.size.height / 2 toValue:selfFrame.origin.y + self.offset + fromView.frame.size.height / 2];
         openAnimation.fillMode = kCAFillModeForwards;
         [openAnimation setRemovedOnCompletion:NO];
         [fromView.layer addAnimation:openAnimation forKey:@"position"];

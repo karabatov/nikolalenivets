@@ -387,7 +387,7 @@ enum {
         NLFoldAnimation *animationController = [[NLFoldAnimation alloc] init];
         animationController.direction = XYOrigamiDirectionFromTop;
         animationController.folds = 6;
-        animationController.duration = 10;
+        animationController.duration = 1.4f;
         animationController.offset = ceilf(-1.f * [UIScreen mainScreen].bounds.size.height / (CGFloat)animationController.folds / 2.f);
         return animationController;
     }
@@ -396,14 +396,14 @@ enum {
         animationController.direction = XYOrigamiDirectionFromTop;
         animationController.reverse = YES;
         animationController.folds = 6;
-        animationController.duration = 10;
-        animationController.offset = ceilf(-1.f * [UIScreen mainScreen].bounds.size.height / (CGFloat)animationController.folds / 2.f);
+        animationController.duration = 1.4f;
+        animationController.offset = ceilf(-1.f * [UIScreen mainScreen].bounds.size.height / (CGFloat)animationController.folds);
         return animationController;
     }
     if ([fromVC isKindOfClass:[NLMapViewController class]] || [toVC isKindOfClass:[NLMapViewController class]]) {
         NLFoldAnimation *animationController = [[NLFoldAnimation alloc] init];
         animationController.folds = 3;
-        animationController.duration = 1.4;
+        animationController.duration = 1.4f;
         switch (operation) {
             case UINavigationControllerOperationPush:
                 animationController.direction = XYOrigamiDirectionFromRight;
