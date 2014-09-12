@@ -16,6 +16,7 @@
 #import "NLFoldAnimation.h"
 #import "NLMenuButton.h"
 #import "NLLocationManager.h"
+#import "NLSearchViewController.h"
 
 #define FOLD_DURATION 0.7
 
@@ -25,7 +26,8 @@ enum {
     Map    = 2,
     Places = 3,
     Way    = 4,
-    About  = 5
+    About  = 5,
+    Search = 6
 };
 
 
@@ -36,6 +38,7 @@ enum {
     NLPlacesViewController *_placesController;
     NLStaticScreenViewController *_driveScreen;
     NLMapViewController *_mapController;
+    NLSearchViewController *_searchController;
     NLMenuButton *_newsButton;
     NLMenuButton *_eventsButton;
     NLMenuButton *_mapButton;
@@ -163,6 +166,8 @@ enum {
     [_searchButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_searchButton setImage:[UIImage imageNamed:@"search-normal.png"] forState:UIControlStateNormal];
     [_searchButton setImage:[UIImage imageNamed:@"search-selected.png"] forState:UIControlStateHighlighted];
+    _searchButton.tag = Search;
+    [_searchButton addTarget:self action:@selector(unfoldItem:) forControlEvents:UIControlEventTouchUpInside];
 
     [_menuView addSubview:_searchButton];
 
@@ -316,6 +321,11 @@ enum {
             self.title = @"О ПАРКЕ";
             [self.navigationController pushViewController:_driveScreen animated:YES];
             break;
+        case Search:
+            _searchController = [[NLSearchViewController alloc] init];
+            self.title = @"ПОИСК";
+            [self.navigationController pushViewController:_searchController animated:YES];
+            break;
         default:
             return;
             break;
@@ -373,6 +383,23 @@ enum {
                                                 fromViewController:(UIViewController *)fromVC
                                                   toViewController:(UIViewController *)toVC
 {
+    if ([toVC isKindOfClass:[NLSearchViewController class]] && [fromVC isKindOfClass:[NLMainMenuController class]]) {
+        NLFoldAnimation *animationController = [[NLFoldAnimation alloc] init];
+        animationController.direction = XYOrigamiDirectionFromTop;
+        animationController.folds = 6;
+        animationController.duration = 10;
+        animationController.offset = ceilf(-1.f * [UIScreen mainScreen].bounds.size.height / (CGFloat)animationController.folds / 2.f);
+        return animationController;
+    }
+    if ([fromVC isKindOfClass:[NLSearchViewController class]] && [toVC isKindOfClass:[NLMainMenuController class]]) {
+        NLFoldAnimation *animationController = [[NLFoldAnimation alloc] init];
+        animationController.direction = XYOrigamiDirectionFromTop;
+        animationController.reverse = YES;
+        animationController.folds = 6;
+        animationController.duration = 10;
+        animationController.offset = ceilf(-1.f * [UIScreen mainScreen].bounds.size.height / (CGFloat)animationController.folds / 2.f);
+        return animationController;
+    }
     if ([fromVC isKindOfClass:[NLMapViewController class]] || [toVC isKindOfClass:[NLMapViewController class]]) {
         NLFoldAnimation *animationController = [[NLFoldAnimation alloc] init];
         animationController.folds = 3;

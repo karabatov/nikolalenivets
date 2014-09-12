@@ -114,6 +114,8 @@
 		D1CAF02919C05F94001C5270 /* red_right_shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1CAF02719C05F94001C5270 /* red_right_shadow@2x.png */; };
 		D1CAF02C19C06666001C5270 /* UIImage+Grayscale.m in Sources */ = {isa = PBXBuildFile; fileRef = D1CAF02B19C06666001C5270 /* UIImage+Grayscale.m */; };
 		D1CAF02F19C0E294001C5270 /* UIColor+HexValues.m in Sources */ = {isa = PBXBuildFile; fileRef = D1CAF02E19C0E294001C5270 /* UIColor+HexValues.m */; };
+		D1CAF03319C2ED0D001C5270 /* NLSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1CAF03219C2ED0D001C5270 /* NLSearchViewController.m */; };
+		D1CAF03519C2F1EB001C5270 /* search-button-back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1CAF03419C2F1EB001C5270 /* search-button-back@2x.png */; };
 		D1F5018619BA169E00CDFA5E /* compass-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1F5018519BA169E00CDFA5E /* compass-white@2x.png */; };
 		D1F5018919BA1BDC00CDFA5E /* search-normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1F5018719BA1BDC00CDFA5E /* search-normal@2x.png */; };
 		D1F5018A19BA1BDC00CDFA5E /* search-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1F5018819BA1BDC00CDFA5E /* search-selected@2x.png */; };
@@ -286,6 +288,9 @@
 		D1CAF02B19C06666001C5270 /* UIImage+Grayscale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Grayscale.m"; path = "UI/UIImage+Grayscale.m"; sourceTree = "<group>"; };
 		D1CAF02D19C0E294001C5270 /* UIColor+HexValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+HexValues.h"; path = "UI/UIColor+HexValues.h"; sourceTree = "<group>"; };
 		D1CAF02E19C0E294001C5270 /* UIColor+HexValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+HexValues.m"; path = "UI/UIColor+HexValues.m"; sourceTree = "<group>"; };
+		D1CAF03119C2ED0D001C5270 /* NLSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLSearchViewController.h; path = UI/NLSearchViewController.h; sourceTree = "<group>"; };
+		D1CAF03219C2ED0D001C5270 /* NLSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLSearchViewController.m; path = UI/NLSearchViewController.m; sourceTree = "<group>"; };
+		D1CAF03419C2F1EB001C5270 /* search-button-back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-button-back@2x.png"; sourceTree = "<group>"; };
 		D1F5018519BA169E00CDFA5E /* compass-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "compass-white@2x.png"; sourceTree = "<group>"; };
 		D1F5018719BA1BDC00CDFA5E /* search-normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-normal@2x.png"; sourceTree = "<group>"; };
 		D1F5018819BA1BDC00CDFA5E /* search-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-selected@2x.png"; sourceTree = "<group>"; };
@@ -443,6 +448,7 @@
 				4F0A8BC5195AE57900D59268 /* Libraries */,
 				4F89A4221957CFAA0045D1A3 /* Map */,
 				4F0D759F193DB85900E78AA5 /* Menu */,
+				D1CAF03019C2EC02001C5270 /* Search */,
 				4F10D2AB19374AA100F6658D /* Static Screens */,
 				4F22FD82193726A00075C1A0 /* Places */,
 				4F22FD741936E7680075C1A0 /* Photo Gallery */,
@@ -654,6 +660,16 @@
 			name = Cell;
 			sourceTree = "<group>";
 		};
+		D1CAF03019C2EC02001C5270 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				D1CAF03419C2F1EB001C5270 /* search-button-back@2x.png */,
+				D1CAF03119C2ED0D001C5270 /* NLSearchViewController.h */,
+				D1CAF03219C2ED0D001C5270 /* NLSearchViewController.m */,
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -725,6 +741,7 @@
 				4F10D2B019374ABB00F6658D /* NLStaticScreenViewController.xib in Resources */,
 				D1783F391982934E00A92AA3 /* map-unchecked@2x.png in Resources */,
 				D1CAF02419C0435C001C5270 /* unread-indicator-gray@2x.png in Resources */,
+				D1CAF03519C2F1EB001C5270 /* search-button-back@2x.png in Resources */,
 				D12B05F61979A5E700AA4CDD /* tiles in Resources */,
 				D1B7ADD5196BCF9A0057C1E2 /* MonoCondensedCBold.otf in Resources */,
 				D1CAF02519C0435C001C5270 /* unread-indicator-red@2x.png in Resources */,
@@ -856,6 +873,7 @@
 				D1783F0E197E8C2500A92AA3 /* NLCategory.m in Sources */,
 				4F10D2AF19374ABB00F6658D /* NLStaticScreenViewController.m in Sources */,
 				D17177B3196D047200521D72 /* NSAttributedString+Kerning.m in Sources */,
+				D1CAF03319C2ED0D001C5270 /* NLSearchViewController.m in Sources */,
 				D19C04331973FF7E006A086B /* NLAttributedLabel.m in Sources */,
 				D1CAF02C19C06666001C5270 /* UIImage+Grayscale.m in Sources */,
 				4F390E7D18ED731E00131934 /* NLNewsEntry.m in Sources */,

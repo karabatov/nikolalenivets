@@ -46,4 +46,9 @@ typedef NSUInteger XYOrigamiDirection;
  */
 @property (nonatomic) double duration;
 
+/**
+ Offset to apply to sliding view.
+ */
+@property (nonatomic) CGFloat offset;
+
 @end
