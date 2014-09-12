@@ -116,6 +116,7 @@
 		D1CAF02F19C0E294001C5270 /* UIColor+HexValues.m in Sources */ = {isa = PBXBuildFile; fileRef = D1CAF02E19C0E294001C5270 /* UIColor+HexValues.m */; };
 		D1CAF03319C2ED0D001C5270 /* NLSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1CAF03219C2ED0D001C5270 /* NLSearchViewController.m */; };
 		D1CAF03519C2F1EB001C5270 /* search-button-back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1CAF03419C2F1EB001C5270 /* search-button-back@2x.png */; };
+		D1CAF03819C36A73001C5270 /* NLSearchTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = D1CAF03719C36A73001C5270 /* NLSearchTextView.m */; };
 		D1F5018619BA169E00CDFA5E /* compass-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1F5018519BA169E00CDFA5E /* compass-white@2x.png */; };
 		D1F5018919BA1BDC00CDFA5E /* search-normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1F5018719BA1BDC00CDFA5E /* search-normal@2x.png */; };
 		D1F5018A19BA1BDC00CDFA5E /* search-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1F5018819BA1BDC00CDFA5E /* search-selected@2x.png */; };
@@ -291,6 +292,8 @@
 		D1CAF03119C2ED0D001C5270 /* NLSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLSearchViewController.h; path = UI/NLSearchViewController.h; sourceTree = "<group>"; };
 		D1CAF03219C2ED0D001C5270 /* NLSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLSearchViewController.m; path = UI/NLSearchViewController.m; sourceTree = "<group>"; };
 		D1CAF03419C2F1EB001C5270 /* search-button-back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-button-back@2x.png"; sourceTree = "<group>"; };
+		D1CAF03619C36A73001C5270 /* NLSearchTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLSearchTextView.h; path = UI/NLSearchTextView.h; sourceTree = "<group>"; };
+		D1CAF03719C36A73001C5270 /* NLSearchTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLSearchTextView.m; path = UI/NLSearchTextView.m; sourceTree = "<group>"; };
 		D1F5018519BA169E00CDFA5E /* compass-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "compass-white@2x.png"; sourceTree = "<group>"; };
 		D1F5018719BA1BDC00CDFA5E /* search-normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-normal@2x.png"; sourceTree = "<group>"; };
 		D1F5018819BA1BDC00CDFA5E /* search-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-selected@2x.png"; sourceTree = "<group>"; };
@@ -337,6 +340,8 @@
 				D1CAF02B19C06666001C5270 /* UIImage+Grayscale.m */,
 				D1CAF02D19C0E294001C5270 /* UIColor+HexValues.h */,
 				D1CAF02E19C0E294001C5270 /* UIColor+HexValues.m */,
+				D1CAF03619C36A73001C5270 /* NLSearchTextView.h */,
+				D1CAF03719C36A73001C5270 /* NLSearchTextView.m */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -862,6 +867,7 @@
 				D1783F04197E398900A92AA3 /* UIViewController+BackViewController.m in Sources */,
 				4F9C414818EA84640038090E /* NLAppDelegate.m in Sources */,
 				D19C043C1975253C006A086B /* NLNewsCell.m in Sources */,
+				D1CAF03819C36A73001C5270 /* NLSearchTextView.m in Sources */,
 				D19C043719750589006A086B /* NLEventsCollectionViewController.m in Sources */,
 				4F9C414418EA84640038090E /* main.m in Sources */,
 				4F6137491927313700BFDD1C /* NLEventGroupsViewController.m in Sources */,

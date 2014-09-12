@@ -9,6 +9,7 @@
 #import "NLSearchViewController.h"
 #import "NSAttributedString+Kerning.h"
 #import "NLModel.h"
+#import "NLSearchTextView.h"
 
 @interface NLSearchViewController ()
 
@@ -35,7 +36,7 @@
 /**
  Search text field.
  */
-@property (strong, nonatomic) UITextView *searchField;
+@property (strong, nonatomic) NLSearchTextView *searchField;
 
 /**
  Placeholder label.
@@ -71,11 +72,12 @@
     self.backButton.hidden = YES;
     self.backButton.alpha = 0.f;
 
-    self.searchField = [[UITextView alloc] init];
+    self.searchField = [[NLSearchTextView alloc] init];
     [self.searchField setTranslatesAutoresizingMaskIntoConstraints:NO];
     self.searchField.backgroundColor = [UIColor clearColor];
     [self.searchField setReturnKeyType:UIReturnKeySearch];
     [self.searchField setScrollEnabled:NO];
+    [self.searchField setTintColor:[UIColor colorWithRed:37.f/255.f green:37.f/255.f blue:37.f/255.f alpha:1.f]];
     self.searchField.hidden = YES;
     self.searchField.alpha = 0.f;
     self.searchField.delegate = self;
@@ -190,10 +192,16 @@
 {
     if ([textView.text isEqualToString:@""]) {
         self.placeholderLabel.hidden = NO;
+        [self.searchField setTintColor:[UIColor colorWithRed:37.f/255.f green:37.f/255.f blue:37.f/255.f alpha:1.f]];
     } else {
         self.placeholderLabel.hidden = YES;
+        [self.searchField setTintColor:[UIColor colorWithRed:43.f/255.f green:191.f/255.f blue:71.f/255.f alpha:1.f]];
     }
     textView.attributedText = [[NSAttributedString alloc] initWithString:[textView.text uppercaseString] attributes:[self defaultSearchAttributes]];
+    if ([textView isFirstResponder]) {
+        [textView resignFirstResponder];
+        [textView becomeFirstResponder];
+    }
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView
