@@ -183,11 +183,16 @@
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
-    // textView.typingAttributes = [self defaultSearchAttributes];
+    //
 }
 
 - (void)textViewDidChange:(UITextView *)textView
 {
+    if ([textView.text isEqualToString:@""]) {
+        self.placeholderLabel.hidden = NO;
+    } else {
+        self.placeholderLabel.hidden = YES;
+    }
     textView.attributedText = [[NSAttributedString alloc] initWithString:[textView.text uppercaseString] attributes:[self defaultSearchAttributes]];
 }
 
