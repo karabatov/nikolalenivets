@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NLSearchViewController : UIViewController
+@interface NLSearchViewController : UIViewController <UITextViewDelegate>
 
 @end
