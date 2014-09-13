@@ -274,6 +274,24 @@
 }
 
 
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
+{
+    [super setHighlighted:highlighted animated:animated];
+
+    if (highlighted) {
+        [self makeImageGrayscale:YES];
+        [UIView animateWithDuration:0.25f animations:^{
+            self.contentView.alpha = 0.5f;
+        }];
+    } else {
+        [self makeImageGrayscale:NO];
+        [UIView animateWithDuration:0.25f animations:^{
+            self.contentView.alpha = 1.f;
+        }];
+    }
+}
+
+
 - (void)prepareForReuse
 {
     _coloredImage = nil;
