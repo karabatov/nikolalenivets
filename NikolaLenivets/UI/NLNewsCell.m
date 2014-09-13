@@ -23,6 +23,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         [self setClipsToBounds:YES];
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
         [self.contentView setTranslatesAutoresizingMaskIntoConstraints:NO];
 
         UIColor *textColor = [UIColor colorWithRed:127.f/255.f green:127.f/255.f blue:127.f/255.f alpha:1.f];
