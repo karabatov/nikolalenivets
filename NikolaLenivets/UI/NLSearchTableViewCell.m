@@ -46,6 +46,12 @@
     return self;
 }
 
+- (void)prepareForReuse
+{
+    self.collectionView.delegate = nil;
+    self.collectionView.dataSource = nil;
+}
+
 + (NSString *)reuseIdentifier
 {
     return @"NLSearchTableViewCell";

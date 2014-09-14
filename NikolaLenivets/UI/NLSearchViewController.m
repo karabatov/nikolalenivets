@@ -12,6 +12,18 @@
 #import "NLSearchTextView.h"
 #import "NLSearchTableViewCell.h"
 #import "NLSearchTableViewHeader.h"
+#import "NLCollectionCell.h"
+#import "NLFlowLayout.h"
+
+/**
+ Enum to sort out which data source data to give to a specific collection view.
+ */
+typedef enum : NSUInteger {
+    NLCollectionViewTypeUnknown,
+    NLCollectionViewTypeNews,
+    NLCollectionViewTypeEvents,
+    NLCollectionViewTypePlaces,
+} NLCollectionViewType;
 
 @interface NLSearchViewController ()
 
@@ -58,6 +70,11 @@
 @end
 
 @implementation NLSearchViewController
+{
+    NLSearchTableViewCell *_sizingCellNews;
+    NLSearchTableViewCell *_sizingCellEvents;
+    NLSearchTableViewCell *_sizingCellPlaces;
+}
 
 #define kSearchSectionNews @"News"
 #define kSearchSectionEvents @"Events"
@@ -214,9 +231,36 @@
         if (storage.searchResultPlaces && [storage.searchResultPlaces count] > 0) {
             [self.searchSections addObject:kSearchSectionPlaces];
         }
-        [self.searchTableView reloadData];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.searchTableView reloadData];
+        });
         NSLog(@"Search complete, reloading.");
     }
+}
+
+- (NLCollectionViewType)typeOfCollectionView:(UICollectionView *)collectionView
+{
+    for (NLSearchTableViewCell *cell in [self.searchTableView visibleCells]) {
+        if (cell.collectionView == collectionView) {
+            NSIndexPath *idxPath = [self.searchTableView indexPathForCell:cell];
+            NSString *sectionTitle = [self.searchSections objectAtIndex:idxPath.section];
+            if ([sectionTitle isEqualToString:kSearchSectionNews]) {
+                return NLCollectionViewTypeNews;
+            } else if ([sectionTitle isEqualToString:kSearchSectionEvents]) {
+                return NLCollectionViewTypeEvents;
+            } else if ([sectionTitle isEqualToString:kSearchSectionPlaces]) {
+                return NLCollectionViewTypePlaces;
+            }
+        }
+    }
+    if (collectionView == _sizingCellNews.collectionView) {
+        return NLCollectionViewTypeNews;
+    } else if (collectionView == _sizingCellEvents.collectionView) {
+        return NLCollectionViewTypeEvents;
+    } else if (collectionView == _sizingCellPlaces.collectionView) {
+        return NLCollectionViewTypePlaces;
+    }
+    return NLCollectionViewTypeUnknown;
 }
 
 - (NSDictionary *)defaultSearchAttributes
@@ -276,16 +320,7 @@
     NLSearchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[NLSearchTableViewCell reuseIdentifier] forIndexPath:indexPath];
     cell.collectionView.delegate = self;
     cell.collectionView.dataSource = self;
-    NSString *sectionTitle = [self.searchSections objectAtIndex:indexPath.section];
-    if ([sectionTitle isEqualToString:kSearchSectionNews]) {
-        // Configure cell
-    } else if ([sectionTitle isEqualToString:kSearchSectionEvents]) {
-        // Configure cell
-    } else if ([sectionTitle isEqualToString:kSearchSectionPlaces]) {
-        // Configure cell
-    } else {
-        return 0;
-    }
+    [cell.collectionView reloadData];
     return cell;
 }
 
@@ -318,7 +353,40 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 100.f;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _sizingCellNews = [[NLSearchTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NLSearchTableViewCell reuseIdentifier]];
+        _sizingCellNews.collectionView.delegate = self;
+        _sizingCellNews.collectionView.dataSource = self;
+        _sizingCellNews.frame = self.view.frame;
+        _sizingCellEvents = [[NLSearchTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NLSearchTableViewCell reuseIdentifier]];
+        _sizingCellEvents.collectionView.delegate = self;
+        _sizingCellEvents.collectionView.dataSource = self;
+        _sizingCellEvents.frame = self.view.frame;
+        _sizingCellPlaces = [[NLSearchTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NLSearchTableViewCell reuseIdentifier]];
+        _sizingCellPlaces.collectionView.delegate = self;
+        _sizingCellPlaces.collectionView.dataSource = self;
+        _sizingCellPlaces.frame = self.view.frame;
+    });
+    NSString *sectionTitle = [self.searchSections objectAtIndex:indexPath.section];
+    if ([sectionTitle isEqualToString:kSearchSectionNews]) {
+        [_sizingCellNews.collectionView reloadData];
+        [_sizingCellNews setNeedsLayout];
+        [_sizingCellNews layoutIfNeeded];
+        NSLog(@"%g", [_sizingCellNews.collectionView.collectionViewLayout collectionViewContentSize].height);
+        return [_sizingCellNews.collectionView.collectionViewLayout collectionViewContentSize].height;
+    } else if ([sectionTitle isEqualToString:kSearchSectionEvents]) {
+        [_sizingCellEvents.collectionView reloadData];
+        [_sizingCellEvents setNeedsLayout];
+        [_sizingCellEvents layoutIfNeeded];
+        return [_sizingCellEvents.collectionView.collectionViewLayout collectionViewContentSize].height;
+    } else if ([sectionTitle isEqualToString:kSearchSectionPlaces]) {
+        [_sizingCellPlaces.collectionView reloadData];
+        [_sizingCellPlaces setNeedsLayout];
+        [_sizingCellPlaces layoutIfNeeded];
+        return [_sizingCellPlaces.collectionView.collectionViewLayout collectionViewContentSize].height;
+    }
+    return 0.f;
 }
 
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
@@ -345,35 +413,60 @@
 
 #pragma mark - UICollectionViewDataSource
 
-
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return nil;
-}
+    switch ([self typeOfCollectionView:collectionView]) {
+        case NLCollectionViewTypeNews:
+        {
+            NLCollectionCell *cell = (NLCollectionCell *)[collectionView dequeueReusableCellWithReuseIdentifier:[NLCollectionCell reuseIdentifier] forIndexPath:indexPath];
+            NLNewsEntry *entry = [[NLStorage sharedInstance].searchResultNews objectAtIndex:indexPath.item];
+            [cell populateFromNewsEntry:entry];
+            return cell;
+            break;
+        }
 
+        default:
+            return 0;
+            break;
+    }
+}
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 0;
-}
+    switch ([self typeOfCollectionView:collectionView]) {
+        case NLCollectionViewTypeNews:
+            return [[NLStorage sharedInstance].searchResultNews count];
+            break;
 
+        default:
+            return 0;
+            break;
+    }
+}
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     return nil;
 }
 
-
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return 0;
+    switch ([self typeOfCollectionView:collectionView]) {
+        case NLCollectionViewTypeNews:
+            return 1;
+            break;
+
+        default:
+            return 0;
+            break;
+    }
 }
 
 #pragma mark - CHTCollectionViewDelegateWaterfallLayout
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout heightForFooterInSection:(NSInteger)section
 {
-    return 0.0f;
+    return 0.f;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout heightForHeaderInSection:(NSInteger)section
@@ -393,7 +486,18 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(160, 194);
+    switch ([self typeOfCollectionView:collectionView]) {
+        case NLCollectionViewTypeNews:
+        {
+            NLNewsEntry *entry = [[NLStorage sharedInstance].searchResultNews objectAtIndex:indexPath.item];
+            return CGSizeMake(160.f, [NLCollectionCell heightForCellWithEntry:entry]);
+            break;
+        }
+
+        default:
+            return CGSizeZero;
+            break;
+    }
 }
 
 @end
