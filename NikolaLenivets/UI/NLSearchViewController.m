@@ -295,7 +295,6 @@ typedef enum : NSUInteger {
         [self.searchField setTintColor:[UIColor colorWithRed:43.f/255.f green:191.f/255.f blue:71.f/255.f alpha:1.f]];
     }
     textView.attributedText = [[NSAttributedString alloc] initWithString:[textView.text uppercaseString] attributes:[self defaultSearchAttributes]];
-    [[NLStorage sharedInstance] startSearchWithPhrase:textView.text];
     // Necessary to change caret appearance
     if ([textView isFirstResponder]) {
         [textView resignFirstResponder];
@@ -306,6 +305,17 @@ typedef enum : NSUInteger {
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
     textView.typingAttributes = [self defaultSearchAttributes];
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+
+    if([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        [[NLStorage sharedInstance] startSearchWithPhrase:textView.text];
+        return NO;
+    }
+
+    return YES;
 }
 
 #pragma mark - UITableViewDataSource protocol
