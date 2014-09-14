@@ -10,6 +10,8 @@
 #import "NSAttributedString+Kerning.h"
 #import "NLModel.h"
 #import "NLSearchTextView.h"
+#import "NLSearchTableViewCell.h"
+#import "NLSearchTableViewHeader.h"
 
 @interface NLSearchViewController ()
 
@@ -42,6 +44,11 @@
  Placeholder label.
  */
 @property (strong, nonatomic) UILabel *placeholderLabel;
+
+/**
+ Wrapper table view for search results.
+ */
+@property (strong, nonatomic) UITableView *searchTableView;
 
 @end
 
@@ -93,17 +100,28 @@
     self.placeholderLabel.alpha = 0.f;
     self.placeholderLabel.hidden = YES;
 
+    self.searchTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    [self.searchTableView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.searchTableView setBackgroundColor:[UIColor clearColor]];
+    [self.searchTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [self.searchTableView registerClass:[NLSearchTableViewCell class] forCellReuseIdentifier:[NLSearchTableViewCell reuseIdentifier]];
+    [self.searchTableView registerClass:[NLSearchTableViewHeader class] forHeaderFooterViewReuseIdentifier:[NLSearchTableViewHeader reuseSectionId]];
+    self.searchTableView.delegate = self;
+    self.searchTableView.dataSource = self;
+
     [self.view addSubview:self.placeholderLabel];
     [self.view addSubview:self.searchImageView];
     [self.view addSubview:self.backButton];
     [self.view addSubview:self.searchField];
+    [self.view addSubview:self.searchTableView];
 
-    NSDictionary *views = @{ @"sImg": self.searchImageView, @"back": self.backButton, @"search": self.searchField, @"phl": self.placeholderLabel };
+    NSDictionary *views = @{ @"sImg": self.searchImageView, @"back": self.backButton, @"search": self.searchField, @"phl": self.placeholderLabel, @"stv": self.searchTableView };
     NSDictionary *metrics = @{ @"backSize": @44, @"backTop": @3.5, @"searchMargin": @17, @"searchV": [NSNumber numberWithFloat:-13.5f], @"phlV": [NSNumber numberWithFloat:-10.5f] };
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[back(backSize)]" options:kNilOptions metrics:metrics views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[stv]|" options:kNilOptions metrics:metrics views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-searchMargin-[search]-searchMargin-|" options:kNilOptions metrics:metrics views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[back(backSize)]" options:kNilOptions metrics:metrics views:views]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-backTop-[back(backSize)]-searchV-[search]-(>=0)-|" options:kNilOptions metrics:metrics views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-backTop-[back(backSize)]-searchV-[search][stv]|" options:kNilOptions metrics:metrics views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[back]-phlV-[phl]" options:kNilOptions metrics:metrics views:views]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.backButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0.f]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.searchImageView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0.f]];
@@ -198,6 +216,7 @@
         [self.searchField setTintColor:[UIColor colorWithRed:43.f/255.f green:191.f/255.f blue:71.f/255.f alpha:1.f]];
     }
     textView.attributedText = [[NSAttributedString alloc] initWithString:[textView.text uppercaseString] attributes:[self defaultSearchAttributes]];
+    // Necessary to change caret appearance
     if ([textView isFirstResponder]) {
         [textView resignFirstResponder];
         [textView becomeFirstResponder];
@@ -209,6 +228,64 @@
     textView.typingAttributes = [self defaultSearchAttributes];
 }
 
+#pragma mark - UITableViewDataSource protocol
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 3;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return nil;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 0;
+}
+
+#pragma mark - UITableViewDelegate protocol
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForFooterInSection:(NSInteger)section
+{
+    return 0.f;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section
+{
+    return 48.f;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 0.f;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 48.f;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 0.f;
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return NO;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    NLSearchTableViewHeader *header = (NLSearchTableViewHeader *)[tableView dequeueReusableHeaderFooterViewWithIdentifier:[NLSearchTableViewHeader reuseSectionId]];
+    if (!header) {
+        header = [[NLSearchTableViewHeader alloc] initWithReuseIdentifier:[NLSearchTableViewHeader reuseSectionId]];
+    }
+    // TODO: Insert actual text.
+    header.sectionTitle = @"НОВОСТИ";
+    return header;
+}
 
 @end

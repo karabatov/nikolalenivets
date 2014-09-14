@@ -64,4 +64,10 @@
 }
 
 
++ (NSString *)reuseIdentifier
+{
+    return @"NLPlaceCell";
+}
+
+
 @end

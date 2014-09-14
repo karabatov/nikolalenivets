@@ -63,4 +63,9 @@
     self.categoryNameLabel.textColor = [UIColor blackColor];
 }
 
++ (NSString *)reuseSectionId
+{
+    return @"placeSectionHeader";
+}
+
 @end

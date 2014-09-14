@@ -179,4 +179,10 @@
     }
 }
 
+
++ (NSString *)reuseIdentifier
+{
+    return @"collectioncell";
+}
+
 @end

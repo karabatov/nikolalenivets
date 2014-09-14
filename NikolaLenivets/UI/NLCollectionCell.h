@@ -32,4 +32,6 @@
 - (void)populateFromNewsEntry:(NLNewsEntry *)entry;
 - (void)populateFromEvent:(NLEvent *)event;
 
++ (NSString *)reuseIdentifier;
+
 @end

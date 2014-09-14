@@ -20,4 +20,6 @@
 
 - (void)populateWithPlace:(NLPlace *)place;
 
++ (NSString *)reuseIdentifier;
+
 @end

@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NLSearchViewController : UIViewController <UITextViewDelegate>
+/**
+ Manages search.
+ */
+@interface NLSearchViewController : UIViewController <UITextViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @end

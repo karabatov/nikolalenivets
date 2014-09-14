@@ -23,4 +23,9 @@
  */
 @property (strong, nonatomic) UILabel *categoryNameLabel;
 
+/**
+ Reuse identifier.
+ */
++ (NSString *)reuseSectionId;
+
 @end

@@ -28,4 +28,6 @@
  */
 - (void)resetBorderColor;
 
++ (NSString *)reuseSectionId;
+
 @end

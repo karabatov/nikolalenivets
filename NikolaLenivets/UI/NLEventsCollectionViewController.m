@@ -31,10 +31,6 @@
 }
 
 
-static NSString *const reuseId = @"collectioncell";
-static NSString *const reuseSectionId = @"collectionsection";
-
-
 - (instancetype)initWithGroup:(NLEventGroup *)group
 {
     self = [super initWithNibName:@"NLEventsCollectionViewController" bundle:nil];
@@ -56,8 +52,8 @@ static NSString *const reuseSectionId = @"collectionsection";
 
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
-    [self.collectionView registerNib:[UINib nibWithNibName:@"NLCollectionCellView" bundle:nil] forCellWithReuseIdentifier:reuseId];
-    [self.collectionView registerClass:[NLSectionHeader class] forSupplementaryViewOfKind:CHTCollectionElementKindSectionHeader withReuseIdentifier:reuseSectionId];
+    [self.collectionView registerNib:[UINib nibWithNibName:@"NLCollectionCellView" bundle:nil] forCellWithReuseIdentifier:[NLCollectionCell reuseIdentifier]];
+    [self.collectionView registerClass:[NLSectionHeader class] forSupplementaryViewOfKind:CHTCollectionElementKindSectionHeader withReuseIdentifier:[NLSectionHeader reuseSectionId]];
     NLFlowLayout *layout = [[NLFlowLayout alloc] init];
     layout.columnCount = 2;
     layout.headerHeight = 0.0f;
@@ -150,7 +146,7 @@ static NSString *const reuseSectionId = @"collectionsection";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NLCollectionCell *cell = (NLCollectionCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseId forIndexPath:indexPath];
+    NLCollectionCell *cell = (NLCollectionCell *)[collectionView dequeueReusableCellWithReuseIdentifier:[NLCollectionCell reuseIdentifier] forIndexPath:indexPath];
 
     if (!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"NLCollectionCellView" owner:self options:nil] firstObject];
@@ -176,7 +172,7 @@ static NSString *const reuseSectionId = @"collectionsection";
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     if ([kind isEqualToString:CHTCollectionElementKindSectionHeader]) {
-        NLSectionHeader *sectionView = (NLSectionHeader *)[self.collectionView dequeueReusableSupplementaryViewOfKind:CHTCollectionElementKindSectionHeader withReuseIdentifier:reuseSectionId forIndexPath:indexPath];
+        NLSectionHeader *sectionView = (NLSectionHeader *)[self.collectionView dequeueReusableSupplementaryViewOfKind:CHTCollectionElementKindSectionHeader withReuseIdentifier:[NLSectionHeader reuseSectionId] forIndexPath:indexPath];
         if (!sectionView) {
             sectionView = [[NLSectionHeader alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, 26.0f)];
         }
