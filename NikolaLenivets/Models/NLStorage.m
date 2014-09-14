@@ -18,6 +18,9 @@
 #define CACHED_MODEL @"CACHED_MODEL"
 
 @implementation NLStorage
+{
+    dispatch_queue_t _serialQ;
+}
 
 + (NLStorage *)sharedInstance
 {
@@ -358,6 +361,35 @@
         .unwrap;
 
     return categories;
+}
+
+
+- (void)startSearchWithPhrase:(NSString *)phrase
+{
+    if (phrase) {
+        NSArray *searchTerms = [phrase componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" /n"]];
+        if (!_serialQ) {
+            _serialQ = dispatch_queue_create("com.nikolalenivets.NLStorage_serialQ", DISPATCH_QUEUE_SERIAL);
+        }
+        dispatch_async(_serialQ, ^{
+            NSArray *searchedNews = _.array(_news).filter(^BOOL (NLNewsEntry *entry) {
+                for (NSString *substr in searchTerms) {
+                    if ([entry.title rangeOfString:substr options:NSCaseInsensitiveSearch].location != NSNotFound) {
+                        return YES;
+                    }
+                    if ([entry.content rangeOfString:substr options:NSCaseInsensitiveSearch].location != NSNotFound) {
+                        return YES;
+                    }
+                }
+                return NO;
+            }).unwrap;
+            _searchPhrase = phrase;
+            _searchResultNews = searchedNews;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:SEARCH_COMPLETE object:nil];
+            });
+        });
+    }
 }
 
 

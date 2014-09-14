@@ -8,7 +8,7 @@
 
 #import "NLSearchViewController.h"
 #import "NSAttributedString+Kerning.h"
-#import "NLModel.h"
+#import "NLStorage.h"
 #import "NLSearchTextView.h"
 #import "NLSearchTableViewCell.h"
 #import "NLSearchTableViewHeader.h"
@@ -50,17 +50,31 @@
  */
 @property (strong, nonatomic) UITableView *searchTableView;
 
+/**
+ Keeps the order and number of sections in the search results table view.
+ */
+@property (strong, nonatomic) NSMutableArray *searchSections;
+
 @end
 
 @implementation NLSearchViewController
+
+#define kSearchSectionNews @"News"
+#define kSearchSectionEvents @"Events"
+#define kSearchSectionPlaces @"Places"
 
 - (instancetype)init
 {
     self = [super init];
     if (self) {
-        // Custom initialization
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSearchState:) name:SEARCH_COMPLETE object:nil];
     }
     return self;
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidLoad
@@ -132,6 +146,8 @@
     [self.view addConstraint:self.searchImageSide];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.searchImageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.searchImageView attribute:NSLayoutAttributeHeight multiplier:1.f constant:0.f]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.placeholderLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.f constant:2.f]];
+
+    self.searchSections = [[NSMutableArray alloc] initWithCapacity:3];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -184,6 +200,25 @@
     }];
 }
 
+- (void)updateSearchState:(NSNotification *)notification
+{
+    NLStorage *storage = [NLStorage sharedInstance];
+    if (storage.searchPhrase && [storage.searchPhrase isEqualToString:self.searchField.text]) {
+        [self.searchSections removeAllObjects];
+        if (storage.searchResultNews && [storage.searchResultNews count] > 0) {
+            [self.searchSections addObject:kSearchSectionNews];
+        }
+        if (storage.searchResultEvents && [storage.searchResultEvents count] > 0) {
+            [self.searchSections addObject:kSearchSectionEvents];
+        }
+        if (storage.searchResultPlaces && [storage.searchResultPlaces count] > 0) {
+            [self.searchSections addObject:kSearchSectionPlaces];
+        }
+        [self.searchTableView reloadData];
+        NSLog(@"Search complete, reloading.");
+    }
+}
+
 - (NSDictionary *)defaultSearchAttributes
 {
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
@@ -216,6 +251,7 @@
         [self.searchField setTintColor:[UIColor colorWithRed:43.f/255.f green:191.f/255.f blue:71.f/255.f alpha:1.f]];
     }
     textView.attributedText = [[NSAttributedString alloc] initWithString:[textView.text uppercaseString] attributes:[self defaultSearchAttributes]];
+    [[NLStorage sharedInstance] startSearchWithPhrase:textView.text];
     // Necessary to change caret appearance
     if ([textView isFirstResponder]) {
         [textView resignFirstResponder];
@@ -232,17 +268,30 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return [self.searchSections count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return nil;
+    NLSearchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[NLSearchTableViewCell reuseIdentifier] forIndexPath:indexPath];
+    cell.collectionView.delegate = self;
+    cell.collectionView.dataSource = self;
+    NSString *sectionTitle = [self.searchSections objectAtIndex:indexPath.section];
+    if ([sectionTitle isEqualToString:kSearchSectionNews]) {
+        // Configure cell
+    } else if ([sectionTitle isEqualToString:kSearchSectionEvents]) {
+        // Configure cell
+    } else if ([sectionTitle isEqualToString:kSearchSectionPlaces]) {
+        // Configure cell
+    } else {
+        return 0;
+    }
+    return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return 1;
 }
 
 #pragma mark - UITableViewDelegate protocol
@@ -259,7 +308,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 0.f;
+    return 100.f;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -269,7 +318,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 0.f;
+    return 100.f;
 }
 
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
@@ -283,9 +332,68 @@
     if (!header) {
         header = [[NLSearchTableViewHeader alloc] initWithReuseIdentifier:[NLSearchTableViewHeader reuseSectionId]];
     }
-    // TODO: Insert actual text.
-    header.sectionTitle = @"НОВОСТИ";
+    NSString *sectionTitle = [self.searchSections objectAtIndex:section];
+    if ([sectionTitle isEqualToString:kSearchSectionNews]) {
+        header.sectionTitle = @"НОВОСТИ";
+    } else if ([sectionTitle isEqualToString:kSearchSectionEvents]) {
+        header.sectionTitle = @"СОБЫТИЯ";
+    } else if ([sectionTitle isEqualToString:kSearchSectionPlaces]) {
+        header.sectionTitle = @"МЕСТА";
+    }
     return header;
+}
+
+#pragma mark - UICollectionViewDataSource
+
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return nil;
+}
+
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return 0;
+}
+
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    return nil;
+}
+
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 0;
+}
+
+#pragma mark - CHTCollectionViewDelegateWaterfallLayout
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout heightForFooterInSection:(NSInteger)section
+{
+    return 0.0f;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout heightForHeaderInSection:(NSInteger)section
+{
+    return 0.f;
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    return UIEdgeInsetsZero;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 0.0f;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGSizeMake(160, 194);
 }
 
 @end

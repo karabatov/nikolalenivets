@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CHTCollectionViewWaterfallLayout.h>
 
 /**
  Manages search.
  */
-@interface NLSearchViewController : UIViewController <UITextViewDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface NLSearchViewController : UIViewController <UITextViewDelegate, UITableViewDataSource, UITableViewDelegate, CHTCollectionViewDelegateWaterfallLayout, UICollectionViewDataSource>
 
 @end
