@@ -14,15 +14,19 @@
 #import "NLSearchTableViewHeader.h"
 #import "NLCollectionCell.h"
 #import "NLFlowLayout.h"
+#import "NLCategory.h"
+#import "NLPlaceHeader.h"
+#import "NLPlaceCell.h"
+#import "NLLocationManager.h"
 
 /**
  Enum to sort out which data source data to give to a specific collection view.
  */
 typedef enum : NSUInteger {
-    NLCollectionViewTypeUnknown,
-    NLCollectionViewTypeNews,
-    NLCollectionViewTypeEvents,
-    NLCollectionViewTypePlaces,
+    NLCollectionViewTypeUnknown = 0,
+    NLCollectionViewTypeNews = 1,
+    NLCollectionViewTypeEvents = 2,
+    NLCollectionViewTypePlaces = 3,
 } NLCollectionViewType;
 
 @interface NLSearchViewController ()
@@ -66,6 +70,16 @@ typedef enum : NSUInteger {
  Keeps the order and number of sections in the search results table view.
  */
 @property (strong, nonatomic) NSMutableArray *searchSections;
+
+/**
+ Categories from search result places.
+ */
+@property (strong, nonatomic) NSArray *searchPlacesCategories;
+
+/**
+ Places matching categories.
+ */
+@property (strong, nonatomic) NSMutableArray *searchPlacesByCategory;
 
 @end
 
@@ -230,37 +244,32 @@ typedef enum : NSUInteger {
         }
         if (storage.searchResultPlaces && [storage.searchResultPlaces count] > 0) {
             [self.searchSections addObject:kSearchSectionPlaces];
-        }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.searchTableView reloadData];
-        });
-        NSLog(@"Search complete, reloading.");
-    }
-}
+            if (!self.searchPlacesByCategory) {
+                self.searchPlacesByCategory = [[NSMutableArray alloc] init];
+            } else {
+                [self.searchPlacesByCategory removeAllObjects];
+            }
 
-- (NLCollectionViewType)typeOfCollectionView:(UICollectionView *)collectionView
-{
-    for (NLSearchTableViewCell *cell in [self.searchTableView visibleCells]) {
-        if (cell.collectionView == collectionView) {
-            NSIndexPath *idxPath = [self.searchTableView indexPathForCell:cell];
-            NSString *sectionTitle = [self.searchSections objectAtIndex:idxPath.section];
-            if ([sectionTitle isEqualToString:kSearchSectionNews]) {
-                return NLCollectionViewTypeNews;
-            } else if ([sectionTitle isEqualToString:kSearchSectionEvents]) {
-                return NLCollectionViewTypeEvents;
-            } else if ([sectionTitle isEqualToString:kSearchSectionPlaces]) {
-                return NLCollectionViewTypePlaces;
+            self.searchPlacesCategories = _.array(storage.searchResultPlaces)
+                .map(^(NLPlace *place){
+                    return place.categories;
+                }).flatten.uniq.unwrap;
+
+            for (NLCategory *category in self.searchPlacesCategories) {
+                NSArray *placesForCat = [[NSArray alloc] init];
+                placesForCat = _.array(storage.searchResultPlaces)
+                .filter(^BOOL (NLPlace *place){
+                    return [category.id isEqualToNumber:((NLCategory *)[place.categories firstObject]).id];
+                }).unwrap;
+                [self.searchPlacesByCategory addObject:placesForCat];
             }
         }
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.searchTableView reloadData];
+            NSLog(@"Search complete, reloading.");
+        });
     }
-    if (collectionView == _sizingCellNews.collectionView) {
-        return NLCollectionViewTypeNews;
-    } else if (collectionView == _sizingCellEvents.collectionView) {
-        return NLCollectionViewTypeEvents;
-    } else if (collectionView == _sizingCellPlaces.collectionView) {
-        return NLCollectionViewTypePlaces;
-    }
-    return NLCollectionViewTypeUnknown;
 }
 
 - (NSDictionary *)defaultSearchAttributes
@@ -328,9 +337,20 @@ typedef enum : NSUInteger {
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NLSearchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[NLSearchTableViewCell reuseIdentifier] forIndexPath:indexPath];
+    NSString *sectionTitle = [self.searchSections objectAtIndex:indexPath.section];
+    if ([sectionTitle isEqualToString:kSearchSectionNews]) {
+        cell.collectionView.tag = NLCollectionViewTypeNews;
+    } else if ([sectionTitle isEqualToString:kSearchSectionEvents]) {
+        cell.collectionView.tag = NLCollectionViewTypeEvents;
+    } else if ([sectionTitle isEqualToString:kSearchSectionPlaces]) {
+        cell.collectionView.tag = NLCollectionViewTypePlaces;
+    } else {
+        cell.collectionView.tag = NLCollectionViewTypeUnknown;
+    }
     cell.collectionView.delegate = self;
     cell.collectionView.dataSource = self;
     [cell.collectionView reloadData];
+    cell.collectionView.collectionViewLayout = [NLSearchTableViewCell newFlowLayout];
     return cell;
 }
 
@@ -365,33 +385,33 @@ typedef enum : NSUInteger {
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _sizingCellNews = [[NLSearchTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NLSearchTableViewCell reuseIdentifier]];
-        _sizingCellNews.collectionView.delegate = self;
-        _sizingCellNews.collectionView.dataSource = self;
-        _sizingCellNews.frame = self.view.frame;
-        _sizingCellEvents = [[NLSearchTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NLSearchTableViewCell reuseIdentifier]];
-        _sizingCellEvents.collectionView.delegate = self;
-        _sizingCellEvents.collectionView.dataSource = self;
-        _sizingCellEvents.frame = self.view.frame;
-        _sizingCellPlaces = [[NLSearchTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NLSearchTableViewCell reuseIdentifier]];
-        _sizingCellPlaces.collectionView.delegate = self;
-        _sizingCellPlaces.collectionView.dataSource = self;
-        _sizingCellPlaces.frame = self.view.frame;
+        //
     });
     NSString *sectionTitle = [self.searchSections objectAtIndex:indexPath.section];
     if ([sectionTitle isEqualToString:kSearchSectionNews]) {
-        [_sizingCellNews.collectionView reloadData];
+        _sizingCellNews = [[NLSearchTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NLSearchTableViewCell reuseIdentifier]];
+        _sizingCellNews.collectionView.tag = NLCollectionViewTypeNews;
+        _sizingCellNews.collectionView.delegate = self;
+        _sizingCellNews.collectionView.dataSource = self;
+        _sizingCellNews.frame = self.view.frame;
         [_sizingCellNews setNeedsLayout];
         [_sizingCellNews layoutIfNeeded];
-        NSLog(@"%g", [_sizingCellNews.collectionView.collectionViewLayout collectionViewContentSize].height);
         return [_sizingCellNews.collectionView.collectionViewLayout collectionViewContentSize].height;
     } else if ([sectionTitle isEqualToString:kSearchSectionEvents]) {
-        [_sizingCellEvents.collectionView reloadData];
+        _sizingCellEvents = [[NLSearchTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NLSearchTableViewCell reuseIdentifier]];
+        _sizingCellEvents.collectionView.tag = NLCollectionViewTypeEvents;
+        _sizingCellEvents.collectionView.delegate = self;
+        _sizingCellEvents.collectionView.dataSource = self;
+        _sizingCellEvents.frame = self.view.frame;
         [_sizingCellEvents setNeedsLayout];
         [_sizingCellEvents layoutIfNeeded];
         return [_sizingCellEvents.collectionView.collectionViewLayout collectionViewContentSize].height;
     } else if ([sectionTitle isEqualToString:kSearchSectionPlaces]) {
-        [_sizingCellPlaces.collectionView reloadData];
+        _sizingCellPlaces = [[NLSearchTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NLSearchTableViewCell reuseIdentifier]];
+        _sizingCellPlaces.collectionView.tag = NLCollectionViewTypePlaces;
+        _sizingCellPlaces.collectionView.delegate = self;
+        _sizingCellPlaces.collectionView.dataSource = self;
+        _sizingCellPlaces.frame = self.view.frame;
         [_sizingCellPlaces setNeedsLayout];
         [_sizingCellPlaces layoutIfNeeded];
         return [_sizingCellPlaces.collectionView.collectionViewLayout collectionViewContentSize].height;
@@ -425,12 +445,23 @@ typedef enum : NSUInteger {
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    switch ([self typeOfCollectionView:collectionView]) {
+    switch (collectionView.tag) {
         case NLCollectionViewTypeNews:
         {
             NLCollectionCell *cell = (NLCollectionCell *)[collectionView dequeueReusableCellWithReuseIdentifier:[NLCollectionCell reuseIdentifier] forIndexPath:indexPath];
             NLNewsEntry *entry = [[NLStorage sharedInstance].searchResultNews objectAtIndex:indexPath.item];
             [cell populateFromNewsEntry:entry];
+            return cell;
+            break;
+        }
+        case NLCollectionViewTypePlaces:
+        {
+            NLPlaceCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[NLPlaceCell reuseIdentifier] forIndexPath:indexPath];
+            if (indexPath.section < [self.searchPlacesCategories count]) {
+                NLPlace *place = self.searchPlacesByCategory[indexPath.section][indexPath.item];
+                [cell populateWithPlace:place];
+                // TODO: User location
+            }
             return cell;
             break;
         }
@@ -443,9 +474,12 @@ typedef enum : NSUInteger {
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    switch ([self typeOfCollectionView:collectionView]) {
+    switch (collectionView.tag) {
         case NLCollectionViewTypeNews:
             return [[NLStorage sharedInstance].searchResultNews count];
+            break;
+        case NLCollectionViewTypePlaces:
+            return [self.searchPlacesByCategory[section] count];
             break;
 
         default:
@@ -456,14 +490,36 @@ typedef enum : NSUInteger {
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"collectionview.tag = %d", collectionView.tag);
+    switch (collectionView.tag) {
+        case NLCollectionViewTypePlaces:
+            if ([kind isEqualToString:CHTCollectionElementKindSectionHeader]) {
+                NLPlaceHeader *sectionView = (NLPlaceHeader *)[collectionView dequeueReusableSupplementaryViewOfKind:CHTCollectionElementKindSectionHeader withReuseIdentifier:[NLPlaceHeader reuseSectionId] forIndexPath:indexPath];
+                if (!sectionView) {
+                    sectionView = [[NLPlaceHeader alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, 50.0f)];
+                }
+                sectionView.objectCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)[self.searchPlacesByCategory[indexPath.section] count]];
+                sectionView.categoryNameLabel.text = [((NLCategory *)(self.searchPlacesCategories[indexPath.section])).name uppercaseString];
+                return sectionView;
+            }
+            break;
+
+        default:
+            return nil;
+            break;
+    }
     return nil;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    switch ([self typeOfCollectionView:collectionView]) {
+    switch (collectionView.tag) {
         case NLCollectionViewTypeNews:
             return 1;
+            break;
+        case NLCollectionViewTypePlaces:
+            [collectionView.collectionViewLayout invalidateLayout];
+            return [self.searchPlacesCategories count];
             break;
 
         default:
@@ -481,7 +537,15 @@ typedef enum : NSUInteger {
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout heightForHeaderInSection:(NSInteger)section
 {
-    return 0.f;
+    switch (collectionView.tag) {
+        case NLCollectionViewTypePlaces:
+            return 48.f;
+            break;
+
+        default:
+            return 0.f;
+            break;
+    }
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
@@ -496,11 +560,16 @@ typedef enum : NSUInteger {
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    switch ([self typeOfCollectionView:collectionView]) {
+    switch (collectionView.tag) {
         case NLCollectionViewTypeNews:
         {
             NLNewsEntry *entry = [[NLStorage sharedInstance].searchResultNews objectAtIndex:indexPath.item];
             return CGSizeMake(160.f, [NLCollectionCell heightForCellWithEntry:entry]);
+            break;
+        }
+        case NLCollectionViewTypePlaces:
+        {
+            return CGSizeMake(160.f, 194.f);
             break;
         }
 

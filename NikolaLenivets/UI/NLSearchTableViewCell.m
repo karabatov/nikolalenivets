@@ -7,7 +7,6 @@
 //
 
 #import "NLSearchTableViewCell.h"
-#import "NLFlowLayout.h"
 #import "NLPlaceCell.h"
 #import "NLPlaceHeader.h"
 #import "NLCollectionCell.h"
@@ -21,14 +20,7 @@
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
 
-        NLFlowLayout *layout = [[NLFlowLayout alloc] init];
-        layout.columnCount = 2;
-        layout.headerHeight = 0.0f;
-        layout.footerHeight = 0.0f;
-        layout.sectionInset = UIEdgeInsetsZero;
-        layout.minimumColumnSpacing = 0;
-        layout.minimumInteritemSpacing = 0;
-        self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+        self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:[NLSearchTableViewCell newFlowLayout]];
         [self.collectionView setTranslatesAutoresizingMaskIntoConstraints:NO];
         [self.collectionView setBackgroundColor:[UIColor whiteColor]];
 
@@ -46,10 +38,16 @@
     return self;
 }
 
-- (void)prepareForReuse
++ (NLFlowLayout *)newFlowLayout
 {
-    self.collectionView.delegate = nil;
-    self.collectionView.dataSource = nil;
+    NLFlowLayout *layout = [[NLFlowLayout alloc] init];
+    layout.columnCount = 2;
+    layout.headerHeight = 0.0f;
+    layout.footerHeight = 0.0f;
+    layout.sectionInset = UIEdgeInsetsZero;
+    layout.minimumColumnSpacing = 0;
+    layout.minimumInteritemSpacing = 0;
+    return layout;
 }
 
 + (NSString *)reuseIdentifier

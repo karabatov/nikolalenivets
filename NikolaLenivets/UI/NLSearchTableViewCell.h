@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NLFlowLayout.h"
 
 /**
  Wrapper cell for collection views in Search.
@@ -22,5 +23,10 @@
  Class reuse identifier.
  */
 + (NSString *)reuseIdentifier;
+
+/**
+ New configured flow layout instance.
+ */
++ (NLFlowLayout *)newFlowLayout;
 
 @end

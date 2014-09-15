@@ -383,8 +383,20 @@
                 }
                 return NO;
             }).unwrap;
+            NSArray *searchedPlaces = _.array(_places).filter(^BOOL (NLPlace *place) {
+                for (NSString *substr in searchTerms) {
+                    if ([place.title rangeOfString:substr options:NSCaseInsensitiveSearch].location != NSNotFound) {
+                        return YES;
+                    }
+                    if ([place.content rangeOfString:substr options:NSCaseInsensitiveSearch].location != NSNotFound) {
+                        return YES;
+                    }
+                }
+                return NO;
+            }).unwrap;
             _searchPhrase = phrase;
             _searchResultNews = searchedNews;
+            _searchResultPlaces = searchedPlaces;
             dispatch_async(dispatch_get_main_queue(), ^{
                 [[NSNotificationCenter defaultCenter] postNotificationName:SEARCH_COMPLETE object:nil];
             });

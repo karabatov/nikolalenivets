@@ -76,7 +76,7 @@
 @property (strong, nonatomic, readonly) NSDictionary *searchResultEvents;
 
 /** Search results: places. */
-@property (strong, nonatomic, readonly) NSDictionary *searchResultPlaces;
+@property (strong, nonatomic, readonly) NSArray *searchResultPlaces;
 
 /**
  Singleton storage.
