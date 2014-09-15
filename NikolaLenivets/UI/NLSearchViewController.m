@@ -18,6 +18,8 @@
 #import "NLPlaceHeader.h"
 #import "NLPlaceCell.h"
 #import "NLLocationManager.h"
+#import "NLSectionHeader.h"
+#import <NSDate+Helper.h>
 
 /**
  Enum to sort out which data source data to give to a specific collection view.
@@ -80,6 +82,11 @@ typedef enum : NSUInteger {
  Places matching categories.
  */
 @property (strong, nonatomic) NSMutableArray *searchPlacesByCategory;
+
+/**
+ Events sorted by day.
+ */
+@property (strong, nonatomic) NSArray *searchEventsByDay;
 
 @end
 
@@ -241,6 +248,27 @@ typedef enum : NSUInteger {
         }
         if (storage.searchResultEvents && [storage.searchResultEvents count] > 0) {
             [self.searchSections addObject:kSearchSectionEvents];
+            NSArray *eventDays = _.array(storage.searchResultEvents)
+            .map(^(NLEvent *event) {
+                NSDate *eventDate = [event startDate];
+                [[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit startDate:&eventDate interval:NULL forDate:eventDate];
+                return eventDate;
+            })
+            .uniq
+            .unwrap;
+            eventDays = [eventDays sortedArrayUsingComparator:^NSComparisonResult(NSDate *obj1, NSDate *obj2) {
+                return [obj1 compare:obj2];
+            }];
+            self.searchEventsByDay = _.array(eventDays)
+            .map(^(NSDate *day) {
+                NSArray *eventsOnDay = _.array(storage.searchResultEvents)
+                .filter(^BOOL (NLEvent *event) {
+                    NSDate *compare = [event startDate];
+                    [[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit startDate:&compare interval:NULL forDate:compare];
+                    return [day isEqualToDate:compare] ? YES : NO;
+                }).unwrap;
+                return eventsOnDay;
+            }).unwrap;
         }
         if (storage.searchResultPlaces && [storage.searchResultPlaces count] > 0) {
             [self.searchSections addObject:kSearchSectionPlaces];
@@ -465,9 +493,17 @@ typedef enum : NSUInteger {
             return cell;
             break;
         }
+        case NLCollectionViewTypeEvents:
+        {
+            NLCollectionCell *cell = (NLCollectionCell *)[collectionView dequeueReusableCellWithReuseIdentifier:[NLCollectionCell reuseIdentifier] forIndexPath:indexPath];
+            NLEvent *event = self.searchEventsByDay[indexPath.section][indexPath.item];
+            [cell populateFromEvent:event];
+            return cell;
+            break;
+        }
 
         default:
-            return 0;
+            return nil;
             break;
     }
 }
@@ -481,6 +517,9 @@ typedef enum : NSUInteger {
         case NLCollectionViewTypePlaces:
             return [self.searchPlacesByCategory[section] count];
             break;
+        case NLCollectionViewTypeEvents:
+            return [self.searchEventsByDay[section] count];
+            break;
 
         default:
             return 0;
@@ -493,6 +532,7 @@ typedef enum : NSUInteger {
     NSLog(@"collectionview.tag = %d", collectionView.tag);
     switch (collectionView.tag) {
         case NLCollectionViewTypePlaces:
+        {
             if ([kind isEqualToString:CHTCollectionElementKindSectionHeader]) {
                 NLPlaceHeader *sectionView = (NLPlaceHeader *)[collectionView dequeueReusableSupplementaryViewOfKind:CHTCollectionElementKindSectionHeader withReuseIdentifier:[NLPlaceHeader reuseSectionId] forIndexPath:indexPath];
                 if (!sectionView) {
@@ -503,6 +543,19 @@ typedef enum : NSUInteger {
                 return sectionView;
             }
             break;
+        }
+        case NLCollectionViewTypeEvents:
+        {
+            NLSectionHeader *sectionView = (NLSectionHeader *)[collectionView dequeueReusableSupplementaryViewOfKind:CHTCollectionElementKindSectionHeader withReuseIdentifier:[NLSectionHeader reuseSectionId] forIndexPath:indexPath];
+            if (!sectionView) {
+                sectionView = [[NLSectionHeader alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, 48.0f)];
+            }
+            sectionView.dayOrderLabel.hidden = YES;
+            NLEvent *event = [self.searchEventsByDay[indexPath.section] firstObject];
+            sectionView.dateLabel.text = [[[event startDate] stringWithFormat:DefaultDateFormat] uppercaseString];
+            return sectionView;
+            break;
+        }
 
         default:
             return nil;
@@ -518,8 +571,10 @@ typedef enum : NSUInteger {
             return 1;
             break;
         case NLCollectionViewTypePlaces:
-            [collectionView.collectionViewLayout invalidateLayout];
             return [self.searchPlacesCategories count];
+            break;
+        case NLCollectionViewTypeEvents:
+            return [self.searchEventsByDay count];
             break;
 
         default:
@@ -541,6 +596,9 @@ typedef enum : NSUInteger {
         case NLCollectionViewTypePlaces:
             return 48.f;
             break;
+        case NLCollectionViewTypeEvents:
+            return 48.f;
+            break;
 
         default:
             return 0.f;
@@ -560,16 +618,24 @@ typedef enum : NSUInteger {
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    CGFloat width = [UIScreen mainScreen].bounds.size.width / 2.0f;
     switch (collectionView.tag) {
         case NLCollectionViewTypeNews:
         {
             NLNewsEntry *entry = [[NLStorage sharedInstance].searchResultNews objectAtIndex:indexPath.item];
-            return CGSizeMake(160.f, [NLCollectionCell heightForCellWithEntry:entry]);
+            return CGSizeMake(width, [NLCollectionCell heightForCellWithEntry:entry]);
             break;
         }
         case NLCollectionViewTypePlaces:
         {
-            return CGSizeMake(160.f, 194.f);
+            return CGSizeMake(width, 194.f);
+            break;
+        }
+        case NLCollectionViewTypeEvents:
+        {
+            NLEvent *event = self.searchEventsByDay[indexPath.section][indexPath.item];
+            CGFloat height = [NLCollectionCell heightForCellWithEvent:event];
+            return CGSizeMake(width, height);
             break;
         }
 

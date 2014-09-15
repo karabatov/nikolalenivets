@@ -394,9 +394,24 @@
                 }
                 return NO;
             }).unwrap;
+            NSMutableArray *searchedEvents = [[NSMutableArray alloc] init];
+            _.array(_eventGroups).each(^(NLEventGroup *eventGroup) {
+                [searchedEvents addObjectsFromArray:_.array(eventGroup.events).filter(^BOOL (NLEvent *event) {
+                for (NSString *substr in searchTerms) {
+                    if ([event.title rangeOfString:substr options:NSCaseInsensitiveSearch].location != NSNotFound) {
+                        return YES;
+                    }
+                    if ([event.content rangeOfString:substr options:NSCaseInsensitiveSearch].location != NSNotFound) {
+                        return YES;
+                    }
+                }
+                return NO;
+            }).unwrap];
+            });
             _searchPhrase = phrase;
             _searchResultNews = searchedNews;
             _searchResultPlaces = searchedPlaces;
+            _searchResultEvents = [NSArray arrayWithArray:searchedEvents];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [[NSNotificationCenter defaultCenter] postNotificationName:SEARCH_COMPLETE object:nil];
             });

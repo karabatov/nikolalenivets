@@ -73,7 +73,7 @@
 @property (strong, nonatomic, readonly) NSArray *searchResultNews;
 
 /** Search results: events. */
-@property (strong, nonatomic, readonly) NSDictionary *searchResultEvents;
+@property (strong, nonatomic, readonly) NSArray *searchResultEvents;
 
 /** Search results: places. */
 @property (strong, nonatomic, readonly) NSArray *searchResultPlaces;
