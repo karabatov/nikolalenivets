@@ -93,8 +93,11 @@ typedef enum : NSUInteger {
 @implementation NLSearchViewController
 {
     NLSearchTableViewCell *_sizingCellNews;
+    CGFloat _sizingCellNewsHeight;
     NLSearchTableViewCell *_sizingCellEvents;
+    CGFloat _sizingCellEventsHeight;
     NLSearchTableViewCell *_sizingCellPlaces;
+    CGFloat _sizingCellPlacesHeight;
 }
 
 #define kSearchSectionNews @"News"
@@ -186,6 +189,22 @@ typedef enum : NSUInteger {
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.placeholderLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.f constant:2.f]];
 
     self.searchSections = [[NSMutableArray alloc] initWithCapacity:3];
+
+    _sizingCellNews = [[NLSearchTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NLSearchTableViewCell reuseIdentifier]];
+    _sizingCellNews.collectionView.tag = NLCollectionViewTypeNews;
+    _sizingCellNews.collectionView.delegate = self;
+    _sizingCellNews.collectionView.dataSource = self;
+    _sizingCellNews.frame = self.view.frame;
+    _sizingCellEvents = [[NLSearchTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NLSearchTableViewCell reuseIdentifier]];
+    _sizingCellEvents.collectionView.tag = NLCollectionViewTypeEvents;
+    _sizingCellEvents.collectionView.delegate = self;
+    _sizingCellEvents.collectionView.dataSource = self;
+    _sizingCellEvents.frame = self.view.frame;
+    _sizingCellPlaces = [[NLSearchTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NLSearchTableViewCell reuseIdentifier]];
+    _sizingCellPlaces.collectionView.tag = NLCollectionViewTypePlaces;
+    _sizingCellPlaces.collectionView.delegate = self;
+    _sizingCellPlaces.collectionView.dataSource = self;
+    _sizingCellPlaces.frame = self.view.frame;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -240,64 +259,81 @@ typedef enum : NSUInteger {
 
 - (void)updateSearchState:(NSNotification *)notification
 {
-    NLStorage *storage = [NLStorage sharedInstance];
-    if (storage.searchPhrase && [storage.searchPhrase isEqualToString:self.searchField.text]) {
-        [self.searchSections removeAllObjects];
-        if (storage.searchResultNews && [storage.searchResultNews count] > 0) {
-            [self.searchSections addObject:kSearchSectionNews];
-        }
-        if (storage.searchResultEvents && [storage.searchResultEvents count] > 0) {
-            [self.searchSections addObject:kSearchSectionEvents];
-            NSArray *eventDays = _.array(storage.searchResultEvents)
-            .map(^(NLEvent *event) {
-                NSDate *eventDate = [event startDate];
-                [[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit startDate:&eventDate interval:NULL forDate:eventDate];
-                return eventDate;
-            })
-            .uniq
-            .unwrap;
-            eventDays = [eventDays sortedArrayUsingComparator:^NSComparisonResult(NSDate *obj1, NSDate *obj2) {
-                return [obj1 compare:obj2];
-            }];
-            self.searchEventsByDay = _.array(eventDays)
-            .map(^(NSDate *day) {
-                NSArray *eventsOnDay = _.array(storage.searchResultEvents)
-                .filter(^BOOL (NLEvent *event) {
-                    NSDate *compare = [event startDate];
-                    [[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit startDate:&compare interval:NULL forDate:compare];
-                    return [day isEqualToDate:compare] ? YES : NO;
-                }).unwrap;
-                return eventsOnDay;
-            }).unwrap;
-        }
-        if (storage.searchResultPlaces && [storage.searchResultPlaces count] > 0) {
-            [self.searchSections addObject:kSearchSectionPlaces];
-            if (!self.searchPlacesByCategory) {
-                self.searchPlacesByCategory = [[NSMutableArray alloc] init];
-            } else {
-                [self.searchPlacesByCategory removeAllObjects];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        NLStorage *storage = [NLStorage sharedInstance];
+        if (storage.searchPhrase && [storage.searchPhrase isEqualToString:self.searchField.text]) {
+            [self.searchSections removeAllObjects];
+            if (storage.searchResultNews && [storage.searchResultNews count] > 0) {
+                [self.searchSections addObject:kSearchSectionNews];
             }
+            if (storage.searchResultEvents && [storage.searchResultEvents count] > 0) {
+                [self.searchSections addObject:kSearchSectionEvents];
+                NSArray *eventDays = _.array(storage.searchResultEvents)
+                .map(^(NLEvent *event) {
+                    NSDate *eventDate = [event startDate];
+                    [[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit startDate:&eventDate interval:NULL forDate:eventDate];
+                    return eventDate;
+                })
+                .uniq
+                .unwrap;
+                eventDays = [eventDays sortedArrayUsingComparator:^NSComparisonResult(NSDate *obj1, NSDate *obj2) {
+                    return [obj1 compare:obj2];
+                }];
+                self.searchEventsByDay = _.array(eventDays)
+                .map(^(NSDate *day) {
+                    NSArray *eventsOnDay = _.array(storage.searchResultEvents)
+                    .filter(^BOOL (NLEvent *event) {
+                        NSDate *compare = [event startDate];
+                        [[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit startDate:&compare interval:NULL forDate:compare];
+                        return [day isEqualToDate:compare] ? YES : NO;
+                    }).unwrap;
+                    return eventsOnDay;
+                }).unwrap;
+            }
+            if (storage.searchResultPlaces && [storage.searchResultPlaces count] > 0) {
+                [self.searchSections addObject:kSearchSectionPlaces];
+                if (!self.searchPlacesByCategory) {
+                    self.searchPlacesByCategory = [[NSMutableArray alloc] init];
+                } else {
+                    [self.searchPlacesByCategory removeAllObjects];
+                }
 
-            self.searchPlacesCategories = _.array(storage.searchResultPlaces)
+                self.searchPlacesCategories = _.array(storage.searchResultPlaces)
                 .map(^(NLPlace *place){
                     return place.categories;
                 }).flatten.uniq.unwrap;
 
-            for (NLCategory *category in self.searchPlacesCategories) {
-                NSArray *placesForCat = [[NSArray alloc] init];
-                placesForCat = _.array(storage.searchResultPlaces)
-                .filter(^BOOL (NLPlace *place){
-                    return [category.id isEqualToNumber:((NLCategory *)[place.categories firstObject]).id];
-                }).unwrap;
-                [self.searchPlacesByCategory addObject:placesForCat];
+                for (NLCategory *category in self.searchPlacesCategories) {
+                    NSArray *placesForCat = [[NSArray alloc] init];
+                    placesForCat = _.array(storage.searchResultPlaces)
+                    .filter(^BOOL (NLPlace *place){
+                        return [category.id isEqualToNumber:((NLCategory *)[place.categories firstObject]).id];
+                    }).unwrap;
+                    [self.searchPlacesByCategory addObject:placesForCat];
+                }
             }
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [_sizingCellNews.collectionView reloadData];
+                _sizingCellNews.collectionView.collectionViewLayout = [NLSearchTableViewCell newFlowLayout];
+                [_sizingCellNews setNeedsLayout];
+                [_sizingCellNews layoutIfNeeded];
+                _sizingCellNewsHeight = [_sizingCellNews.collectionView.collectionViewLayout collectionViewContentSize].height;
+                [_sizingCellEvents.collectionView reloadData];
+                _sizingCellEvents.collectionView.collectionViewLayout = [NLSearchTableViewCell newFlowLayout];
+                [_sizingCellEvents setNeedsLayout];
+                [_sizingCellEvents layoutIfNeeded];
+                _sizingCellEventsHeight = [_sizingCellEvents.collectionView.collectionViewLayout collectionViewContentSize].height;
+                [_sizingCellPlaces.collectionView reloadData];
+                _sizingCellPlaces.collectionView.collectionViewLayout = [NLSearchTableViewCell newFlowLayout];
+                [_sizingCellPlaces setNeedsLayout];
+                [_sizingCellPlaces layoutIfNeeded];
+                _sizingCellPlacesHeight = [_sizingCellPlaces.collectionView.collectionViewLayout collectionViewContentSize].height;
+                [self.searchTableView reloadData];
+                NSLog(@"Search complete, reloading.");
+            });
         }
-
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.searchTableView reloadData];
-            NSLog(@"Search complete, reloading.");
-        });
-    }
+    });
 }
 
 - (NSDictionary *)defaultSearchAttributes
@@ -396,53 +432,58 @@ typedef enum : NSUInteger {
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section
 {
-    return 48.f;
+    return 52.f;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 100.f;
+    return UITableViewAutomaticDimension;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 48.f;
+    return 52.f;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        //
-    });
     NSString *sectionTitle = [self.searchSections objectAtIndex:indexPath.section];
     if ([sectionTitle isEqualToString:kSearchSectionNews]) {
-        _sizingCellNews = [[NLSearchTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NLSearchTableViewCell reuseIdentifier]];
-        _sizingCellNews.collectionView.tag = NLCollectionViewTypeNews;
-        _sizingCellNews.collectionView.delegate = self;
-        _sizingCellNews.collectionView.dataSource = self;
-        _sizingCellNews.frame = self.view.frame;
-        [_sizingCellNews setNeedsLayout];
-        [_sizingCellNews layoutIfNeeded];
-        return [_sizingCellNews.collectionView.collectionViewLayout collectionViewContentSize].height;
+        if ([[NLStorage sharedInstance].searchPhrase isEqualToString:self.searchField.text]) {
+            NSLog(@"cached height");
+            return _sizingCellNewsHeight;
+        } else {
+            NSLog(@"uncached height");
+            [_sizingCellNews.collectionView reloadData];
+            _sizingCellNews.collectionView.collectionViewLayout = [NLSearchTableViewCell newFlowLayout];
+            [_sizingCellNews setNeedsLayout];
+            [_sizingCellNews layoutIfNeeded];
+            return [_sizingCellNews.collectionView.collectionViewLayout collectionViewContentSize].height;
+        }
     } else if ([sectionTitle isEqualToString:kSearchSectionEvents]) {
-        _sizingCellEvents = [[NLSearchTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NLSearchTableViewCell reuseIdentifier]];
-        _sizingCellEvents.collectionView.tag = NLCollectionViewTypeEvents;
-        _sizingCellEvents.collectionView.delegate = self;
-        _sizingCellEvents.collectionView.dataSource = self;
-        _sizingCellEvents.frame = self.view.frame;
-        [_sizingCellEvents setNeedsLayout];
-        [_sizingCellEvents layoutIfNeeded];
-        return [_sizingCellEvents.collectionView.collectionViewLayout collectionViewContentSize].height;
+        if ([[NLStorage sharedInstance].searchPhrase isEqualToString:self.searchField.text]) {
+            NSLog(@"cached height");
+            return _sizingCellEventsHeight;
+        } else {
+            NSLog(@"uncached height");
+            [_sizingCellEvents.collectionView reloadData];
+            _sizingCellEvents.collectionView.collectionViewLayout = [NLSearchTableViewCell newFlowLayout];
+            [_sizingCellEvents setNeedsLayout];
+            [_sizingCellEvents layoutIfNeeded];
+            return [_sizingCellEvents.collectionView.collectionViewLayout collectionViewContentSize].height;
+        }
     } else if ([sectionTitle isEqualToString:kSearchSectionPlaces]) {
-        _sizingCellPlaces = [[NLSearchTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NLSearchTableViewCell reuseIdentifier]];
-        _sizingCellPlaces.collectionView.tag = NLCollectionViewTypePlaces;
-        _sizingCellPlaces.collectionView.delegate = self;
-        _sizingCellPlaces.collectionView.dataSource = self;
-        _sizingCellPlaces.frame = self.view.frame;
-        [_sizingCellPlaces setNeedsLayout];
-        [_sizingCellPlaces layoutIfNeeded];
-        return [_sizingCellPlaces.collectionView.collectionViewLayout collectionViewContentSize].height;
+        if ([[NLStorage sharedInstance].searchPhrase isEqualToString:self.searchField.text]) {
+            NSLog(@"cached height");
+            return _sizingCellPlacesHeight;
+        } else {
+            NSLog(@"uncached height");
+            [_sizingCellPlaces.collectionView reloadData];
+            _sizingCellPlaces.collectionView.collectionViewLayout = [NLSearchTableViewCell newFlowLayout];
+            [_sizingCellPlaces setNeedsLayout];
+            [_sizingCellPlaces layoutIfNeeded];
+            return [_sizingCellPlaces.collectionView.collectionViewLayout collectionViewContentSize].height;
+        }
     }
     return 0.f;
 }
@@ -529,14 +570,13 @@ typedef enum : NSUInteger {
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"collectionview.tag = %d", collectionView.tag);
     switch (collectionView.tag) {
         case NLCollectionViewTypePlaces:
         {
             if ([kind isEqualToString:CHTCollectionElementKindSectionHeader]) {
                 NLPlaceHeader *sectionView = (NLPlaceHeader *)[collectionView dequeueReusableSupplementaryViewOfKind:CHTCollectionElementKindSectionHeader withReuseIdentifier:[NLPlaceHeader reuseSectionId] forIndexPath:indexPath];
                 if (!sectionView) {
-                    sectionView = [[NLPlaceHeader alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, 50.0f)];
+                    sectionView = [[NLPlaceHeader alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, 46.0f)];
                 }
                 sectionView.objectCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)[self.searchPlacesByCategory[indexPath.section] count]];
                 sectionView.categoryNameLabel.text = [((NLCategory *)(self.searchPlacesCategories[indexPath.section])).name uppercaseString];
@@ -548,7 +588,7 @@ typedef enum : NSUInteger {
         {
             NLSectionHeader *sectionView = (NLSectionHeader *)[collectionView dequeueReusableSupplementaryViewOfKind:CHTCollectionElementKindSectionHeader withReuseIdentifier:[NLSectionHeader reuseSectionId] forIndexPath:indexPath];
             if (!sectionView) {
-                sectionView = [[NLSectionHeader alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, 48.0f)];
+                sectionView = [[NLSectionHeader alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, 46.0f)];
             }
             sectionView.dayOrderLabel.hidden = YES;
             NLEvent *event = [self.searchEventsByDay[indexPath.section] firstObject];
@@ -594,10 +634,10 @@ typedef enum : NSUInteger {
 {
     switch (collectionView.tag) {
         case NLCollectionViewTypePlaces:
-            return 48.f;
+            return 46.f;
             break;
         case NLCollectionViewTypeEvents:
-            return 48.f;
+            return 46.f;
             break;
 
         default:
