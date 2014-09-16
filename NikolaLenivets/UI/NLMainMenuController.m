@@ -400,7 +400,23 @@ enum {
         animationController.offset = ceilf(-1.f * [UIScreen mainScreen].bounds.size.height / (CGFloat)animationController.folds);
         return animationController;
     }
-    if ([fromVC isKindOfClass:[NLMapViewController class]] || [toVC isKindOfClass:[NLMapViewController class]]) {
+    if ([fromVC isKindOfClass:[NLMapViewController class]]) {
+        NLFoldAnimation *animationController = [[NLFoldAnimation alloc] init];
+        animationController.folds = 3;
+        animationController.duration = 1.4f;
+        switch (operation) {
+            case UINavigationControllerOperationPush:
+                animationController.direction = XYOrigamiDirectionFromLeft;
+                animationController.reverse = NO;
+                return animationController;
+            case UINavigationControllerOperationPop:
+                animationController.direction = XYOrigamiDirectionFromRight;
+                animationController.reverse = NO;
+                return animationController;
+            default:
+                return nil;
+        }
+    } else if ([toVC isKindOfClass:[NLMapViewController class]]) {
         NLFoldAnimation *animationController = [[NLFoldAnimation alloc] init];
         animationController.folds = 3;
         animationController.duration = 1.4f;

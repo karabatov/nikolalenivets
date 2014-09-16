@@ -23,6 +23,7 @@
 #import "NSString+Distance.h"
 #import "NLSearchRotatingView.h"
 #import "NLSearchNothingFoundView.h"
+#import "NLDetailsViewController.h"
 
 /**
  Enum to sort out which data source data to give to a specific collection view.
@@ -178,6 +179,8 @@ typedef enum : NSUInteger {
     [self.searchTableView registerClass:[NLSearchTableViewHeader class] forHeaderFooterViewReuseIdentifier:[NLSearchTableViewHeader reuseSectionId]];
     self.searchTableView.delegate = self;
     self.searchTableView.dataSource = self;
+    self.searchTableView.hidden = YES;
+    self.searchTableView.alpha = 0.f;
 
     [self.view addSubview:self.placeholderLabel];
     [self.view addSubview:self.searchImageView];
@@ -224,9 +227,7 @@ typedef enum : NSUInteger {
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    BOOL firstTime = YES;
-
-    if (firstTime) {
+    if (!self.searchImageView.hidden) {
         self.searchImageView.tintColor = [UIColor blackColor];
         self.searchImageTop.constant = 16.f;
         self.searchImageSide.constant = 19.f;
@@ -238,11 +239,13 @@ typedef enum : NSUInteger {
             self.backButton.hidden = NO;
             self.searchField.hidden = NO;
             self.placeholderLabel.hidden = NO;
+            self.searchTableView.hidden = NO;
             [UIView animateWithDuration:0.15f animations:^{
                 self.backButton.alpha = 1.f;
                 self.searchField.alpha = 1.f;
                 self.placeholderLabel.alpha = 1.f;
                 self.searchImageView.alpha = 0.5f;
+                self.searchTableView.alpha = 1.f;
             } completion:^(BOOL finished) {
                 self.searchImageView.hidden = YES;
                 [self.searchField becomeFirstResponder];
@@ -259,11 +262,13 @@ typedef enum : NSUInteger {
         self.searchField.alpha = 0.f;
         self.placeholderLabel.alpha = 0.f;
         self.searchImageView.alpha = 1.0f;
+        self.searchTableView.alpha = 0.f;
     } completion:^(BOOL finished) {
         self.backButton.hidden = YES;
         self.searchImageView.image = [self.searchImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         self.searchImageTop.constant = [UIScreen mainScreen].bounds.size.height / 6.f - 17.f - 62.f;
         self.searchImageSide.constant = 62.f;
+        self.searchTableView.hidden = YES;
         [UIView animateWithDuration:0.25f animations:^{
             [self.view layoutIfNeeded];
         } completion:^(BOOL finished) {
@@ -783,6 +788,41 @@ typedef enum : NSUInteger {
         default:
             return CGSizeZero;
             break;
+    }
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.title = @"ПОИСК";
+    NLDetailsViewController *details = nil;
+    switch (collectionView.tag) {
+        case NLCollectionViewTypeNews:
+        {
+            NLNewsEntry *entry = [NLStorage sharedInstance].searchResultNews[indexPath.item];
+            details = [[NLDetailsViewController alloc] initWithEntry:entry];
+            break;
+        }
+        case NLCollectionViewTypeEvents:
+        {
+            NLEvent *event = self.searchEventsByDay[indexPath.section][indexPath.item];
+            details = [[NLDetailsViewController alloc] initWithEvent:event withOrderInGroup:indexPath.section + 1];
+            break;
+        }
+        case NLCollectionViewTypePlaces:
+        {
+            NLPlace *place = self.searchPlacesByCategory[indexPath.section][indexPath.item];
+            details = [[NLDetailsViewController alloc] initWithPlace:place currentLocation:_userLoc];
+            break;
+        }
+
+        default:
+            break;
+    }
+    if (details) {
+        [self.navigationController pushViewController:details animated:YES];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [collectionView reloadItemsAtIndexPaths:@[ indexPath ]];
+        });
     }
 }
 
