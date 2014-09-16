@@ -11,11 +11,13 @@
 #import <NSDate+Helper.h>
 #import "NSDate+CompareDays.h"
 #import "NSAttributedString+Kerning.h"
+#import "UIImage+Grayscale.h"
 
 @implementation NLCollectionCell
 {
     __strong NLNewsEntry *_entry;
     __strong NLEvent *_event;
+    __strong UIImage *_coloredImage;
 }
 
 
@@ -209,6 +211,23 @@
     CGFloat height = [cell systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
 
     return height;
+}
+
+
+- (void)makeImageGrayscale:(BOOL)shouldMakeImageGrayscale
+{
+    if (self.thumbnail.image && shouldMakeImageGrayscale) {
+        _coloredImage = self.thumbnail.image;
+        [UIView animateWithDuration:0.25f animations:^{
+            [self.thumbnail setImage:[_coloredImage convertImageToGrayscale]];
+        }];
+    } else {
+        if (_coloredImage) {
+            [UIView animateWithDuration:0.25f animations:^{
+                [self.thumbnail setImage:_coloredImage];
+            }];
+        }
+    }
 }
 
 

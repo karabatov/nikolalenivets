@@ -7,10 +7,12 @@
 //
 
 #import "NLPlaceCell.h"
+#import "UIImage+Grayscale.h"
 
 @implementation NLPlaceCell
 {
     NLPlace *_place;
+    UIImage *_coloredImage;
 }
 
 
@@ -61,6 +63,23 @@
 - (void)prepareForReuse
 {
     self.image.image = nil;
+}
+
+
+- (void)makeImageGrayscale:(BOOL)shouldMakeImageGrayscale
+{
+    if (self.image.image && shouldMakeImageGrayscale) {
+        _coloredImage = self.image.image;
+        [UIView animateWithDuration:0.25f animations:^{
+            [self.image setImage:[_coloredImage convertImageToGrayscale]];
+        }];
+    } else {
+        if (_coloredImage) {
+            [UIView animateWithDuration:0.25f animations:^{
+                [self.image setImage:_coloredImage];
+            }];
+        }
+    }
 }
 
 

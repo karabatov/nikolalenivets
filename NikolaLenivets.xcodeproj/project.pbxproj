@@ -60,6 +60,7 @@
 		D12B05F61979A5E700AA4CDD /* tiles in Resources */ = {isa = PBXBuildFile; fileRef = D12B05F51979A5E700AA4CDD /* tiles */; };
 		D138D4E819C8CD0800E5B4F4 /* NLSearchRotatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D138D4E719C8CD0800E5B4F4 /* NLSearchRotatingView.m */; };
 		D138D4EA19C8CDE600E5B4F4 /* search-rotating@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D138D4E919C8CDE600E5B4F4 /* search-rotating@2x.png */; };
+		D138D4ED19C8E05000E5B4F4 /* NLSearchNothingFoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = D138D4EC19C8E05000E5B4F4 /* NLSearchNothingFoundView.m */; };
 		D16373AB19B76B9700A89A98 /* NLMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D16373AA19B76B9700A89A98 /* NLMenuButton.m */; };
 		D16373AD19B8910C00A89A98 /* menu-circle-green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D16373AC19B8910C00A89A98 /* menu-circle-green@2x.png */; };
 		D17177B3196D047200521D72 /* NSAttributedString+Kerning.m in Sources */ = {isa = PBXBuildFile; fileRef = D17177B2196D047200521D72 /* NSAttributedString+Kerning.m */; };
@@ -218,6 +219,8 @@
 		D138D4E619C8CD0800E5B4F4 /* NLSearchRotatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLSearchRotatingView.h; path = UI/NLSearchRotatingView.h; sourceTree = "<group>"; };
 		D138D4E719C8CD0800E5B4F4 /* NLSearchRotatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLSearchRotatingView.m; path = UI/NLSearchRotatingView.m; sourceTree = "<group>"; };
 		D138D4E919C8CDE600E5B4F4 /* search-rotating@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-rotating@2x.png"; sourceTree = "<group>"; };
+		D138D4EB19C8E05000E5B4F4 /* NLSearchNothingFoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLSearchNothingFoundView.h; path = UI/NLSearchNothingFoundView.h; sourceTree = "<group>"; };
+		D138D4EC19C8E05000E5B4F4 /* NLSearchNothingFoundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLSearchNothingFoundView.m; path = UI/NLSearchNothingFoundView.m; sourceTree = "<group>"; };
 		D16373A919B76B9700A89A98 /* NLMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLMenuButton.h; path = UI/NLMenuButton.h; sourceTree = "<group>"; };
 		D16373AA19B76B9700A89A98 /* NLMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLMenuButton.m; path = UI/NLMenuButton.m; sourceTree = "<group>"; };
 		D16373AC19B8910C00A89A98 /* menu-circle-green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-circle-green@2x.png"; sourceTree = "<group>"; };
@@ -683,6 +686,8 @@
 				D19956E119C5B00700904137 /* NLSearchTableViewHeader.m */,
 				D138D4E619C8CD0800E5B4F4 /* NLSearchRotatingView.h */,
 				D138D4E719C8CD0800E5B4F4 /* NLSearchRotatingView.m */,
+				D138D4EB19C8E05000E5B4F4 /* NLSearchNothingFoundView.h */,
+				D138D4EC19C8E05000E5B4F4 /* NLSearchNothingFoundView.m */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -904,6 +909,7 @@
 				D1783F30198285C200A92AA3 /* NLMapFilter.m in Sources */,
 				D1CAF02F19C0E294001C5270 /* UIColor+HexValues.m in Sources */,
 				D1A3D7C319757D5600C53E06 /* NSString+Ordinal.m in Sources */,
+				D138D4ED19C8E05000E5B4F4 /* NLSearchNothingFoundView.m in Sources */,
 				D16373AB19B76B9700A89A98 /* NLMenuButton.m in Sources */,
 				D17B62581993E5300074298B /* NLGalleryTransition.m in Sources */,
 				4F390E7818ED684200131934 /* NLDiffIndex.m in Sources */,

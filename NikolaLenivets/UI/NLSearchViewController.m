@@ -22,6 +22,7 @@
 #import <NSDate+Helper.h>
 #import "NSString+Distance.h"
 #import "NLSearchRotatingView.h"
+#import "NLSearchNothingFoundView.h"
 
 /**
  Enum to sort out which data source data to give to a specific collection view.
@@ -343,8 +344,17 @@ typedef enum : NSUInteger {
                 [_sizingCellPlaces setNeedsLayout];
                 [_sizingCellPlaces layoutIfNeeded];
                 _sizingCellPlacesHeight = [_sizingCellPlaces.collectionView.collectionViewLayout collectionViewContentSize].height;
-                self.searchTableView.tableHeaderView = nil;
                 [self.searchTableView reloadData];
+                [UIView animateWithDuration:0.25f animations:^{
+                    self.searchTableView.alpha = 1.f;
+                } completion:^(BOOL finished) {
+                    if ([self.searchSections count] == 0 && ![storage.searchPhrase isEqualToString:@""]) {
+                        self.searchTableView.tableHeaderView = [[NLSearchNothingFoundView alloc] initWithFrame:CGRectMake(0, 0, 0, 48)];
+                    } else {
+                        self.searchTableView.tableHeaderView = nil;
+                    }
+                    [self.searchTableView setUserInteractionEnabled:YES];
+                }];
                 NSLog(@"Search complete, reloading.");
             });
         }
@@ -396,6 +406,9 @@ typedef enum : NSUInteger {
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
     [self restoreSearchFieldSize];
+    if (self.searchTableView.tableHeaderView) {
+        self.searchTableView.tableHeaderView = nil;
+    }
 }
 
 - (void)textViewDidChange:(UITextView *)textView
@@ -424,9 +437,23 @@ typedef enum : NSUInteger {
 
     if([text isEqualToString:@"\n"]) {
         [textView resignFirstResponder];
-        UIView *headerView = [[NLSearchRotatingView alloc] initWithFrame:CGRectMake(0, 0, 0, 22)];
+        UIView *headerView = [[NLSearchRotatingView alloc] initWithFrame:CGRectMake(0, 0, 0, 48)];
         self.searchTableView.tableHeaderView = headerView;
-        [[NLStorage sharedInstance] startSearchWithPhrase:textView.text];
+        [self.searchTableView setUserInteractionEnabled:NO];
+        [UIView animateWithDuration:0.25f animations:^{
+            self.searchTableView.alpha = 0.5f;
+            for (NLSearchTableViewCell *tableCell in [self.searchTableView visibleCells]) {
+                for (id collCell in [tableCell.collectionView visibleCells]) {
+                    if ([collCell respondsToSelector:@selector(makeImageGrayscale:)]) {
+                        [collCell makeImageGrayscale:YES];
+                    }
+                }
+            }
+        } completion:^(BOOL finished) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+                [[NLStorage sharedInstance] startSearchWithPhrase:textView.text];
+            });
+        }];
         return NO;
     }
 
