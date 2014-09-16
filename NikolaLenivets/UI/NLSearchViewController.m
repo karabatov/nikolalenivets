@@ -438,10 +438,10 @@ typedef enum : NSUInteger {
     if([text isEqualToString:@"\n"]) {
         [textView resignFirstResponder];
         UIView *headerView = [[NLSearchRotatingView alloc] initWithFrame:CGRectMake(0, 0, 0, 48)];
-        self.searchTableView.tableHeaderView = headerView;
         [self.searchTableView setUserInteractionEnabled:NO];
         [UIView animateWithDuration:0.25f animations:^{
             self.searchTableView.alpha = 0.5f;
+            self.searchTableView.tableHeaderView = headerView;
             for (NLSearchTableViewCell *tableCell in [self.searchTableView visibleCells]) {
                 for (id collCell in [tableCell.collectionView visibleCells]) {
                     if ([collCell respondsToSelector:@selector(makeImageGrayscale:)]) {
