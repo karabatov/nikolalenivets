@@ -90,6 +90,7 @@
 		D1783F431982CEF600A92AA3 /* splash-top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783F401982CEF600A92AA3 /* splash-top@2x.png */; };
 		D17B62581993E5300074298B /* NLGalleryTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = D17B62571993E5300074298B /* NLGalleryTransition.m */; };
 		D19956E219C5B00700904137 /* NLSearchTableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = D19956E119C5B00700904137 /* NLSearchTableViewHeader.m */; };
+		D19956E419C83D1300904137 /* event-alarm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19956E319C83D1300904137 /* event-alarm@2x.png */; };
 		D19C0425196EF44C006A086B /* map-minus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19C0422196EF44C006A086B /* map-minus@2x.png */; };
 		D19C0426196EF44D006A086B /* map-locate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19C0423196EF44C006A086B /* map-locate@2x.png */; };
 		D19C0427196EF44D006A086B /* map-plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19C0424196EF44C006A086B /* map-plus@2x.png */; };
@@ -97,12 +98,9 @@
 		D19C043719750589006A086B /* NLEventsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D19C043519750589006A086B /* NLEventsCollectionViewController.m */; };
 		D19C043C1975253C006A086B /* NLNewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D19C043A1975253C006A086B /* NLNewsCell.m */; };
 		D19C04401975319E006A086B /* NLEventsCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D19C043619750589006A086B /* NLEventsCollectionViewController.xib */; };
-		D1A3D7B81975415700C53E06 /* NLCollectionCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F8A13041921D5C700F3DA96 /* NLCollectionCellView.xib */; };
 		D1A3D7C01975734000C53E06 /* NLSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A3D7BF1975734000C53E06 /* NLSectionHeader.m */; };
 		D1A3D7C319757D5600C53E06 /* NSString+Ordinal.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A3D7C219757D5600C53E06 /* NSString+Ordinal.m */; };
 		D1A3D7C619758B4C00C53E06 /* NSDate+CompareDays.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A3D7C519758B4C00C53E06 /* NSDate+CompareDays.m */; };
-		D1A3D7C919758CF600C53E06 /* event-alarm.png in Resources */ = {isa = PBXBuildFile; fileRef = D1A3D7C719758CF600C53E06 /* event-alarm.png */; };
-		D1A3D7CA19758CF600C53E06 /* event-alarm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1A3D7C819758CF600C53E06 /* event-alarm@2x.png */; };
 		D1A3D7CD1975930D00C53E06 /* NLFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A3D7CC1975930D00C53E06 /* NLFlowLayout.m */; };
 		D1A3D7CF197634AD00C53E06 /* menu_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1A3D7CE197634AD00C53E06 /* menu_button@2x.png */; };
 		D1A3D7D7197641D900C53E06 /* NSString+Distance.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A3D7D6197641D900C53E06 /* NSString+Distance.m */; };
@@ -194,7 +192,6 @@
 		4F89A42D1957D8260045D1A3 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		4F89A4311957DCA30045D1A3 /* NLLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLLocationManager.h; path = Models/NLLocationManager.h; sourceTree = "<group>"; };
 		4F89A4321957DCA30045D1A3 /* NLLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLLocationManager.m; path = Models/NLLocationManager.m; sourceTree = "<group>"; };
-		4F8A13041921D5C700F3DA96 /* NLCollectionCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLCollectionCellView.xib; path = UI/NLCollectionCellView.xib; sourceTree = "<group>"; };
 		4F8A13061921D6CE00F3DA96 /* NLCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLCollectionCell.h; path = UI/NLCollectionCell.h; sourceTree = "<group>"; };
 		4F8A13071921D6CE00F3DA96 /* NLCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLCollectionCell.m; path = UI/NLCollectionCell.m; sourceTree = "<group>"; };
 		4F9C413418EA84640038090E /* NikolaLenivets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NikolaLenivets.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -259,6 +256,7 @@
 		D17B62571993E5300074298B /* NLGalleryTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLGalleryTransition.m; path = UI/NLGalleryTransition.m; sourceTree = "<group>"; };
 		D19956E019C5B00700904137 /* NLSearchTableViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLSearchTableViewHeader.h; path = UI/NLSearchTableViewHeader.h; sourceTree = "<group>"; };
 		D19956E119C5B00700904137 /* NLSearchTableViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLSearchTableViewHeader.m; path = UI/NLSearchTableViewHeader.m; sourceTree = "<group>"; };
+		D19956E319C83D1300904137 /* event-alarm@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event-alarm@2x.png"; sourceTree = "<group>"; };
 		D19C0422196EF44C006A086B /* map-minus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-minus@2x.png"; sourceTree = "<group>"; };
 		D19C0423196EF44C006A086B /* map-locate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-locate@2x.png"; sourceTree = "<group>"; };
 		D19C0424196EF44C006A086B /* map-plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-plus@2x.png"; sourceTree = "<group>"; };
@@ -275,8 +273,6 @@
 		D1A3D7C219757D5600C53E06 /* NSString+Ordinal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Ordinal.m"; path = "UI/NSString+Ordinal.m"; sourceTree = "<group>"; };
 		D1A3D7C419758B4C00C53E06 /* NSDate+CompareDays.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+CompareDays.h"; path = "UI/NSDate+CompareDays.h"; sourceTree = "<group>"; };
 		D1A3D7C519758B4C00C53E06 /* NSDate+CompareDays.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+CompareDays.m"; path = "UI/NSDate+CompareDays.m"; sourceTree = "<group>"; };
-		D1A3D7C719758CF600C53E06 /* event-alarm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event-alarm.png"; sourceTree = "<group>"; };
-		D1A3D7C819758CF600C53E06 /* event-alarm@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event-alarm@2x.png"; sourceTree = "<group>"; };
 		D1A3D7CB1975930D00C53E06 /* NLFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLFlowLayout.h; path = UI/NLFlowLayout.h; sourceTree = "<group>"; };
 		D1A3D7CC1975930D00C53E06 /* NLFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLFlowLayout.m; path = UI/NLFlowLayout.m; sourceTree = "<group>"; };
 		D1A3D7CE197634AD00C53E06 /* menu_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_button@2x.png"; sourceTree = "<group>"; };
@@ -525,9 +521,7 @@
 		4F8A13031921D57D00F3DA96 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				D1A3D7C719758CF600C53E06 /* event-alarm.png */,
-				D1A3D7C819758CF600C53E06 /* event-alarm@2x.png */,
-				4F8A13041921D5C700F3DA96 /* NLCollectionCellView.xib */,
+				D19956E319C83D1300904137 /* event-alarm@2x.png */,
 				D19C04311973FF7E006A086B /* NLAttributedLabel.h */,
 				D19C04321973FF7E006A086B /* NLAttributedLabel.m */,
 				4F8A13061921D6CE00F3DA96 /* NLCollectionCell.h */,
@@ -760,12 +754,12 @@
 				D12B05F61979A5E700AA4CDD /* tiles in Resources */,
 				D1B7ADD5196BCF9A0057C1E2 /* MonoCondensedCBold.otf in Resources */,
 				D1CAF02519C0435C001C5270 /* unread-indicator-red@2x.png in Resources */,
+				D19956E419C83D1300904137 /* event-alarm@2x.png in Resources */,
 				4F174E341966A50300F7F8A2 /* Track on 2014-06-23 at 18-06 GMT+4.gpx in Resources */,
 				4FCBE0081907A054002F37A3 /* BookmanC.otf in Resources */,
 				4F22FD791936E8B30075C1A0 /* NLGalleryViewController.xib in Resources */,
 				D19C0426196EF44D006A086B /* map-locate@2x.png in Resources */,
 				D1F5018E19BA1F0C00CDFA5E /* Default@2x.png in Resources */,
-				D1A3D7CA19758CF600C53E06 /* event-alarm@2x.png in Resources */,
 				D1783F2D1982824C00A92AA3 /* map-filter@2x.png in Resources */,
 				D1CAF02919C05F94001C5270 /* red_right_shadow@2x.png in Resources */,
 				D1783F381982934E00A92AA3 /* map-checked@2x.png in Resources */,
@@ -792,7 +786,6 @@
 				D1F5018A19BA1BDC00CDFA5E /* search-selected@2x.png in Resources */,
 				4F174E361966A50300F7F8A2 /* Track on 2014-06-23 at 18-34 GMT+4.gpx in Resources */,
 				D19C0427196EF44D006A086B /* map-plus@2x.png in Resources */,
-				D1A3D7C919758CF600C53E06 /* event-alarm.png in Resources */,
 				D1783EDC197C195100A92AA3 /* object@2x.png in Resources */,
 				D1783F19197EBA8800A92AA3 /* object-count.png in Resources */,
 				D1783EE3197C2C5B00A92AA3 /* object-selected.png in Resources */,
@@ -808,7 +801,6 @@
 				D1783EEF197C438200A92AA3 /* userlocation.png in Resources */,
 				4F0D75AB193DD05D00E78AA5 /* back@2x.png in Resources */,
 				D1A3D7CF197634AD00C53E06 /* menu_button@2x.png in Resources */,
-				D1A3D7B81975415700C53E06 /* NLCollectionCellView.xib in Resources */,
 				D1F5018619BA169E00CDFA5E /* compass-white@2x.png in Resources */,
 				4F174E321966A50300F7F8A2 /* Track on 2014-06-23 at 17-53 GMT+4.gpx in Resources */,
 				D19C0425196EF44C006A086B /* map-minus@2x.png in Resources */,

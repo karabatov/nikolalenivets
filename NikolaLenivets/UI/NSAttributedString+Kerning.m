@@ -43,4 +43,65 @@
     return [[NSAttributedString alloc] initWithAttributedString:attributedString];
 }
 
++ (NSAttributedString *)attributedStringForTitle:(NSString *)titleString
+{
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.hyphenationFactor = 0.1f;
+    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraphStyle.lineSpacing = 0.0f;
+    paragraphStyle.maximumLineHeight = 20.f;
+    NSDictionary *attributes = @{ NSFontAttributeName: [UIFont fontWithName:NLMonospacedBoldFont size:24],
+                                  NSForegroundColorAttributeName: [UIColor colorWithRed:37.f/255.f green:37.f/255.f blue:37.f/255.f alpha:1.f],
+                                  // TODO: Make text tighter somehow.
+                                  NSKernAttributeName: [NSNumber numberWithFloat:0.f],
+                                  NSParagraphStyleAttributeName: paragraphStyle };
+    NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString:titleString attributes:attributes];
+    return title;
+}
+
+
++ (NSAttributedString *)attributedStringForDateMonth:(NSString *)monthString
+{
+    NSDictionary *attributes = @{ NSFontAttributeName: [UIFont fontWithName:NLMonospacedBoldFont size:12],
+                                  NSForegroundColorAttributeName: [UIColor colorWithRed:127.f/255.f green:127.f/255.f blue:127.f/255.f alpha:1.f],
+                                  NSKernAttributeName: [NSNumber numberWithFloat:1.1f] };
+    NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString:monthString attributes:attributes];
+    return title;
+}
+
+
++ (NSAttributedString *)attributedStringForString:(NSString *)htmlString
+{
+    NSData *htmlData = [htmlString dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *options = @{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: [NSNumber numberWithInt:NSUTF8StringEncoding] };
+    NSMutableAttributedString *attributed = [[NSMutableAttributedString alloc] initWithData:htmlData options:options documentAttributes:nil error:nil];
+    CFStringTrimWhitespace((CFMutableStringRef)[attributed mutableString]);
+    NSRange range = {0, attributed.length};
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.hyphenationFactor = 0.8f;
+    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraphStyle.lineSpacing = 3.5f;
+    NSDictionary *attributes = @{ NSFontAttributeName: [UIFont fontWithName:NLSerifFont size:10],
+                                  NSForegroundColorAttributeName: [UIColor colorWithRed:37.f/255.f green:37.f/255.f blue:37.f/255.f alpha:1.f],
+                                  NSKernAttributeName: [NSNumber numberWithFloat:0.0f],
+                                  NSParagraphStyleAttributeName: paragraphStyle };
+    [attributed setAttributes:attributes range:range];
+    __block NSRange trimmedRange = {0, 0};
+    [[attributed string] enumerateSubstringsInRange:range options:NSStringEnumerationBySentences usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
+        NSUInteger last = substringRange.location + substringRange.length;
+        trimmedRange = NSMakeRange(0, last);
+        if (last > 50) {
+            *stop = YES;
+        }
+    }];
+
+    NSRange zero = {0, 0};
+    if (!NSEqualRanges(trimmedRange, zero)) {
+        NSMutableAttributedString *trimmed = [[attributed attributedSubstringFromRange:trimmedRange] mutableCopy];
+        return trimmed;
+    } else {
+        return attributed;
+    }
+}
+
 @end

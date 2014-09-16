@@ -9,22 +9,21 @@
 @import UIKit;
 #import "NLNewsEntry.h"
 #import "NLEvent.h"
-
-#import <DTCoreText.h>
 #import <AsyncImageView.h>
-#import "NLAttributedLabel.h"
 
 @interface NLCollectionCell : UICollectionViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *counterLabel;
-@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet NLAttributedLabel *previewLabel;
-@property (weak, nonatomic) IBOutlet AsyncImageView *thumbnail;
-@property (weak, nonatomic) IBOutlet UILabel *unreadIndicator;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *thumbnailHeight;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *thumbnailBottomMargin;
-@property (weak, nonatomic) IBOutlet UIImageView *alarmIcon;
+@property (strong, nonatomic) UILabel *counterLabel;
+@property (strong, nonatomic) UILabel *dayLabel;
+@property (strong, nonatomic) UILabel *monthLabel;
+@property (strong, nonatomic) UILabel *titleLabel;
+@property (strong, nonatomic) UILabel *previewLabel;
+@property (strong, nonatomic) AsyncImageView *thumbnail;
+@property (strong, nonatomic) UIImageView *unreadIndicator;
+@property (strong, nonatomic) NSLayoutConstraint *thumbnailHeight;
+@property (strong, nonatomic) NSLayoutConstraint *thumbnailBottomMargin;
+@property (strong, nonatomic) NSLayoutConstraint *monthRightMargin;
+@property (strong, nonatomic) UIImageView *alarmIcon;
 
 + (CGFloat)heightForCellWithEntry:(NLNewsEntry *)entry;
 + (CGFloat)heightForCellWithEvent:(NLEvent *)event;

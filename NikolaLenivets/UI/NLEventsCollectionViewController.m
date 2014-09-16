@@ -52,7 +52,7 @@
 
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
-    [self.collectionView registerNib:[UINib nibWithNibName:@"NLCollectionCellView" bundle:nil] forCellWithReuseIdentifier:[NLCollectionCell reuseIdentifier]];
+    [self.collectionView registerClass:[NLCollectionCell class] forCellWithReuseIdentifier:[NLCollectionCell reuseIdentifier]];
     [self.collectionView registerClass:[NLSectionHeader class] forSupplementaryViewOfKind:CHTCollectionElementKindSectionHeader withReuseIdentifier:[NLSectionHeader reuseSectionId]];
     NLFlowLayout *layout = [[NLFlowLayout alloc] init];
     layout.columnCount = 2;
@@ -147,11 +147,6 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NLCollectionCell *cell = (NLCollectionCell *)[collectionView dequeueReusableCellWithReuseIdentifier:[NLCollectionCell reuseIdentifier] forIndexPath:indexPath];
-
-    if (!cell) {
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"NLCollectionCellView" owner:self options:nil] firstObject];
-    }
-
     NLEvent *event = [self eventForIndexPath:indexPath];
     [cell populateFromEvent:event];
     cell.counterLabel.text = [NSString stringWithFormat:@"%02lu", (unsigned long)indexPath.item + 1];
@@ -180,9 +175,6 @@
             NLEvent *event = [_eventsByDay[indexPath.section] firstObject];
             sectionView.dateLabel.text = [[[event startDate] stringWithFormat:DefaultDateFormat] uppercaseString];
             sectionView.dayOrderLabel.text = [[NSString stringWithFormat:@"%@ %@", @"день", [NSString ordinalRepresentationWithNumber:indexPath.section + 1]] uppercaseString];
-            UIColor *borderGray = [UIColor colorWithRed:246.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1.0f];
-            [sectionView.layer setBorderColor:borderGray.CGColor];
-            [sectionView.layer setBorderWidth:0.5f];
         }
         return sectionView;
     } else {
