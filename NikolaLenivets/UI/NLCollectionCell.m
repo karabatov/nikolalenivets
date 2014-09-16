@@ -86,7 +86,7 @@
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-17-[title]-17-|" options:kNilOptions metrics:nil views:views]];
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-17-[pre]-13-|" options:kNilOptions metrics:nil views:views]];
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-17-[thumb]" options:kNilOptions metrics:nil views:views]];
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[unread(7)]-15.5-[title]-12-[pre]-17-|" options:kNilOptions metrics:nil views:views]];
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[unread(7)]-15.5-[title]-12-[pre]-16.5-|" options:kNilOptions metrics:nil views:views]];
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[alarm(12.5)]" options:kNilOptions metrics:nil views:views]];
         self.thumbnailHeight = [NSLayoutConstraint constraintWithItem:self.thumbnail attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.f constant:0.f];
         [self.contentView addConstraint:self.thumbnailHeight];
@@ -138,7 +138,7 @@
     if ([_entry.thumbnail isEqualToString:@""]) {
         self.thumbnail.image = nil;
         self.thumbnailHeight.constant = 0.0f;
-        self.thumbnailBottomMargin.constant = 0.0f;
+        self.thumbnailBottomMargin.constant = 0.5f;
     } else {
         self.thumbnailHeight.constant = 125.5f;
         self.thumbnailBottomMargin.constant = -16.5f;
@@ -162,7 +162,7 @@
     }
     self.thumbnail.image = nil;
     self.thumbnailHeight.constant = 0.0f;
-    self.thumbnailBottomMargin.constant = 0.0f;
+    self.thumbnailBottomMargin.constant = 0.5f;
     self.dayLabel.text = @"";
     self.monthLabel.attributedText = [NSAttributedString kernedStringForString:[[_event startDate] stringWithFormat:DefaultTimeFormat] withFontSize:12.f kerning:1.1f andColor:[UIColor colorWithRed:37.f/255.f green:37.f/255.f blue:37.f/255.f alpha:1.f]];
     if ([NSDate isSameDayWithDate1:[NSDate date] date2:[_event startDate]]) {

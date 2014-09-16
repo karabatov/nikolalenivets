@@ -20,6 +20,7 @@
 #import "NLLocationManager.h"
 #import "NLSectionHeader.h"
 #import <NSDate+Helper.h>
+#import "NSString+Distance.h"
 
 /**
  Enum to sort out which data source data to give to a specific collection view.
@@ -98,6 +99,7 @@ typedef enum : NSUInteger {
     CGFloat _sizingCellEventsHeight;
     NLSearchTableViewCell *_sizingCellPlaces;
     CGFloat _sizingCellPlacesHeight;
+    CLLocation *_userLoc;
 }
 
 #define kSearchSectionNews @"News"
@@ -109,6 +111,7 @@ typedef enum : NSUInteger {
     self = [super init];
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSearchState:) name:SEARCH_COMPLETE object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationUpdated:) name:NLUserLocationUpdated object:nil];
     }
     return self;
 }
@@ -351,6 +354,18 @@ typedef enum : NSUInteger {
     return attributes;
 }
 
+- (void)locationUpdated:(NSNotification *)newLocation
+{
+    NSUInteger idx = NSNotFound;
+    if (!_userLoc) {
+        idx = [self.searchSections indexOfObject:kSearchSectionPlaces];
+    }
+    _userLoc = newLocation.object;
+    if (idx != NSNotFound) {
+        [self.searchTableView reloadRowsAtIndexPaths:@[ [NSIndexPath indexPathForItem:0 inSection:idx] ] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+}
+
 #pragma mark - UITextViewDelegate protocol
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
@@ -520,6 +535,7 @@ typedef enum : NSUInteger {
             NLCollectionCell *cell = (NLCollectionCell *)[collectionView dequeueReusableCellWithReuseIdentifier:[NLCollectionCell reuseIdentifier] forIndexPath:indexPath];
             NLNewsEntry *entry = [[NLStorage sharedInstance].searchResultNews objectAtIndex:indexPath.item];
             [cell populateFromNewsEntry:entry];
+            cell.counterLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)([[NLStorage sharedInstance].searchResultNews count] - indexPath.item)];
             return cell;
             break;
         }
@@ -529,7 +545,10 @@ typedef enum : NSUInteger {
             if (indexPath.section < [self.searchPlacesCategories count]) {
                 NLPlace *place = self.searchPlacesByCategory[indexPath.section][indexPath.item];
                 [cell populateWithPlace:place];
-                // TODO: User location
+                if (_userLoc) {
+                    CLLocationDistance distance = [place distanceFromLocation:_userLoc];
+                    cell.distanceLabel.text = [[NSString stringFromDistance:distance] uppercaseString];
+                }
             }
             return cell;
             break;
@@ -539,6 +558,7 @@ typedef enum : NSUInteger {
             NLCollectionCell *cell = (NLCollectionCell *)[collectionView dequeueReusableCellWithReuseIdentifier:[NLCollectionCell reuseIdentifier] forIndexPath:indexPath];
             NLEvent *event = self.searchEventsByDay[indexPath.section][indexPath.item];
             [cell populateFromEvent:event];
+            cell.counterLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)([self.searchEventsByDay[indexPath.section] count] - indexPath.item)];
             return cell;
             break;
         }
