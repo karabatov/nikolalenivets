@@ -24,8 +24,8 @@
         [self.searchRotatingImage setTranslatesAutoresizingMaskIntoConstraints:NO];
         [self addSubview:self.searchRotatingImage];
 
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.searchRotatingImage attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.f constant:22.f]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.searchRotatingImage attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.f constant:22.f]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.searchRotatingImage attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.f constant:25.f]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.searchRotatingImage attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.f constant:25.f]];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:self.searchRotatingImage attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0.f]];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:self.searchRotatingImage attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1.f constant:0.f]];
 

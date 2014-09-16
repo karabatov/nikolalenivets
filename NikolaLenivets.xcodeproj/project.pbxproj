@@ -59,8 +59,8 @@
 		4FF31086D2714E0584DB4E63 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 213D00ACD702461FA5EF0EB3 /* libPods.a */; };
 		D12B05F61979A5E700AA4CDD /* tiles in Resources */ = {isa = PBXBuildFile; fileRef = D12B05F51979A5E700AA4CDD /* tiles */; };
 		D138D4E819C8CD0800E5B4F4 /* NLSearchRotatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D138D4E719C8CD0800E5B4F4 /* NLSearchRotatingView.m */; };
-		D138D4EA19C8CDE600E5B4F4 /* search-rotating@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D138D4E919C8CDE600E5B4F4 /* search-rotating@2x.png */; };
 		D138D4ED19C8E05000E5B4F4 /* NLSearchNothingFoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = D138D4EC19C8E05000E5B4F4 /* NLSearchNothingFoundView.m */; };
+		D138D4EF19C8E47100E5B4F4 /* search-rotating@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D138D4EE19C8E47100E5B4F4 /* search-rotating@2x.png */; };
 		D16373AB19B76B9700A89A98 /* NLMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D16373AA19B76B9700A89A98 /* NLMenuButton.m */; };
 		D16373AD19B8910C00A89A98 /* menu-circle-green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D16373AC19B8910C00A89A98 /* menu-circle-green@2x.png */; };
 		D17177B3196D047200521D72 /* NSAttributedString+Kerning.m in Sources */ = {isa = PBXBuildFile; fileRef = D17177B2196D047200521D72 /* NSAttributedString+Kerning.m */; };
@@ -218,9 +218,9 @@
 		D12B05F51979A5E700AA4CDD /* tiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tiles; sourceTree = "<group>"; };
 		D138D4E619C8CD0800E5B4F4 /* NLSearchRotatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLSearchRotatingView.h; path = UI/NLSearchRotatingView.h; sourceTree = "<group>"; };
 		D138D4E719C8CD0800E5B4F4 /* NLSearchRotatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLSearchRotatingView.m; path = UI/NLSearchRotatingView.m; sourceTree = "<group>"; };
-		D138D4E919C8CDE600E5B4F4 /* search-rotating@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-rotating@2x.png"; sourceTree = "<group>"; };
 		D138D4EB19C8E05000E5B4F4 /* NLSearchNothingFoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLSearchNothingFoundView.h; path = UI/NLSearchNothingFoundView.h; sourceTree = "<group>"; };
 		D138D4EC19C8E05000E5B4F4 /* NLSearchNothingFoundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLSearchNothingFoundView.m; path = UI/NLSearchNothingFoundView.m; sourceTree = "<group>"; };
+		D138D4EE19C8E47100E5B4F4 /* search-rotating@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-rotating@2x.png"; sourceTree = "<group>"; };
 		D16373A919B76B9700A89A98 /* NLMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLMenuButton.h; path = UI/NLMenuButton.h; sourceTree = "<group>"; };
 		D16373AA19B76B9700A89A98 /* NLMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLMenuButton.m; path = UI/NLMenuButton.m; sourceTree = "<group>"; };
 		D16373AC19B8910C00A89A98 /* menu-circle-green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-circle-green@2x.png"; sourceTree = "<group>"; };
@@ -677,7 +677,7 @@
 			isa = PBXGroup;
 			children = (
 				D1CAF03419C2F1EB001C5270 /* search-button-back@2x.png */,
-				D138D4E919C8CDE600E5B4F4 /* search-rotating@2x.png */,
+				D138D4EE19C8E47100E5B4F4 /* search-rotating@2x.png */,
 				D1CAF03119C2ED0D001C5270 /* NLSearchViewController.h */,
 				D1CAF03219C2ED0D001C5270 /* NLSearchViewController.m */,
 				D1CAF03919C45DDE001C5270 /* NLSearchTableViewCell.h */,
@@ -818,7 +818,7 @@
 				4F174E321966A50300F7F8A2 /* Track on 2014-06-23 at 17-53 GMT+4.gpx in Resources */,
 				D19C0425196EF44C006A086B /* map-minus@2x.png in Resources */,
 				D1B7ADD0196BCBCE0057C1E2 /* MonoCondensedC.otf in Resources */,
-				D138D4EA19C8CDE600E5B4F4 /* search-rotating@2x.png in Resources */,
+				D138D4EF19C8E47100E5B4F4 /* search-rotating@2x.png in Resources */,
 				4F9C414A18EA84640038090E /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
