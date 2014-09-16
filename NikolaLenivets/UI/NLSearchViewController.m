@@ -55,6 +55,16 @@ typedef enum : NSUInteger {
 @property (strong, nonatomic) NSLayoutConstraint *searchImageSide;
 
 /**
+ Height constraint for the search field to make it smaller.
+ */
+@property (strong, nonatomic) NSLayoutConstraint *searchFieldHeight;
+
+/**
+ Keep track of height to remove the constraint when necessary.
+ */
+@property (nonatomic) CGFloat searchFieldStartingHeight;
+
+/**
  Search text field.
  */
 @property (strong, nonatomic) NLSearchTextView *searchField;
@@ -366,11 +376,24 @@ typedef enum : NSUInteger {
     }
 }
 
+- (void)restoreSearchFieldSize
+{
+    if (self.searchFieldHeight) {
+        self.searchFieldHeight.constant = self.searchFieldStartingHeight;
+        [UIView animateWithDuration:0.25f animations:^{
+            [self.view layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            [self.view removeConstraint:self.searchFieldHeight];
+            self.searchFieldHeight = nil;
+        }];
+    }
+}
+
 #pragma mark - UITextViewDelegate protocol
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
-    //
+    [self restoreSearchFieldSize];
 }
 
 - (void)textViewDidChange:(UITextView *)textView
@@ -379,10 +402,10 @@ typedef enum : NSUInteger {
         self.placeholderLabel.hidden = NO;
         [self.searchField setTintColor:[UIColor colorWithRed:37.f/255.f green:37.f/255.f blue:37.f/255.f alpha:1.f]];
     } else {
+        textView.text = [textView.text uppercaseString];
         self.placeholderLabel.hidden = YES;
         [self.searchField setTintColor:[UIColor colorWithRed:43.f/255.f green:191.f/255.f blue:71.f/255.f alpha:1.f]];
     }
-    textView.attributedText = [[NSAttributedString alloc] initWithString:[textView.text uppercaseString] attributes:[self defaultSearchAttributes]];
     // Necessary to change caret appearance
     if ([textView isFirstResponder]) {
         [textView resignFirstResponder];
@@ -392,7 +415,7 @@ typedef enum : NSUInteger {
 
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
-    textView.typingAttributes = [self defaultSearchAttributes];
+    //
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
@@ -523,6 +546,51 @@ typedef enum : NSUInteger {
         header.sectionTitle = @"МЕСТА";
     }
     return header;
+}
+
+/**
+ How far back the table view can scroll before search field size stops changing.
+ */
+#define kNLSearchFieldMaxOffset 20.f
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    static CGFloat reallyOffsetY = 0.f;
+
+    [self.searchField resignFirstResponder];
+    CGFloat offsetY = scrollView.contentOffset.y;
+    if (!self.searchFieldHeight) {
+        NSLog(@"no constraint");
+        if (offsetY >= 0) {
+            CGFloat newConstant = 0.f;
+            if (offsetY <= kNLSearchFieldMaxOffset) {
+                newConstant = self.searchFieldStartingHeight - MIN(offsetY, kNLSearchFieldMaxOffset);
+            } else {
+                reallyOffsetY = offsetY;
+                NSLog(@"reallyOffset = %g", reallyOffsetY);
+                newConstant = self.searchFieldStartingHeight;
+            }
+            NSLog(@"new constant = %g", newConstant);
+            self.searchFieldStartingHeight = self.searchField.frame.size.height;
+            self.searchFieldHeight = [NSLayoutConstraint constraintWithItem:self.searchField attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.f constant:newConstant];
+            [self.view addConstraint:self.searchFieldHeight];
+        }
+    } else {
+        if (offsetY >= 0 && offsetY <= kNLSearchFieldMaxOffset) {
+            NSLog(@"constraint + within bounds");
+            self.searchFieldHeight.constant = self.searchFieldStartingHeight - offsetY;
+        } else if (offsetY > kNLSearchFieldMaxOffset && reallyOffsetY != 0.f) {
+            NSLog(@"constraint + outside bounds");
+            self.searchFieldHeight.constant = self.searchFieldStartingHeight - MIN(offsetY - reallyOffsetY, kNLSearchFieldMaxOffset);
+            if (offsetY >= reallyOffsetY + kNLSearchFieldMaxOffset || offsetY <= reallyOffsetY) {
+                NSLog(@"reset really offset");
+                reallyOffsetY = 0.f;
+            }
+        } else if (offsetY > kNLSearchFieldMaxOffset && reallyOffsetY == 0.f && self.searchFieldHeight.constant >= self.searchFieldStartingHeight - kNLSearchFieldMaxOffset) {
+            NSLog(@"set really offset");
+            reallyOffsetY = offsetY;
+        }
+    }
 }
 
 #pragma mark - UICollectionViewDataSource

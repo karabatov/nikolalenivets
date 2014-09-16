@@ -367,7 +367,7 @@
 - (void)startSearchWithPhrase:(NSString *)phrase
 {
     if (phrase) {
-        NSArray *searchTerms = [phrase componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" /n"]];
+        NSArray *searchTerms = [phrase componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         if (!_serialQ) {
             _serialQ = dispatch_queue_create("com.nikolalenivets.NLStorage_serialQ", DISPATCH_QUEUE_SERIAL);
         }
