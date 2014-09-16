@@ -555,42 +555,24 @@ typedef enum : NSUInteger {
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    static CGFloat reallyOffsetY = 0.f;
-
+    static CGFloat lastOffset = 0.f;
     [self.searchField resignFirstResponder];
     CGFloat offsetY = scrollView.contentOffset.y;
+
     if (!self.searchFieldHeight) {
-        NSLog(@"no constraint");
-        if (offsetY >= 0) {
-            CGFloat newConstant = 0.f;
-            if (offsetY <= kNLSearchFieldMaxOffset) {
-                newConstant = self.searchFieldStartingHeight - MIN(offsetY, kNLSearchFieldMaxOffset);
-            } else {
-                reallyOffsetY = offsetY;
-                NSLog(@"reallyOffset = %g", reallyOffsetY);
-                newConstant = self.searchFieldStartingHeight;
-            }
-            NSLog(@"new constant = %g", newConstant);
-            self.searchFieldStartingHeight = self.searchField.frame.size.height;
-            self.searchFieldHeight = [NSLayoutConstraint constraintWithItem:self.searchField attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.f constant:newConstant];
-            [self.view addConstraint:self.searchFieldHeight];
-        }
+        self.searchFieldStartingHeight = self.searchField.frame.size.height;
+        self.searchFieldHeight = [NSLayoutConstraint constraintWithItem:self.searchField attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.f constant:self.searchFieldStartingHeight];
+        [self.view addConstraint:self.searchFieldHeight];
     } else {
-        if (offsetY >= 0 && offsetY <= kNLSearchFieldMaxOffset) {
-            NSLog(@"constraint + within bounds");
-            self.searchFieldHeight.constant = self.searchFieldStartingHeight - offsetY;
-        } else if (offsetY > kNLSearchFieldMaxOffset && reallyOffsetY != 0.f) {
-            NSLog(@"constraint + outside bounds");
-            self.searchFieldHeight.constant = self.searchFieldStartingHeight - MIN(offsetY - reallyOffsetY, kNLSearchFieldMaxOffset);
-            if (offsetY >= reallyOffsetY + kNLSearchFieldMaxOffset || offsetY <= reallyOffsetY) {
-                NSLog(@"reset really offset");
-                reallyOffsetY = 0.f;
-            }
-        } else if (offsetY > kNLSearchFieldMaxOffset && reallyOffsetY == 0.f && self.searchFieldHeight.constant >= self.searchFieldStartingHeight - kNLSearchFieldMaxOffset) {
-            NSLog(@"set really offset");
-            reallyOffsetY = offsetY;
+        if (offsetY >= 0 && offsetY > lastOffset) {
+            self.searchFieldHeight.constant = MAX(self.searchFieldStartingHeight - kNLSearchFieldMaxOffset, self.searchFieldHeight.constant - (offsetY - lastOffset));
+        } else if (offsetY >= 0 && offsetY <= kNLSearchFieldMaxOffset) {
+            self.searchFieldHeight.constant = self.searchFieldStartingHeight - MIN(offsetY, kNLSearchFieldMaxOffset);
+        } else if (offsetY < 0) {
+            self.searchFieldHeight.constant = self.searchFieldStartingHeight;
         }
     }
+    lastOffset = offsetY;
 }
 
 #pragma mark - UICollectionViewDataSource
