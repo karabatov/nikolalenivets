@@ -21,6 +21,7 @@
 #import "NLSectionHeader.h"
 #import <NSDate+Helper.h>
 #import "NSString+Distance.h"
+#import "NLSearchRotatingView.h"
 
 /**
  Enum to sort out which data source data to give to a specific collection view.
@@ -342,6 +343,7 @@ typedef enum : NSUInteger {
                 [_sizingCellPlaces setNeedsLayout];
                 [_sizingCellPlaces layoutIfNeeded];
                 _sizingCellPlacesHeight = [_sizingCellPlaces.collectionView.collectionViewLayout collectionViewContentSize].height;
+                self.searchTableView.tableHeaderView = nil;
                 [self.searchTableView reloadData];
                 NSLog(@"Search complete, reloading.");
             });
@@ -422,6 +424,8 @@ typedef enum : NSUInteger {
 
     if([text isEqualToString:@"\n"]) {
         [textView resignFirstResponder];
+        UIView *headerView = [[NLSearchRotatingView alloc] initWithFrame:CGRectMake(0, 0, 0, 22)];
+        self.searchTableView.tableHeaderView = headerView;
         [[NLStorage sharedInstance] startSearchWithPhrase:textView.text];
         return NO;
     }
