@@ -466,6 +466,7 @@ typedef enum : NSUInteger {
         [textView resignFirstResponder];
         UIView *headerView = [[NLSearchRotatingView alloc] initWithFrame:CGRectMake(0, 0, 0, 48)];
         [self.searchTableView setUserInteractionEnabled:NO];
+        [self.searchTableView setContentOffset:CGPointZero animated:YES];
         [UIView animateWithDuration:0.25f animations:^{
             self.searchTableView.alpha = 0.5f;
             self.searchTableView.tableHeaderView = headerView;
