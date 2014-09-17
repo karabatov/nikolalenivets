@@ -60,6 +60,7 @@
 
     self.previewView.opaque = NO;
     self.previewView.backgroundColor = [UIColor clearColor];
+    [self.previewView setUserInteractionEnabled:NO];
 
     UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:self.previewView.bounds];
     toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
