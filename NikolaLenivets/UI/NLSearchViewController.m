@@ -73,6 +73,11 @@ typedef enum : NSUInteger {
 @property (strong, nonatomic) NLSearchTextView *searchField;
 
 /**
+ Search text field left margin constraint.
+ */
+@property (strong, nonatomic) NSLayoutConstraint *searchFieldMarginLeft;
+
+/**
  Placeholder label.
  */
 @property (strong, nonatomic) UILabel *placeholderLabel;
@@ -192,7 +197,7 @@ typedef enum : NSUInteger {
     NSDictionary *metrics = @{ @"backSize": @44, @"backTop": @3.5, @"searchMargin": @17, @"searchV": [NSNumber numberWithFloat:-13.5f], @"phlV": [NSNumber numberWithFloat:-10.5f] };
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[back(backSize)]" options:kNilOptions metrics:metrics views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[stv]|" options:kNilOptions metrics:metrics views:views]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-searchMargin-[search]-searchMargin-|" options:kNilOptions metrics:metrics views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[search]-searchMargin-|" options:kNilOptions metrics:metrics views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[back(backSize)]" options:kNilOptions metrics:metrics views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-backTop-[back(backSize)]-searchV-[search][stv]|" options:kNilOptions metrics:metrics views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[back]-phlV-[phl]" options:kNilOptions metrics:metrics views:views]];
@@ -205,6 +210,8 @@ typedef enum : NSUInteger {
     [self.view addConstraint:self.searchImageSide];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.searchImageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.searchImageView attribute:NSLayoutAttributeHeight multiplier:1.f constant:0.f]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.placeholderLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.f constant:2.f]];
+    self.searchFieldMarginLeft = [NSLayoutConstraint constraintWithItem:self.searchField attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.f constant:17.f];
+    [self.view addConstraint:self.searchFieldMarginLeft];
 
     self.searchSections = [[NSMutableArray alloc] initWithCapacity:3];
 
@@ -431,11 +438,16 @@ typedef enum : NSUInteger {
     if ([textView.text isEqualToString:@""]) {
         self.placeholderLabel.hidden = NO;
         [self.searchField setTintColor:[UIColor colorWithRed:37.f/255.f green:37.f/255.f blue:37.f/255.f alpha:1.f]];
+        self.searchFieldMarginLeft.constant = 17.f;
     } else {
         textView.text = [textView.text uppercaseString];
         self.placeholderLabel.hidden = YES;
         [self.searchField setTintColor:[UIColor colorWithRed:43.f/255.f green:191.f/255.f blue:71.f/255.f alpha:1.f]];
+        self.searchFieldMarginLeft.constant = 21.5f;
     }
+    [UIView animateWithDuration:0.1f animations:^{
+        [self.searchField layoutIfNeeded];
+    }];
     // Necessary to change caret appearance
     if ([textView isFirstResponder]) {
         [textView resignFirstResponder];
