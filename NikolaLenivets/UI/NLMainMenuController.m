@@ -17,6 +17,7 @@
 #import "NLMenuButton.h"
 #import "NLLocationManager.h"
 #import "NLSearchViewController.h"
+#import "NLAboutScreenController.h"
 
 #define FOLD_DURATION 0.7
 
@@ -39,6 +40,7 @@ enum {
     NLStaticScreenViewController *_driveScreen;
     NLMapViewController *_mapController;
     NLSearchViewController *_searchController;
+    NLAboutScreenController *_aboutController;
     NLMenuButton *_newsButton;
     NLMenuButton *_eventsButton;
     NLMenuButton *_mapButton;
@@ -317,9 +319,9 @@ enum {
             break;
         }
         case About:
-            _driveScreen = [[NLStaticScreenViewController alloc] initWithScreenNamed:@"about"];
+            _aboutController = [[NLAboutScreenController alloc] initWithScreenNamed:@"about"];
             self.title = @"О ПАРКЕ";
-            [self.navigationController pushViewController:_driveScreen animated:YES];
+            [self.navigationController pushViewController:_aboutController animated:YES];
             break;
         case Search:
             _searchController = [[NLSearchViewController alloc] init];

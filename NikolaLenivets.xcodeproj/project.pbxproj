@@ -109,6 +109,9 @@
 		D1A3D7D7197641D900C53E06 /* NSString+Distance.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A3D7D6197641D900C53E06 /* NSString+Distance.m */; };
 		D1B7ADD0196BCBCE0057C1E2 /* MonoCondensedC.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1B7ADCF196BCBCE0057C1E2 /* MonoCondensedC.otf */; };
 		D1B7ADD5196BCF9A0057C1E2 /* MonoCondensedCBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D1B7ADD4196BCF9A0057C1E2 /* MonoCondensedCBold.otf */; };
+		D1C545ED19C99C79004781B1 /* NLAboutScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1C545EC19C99C79004781B1 /* NLAboutScreenController.m */; };
+		D1C545EF19C9A7C0004781B1 /* about-image@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D1C545EE19C9A7C0004781B1 /* about-image@2x.jpg */; };
+		D1C545F119C9A9EE004781B1 /* gradient-green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1C545F019C9A9EE004781B1 /* gradient-green@2x.png */; };
 		D1C57547199B6D4A00FFB310 /* photo-count@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1C57546199B6D4A00FFB310 /* photo-count@2x.png */; };
 		D1CAF02419C0435C001C5270 /* unread-indicator-gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1CAF02219C0435C001C5270 /* unread-indicator-gray@2x.png */; };
 		D1CAF02519C0435C001C5270 /* unread-indicator-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1CAF02319C0435C001C5270 /* unread-indicator-red@2x.png */; };
@@ -288,6 +291,10 @@
 		D1A3D7D6197641D900C53E06 /* NSString+Distance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Distance.m"; path = "UI/NSString+Distance.m"; sourceTree = "<group>"; };
 		D1B7ADCF196BCBCE0057C1E2 /* MonoCondensedC.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MonoCondensedC.otf; sourceTree = "<group>"; };
 		D1B7ADD4196BCF9A0057C1E2 /* MonoCondensedCBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MonoCondensedCBold.otf; sourceTree = "<group>"; };
+		D1C545EB19C99C79004781B1 /* NLAboutScreenController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLAboutScreenController.h; path = UI/NLAboutScreenController.h; sourceTree = "<group>"; };
+		D1C545EC19C99C79004781B1 /* NLAboutScreenController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLAboutScreenController.m; path = UI/NLAboutScreenController.m; sourceTree = "<group>"; };
+		D1C545EE19C9A7C0004781B1 /* about-image@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "about-image@2x.jpg"; sourceTree = "<group>"; };
+		D1C545F019C9A9EE004781B1 /* gradient-green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gradient-green@2x.png"; sourceTree = "<group>"; };
 		D1C57546199B6D4A00FFB310 /* photo-count@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo-count@2x.png"; sourceTree = "<group>"; };
 		D1CAF02219C0435C001C5270 /* unread-indicator-gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unread-indicator-gray@2x.png"; sourceTree = "<group>"; };
 		D1CAF02319C0435C001C5270 /* unread-indicator-red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unread-indicator-red@2x.png"; sourceTree = "<group>"; };
@@ -374,9 +381,13 @@
 		4F10D2AB19374AA100F6658D /* Static Screens */ = {
 			isa = PBXGroup;
 			children = (
+				D1C545EE19C9A7C0004781B1 /* about-image@2x.jpg */,
+				D1C545F019C9A9EE004781B1 /* gradient-green@2x.png */,
 				4F10D2AC19374ABB00F6658D /* NLStaticScreenViewController.h */,
 				4F10D2AD19374ABB00F6658D /* NLStaticScreenViewController.m */,
 				4F10D2AE19374ABB00F6658D /* NLStaticScreenViewController.xib */,
+				D1C545EB19C99C79004781B1 /* NLAboutScreenController.h */,
+				D1C545EC19C99C79004781B1 /* NLAboutScreenController.m */,
 			);
 			name = "Static Screens";
 			sourceTree = "<group>";
@@ -768,6 +779,7 @@
 				D1B7ADD5196BCF9A0057C1E2 /* MonoCondensedCBold.otf in Resources */,
 				D1CAF02519C0435C001C5270 /* unread-indicator-red@2x.png in Resources */,
 				D19956E419C83D1300904137 /* event-alarm@2x.png in Resources */,
+				D1C545F119C9A9EE004781B1 /* gradient-green@2x.png in Resources */,
 				4F174E341966A50300F7F8A2 /* Track on 2014-06-23 at 18-06 GMT+4.gpx in Resources */,
 				4FCBE0081907A054002F37A3 /* BookmanC.otf in Resources */,
 				4F22FD791936E8B30075C1A0 /* NLGalleryViewController.xib in Resources */,
@@ -788,6 +800,7 @@
 				4F174E331966A50300F7F8A2 /* Track on 2014-06-23 at 18-00 GMT+4.gpx in Resources */,
 				D16373AD19B8910C00A89A98 /* menu-circle-green@2x.png in Resources */,
 				D1783F351982921500A92AA3 /* NLMapFilterCell.xib in Resources */,
+				D1C545EF19C9A7C0004781B1 /* about-image@2x.jpg in Resources */,
 				D1783F2719826F1B00A92AA3 /* place-info@2x.png in Resources */,
 				D1783F08197E622B00A92AA3 /* blue-gradient@2x.png in Resources */,
 				D1783EE4197C2C5B00A92AA3 /* object-selected@2x.png in Resources */,
@@ -887,6 +900,7 @@
 				D19C043719750589006A086B /* NLEventsCollectionViewController.m in Sources */,
 				4F9C414418EA84640038090E /* main.m in Sources */,
 				4F6137491927313700BFDD1C /* NLEventGroupsViewController.m in Sources */,
+				D1C545ED19C99C79004781B1 /* NLAboutScreenController.m in Sources */,
 				D1783F0B197E74D200A92AA3 /* NLPlaceHeader.m in Sources */,
 				4F7EC305190933B9002C0ECD /* NLItemsListController.m in Sources */,
 				4F390E8C18ED755300131934 /* NLEvent.m in Sources */,
