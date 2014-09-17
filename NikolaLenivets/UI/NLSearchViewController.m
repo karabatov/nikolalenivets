@@ -356,7 +356,17 @@ typedef enum : NSUInteger {
                     if ([self.searchSections count] == 0 && ![storage.searchPhrase isEqualToString:@""]) {
                         self.searchTableView.tableHeaderView = [[NLSearchNothingFoundView alloc] initWithFrame:CGRectMake(0, 0, 0, 48)];
                     } else {
-                        self.searchTableView.tableHeaderView = nil;
+                        CGRect newFrame = self.searchTableView.tableHeaderView.frame;
+                        newFrame.size.height = 0;
+                        NLSearchRotatingView *tableHeaderView = (NLSearchRotatingView *)self.searchTableView.tableHeaderView;
+                        tableHeaderView.imageHeight.constant = 0.f;
+                        [UIView animateWithDuration:0.25f animations:^{
+                            tableHeaderView.frame = newFrame;
+                            self.searchTableView.tableHeaderView = tableHeaderView;
+                            [self.searchTableView.tableHeaderView layoutIfNeeded];
+                        } completion:^(BOOL finished) {
+                            self.searchTableView.tableHeaderView = nil;
+                        }];
                     }
                     [self.searchTableView setUserInteractionEnabled:YES];
                 }];

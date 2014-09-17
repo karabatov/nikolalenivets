@@ -10,4 +10,6 @@
 
 @interface NLSearchRotatingView : UIView
 
+@property (strong, nonatomic) NSLayoutConstraint *imageHeight;
+
 @end
