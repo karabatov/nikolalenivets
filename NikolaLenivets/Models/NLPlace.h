@@ -7,6 +7,7 @@
 //
 
 #import "NLModel.h"
+#import "NLLocationManager.h"
 
 @interface NLPlace : NLModel
 

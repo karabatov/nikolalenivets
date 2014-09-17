@@ -23,9 +23,19 @@
 #define STORAGE_DID_UPDATE @"STORAGE_DID_UPDATE"
 
 /**
+ NSNotification name for notifying that the search is complete.
+ */
+#define SEARCH_COMPLETE @"SEARCH_COMPLETE"
+
+/**
+ Dictionary key name for search phrase to check if search is relevant.
+ */
+#define SEARCH_KEY_PHRASE @"SEARCH_KEY_PHRASE"
+
+/**
  Stores model state and updates when getting diff from server.
  
- Conforms to <NSCoding> for suspending to disk.
+ Conforms to <NSSecureCoding> for suspending to disk.
  */
 @interface NLStorage : NSObject <NSSecureCoding>
 
@@ -53,8 +63,20 @@
 /** Categories array. */
 @property (strong, nonatomic, readonly) NSArray *categories;
 
-/** Last download date */
+/** Last download date. */
 @property (strong, nonatomic, readonly) NSDate *lastDownloadDate;
+
+/** Last search phrase. */
+@property (strong, nonatomic, readonly) NSString *searchPhrase;
+
+/** Search results: news. */
+@property (strong, nonatomic, readonly) NSArray *searchResultNews;
+
+/** Search results: events. */
+@property (strong, nonatomic, readonly) NSArray *searchResultEvents;
+
+/** Search results: places. */
+@property (strong, nonatomic, readonly) NSArray *searchResultPlaces;
 
 /**
  Singleton storage.
@@ -85,5 +107,12 @@
  @return Number of unread items.
  */
 - (NSUInteger)unreadCountInArray:(NSArray *)array;
+
+/**
+ Start text search for any words in a given phrase.
+ 
+ @param phrase String to search for.
+ */
+- (void)startSearchWithPhrase:(NSString *)phrase;
 
 @end

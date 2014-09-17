@@ -9,9 +9,7 @@
 @import UIKit;
 #import "NLNewsEntry.h"
 #import "NLEvent.h"
-
 #import <AsyncImageView.h>
-#import "NLAttributedLabel.h"
 
 @interface NLNewsCell : UITableViewCell
 

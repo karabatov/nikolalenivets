@@ -74,4 +74,10 @@
     [self.layer setBorderWidth:0.5f];
 }
 
+
++ (NSString *)reuseSectionId
+{
+    return @"collectionsection";
+}
+
 @end

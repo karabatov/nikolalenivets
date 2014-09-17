@@ -293,7 +293,7 @@
     <resources>
         <image name="back.png" width="32" height="32"/>
         <image name="blue-gradient.png" width="320" height="233"/>
-        <image name="event-alarm.png" width="18" height="25"/>
+        <image name="event-alarm.png" width="9" height="12"/>
         <image name="place-info.png" width="16" height="16"/>
     </resources>
 </document>

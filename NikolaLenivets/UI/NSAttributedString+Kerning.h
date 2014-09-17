@@ -8,8 +8,6 @@
 
 @import Foundation;
 
-// TODO: Make the category more generic: accept font name, kerning value, etc.
-
 /**
  Category to apply font kerning (tracking in Apple terms) to input strings.
  */
@@ -43,5 +41,9 @@
  @return Kerned NSAttributedString.
  */
 + (NSAttributedString *)kernedStringForString:(NSString *)string withFontSize:(CGFloat)fontSize kerning:(CGFloat)kerning andColor:(UIColor *)color;
+
++ (NSAttributedString *)attributedStringForTitle:(NSString *)titleString;
++ (NSAttributedString *)attributedStringForDateMonth:(NSString *)monthString;
++ (NSAttributedString *)attributedStringForString:(NSString *)htmlString;
 
 @end

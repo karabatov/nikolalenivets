@@ -20,4 +20,8 @@
 
 - (void)populateWithPlace:(NLPlace *)place;
 
+- (void)makeImageGrayscale:(BOOL)shouldMakeImageGrayscale;
+
++ (NSString *)reuseIdentifier;
+
 @end

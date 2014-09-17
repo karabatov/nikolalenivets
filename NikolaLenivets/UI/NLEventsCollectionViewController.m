@@ -31,10 +31,6 @@
 }
 
 
-static NSString *const reuseId = @"collectioncell";
-static NSString *const reuseSectionId = @"collectionsection";
-
-
 - (instancetype)initWithGroup:(NLEventGroup *)group
 {
     self = [super initWithNibName:@"NLEventsCollectionViewController" bundle:nil];
@@ -56,8 +52,8 @@ static NSString *const reuseSectionId = @"collectionsection";
 
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
-    [self.collectionView registerNib:[UINib nibWithNibName:@"NLCollectionCellView" bundle:nil] forCellWithReuseIdentifier:reuseId];
-    [self.collectionView registerClass:[NLSectionHeader class] forSupplementaryViewOfKind:CHTCollectionElementKindSectionHeader withReuseIdentifier:reuseSectionId];
+    [self.collectionView registerClass:[NLCollectionCell class] forCellWithReuseIdentifier:[NLCollectionCell reuseIdentifier]];
+    [self.collectionView registerClass:[NLSectionHeader class] forSupplementaryViewOfKind:CHTCollectionElementKindSectionHeader withReuseIdentifier:[NLSectionHeader reuseSectionId]];
     NLFlowLayout *layout = [[NLFlowLayout alloc] init];
     layout.columnCount = 2;
     layout.headerHeight = 0.0f;
@@ -150,12 +146,7 @@ static NSString *const reuseSectionId = @"collectionsection";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NLCollectionCell *cell = (NLCollectionCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseId forIndexPath:indexPath];
-
-    if (!cell) {
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"NLCollectionCellView" owner:self options:nil] firstObject];
-    }
-
+    NLCollectionCell *cell = (NLCollectionCell *)[collectionView dequeueReusableCellWithReuseIdentifier:[NLCollectionCell reuseIdentifier] forIndexPath:indexPath];
     NLEvent *event = [self eventForIndexPath:indexPath];
     [cell populateFromEvent:event];
     cell.counterLabel.text = [NSString stringWithFormat:@"%02lu", (unsigned long)indexPath.item + 1];
@@ -176,7 +167,7 @@ static NSString *const reuseSectionId = @"collectionsection";
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     if ([kind isEqualToString:CHTCollectionElementKindSectionHeader]) {
-        NLSectionHeader *sectionView = (NLSectionHeader *)[self.collectionView dequeueReusableSupplementaryViewOfKind:CHTCollectionElementKindSectionHeader withReuseIdentifier:reuseSectionId forIndexPath:indexPath];
+        NLSectionHeader *sectionView = (NLSectionHeader *)[self.collectionView dequeueReusableSupplementaryViewOfKind:CHTCollectionElementKindSectionHeader withReuseIdentifier:[NLSectionHeader reuseSectionId] forIndexPath:indexPath];
         if (!sectionView) {
             sectionView = [[NLSectionHeader alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, 26.0f)];
         }
@@ -184,9 +175,6 @@ static NSString *const reuseSectionId = @"collectionsection";
             NLEvent *event = [_eventsByDay[indexPath.section] firstObject];
             sectionView.dateLabel.text = [[[event startDate] stringWithFormat:DefaultDateFormat] uppercaseString];
             sectionView.dayOrderLabel.text = [[NSString stringWithFormat:@"%@ %@", @"день", [NSString ordinalRepresentationWithNumber:indexPath.section + 1]] uppercaseString];
-            UIColor *borderGray = [UIColor colorWithRed:246.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1.0f];
-            [sectionView.layer setBorderColor:borderGray.CGColor];
-            [sectionView.layer setBorderWidth:0.5f];
         }
         return sectionView;
     } else {

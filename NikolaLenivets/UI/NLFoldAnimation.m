@@ -51,6 +51,7 @@ KeyframeParametricBlock closeFunction = ^double(double time) {
         self.folds = 1;
         self.direction = XYOrigamiDirectionFromLeft;
         self.duration = 0.7f;
+        self.offset = 0.f;
     }
     return self;
 }
@@ -95,17 +96,20 @@ KeyframeParametricBlock closeFunction = ^double(double time) {
             anchorPoint = CGPointMake(0.5, 1);
         }
 
-        UIGraphicsBeginImageContext(toView.frame.size);
-        [toView.layer renderInContext:UIGraphicsGetCurrentContext()];
-        UIImage *viewSnapShot = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
+        // UIGraphicsBeginImageContext(fromView.frame.size);
+        // [fromView.layer renderInContext:UIGraphicsGetCurrentContext()];
+        // UIImage *viewSnapShot = UIGraphicsGetImageFromCurrentImageContext();
+        // UIGraphicsEndImageContext();
+
+        // Retina snapshot.
+        UIImage *viewSnapShot = [self renderImageFromView:toView withRect:toView.frame];
 
         //set 3D depth
         CATransform3D transform = CATransform3DIdentity;
         transform.m34 = -1.0/800.0;
         CALayer *origamiLayer = [CALayer layer];
         origamiLayer.frame = toView.bounds;
-        origamiLayer.backgroundColor = [UIColor colorWithWhite:0.2 alpha:1].CGColor;
+        origamiLayer.backgroundColor = [UIColor colorWithRed:42.f/255.f green:42.f/255.f blue:42.f/255.f alpha:1.f].CGColor;
         origamiLayer.sublayerTransform = transform;
         [toView.layer addSublayer:origamiLayer];
 
@@ -176,12 +180,15 @@ KeyframeParametricBlock closeFunction = ^double(double time) {
         }];
 
         [CATransaction setValue:[NSNumber numberWithFloat:[self transitionDuration:transitionContext]] forKey:kCATransactionAnimationDuration];
-        CAAnimation *openAnimation = (self.direction < 2) ? [CAKeyframeAnimation animationWithKeyPath:@"position.x" function:openFunction fromValue:fromView.frame.origin.x + fromView.frame.size.width / 2 toValue:selfFrame.origin.x + fromView.frame.size.width / 2] : [CAKeyframeAnimation animationWithKeyPath:@"position.y" function:openFunction fromValue:fromView.frame.origin.y + fromView.frame.size.height / 2 toValue:selfFrame.origin.y + fromView.frame.size.height / 2];
+        CAAnimation *openAnimation = (self.direction < 2) ? [CAKeyframeAnimation animationWithKeyPath:@"position.x" function:openFunction fromValue:fromView.frame.origin.x + fromView.frame.size.width / 2 toValue:selfFrame.origin.x + fromView.frame.size.width / 2] : [CAKeyframeAnimation animationWithKeyPath:@"position.y" function:openFunction fromValue:fromView.frame.origin.y + fromView.frame.size.height / 2 toValue:selfFrame.origin.y + self.offset + fromView.frame.size.height / 2];
         openAnimation.fillMode = kCAFillModeForwards;
         [openAnimation setRemovedOnCompletion:NO];
         [fromView.layer addAnimation:openAnimation forKey:@"position"];
         [CATransaction commit];
     } else {
+        // Retina snapshot.
+        UIImage *viewSnapShot = [self renderImageFromView:fromView withRect:fromView.frame];
+
         //set frame
         CGRect selfFrame = fromView.frame;
         CGPoint anchorPoint;
@@ -197,7 +204,7 @@ KeyframeParametricBlock closeFunction = ^double(double time) {
         }
         else if (self.direction == XYOrigamiDirectionFromTop){
             // selfFrame.origin.y = fromView.frame.origin.y - fromView.bounds.size.height;
-            toView.frame = CGRectOffset(containerView.frame, 0, toView.frame.size.height);
+            toView.frame = CGRectOffset(containerView.frame, 0, toView.frame.size.height + self.offset);
             anchorPoint = CGPointMake(0.5, 0);
         }
         else if (self.direction == XYOrigamiDirectionFromBottom){
@@ -206,13 +213,10 @@ KeyframeParametricBlock closeFunction = ^double(double time) {
             anchorPoint = CGPointMake(0.5, 1);
         }
 
-        UIGraphicsBeginImageContext(fromView.frame.size);
-        [fromView.layer renderInContext:UIGraphicsGetCurrentContext()];
-        UIImage *viewSnapShot = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-
-        // TODO: Retina snapshot.
-        // UIImage *viewSnapShot = [self renderImageFromView:fromView withRect:fromView.frame];
+        // UIGraphicsBeginImageContext(fromView.frame.size);
+        // [fromView.layer renderInContext:UIGraphicsGetCurrentContext()];
+        // UIImage *viewSnapShot = UIGraphicsGetImageFromCurrentImageContext();
+        // UIGraphicsEndImageContext();
 
         //set 3D depth
         CATransform3D transform = CATransform3DIdentity;
@@ -288,7 +292,7 @@ KeyframeParametricBlock closeFunction = ^double(double time) {
         }];
 
         [CATransaction setValue:[NSNumber numberWithFloat:[self transitionDuration:transitionContext]] forKey:kCATransactionAnimationDuration];
-        CAAnimation *openAnimation = (self.direction < 2) ? [CAKeyframeAnimation animationWithKeyPath:@"position.x" function:closeFunction fromValue:toView.frame.origin.x + toView.frame.size.width / 2 toValue:selfFrame.origin.x + toView.frame.size.width / 2] : [CAKeyframeAnimation animationWithKeyPath:@"position.y" function:closeFunction fromValue:toView.frame.origin.y + toView.frame.size.height / 2 toValue:selfFrame.origin.y + toView.frame.size.height / 2];
+        CAAnimation *openAnimation = (self.direction < 2) ? [CAKeyframeAnimation animationWithKeyPath:@"position.x" function:closeFunction fromValue:toView.frame.origin.x + toView.frame.size.width / 2 toValue:selfFrame.origin.x + toView.frame.size.width / 2] : [CAKeyframeAnimation animationWithKeyPath:@"position.y" function:closeFunction fromValue:toView.frame.origin.y + self.offset + toView.frame.size.height / 2 toValue:selfFrame.origin.y + toView.frame.size.height / 2];
         openAnimation.fillMode = kCAFillModeForwards;
         [openAnimation setRemovedOnCompletion:NO];
         [toView.layer addAnimation:openAnimation forKey:@"position"];
@@ -314,6 +318,7 @@ KeyframeParametricBlock closeFunction = ^double(double time) {
 
 - (CATransformLayer *)transformLayerFromImage:(UIImage *)image Frame:(CGRect)frame Duration:(CGFloat)duration AnchorPiont:(CGPoint)anchorPoint StartAngle:(double)start EndAngle:(double)end;
 {
+    CGFloat scale = [UIScreen mainScreen].scale;
     CATransformLayer *jointLayer = [CATransformLayer layer];
     jointLayer.anchorPoint = anchorPoint;
     CALayer *imageLayer = [CALayer layer];
@@ -343,7 +348,7 @@ KeyframeParametricBlock closeFunction = ^double(double time) {
         imageLayer.anchorPoint = anchorPoint;
         imageLayer.position = CGPointMake(layerWidth*anchorPoint.x, frame.size.height/2);
         [jointLayer addSublayer:imageLayer];
-        CGImageRef imageCrop = CGImageCreateWithImageInRect(image.CGImage, frame);
+        CGImageRef imageCrop = CGImageCreateWithImageInRect(image.CGImage, CGRectMake(frame.origin.x * scale, frame.origin.y * scale, frame.size.width * scale, frame.size.height * scale));
         imageLayer.contents = (__bridge id)imageCrop;
         imageLayer.backgroundColor = [UIColor clearColor].CGColor;
 
@@ -388,7 +393,7 @@ KeyframeParametricBlock closeFunction = ^double(double time) {
         imageLayer.anchorPoint = anchorPoint;
         imageLayer.position = CGPointMake(frame.size.width/2, layerHeight*anchorPoint.y);
         [jointLayer addSublayer:imageLayer];
-        CGImageRef imageCrop = CGImageCreateWithImageInRect(image.CGImage, frame);
+        CGImageRef imageCrop = CGImageCreateWithImageInRect(image.CGImage, CGRectMake(frame.origin.x * scale, frame.origin.y * scale, frame.size.width * scale, frame.size.height * scale));
         imageLayer.contents = (__bridge id)imageCrop;
         imageLayer.backgroundColor = [UIColor clearColor].CGColor;
 

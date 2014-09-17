@@ -17,8 +17,6 @@
 #import "NLCategory.h"
 #import <Underscore.h>
 
-static NSString * const reuseSectionId = @"placeSectionHeader";
-
 @implementation NLPlacesViewController
 {
     NSArray *_places;
@@ -51,9 +49,8 @@ static NSString * const reuseSectionId = @"placeSectionHeader";
     self.view.frame = [[UIScreen mainScreen] bounds];
     self.titleLabel.attributedText = [NSAttributedString kernedStringForString:@"МЕСТА"];
     self.itemsCountLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
-    [self.collectionView registerNib:[UINib nibWithNibName:@"NLPlaceCell" bundle:[NSBundle mainBundle]]
-          forCellWithReuseIdentifier:@"NLPlaceCell"];
-    [self.collectionView registerClass:[NLPlaceHeader class] forSupplementaryViewOfKind:CHTCollectionElementKindSectionHeader withReuseIdentifier:reuseSectionId];
+    [self.collectionView registerNib:[UINib nibWithNibName:@"NLPlaceCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:[NLPlaceCell reuseIdentifier]];
+    [self.collectionView registerClass:[NLPlaceHeader class] forSupplementaryViewOfKind:CHTCollectionElementKindSectionHeader withReuseIdentifier:[NLPlaceHeader reuseSectionId]];
     NLFlowLayout *layout = [[NLFlowLayout alloc] init];
     layout.columnCount = 2;
     layout.headerHeight = 0.0f;
@@ -150,7 +147,7 @@ static NSString * const reuseSectionId = @"placeSectionHeader";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NLPlaceCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"NLPlaceCell" forIndexPath:indexPath];
+    NLPlaceCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:[NLPlaceCell reuseIdentifier] forIndexPath:indexPath];
 
     if (indexPath.section < [_categories count]) {
         NLPlace *place = [self placeForIndexPath:indexPath];
@@ -185,7 +182,7 @@ static NSString * const reuseSectionId = @"placeSectionHeader";
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     if ([kind isEqualToString:CHTCollectionElementKindSectionHeader]) {
-        NLPlaceHeader *sectionView = (NLPlaceHeader *)[self.collectionView dequeueReusableSupplementaryViewOfKind:CHTCollectionElementKindSectionHeader withReuseIdentifier:reuseSectionId forIndexPath:indexPath];
+        NLPlaceHeader *sectionView = (NLPlaceHeader *)[self.collectionView dequeueReusableSupplementaryViewOfKind:CHTCollectionElementKindSectionHeader withReuseIdentifier:[NLPlaceHeader reuseSectionId] forIndexPath:indexPath];
         if (!sectionView) {
             sectionView = [[NLPlaceHeader alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen mainScreen].bounds.size.width, 50.0f)];
         }

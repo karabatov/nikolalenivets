@@ -18,6 +18,9 @@
 #define CACHED_MODEL @"CACHED_MODEL"
 
 @implementation NLStorage
+{
+    dispatch_queue_t _serialQ;
+}
 
 + (NLStorage *)sharedInstance
 {
@@ -358,6 +361,62 @@
         .unwrap;
 
     return categories;
+}
+
+
+- (void)startSearchWithPhrase:(NSString *)phrase
+{
+    if (phrase) {
+        NSArray *searchTerms = [phrase componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        if (!_serialQ) {
+            _serialQ = dispatch_queue_create("com.nikolalenivets.NLStorage_serialQ", DISPATCH_QUEUE_SERIAL);
+        }
+        dispatch_async(_serialQ, ^{
+            NSArray *searchedNews = _.array(_news).filter(^BOOL (NLNewsEntry *entry) {
+                for (NSString *substr in searchTerms) {
+                    if ([entry.title rangeOfString:substr options:NSCaseInsensitiveSearch].location != NSNotFound) {
+                        return YES;
+                    }
+                    if ([entry.content rangeOfString:substr options:NSCaseInsensitiveSearch].location != NSNotFound) {
+                        return YES;
+                    }
+                }
+                return NO;
+            }).unwrap;
+            NSArray *searchedPlaces = _.array(_places).filter(^BOOL (NLPlace *place) {
+                for (NSString *substr in searchTerms) {
+                    if ([place.title rangeOfString:substr options:NSCaseInsensitiveSearch].location != NSNotFound) {
+                        return YES;
+                    }
+                    if ([place.content rangeOfString:substr options:NSCaseInsensitiveSearch].location != NSNotFound) {
+                        return YES;
+                    }
+                }
+                return NO;
+            }).unwrap;
+            NSMutableArray *searchedEvents = [[NSMutableArray alloc] init];
+            _.array(_eventGroups).each(^(NLEventGroup *eventGroup) {
+                [searchedEvents addObjectsFromArray:_.array(eventGroup.events).filter(^BOOL (NLEvent *event) {
+                for (NSString *substr in searchTerms) {
+                    if ([event.title rangeOfString:substr options:NSCaseInsensitiveSearch].location != NSNotFound) {
+                        return YES;
+                    }
+                    if ([event.content rangeOfString:substr options:NSCaseInsensitiveSearch].location != NSNotFound) {
+                        return YES;
+                    }
+                }
+                return NO;
+            }).unwrap];
+            });
+            _searchPhrase = phrase;
+            _searchResultNews = searchedNews;
+            _searchResultPlaces = searchedPlaces;
+            _searchResultEvents = [NSArray arrayWithArray:searchedEvents];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:SEARCH_COMPLETE object:nil];
+            });
+        });
+    }
 }
 
 

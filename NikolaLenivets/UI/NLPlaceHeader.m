@@ -51,9 +51,10 @@
     NSDictionary *views = @{ @"count": self.objectCountLabel, @"name": self.categoryNameLabel, @"circle": countCircle };
     NSDictionary *metrics = @{ @"circletop": @5.5, @"top": @4, @"bottom": @6, @"width": @18, @"height": @18 };
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(top)-[count]-(bottom)-[name]-(bottom)-|" options:kNilOptions metrics:metrics views:views]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(circletop)-[circle(height)]" options:kNilOptions metrics:metrics views:views]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[circle(height)]" options:kNilOptions metrics:metrics views:views]];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[circle(width)]" options:kNilOptions metrics:metrics views:views]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:countCircle attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:countCircle attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.objectCountLabel attribute:NSLayoutAttributeCenterY multiplier:1.0f constant:1.5f]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.objectCountLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.categoryNameLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f]];
 
@@ -61,6 +62,11 @@
     self.objectCountLabel.textColor = [UIColor blackColor];
     self.categoryNameLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:12];
     self.categoryNameLabel.textColor = [UIColor blackColor];
+}
+
++ (NSString *)reuseSectionId
+{
+    return @"placeSectionHeader";
 }
 
 @end
