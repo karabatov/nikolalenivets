@@ -10,29 +10,29 @@
 	<string>NikolaLenivets</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>CF4FA575-9C68-41BA-B50A-428BFA4C69B9</key>
+		<key>6B32CFB4DA286E8FB9456C6DCA58C88F5AFF6130</key>
 		<string>https://bitbucket.org/semka/nikolalenivets.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>NikolaLenivets.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>CF4FA575-9C68-41BA-B50A-428BFA4C69B9</key>
+		<key>6B32CFB4DA286E8FB9456C6DCA58C88F5AFF6130</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://bitbucket.org/semka/nikolalenivets.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>CF4FA575-9C68-41BA-B50A-428BFA4C69B9</string>
+	<string>6B32CFB4DA286E8FB9456C6DCA58C88F5AFF6130</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>CF4FA575-9C68-41BA-B50A-428BFA4C69B9</string>
+			<string>6B32CFB4DA286E8FB9456C6DCA58C88F5AFF6130</string>
 			<key>IDESourceControlWCCName</key>
 			<string>NikolaLenivets</string>
 		</dict>
