@@ -635,12 +635,14 @@ typedef enum : NSUInteger {
         self.searchFieldHeight = [NSLayoutConstraint constraintWithItem:self.searchField attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.f constant:self.searchFieldStartingHeight];
         [self.view addConstraint:self.searchFieldHeight];
     } else {
-        if (offsetY >= 0 && offsetY > lastOffset) {
-            self.searchFieldHeight.constant = MAX(self.searchFieldStartingHeight - kNLSearchFieldMaxOffset, self.searchFieldHeight.constant - (offsetY - lastOffset));
-        } else if (offsetY >= 0 && offsetY <= kNLSearchFieldMaxOffset) {
-            self.searchFieldHeight.constant = self.searchFieldStartingHeight - MIN(offsetY, kNLSearchFieldMaxOffset);
-        } else if (offsetY < 0) {
-            self.searchFieldHeight.constant = self.searchFieldStartingHeight;
+        if (self.searchTableView.contentSize.height > [UIScreen mainScreen].bounds.size.height) {
+            if (offsetY >= 0 && offsetY > lastOffset) {
+                self.searchFieldHeight.constant = MAX(self.searchFieldStartingHeight - kNLSearchFieldMaxOffset, self.searchFieldHeight.constant - (offsetY - lastOffset));
+            } else if (offsetY >= 0 && offsetY <= kNLSearchFieldMaxOffset) {
+                self.searchFieldHeight.constant = self.searchFieldStartingHeight - MIN(offsetY, kNLSearchFieldMaxOffset);
+            } else if (offsetY < 0) {
+                self.searchFieldHeight.constant = self.searchFieldStartingHeight;
+            }
         }
     }
     lastOffset = offsetY;
