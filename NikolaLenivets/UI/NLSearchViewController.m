@@ -107,6 +107,11 @@ typedef enum : NSUInteger {
  */
 @property (strong, nonatomic) NSArray *searchEventsByDay;
 
+/**
+ Preloaded cells so that the collection view works fast.
+ */
+@property (strong, nonatomic) NSMutableArray *preloadedCells;
+
 @end
 
 @implementation NLSearchViewController
@@ -230,6 +235,8 @@ typedef enum : NSUInteger {
     _sizingCellPlaces.collectionView.delegate = self;
     _sizingCellPlaces.collectionView.dataSource = self;
     _sizingCellPlaces.frame = self.view.frame;
+
+    self.preloadedCells = [[NSMutableArray alloc] initWithCapacity:3];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -356,6 +363,26 @@ typedef enum : NSUInteger {
                 [_sizingCellPlaces setNeedsLayout];
                 [_sizingCellPlaces layoutIfNeeded];
                 _sizingCellPlacesHeight = [_sizingCellPlaces.collectionView.collectionViewLayout collectionViewContentSize].height;
+                [self.preloadedCells removeAllObjects];
+                for (NSString *cellType in self.searchSections) {
+                    NLSearchTableViewCell *newCell = [[NLSearchTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NLSearchTableViewCell reuseIdentifier]];
+                    newCell.collectionView.delegate = self;
+                    newCell.collectionView.dataSource = self;
+                    newCell.frame = self.view.frame;
+                    [newCell.collectionView reloadData];
+                    [_sizingCellNews setNeedsLayout];
+                    [_sizingCellNews layoutIfNeeded];
+                    if ([cellType isEqualToString:kSearchSectionNews]) {
+                        newCell.collectionView.tag = NLCollectionViewTypeNews;
+                    } else if ([cellType isEqualToString:kSearchSectionEvents]) {
+                        newCell.collectionView.tag = NLCollectionViewTypeEvents;
+                    } else if ([cellType isEqualToString:kSearchSectionPlaces]) {
+                        newCell.collectionView.tag = NLCollectionViewTypePlaces;
+                    } else {
+                        newCell.collectionView.tag = NLCollectionViewTypeUnknown;
+                    }
+                    [self.preloadedCells addObject:newCell];
+                }
                 [self.searchTableView reloadData];
                 [UIView animateWithDuration:0.25f animations:^{
                     self.searchTableView.alpha = 1.f;
@@ -497,22 +524,7 @@ typedef enum : NSUInteger {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NLSearchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[NLSearchTableViewCell reuseIdentifier] forIndexPath:indexPath];
-    NSString *sectionTitle = [self.searchSections objectAtIndex:indexPath.section];
-    if ([sectionTitle isEqualToString:kSearchSectionNews]) {
-        cell.collectionView.tag = NLCollectionViewTypeNews;
-    } else if ([sectionTitle isEqualToString:kSearchSectionEvents]) {
-        cell.collectionView.tag = NLCollectionViewTypeEvents;
-    } else if ([sectionTitle isEqualToString:kSearchSectionPlaces]) {
-        cell.collectionView.tag = NLCollectionViewTypePlaces;
-    } else {
-        cell.collectionView.tag = NLCollectionViewTypeUnknown;
-    }
-    cell.collectionView.delegate = self;
-    cell.collectionView.dataSource = self;
-    [cell.collectionView reloadData];
-    cell.collectionView.collectionViewLayout = [NLSearchTableViewCell newFlowLayout];
-    return cell;
+    return [self.preloadedCells objectAtIndex:indexPath.section];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
