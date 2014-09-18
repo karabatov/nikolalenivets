@@ -21,6 +21,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        [self.contentView setOpaque:YES];
         [self setClipsToBounds:YES];
         [self.contentView setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
 

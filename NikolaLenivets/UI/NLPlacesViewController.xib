@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment defaultVersion="1552" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NLPlacesViewController">
             <connections>
-                <outlet property="collectionView" destination="679-Xa-pfJ" id="hxs-Mz-ccz"/>
+                <outlet property="collectionView" destination="679-Xa-pfJ" id="FQh-p6-DnY"/>
                 <outlet property="itemsCountLabel" destination="hsF-TR-eQB" id="G68-YR-lZC"/>
                 <outlet property="titleBarHeight" destination="Amy-FN-iSI" id="gUX-qe-aOZ"/>
                 <outlet property="titleLabel" destination="AXJ-bS-5CK" id="Fxq-JW-VdV"/>
@@ -20,7 +21,6 @@
             <subviews>
                 <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="679-Xa-pfJ">
                     <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="8" minimumInteritemSpacing="0.0" id="pal-2S-uhv">
                         <size key="itemSize" width="160" height="194"/>
@@ -30,17 +30,15 @@
                     </collectionViewFlowLayout>
                     <cells/>
                     <connections>
-                        <outlet property="dataSource" destination="-1" id="wAi-TX-aLL"/>
-                        <outlet property="delegate" destination="-1" id="Ncj-3B-gLH"/>
+                        <outlet property="dataSource" destination="-1" id="948-VQ-dNb"/>
+                        <outlet property="delegate" destination="-1" id="XcT-5G-VWE"/>
                     </connections>
                 </collectionView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eYG-DU-hzc" userLabel="Title Bar">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r4m-rm-9yp" userLabel="Back">
                             <rect key="frame" x="13" y="3" width="44" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="44" id="1Ym-fT-9jv"/>
                                 <constraint firstAttribute="height" constant="44" id="JyC-0i-HNg"/>
@@ -56,14 +54,12 @@
                         </button>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="МЕСТА" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AXJ-bS-5CK">
                             <rect key="frame" x="131" y="13" width="59" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="42" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsF-TR-eQB">
                             <rect key="frame" x="156" y="40" width="9" height="9"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="7"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
@@ -91,11 +87,14 @@
                 <constraint firstItem="679-Xa-pfJ" firstAttribute="top" secondItem="eYG-DU-hzc" secondAttribute="bottom" id="sl1-gA-GPv"/>
                 <constraint firstAttribute="trailing" secondItem="eYG-DU-hzc" secondAttribute="trailing" id="utq-pN-kec"/>
             </constraints>
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
     <resources>
         <image name="menu_button.png" width="38" height="12"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
 </document>

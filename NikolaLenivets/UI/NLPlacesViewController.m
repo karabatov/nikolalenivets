@@ -46,20 +46,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.frame = [[UIScreen mainScreen] bounds];
     self.titleLabel.attributedText = [NSAttributedString kernedStringForString:@"МЕСТА"];
     self.itemsCountLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
     [self.collectionView registerClass:[NLPlaceCell class] forCellWithReuseIdentifier:[NLPlaceCell reuseIdentifier]];
     [self.collectionView registerClass:[NLPlaceHeader class] forSupplementaryViewOfKind:CHTCollectionElementKindSectionHeader withReuseIdentifier:[NLPlaceHeader reuseSectionId]];
-    NLFlowLayout *layout = [[NLFlowLayout alloc] init];
-    layout.columnCount = 2;
-    layout.headerHeight = 0.0f;
-    layout.footerHeight = 0.0f;
-    layout.sectionInset = UIEdgeInsetsZero;
-    layout.minimumColumnSpacing = 0;
-    layout.minimumInteritemSpacing = 0;
-    self.collectionView.collectionViewLayout = layout;
     [self.collectionView setBackgroundColor:[UIColor whiteColor]];
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
 
     [self updatePlaces];
 }
@@ -122,6 +115,14 @@
     }
 
     [self.collectionView reloadData];
+    NLFlowLayout *layout = [[NLFlowLayout alloc] init];
+    layout.columnCount = 2;
+    layout.headerHeight = 0.0f;
+    layout.footerHeight = 0.0f;
+    layout.sectionInset = UIEdgeInsetsZero;
+    layout.minimumColumnSpacing = 0;
+    layout.minimumInteritemSpacing = 0;
+    self.collectionView.collectionViewLayout = layout;
 }
 
 
