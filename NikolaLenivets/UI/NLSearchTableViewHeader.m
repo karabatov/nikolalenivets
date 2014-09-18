@@ -23,6 +23,7 @@
 {
     self = [super initWithReuseIdentifier:reuseIdentifier];
     if (self) {
+        [self.contentView setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
         [self.contentView setBackgroundColor:[UIColor whiteColor]];
 
         self.sectionTitleLabel = [[UILabel alloc] init];
