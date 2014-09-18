@@ -45,5 +45,6 @@
 + (NSAttributedString *)attributedStringForTitle:(NSString *)titleString;
 + (NSAttributedString *)attributedStringForDateMonth:(NSString *)monthString;
 + (NSAttributedString *)attributedStringForString:(NSString *)htmlString;
++ (NSAttributedString *)attributedStringForPlaceName:(NSString *)titleString;
 
 @end

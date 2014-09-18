@@ -8,6 +8,7 @@
 
 #import "NLPlaceCell.h"
 #import "UIImage+Grayscale.h"
+#import "NSAttributedString+Kerning.h"
 
 @implementation NLPlaceCell
 {
@@ -16,24 +17,56 @@
 }
 
 
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self setClipsToBounds:YES];
+        [self.contentView setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
+
+        self.unreadIndicator = [[UIImageView alloc] init];
+        [self.unreadIndicator setTranslatesAutoresizingMaskIntoConstraints:NO];
+
+        self.distanceLabel = [[UILabel alloc] init];
+        [self.distanceLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+        self.distanceLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
+        self.distanceLabel.textColor = [UIColor colorWithRed:37.f/255.f green:37.f/255.f blue:37.f/255.f alpha:1.f];
+
+        self.image = [[AsyncImageView alloc] init];
+        [self.image setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [self.image setContentMode:UIViewContentModeScaleAspectFill];
+        [self.image setClipsToBounds:YES];
+
+        self.nameLabel = [[UILabel alloc] init];
+        [self.nameLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [self.nameLabel setNumberOfLines:0];
+
+        [self.contentView addSubview:self.unreadIndicator];
+        [self.contentView addSubview:self.distanceLabel];
+        [self.contentView addSubview:self.image];
+        [self.contentView addSubview:self.nameLabel];
+
+        NSDictionary *views = @{ @"unread": self.unreadIndicator, @"dist": self.distanceLabel, @"image": self.image, @"name": self.nameLabel };
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-5-[unread(7)]-4.5-[dist]-(>=17)-|" options:kNilOptions metrics:nil views:views]];
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-17-[image(125.5)]-(>=17)-|" options:kNilOptions metrics:nil views:views]];
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-16-[name]-17-|" options:kNilOptions metrics:nil views:views]];
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-16.5-[unread(7)]-5-[image(125.5)]-3-[name]-(>=0)-|" options:kNilOptions metrics:nil views:views]];
+        [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.distanceLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.unreadIndicator attribute:NSLayoutAttributeCenterY multiplier:1.f constant:-1.f]];
+
+        UIColor *borderGray = [UIColor colorWithRed:246.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1.0f];
+        [self.contentView.layer setBorderColor:borderGray.CGColor];
+        [self.contentView.layer setBorderWidth:0.5f];
+    }
+    return self;
+}
+
+
 - (void)populateWithPlace:(NLPlace *)place
 {
     _place = place;
-    self.hidden = _place == nil;
-    self.unreadIndicator.hidden = _place == nil;
-    self.distanceLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:self.distanceLabel.font.pointSize];
-    self.nameLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:self.nameLabel.font.pointSize];
     self.distanceLabel.text = @"∞ КМ";
-    self.nameLabel.text = [_place.title uppercaseString];
-    UIColor *borderGray = [UIColor colorWithRed:246.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1.0f];
-    [self.contentView.layer setBorderColor:borderGray.CGColor];
-    [self.contentView.layer setBorderWidth:0.5f];
-    self.activityIndicator.hidden = NO;
-    [self.activityIndicator startAnimating];
-    [self.image sd_setImageWithURL:[NSURL URLWithString:_place.thumbnail] completed:^(UIImage *image, NSError *err, SDImageCacheType cacheType, NSURL *url) {
-        [self.activityIndicator stopAnimating];
-        self.activityIndicator.hidden = YES;
-    }];
+    self.nameLabel.attributedText = [NSAttributedString attributedStringForPlaceName:[_place.title uppercaseString]];
+    [self.image setImageURL:[NSURL URLWithString:_place.thumbnail]];
     [self setUnreadStatus:place.itemStatus];
 }
 
@@ -42,15 +75,15 @@
 {
     switch (status) {
         case NLItemStatusNew:
-            [self.unreadIndicator setTextColor:[UIColor colorWithRed:255.0f green:127.0f/255.0f blue:127.0f/255.0f alpha:1.0f]];
+            [self.unreadIndicator setImage:[UIImage imageNamed:@"unread-indicator-red.png"]];
             [self.unreadIndicator setHidden:NO];
             break;
         case NLItemStatusUnread:
-            [self.unreadIndicator setTextColor:[UIColor colorWithRed:199.0f/255.0f green:199.0f/255.0f blue:199.0f/255.0f alpha:1.0f]];
+            [self.unreadIndicator setImage:[UIImage imageNamed:@"unread-indicator-gray.png"]];
             [self.unreadIndicator setHidden:NO];
             break;
         case NLItemStatusRead:
-            [self.unreadIndicator setTextColor:[UIColor colorWithRed:199.0f/255.0f green:199.0f/255.0f blue:199.0f/255.0f alpha:1.0f]];
+            [self.unreadIndicator setImage:nil];
             [self.unreadIndicator setHidden:YES];
             break;
 

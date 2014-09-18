@@ -49,7 +49,7 @@
     self.view.frame = [[UIScreen mainScreen] bounds];
     self.titleLabel.attributedText = [NSAttributedString kernedStringForString:@"МЕСТА"];
     self.itemsCountLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
-    [self.collectionView registerNib:[UINib nibWithNibName:@"NLPlaceCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:[NLPlaceCell reuseIdentifier]];
+    [self.collectionView registerClass:[NLPlaceCell class] forCellWithReuseIdentifier:[NLPlaceCell reuseIdentifier]];
     [self.collectionView registerClass:[NLPlaceHeader class] forSupplementaryViewOfKind:CHTCollectionElementKindSectionHeader withReuseIdentifier:[NLPlaceHeader reuseSectionId]];
     NLFlowLayout *layout = [[NLFlowLayout alloc] init];
     layout.columnCount = 2;

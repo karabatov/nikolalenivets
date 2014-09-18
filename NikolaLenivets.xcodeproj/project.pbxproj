@@ -26,7 +26,6 @@
 		4F22FD7C1936ED3E0075C1A0 /* NLGallery.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F22FD7B1936ED3E0075C1A0 /* NLGallery.m */; };
 		4F22FD861937288B0075C1A0 /* NLPlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F22FD841937288B0075C1A0 /* NLPlacesViewController.m */; };
 		4F22FD871937288B0075C1A0 /* NLPlacesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F22FD851937288B0075C1A0 /* NLPlacesViewController.xib */; };
-		4F22FD8919372F260075C1A0 /* NLPlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F22FD8819372F260075C1A0 /* NLPlaceCell.xib */; };
 		4F22FD8C19372F530075C1A0 /* NLPlaceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F22FD8B19372F530075C1A0 /* NLPlaceCell.m */; };
 		4F390E7518ED589200131934 /* NLStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F390E7418ED589200131934 /* NLStorage.m */; };
 		4F390E7818ED684200131934 /* NLDiffIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F390E7718ED684200131934 /* NLDiffIndex.m */; };
@@ -158,7 +157,6 @@
 		4F22FD831937288B0075C1A0 /* NLPlacesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLPlacesViewController.h; path = UI/NLPlacesViewController.h; sourceTree = "<group>"; };
 		4F22FD841937288B0075C1A0 /* NLPlacesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLPlacesViewController.m; path = UI/NLPlacesViewController.m; sourceTree = "<group>"; };
 		4F22FD851937288B0075C1A0 /* NLPlacesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLPlacesViewController.xib; path = UI/NLPlacesViewController.xib; sourceTree = "<group>"; };
-		4F22FD8819372F260075C1A0 /* NLPlaceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLPlaceCell.xib; path = UI/NLPlaceCell.xib; sourceTree = "<group>"; };
 		4F22FD8A19372F530075C1A0 /* NLPlaceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLPlaceCell.h; path = UI/NLPlaceCell.h; sourceTree = "<group>"; };
 		4F22FD8B19372F530075C1A0 /* NLPlaceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLPlaceCell.m; path = UI/NLPlaceCell.m; sourceTree = "<group>"; };
 		4F390E7018ED55F800131934 /* NLStorageSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLStorageSpec.m; sourceTree = "<group>"; };
@@ -430,7 +428,6 @@
 				4F22FD831937288B0075C1A0 /* NLPlacesViewController.h */,
 				4F22FD841937288B0075C1A0 /* NLPlacesViewController.m */,
 				4F22FD851937288B0075C1A0 /* NLPlacesViewController.xib */,
-				4F22FD8819372F260075C1A0 /* NLPlaceCell.xib */,
 				4F22FD8A19372F530075C1A0 /* NLPlaceCell.h */,
 				4F22FD8B19372F530075C1A0 /* NLPlaceCell.m */,
 			);
@@ -792,7 +789,6 @@
 				D1783F07197E622B00A92AA3 /* blue-gradient.png in Resources */,
 				D1783EEC197C417000A92AA3 /* route-b@2x.png in Resources */,
 				D1783EF0197C438200A92AA3 /* userlocation@2x.png in Resources */,
-				4F22FD8919372F260075C1A0 /* NLPlaceCell.xib in Resources */,
 				D19C04401975319E006A086B /* NLEventsCollectionViewController.xib in Resources */,
 				D1783EF8197CFFF000A92AA3 /* tile-empty.png in Resources */,
 				D1CAF02819C05F94001C5270 /* red_left_shadow@2x.png in Resources */,

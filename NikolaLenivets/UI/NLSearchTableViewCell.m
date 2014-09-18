@@ -24,7 +24,7 @@
         [self.collectionView setTranslatesAutoresizingMaskIntoConstraints:NO];
         [self.collectionView setBackgroundColor:[UIColor whiteColor]];
 
-        [self.collectionView registerNib:[UINib nibWithNibName:@"NLPlaceCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:[NLPlaceCell reuseIdentifier]];
+        [self.collectionView registerClass:[NLPlaceCell class] forCellWithReuseIdentifier:[NLPlaceCell reuseIdentifier]];
         [self.collectionView registerClass:[NLPlaceHeader class] forSupplementaryViewOfKind:CHTCollectionElementKindSectionHeader withReuseIdentifier:[NLPlaceHeader reuseSectionId]];
         [self.collectionView registerClass:[NLCollectionCell class] forCellWithReuseIdentifier:[NLCollectionCell reuseIdentifier]];
         [self.collectionView registerClass:[NLSectionHeader class] forSupplementaryViewOfKind:CHTCollectionElementKindSectionHeader withReuseIdentifier:[NLSectionHeader reuseSectionId]];

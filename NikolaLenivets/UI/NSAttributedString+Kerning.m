@@ -70,6 +70,22 @@
 }
 
 
++ (NSAttributedString *)attributedStringForPlaceName:(NSString *)titleString
+{
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.hyphenationFactor = 0.1f;
+    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraphStyle.lineSpacing = 0.0f;
+    paragraphStyle.maximumLineHeight = 12.f;
+    NSDictionary *attributes = @{ NSFontAttributeName: [UIFont fontWithName:NLMonospacedBoldFont size:12.5],
+                                  NSForegroundColorAttributeName: [UIColor colorWithRed:37.f/255.f green:37.f/255.f blue:37.f/255.f alpha:1.f],
+                                  NSKernAttributeName: [NSNumber numberWithFloat:0.5f],
+                                  NSParagraphStyleAttributeName: paragraphStyle };
+    NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString:titleString attributes:attributes];
+    return title;
+}
+
+
 + (NSAttributedString *)attributedStringForString:(NSString *)htmlString
 {
     NSData *htmlData = [htmlString dataUsingEncoding:NSUTF8StringEncoding];

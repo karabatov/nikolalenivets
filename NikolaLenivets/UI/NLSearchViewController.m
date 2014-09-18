@@ -462,7 +462,7 @@ typedef enum : NSUInteger {
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
 
-    if([text isEqualToString:@"\n"]) {
+    if ([text isEqualToString:@"\n"]) {
         [textView resignFirstResponder];
         UIView *headerView = [[NLSearchRotatingView alloc] initWithFrame:CGRectMake(0, 0, 0, 48)];
         [self.searchTableView setUserInteractionEnabled:NO];
