@@ -60,6 +60,7 @@
 		D138D4E819C8CD0800E5B4F4 /* NLSearchRotatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D138D4E719C8CD0800E5B4F4 /* NLSearchRotatingView.m */; };
 		D138D4ED19C8E05000E5B4F4 /* NLSearchNothingFoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = D138D4EC19C8E05000E5B4F4 /* NLSearchNothingFoundView.m */; };
 		D138D4EF19C8E47100E5B4F4 /* search-rotating@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D138D4EE19C8E47100E5B4F4 /* search-rotating@2x.png */; };
+		D153DDA919CC7CEB0091BB4A /* UIViewController+CustomButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = D153DDA819CC7CEB0091BB4A /* UIViewController+CustomButtons.m */; };
 		D16373AB19B76B9700A89A98 /* NLMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D16373AA19B76B9700A89A98 /* NLMenuButton.m */; };
 		D16373AD19B8910C00A89A98 /* menu-circle-green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D16373AC19B8910C00A89A98 /* menu-circle-green@2x.png */; };
 		D17177B3196D047200521D72 /* NSAttributedString+Kerning.m in Sources */ = {isa = PBXBuildFile; fileRef = D17177B2196D047200521D72 /* NSAttributedString+Kerning.m */; };
@@ -122,6 +123,7 @@
 		D1CAF03519C2F1EB001C5270 /* search-button-back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1CAF03419C2F1EB001C5270 /* search-button-back@2x.png */; };
 		D1CAF03819C36A73001C5270 /* NLSearchTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = D1CAF03719C36A73001C5270 /* NLSearchTextView.m */; };
 		D1CAF03B19C45DDE001C5270 /* NLSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1CAF03A19C45DDE001C5270 /* NLSearchTableViewCell.m */; };
+		D1CC015C19CC40B400F8C047 /* NLNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D1CC015B19CC40B400F8C047 /* NLNavigationBar.m */; };
 		D1F5018619BA169E00CDFA5E /* compass-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1F5018519BA169E00CDFA5E /* compass-white@2x.png */; };
 		D1F5018919BA1BDC00CDFA5E /* search-normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1F5018719BA1BDC00CDFA5E /* search-normal@2x.png */; };
 		D1F5018A19BA1BDC00CDFA5E /* search-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1F5018819BA1BDC00CDFA5E /* search-selected@2x.png */; };
@@ -222,6 +224,8 @@
 		D138D4EB19C8E05000E5B4F4 /* NLSearchNothingFoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLSearchNothingFoundView.h; path = UI/NLSearchNothingFoundView.h; sourceTree = "<group>"; };
 		D138D4EC19C8E05000E5B4F4 /* NLSearchNothingFoundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLSearchNothingFoundView.m; path = UI/NLSearchNothingFoundView.m; sourceTree = "<group>"; };
 		D138D4EE19C8E47100E5B4F4 /* search-rotating@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-rotating@2x.png"; sourceTree = "<group>"; };
+		D153DDA719CC7CEB0091BB4A /* UIViewController+CustomButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+CustomButtons.h"; path = "UI/UIViewController+CustomButtons.h"; sourceTree = "<group>"; };
+		D153DDA819CC7CEB0091BB4A /* UIViewController+CustomButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+CustomButtons.m"; path = "UI/UIViewController+CustomButtons.m"; sourceTree = "<group>"; };
 		D16373A919B76B9700A89A98 /* NLMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLMenuButton.h; path = UI/NLMenuButton.h; sourceTree = "<group>"; };
 		D16373AA19B76B9700A89A98 /* NLMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLMenuButton.m; path = UI/NLMenuButton.m; sourceTree = "<group>"; };
 		D16373AC19B8910C00A89A98 /* menu-circle-green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-circle-green@2x.png"; sourceTree = "<group>"; };
@@ -309,6 +313,8 @@
 		D1CAF03719C36A73001C5270 /* NLSearchTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLSearchTextView.m; path = UI/NLSearchTextView.m; sourceTree = "<group>"; };
 		D1CAF03919C45DDE001C5270 /* NLSearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLSearchTableViewCell.h; path = UI/NLSearchTableViewCell.h; sourceTree = "<group>"; };
 		D1CAF03A19C45DDE001C5270 /* NLSearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLSearchTableViewCell.m; path = UI/NLSearchTableViewCell.m; sourceTree = "<group>"; };
+		D1CC015A19CC40B400F8C047 /* NLNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLNavigationBar.h; path = UI/NLNavigationBar.h; sourceTree = "<group>"; };
+		D1CC015B19CC40B400F8C047 /* NLNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLNavigationBar.m; path = UI/NLNavigationBar.m; sourceTree = "<group>"; };
 		D1F5018519BA169E00CDFA5E /* compass-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "compass-white@2x.png"; sourceTree = "<group>"; };
 		D1F5018719BA1BDC00CDFA5E /* search-normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-normal@2x.png"; sourceTree = "<group>"; };
 		D1F5018819BA1BDC00CDFA5E /* search-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-selected@2x.png"; sourceTree = "<group>"; };
@@ -357,6 +363,10 @@
 				D1CAF02E19C0E294001C5270 /* UIColor+HexValues.m */,
 				D1CAF03619C36A73001C5270 /* NLSearchTextView.h */,
 				D1CAF03719C36A73001C5270 /* NLSearchTextView.m */,
+				D1CC015A19CC40B400F8C047 /* NLNavigationBar.h */,
+				D1CC015B19CC40B400F8C047 /* NLNavigationBar.m */,
+				D153DDA719CC7CEB0091BB4A /* UIViewController+CustomButtons.h */,
+				D153DDA819CC7CEB0091BB4A /* UIViewController+CustomButtons.m */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -903,6 +913,7 @@
 				4F18FD3A192212F900032A34 /* NLDetailsViewController.m in Sources */,
 				4F390E8618ED753700131934 /* NLPlace.m in Sources */,
 				D1783F0E197E8C2500A92AA3 /* NLCategory.m in Sources */,
+				D153DDA919CC7CEB0091BB4A /* UIViewController+CustomButtons.m in Sources */,
 				4F10D2AF19374ABB00F6658D /* NLStaticScreenViewController.m in Sources */,
 				D17177B3196D047200521D72 /* NSAttributedString+Kerning.m in Sources */,
 				D1CAF03319C2ED0D001C5270 /* NLSearchViewController.m in Sources */,
@@ -915,6 +926,7 @@
 				4F61374D19273D7700BFDD1C /* NLEventGroup.m in Sources */,
 				4F22FD781936E8B30075C1A0 /* NLGalleryViewController.m in Sources */,
 				D1783ED8197C141F00A92AA3 /* NLPlaceAnnotation.m in Sources */,
+				D1CC015C19CC40B400F8C047 /* NLNavigationBar.m in Sources */,
 				4F22FD8C19372F530075C1A0 /* NLPlaceCell.m in Sources */,
 				D1783F30198285C200A92AA3 /* NLMapFilter.m in Sources */,
 				D1CAF02F19C0E294001C5270 /* UIColor+HexValues.m in Sources */,

@@ -11,6 +11,7 @@
 #import "NLScreen.h"
 #import "NLMainMenuController.h"
 #import "NSAttributedString+Kerning.h"
+#import "UIViewController+CustomButtons.h"
 
 
 @implementation NLStaticScreenViewController
@@ -38,10 +39,7 @@
     });
 
     if (screen != nil) {
-        self.titleLabel.attributedText = [NSAttributedString kernedStringForString:[screen.fullname uppercaseString]];
         [self.webView loadHTMLString:screen.content baseURL:[NSURL URLWithString:@"http://"]];
-    } else {
-        self.titleLabel.text = @"";
     }
 }
 
@@ -49,14 +47,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.frame = [[UIScreen mainScreen] bounds];
-    self.titleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:18];
     [self update];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self setupForNavBarWithStyle:NLNavigationBarStyleNoCounter];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
 
 - (IBAction)back:(id)sender
 {
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

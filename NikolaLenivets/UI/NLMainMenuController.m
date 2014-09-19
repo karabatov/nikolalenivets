@@ -18,6 +18,7 @@
 #import "NLLocationManager.h"
 #import "NLSearchViewController.h"
 #import "NLAboutScreenController.h"
+#import "NLNavigationBar.h"
 
 #define FOLD_DURATION 0.7
 
@@ -80,6 +81,8 @@ enum {
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
 
     _splashView = [[UIView alloc] init];
     [_splashView setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -249,6 +252,7 @@ enum {
 - (void)viewWillAppear:(BOOL)animated
 {
     [self updateMenuState];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
 
@@ -302,13 +306,13 @@ enum {
         }
         case Places: {
             _placesController = [NLPlacesViewController new];
-            self.title = @"МЕСТА";
+            _placesController.title = @"МЕСТА";
             [self.navigationController pushViewController:_placesController animated:YES];
             break;
         }
         case Way: {
             _driveScreen = [[NLStaticScreenViewController alloc] initWithScreenNamed:@"drive"];
-            self.title = @"ДОБРАТЬСЯ";
+            _driveScreen.title = @"ДОБРАТЬСЯ";
             [self.navigationController pushViewController:_driveScreen animated:YES];
             break;
         }

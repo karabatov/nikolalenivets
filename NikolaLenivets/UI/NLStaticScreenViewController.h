@@ -10,11 +10,8 @@
 
 @interface NLStaticScreenViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 
-
 - (id)initWithScreenNamed:(NSString *)screenName;
-- (IBAction)back:(id)sender;
 
 @end

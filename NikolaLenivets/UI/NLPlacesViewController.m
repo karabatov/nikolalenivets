@@ -16,6 +16,7 @@
 #import "NLPlaceHeader.h"
 #import "NLCategory.h"
 #import <Underscore.h>
+#import "UIViewController+CustomButtons.h"
 
 @implementation NLPlacesViewController
 {
@@ -58,10 +59,18 @@
 }
 
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
+
 - (void)updateUnreadCount
 {
     NSInteger unreadCount = [[NLStorage sharedInstance] unreadCountInArray:_places];
+    ((NLNavigationBar *)self.navigationController.navigationBar).counter = unreadCount;
     if (unreadCount == 0) {
+        [self setupForNavBarWithStyle:NLNavigationBarStyleNoCounter];
         self.titleBarHeight.constant = 52.0f;
         [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:10.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
             [self.view layoutIfNeeded];
@@ -72,6 +81,7 @@
             self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)unreadCount];
         }];
     } else {
+        [self setupForNavBarWithStyle:NLNavigationBarStyleCounter];
         self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)unreadCount];
         self.titleBarHeight.constant = 64.0f;
         [self.itemsCountLabel setTransform:CGAffineTransformMakeScale(0.05f, 0.05f)];
