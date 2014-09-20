@@ -47,8 +47,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.titleLabel.attributedText = [NSAttributedString kernedStringForString:@"МЕСТА"];
-    self.itemsCountLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
     [self.collectionView registerClass:[NLPlaceCell class] forCellWithReuseIdentifier:[NLPlaceCell reuseIdentifier]];
     [self.collectionView registerClass:[NLPlaceHeader class] forSupplementaryViewOfKind:CHTCollectionElementKindSectionHeader withReuseIdentifier:[NLPlaceHeader reuseSectionId]];
     [self.collectionView setBackgroundColor:[UIColor whiteColor]];
@@ -71,28 +69,8 @@
     ((NLNavigationBar *)self.navigationController.navigationBar).counter = unreadCount;
     if (unreadCount == 0) {
         [self setupForNavBarWithStyle:NLNavigationBarStyleNoCounter];
-        self.titleBarHeight.constant = 52.0f;
-        [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:10.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            [self.view layoutIfNeeded];
-            self.itemsCountLabel.alpha = 0.0f;
-        } completion:^(BOOL finished) {
-            [self.itemsCountLabel setHidden:YES];
-            self.itemsCountLabel.alpha = 1.0f;
-            self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)unreadCount];
-        }];
     } else {
         [self setupForNavBarWithStyle:NLNavigationBarStyleCounter];
-        self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)unreadCount];
-        self.titleBarHeight.constant = 64.0f;
-        [self.itemsCountLabel setTransform:CGAffineTransformMakeScale(0.05f, 0.05f)];
-        [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:10.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            [self.itemsCountLabel setHidden:NO];
-            self.itemsCountLabel.alpha = 1.0f;
-            [self.itemsCountLabel setTransform:CGAffineTransformIdentity];
-            [self.view layoutIfNeeded];
-        } completion:^(BOOL finished) {
-            //
-        }];
     }
 }
 

@@ -10,7 +10,7 @@
 #import "NSAttributedString+Kerning.h"
 
 #define NAVBAR ((NLNavigationBar *)self.navigationController.navigationBar)
-#define kNLNavBarTitleCounterSpacing 10.f
+#define kNLNavBarTitleCounterSpacing 6.5f
 
 @implementation UIViewController (CustomButtons)
 
@@ -25,11 +25,11 @@
     switch (style) {
         case NLNavigationBarStyleNoCounter:
             menuButtonOffset = (CGPoint){1.5, 4};
-            titleViewOffset = (CGPoint){-6, 6};
+            titleViewOffset = (CGPoint){0, 6};
             break;
         case NLNavigationBarStyleCounter:
-            menuButtonOffset = (CGPoint){1.5, 16};
-            titleViewOffset = (CGPoint){-6, 14};
+            menuButtonOffset = (CGPoint){2, 16};
+            titleViewOffset = (CGPoint){-1.5, 9.5};
             break;
 
         default:
@@ -53,10 +53,10 @@
     self.navigationItem.leftBarButtonItem = backItem;
 
     UIView *titleWrapperView = nil;
+    UILabel *titleLabel = [[UILabel alloc] init];
     if (titleViewBack) {
         //
     } else {
-        UILabel *titleLabel = [[UILabel alloc] init];
         titleLabel.attributedText = [NSAttributedString kernedStringForString:self.title withFontSize:18 kerning:2.2f andColor:[UIColor colorWithRed:126.0f/255.0f green:126.0f/255.0f blue:126.0f/255.0f alpha:1.0f]];
         [titleLabel sizeToFit];
         if (style == NLNavigationBarStyleNoCounter) {
@@ -71,7 +71,7 @@
             CGRect wrapFrame = CGRectMake(0, 0, MAX(titleLabel.bounds.size.width, counterLabel.bounds.size.width), titleLabel.bounds.size.height + kNLNavBarTitleCounterSpacing + counterLabel.bounds.size.height);
             titleWrapperView = [[UIView alloc] initWithFrame:wrapFrame];
             CGRect countFrame = counterLabel.bounds;
-            countFrame.origin.x = wrapFrame.size.width / 2.f;
+            countFrame.origin.x = wrapFrame.size.width / 2.f - countFrame.size.width / 2.f - 1.5f;
             countFrame.origin.y = titleLabel.bounds.size.height + kNLNavBarTitleCounterSpacing;
             counterLabel.frame = countFrame;
             [titleWrapperView addSubview:titleLabel];
