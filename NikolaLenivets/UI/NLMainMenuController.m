@@ -294,13 +294,13 @@ enum {
     switch (sender.tag) {
         case News: {
             _newsList = [NLItemsListController new];
-            self.title = @"НОВОСТИ";
+            _newsList.title = @"НОВОСТИ";
             [self.navigationController pushViewController:_newsList animated:YES];
             break;
         }
         case Events: {
             _eventsController = [NLEventGroupsViewController new];
-            self.title = @"СОБЫТИЯ";
+            _eventsController.title = @"СОБЫТИЯ";
             [self.navigationController pushViewController:_eventsController animated:YES];
             break;
         }
@@ -318,18 +318,18 @@ enum {
         }
         case Map: {
             _mapController = [NLMapViewController new];
-            self.title = @"КАРТА";
+            _mapController.title = @"КАРТА";
             [self.navigationController pushViewController:_mapController animated:YES];
             break;
         }
         case About:
             _aboutController = [[NLAboutScreenController alloc] initWithScreenNamed:@"about"];
-            self.title = @"О ПАРКЕ";
+            _aboutController.title = @"О ПАРКЕ";
             [self.navigationController pushViewController:_aboutController animated:YES];
             break;
         case Search:
             _searchController = [[NLSearchViewController alloc] init];
-            self.title = @"ПОИСК";
+            _searchController.title = @"ПОИСК";
             [self.navigationController pushViewController:_searchController animated:YES];
             break;
         default:

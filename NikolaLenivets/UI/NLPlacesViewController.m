@@ -158,8 +158,8 @@
             return;
         }
         NLDetailsViewController *details = [[NLDetailsViewController alloc] initWithPlace:place currentLocation:_userLoc];
-        self.title = @"МЕСТА";
-        [((NLAppDelegate *)[[UIApplication sharedApplication] delegate]).navigation pushViewController:details animated:YES];
+        details.title = @"МЕСТА";
+        [self.navigationController pushViewController:details animated:YES];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [collectionView reloadItemsAtIndexPaths:@[ indexPath ]];
             [self updateUnreadCount];

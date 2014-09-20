@@ -27,11 +27,9 @@
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UILabel *countView;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
-@property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet AsyncImageView *galleryCover;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *galleryHeight;
 @property (weak, nonatomic) IBOutlet UIButton *showGalleryButton;
-@property (weak, nonatomic) IBOutlet UILabel *detailsViewTitleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *unreadIndicator;
 @property (weak, nonatomic) IBOutlet NLSectionHeader *eventDayView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *eventDayHeight;
@@ -45,7 +43,5 @@
 - (id)initWithEntry:(NLNewsEntry *)entry;
 - (id)initWithPlace:(NLPlace *)place currentLocation:(CLLocation *)currentLocation;
 - (IBAction)showGallery:(id)sender;
-
-- (IBAction)back:(id)sender;
 
 @end

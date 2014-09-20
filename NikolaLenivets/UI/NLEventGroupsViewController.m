@@ -14,6 +14,7 @@
 #import <NSDate+Helper.h>
 #import "NSAttributedString+Kerning.h"
 #import "NSDate+CompareDays.h"
+#import "UIViewController+CustomButtons.h"
 
 #import <UIImageView+WebCache.h>
 
@@ -89,6 +90,12 @@
 }
 
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
+
 - (IBAction)back:(id)sender
 {
     [self.navigationController popToRootViewControllerAnimated:YES];
@@ -142,7 +149,9 @@
 
 - (void)updateUnreadCountWithCount:(NSInteger)unreadCount
 {
+    ((NLNavigationBar *)self.navigationController.navigationBar).counter = unreadCount;
     if (unreadCount == 0) {
+        [self setupForNavBarWithStyle:NLNavigationBarStyleNoCounter];
         self.titleBarHeight.constant = 52.0f;
         [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
             [self.titleBarView layoutIfNeeded];
@@ -153,6 +162,7 @@
             self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)unreadCount];
         }];
     } else {
+        [self setupForNavBarWithStyle:NLNavigationBarStyleCounter];
         self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)unreadCount];
         self.titleBarHeight.constant = 64.0f;
         [self.itemsCountLabel setTransform:CGAffineTransformMakeScale(0.05f, 0.05f)];
@@ -283,7 +293,8 @@
     NSLog(@"Open event list");
     NLEventGroup *group = _eventGroups[_currentPage];
     _events = [[NLEventsCollectionViewController alloc] initWithGroup:group];
-    [((NLAppDelegate *)[[UIApplication sharedApplication] delegate]).navigation pushViewController:_events animated:YES];
+    _events.title = [group.name uppercaseString];
+    [self.navigationController pushViewController:_events animated:YES];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self updateUnreadCountWithCount:[[NLStorage sharedInstance] unreadCountInArray:group.events]];
     });

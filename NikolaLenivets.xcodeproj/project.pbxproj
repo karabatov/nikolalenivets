@@ -61,6 +61,7 @@
 		D138D4ED19C8E05000E5B4F4 /* NLSearchNothingFoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = D138D4EC19C8E05000E5B4F4 /* NLSearchNothingFoundView.m */; };
 		D138D4EF19C8E47100E5B4F4 /* search-rotating@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D138D4EE19C8E47100E5B4F4 /* search-rotating@2x.png */; };
 		D153DDA919CC7CEB0091BB4A /* UIViewController+CustomButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = D153DDA819CC7CEB0091BB4A /* UIViewController+CustomButtons.m */; };
+		D153DDAB19CDB9C10091BB4A /* button-back-black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D153DDAA19CDB9C10091BB4A /* button-back-black@2x.png */; };
 		D16373AB19B76B9700A89A98 /* NLMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D16373AA19B76B9700A89A98 /* NLMenuButton.m */; };
 		D16373AD19B8910C00A89A98 /* menu-circle-green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D16373AC19B8910C00A89A98 /* menu-circle-green@2x.png */; };
 		D17177B3196D047200521D72 /* NSAttributedString+Kerning.m in Sources */ = {isa = PBXBuildFile; fileRef = D17177B2196D047200521D72 /* NSAttributedString+Kerning.m */; };
@@ -226,6 +227,7 @@
 		D138D4EE19C8E47100E5B4F4 /* search-rotating@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-rotating@2x.png"; sourceTree = "<group>"; };
 		D153DDA719CC7CEB0091BB4A /* UIViewController+CustomButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+CustomButtons.h"; path = "UI/UIViewController+CustomButtons.h"; sourceTree = "<group>"; };
 		D153DDA819CC7CEB0091BB4A /* UIViewController+CustomButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+CustomButtons.m"; path = "UI/UIViewController+CustomButtons.m"; sourceTree = "<group>"; };
+		D153DDAA19CDB9C10091BB4A /* button-back-black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-back-black@2x.png"; sourceTree = "<group>"; };
 		D16373A919B76B9700A89A98 /* NLMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLMenuButton.h; path = UI/NLMenuButton.h; sourceTree = "<group>"; };
 		D16373AA19B76B9700A89A98 /* NLMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLMenuButton.m; path = UI/NLMenuButton.m; sourceTree = "<group>"; };
 		D16373AC19B8910C00A89A98 /* menu-circle-green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-circle-green@2x.png"; sourceTree = "<group>"; };
@@ -672,6 +674,7 @@
 				4F174E311966A50300F7F8A2 /* Track on 2014-06-23 at 18-34 GMT+4.gpx */,
 				D1783F401982CEF600A92AA3 /* splash-top@2x.png */,
 				D1A3D7CE197634AD00C53E06 /* menu_button@2x.png */,
+				D153DDAA19CDB9C10091BB4A /* button-back-black@2x.png */,
 				D1783EF7197CFFF000A92AA3 /* tile-empty.png */,
 				D1CAF02219C0435C001C5270 /* unread-indicator-gray@2x.png */,
 				D1CAF02319C0435C001C5270 /* unread-indicator-red@2x.png */,
@@ -827,6 +830,7 @@
 				D1F5019019BA1F7600CDFA5E /* Default-568h@2x.png in Resources */,
 				D1F5018919BA1BDC00CDFA5E /* search-normal@2x.png in Resources */,
 				4F0D75B1193DEADF00E78AA5 /* circle@2x.png in Resources */,
+				D153DDAB19CDB9C10091BB4A /* button-back-black@2x.png in Resources */,
 				4F0D759E193D9C6400E78AA5 /* white_menu@2x.png in Resources */,
 				4F89A42C1957CFF60045D1A3 /* NLMapViewController.xib in Resources */,
 				4F89A42E1957D8260045D1A3 /* map.png in Resources */,

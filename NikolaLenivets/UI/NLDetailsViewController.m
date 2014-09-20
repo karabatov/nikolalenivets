@@ -11,6 +11,7 @@
 #import "NLStorage.h"
 #import "NLGalleryViewController.h"
 #import "NLMapViewController.h"
+#import "UIViewController+CustomButtons.h"
 
 #import <DTCoreText.h>
 #import <NSDate+Helper.h>
@@ -90,6 +91,7 @@ typedef enum {
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setAutomaticallyAdjustsScrollViewInsets:NO];
 
     [self.view bringSubviewToFront:self.scrollView];
     [self.view bringSubviewToFront:self.eventDayView];
@@ -100,7 +102,6 @@ typedef enum {
 
     UIColor *textColor = [UIColor colorWithRed:127.f/255.f green:127.f/255.f blue:127.f/255.f alpha:1.f];
 
-    self.detailsViewTitleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:10];
     self.countView.font = [UIFont fontWithName:NLMonospacedBoldFont size:12];
     self.countView.textColor = textColor;
     self.scrollView.delegate = self;
@@ -118,7 +119,6 @@ typedef enum {
             title = _entry.title;
             content = _entry.content;
             date = [[[_entry pubDate] stringWithFormat:DefaultDateFormat] uppercaseString];
-            self.detailsViewTitleLabel.text = [self backViewController] ? [self backViewController].title : @"НОВОСТИ";
             indexNumber = [[[NLStorage sharedInstance] news] count] - [[[NLStorage sharedInstance] news] indexOfObject:_entry];
             [self setUnreadStatus:_entry.itemStatus];
             for (UIView *view in [self.eventDayView subviews]) {
@@ -137,7 +137,6 @@ typedef enum {
             } else {
                 [self.alarmIcon setHidden:YES];
             }
-            self.detailsViewTitleLabel.text = [self backViewController].title;
             [self setUnreadStatus:_event.itemStatus];
             self.eventDayHeight.constant = 26;
             self.eventDayView.dateLabel.text = [[[_event startDate] stringWithFormat:DefaultDateFormat] uppercaseString];
@@ -157,7 +156,6 @@ typedef enum {
             } else {
                 self.countView.text = @"∞ КМ";
             }
-            self.detailsViewTitleLabel.text = [self backViewController] ? [self backViewController].title : @"МЕСТА";
             [self setUnreadStatus:_place.itemStatus];
             self.titleLabelBottomSpace.constant = 0;
             [self.titleLabel setHidden:YES];
@@ -179,6 +177,7 @@ typedef enum {
     }
 
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.firstPartWebView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:self.contentView attribute:NSLayoutAttributeTop multiplier:1.f constant:[UIScreen mainScreen].bounds.size.height - webViewOffset]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.eventDayView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:[self topLayoutGuide] attribute:NSLayoutAttributeBottom multiplier:1.f constant:0.f]];
 
     self.titleLabel.attributedText = [self attributedStringForTitle:title];
     _gallery = [self galleryFromString:content];
@@ -223,6 +222,12 @@ typedef enum {
 }
 
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self setupForNavBarWithStyle:NLNavigationBarStyleBackLightNoMenu];
+}
+
+
 - (void)viewDidAppear:(BOOL)animated
 {
     switch ([self mode]) {
@@ -253,6 +258,7 @@ typedef enum {
         default:
             break;
     }
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 
@@ -484,12 +490,6 @@ typedef enum {
 }
 
 
-- (IBAction)back:(id)sender
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-
 - (IBAction)showGallery:(id)sender
 {
     NSLog(@"Show gallery");
@@ -520,6 +520,7 @@ typedef enum {
         case ShowingPlace:
         {
             _mapVC = [[NLMapViewController alloc] initWithPlace:_place];
+            _mapVC.title = [_place.title uppercaseString];
             [self.navigationController pushViewController:_mapVC animated:YES];
             break;
         }

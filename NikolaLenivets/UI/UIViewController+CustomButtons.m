@@ -11,6 +11,7 @@
 
 #define NAVBAR ((NLNavigationBar *)self.navigationController.navigationBar)
 #define kNLNavBarTitleCounterSpacing 6.5f
+#define kNLNavBarTitleBackBtnSpacing 5.5f
 
 @implementation UIViewController (CustomButtons)
 
@@ -21,6 +22,7 @@
     CGPoint menuButtonOffset = CGPointZero;
     CGPoint titleViewOffset = CGPointZero;
     BOOL titleViewBack = NO;
+    BOOL showsMenu = YES;
 
     switch (style) {
         case NLNavigationBarStyleNoCounter:
@@ -31,6 +33,17 @@
             menuButtonOffset = (CGPoint){2, 16};
             titleViewOffset = (CGPoint){-1.5, 9.5};
             break;
+        case NLNavigationBarStyleBackLightMenu:
+            menuButtonOffset = (CGPoint){2, 16};
+            titleViewOffset = (CGPoint){0, 6};
+            titleViewBack = YES;
+            break;
+        case NLNavigationBarStyleBackLightNoMenu:
+            menuButtonOffset = (CGPoint){2, 16};
+            titleViewOffset = (CGPoint){0, 6};
+            titleViewBack = YES;
+            showsMenu = NO;
+            break;
 
         default:
             break;
@@ -38,24 +51,42 @@
 
     [self.navigationItem setHidesBackButton:YES];
 
-    UIButton *menuButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-    [menuButton setContentEdgeInsets:UIEdgeInsetsMake(16, 3, 16, 3)];
-    [menuButton setImage:[UIImage imageNamed:@"menu_button.png"] forState:UIControlStateNormal];
-    if (titleViewBack) {
-        [menuButton addTarget:self action:@selector(customButtons_popToRootViewController) forControlEvents:UIControlEventTouchUpInside];
-    } else {
-        [menuButton addTarget:self action:@selector(customButtons_popViewController) forControlEvents:UIControlEventTouchUpInside];
+    if (showsMenu) {
+        UIButton *menuButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+        [menuButton setContentEdgeInsets:UIEdgeInsetsMake(16, 3, 16, 3)];
+        [menuButton setImage:[UIImage imageNamed:@"menu_button.png"] forState:UIControlStateNormal];
+        if (titleViewBack) {
+            [menuButton addTarget:self action:@selector(customButtons_popToRootViewController) forControlEvents:UIControlEventTouchUpInside];
+        } else {
+            [menuButton addTarget:self action:@selector(customButtons_popViewController) forControlEvents:UIControlEventTouchUpInside];
+        }
+        UIView *menuButtonView = [[UIView alloc] initWithFrame:menuButton.bounds];
+        menuButtonView.bounds = CGRectOffset(menuButtonView.bounds, menuButtonOffset.x, menuButtonOffset.y);
+        [menuButtonView addSubview:menuButton];
+        UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:menuButtonView];
+        self.navigationItem.leftBarButtonItem = backItem;
     }
-    UIView *menuButtonView = [[UIView alloc] initWithFrame:menuButton.bounds];
-    menuButtonView.bounds = CGRectOffset(menuButtonView.bounds, menuButtonOffset.x, menuButtonOffset.y);
-    [menuButtonView addSubview:menuButton];
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:menuButtonView];
-    self.navigationItem.leftBarButtonItem = backItem;
 
     UIView *titleWrapperView = nil;
     UILabel *titleLabel = [[UILabel alloc] init];
     if (titleViewBack) {
-        //
+        titleLabel.attributedText = [NSAttributedString kernedStringForString:self.title withFontSize:12 kerning:1.1f andColor:[UIColor colorWithRed:126.0f/255.0f green:126.0f/255.0f blue:126.0f/255.0f alpha:1.0f]];
+        [titleLabel sizeToFit];
+        UIImageView *backImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+        [backImage setImage:[UIImage imageNamed:@"button-back-black.png"]];
+        CGRect wrapFrame = CGRectMake(0, 0, MAX(titleLabel.bounds.size.width, backImage.bounds.size.width), backImage.bounds.size.height + kNLNavBarTitleBackBtnSpacing + titleLabel.bounds.size.height);
+        titleWrapperView = [[UIView alloc] initWithFrame:wrapFrame];
+        CGRect backBtnFrame = backImage.bounds;
+        backBtnFrame.origin.x = wrapFrame.size.width / 2.f - backImage.bounds.size.width / 2.f;
+        backImage.frame = backBtnFrame;
+        CGRect titleFrame = titleLabel.bounds;
+        titleFrame.origin.x = wrapFrame.size.width / 2.f - titleLabel.bounds.size.width / 2.f + 1.f;
+        titleFrame.origin.y = backImage.bounds.size.height + kNLNavBarTitleBackBtnSpacing;
+        titleLabel.frame = titleFrame;
+        [titleWrapperView addSubview:backImage];
+        [titleWrapperView addSubview:titleLabel];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(customButtons_popViewController)];
+        [titleWrapperView addGestureRecognizer:tap];
     } else {
         titleLabel.attributedText = [NSAttributedString kernedStringForString:self.title withFontSize:18 kerning:2.2f andColor:[UIColor colorWithRed:126.0f/255.0f green:126.0f/255.0f blue:126.0f/255.0f alpha:1.0f]];
         [titleLabel sizeToFit];
@@ -77,8 +108,8 @@
             [titleWrapperView addSubview:titleLabel];
             [titleWrapperView addSubview:counterLabel];
         }
-        titleWrapperView.bounds = CGRectOffset(titleWrapperView.bounds, titleViewOffset.x, titleViewOffset.y);
     }
+    titleWrapperView.bounds = CGRectOffset(titleWrapperView.bounds, titleViewOffset.x, titleViewOffset.y);
     self.navigationItem.titleView = titleWrapperView;
 }
 
