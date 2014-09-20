@@ -8,11 +8,11 @@
 
 #import "NLGalleryViewController.h"
 #import "NLMainMenuController.h"
+#import "UIViewController+CustomButtons.h"
 
 @implementation NLGalleryViewController
 {
     __strong NLGallery *_gallery;
-    __strong NSString *_backTitle;
 }
 
 - (id)initWithGallery:(NLGallery *)gallery andTitle:(NSString *)title
@@ -20,7 +20,7 @@
     self = [super initWithNibName:@"NLGalleryViewController" bundle:nil];
     if (self) {
         _gallery = gallery;
-        _backTitle = [title uppercaseString];
+        self.title = [title uppercaseString];
     }
     return self;
 }
@@ -33,7 +33,6 @@
     self.galleryView.showsScrollIndicator = NO;
     self.galleryView.galleryMode = UIPhotoGalleryModeImageRemote;
 
-    self.backTitleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:10];
     self.nameLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:10];
     self.descriptionLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:10];
     self.currentPageLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
@@ -46,7 +45,7 @@
 
     [self.view sendSubviewToBack:self.galleryView];
 
-    self.backTitleLabel.text = _backTitle;
+    [self setupForNavBarWithStyle:NLNavigationBarStyleBackDark];
 }
 
 
@@ -57,6 +56,7 @@
     self.galleryView.hidden = NO;
     self.totalPagesLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)[_gallery.images count]];
 }
+
 
 - (void)updateInfoForPhotoAtIndex:(NSInteger)index
 {
