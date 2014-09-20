@@ -23,6 +23,7 @@
     CGPoint titleViewOffset = CGPointZero;
     BOOL titleViewBack = NO;
     BOOL showsMenu = YES;
+    BOOL dark = NO;
 
     switch (style) {
         case NLNavigationBarStyleNoCounter:
@@ -44,6 +45,12 @@
             titleViewBack = YES;
             showsMenu = NO;
             break;
+        case NLNavigationBarStyleBackDark:
+            menuButtonOffset = (CGPoint){2, 16};
+            titleViewOffset = (CGPoint){0, 6};
+            titleViewBack = YES;
+            dark = YES;
+            break;
 
         default:
             break;
@@ -54,7 +61,11 @@
     if (showsMenu) {
         UIButton *menuButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
         [menuButton setContentEdgeInsets:UIEdgeInsetsMake(16, 3, 16, 3)];
-        [menuButton setImage:[UIImage imageNamed:@"menu_button.png"] forState:UIControlStateNormal];
+        if (dark) {
+            [menuButton setImage:[UIImage imageNamed:@"menu_button_white.png"] forState:UIControlStateNormal];
+        } else {
+            [menuButton setImage:[UIImage imageNamed:@"menu_button.png"] forState:UIControlStateNormal];
+        }
         if (titleViewBack) {
             [menuButton addTarget:self action:@selector(customButtons_popToRootViewController) forControlEvents:UIControlEventTouchUpInside];
         } else {
@@ -73,7 +84,11 @@
         titleLabel.attributedText = [NSAttributedString kernedStringForString:self.title withFontSize:12 kerning:1.1f andColor:[UIColor colorWithRed:126.0f/255.0f green:126.0f/255.0f blue:126.0f/255.0f alpha:1.0f]];
         [titleLabel sizeToFit];
         UIImageView *backImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-        [backImage setImage:[UIImage imageNamed:@"button-back-black.png"]];
+        if (dark) {
+            [backImage setImage:[UIImage imageNamed:@"button-back-white.png"]];
+        } else {
+            [backImage setImage:[UIImage imageNamed:@"button-back-black.png"]];
+        }
         CGRect wrapFrame = CGRectMake(0, 0, MAX(titleLabel.bounds.size.width, backImage.bounds.size.width), backImage.bounds.size.height + kNLNavBarTitleBackBtnSpacing + titleLabel.bounds.size.height);
         titleWrapperView = [[UIView alloc] initWithFrame:wrapFrame];
         CGRect backBtnFrame = backImage.bounds;
