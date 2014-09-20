@@ -93,6 +93,8 @@
 		D1783F391982934E00A92AA3 /* map-unchecked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783F371982934E00A92AA3 /* map-unchecked@2x.png */; };
 		D1783F431982CEF600A92AA3 /* splash-top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783F401982CEF600A92AA3 /* splash-top@2x.png */; };
 		D17B62581993E5300074298B /* NLGalleryTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = D17B62571993E5300074298B /* NLGalleryTransition.m */; };
+		D1926BB719CE0A2200571E3A /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1926BB519CE0A2200571E3A /* back@2x.png */; };
+		D1926BB819CE0A2200571E3A /* forward@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1926BB619CE0A2200571E3A /* forward@2x.png */; };
 		D19956E219C5B00700904137 /* NLSearchTableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = D19956E119C5B00700904137 /* NLSearchTableViewHeader.m */; };
 		D19956E419C83D1300904137 /* event-alarm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19956E319C83D1300904137 /* event-alarm@2x.png */; };
 		D19C0425196EF44C006A086B /* map-minus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19C0422196EF44C006A086B /* map-minus@2x.png */; };
@@ -269,6 +271,8 @@
 		D1783F401982CEF600A92AA3 /* splash-top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-top@2x.png"; sourceTree = "<group>"; };
 		D17B62561993E5300074298B /* NLGalleryTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLGalleryTransition.h; path = UI/NLGalleryTransition.h; sourceTree = "<group>"; };
 		D17B62571993E5300074298B /* NLGalleryTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLGalleryTransition.m; path = UI/NLGalleryTransition.m; sourceTree = "<group>"; };
+		D1926BB519CE0A2200571E3A /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
+		D1926BB619CE0A2200571E3A /* forward@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forward@2x.png"; sourceTree = "<group>"; };
 		D19956E019C5B00700904137 /* NLSearchTableViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLSearchTableViewHeader.h; path = UI/NLSearchTableViewHeader.h; sourceTree = "<group>"; };
 		D19956E119C5B00700904137 /* NLSearchTableViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLSearchTableViewHeader.m; path = UI/NLSearchTableViewHeader.m; sourceTree = "<group>"; };
 		D19956E319C83D1300904137 /* event-alarm@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event-alarm@2x.png"; sourceTree = "<group>"; };
@@ -498,6 +502,8 @@
 			children = (
 				4F8A13031921D57D00F3DA96 /* Cell */,
 				4F0D75B0193DEADF00E78AA5 /* circle@2x.png */,
+				D1926BB519CE0A2200571E3A /* back@2x.png */,
+				D1926BB619CE0A2200571E3A /* forward@2x.png */,
 				4F6137461927313700BFDD1C /* NLEventGroupsViewController.h */,
 				4F6137471927313700BFDD1C /* NLEventGroupsViewController.m */,
 				4F6137481927313700BFDD1C /* NLEventGroupsViewController.xib */,
@@ -793,6 +799,7 @@
 				4F174E341966A50300F7F8A2 /* Track on 2014-06-23 at 18-06 GMT+4.gpx in Resources */,
 				4FCBE0081907A054002F37A3 /* BookmanC.otf in Resources */,
 				4F22FD791936E8B30075C1A0 /* NLGalleryViewController.xib in Resources */,
+				D1926BB819CE0A2200571E3A /* forward@2x.png in Resources */,
 				D19C0426196EF44D006A086B /* map-locate@2x.png in Resources */,
 				D1F5018E19BA1F0C00CDFA5E /* Default@2x.png in Resources */,
 				D1783F2D1982824C00A92AA3 /* map-filter@2x.png in Resources */,
@@ -804,6 +811,7 @@
 				D1783EF0197C438200A92AA3 /* userlocation@2x.png in Resources */,
 				D19C04401975319E006A086B /* NLEventsCollectionViewController.xib in Resources */,
 				D1783EF8197CFFF000A92AA3 /* tile-empty.png in Resources */,
+				D1926BB719CE0A2200571E3A /* back@2x.png in Resources */,
 				D1CAF02819C05F94001C5270 /* red_left_shadow@2x.png in Resources */,
 				D1783F1A197EBA8800A92AA3 /* object-count@2x.png in Resources */,
 				4F174E331966A50300F7F8A2 /* Track on 2014-06-23 at 18-00 GMT+4.gpx in Resources */,
