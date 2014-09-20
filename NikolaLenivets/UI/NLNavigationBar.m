@@ -18,20 +18,14 @@
 
 - (CGSize)sizeThatFits:(CGSize)size
 {
-    switch (self.navigationBarStyle) {
-        case NLNavigationBarStyleNoCounter:
-            return CGSizeMake(self.superview.frame.size.width, kNLNavBarHeightCompressed);
-        default:
-            return CGSizeMake(self.superview.frame.size.width, kNLNavBarHeightExtended);
-            break;
-    }
-    
+    return CGSizeMake(self.superview.frame.size.width, kNLNavBarHeightExtended);
 }
 
 - (void)setNavigationBarStyle:(NLNavigationBarStyle)navigationBarStyle
 {
     _navigationBarStyle = navigationBarStyle;
     [self setBackgroundColor:[UIColor colorWithRed:246.f/255.f green:246.f/255.f blue:246.f/255.f alpha:1.f]];
+    [self setTintColor:[UIColor colorWithRed:246.f/255.f green:246.f/255.f blue:246.f/255.f alpha:1.f]];
 }
 
 @end

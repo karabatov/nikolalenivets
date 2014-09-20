@@ -26,12 +26,12 @@
 
     switch (style) {
         case NLNavigationBarStyleNoCounter:
-            menuButtonOffset = (CGPoint){1.5, 4};
-            titleViewOffset = (CGPoint){0, 6};
+            menuButtonOffset = (CGPoint){2, 16};
+            titleViewOffset = (CGPoint){0, 18};
             break;
         case NLNavigationBarStyleCounter:
             menuButtonOffset = (CGPoint){2, 16};
-            titleViewOffset = (CGPoint){-1.5, 9.5};
+            titleViewOffset = (CGPoint){0, 9.5};
             break;
         case NLNavigationBarStyleBackLightMenu:
             menuButtonOffset = (CGPoint){2, 16};
