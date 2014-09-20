@@ -329,7 +329,7 @@
                 coverMessage.numberOfLines = 0;
                 coverMessage.text = @"ВЫ НАХОДИТЕСЬ\nЗА ПРЕДЕЛАМИ\nПАРКА\nНИКОЛА-ЛЕНИВЕЦ";
                 [coverView addSubview:coverMessage];
-                [coverMessage setFrame:CGRectMake(13.0f, 12.0f, 200.0f, 200.0f)];
+                [coverMessage setFrame:CGRectMake(13.0f, 76.0f, 200.0f, 200.0f)];
                 [coverMessage sizeToFit];
                 coverView.alpha = 0.0f;
                 [self.mapView insertSubview:coverView atIndex:0];
