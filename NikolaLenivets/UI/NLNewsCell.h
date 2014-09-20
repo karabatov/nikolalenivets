@@ -9,7 +9,6 @@
 @import UIKit;
 #import "NLNewsEntry.h"
 #import "NLEvent.h"
-#import <AsyncImageView.h>
 
 @interface NLNewsCell : UITableViewCell
 
@@ -18,10 +17,11 @@
 @property (strong, nonatomic) UILabel *monthLabel;
 @property (strong, nonatomic) UILabel *titleLabel;
 @property (strong, nonatomic) UILabel *previewLabel;
-@property (strong, nonatomic) AsyncImageView *thumbnail;
+@property (strong, nonatomic) UIImageView *thumbnail;
 @property (strong, nonatomic) UIImageView *unreadIndicator;
 @property (strong, nonatomic) NSLayoutConstraint *thumbnailHeight;
 @property (strong, nonatomic) NSLayoutConstraint *thumbnailBottomMargin;
+@property (strong, nonatomic) NSLayoutConstraint *unreadTopMargin;
 
 + (CGFloat)heightForCellWithEntry:(NLNewsEntry *)entry;
 + (CGFloat)heightForCellWithEvent:(NLEvent *)event;
