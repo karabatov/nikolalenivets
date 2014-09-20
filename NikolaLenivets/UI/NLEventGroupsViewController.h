@@ -10,10 +10,7 @@
 
 @interface NLEventGroupsViewController : UIViewController <UIScrollViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *itemsCountLabel;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet UIView *titleBarView;
 @property (weak, nonatomic) IBOutlet UIButton *prevItemButton;
 @property (weak, nonatomic) IBOutlet UIButton *nextItemButton;
 @property (weak, nonatomic) IBOutlet UILabel *currentPageLabel;
@@ -31,7 +28,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *ticketPriceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *eventDatesLabel;
 @property (weak, nonatomic) IBOutlet UIView *pagerView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleBarHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *dashOffset;
 
 - (IBAction)openEventsList:(id)sender;

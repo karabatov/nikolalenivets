@@ -18,6 +18,7 @@
 #import "NSString+Ordinal.h"
 #import "NSDate+CompareDays.h"
 #import "NLFlowLayout.h"
+#import "UIViewController+CustomButtons.h"
 
 @implementation NLEventsCollectionViewController
 {
@@ -63,36 +64,43 @@
     layout.minimumInteritemSpacing = 0;
     self.collectionView.collectionViewLayout = layout;
     [self.collectionView setBackgroundColor:[UIColor whiteColor]];
-    NSUInteger unreadCount = [[NLStorage sharedInstance] unreadCountInArray:_group.events];
-    [self updateUnreadCountWithCount:unreadCount];
+    // NSUInteger unreadCount = [[NLStorage sharedInstance] unreadCountInArray:_group.events];
+    // [self updateUnreadCountWithCount:unreadCount];
+    [self setupForNavBarWithStyle:NLNavigationBarStyleBackLightMenu];
 }
 
 
-- (void)updateUnreadCountWithCount:(NSInteger)unreadCount
+//- (void)updateUnreadCountWithCount:(NSInteger)unreadCount
+//{
+//    if (unreadCount == 0) {
+//        self.titleBarHeight.constant = 52.0f;
+//        [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:10.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+//            [self.view layoutIfNeeded];
+//            self.itemsCountLabel.alpha = 0.0f;
+//        } completion:^(BOOL finished) {
+//            [self.itemsCountLabel setHidden:YES];
+//            self.itemsCountLabel.alpha = 1.0f;
+//            self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)unreadCount];
+//        }];
+//    } else {
+//        self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)unreadCount];
+//        self.titleBarHeight.constant = 64.0f;
+//        [self.itemsCountLabel setTransform:CGAffineTransformMakeScale(0.05f, 0.05f)];
+//        [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:10.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+//            [self.itemsCountLabel setHidden:NO];
+//            self.itemsCountLabel.alpha = 1.0f;
+//            [self.itemsCountLabel setTransform:CGAffineTransformIdentity];
+//            [self.view layoutIfNeeded];
+//        } completion:^(BOOL finished) {
+//            //
+//        }];
+//    }
+//}
+
+
+- (void)viewDidAppear:(BOOL)animated
 {
-    if (unreadCount == 0) {
-        self.titleBarHeight.constant = 52.0f;
-        [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:10.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            [self.view layoutIfNeeded];
-            self.itemsCountLabel.alpha = 0.0f;
-        } completion:^(BOOL finished) {
-            [self.itemsCountLabel setHidden:YES];
-            self.itemsCountLabel.alpha = 1.0f;
-            self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)unreadCount];
-        }];
-    } else {
-        self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)unreadCount];
-        self.titleBarHeight.constant = 64.0f;
-        [self.itemsCountLabel setTransform:CGAffineTransformMakeScale(0.05f, 0.05f)];
-        [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:10.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            [self.itemsCountLabel setHidden:NO];
-            self.itemsCountLabel.alpha = 1.0f;
-            [self.itemsCountLabel setTransform:CGAffineTransformIdentity];
-            [self.view layoutIfNeeded];
-        } completion:^(BOOL finished) {
-            //
-        }];
-    }
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 
@@ -128,20 +136,20 @@
 }
 
 
+#pragma mark - UICollectionViewDataSource
+
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NLEvent *event = [self eventForIndexPath:indexPath];
     _details = [[NLDetailsViewController alloc] initWithEvent:event withOrderInGroup:indexPath.section + 1];
-    self.title = @"СОБЫТИЯ";
+    _details.title = [_group.name uppercaseString];
     [self.navigationController pushViewController:_details animated:YES];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [collectionView reloadItemsAtIndexPaths:@[ indexPath ]];
-        [self updateUnreadCountWithCount:[[NLStorage sharedInstance] unreadCountInArray:_group.events]];
+        // [self updateUnreadCountWithCount:[[NLStorage sharedInstance] unreadCountInArray:_group.events]];
     });
 }
-
-
-#pragma mark - UICollectionViewDataSource
 
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath

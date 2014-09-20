@@ -10,6 +10,7 @@
 #import <NSDate+Helper.h>
 #import "UIImage+Grayscale.h"
 #import "NSAttributedString+Kerning.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation NLNewsCell
 {
@@ -52,7 +53,7 @@
         self.previewLabel.lineBreakMode = NSLineBreakByWordWrapping;
         [self.previewLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
 
-        self.thumbnail = [[AsyncImageView alloc] init];
+        self.thumbnail = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 125.5f, 125.5f)];
         [self.thumbnail setContentMode:UIViewContentModeScaleAspectFill];
         [self.thumbnail setClipsToBounds:YES];
         [self.thumbnail setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -80,11 +81,11 @@
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-5-[unread(7)]-4.5-[cntr]-(>=0)-[day]-6-[month]-14.5-|" options:kNilOptions metrics:nil views:views]];
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-17-[title]-17-|" options:kNilOptions metrics:nil views:views]];
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-17-[pre]-13-|" options:kNilOptions metrics:nil views:views]];
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-17-[thumb]" options:kNilOptions metrics:nil views:views]];
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[unread(7)]-15.5-[title]-12-[pre]-17-|" options:kNilOptions metrics:nil views:views]];
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-17-[thumb]-(>=0)-|" options:kNilOptions metrics:nil views:views]];
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=0)-[unread(7)]-15.5-[title]-12-[pre]-17-|" options:kNilOptions metrics:nil views:views]];
         self.thumbnailHeight = [NSLayoutConstraint constraintWithItem:self.thumbnail attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.f constant:0.f];
         [self.contentView addConstraint:self.thumbnailHeight];
-        self.thumbnailBottomMargin = [NSLayoutConstraint constraintWithItem:self.thumbnail attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.unreadIndicator attribute:NSLayoutAttributeTop multiplier:1.f constant:-16.5f];
+        self.thumbnailBottomMargin = [NSLayoutConstraint constraintWithItem:self.thumbnail attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.unreadIndicator attribute:NSLayoutAttributeTop multiplier:1.f constant:0.f];
         [self.contentView addConstraint:self.thumbnailBottomMargin];
         [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.counterLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.unreadIndicator attribute:NSLayoutAttributeCenterY multiplier:1.f constant:-1.5f]];
         [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.monthLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.unreadIndicator attribute:NSLayoutAttributeCenterY multiplier:1.f constant:-1.5f]];
@@ -128,7 +129,7 @@
     } else {
         self.thumbnailHeight.constant = 125.5f;
         self.thumbnailBottomMargin.constant = -16.5f;
-        self.thumbnail.imageURL = [NSURL URLWithString:_entry.thumbnail];
+        [self.thumbnail sd_setImageWithURL:[NSURL URLWithString:_entry.thumbnail]];
     }
     self.monthLabel.attributedText = [NSAttributedString attributedStringForDateMonth:[[[_entry pubDate] stringWithFormat:DefaultMonthFormat] uppercaseString]];
     self.dayLabel.text = [[_entry pubDate] stringWithFormat:DefaultDayFormat];
@@ -151,8 +152,8 @@
         self.thumbnailBottomMargin.constant = 0.0f;
     } else {
         self.thumbnailHeight.constant = 125.5f;
-        self.thumbnailBottomMargin.constant = 16.5f;
-        self.thumbnail.imageURL = [NSURL URLWithString:_event.thumbnail];
+        self.thumbnailBottomMargin.constant = -16.5f;
+        [self.thumbnail sd_setImageWithURL:[NSURL URLWithString:_entry.thumbnail]];
     }
     self.monthLabel.text = [[[_event startDate] stringWithFormat:DefaultDateFormat] uppercaseString];
     [self setUnreadStatus:event.itemStatus];
@@ -201,9 +202,14 @@
 {
     if (self.thumbnail.image && shouldMakeImageGrayscale) {
         _coloredImage = self.thumbnail.image;
-        [UIView animateWithDuration:0.25f animations:^{
-            [self.thumbnail setImage:[_coloredImage convertImageToGrayscale]];
-        }];
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0), ^{
+            UIImage *grayscale = [_coloredImage convertImageToGrayscale];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [UIView animateWithDuration:0.25f animations:^{
+                    [self.thumbnail setImage:grayscale];
+                }];
+            });
+        });
     } else {
         if (_coloredImage) {
             [UIView animateWithDuration:0.25f animations:^{
@@ -236,6 +242,7 @@
 {
     _coloredImage = nil;
     self.thumbnail.image = nil;
+    [self.thumbnail sd_cancelCurrentImageLoad];
 }
 
 

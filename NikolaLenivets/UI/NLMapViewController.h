@@ -18,14 +18,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *distanceToPlace;
 @property (weak, nonatomic) IBOutlet UILabel *distanceToPlaceLegend;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *distanceToPlaceHeight;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UILabel *placeUnreadIndicator;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *placeInfoIconsHeight;
-@property (weak, nonatomic) IBOutlet UILabel *itemsCountLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleBarHeight;
-@property (weak, nonatomic) IBOutlet UIView *backPlaceView;
-@property (weak, nonatomic) IBOutlet UILabel *backPlaceTitle;
 @property (weak, nonatomic) IBOutlet UIButton *filterButton;
 
 

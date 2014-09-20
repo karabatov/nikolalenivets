@@ -16,7 +16,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UIView *nameView;
-@property (weak, nonatomic) IBOutlet UILabel *backTitleLabel;
 @property (weak, nonatomic) IBOutlet UIView *pagerView;
 @property (weak, nonatomic) IBOutlet UILabel *currentPageLabel;
 @property (weak, nonatomic) IBOutlet UILabel *otherPageLabel;

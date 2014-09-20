@@ -11,6 +11,7 @@
 #import "NLNewsCell.h"
 #import "NLDetailsViewController.h"
 #import "NSAttributedString+Kerning.h"
+#import "UIViewController+CustomButtons.h"
 
 
 @implementation NLItemsListController
@@ -31,20 +32,11 @@
 }
 
 
-- (IBAction)back:(id)sender
-{
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.frame = [[UIScreen mainScreen] bounds];
     UIColor *bgColor = [UIColor colorWithRed:246.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1.0f];
     [self.view setBackgroundColor:bgColor];
-    self.titleLabel.attributedText = [NSAttributedString kernedStringForString:@"НОВОСТИ"];
-    self.itemsCountLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
     if ([self.leftTable respondsToSelector:@selector(setEstimatedRowHeight:)]) {
         [self.leftTable setEstimatedRowHeight:315.0f];
         [self.rightTable setEstimatedRowHeight:315.0f];
@@ -64,6 +56,16 @@
 {
     [super viewWillAppear:animated];
     [self prepareArrays];
+}
+
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    if (self.rightTable.contentInset.top != self.leftTable.contentInset.top) {
+        self.rightTable.contentInset = self.leftTable.contentInset;
+        [self.rightTable setContentOffset:CGPointMake(0, -self.rightTable.contentInset.top) animated:YES];
+    }
 }
 
 
@@ -127,9 +129,6 @@
     NLNewsEntry *entry = [self entryForTable:tableView indexPath:indexPath];
     [cell populateFromNewsEntry:entry];
     cell.counterLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)([_news count] - [_news indexOfObject:entry])];
-    // UIColor *borderGray = [UIColor colorWithRed:246.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1.0f];
-    // [cell.contentView.layer setBorderColor:borderGray.CGColor];
-    // [cell.contentView.layer setBorderWidth:0.5f];
 
     return cell;
 }
@@ -140,8 +139,8 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NLNewsEntry *entry = [self entryForTable:tableView indexPath:indexPath];
     _details = [[NLDetailsViewController alloc] initWithEntry:entry];
-    self.title = @"НОВОСТИ";
-    [((NLAppDelegate *)[[UIApplication sharedApplication] delegate]).navigation pushViewController:_details animated:YES];
+    _details.title = @"НОВОСТИ";
+    [self.navigationController pushViewController:_details animated:YES];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [tableView reloadRowsAtIndexPaths:@[ indexPath ] withRowAnimation:UITableViewRowAnimationAutomatic];
         [self updateUnreadCountWithCount:[[NLStorage sharedInstance] unreadCountInArray:_news]];
@@ -154,28 +153,11 @@
 
 - (void)updateUnreadCountWithCount:(NSInteger)unreadCount
 {
+    ((NLNavigationBar *)self.navigationController.navigationBar).counter = unreadCount;
     if (unreadCount == 0) {
-        self.titleBarHeight.constant = 52.0f;
-        [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:10.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            [self.view layoutIfNeeded];
-            self.itemsCountLabel.alpha = 0.0f;
-        } completion:^(BOOL finished) {
-            [self.itemsCountLabel setHidden:YES];
-            self.itemsCountLabel.alpha = 1.0f;
-            self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)unreadCount];
-        }];
+        [self setupForNavBarWithStyle:NLNavigationBarStyleNoCounter];
     } else {
-        self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)unreadCount];
-        self.titleBarHeight.constant = 64.0f;
-        [self.itemsCountLabel setTransform:CGAffineTransformMakeScale(0.05f, 0.05f)];
-        [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:10.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            [self.itemsCountLabel setHidden:NO];
-            self.itemsCountLabel.alpha = 1.0f;
-            [self.itemsCountLabel setTransform:CGAffineTransformIdentity];
-            [self.view layoutIfNeeded];
-        } completion:^(BOOL finished) {
-            //
-        }];
+        [self setupForNavBarWithStyle:NLNavigationBarStyleCounter];
     }
 }
 

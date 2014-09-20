@@ -10,6 +10,7 @@
 #import "AFNetworking.h"
 #import "NLStorage.h"
 #import "NLMainMenuController.h"
+#import "NLNavigationBar.h"
 
 #import <Crashlytics/Crashlytics.h>
 
@@ -26,7 +27,8 @@
     [NLLocationManager sharedInstance];
 
     NLMainMenuController *main = [[NLMainMenuController alloc] init];
-    self.navigation = [[UINavigationController alloc] initWithRootViewController:main];
+    self.navigation = [[UINavigationController alloc] initWithNavigationBarClass:[NLNavigationBar class] toolbarClass:nil];
+    [self.navigation setViewControllers:@[ main ]];
     [self.navigation setNavigationBarHidden:YES];
     self.navigation.delegate = main;
     self.window.rootViewController = self.navigation;

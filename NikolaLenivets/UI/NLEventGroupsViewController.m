@@ -14,6 +14,7 @@
 #import <NSDate+Helper.h>
 #import "NSAttributedString+Kerning.h"
 #import "NSDate+CompareDays.h"
+#import "UIViewController+CustomButtons.h"
 
 #import <UIImageView+WebCache.h>
 
@@ -43,9 +44,6 @@
 
     self.view.frame = [[[[UIApplication sharedApplication] delegate] window] frame];
 
-    self.titleLabel.attributedText = [NSAttributedString kernedStringForString:@"СОБЫТИЯ"];
-    self.itemsCountLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:9.0f];
-    self.itemsCountLabel.text = @"";
     self.currentPageLabel.font = [UIFont fontWithName:NLMonospacedFont size:self.currentPageLabel.font.pointSize];
     self.overallPagesCountLabel.font = self.otherPageLabel.font = self.currentPageLabel.font;
 
@@ -68,11 +66,10 @@
     [self.previewView insertSubview:toolbar atIndex:0];
 
     self.scrollView.delegate = self;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openEventsList:)];
+    [self.scrollView addGestureRecognizer:tap];
 
     _currentPage = 0;
-
-//    [self prepareEventsArray];
-//    [self fillContentForPage:0];
 }
 
 
@@ -86,6 +83,12 @@
     }
     [self fillContentForPage:_currentPage];
     [self.eventDateDashLabel setTransform:CGAffineTransformMakeRotation(-M_PI_2)];
+}
+
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 
@@ -127,13 +130,10 @@
     })
     .unwrap;
 
-    self.scrollView.contentSize = CGSizeMake(slides.count * self.scrollView.frame.size.width, self.scrollView.frame.size.height);
+    self.scrollView.contentSize = CGSizeMake(slides.count * self.scrollView.frame.size.width, self.scrollView.frame.size.height - 64.f);
     _.array(self.scrollView.subviews).each(^(UIView *v) { [v removeFromSuperview]; });
     _.array(slides).each(^(UIImageView *slide) {
         [self.scrollView addSubview:slide];
-        UIButton *button = [[UIButton alloc] initWithFrame:slide.frame];
-        [button addTarget:self action:@selector(openEventsList:) forControlEvents:UIControlEventTouchUpInside];
-        [self.scrollView addSubview:button];
     });
 
     self.overallPagesCountLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)slides.count];
@@ -142,28 +142,11 @@
 
 - (void)updateUnreadCountWithCount:(NSInteger)unreadCount
 {
+    ((NLNavigationBar *)self.navigationController.navigationBar).counter = unreadCount;
     if (unreadCount == 0) {
-        self.titleBarHeight.constant = 52.0f;
-        [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            [self.titleBarView layoutIfNeeded];
-            self.itemsCountLabel.alpha = 0.0f;
-        } completion:^(BOOL finished) {
-            [self.itemsCountLabel setHidden:YES];
-            self.itemsCountLabel.alpha = 1.0f;
-            self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)unreadCount];
-        }];
+        [self setupForNavBarWithStyle:NLNavigationBarStyleNoCounter];
     } else {
-        self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)unreadCount];
-        self.titleBarHeight.constant = 64.0f;
-        [self.itemsCountLabel setTransform:CGAffineTransformMakeScale(0.05f, 0.05f)];
-        [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            [self.itemsCountLabel setHidden:NO];
-            self.itemsCountLabel.alpha = 1.0f;
-            [self.itemsCountLabel setTransform:CGAffineTransformIdentity];
-            [self.titleBarView layoutIfNeeded];
-        } completion:^(BOOL finished) {
-            //
-        }];
+        [self setupForNavBarWithStyle:NLNavigationBarStyleCounter];
     }
 }
 
@@ -283,7 +266,8 @@
     NSLog(@"Open event list");
     NLEventGroup *group = _eventGroups[_currentPage];
     _events = [[NLEventsCollectionViewController alloc] initWithGroup:group];
-    [((NLAppDelegate *)[[UIApplication sharedApplication] delegate]).navigation pushViewController:_events animated:YES];
+    _events.title = [group.name uppercaseString];
+    [self.navigationController pushViewController:_events animated:YES];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self updateUnreadCountWithCount:[[NLStorage sharedInstance] unreadCountInArray:group.events]];
     });

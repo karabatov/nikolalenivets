@@ -13,6 +13,7 @@
 #import "NLDetailsViewController.h"
 #import "NLMapFilter.h"
 #import "NLCategory.h"
+#import "UIViewController+CustomButtons.h"
 
 @implementation NLMapViewController
 {
@@ -68,8 +69,6 @@
     
     self.view.frame = [[AppDelegate window] frame];
 
-    self.titleLabel.attributedText = [NSAttributedString kernedStringForString:@"КАРТА"];
-
     _shouldResetSelectedView = YES;
 
     [self.mapView addSubview:self.placeDetailsMenu];
@@ -85,8 +84,6 @@
     self.placeName.font = [UIFont fontWithName:NLMonospacedBoldFont size:13];
     self.distanceToPlace.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
     self.distanceToPlaceLegend.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
-    self.itemsCountLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
-    self.backPlaceTitle.font = [UIFont fontWithName:NLMonospacedBoldFont size:10];
 
     MKTileOverlay *bgOverlay = [[MKTileOverlay alloc] initWithURLTemplate:[[[[NSBundle mainBundle] bundleURL] URLByAppendingPathComponent:@"tile-empty.png"] absoluteString]];
     bgOverlay.canReplaceMapContent = YES;
@@ -106,17 +103,12 @@
 
     self.mapView.region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(54.7555, 35.6113), MKCoordinateSpanMake(0.0333783, 0.0367246));
     self.mapView.mapType = MKMapTypeStandard;
+}
 
-    if (_showingPlace) {
-        [self.titleLabel setHidden:YES];
-        [self.itemsCountLabel setHidden:YES];
-        [self.backPlaceView setHidden:NO];
-        self.backPlaceTitle.text = [_showingPlace.title uppercaseString];
-    } else {
-        [self.titleLabel setHidden:NO];
-        [self.itemsCountLabel setHidden:NO];
-        [self.backPlaceView setHidden:YES];
-    }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
 
@@ -125,8 +117,15 @@
     NSInteger unreadCount = [[NLStorage sharedInstance] unreadCountInArray:_places];
     [self updateUnreadCountWithCount:unreadCount];
     if (_showingAnnotation) {
-        [self.mapView selectAnnotation:_showingAnnotation animated:YES];
+        [self.mapView selectAnnotation:_showingAnnotation animated:animated];
     }
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+}
+
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
 
@@ -157,35 +156,15 @@
 
 - (void)updateUnreadCountWithCount:(NSInteger)unreadCount
 {
+    ((NLNavigationBar *)self.navigationController.navigationBar).counter = unreadCount;
     if (!_showingPlace) {
         if (unreadCount == 0) {
-            self.titleBarHeight.constant = 52.0f;
-            [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:10.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-                [self.view layoutIfNeeded];
-                self.itemsCountLabel.alpha = 0.0f;
-            } completion:^(BOOL finished) {
-                [self.itemsCountLabel setHidden:YES];
-                self.itemsCountLabel.alpha = 1.0f;
-                self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)unreadCount];
-                if (_selectedView) {
-                    [self.mapView selectAnnotation:_selectedView.annotation animated:NO];
-                }
-            }];
+            [self setupForNavBarWithStyle:NLNavigationBarStyleNoCounter];
         } else {
-            self.itemsCountLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)unreadCount];
-            self.titleBarHeight.constant = 64.0f;
-            [self.itemsCountLabel setTransform:CGAffineTransformMakeScale(0.05f, 0.05f)];
-            [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:10.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-                [self.itemsCountLabel setHidden:NO];
-                self.itemsCountLabel.alpha = 1.0f;
-                [self.itemsCountLabel setTransform:CGAffineTransformIdentity];
-                [self.view layoutIfNeeded];
-            } completion:^(BOOL finished) {
-                if (_selectedView) {
-                    [self.mapView selectAnnotation:_selectedView.annotation animated:NO];
-                }
-            }];
+            [self setupForNavBarWithStyle:NLNavigationBarStyleCounter];
         }
+    } else {
+        [self setupForNavBarWithStyle:NLNavigationBarStyleBackLightMenu];
     }
 }
 
@@ -350,7 +329,7 @@
                 coverMessage.numberOfLines = 0;
                 coverMessage.text = @"ВЫ НАХОДИТЕСЬ\nЗА ПРЕДЕЛАМИ\nПАРКА\nНИКОЛА-ЛЕНИВЕЦ";
                 [coverView addSubview:coverMessage];
-                [coverMessage setFrame:CGRectMake(13.0f, 12.0f, 200.0f, 200.0f)];
+                [coverMessage setFrame:CGRectMake(13.0f, 76.0f, 200.0f, 200.0f)];
                 [coverMessage sizeToFit];
                 coverView.alpha = 0.0f;
                 [self.mapView insertSubview:coverView atIndex:0];
@@ -380,7 +359,8 @@
     NLPlace *place = ((NLPlaceAnnotation *)(_selectedView.annotation)).place;
     NLDetailsViewController *details = [[NLDetailsViewController alloc] initWithPlace:place currentLocation:self.currentLocation];
     [details.view setNeedsDisplayInRect:[UIScreen mainScreen].bounds];
-    self.title = @"КАРТА";
+    details.title = @"КАРТА";
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
     [self.navigationController pushViewController:details animated:YES];
 }
 

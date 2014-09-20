@@ -38,6 +38,9 @@ static NLLocationManager *_sharedInstance;
         _locationManager.delegate = self;
         _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         _locationManager.distanceFilter = kCLDistanceFilterNone;
+        if ([_locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+            [_locationManager requestWhenInUseAuthorization];
+        }
         [_locationManager startUpdatingLocation];
         [_locationManager startUpdatingHeading];
 

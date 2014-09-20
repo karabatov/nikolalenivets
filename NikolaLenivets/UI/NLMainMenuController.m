@@ -18,6 +18,7 @@
 #import "NLLocationManager.h"
 #import "NLSearchViewController.h"
 #import "NLAboutScreenController.h"
+#import "NLNavigationBar.h"
 
 #define FOLD_DURATION 0.7
 
@@ -80,6 +81,8 @@ enum {
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
 
     _splashView = [[UIView alloc] init];
     [_splashView setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -249,6 +252,7 @@ enum {
 - (void)viewWillAppear:(BOOL)animated
 {
     [self updateMenuState];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
 
@@ -290,42 +294,42 @@ enum {
     switch (sender.tag) {
         case News: {
             _newsList = [NLItemsListController new];
-            self.title = @"НОВОСТИ";
+            _newsList.title = @"НОВОСТИ";
             [self.navigationController pushViewController:_newsList animated:YES];
             break;
         }
         case Events: {
             _eventsController = [NLEventGroupsViewController new];
-            self.title = @"СОБЫТИЯ";
+            _eventsController.title = @"СОБЫТИЯ";
             [self.navigationController pushViewController:_eventsController animated:YES];
             break;
         }
         case Places: {
             _placesController = [NLPlacesViewController new];
-            self.title = @"МЕСТА";
+            _placesController.title = @"МЕСТА";
             [self.navigationController pushViewController:_placesController animated:YES];
             break;
         }
         case Way: {
             _driveScreen = [[NLStaticScreenViewController alloc] initWithScreenNamed:@"drive"];
-            self.title = @"ДОБРАТЬСЯ";
+            _driveScreen.title = @"ДОБРАТЬСЯ";
             [self.navigationController pushViewController:_driveScreen animated:YES];
             break;
         }
         case Map: {
             _mapController = [NLMapViewController new];
-            self.title = @"КАРТА";
+            _mapController.title = @"КАРТА";
             [self.navigationController pushViewController:_mapController animated:YES];
             break;
         }
         case About:
             _aboutController = [[NLAboutScreenController alloc] initWithScreenNamed:@"about"];
-            self.title = @"О ПАРКЕ";
+            _aboutController.title = @"О ПАРКЕ";
             [self.navigationController pushViewController:_aboutController animated:YES];
             break;
         case Search:
             _searchController = [[NLSearchViewController alloc] init];
-            self.title = @"ПОИСК";
+            _searchController.title = @"ПОИСК";
             [self.navigationController pushViewController:_searchController animated:YES];
             break;
         default:
