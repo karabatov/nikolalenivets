@@ -9,6 +9,7 @@
 #import "NLPlaceCell.h"
 #import "UIImage+Grayscale.h"
 #import "NSAttributedString+Kerning.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation NLPlaceCell
 {
@@ -33,10 +34,11 @@
         self.distanceLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
         self.distanceLabel.textColor = [UIColor colorWithRed:37.f/255.f green:37.f/255.f blue:37.f/255.f alpha:1.f];
 
-        self.image = [[AsyncImageView alloc] init];
+        self.image = [[UIImageView alloc] init];
         [self.image setTranslatesAutoresizingMaskIntoConstraints:NO];
         [self.image setContentMode:UIViewContentModeScaleAspectFill];
         [self.image setClipsToBounds:YES];
+        [self.image setBackgroundColor:[UIColor lightGrayColor]];
 
         self.nameLabel = [[UILabel alloc] init];
         [self.nameLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -67,7 +69,7 @@
     _place = place;
     self.distanceLabel.text = @"∞ КМ";
     self.nameLabel.attributedText = [NSAttributedString attributedStringForPlaceName:[_place.title uppercaseString]];
-    [self.image setImageURL:[NSURL URLWithString:_place.thumbnail]];
+    [self.image sd_setImageWithURL:[NSURL URLWithString:_place.thumbnail]];
     [self setUnreadStatus:place.itemStatus];
 }
 
@@ -97,6 +99,7 @@
 - (void)prepareForReuse
 {
     self.image.image = nil;
+    [self.image sd_cancelCurrentImageLoad];
 }
 
 

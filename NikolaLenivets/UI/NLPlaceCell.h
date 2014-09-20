@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "NLPlace.h"
-#import <AsyncImageView.h>
 
 @interface NLPlaceCell : UICollectionViewCell
 
