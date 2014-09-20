@@ -24,8 +24,13 @@
 - (void)setNavigationBarStyle:(NLNavigationBarStyle)navigationBarStyle
 {
     _navigationBarStyle = navigationBarStyle;
-    [self setBackgroundColor:[UIColor colorWithRed:246.f/255.f green:246.f/255.f blue:246.f/255.f alpha:1.f]];
-    [self setTintColor:[UIColor colorWithRed:246.f/255.f green:246.f/255.f blue:246.f/255.f alpha:1.f]];
+    if (_navigationBarStyle == NLNavigationBarStyleBackDark) {
+        [self setBackgroundColor:[UIColor blackColor]];
+        [self setBarTintColor:[UIColor blackColor]];
+    } else {
+        [self setBackgroundColor:[UIColor colorWithRed:246.f/255.f green:246.f/255.f blue:246.f/255.f alpha:1.f]];
+        [self setBarTintColor:[UIColor colorWithRed:246.f/255.f green:246.f/255.f blue:246.f/255.f alpha:1.f]];
+    }
 }
 
 @end
