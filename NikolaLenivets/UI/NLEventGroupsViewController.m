@@ -66,11 +66,10 @@
     [self.previewView insertSubview:toolbar atIndex:0];
 
     self.scrollView.delegate = self;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openEventsList:)];
+    [self.scrollView addGestureRecognizer:tap];
 
     _currentPage = 0;
-
-//    [self prepareEventsArray];
-//    [self fillContentForPage:0];
 }
 
 
@@ -131,13 +130,10 @@
     })
     .unwrap;
 
-    self.scrollView.contentSize = CGSizeMake(slides.count * self.scrollView.frame.size.width, self.scrollView.frame.size.height);
+    self.scrollView.contentSize = CGSizeMake(slides.count * self.scrollView.frame.size.width, self.scrollView.frame.size.height - 64.f);
     _.array(self.scrollView.subviews).each(^(UIView *v) { [v removeFromSuperview]; });
     _.array(slides).each(^(UIImageView *slide) {
         [self.scrollView addSubview:slide];
-        UIButton *button = [[UIButton alloc] initWithFrame:slide.frame];
-        [button addTarget:self action:@selector(openEventsList:) forControlEvents:UIControlEventTouchUpInside];
-        [self.scrollView addSubview:button];
     });
 
     self.overallPagesCountLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)slides.count];
