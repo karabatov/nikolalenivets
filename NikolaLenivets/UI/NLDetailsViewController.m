@@ -354,30 +354,34 @@ typedef enum {
                 if (_capitalView) {
                     [_capitalView removeFromSuperview];
                 }
-                _capitalView = [[UIView alloc] init];
-                [_capitalView setTranslatesAutoresizingMaskIntoConstraints:NO];
-                [self.contentView addSubview:_capitalView];
-                [self.contentView sendSubviewToBack:_capitalView];
-                NSDictionary *views = @{ @"cap": _capitalView, @"gallery": self.galleryCover };
-                [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[cap]|" options:kNilOptions metrics:nil views:views]];
-                [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[cap(229)]-(>=52)-[gallery]" options:kNilOptions metrics:nil views:views]];
-                [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:_capitalView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.firstPartWebView attribute:NSLayoutAttributeTop multiplier:1.f constant:0.f]];
-                CGRect boundingBox = CGPathGetBoundingBox(letter);
-                CGFloat scaleFactor = 229.f / CGRectGetHeight(boundingBox);
-                // Scaling the path ...
-                CGAffineTransform scaleTransform = CGAffineTransformIdentity;
-                // Scale down the path first
-                scaleTransform = CGAffineTransformScale(scaleTransform, scaleFactor, -scaleFactor);
-                // Then translate the path to the upper left corner
-                scaleTransform = CGAffineTransformTranslate(scaleTransform, -CGRectGetMinX(boundingBox), -CGRectGetMaxY(boundingBox) - 6);
-                CGPathRef scaledPath = CGPathCreateCopyByTransformingPath(letter, &scaleTransform);
-                // Create a new shape layer and assign the new path
-                CAShapeLayer *scaledShapeLayer = [CAShapeLayer layer];
-                scaledShapeLayer.path = scaledPath;
-                scaledShapeLayer.fillColor = [self capitalLetterColor].CGColor;
-                [_capitalView.layer addSublayer:scaledShapeLayer];
-                CGPathRelease(scaledPath); // release the copied path
-                CGPathRelease(letter);
+                if (letter != NULL) {
+                    _capitalView = [[UIView alloc] init];
+                    [_capitalView setTranslatesAutoresizingMaskIntoConstraints:NO];
+                    [self.contentView addSubview:_capitalView];
+                    [self.contentView sendSubviewToBack:_capitalView];
+                    NSDictionary *views = @{ @"cap": _capitalView, @"gallery": self.galleryCover };
+                    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[cap]|" options:kNilOptions metrics:nil views:views]];
+                    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[cap(229)]-(>=52)-[gallery]" options:kNilOptions metrics:nil views:views]];
+                    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:_capitalView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.firstPartWebView attribute:NSLayoutAttributeTop multiplier:1.f constant:0.f]];
+                    CGRect boundingBox = CGPathGetBoundingBox(letter);
+                    if (boundingBox.size.width != 0 && boundingBox.size.height != 0) {
+                        CGFloat scaleFactor = 229.f / CGRectGetHeight(boundingBox);
+                        // Scaling the path ...
+                        CGAffineTransform scaleTransform = CGAffineTransformIdentity;
+                        // Scale down the path first
+                        scaleTransform = CGAffineTransformScale(scaleTransform, scaleFactor, -scaleFactor);
+                        // Then translate the path to the upper left corner
+                        scaleTransform = CGAffineTransformTranslate(scaleTransform, -CGRectGetMinX(boundingBox), -CGRectGetMaxY(boundingBox) - 6);
+                        CGPathRef scaledPath = CGPathCreateCopyByTransformingPath(letter, &scaleTransform);
+                        // Create a new shape layer and assign the new path
+                        CAShapeLayer *scaledShapeLayer = [CAShapeLayer layer];
+                        scaledShapeLayer.path = scaledPath;
+                        scaledShapeLayer.fillColor = [self capitalLetterColor].CGColor;
+                        [_capitalView.layer addSublayer:scaledShapeLayer];
+                        CGPathRelease(scaledPath); // release the copied path
+                    }
+                    CGPathRelease(letter);
+                }
                 break;
             }
         }
