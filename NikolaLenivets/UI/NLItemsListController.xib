@@ -70,7 +70,6 @@
                 <constraint firstItem="GE7-gk-KCr" firstAttribute="trailing" secondItem="ohb-ea-z3Z" secondAttribute="trailing" id="rlI-Nb-7dS"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
-            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
         </view>
     </objects>
     <resources>

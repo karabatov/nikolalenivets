@@ -35,7 +35,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.frame = [[UIScreen mainScreen] bounds];
     UIColor *bgColor = [UIColor colorWithRed:246.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1.0f];
     [self.view setBackgroundColor:bgColor];
     if ([self.leftTable respondsToSelector:@selector(setEstimatedRowHeight:)]) {
@@ -130,9 +129,6 @@
     NLNewsEntry *entry = [self entryForTable:tableView indexPath:indexPath];
     [cell populateFromNewsEntry:entry];
     cell.counterLabel.text = [NSString stringWithFormat:@"%02ld", (unsigned long)([_news count] - [_news indexOfObject:entry])];
-    // UIColor *borderGray = [UIColor colorWithRed:246.0f/255.0f green:246.0f/255.0f blue:246.0f/255.0f alpha:1.0f];
-    // [cell.contentView.layer setBorderColor:borderGray.CGColor];
-    // [cell.contentView.layer setBorderWidth:0.5f];
 
     return cell;
 }
