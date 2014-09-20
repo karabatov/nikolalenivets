@@ -202,9 +202,14 @@
 {
     if (self.thumbnail.image && shouldMakeImageGrayscale) {
         _coloredImage = self.thumbnail.image;
-        [UIView animateWithDuration:0.25f animations:^{
-            [self.thumbnail setImage:[_coloredImage convertImageToGrayscale]];
-        }];
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0), ^{
+            UIImage *grayscale = [_coloredImage convertImageToGrayscale];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [UIView animateWithDuration:0.25f animations:^{
+                    [self.thumbnail setImage:grayscale];
+                }];
+            });
+        });
     } else {
         if (_coloredImage) {
             [UIView animateWithDuration:0.25f animations:^{
