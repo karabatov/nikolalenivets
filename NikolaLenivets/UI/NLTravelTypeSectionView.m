@@ -47,9 +47,9 @@
     [self addSubview:self.headerLabel];
 
     NSDictionary *views = @{ @"header": self.headerLabel };
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-17-[header]-(>=17)-|" options:kNilOptions metrics:0 views:views]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-16-[header]-(>=17)-|" options:kNilOptions metrics:0 views:views]];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=1)-[header]-(>=1)-|" options:kNilOptions metrics:0 views:views]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.headerLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1.f constant:0.f]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.headerLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1.f constant:-2.f]];
 
     [self.layer setBorderColor:[UIColor colorWithRed:244.f/255.f green:241.f/255.f blue:241.f/255.f alpha:1.f].CGColor];
     [self.layer setBorderWidth:0.5f];

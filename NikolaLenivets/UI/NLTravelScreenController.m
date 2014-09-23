@@ -73,6 +73,8 @@
 
 - (void)viewDidLoad
 {
+    [self.view setBackgroundColor:[UIColor colorWithRed:172.f/255.f green:172.f/255.f blue:172.f/255.f alpha:1.f]];
+
     self.contentWrapper = [[UIScrollView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self.contentWrapper setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.contentWrapper setBackgroundColor:[UIColor redColor]];
@@ -124,18 +126,18 @@
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[navbar]|" options:kNilOptions metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[menu]|" options:kNilOptions metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[content]|" options:kNilOptions metrics:nil views:views]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[navbar(64)][menu]|" options:kNilOptions metrics:nil views:views]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[navbar][content]|" options:kNilOptions metrics:nil views:views]];
-    [self.menuWrapper addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-16.5-[sTitle(287)]-(>=1)-|" options:kNilOptions metrics:nil views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[navbar(64)]-0.5-[menu]|" options:kNilOptions metrics:nil views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[navbar]-0.5-[content]|" options:kNilOptions metrics:nil views:views]];
+    [self.menuWrapper addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-16-[sTitle(287)]-(>=1)-|" options:kNilOptions metrics:nil views:views]];
     [self.menuWrapper addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[sTitle(150)]" options:kNilOptions metrics:nil views:views]];
     [self.navBarView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-14-[menuBtn(44)]-(>=1)-|" options:kNilOptions metrics:nil views:views]];
     [self.navBarView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-4-[menuBtn(44)]-(>=1)-|" options:kNilOptions metrics:nil views:views]];
     [self.navBarView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=1)-[backBtn(44)]-(>=1)-|" options:kNilOptions metrics:nil views:views]];
-    [self.navBarView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-3-[backBtn(44)]-(>=1)-|" options:kNilOptions metrics:nil views:views]];
+    [self.navBarView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-4-[backBtn(44)]-(>=1)-|" options:kNilOptions metrics:nil views:views]];
 
-    self.navTitleOffset = [NSLayoutConstraint constraintWithItem:self.navTitleLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.navBarView attribute:NSLayoutAttributeCenterY multiplier:1.f constant:-9.f];
+    self.navTitleOffset = [NSLayoutConstraint constraintWithItem:self.navTitleLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.navBarView attribute:NSLayoutAttributeCenterY multiplier:1.f constant:-8.f];
     [self.navBarView addConstraint:self.navTitleOffset];
-    [self.navBarView addConstraint:[NSLayoutConstraint constraintWithItem:self.navTitleLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.navBarView attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0.f]];
+    [self.navBarView addConstraint:[NSLayoutConstraint constraintWithItem:self.navTitleLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.navBarView attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0.5f]];
     [self.navBarView addConstraint:[NSLayoutConstraint constraintWithItem:self.backImageButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.navBarView attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0.f]];
 
     self.travelTitleConstraint = [NSLayoutConstraint constraintWithItem:self.screenTitle attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.menuWrapper attribute:NSLayoutAttributeTop multiplier:1.f constant:9.f];
@@ -149,8 +151,8 @@
         [sectionView addTarget:self withAction:@selector(foldMenuAway:)];
         NSDictionary *views = @{ @"section": sectionView };
         [self.menuWrapper addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[section]|" options:kNilOptions metrics:nil views:views]];
-        [self.menuWrapper addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[section(45)]" options:kNilOptions metrics:nil views:views]];
-        NSLayoutConstraint *sectionConstraint = [NSLayoutConstraint constraintWithItem:self.menuWrapper attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:sectionView attribute:NSLayoutAttributeBottom multiplier:1.f constant:45.f * (4 - i)];
+        [self.menuWrapper addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[section(54)]" options:kNilOptions metrics:nil views:views]];
+        NSLayoutConstraint *sectionConstraint = [NSLayoutConstraint constraintWithItem:self.menuWrapper attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:sectionView attribute:NSLayoutAttributeBottom multiplier:1.f constant:54.f * (4 - i)];
         [self.menuConstraints addObject:sectionConstraint];
         [self.menuWrapper addConstraint:sectionConstraint];
     }
@@ -164,7 +166,7 @@
         NSLayoutConstraint *constraint = [self.menuConstraints objectAtIndex:i];
         constraint.constant = i <= self.itemToFoldBack ? constraint.constant + self.menuWrapper.bounds.size.height : constraint.constant - self.menuWrapper.bounds.size.height;
     }
-    self.navTitleOffset.constant = 10.f;
+    self.navTitleOffset.constant = 17.f;
     [UIView animateWithDuration:0.5f animations:^{
         self.navTitleLabel.transform = CGAffineTransformMakeScale(0.65f, 0.65f);
         self.backImageButton.alpha = 1.f;
@@ -179,7 +181,7 @@
         NSLayoutConstraint *constraint = [self.menuConstraints objectAtIndex:i];
         constraint.constant = i <= self.itemToFoldBack ? constraint.constant - self.menuWrapper.bounds.size.height : constraint.constant + self.menuWrapper.bounds.size.height;
     }
-    self.navTitleOffset.constant = -9.f;
+    self.navTitleOffset.constant = -8.f;
     [UIView animateWithDuration:0.5f animations:^{
         self.navTitleLabel.transform = CGAffineTransformIdentity;
         self.backImageButton.alpha = 0.f;
