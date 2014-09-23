@@ -65,6 +65,9 @@
 		D16373AB19B76B9700A89A98 /* NLMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D16373AA19B76B9700A89A98 /* NLMenuButton.m */; };
 		D16373AD19B8910C00A89A98 /* menu-circle-green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D16373AC19B8910C00A89A98 /* menu-circle-green@2x.png */; };
 		D17177B3196D047200521D72 /* NSAttributedString+Kerning.m in Sources */ = {isa = PBXBuildFile; fileRef = D17177B2196D047200521D72 /* NSAttributedString+Kerning.m */; };
+		D17283FA19D1747A005459CA /* NLTravelScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = D17283F919D1747A005459CA /* NLTravelScreenController.m */; };
+		D17283FD19D1820D005459CA /* NLTravelTypeSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D17283FC19D1820D005459CA /* NLTravelTypeSectionView.m */; };
+		D17283FF19D18644005459CA /* travel-text-title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D17283FE19D18644005459CA /* travel-text-title@2x.png */; };
 		D1783ED8197C141F00A92AA3 /* NLPlaceAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D1783ED7197C141F00A92AA3 /* NLPlaceAnnotation.m */; };
 		D1783EDB197C195100A92AA3 /* object.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783ED9197C195100A92AA3 /* object.png */; };
 		D1783EDC197C195100A92AA3 /* object@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783EDA197C195100A92AA3 /* object@2x.png */; };
@@ -235,6 +238,11 @@
 		D16373AC19B8910C00A89A98 /* menu-circle-green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-circle-green@2x.png"; sourceTree = "<group>"; };
 		D17177B1196D047200521D72 /* NSAttributedString+Kerning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSAttributedString+Kerning.h"; path = "UI/NSAttributedString+Kerning.h"; sourceTree = "<group>"; };
 		D17177B2196D047200521D72 /* NSAttributedString+Kerning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSAttributedString+Kerning.m"; path = "UI/NSAttributedString+Kerning.m"; sourceTree = "<group>"; };
+		D17283F819D1747A005459CA /* NLTravelScreenController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLTravelScreenController.h; path = UI/NLTravelScreenController.h; sourceTree = "<group>"; };
+		D17283F919D1747A005459CA /* NLTravelScreenController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLTravelScreenController.m; path = UI/NLTravelScreenController.m; sourceTree = "<group>"; };
+		D17283FB19D1820D005459CA /* NLTravelTypeSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLTravelTypeSectionView.h; path = UI/NLTravelTypeSectionView.h; sourceTree = "<group>"; };
+		D17283FC19D1820D005459CA /* NLTravelTypeSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLTravelTypeSectionView.m; path = UI/NLTravelTypeSectionView.m; sourceTree = "<group>"; };
+		D17283FE19D18644005459CA /* travel-text-title@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "travel-text-title@2x.png"; sourceTree = "<group>"; };
 		D1783ED6197C141F00A92AA3 /* NLPlaceAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLPlaceAnnotation.h; path = UI/NLPlaceAnnotation.h; sourceTree = "<group>"; };
 		D1783ED7197C141F00A92AA3 /* NLPlaceAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLPlaceAnnotation.m; path = UI/NLPlaceAnnotation.m; sourceTree = "<group>"; };
 		D1783ED9197C195100A92AA3 /* object.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = object.png; sourceTree = "<group>"; };
@@ -373,6 +381,8 @@
 				D1CC015B19CC40B400F8C047 /* NLNavigationBar.m */,
 				D153DDA719CC7CEB0091BB4A /* UIViewController+CustomButtons.h */,
 				D153DDA819CC7CEB0091BB4A /* UIViewController+CustomButtons.m */,
+				D17283FB19D1820D005459CA /* NLTravelTypeSectionView.h */,
+				D17283FC19D1820D005459CA /* NLTravelTypeSectionView.m */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -397,11 +407,14 @@
 			children = (
 				D1C545EE19C9A7C0004781B1 /* about-image@2x.jpg */,
 				D1C545F019C9A9EE004781B1 /* gradient-green@2x.png */,
+				D17283FE19D18644005459CA /* travel-text-title@2x.png */,
 				4F10D2AC19374ABB00F6658D /* NLStaticScreenViewController.h */,
 				4F10D2AD19374ABB00F6658D /* NLStaticScreenViewController.m */,
 				4F10D2AE19374ABB00F6658D /* NLStaticScreenViewController.xib */,
 				D1C545EB19C99C79004781B1 /* NLAboutScreenController.h */,
 				D1C545EC19C99C79004781B1 /* NLAboutScreenController.m */,
+				D17283F819D1747A005459CA /* NLTravelScreenController.h */,
+				D17283F919D1747A005459CA /* NLTravelScreenController.m */,
 			);
 			name = "Static Screens";
 			sourceTree = "<group>";
@@ -849,6 +862,7 @@
 				D19C0425196EF44C006A086B /* map-minus@2x.png in Resources */,
 				D1B7ADD0196BCBCE0057C1E2 /* MonoCondensedC.otf in Resources */,
 				D153DDAD19CDE88C0091BB4A /* menu_button_white@2x.png in Resources */,
+				D17283FF19D18644005459CA /* travel-text-title@2x.png in Resources */,
 				D138D4EF19C8E47100E5B4F4 /* search-rotating@2x.png in Resources */,
 				4F9C414A18EA84640038090E /* Images.xcassets in Resources */,
 			);
@@ -919,6 +933,8 @@
 				4F9C414418EA84640038090E /* main.m in Sources */,
 				4F6137491927313700BFDD1C /* NLEventGroupsViewController.m in Sources */,
 				D1C545ED19C99C79004781B1 /* NLAboutScreenController.m in Sources */,
+				D17283FD19D1820D005459CA /* NLTravelTypeSectionView.m in Sources */,
+				D17283FA19D1747A005459CA /* NLTravelScreenController.m in Sources */,
 				D1783F0B197E74D200A92AA3 /* NLPlaceHeader.m in Sources */,
 				4F7EC305190933B9002C0ECD /* NLItemsListController.m in Sources */,
 				4F390E8C18ED755300131934 /* NLEvent.m in Sources */,

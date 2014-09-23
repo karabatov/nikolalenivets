@@ -10,7 +10,6 @@
 #import "NLItemsListController.h"
 #import "NLEventGroupsViewController.h"
 #import "NLPlacesViewController.h"
-#import "NLStaticScreenViewController.h"
 #import "NLMapViewController.h"
 #import "NSAttributedString+Kerning.h"
 #import "NLFoldAnimation.h"
@@ -19,6 +18,7 @@
 #import "NLSearchViewController.h"
 #import "NLAboutScreenController.h"
 #import "NLNavigationBar.h"
+#import "NLTravelScreenController.h"
 
 #define FOLD_DURATION 0.7
 
@@ -38,7 +38,7 @@ enum {
     NLItemsListController *_newsList;
     NLEventGroupsViewController *_eventsController;
     NLPlacesViewController *_placesController;
-    NLStaticScreenViewController *_driveScreen;
+    NLTravelScreenController *_driveScreen;
     NLMapViewController *_mapController;
     NLSearchViewController *_searchController;
     NLAboutScreenController *_aboutController;
@@ -311,7 +311,7 @@ enum {
             break;
         }
         case Way: {
-            _driveScreen = [[NLStaticScreenViewController alloc] initWithScreenNamed:@"drive"];
+            _driveScreen = [[NLTravelScreenController alloc] init];
             _driveScreen.title = @"ДОБРАТЬСЯ";
             [self.navigationController pushViewController:_driveScreen animated:YES];
             break;
