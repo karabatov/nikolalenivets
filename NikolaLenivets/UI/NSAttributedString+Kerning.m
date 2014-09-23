@@ -22,6 +22,11 @@
 
 + (NSAttributedString *)kernedStringForString:(NSString *)string withFontSize:(CGFloat)fontSize kerning:(CGFloat)kerning andColor:(UIColor *)color
 {
+    return [NSAttributedString kernedStringForString:string withFontName:NLMonospacedBoldFont fontSize:fontSize kerning:kerning andColor:color];
+}
+
++ (NSAttributedString *)kernedStringForString:(NSString *)string withFontName:(NSString *)fontName fontSize:(CGFloat)fontSize kerning:(CGFloat)kerning andColor:(UIColor *)color
+{
     NSMutableAttributedString *attributedString;
 
     attributedString = [[NSMutableAttributedString alloc] initWithString:string];
@@ -32,7 +37,7 @@
                                  range:NSMakeRange(0, [attributedString length])];
 
         [attributedString addAttribute:NSFontAttributeName
-                                 value:[UIFont fontWithName:NLMonospacedBoldFont size:fontSize]
+                                 value:[UIFont fontWithName:fontName size:fontSize]
                                  range:NSMakeRange(0, [attributedString length])];
 
         [attributedString addAttribute:NSForegroundColorAttributeName

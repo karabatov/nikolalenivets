@@ -68,6 +68,9 @@
 		D17283FA19D1747A005459CA /* NLTravelScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = D17283F919D1747A005459CA /* NLTravelScreenController.m */; };
 		D17283FD19D1820D005459CA /* NLTravelTypeSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D17283FC19D1820D005459CA /* NLTravelTypeSectionView.m */; };
 		D17283FF19D18644005459CA /* travel-text-title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D17283FE19D18644005459CA /* travel-text-title@2x.png */; };
+		D172840219D1B574005459CA /* NLTravelHeliView.m in Sources */ = {isa = PBXBuildFile; fileRef = D172840119D1B574005459CA /* NLTravelHeliView.m */; };
+		D172840519D1B73E005459CA /* NLBorderedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D172840419D1B73E005459CA /* NLBorderedLabel.m */; };
+		D172840919D1B8A4005459CA /* travel-heli-coords@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D172840819D1B8A4005459CA /* travel-heli-coords@2x.png */; };
 		D1783ED8197C141F00A92AA3 /* NLPlaceAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D1783ED7197C141F00A92AA3 /* NLPlaceAnnotation.m */; };
 		D1783EDB197C195100A92AA3 /* object.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783ED9197C195100A92AA3 /* object.png */; };
 		D1783EDC197C195100A92AA3 /* object@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783EDA197C195100A92AA3 /* object@2x.png */; };
@@ -243,6 +246,11 @@
 		D17283FB19D1820D005459CA /* NLTravelTypeSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLTravelTypeSectionView.h; path = UI/NLTravelTypeSectionView.h; sourceTree = "<group>"; };
 		D17283FC19D1820D005459CA /* NLTravelTypeSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLTravelTypeSectionView.m; path = UI/NLTravelTypeSectionView.m; sourceTree = "<group>"; };
 		D17283FE19D18644005459CA /* travel-text-title@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "travel-text-title@2x.png"; sourceTree = "<group>"; };
+		D172840019D1B574005459CA /* NLTravelHeliView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLTravelHeliView.h; path = UI/NLTravelHeliView.h; sourceTree = "<group>"; };
+		D172840119D1B574005459CA /* NLTravelHeliView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLTravelHeliView.m; path = UI/NLTravelHeliView.m; sourceTree = "<group>"; };
+		D172840319D1B73E005459CA /* NLBorderedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLBorderedLabel.h; path = UI/NLBorderedLabel.h; sourceTree = "<group>"; };
+		D172840419D1B73E005459CA /* NLBorderedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLBorderedLabel.m; path = UI/NLBorderedLabel.m; sourceTree = "<group>"; };
+		D172840819D1B8A4005459CA /* travel-heli-coords@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "travel-heli-coords@2x.png"; sourceTree = "<group>"; };
 		D1783ED6197C141F00A92AA3 /* NLPlaceAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLPlaceAnnotation.h; path = UI/NLPlaceAnnotation.h; sourceTree = "<group>"; };
 		D1783ED7197C141F00A92AA3 /* NLPlaceAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLPlaceAnnotation.m; path = UI/NLPlaceAnnotation.m; sourceTree = "<group>"; };
 		D1783ED9197C195100A92AA3 /* object.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = object.png; sourceTree = "<group>"; };
@@ -383,6 +391,8 @@
 				D153DDA819CC7CEB0091BB4A /* UIViewController+CustomButtons.m */,
 				D17283FB19D1820D005459CA /* NLTravelTypeSectionView.h */,
 				D17283FC19D1820D005459CA /* NLTravelTypeSectionView.m */,
+				D172840319D1B73E005459CA /* NLBorderedLabel.h */,
+				D172840419D1B73E005459CA /* NLBorderedLabel.m */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -407,6 +417,7 @@
 			children = (
 				D1C545EE19C9A7C0004781B1 /* about-image@2x.jpg */,
 				D1C545F019C9A9EE004781B1 /* gradient-green@2x.png */,
+				D172840819D1B8A4005459CA /* travel-heli-coords@2x.png */,
 				D17283FE19D18644005459CA /* travel-text-title@2x.png */,
 				4F10D2AC19374ABB00F6658D /* NLStaticScreenViewController.h */,
 				4F10D2AD19374ABB00F6658D /* NLStaticScreenViewController.m */,
@@ -415,6 +426,8 @@
 				D1C545EC19C99C79004781B1 /* NLAboutScreenController.m */,
 				D17283F819D1747A005459CA /* NLTravelScreenController.h */,
 				D17283F919D1747A005459CA /* NLTravelScreenController.m */,
+				D172840019D1B574005459CA /* NLTravelHeliView.h */,
+				D172840119D1B574005459CA /* NLTravelHeliView.m */,
 			);
 			name = "Static Screens";
 			sourceTree = "<group>";
@@ -846,6 +859,7 @@
 				D1783EE3197C2C5B00A92AA3 /* object-selected.png in Resources */,
 				D1783F431982CEF600A92AA3 /* splash-top@2x.png in Resources */,
 				D1C57547199B6D4A00FFB310 /* photo-count@2x.png in Resources */,
+				D172840919D1B8A4005459CA /* travel-heli-coords@2x.png in Resources */,
 				D1F5019219BA24C900CDFA5E /* Default.png in Resources */,
 				D153DDAF19CDE9D10091BB4A /* button-back-white@2x.png in Resources */,
 				D1F5019019BA1F7600CDFA5E /* Default-568h@2x.png in Resources */,
@@ -966,10 +980,12 @@
 				D138D4E819C8CD0800E5B4F4 /* NLSearchRotatingView.m in Sources */,
 				D1A3D7C619758B4C00C53E06 /* NSDate+CompareDays.m in Sources */,
 				4F89A4331957DCA30045D1A3 /* NLLocationManager.m in Sources */,
+				D172840519D1B73E005459CA /* NLBorderedLabel.m in Sources */,
 				D1A3D7D7197641D900C53E06 /* NSString+Distance.m in Sources */,
 				D1CAF03B19C45DDE001C5270 /* NLSearchTableViewCell.m in Sources */,
 				D1783F341982921500A92AA3 /* NLMapFilterCell.m in Sources */,
 				D1A3D7CD1975930D00C53E06 /* NLFlowLayout.m in Sources */,
+				D172840219D1B574005459CA /* NLTravelHeliView.m in Sources */,
 				4F390E8018ED732D00131934 /* NLModel.m in Sources */,
 				D19956E219C5B00700904137 /* NLSearchTableViewHeader.m in Sources */,
 				4F411E7E18FFD8AA00758E30 /* NLMainMenuController.m in Sources */,

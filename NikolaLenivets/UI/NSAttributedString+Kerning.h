@@ -42,6 +42,18 @@
  */
 + (NSAttributedString *)kernedStringForString:(NSString *)string withFontSize:(CGFloat)fontSize kerning:(CGFloat)kerning andColor:(UIColor *)color;
 
+/**
+ Make a kerned string for input string with selected font name, size and color.
+
+ @param string Input string.
+ @param fontName Font name.
+ @param fontSize Font size.
+ @param kerning Kerning value.
+ @param color Desired color.
+ @return Kerned NSAttributedString.
+ */
++ (NSAttributedString *)kernedStringForString:(NSString *)string withFontName:(NSString *)fontName fontSize:(CGFloat)fontSize kerning:(CGFloat)kerning andColor:(UIColor *)color;
+
 + (NSAttributedString *)attributedStringForTitle:(NSString *)titleString;
 + (NSAttributedString *)attributedStringForDateMonth:(NSString *)monthString;
 + (NSAttributedString *)attributedStringForString:(NSString *)htmlString;

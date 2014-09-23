@@ -9,6 +9,7 @@
 #import "NLTravelScreenController.h"
 #import "NLTravelTypeSectionView.h"
 #import "NSAttributedString+Kerning.h"
+#import "NLTravelHeliView.h"
 
 @interface NLTravelScreenController ()
 
@@ -77,7 +78,7 @@
 
     self.contentWrapper = [[UIScrollView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self.contentWrapper setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.contentWrapper setBackgroundColor:[UIColor redColor]];
+    [self.contentWrapper setBackgroundColor:[UIColor whiteColor]];
 
     self.menuWrapper = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self.menuWrapper setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -161,6 +162,25 @@
 - (void)foldMenuAway:(UIGestureRecognizer *)sender
 {
     self.itemToFoldBack = sender.view.tag;
+
+    for (UIView *view in [self.contentWrapper subviews]) {
+        [view removeFromSuperview];
+    }
+
+    switch (self.itemToFoldBack) {
+        case NLTravelTypeHeli:
+        {
+            NLTravelHeliView *heliView = [[NLTravelHeliView alloc] init];
+            [self.contentWrapper addSubview:heliView];
+            [self.contentWrapper addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[heliView]|" options:kNilOptions metrics:nil views:NSDictionaryOfVariableBindings(heliView)]];
+            [self.contentWrapper addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[heliView]|" options:kNilOptions metrics:nil views:NSDictionaryOfVariableBindings(heliView)]];
+            break;
+        }
+
+        default:
+            break;
+    }
+
     self.travelTitleConstraint.constant = self.travelTitleConstraint.constant - self.menuWrapper.bounds.size.height;
     for (NSUInteger i = 0; i <= 4; i++) {
         NSLayoutConstraint *constraint = [self.menuConstraints objectAtIndex:i];
@@ -170,6 +190,7 @@
     [UIView animateWithDuration:0.5f animations:^{
         self.navTitleLabel.transform = CGAffineTransformMakeScale(0.65f, 0.65f);
         self.backImageButton.alpha = 1.f;
+        self.menuWrapper.alpha = 0.f;
         [self.view layoutIfNeeded];
     }];
 }
@@ -185,6 +206,7 @@
     [UIView animateWithDuration:0.5f animations:^{
         self.navTitleLabel.transform = CGAffineTransformIdentity;
         self.backImageButton.alpha = 0.f;
+        self.menuWrapper.alpha = 1.f;
         [self.view layoutIfNeeded];
     }];
 }
