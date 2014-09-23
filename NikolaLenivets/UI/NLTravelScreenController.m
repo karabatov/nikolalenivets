@@ -10,6 +10,7 @@
 #import "NLTravelTypeSectionView.h"
 #import "NSAttributedString+Kerning.h"
 #import "NLTravelHeliView.h"
+#import "NLTravelFestivalView.h"
 
 @interface NLTravelScreenController ()
 
@@ -167,18 +168,29 @@
         [view removeFromSuperview];
     }
 
+    UIView *nextView = nil;
     switch (self.itemToFoldBack) {
         case NLTravelTypeHeli:
         {
-            NLTravelHeliView *heliView = [[NLTravelHeliView alloc] init];
-            [self.contentWrapper addSubview:heliView];
-            [self.contentWrapper addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[heliView]|" options:kNilOptions metrics:nil views:NSDictionaryOfVariableBindings(heliView)]];
-            [self.contentWrapper addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[heliView]|" options:kNilOptions metrics:nil views:NSDictionaryOfVariableBindings(heliView)]];
+            nextView = [[NLTravelHeliView alloc] init];
+            break;
+        }
+        case NLTravelTypeFestival:
+        {
+            nextView = [[NLTravelFestivalView alloc] init];
             break;
         }
 
         default:
             break;
+    }
+
+    if (nextView) {
+        [self.contentWrapper addSubview:nextView];
+        [self.contentWrapper addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[nextView]|" options:kNilOptions metrics:nil views:NSDictionaryOfVariableBindings(nextView)]];
+        [self.contentWrapper addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[nextView]|" options:kNilOptions metrics:nil views:NSDictionaryOfVariableBindings(nextView)]];
+        [self.contentWrapper layoutIfNeeded];
+        nextView.transform = CGAffineTransformMakeTranslation(0.f, self.menuWrapper.bounds.size.height - 54.f * (4 - self.itemToFoldBack));
     }
 
     self.travelTitleConstraint.constant = self.travelTitleConstraint.constant - self.menuWrapper.bounds.size.height;
@@ -191,6 +203,9 @@
         self.navTitleLabel.transform = CGAffineTransformMakeScale(0.65f, 0.65f);
         self.backImageButton.alpha = 1.f;
         self.menuWrapper.alpha = 0.f;
+        if (nextView) {
+            nextView.transform = CGAffineTransformIdentity;
+        }
         [self.view layoutIfNeeded];
     }];
 }
@@ -202,11 +217,15 @@
         NSLayoutConstraint *constraint = [self.menuConstraints objectAtIndex:i];
         constraint.constant = i > self.itemToFoldBack ? constraint.constant + self.menuWrapper.bounds.size.height : constraint.constant - self.menuWrapper.bounds.size.height;
     }
+    UIView *nextView = [[self.contentWrapper subviews] firstObject];
     self.navTitleOffset.constant = -8.f;
     [UIView animateWithDuration:0.5f animations:^{
         self.navTitleLabel.transform = CGAffineTransformIdentity;
         self.backImageButton.alpha = 0.f;
         self.menuWrapper.alpha = 1.f;
+        if (nextView) {
+            nextView.transform = CGAffineTransformMakeTranslation(0.f, self.menuWrapper.bounds.size.height + 54.f * (4 - self.itemToFoldBack));
+        }
         [self.view layoutIfNeeded];
     }];
 }

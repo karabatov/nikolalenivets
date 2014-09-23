@@ -71,6 +71,8 @@
 		D172840219D1B574005459CA /* NLTravelHeliView.m in Sources */ = {isa = PBXBuildFile; fileRef = D172840119D1B574005459CA /* NLTravelHeliView.m */; };
 		D172840519D1B73E005459CA /* NLBorderedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D172840419D1B73E005459CA /* NLBorderedLabel.m */; };
 		D172840919D1B8A4005459CA /* travel-heli-coords@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D172840819D1B8A4005459CA /* travel-heli-coords@2x.png */; };
+		D172840C19D1C7A1005459CA /* NLTravelFestivalView.m in Sources */ = {isa = PBXBuildFile; fileRef = D172840B19D1C7A1005459CA /* NLTravelFestivalView.m */; };
+		D172840E19D1C86B005459CA /* travel-festival-transfer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D172840D19D1C86B005459CA /* travel-festival-transfer@2x.png */; };
 		D1783ED8197C141F00A92AA3 /* NLPlaceAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D1783ED7197C141F00A92AA3 /* NLPlaceAnnotation.m */; };
 		D1783EDB197C195100A92AA3 /* object.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783ED9197C195100A92AA3 /* object.png */; };
 		D1783EDC197C195100A92AA3 /* object@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783EDA197C195100A92AA3 /* object@2x.png */; };
@@ -251,6 +253,9 @@
 		D172840319D1B73E005459CA /* NLBorderedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLBorderedLabel.h; path = UI/NLBorderedLabel.h; sourceTree = "<group>"; };
 		D172840419D1B73E005459CA /* NLBorderedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLBorderedLabel.m; path = UI/NLBorderedLabel.m; sourceTree = "<group>"; };
 		D172840819D1B8A4005459CA /* travel-heli-coords@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "travel-heli-coords@2x.png"; sourceTree = "<group>"; };
+		D172840A19D1C7A1005459CA /* NLTravelFestivalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLTravelFestivalView.h; path = UI/NLTravelFestivalView.h; sourceTree = "<group>"; };
+		D172840B19D1C7A1005459CA /* NLTravelFestivalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLTravelFestivalView.m; path = UI/NLTravelFestivalView.m; sourceTree = "<group>"; };
+		D172840D19D1C86B005459CA /* travel-festival-transfer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "travel-festival-transfer@2x.png"; sourceTree = "<group>"; };
 		D1783ED6197C141F00A92AA3 /* NLPlaceAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLPlaceAnnotation.h; path = UI/NLPlaceAnnotation.h; sourceTree = "<group>"; };
 		D1783ED7197C141F00A92AA3 /* NLPlaceAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLPlaceAnnotation.m; path = UI/NLPlaceAnnotation.m; sourceTree = "<group>"; };
 		D1783ED9197C195100A92AA3 /* object.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = object.png; sourceTree = "<group>"; };
@@ -417,6 +422,7 @@
 			children = (
 				D1C545EE19C9A7C0004781B1 /* about-image@2x.jpg */,
 				D1C545F019C9A9EE004781B1 /* gradient-green@2x.png */,
+				D172840D19D1C86B005459CA /* travel-festival-transfer@2x.png */,
 				D172840819D1B8A4005459CA /* travel-heli-coords@2x.png */,
 				D17283FE19D18644005459CA /* travel-text-title@2x.png */,
 				4F10D2AC19374ABB00F6658D /* NLStaticScreenViewController.h */,
@@ -428,6 +434,8 @@
 				D17283F919D1747A005459CA /* NLTravelScreenController.m */,
 				D172840019D1B574005459CA /* NLTravelHeliView.h */,
 				D172840119D1B574005459CA /* NLTravelHeliView.m */,
+				D172840A19D1C7A1005459CA /* NLTravelFestivalView.h */,
+				D172840B19D1C7A1005459CA /* NLTravelFestivalView.m */,
 			);
 			name = "Static Screens";
 			sourceTree = "<group>";
@@ -862,6 +870,7 @@
 				D172840919D1B8A4005459CA /* travel-heli-coords@2x.png in Resources */,
 				D1F5019219BA24C900CDFA5E /* Default.png in Resources */,
 				D153DDAF19CDE9D10091BB4A /* button-back-white@2x.png in Resources */,
+				D172840E19D1C86B005459CA /* travel-festival-transfer@2x.png in Resources */,
 				D1F5019019BA1F7600CDFA5E /* Default-568h@2x.png in Resources */,
 				D1F5018919BA1BDC00CDFA5E /* search-normal@2x.png in Resources */,
 				4F0D75B1193DEADF00E78AA5 /* circle@2x.png in Resources */,
@@ -986,6 +995,7 @@
 				D1783F341982921500A92AA3 /* NLMapFilterCell.m in Sources */,
 				D1A3D7CD1975930D00C53E06 /* NLFlowLayout.m in Sources */,
 				D172840219D1B574005459CA /* NLTravelHeliView.m in Sources */,
+				D172840C19D1C7A1005459CA /* NLTravelFestivalView.m in Sources */,
 				4F390E8018ED732D00131934 /* NLModel.m in Sources */,
 				D19956E219C5B00700904137 /* NLSearchTableViewHeader.m in Sources */,
 				4F411E7E18FFD8AA00758E30 /* NLMainMenuController.m in Sources */,
