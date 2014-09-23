@@ -184,7 +184,7 @@
     self.travelTitleConstraint.constant = self.travelTitleConstraint.constant - self.menuWrapper.bounds.size.height;
     for (NSUInteger i = 0; i <= 4; i++) {
         NSLayoutConstraint *constraint = [self.menuConstraints objectAtIndex:i];
-        constraint.constant = i <= self.itemToFoldBack ? constraint.constant + self.menuWrapper.bounds.size.height : constraint.constant - self.menuWrapper.bounds.size.height;
+        constraint.constant = i > self.itemToFoldBack ? constraint.constant - self.menuWrapper.bounds.size.height : constraint.constant + self.menuWrapper.bounds.size.height;
     }
     self.navTitleOffset.constant = 17.f;
     [UIView animateWithDuration:0.5f animations:^{
@@ -200,7 +200,7 @@
     self.travelTitleConstraint.constant = self.travelTitleConstraint.constant + self.menuWrapper.bounds.size.height;
     for (NSUInteger i = 0; i <= 4; i++) {
         NSLayoutConstraint *constraint = [self.menuConstraints objectAtIndex:i];
-        constraint.constant = i <= self.itemToFoldBack ? constraint.constant - self.menuWrapper.bounds.size.height : constraint.constant + self.menuWrapper.bounds.size.height;
+        constraint.constant = i > self.itemToFoldBack ? constraint.constant + self.menuWrapper.bounds.size.height : constraint.constant - self.menuWrapper.bounds.size.height;
     }
     self.navTitleOffset.constant = -8.f;
     [UIView animateWithDuration:0.5f animations:^{
