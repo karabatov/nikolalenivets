@@ -12,6 +12,7 @@
 #import "NLTravelHeliView.h"
 #import "NLTravelFestivalView.h"
 #import "NLTravelBusView.h"
+#import "NLTravelTrainView.h"
 
 @interface NLTravelScreenController ()
 
@@ -184,6 +185,11 @@
         case NLTravelTypeBus:
         {
             nextView = [[NLTravelBusView alloc] init];
+            break;
+        }
+        case NLTravelTypeTrain:
+        {
+            nextView = [[NLTravelTrainView alloc] init];
             break;
         }
 
