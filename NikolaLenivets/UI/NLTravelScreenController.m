@@ -88,8 +88,6 @@
 
 - (void)viewDidLoad
 {
-    [self.view setBackgroundColor:[UIColor colorWithRed:172.f/255.f green:172.f/255.f blue:172.f/255.f alpha:1.f]];
-
     self.menuItemHeight = ceilf([UIScreen mainScreen].bounds.size.height / 10.f);
 
     self.contentWrapper = [[UIScrollView alloc] initWithFrame:[UIScreen mainScreen].bounds];
@@ -102,6 +100,10 @@
     self.navBarView = [[UIView alloc] init];
     [self.navBarView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.navBarView setBackgroundColor:[UIColor colorWithRed:246.f/255.f green:246.f/255.f blue:246.f/255.f alpha:1.f]];
+
+    UIView *dash0 = [[UIView alloc] init];
+    [dash0 setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [dash0 setBackgroundColor:[UIColor colorWithRed:172.f/255.f green:172.f/255.f blue:172.f/255.f alpha:1.f]];
 
     self.topMenuWrapper = [[UIView alloc] init];
     [self.topMenuWrapper setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -143,28 +145,31 @@
     [self.navBarView addSubview:self.menuButton];
     [self.navBarView addSubview:self.navTitleLabel];
     [self.navBarView addSubview:self.backImageButton];
+    [self.navBarView addSubview:dash0];
 
     NSDictionary *views = @{ @"navbar": self.navBarView,
                              @"menu": self.menuWrapper,
                              @"content": self.contentWrapper,
                              @"topMenu": self.topMenuWrapper,
                              @"sTitle": self.screenTitle,
+                             @"dash0": dash0,
                              @"dash1": dash1,
                              @"menuBtn": self.menuButton,
                              @"backBtn": self.backImageButton };
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[navbar]|" options:kNilOptions metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[menu]|" options:kNilOptions metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[content]|" options:kNilOptions metrics:nil views:views]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[navbar(64)]-0.5-[menu]|" options:kNilOptions metrics:nil views:views]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[navbar]-0.5-[content]|" options:kNilOptions metrics:nil views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[navbar(64)][menu]|" options:kNilOptions metrics:nil views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[navbar][content]|" options:kNilOptions metrics:nil views:views]];
     [self.menuWrapper addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[topMenu]|" options:kNilOptions metrics:nil views:views]];
     [self.topMenuWrapper addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-16-[sTitle(287)]-(>=1)-|" options:kNilOptions metrics:nil views:views]];
     [self.topMenuWrapper addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[dash1]|" options:kNilOptions metrics:nil views:views]];
     [self.topMenuWrapper addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-9-[sTitle(150)]-(>=1)-[dash1(0.5)]|" options:kNilOptions metrics:nil views:views]];
     [self.navBarView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-14-[menuBtn(44)]-(>=1)-|" options:kNilOptions metrics:nil views:views]];
+    [self.navBarView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[dash0]|" options:kNilOptions metrics:nil views:views]];
     [self.navBarView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-4-[menuBtn(44)]-(>=1)-|" options:kNilOptions metrics:nil views:views]];
     [self.navBarView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=1)-[backBtn(44)]-(>=1)-|" options:kNilOptions metrics:nil views:views]];
-    [self.navBarView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-4-[backBtn(44)]-(>=1)-|" options:kNilOptions metrics:nil views:views]];
+    [self.navBarView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-4-[backBtn(44)]-(>=1)-[dash0(0.5)]|" options:kNilOptions metrics:nil views:views]];
 
     self.navTitleOffset = [NSLayoutConstraint constraintWithItem:self.navTitleLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.navBarView attribute:NSLayoutAttributeCenterY multiplier:1.f constant:-8.f];
     [self.navBarView addConstraint:self.navTitleOffset];
