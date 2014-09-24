@@ -38,6 +38,7 @@
 - (void)commonInit
 {
     [self setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self setBackgroundColor:[UIColor whiteColor]];
 
     self.headerLabel = [[UILabel alloc] init];
     [self.headerLabel setTranslatesAutoresizingMaskIntoConstraints:NO];

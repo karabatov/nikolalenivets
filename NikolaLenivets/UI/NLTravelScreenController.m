@@ -48,6 +48,11 @@
 @property (strong, nonatomic) UIScrollView *contentWrapper;
 
 /**
+ Wrapper for menu text image.
+ */
+@property (strong, nonatomic) UIView *topMenuWrapper;
+
+/**
  Title image for travel screen.
  */
 @property (strong, nonatomic) UIImageView *screenTitle;
@@ -86,14 +91,21 @@
 
     self.menuWrapper = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self.menuWrapper setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.menuWrapper setBackgroundColor:[UIColor whiteColor]];
 
     self.navBarView = [[UIView alloc] init];
     [self.navBarView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.navBarView setBackgroundColor:[UIColor colorWithRed:246.f/255.f green:246.f/255.f blue:246.f/255.f alpha:1.f]];
 
+    self.topMenuWrapper = [[UIView alloc] init];
+    [self.topMenuWrapper setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.topMenuWrapper setBackgroundColor:[UIColor whiteColor]];
+
     self.screenTitle = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"travel-text-title.png"]];
     [self.screenTitle setTranslatesAutoresizingMaskIntoConstraints:NO];
+
+    UIView *dash1 = [[UIView alloc] init];
+    [dash1 setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [dash1 setBackgroundColor:[UIColor colorWithRed:244.f/255.f green:241.f/255.f blue:241.f/255.f alpha:1.f]];
 
     self.menuButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.menuButton setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -116,7 +128,10 @@
     [self.view addSubview:self.menuWrapper];
     [self.view addSubview:self.navBarView];
 
-    [self.menuWrapper addSubview:self.screenTitle];
+    [self.topMenuWrapper addSubview:self.screenTitle];
+    [self.topMenuWrapper addSubview:dash1];
+
+    [self.menuWrapper addSubview:self.topMenuWrapper];
 
     [self.navBarView addSubview:self.menuButton];
     [self.navBarView addSubview:self.navTitleLabel];
@@ -125,7 +140,9 @@
     NSDictionary *views = @{ @"navbar": self.navBarView,
                              @"menu": self.menuWrapper,
                              @"content": self.contentWrapper,
+                             @"topMenu": self.topMenuWrapper,
                              @"sTitle": self.screenTitle,
+                             @"dash1": dash1,
                              @"menuBtn": self.menuButton,
                              @"backBtn": self.backImageButton };
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[navbar]|" options:kNilOptions metrics:nil views:views]];
@@ -133,8 +150,10 @@
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[content]|" options:kNilOptions metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[navbar(64)]-0.5-[menu]|" options:kNilOptions metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[navbar]-0.5-[content]|" options:kNilOptions metrics:nil views:views]];
-    [self.menuWrapper addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-16-[sTitle(287)]-(>=1)-|" options:kNilOptions metrics:nil views:views]];
-    [self.menuWrapper addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[sTitle(150)]" options:kNilOptions metrics:nil views:views]];
+    [self.menuWrapper addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[topMenu]|" options:kNilOptions metrics:nil views:views]];
+    [self.topMenuWrapper addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-16-[sTitle(287)]-(>=1)-|" options:kNilOptions metrics:nil views:views]];
+    [self.topMenuWrapper addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[dash1]|" options:kNilOptions metrics:nil views:views]];
+    [self.topMenuWrapper addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-9-[sTitle(150)]-(>=1)-[dash1(0.5)]|" options:kNilOptions metrics:nil views:views]];
     [self.navBarView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-14-[menuBtn(44)]-(>=1)-|" options:kNilOptions metrics:nil views:views]];
     [self.navBarView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-4-[menuBtn(44)]-(>=1)-|" options:kNilOptions metrics:nil views:views]];
     [self.navBarView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=1)-[backBtn(44)]-(>=1)-|" options:kNilOptions metrics:nil views:views]];
@@ -144,8 +163,8 @@
     [self.navBarView addConstraint:self.navTitleOffset];
     [self.navBarView addConstraint:[NSLayoutConstraint constraintWithItem:self.navTitleLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.navBarView attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0.5f]];
     [self.navBarView addConstraint:[NSLayoutConstraint constraintWithItem:self.backImageButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.navBarView attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0.f]];
-
-    self.travelTitleConstraint = [NSLayoutConstraint constraintWithItem:self.screenTitle attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.menuWrapper attribute:NSLayoutAttributeTop multiplier:1.f constant:9.f];
+    [self.menuWrapper addConstraint:[NSLayoutConstraint constraintWithItem:self.topMenuWrapper attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.f constant:[UIScreen mainScreen].bounds.size.height - 64.5f - 5 * 54.f]];
+    self.travelTitleConstraint = [NSLayoutConstraint constraintWithItem:self.topMenuWrapper attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.menuWrapper attribute:NSLayoutAttributeTop multiplier:1.f constant:0.f];
     [self.menuWrapper addConstraint:self.travelTitleConstraint];
 
     self.menuConstraints = [[NSMutableArray alloc] initWithCapacity:5];
@@ -206,6 +225,7 @@
 
     if (nextView) {
         [self.contentWrapper addSubview:nextView];
+        [self.contentWrapper removeConstraints:[self.contentWrapper constraints]];
         [self.contentWrapper addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[nextView]|" options:kNilOptions metrics:nil views:NSDictionaryOfVariableBindings(nextView)]];
         [self.contentWrapper addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[nextView]|" options:kNilOptions metrics:nil views:NSDictionaryOfVariableBindings(nextView)]];
         [self.contentWrapper layoutIfNeeded];
@@ -221,7 +241,6 @@
     [UIView animateWithDuration:0.5f animations:^{
         self.navTitleLabel.transform = CGAffineTransformMakeScale(0.65f, 0.65f);
         self.backImageButton.alpha = 1.f;
-        self.menuWrapper.alpha = 0.f;
         if (nextView) {
             nextView.transform = CGAffineTransformIdentity;
         }
@@ -244,11 +263,12 @@
     [UIView animateWithDuration:0.5f animations:^{
         self.navTitleLabel.transform = CGAffineTransformIdentity;
         self.backImageButton.alpha = 0.f;
-        self.menuWrapper.alpha = 1.f;
         if (nextView) {
             nextView.transform = CGAffineTransformMakeTranslation(0.f, self.menuWrapper.bounds.size.height - 54.f * (4 - self.itemToFoldBack));
         }
         [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        self.contentWrapper.delegate = nil;
     }];
 }
 
