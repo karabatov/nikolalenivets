@@ -23,6 +23,11 @@
 @property (nonatomic) NLTravelType itemToFoldBack;
 
 /**
+ Height of the menu items, needs to be dynamic for iPhone 4.
+ */
+@property (nonatomic) CGFloat menuItemHeight;
+
+/**
  Constraints for menu items.
  */
 @property (strong, nonatomic) NSMutableArray *menuConstraints;
@@ -84,6 +89,8 @@
 - (void)viewDidLoad
 {
     [self.view setBackgroundColor:[UIColor colorWithRed:172.f/255.f green:172.f/255.f blue:172.f/255.f alpha:1.f]];
+
+    self.menuItemHeight = ceilf([UIScreen mainScreen].bounds.size.height / 10.f);
 
     self.contentWrapper = [[UIScrollView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self.contentWrapper setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -163,7 +170,7 @@
     [self.navBarView addConstraint:self.navTitleOffset];
     [self.navBarView addConstraint:[NSLayoutConstraint constraintWithItem:self.navTitleLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.navBarView attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0.5f]];
     [self.navBarView addConstraint:[NSLayoutConstraint constraintWithItem:self.backImageButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.navBarView attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0.f]];
-    [self.menuWrapper addConstraint:[NSLayoutConstraint constraintWithItem:self.topMenuWrapper attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.f constant:[UIScreen mainScreen].bounds.size.height - 64.5f - 5 * 54.f]];
+    [self.menuWrapper addConstraint:[NSLayoutConstraint constraintWithItem:self.topMenuWrapper attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.f constant:[UIScreen mainScreen].bounds.size.height - 64.5f - 5 * self.menuItemHeight]];
     self.travelTitleConstraint = [NSLayoutConstraint constraintWithItem:self.topMenuWrapper attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.menuWrapper attribute:NSLayoutAttributeTop multiplier:1.f constant:0.f];
     [self.menuWrapper addConstraint:self.travelTitleConstraint];
 
@@ -174,9 +181,10 @@
         [self.menuWrapper addSubview:sectionView];
         [sectionView addTarget:self withAction:@selector(foldMenuAway:)];
         NSDictionary *views = @{ @"section": sectionView };
+        NSDictionary *metrics = @{ @"sectionV": [NSNumber numberWithFloat:self.menuItemHeight] };
         [self.menuWrapper addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[section]|" options:kNilOptions metrics:nil views:views]];
-        [self.menuWrapper addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[section(54)]" options:kNilOptions metrics:nil views:views]];
-        NSLayoutConstraint *sectionConstraint = [NSLayoutConstraint constraintWithItem:self.menuWrapper attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:sectionView attribute:NSLayoutAttributeBottom multiplier:1.f constant:54.f * (4 - i)];
+        [self.menuWrapper addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[section(sectionV)]" options:kNilOptions metrics:metrics views:views]];
+        NSLayoutConstraint *sectionConstraint = [NSLayoutConstraint constraintWithItem:self.menuWrapper attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:sectionView attribute:NSLayoutAttributeBottom multiplier:1.f constant:self.menuItemHeight * (4 - i)];
         [self.menuConstraints addObject:sectionConstraint];
         [self.menuWrapper addConstraint:sectionConstraint];
     }
@@ -229,13 +237,13 @@
         [self.contentWrapper addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[nextView]|" options:kNilOptions metrics:nil views:NSDictionaryOfVariableBindings(nextView)]];
         [self.contentWrapper addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[nextView]|" options:kNilOptions metrics:nil views:NSDictionaryOfVariableBindings(nextView)]];
         [self.contentWrapper layoutIfNeeded];
-        nextView.transform = CGAffineTransformMakeTranslation(0.f, self.menuWrapper.bounds.size.height - 54.f * (4 - self.itemToFoldBack));
+        nextView.transform = CGAffineTransformMakeTranslation(0.f, self.menuWrapper.bounds.size.height - self.menuItemHeight * (4 - self.itemToFoldBack));
     }
 
-    self.travelTitleConstraint.constant = self.travelTitleConstraint.constant - self.menuWrapper.bounds.size.height + 54.f * (4 - self.itemToFoldBack);
+    self.travelTitleConstraint.constant = self.travelTitleConstraint.constant - self.menuWrapper.bounds.size.height + self.menuItemHeight * (4 - self.itemToFoldBack);
     for (NSUInteger i = 0; i <= 4; i++) {
         NSLayoutConstraint *constraint = [self.menuConstraints objectAtIndex:i];
-        constraint.constant = i > self.itemToFoldBack ? constraint.constant - self.menuWrapper.bounds.size.height : constraint.constant + self.menuWrapper.bounds.size.height - 54.f * (4 - self.itemToFoldBack);
+        constraint.constant = i > self.itemToFoldBack ? constraint.constant - self.menuWrapper.bounds.size.height : constraint.constant + self.menuWrapper.bounds.size.height - self.menuItemHeight * (4 - self.itemToFoldBack);
     }
     self.navTitleOffset.constant = 17.f;
     [UIView animateWithDuration:0.5f animations:^{
@@ -252,10 +260,10 @@
 
 - (void)foldMenuBack
 {
-    self.travelTitleConstraint.constant = self.travelTitleConstraint.constant + self.menuWrapper.bounds.size.height - 54.f * (4 - self.itemToFoldBack);
+    self.travelTitleConstraint.constant = self.travelTitleConstraint.constant + self.menuWrapper.bounds.size.height - self.menuItemHeight * (4 - self.itemToFoldBack);
     for (NSUInteger i = 0; i <= 4; i++) {
         NSLayoutConstraint *constraint = [self.menuConstraints objectAtIndex:i];
-        constraint.constant = i > self.itemToFoldBack ? constraint.constant + self.menuWrapper.bounds.size.height : constraint.constant - self.menuWrapper.bounds.size.height + 54.f * (4 - self.itemToFoldBack);
+        constraint.constant = i > self.itemToFoldBack ? constraint.constant + self.menuWrapper.bounds.size.height : constraint.constant - self.menuWrapper.bounds.size.height + self.menuItemHeight * (4 - self.itemToFoldBack);
     }
     UIView *nextView = [[self.contentWrapper subviews] firstObject];
     self.navTitleOffset.constant = -8.f;
@@ -264,7 +272,9 @@
         self.navTitleLabel.transform = CGAffineTransformIdentity;
         self.backImageButton.alpha = 0.f;
         if (nextView) {
-            nextView.transform = CGAffineTransformMakeTranslation(0.f, self.menuWrapper.bounds.size.height - 54.f * (4 - self.itemToFoldBack));
+            CGRect frame = nextView.frame;
+            frame.origin.y = self.menuWrapper.bounds.size.height - self.menuItemHeight * (4 - self.itemToFoldBack);
+            nextView.frame = frame;
         }
         [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
