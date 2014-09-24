@@ -11,6 +11,7 @@
 #import "NSAttributedString+Kerning.h"
 #import "NLTravelHeliView.h"
 #import "NLTravelFestivalView.h"
+#import "NLTravelBusView.h"
 
 @interface NLTravelScreenController ()
 
@@ -180,6 +181,11 @@
             nextView = [[NLTravelFestivalView alloc] init];
             break;
         }
+        case NLTravelTypeBus:
+        {
+            nextView = [[NLTravelBusView alloc] init];
+            break;
+        }
 
         default:
             break;
@@ -193,10 +199,10 @@
         nextView.transform = CGAffineTransformMakeTranslation(0.f, self.menuWrapper.bounds.size.height - 54.f * (4 - self.itemToFoldBack));
     }
 
-    self.travelTitleConstraint.constant = self.travelTitleConstraint.constant - self.menuWrapper.bounds.size.height;
+    self.travelTitleConstraint.constant = self.travelTitleConstraint.constant - self.menuWrapper.bounds.size.height + 54.f * (4 - self.itemToFoldBack);
     for (NSUInteger i = 0; i <= 4; i++) {
         NSLayoutConstraint *constraint = [self.menuConstraints objectAtIndex:i];
-        constraint.constant = i > self.itemToFoldBack ? constraint.constant - self.menuWrapper.bounds.size.height : constraint.constant + self.menuWrapper.bounds.size.height;
+        constraint.constant = i > self.itemToFoldBack ? constraint.constant - self.menuWrapper.bounds.size.height : constraint.constant + self.menuWrapper.bounds.size.height - 54.f * (4 - self.itemToFoldBack);
     }
     self.navTitleOffset.constant = 17.f;
     [UIView animateWithDuration:0.5f animations:^{
@@ -207,24 +213,27 @@
             nextView.transform = CGAffineTransformIdentity;
         }
         [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        self.menuWrapper.hidden = YES;
     }];
 }
 
 - (void)foldMenuBack
 {
-    self.travelTitleConstraint.constant = self.travelTitleConstraint.constant + self.menuWrapper.bounds.size.height;
+    self.travelTitleConstraint.constant = self.travelTitleConstraint.constant + self.menuWrapper.bounds.size.height - 54.f * (4 - self.itemToFoldBack);
     for (NSUInteger i = 0; i <= 4; i++) {
         NSLayoutConstraint *constraint = [self.menuConstraints objectAtIndex:i];
-        constraint.constant = i > self.itemToFoldBack ? constraint.constant + self.menuWrapper.bounds.size.height : constraint.constant - self.menuWrapper.bounds.size.height;
+        constraint.constant = i > self.itemToFoldBack ? constraint.constant + self.menuWrapper.bounds.size.height : constraint.constant - self.menuWrapper.bounds.size.height + 54.f * (4 - self.itemToFoldBack);
     }
     UIView *nextView = [[self.contentWrapper subviews] firstObject];
     self.navTitleOffset.constant = -8.f;
+    self.menuWrapper.hidden = NO;
     [UIView animateWithDuration:0.5f animations:^{
         self.navTitleLabel.transform = CGAffineTransformIdentity;
         self.backImageButton.alpha = 0.f;
         self.menuWrapper.alpha = 1.f;
         if (nextView) {
-            nextView.transform = CGAffineTransformMakeTranslation(0.f, self.menuWrapper.bounds.size.height + 54.f * (4 - self.itemToFoldBack));
+            nextView.transform = CGAffineTransformMakeTranslation(0.f, self.menuWrapper.bounds.size.height - 54.f * (4 - self.itemToFoldBack));
         }
         [self.view layoutIfNeeded];
     }];
