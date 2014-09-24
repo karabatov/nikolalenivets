@@ -52,7 +52,7 @@
 
     UILabel *taxiLabel = [[UILabel alloc] init];
     [taxiLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-    taxiLabel.attributedText = [NSAttributedString kernedStringForString:@"На такси до Никола-Ленивца." withFontName:NLSerifFont fontSize:18.f kerning:0.7f andColor:textColor];
+    taxiLabel.attributedText = [NSAttributedString kernedStringForString:@"На такси до Никола-Ленивца." withFontName:NLSerifFont fontSize:18.f kerning:0.2f andColor:textColor];
 
     UILabel *taxiHeaderLabel = [[UILabel alloc] init];
     [taxiHeaderLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -60,7 +60,7 @@
 
     UILabel *taxiPhoneLabel = [[UILabel alloc] init];
     [taxiPhoneLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-    taxiPhoneLabel.attributedText = [NSAttributedString kernedStringForString:@"+7 (48434) 4-85-00" withFontName:NLSerifFont fontSize:18.f kerning:0.7f andColor:textColor];
+    taxiPhoneLabel.attributedText = [NSAttributedString kernedStringForString:@"+7 (48434) 4-85-00" withFontName:NLSerifFont fontSize:18.f kerning:0.2f andColor:textColor];
     [taxiPhoneLabel setUserInteractionEnabled:YES];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dialPhone)];
     [taxiPhoneLabel addGestureRecognizer:tap];
@@ -75,15 +75,15 @@
 
     NSDictionary *views = NSDictionaryOfVariableBindings(titleLabel, transferImage, borderedTimeLabel, nextLabel, taxiLabel, taxiHeaderLabel, taxiPhoneLabel);
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=1)-[titleLabel]-(>=1)-|" options:kNilOptions metrics:nil views:views]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(16)-[transferImage(270.5)]-(>=33.5)-|" options:kNilOptions metrics:nil views:views]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(16.5)-[transferImage(270.5)]-(>=33.5)-|" options:kNilOptions metrics:nil views:views]];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=1)-[borderedTimeLabel]-(>=1)-|" options:kNilOptions metrics:nil views:views]];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=1)-[nextLabel]-(>=1)-|" options:kNilOptions metrics:nil views:views]];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(16)-[taxiLabel]-(>=1)-|" options:kNilOptions metrics:nil views:views]];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=1)-[taxiHeaderLabel]-(>=1)-|" options:kNilOptions metrics:nil views:views]];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(16)-[taxiPhoneLabel]-(>=1)-|" options:kNilOptions metrics:nil views:views]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-3.5-[titleLabel]-36.5-[transferImage(61.5)]-10.5-[borderedTimeLabel]-17-[nextLabel]-16-[taxiLabel]-15-[taxiHeaderLabel]-15-[taxiPhoneLabel]|" options:kNilOptions metrics:nil views:views]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-3.5-[titleLabel]-35.5-[transferImage(61.5)]-11-[borderedTimeLabel]-16.5-[nextLabel]-18-[taxiLabel]-11-[taxiHeaderLabel]-18-[taxiPhoneLabel]|" options:kNilOptions metrics:nil views:views]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:titleLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0.f]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:borderedTimeLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0.f]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:borderedTimeLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.f constant:-0.5f]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:nextLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0.f]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:taxiHeaderLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0.f]];
 }
