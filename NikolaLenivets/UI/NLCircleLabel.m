@@ -34,7 +34,11 @@
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=0)-[numberLabel]-(>=0)-|" options:kNilOptions metrics:nil views:views]];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.f constant:15.f]];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.f constant:15.f]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:numberLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.f constant:-0.5f]];
+        if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.f) {
+            [self addConstraint:[NSLayoutConstraint constraintWithItem:numberLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.f constant:-0.5f]];
+        } else {
+            [self addConstraint:[NSLayoutConstraint constraintWithItem:numberLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0.0f]];
+        }
         [self addConstraint:[NSLayoutConstraint constraintWithItem:numberLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1.f constant:-1.f]];
     }
     return self;
