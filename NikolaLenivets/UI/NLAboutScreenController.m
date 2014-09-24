@@ -99,6 +99,10 @@
     [self.menuButton setContentEdgeInsets:UIEdgeInsetsMake(16, 3, 16, 3)];
     [self.menuButton addTarget:self action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
 
+    UIView *dash0 = [[UIView alloc] init];
+    [dash0 setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [dash0 setBackgroundColor:[UIColor colorWithRed:172.f/255.f green:172.f/255.f blue:172.f/255.f alpha:1.f]];
+
     self.navigationView = [[UIView alloc] init];
     [self.navigationView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.navigationView setBackgroundColor:[UIColor colorWithRed:246.f/255.f green:246.f/255.f blue:246.f/255.f alpha:1.f]];
@@ -136,6 +140,7 @@
     [self.containerView addSubview:self.gradientView];
 
     [self.navigationView addSubview:self.titleLabel];
+    [self.navigationView addSubview:dash0];
 
     [self.mainScroll addSubview:self.containerView];
 
@@ -150,11 +155,14 @@
                              @"wrap": self.containerView,
                              @"image": self.parkPhoto,
                              @"gradient": self.gradientView,
-                             @"web": self.webView };
+                             @"web": self.webView,
+                             @"dash0": dash0 };
     NSDictionary *metrics = @{ @"navV": [NSNumber numberWithFloat:kNLAboutNavbarHeight] };
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-14-[menu(44)]" options:kNilOptions metrics:metrics views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-4-[menu(44)]" options:kNilOptions metrics:metrics views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[navi]|" options:kNilOptions metrics:metrics views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[dash0]|" options:kNilOptions metrics:metrics views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=1)-[dash0(0.5)]|" options:kNilOptions metrics:metrics views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[navi(navV)]" options:kNilOptions metrics:metrics views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[scroll]|" options:kNilOptions metrics:metrics views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[scroll]|" options:kNilOptions metrics:metrics views:views]];

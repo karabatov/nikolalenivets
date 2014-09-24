@@ -12,11 +12,6 @@
 		4F0D75B1193DEADF00E78AA5 /* circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F0D75B0193DEADF00E78AA5 /* circle@2x.png */; };
 		4F10D2AF19374ABB00F6658D /* NLStaticScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F10D2AD19374ABB00F6658D /* NLStaticScreenViewController.m */; };
 		4F10D2B019374ABB00F6658D /* NLStaticScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F10D2AE19374ABB00F6658D /* NLStaticScreenViewController.xib */; };
-		4F174E321966A50300F7F8A2 /* Track on 2014-06-23 at 17-53 GMT+4.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4F174E2D1966A50300F7F8A2 /* Track on 2014-06-23 at 17-53 GMT+4.gpx */; };
-		4F174E331966A50300F7F8A2 /* Track on 2014-06-23 at 18-00 GMT+4.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4F174E2E1966A50300F7F8A2 /* Track on 2014-06-23 at 18-00 GMT+4.gpx */; };
-		4F174E341966A50300F7F8A2 /* Track on 2014-06-23 at 18-06 GMT+4.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4F174E2F1966A50300F7F8A2 /* Track on 2014-06-23 at 18-06 GMT+4.gpx */; };
-		4F174E351966A50300F7F8A2 /* Track on 2014-06-23 at 18-29 GMT+4.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4F174E301966A50300F7F8A2 /* Track on 2014-06-23 at 18-29 GMT+4.gpx */; };
-		4F174E361966A50300F7F8A2 /* Track on 2014-06-23 at 18-34 GMT+4.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4F174E311966A50300F7F8A2 /* Track on 2014-06-23 at 18-34 GMT+4.gpx */; };
 		4F18FD3A192212F900032A34 /* NLDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F18FD38192212F900032A34 /* NLDetailsViewController.m */; };
 		4F18FD3B192212F900032A34 /* NLDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F18FD39192212F900032A34 /* NLDetailsViewController.xib */; };
 		4F22FD781936E8B30075C1A0 /* NLGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F22FD761936E8B30075C1A0 /* NLGalleryViewController.m */; };
@@ -41,7 +36,6 @@
 		4F7EC306190933B9002C0ECD /* NLItemsListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7EC304190933B9002C0ECD /* NLItemsListController.xib */; };
 		4F89A42B1957CFF60045D1A3 /* NLMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F89A4291957CFF60045D1A3 /* NLMapViewController.m */; };
 		4F89A42C1957CFF60045D1A3 /* NLMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F89A42A1957CFF60045D1A3 /* NLMapViewController.xib */; };
-		4F89A42E1957D8260045D1A3 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F89A42D1957D8260045D1A3 /* map.png */; };
 		4F89A4331957DCA30045D1A3 /* NLLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F89A4321957DCA30045D1A3 /* NLLocationManager.m */; };
 		4F8A13081921D6CE00F3DA96 /* NLCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8A13071921D6CE00F3DA96 /* NLCollectionCell.m */; };
 		4F9C413818EA84640038090E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9C413718EA84640038090E /* Foundation.framework */; };
@@ -54,6 +48,12 @@
 		4FCBE0081907A054002F37A3 /* BookmanC.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBE0051907A054002F37A3 /* BookmanC.otf */; };
 		4FD010FA192CC940002F5836 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FD010F9192CC940002F5836 /* Crashlytics.framework */; };
 		4FF31086D2714E0584DB4E63 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 213D00ACD702461FA5EF0EB3 /* libPods.a */; };
+		D115713219D2DE3400A9E433 /* travel-car-220km@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D115712D19D2DE3400A9E433 /* travel-car-220km@2x.png */; };
+		D115713319D2DE3400A9E433 /* travel-car-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D115712E19D2DE3400A9E433 /* travel-car-arrow@2x.png */; };
+		D115713419D2DE3400A9E433 /* travel-car-circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D115712F19D2DE3400A9E433 /* travel-car-circle@2x.png */; };
+		D115713519D2DE3400A9E433 /* travel-car-gps@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D115713019D2DE3400A9E433 /* travel-car-gps@2x.png */; };
+		D115713619D2DE3400A9E433 /* travel-car-map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D115713119D2DE3400A9E433 /* travel-car-map@2x.png */; };
+		D115713919D2F39D00A9E433 /* NLCircleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D115713819D2F39D00A9E433 /* NLCircleLabel.m */; };
 		D12B05F61979A5E700AA4CDD /* tiles in Resources */ = {isa = PBXBuildFile; fileRef = D12B05F51979A5E700AA4CDD /* tiles */; };
 		D138D4E819C8CD0800E5B4F4 /* NLSearchRotatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D138D4E719C8CD0800E5B4F4 /* NLSearchRotatingView.m */; };
 		D138D4ED19C8E05000E5B4F4 /* NLSearchNothingFoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = D138D4EC19C8E05000E5B4F4 /* NLSearchNothingFoundView.m */; };
@@ -65,6 +65,18 @@
 		D16373AB19B76B9700A89A98 /* NLMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D16373AA19B76B9700A89A98 /* NLMenuButton.m */; };
 		D16373AD19B8910C00A89A98 /* menu-circle-green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D16373AC19B8910C00A89A98 /* menu-circle-green@2x.png */; };
 		D17177B3196D047200521D72 /* NSAttributedString+Kerning.m in Sources */ = {isa = PBXBuildFile; fileRef = D17177B2196D047200521D72 /* NSAttributedString+Kerning.m */; };
+		D17283FA19D1747A005459CA /* NLTravelScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = D17283F919D1747A005459CA /* NLTravelScreenController.m */; };
+		D17283FD19D1820D005459CA /* NLTravelTypeSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D17283FC19D1820D005459CA /* NLTravelTypeSectionView.m */; };
+		D17283FF19D18644005459CA /* travel-text-title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D17283FE19D18644005459CA /* travel-text-title@2x.png */; };
+		D172840219D1B574005459CA /* NLTravelHeliView.m in Sources */ = {isa = PBXBuildFile; fileRef = D172840119D1B574005459CA /* NLTravelHeliView.m */; };
+		D172840519D1B73E005459CA /* NLBorderedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D172840419D1B73E005459CA /* NLBorderedLabel.m */; };
+		D172840919D1B8A4005459CA /* travel-heli-coords@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D172840819D1B8A4005459CA /* travel-heli-coords@2x.png */; };
+		D172840C19D1C7A1005459CA /* NLTravelFestivalView.m in Sources */ = {isa = PBXBuildFile; fileRef = D172840B19D1C7A1005459CA /* NLTravelFestivalView.m */; };
+		D172840E19D1C86B005459CA /* travel-festival-transfer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D172840D19D1C86B005459CA /* travel-festival-transfer@2x.png */; };
+		D172841019D1CF32005459CA /* travel-bus-route@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D172840F19D1CF32005459CA /* travel-bus-route@2x.png */; };
+		D172841319D1CF93005459CA /* NLTravelBusView.m in Sources */ = {isa = PBXBuildFile; fileRef = D172841219D1CF93005459CA /* NLTravelBusView.m */; };
+		D172841619D2BF64005459CA /* NLTravelTrainView.m in Sources */ = {isa = PBXBuildFile; fileRef = D172841519D2BF64005459CA /* NLTravelTrainView.m */; };
+		D172841919D2C902005459CA /* NLTravelCarView.m in Sources */ = {isa = PBXBuildFile; fileRef = D172841819D2C902005459CA /* NLTravelCarView.m */; };
 		D1783ED8197C141F00A92AA3 /* NLPlaceAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D1783ED7197C141F00A92AA3 /* NLPlaceAnnotation.m */; };
 		D1783EDB197C195100A92AA3 /* object.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783ED9197C195100A92AA3 /* object.png */; };
 		D1783EDC197C195100A92AA3 /* object@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783EDA197C195100A92AA3 /* object@2x.png */; };
@@ -144,11 +156,6 @@
 		4F10D2AC19374ABB00F6658D /* NLStaticScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLStaticScreenViewController.h; path = UI/NLStaticScreenViewController.h; sourceTree = "<group>"; };
 		4F10D2AD19374ABB00F6658D /* NLStaticScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLStaticScreenViewController.m; path = UI/NLStaticScreenViewController.m; sourceTree = "<group>"; };
 		4F10D2AE19374ABB00F6658D /* NLStaticScreenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLStaticScreenViewController.xib; path = UI/NLStaticScreenViewController.xib; sourceTree = "<group>"; };
-		4F174E2D1966A50300F7F8A2 /* Track on 2014-06-23 at 17-53 GMT+4.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Track on 2014-06-23 at 17-53 GMT+4.gpx"; sourceTree = "<group>"; };
-		4F174E2E1966A50300F7F8A2 /* Track on 2014-06-23 at 18-00 GMT+4.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Track on 2014-06-23 at 18-00 GMT+4.gpx"; sourceTree = "<group>"; };
-		4F174E2F1966A50300F7F8A2 /* Track on 2014-06-23 at 18-06 GMT+4.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Track on 2014-06-23 at 18-06 GMT+4.gpx"; sourceTree = "<group>"; };
-		4F174E301966A50300F7F8A2 /* Track on 2014-06-23 at 18-29 GMT+4.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Track on 2014-06-23 at 18-29 GMT+4.gpx"; sourceTree = "<group>"; };
-		4F174E311966A50300F7F8A2 /* Track on 2014-06-23 at 18-34 GMT+4.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Track on 2014-06-23 at 18-34 GMT+4.gpx"; sourceTree = "<group>"; };
 		4F18FD37192212F900032A34 /* NLDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLDetailsViewController.h; path = UI/NLDetailsViewController.h; sourceTree = "<group>"; };
 		4F18FD38192212F900032A34 /* NLDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLDetailsViewController.m; path = UI/NLDetailsViewController.m; sourceTree = "<group>"; };
 		4F18FD39192212F900032A34 /* NLDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLDetailsViewController.xib; path = UI/NLDetailsViewController.xib; sourceTree = "<group>"; };
@@ -196,7 +203,6 @@
 		4F89A4281957CFF60045D1A3 /* NLMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLMapViewController.h; path = UI/NLMapViewController.h; sourceTree = "<group>"; };
 		4F89A4291957CFF60045D1A3 /* NLMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLMapViewController.m; path = UI/NLMapViewController.m; sourceTree = "<group>"; };
 		4F89A42A1957CFF60045D1A3 /* NLMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLMapViewController.xib; path = UI/NLMapViewController.xib; sourceTree = "<group>"; };
-		4F89A42D1957D8260045D1A3 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		4F89A4311957DCA30045D1A3 /* NLLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLLocationManager.h; path = Models/NLLocationManager.h; sourceTree = "<group>"; };
 		4F89A4321957DCA30045D1A3 /* NLLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLLocationManager.m; path = Models/NLLocationManager.m; sourceTree = "<group>"; };
 		4F8A13061921D6CE00F3DA96 /* NLCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLCollectionCell.h; path = UI/NLCollectionCell.h; sourceTree = "<group>"; };
@@ -219,6 +225,13 @@
 		4FD010F9192CC940002F5836 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		9F010D930FC743A086F2A9F3 /* libPods-NikolaLenivetsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NikolaLenivetsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CABA2254233B446F8102E8CC /* Pods-NikolaLenivetsTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NikolaLenivetsTests.xcconfig"; path = "Pods/Pods-NikolaLenivetsTests.xcconfig"; sourceTree = "<group>"; };
+		D115712D19D2DE3400A9E433 /* travel-car-220km@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "travel-car-220km@2x.png"; sourceTree = "<group>"; };
+		D115712E19D2DE3400A9E433 /* travel-car-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "travel-car-arrow@2x.png"; sourceTree = "<group>"; };
+		D115712F19D2DE3400A9E433 /* travel-car-circle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "travel-car-circle@2x.png"; sourceTree = "<group>"; };
+		D115713019D2DE3400A9E433 /* travel-car-gps@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "travel-car-gps@2x.png"; sourceTree = "<group>"; };
+		D115713119D2DE3400A9E433 /* travel-car-map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "travel-car-map@2x.png"; sourceTree = "<group>"; };
+		D115713719D2F39D00A9E433 /* NLCircleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLCircleLabel.h; path = UI/NLCircleLabel.h; sourceTree = "<group>"; };
+		D115713819D2F39D00A9E433 /* NLCircleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLCircleLabel.m; path = UI/NLCircleLabel.m; sourceTree = "<group>"; };
 		D12B05F51979A5E700AA4CDD /* tiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tiles; sourceTree = "<group>"; };
 		D138D4E619C8CD0800E5B4F4 /* NLSearchRotatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLSearchRotatingView.h; path = UI/NLSearchRotatingView.h; sourceTree = "<group>"; };
 		D138D4E719C8CD0800E5B4F4 /* NLSearchRotatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLSearchRotatingView.m; path = UI/NLSearchRotatingView.m; sourceTree = "<group>"; };
@@ -235,6 +248,26 @@
 		D16373AC19B8910C00A89A98 /* menu-circle-green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-circle-green@2x.png"; sourceTree = "<group>"; };
 		D17177B1196D047200521D72 /* NSAttributedString+Kerning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSAttributedString+Kerning.h"; path = "UI/NSAttributedString+Kerning.h"; sourceTree = "<group>"; };
 		D17177B2196D047200521D72 /* NSAttributedString+Kerning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSAttributedString+Kerning.m"; path = "UI/NSAttributedString+Kerning.m"; sourceTree = "<group>"; };
+		D17283F819D1747A005459CA /* NLTravelScreenController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLTravelScreenController.h; path = UI/NLTravelScreenController.h; sourceTree = "<group>"; };
+		D17283F919D1747A005459CA /* NLTravelScreenController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLTravelScreenController.m; path = UI/NLTravelScreenController.m; sourceTree = "<group>"; };
+		D17283FB19D1820D005459CA /* NLTravelTypeSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLTravelTypeSectionView.h; path = UI/NLTravelTypeSectionView.h; sourceTree = "<group>"; };
+		D17283FC19D1820D005459CA /* NLTravelTypeSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLTravelTypeSectionView.m; path = UI/NLTravelTypeSectionView.m; sourceTree = "<group>"; };
+		D17283FE19D18644005459CA /* travel-text-title@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "travel-text-title@2x.png"; sourceTree = "<group>"; };
+		D172840019D1B574005459CA /* NLTravelHeliView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLTravelHeliView.h; path = UI/NLTravelHeliView.h; sourceTree = "<group>"; };
+		D172840119D1B574005459CA /* NLTravelHeliView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLTravelHeliView.m; path = UI/NLTravelHeliView.m; sourceTree = "<group>"; };
+		D172840319D1B73E005459CA /* NLBorderedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLBorderedLabel.h; path = UI/NLBorderedLabel.h; sourceTree = "<group>"; };
+		D172840419D1B73E005459CA /* NLBorderedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLBorderedLabel.m; path = UI/NLBorderedLabel.m; sourceTree = "<group>"; };
+		D172840819D1B8A4005459CA /* travel-heli-coords@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "travel-heli-coords@2x.png"; sourceTree = "<group>"; };
+		D172840A19D1C7A1005459CA /* NLTravelFestivalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLTravelFestivalView.h; path = UI/NLTravelFestivalView.h; sourceTree = "<group>"; };
+		D172840B19D1C7A1005459CA /* NLTravelFestivalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLTravelFestivalView.m; path = UI/NLTravelFestivalView.m; sourceTree = "<group>"; };
+		D172840D19D1C86B005459CA /* travel-festival-transfer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "travel-festival-transfer@2x.png"; sourceTree = "<group>"; };
+		D172840F19D1CF32005459CA /* travel-bus-route@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "travel-bus-route@2x.png"; sourceTree = "<group>"; };
+		D172841119D1CF93005459CA /* NLTravelBusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLTravelBusView.h; path = UI/NLTravelBusView.h; sourceTree = "<group>"; };
+		D172841219D1CF93005459CA /* NLTravelBusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLTravelBusView.m; path = UI/NLTravelBusView.m; sourceTree = "<group>"; };
+		D172841419D2BF64005459CA /* NLTravelTrainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLTravelTrainView.h; path = UI/NLTravelTrainView.h; sourceTree = "<group>"; };
+		D172841519D2BF64005459CA /* NLTravelTrainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLTravelTrainView.m; path = UI/NLTravelTrainView.m; sourceTree = "<group>"; };
+		D172841719D2C902005459CA /* NLTravelCarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLTravelCarView.h; path = UI/NLTravelCarView.h; sourceTree = "<group>"; };
+		D172841819D2C902005459CA /* NLTravelCarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLTravelCarView.m; path = UI/NLTravelCarView.m; sourceTree = "<group>"; };
 		D1783ED6197C141F00A92AA3 /* NLPlaceAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLPlaceAnnotation.h; path = UI/NLPlaceAnnotation.h; sourceTree = "<group>"; };
 		D1783ED7197C141F00A92AA3 /* NLPlaceAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLPlaceAnnotation.m; path = UI/NLPlaceAnnotation.m; sourceTree = "<group>"; };
 		D1783ED9197C195100A92AA3 /* object.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = object.png; sourceTree = "<group>"; };
@@ -373,6 +406,12 @@
 				D1CC015B19CC40B400F8C047 /* NLNavigationBar.m */,
 				D153DDA719CC7CEB0091BB4A /* UIViewController+CustomButtons.h */,
 				D153DDA819CC7CEB0091BB4A /* UIViewController+CustomButtons.m */,
+				D17283FB19D1820D005459CA /* NLTravelTypeSectionView.h */,
+				D17283FC19D1820D005459CA /* NLTravelTypeSectionView.m */,
+				D172840319D1B73E005459CA /* NLBorderedLabel.h */,
+				D172840419D1B73E005459CA /* NLBorderedLabel.m */,
+				D115713719D2F39D00A9E433 /* NLCircleLabel.h */,
+				D115713819D2F39D00A9E433 /* NLCircleLabel.m */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -397,11 +436,32 @@
 			children = (
 				D1C545EE19C9A7C0004781B1 /* about-image@2x.jpg */,
 				D1C545F019C9A9EE004781B1 /* gradient-green@2x.png */,
+				D172840F19D1CF32005459CA /* travel-bus-route@2x.png */,
+				D172840D19D1C86B005459CA /* travel-festival-transfer@2x.png */,
+				D172840819D1B8A4005459CA /* travel-heli-coords@2x.png */,
+				D17283FE19D18644005459CA /* travel-text-title@2x.png */,
+				D115712D19D2DE3400A9E433 /* travel-car-220km@2x.png */,
+				D115712E19D2DE3400A9E433 /* travel-car-arrow@2x.png */,
+				D115712F19D2DE3400A9E433 /* travel-car-circle@2x.png */,
+				D115713019D2DE3400A9E433 /* travel-car-gps@2x.png */,
+				D115713119D2DE3400A9E433 /* travel-car-map@2x.png */,
 				4F10D2AC19374ABB00F6658D /* NLStaticScreenViewController.h */,
 				4F10D2AD19374ABB00F6658D /* NLStaticScreenViewController.m */,
 				4F10D2AE19374ABB00F6658D /* NLStaticScreenViewController.xib */,
 				D1C545EB19C99C79004781B1 /* NLAboutScreenController.h */,
 				D1C545EC19C99C79004781B1 /* NLAboutScreenController.m */,
+				D17283F819D1747A005459CA /* NLTravelScreenController.h */,
+				D17283F919D1747A005459CA /* NLTravelScreenController.m */,
+				D172840019D1B574005459CA /* NLTravelHeliView.h */,
+				D172840119D1B574005459CA /* NLTravelHeliView.m */,
+				D172840A19D1C7A1005459CA /* NLTravelFestivalView.h */,
+				D172840B19D1C7A1005459CA /* NLTravelFestivalView.m */,
+				D172841119D1CF93005459CA /* NLTravelBusView.h */,
+				D172841219D1CF93005459CA /* NLTravelBusView.m */,
+				D172841419D2BF64005459CA /* NLTravelTrainView.h */,
+				D172841519D2BF64005459CA /* NLTravelTrainView.m */,
+				D172841719D2C902005459CA /* NLTravelCarView.h */,
+				D172841819D2C902005459CA /* NLTravelCarView.m */,
 			);
 			name = "Static Screens";
 			sourceTree = "<group>";
@@ -532,7 +592,6 @@
 				D1783EDA197C195100A92AA3 /* object@2x.png */,
 				D1783EE1197C2C5B00A92AA3 /* object-selected.png */,
 				D1783EE2197C2C5B00A92AA3 /* object-selected@2x.png */,
-				4F89A42D1957D8260045D1A3 /* map.png */,
 				D19C0422196EF44C006A086B /* map-minus@2x.png */,
 				D19C0423196EF44C006A086B /* map-locate@2x.png */,
 				D19C0424196EF44C006A086B /* map-plus@2x.png */,
@@ -671,11 +730,6 @@
 			isa = PBXGroup;
 			children = (
 				D12B05F51979A5E700AA4CDD /* tiles */,
-				4F174E2D1966A50300F7F8A2 /* Track on 2014-06-23 at 17-53 GMT+4.gpx */,
-				4F174E2E1966A50300F7F8A2 /* Track on 2014-06-23 at 18-00 GMT+4.gpx */,
-				4F174E2F1966A50300F7F8A2 /* Track on 2014-06-23 at 18-06 GMT+4.gpx */,
-				4F174E301966A50300F7F8A2 /* Track on 2014-06-23 at 18-29 GMT+4.gpx */,
-				4F174E311966A50300F7F8A2 /* Track on 2014-06-23 at 18-34 GMT+4.gpx */,
 				D1783F401982CEF600A92AA3 /* splash-top@2x.png */,
 				D1A3D7CE197634AD00C53E06 /* menu_button@2x.png */,
 				D153DDAC19CDE88C0091BB4A /* menu_button_white@2x.png */,
@@ -786,6 +840,7 @@
 				4F7EC306190933B9002C0ECD /* NLItemsListController.xib in Resources */,
 				4F0D75AD193DE20400E78AA5 /* back_white@2x.png in Resources */,
 				4F9C414218EA84640038090E /* InfoPlist.strings in Resources */,
+				D115713419D2DE3400A9E433 /* travel-car-circle@2x.png in Resources */,
 				D1783EDB197C195100A92AA3 /* object.png in Resources */,
 				4F10D2B019374ABB00F6658D /* NLStaticScreenViewController.xib in Resources */,
 				D1783F391982934E00A92AA3 /* map-unchecked@2x.png in Resources */,
@@ -796,7 +851,7 @@
 				D1CAF02519C0435C001C5270 /* unread-indicator-red@2x.png in Resources */,
 				D19956E419C83D1300904137 /* event-alarm@2x.png in Resources */,
 				D1C545F119C9A9EE004781B1 /* gradient-green@2x.png in Resources */,
-				4F174E341966A50300F7F8A2 /* Track on 2014-06-23 at 18-06 GMT+4.gpx in Resources */,
+				D172841019D1CF32005459CA /* travel-bus-route@2x.png in Resources */,
 				4FCBE0081907A054002F37A3 /* BookmanC.otf in Resources */,
 				4F22FD791936E8B30075C1A0 /* NLGalleryViewController.xib in Resources */,
 				D1926BB819CE0A2200571E3A /* forward@2x.png in Resources */,
@@ -805,16 +860,16 @@
 				D1783F2D1982824C00A92AA3 /* map-filter@2x.png in Resources */,
 				D1CAF02919C05F94001C5270 /* red_right_shadow@2x.png in Resources */,
 				D1783F381982934E00A92AA3 /* map-checked@2x.png in Resources */,
-				4F174E351966A50300F7F8A2 /* Track on 2014-06-23 at 18-29 GMT+4.gpx in Resources */,
+				D115713219D2DE3400A9E433 /* travel-car-220km@2x.png in Resources */,
 				D1783F07197E622B00A92AA3 /* blue-gradient.png in Resources */,
 				D1783EEC197C417000A92AA3 /* route-b@2x.png in Resources */,
 				D1783EF0197C438200A92AA3 /* userlocation@2x.png in Resources */,
 				D19C04401975319E006A086B /* NLEventsCollectionViewController.xib in Resources */,
+				D115713319D2DE3400A9E433 /* travel-car-arrow@2x.png in Resources */,
 				D1783EF8197CFFF000A92AA3 /* tile-empty.png in Resources */,
 				D1926BB719CE0A2200571E3A /* back@2x.png in Resources */,
 				D1CAF02819C05F94001C5270 /* red_left_shadow@2x.png in Resources */,
 				D1783F1A197EBA8800A92AA3 /* object-count@2x.png in Resources */,
-				4F174E331966A50300F7F8A2 /* Track on 2014-06-23 at 18-00 GMT+4.gpx in Resources */,
 				D16373AD19B8910C00A89A98 /* menu-circle-green@2x.png in Resources */,
 				D1783F351982921500A92AA3 /* NLMapFilterCell.xib in Resources */,
 				D1C545EF19C9A7C0004781B1 /* about-image@2x.jpg in Resources */,
@@ -824,31 +879,33 @@
 				4F22FD871937288B0075C1A0 /* NLPlacesViewController.xib in Resources */,
 				4F61374A1927313700BFDD1C /* NLEventGroupsViewController.xib in Resources */,
 				4F18FD3B192212F900032A34 /* NLDetailsViewController.xib in Resources */,
+				D115713619D2DE3400A9E433 /* travel-car-map@2x.png in Resources */,
 				D1783EEB197C417000A92AA3 /* route-b.png in Resources */,
+				D115713519D2DE3400A9E433 /* travel-car-gps@2x.png in Resources */,
 				D1F5018A19BA1BDC00CDFA5E /* search-selected@2x.png in Resources */,
-				4F174E361966A50300F7F8A2 /* Track on 2014-06-23 at 18-34 GMT+4.gpx in Resources */,
 				D19C0427196EF44D006A086B /* map-plus@2x.png in Resources */,
 				D1783EDC197C195100A92AA3 /* object@2x.png in Resources */,
 				D1783F19197EBA8800A92AA3 /* object-count.png in Resources */,
 				D1783EE3197C2C5B00A92AA3 /* object-selected.png in Resources */,
 				D1783F431982CEF600A92AA3 /* splash-top@2x.png in Resources */,
 				D1C57547199B6D4A00FFB310 /* photo-count@2x.png in Resources */,
+				D172840919D1B8A4005459CA /* travel-heli-coords@2x.png in Resources */,
 				D1F5019219BA24C900CDFA5E /* Default.png in Resources */,
 				D153DDAF19CDE9D10091BB4A /* button-back-white@2x.png in Resources */,
+				D172840E19D1C86B005459CA /* travel-festival-transfer@2x.png in Resources */,
 				D1F5019019BA1F7600CDFA5E /* Default-568h@2x.png in Resources */,
 				D1F5018919BA1BDC00CDFA5E /* search-normal@2x.png in Resources */,
 				4F0D75B1193DEADF00E78AA5 /* circle@2x.png in Resources */,
 				D153DDAB19CDB9C10091BB4A /* button-back-black@2x.png in Resources */,
 				4F0D759E193D9C6400E78AA5 /* white_menu@2x.png in Resources */,
 				4F89A42C1957CFF60045D1A3 /* NLMapViewController.xib in Resources */,
-				4F89A42E1957D8260045D1A3 /* map.png in Resources */,
 				D1783EEF197C438200A92AA3 /* userlocation.png in Resources */,
 				D1A3D7CF197634AD00C53E06 /* menu_button@2x.png in Resources */,
 				D1F5018619BA169E00CDFA5E /* compass-white@2x.png in Resources */,
-				4F174E321966A50300F7F8A2 /* Track on 2014-06-23 at 17-53 GMT+4.gpx in Resources */,
 				D19C0425196EF44C006A086B /* map-minus@2x.png in Resources */,
 				D1B7ADD0196BCBCE0057C1E2 /* MonoCondensedC.otf in Resources */,
 				D153DDAD19CDE88C0091BB4A /* menu_button_white@2x.png in Resources */,
+				D17283FF19D18644005459CA /* travel-text-title@2x.png in Resources */,
 				D138D4EF19C8E47100E5B4F4 /* search-rotating@2x.png in Resources */,
 				4F9C414A18EA84640038090E /* Images.xcassets in Resources */,
 			);
@@ -910,6 +967,7 @@
 				4F390E7518ED589200131934 /* NLStorage.m in Sources */,
 				4F390E8918ED754700131934 /* NLScreen.m in Sources */,
 				4F22FD7C1936ED3E0075C1A0 /* NLGallery.m in Sources */,
+				D115713919D2F39D00A9E433 /* NLCircleLabel.m in Sources */,
 				D1783F20197FB9E200A92AA3 /* NLFoldAnimation.m in Sources */,
 				D1783F04197E398900A92AA3 /* UIViewController+BackViewController.m in Sources */,
 				4F9C414818EA84640038090E /* NLAppDelegate.m in Sources */,
@@ -919,6 +977,9 @@
 				4F9C414418EA84640038090E /* main.m in Sources */,
 				4F6137491927313700BFDD1C /* NLEventGroupsViewController.m in Sources */,
 				D1C545ED19C99C79004781B1 /* NLAboutScreenController.m in Sources */,
+				D17283FD19D1820D005459CA /* NLTravelTypeSectionView.m in Sources */,
+				D172841619D2BF64005459CA /* NLTravelTrainView.m in Sources */,
+				D17283FA19D1747A005459CA /* NLTravelScreenController.m in Sources */,
 				D1783F0B197E74D200A92AA3 /* NLPlaceHeader.m in Sources */,
 				4F7EC305190933B9002C0ECD /* NLItemsListController.m in Sources */,
 				4F390E8C18ED755300131934 /* NLEvent.m in Sources */,
@@ -933,11 +994,13 @@
 				D1CAF02C19C06666001C5270 /* UIImage+Grayscale.m in Sources */,
 				4F390E7D18ED731E00131934 /* NLNewsEntry.m in Sources */,
 				4F22FD861937288B0075C1A0 /* NLPlacesViewController.m in Sources */,
+				D172841919D2C902005459CA /* NLTravelCarView.m in Sources */,
 				4F89A42B1957CFF60045D1A3 /* NLMapViewController.m in Sources */,
 				4F390E8318ED752700131934 /* NLTeaser.m in Sources */,
 				4F61374D19273D7700BFDD1C /* NLEventGroup.m in Sources */,
 				4F22FD781936E8B30075C1A0 /* NLGalleryViewController.m in Sources */,
 				D1783ED8197C141F00A92AA3 /* NLPlaceAnnotation.m in Sources */,
+				D172841319D1CF93005459CA /* NLTravelBusView.m in Sources */,
 				D1CC015C19CC40B400F8C047 /* NLNavigationBar.m in Sources */,
 				4F22FD8C19372F530075C1A0 /* NLPlaceCell.m in Sources */,
 				D1783F30198285C200A92AA3 /* NLMapFilter.m in Sources */,
@@ -950,10 +1013,13 @@
 				D138D4E819C8CD0800E5B4F4 /* NLSearchRotatingView.m in Sources */,
 				D1A3D7C619758B4C00C53E06 /* NSDate+CompareDays.m in Sources */,
 				4F89A4331957DCA30045D1A3 /* NLLocationManager.m in Sources */,
+				D172840519D1B73E005459CA /* NLBorderedLabel.m in Sources */,
 				D1A3D7D7197641D900C53E06 /* NSString+Distance.m in Sources */,
 				D1CAF03B19C45DDE001C5270 /* NLSearchTableViewCell.m in Sources */,
 				D1783F341982921500A92AA3 /* NLMapFilterCell.m in Sources */,
 				D1A3D7CD1975930D00C53E06 /* NLFlowLayout.m in Sources */,
+				D172840219D1B574005459CA /* NLTravelHeliView.m in Sources */,
+				D172840C19D1C7A1005459CA /* NLTravelFestivalView.m in Sources */,
 				4F390E8018ED732D00131934 /* NLModel.m in Sources */,
 				D19956E219C5B00700904137 /* NLSearchTableViewHeader.m in Sources */,
 				4F411E7E18FFD8AA00758E30 /* NLMainMenuController.m in Sources */,
