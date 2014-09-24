@@ -54,22 +54,34 @@
     NLBorderedLabel *borderedTimeLabel = [[NLBorderedLabel alloc] initWithAttributedText:[NSAttributedString kernedStringForString:@"4 ЧАСА" withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor]];
     [borderedTimeLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
 
+    UIButton *siteButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [siteButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [siteButton addTarget:self action:@selector(openWebsite) forControlEvents:UIControlEventTouchUpInside];
+
     [self addSubview:titleLabel];
     [self addSubview:travelTimeLabel];
     [self addSubview:dashLine];
     [self addSubview:transferImage];
     [self addSubview:borderedTimeLabel];
+    [self addSubview:siteButton];
 
-    NSDictionary *views = NSDictionaryOfVariableBindings(titleLabel, travelTimeLabel, dashLine, transferImage, borderedTimeLabel);
+    NSDictionary *views = NSDictionaryOfVariableBindings(titleLabel, travelTimeLabel, dashLine, transferImage, borderedTimeLabel, siteButton);
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=1)-[titleLabel]-(>=1)-|" options:kNilOptions metrics:nil views:views]];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=1)-[travelTimeLabel]-(>=1)-|" options:kNilOptions metrics:nil views:views]];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[dashLine]|" options:kNilOptions metrics:nil views:views]];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(11)-[transferImage(291.5)]-(>=17.5)-|" options:kNilOptions metrics:nil views:views]];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=1)-[borderedTimeLabel]-(>=1)-|" options:kNilOptions metrics:nil views:views]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-1-[siteButton(200)]-(>=1)-|" options:kNilOptions metrics:nil views:views]];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-3.5-[titleLabel]-36.5-[transferImage(181.5)]-15.5-[dashLine(0.5)]-15-[travelTimeLabel]-17.5-[borderedTimeLabel]|" options:kNilOptions metrics:nil views:views]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-205-[siteButton(50)]" options:kNilOptions metrics:nil views:views]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:titleLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0.f]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:travelTimeLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0.f]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:borderedTimeLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0.f]];
+}
+
+- (void)openWebsite
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.nikola-lenivets.com"]];
 }
 
 @end

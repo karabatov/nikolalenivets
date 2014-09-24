@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Semyon Novikov. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
-@interface NLTravelBusView : UIView
+@interface NLTravelBusView : UIView <UIActionSheetDelegate>
 
 @end

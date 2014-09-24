@@ -90,7 +90,20 @@
 
 - (void)dialPhone
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://+74843448500"]];
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Отменить" destructiveButtonTitle:nil otherButtonTitles:@"Скопировать номер", @"Позвонить +74843448500", nil];
+    [sheet showInView:self];
+}
+
+#pragma mark - UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == actionSheet.firstOtherButtonIndex) {
+        UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+        pasteboard.string = @"+74843448500";
+    } else if (buttonIndex == actionSheet.firstOtherButtonIndex + 1) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://+74843448500"]];
+    }
 }
 
 @end

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NLTravelTrainView : UIView
+@interface NLTravelTrainView : UIView <UIActionSheetDelegate>
 
 @end
