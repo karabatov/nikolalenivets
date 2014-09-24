@@ -31,7 +31,7 @@
 
     attributedString = [[NSMutableAttributedString alloc] initWithString:string];
 
-    if ([attributedString length] > 1) {
+    if ([attributedString length] >= 1) {
         [attributedString addAttribute:NSKernAttributeName
                                  value:[NSNumber numberWithFloat:kerning]
                                  range:NSMakeRange(0, [attributedString length])];

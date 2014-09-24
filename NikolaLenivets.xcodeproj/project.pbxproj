@@ -54,6 +54,12 @@
 		4FCBE0081907A054002F37A3 /* BookmanC.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBE0051907A054002F37A3 /* BookmanC.otf */; };
 		4FD010FA192CC940002F5836 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FD010F9192CC940002F5836 /* Crashlytics.framework */; };
 		4FF31086D2714E0584DB4E63 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 213D00ACD702461FA5EF0EB3 /* libPods.a */; };
+		D115713219D2DE3400A9E433 /* travel-car-220km@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D115712D19D2DE3400A9E433 /* travel-car-220km@2x.png */; };
+		D115713319D2DE3400A9E433 /* travel-car-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D115712E19D2DE3400A9E433 /* travel-car-arrow@2x.png */; };
+		D115713419D2DE3400A9E433 /* travel-car-circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D115712F19D2DE3400A9E433 /* travel-car-circle@2x.png */; };
+		D115713519D2DE3400A9E433 /* travel-car-gps@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D115713019D2DE3400A9E433 /* travel-car-gps@2x.png */; };
+		D115713619D2DE3400A9E433 /* travel-car-map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D115713119D2DE3400A9E433 /* travel-car-map@2x.png */; };
+		D115713919D2F39D00A9E433 /* NLCircleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D115713819D2F39D00A9E433 /* NLCircleLabel.m */; };
 		D12B05F61979A5E700AA4CDD /* tiles in Resources */ = {isa = PBXBuildFile; fileRef = D12B05F51979A5E700AA4CDD /* tiles */; };
 		D138D4E819C8CD0800E5B4F4 /* NLSearchRotatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D138D4E719C8CD0800E5B4F4 /* NLSearchRotatingView.m */; };
 		D138D4ED19C8E05000E5B4F4 /* NLSearchNothingFoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = D138D4EC19C8E05000E5B4F4 /* NLSearchNothingFoundView.m */; };
@@ -76,6 +82,7 @@
 		D172841019D1CF32005459CA /* travel-bus-route@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D172840F19D1CF32005459CA /* travel-bus-route@2x.png */; };
 		D172841319D1CF93005459CA /* NLTravelBusView.m in Sources */ = {isa = PBXBuildFile; fileRef = D172841219D1CF93005459CA /* NLTravelBusView.m */; };
 		D172841619D2BF64005459CA /* NLTravelTrainView.m in Sources */ = {isa = PBXBuildFile; fileRef = D172841519D2BF64005459CA /* NLTravelTrainView.m */; };
+		D172841919D2C902005459CA /* NLTravelCarView.m in Sources */ = {isa = PBXBuildFile; fileRef = D172841819D2C902005459CA /* NLTravelCarView.m */; };
 		D1783ED8197C141F00A92AA3 /* NLPlaceAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D1783ED7197C141F00A92AA3 /* NLPlaceAnnotation.m */; };
 		D1783EDB197C195100A92AA3 /* object.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783ED9197C195100A92AA3 /* object.png */; };
 		D1783EDC197C195100A92AA3 /* object@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783EDA197C195100A92AA3 /* object@2x.png */; };
@@ -230,6 +237,13 @@
 		4FD010F9192CC940002F5836 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		9F010D930FC743A086F2A9F3 /* libPods-NikolaLenivetsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NikolaLenivetsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CABA2254233B446F8102E8CC /* Pods-NikolaLenivetsTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NikolaLenivetsTests.xcconfig"; path = "Pods/Pods-NikolaLenivetsTests.xcconfig"; sourceTree = "<group>"; };
+		D115712D19D2DE3400A9E433 /* travel-car-220km@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "travel-car-220km@2x.png"; sourceTree = "<group>"; };
+		D115712E19D2DE3400A9E433 /* travel-car-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "travel-car-arrow@2x.png"; sourceTree = "<group>"; };
+		D115712F19D2DE3400A9E433 /* travel-car-circle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "travel-car-circle@2x.png"; sourceTree = "<group>"; };
+		D115713019D2DE3400A9E433 /* travel-car-gps@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "travel-car-gps@2x.png"; sourceTree = "<group>"; };
+		D115713119D2DE3400A9E433 /* travel-car-map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "travel-car-map@2x.png"; sourceTree = "<group>"; };
+		D115713719D2F39D00A9E433 /* NLCircleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLCircleLabel.h; path = UI/NLCircleLabel.h; sourceTree = "<group>"; };
+		D115713819D2F39D00A9E433 /* NLCircleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLCircleLabel.m; path = UI/NLCircleLabel.m; sourceTree = "<group>"; };
 		D12B05F51979A5E700AA4CDD /* tiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tiles; sourceTree = "<group>"; };
 		D138D4E619C8CD0800E5B4F4 /* NLSearchRotatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLSearchRotatingView.h; path = UI/NLSearchRotatingView.h; sourceTree = "<group>"; };
 		D138D4E719C8CD0800E5B4F4 /* NLSearchRotatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLSearchRotatingView.m; path = UI/NLSearchRotatingView.m; sourceTree = "<group>"; };
@@ -264,6 +278,8 @@
 		D172841219D1CF93005459CA /* NLTravelBusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLTravelBusView.m; path = UI/NLTravelBusView.m; sourceTree = "<group>"; };
 		D172841419D2BF64005459CA /* NLTravelTrainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLTravelTrainView.h; path = UI/NLTravelTrainView.h; sourceTree = "<group>"; };
 		D172841519D2BF64005459CA /* NLTravelTrainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLTravelTrainView.m; path = UI/NLTravelTrainView.m; sourceTree = "<group>"; };
+		D172841719D2C902005459CA /* NLTravelCarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLTravelCarView.h; path = UI/NLTravelCarView.h; sourceTree = "<group>"; };
+		D172841819D2C902005459CA /* NLTravelCarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLTravelCarView.m; path = UI/NLTravelCarView.m; sourceTree = "<group>"; };
 		D1783ED6197C141F00A92AA3 /* NLPlaceAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLPlaceAnnotation.h; path = UI/NLPlaceAnnotation.h; sourceTree = "<group>"; };
 		D1783ED7197C141F00A92AA3 /* NLPlaceAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLPlaceAnnotation.m; path = UI/NLPlaceAnnotation.m; sourceTree = "<group>"; };
 		D1783ED9197C195100A92AA3 /* object.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = object.png; sourceTree = "<group>"; };
@@ -406,6 +422,8 @@
 				D17283FC19D1820D005459CA /* NLTravelTypeSectionView.m */,
 				D172840319D1B73E005459CA /* NLBorderedLabel.h */,
 				D172840419D1B73E005459CA /* NLBorderedLabel.m */,
+				D115713719D2F39D00A9E433 /* NLCircleLabel.h */,
+				D115713819D2F39D00A9E433 /* NLCircleLabel.m */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -434,6 +452,11 @@
 				D172840D19D1C86B005459CA /* travel-festival-transfer@2x.png */,
 				D172840819D1B8A4005459CA /* travel-heli-coords@2x.png */,
 				D17283FE19D18644005459CA /* travel-text-title@2x.png */,
+				D115712D19D2DE3400A9E433 /* travel-car-220km@2x.png */,
+				D115712E19D2DE3400A9E433 /* travel-car-arrow@2x.png */,
+				D115712F19D2DE3400A9E433 /* travel-car-circle@2x.png */,
+				D115713019D2DE3400A9E433 /* travel-car-gps@2x.png */,
+				D115713119D2DE3400A9E433 /* travel-car-map@2x.png */,
 				4F10D2AC19374ABB00F6658D /* NLStaticScreenViewController.h */,
 				4F10D2AD19374ABB00F6658D /* NLStaticScreenViewController.m */,
 				4F10D2AE19374ABB00F6658D /* NLStaticScreenViewController.xib */,
@@ -449,6 +472,8 @@
 				D172841219D1CF93005459CA /* NLTravelBusView.m */,
 				D172841419D2BF64005459CA /* NLTravelTrainView.h */,
 				D172841519D2BF64005459CA /* NLTravelTrainView.m */,
+				D172841719D2C902005459CA /* NLTravelCarView.h */,
+				D172841819D2C902005459CA /* NLTravelCarView.m */,
 			);
 			name = "Static Screens";
 			sourceTree = "<group>";
@@ -833,6 +858,7 @@
 				4F7EC306190933B9002C0ECD /* NLItemsListController.xib in Resources */,
 				4F0D75AD193DE20400E78AA5 /* back_white@2x.png in Resources */,
 				4F9C414218EA84640038090E /* InfoPlist.strings in Resources */,
+				D115713419D2DE3400A9E433 /* travel-car-circle@2x.png in Resources */,
 				D1783EDB197C195100A92AA3 /* object.png in Resources */,
 				4F10D2B019374ABB00F6658D /* NLStaticScreenViewController.xib in Resources */,
 				D1783F391982934E00A92AA3 /* map-unchecked@2x.png in Resources */,
@@ -854,10 +880,12 @@
 				D1CAF02919C05F94001C5270 /* red_right_shadow@2x.png in Resources */,
 				D1783F381982934E00A92AA3 /* map-checked@2x.png in Resources */,
 				4F174E351966A50300F7F8A2 /* Track on 2014-06-23 at 18-29 GMT+4.gpx in Resources */,
+				D115713219D2DE3400A9E433 /* travel-car-220km@2x.png in Resources */,
 				D1783F07197E622B00A92AA3 /* blue-gradient.png in Resources */,
 				D1783EEC197C417000A92AA3 /* route-b@2x.png in Resources */,
 				D1783EF0197C438200A92AA3 /* userlocation@2x.png in Resources */,
 				D19C04401975319E006A086B /* NLEventsCollectionViewController.xib in Resources */,
+				D115713319D2DE3400A9E433 /* travel-car-arrow@2x.png in Resources */,
 				D1783EF8197CFFF000A92AA3 /* tile-empty.png in Resources */,
 				D1926BB719CE0A2200571E3A /* back@2x.png in Resources */,
 				D1CAF02819C05F94001C5270 /* red_left_shadow@2x.png in Resources */,
@@ -872,7 +900,9 @@
 				4F22FD871937288B0075C1A0 /* NLPlacesViewController.xib in Resources */,
 				4F61374A1927313700BFDD1C /* NLEventGroupsViewController.xib in Resources */,
 				4F18FD3B192212F900032A34 /* NLDetailsViewController.xib in Resources */,
+				D115713619D2DE3400A9E433 /* travel-car-map@2x.png in Resources */,
 				D1783EEB197C417000A92AA3 /* route-b.png in Resources */,
+				D115713519D2DE3400A9E433 /* travel-car-gps@2x.png in Resources */,
 				D1F5018A19BA1BDC00CDFA5E /* search-selected@2x.png in Resources */,
 				4F174E361966A50300F7F8A2 /* Track on 2014-06-23 at 18-34 GMT+4.gpx in Resources */,
 				D19C0427196EF44D006A086B /* map-plus@2x.png in Resources */,
@@ -961,6 +991,7 @@
 				4F390E7518ED589200131934 /* NLStorage.m in Sources */,
 				4F390E8918ED754700131934 /* NLScreen.m in Sources */,
 				4F22FD7C1936ED3E0075C1A0 /* NLGallery.m in Sources */,
+				D115713919D2F39D00A9E433 /* NLCircleLabel.m in Sources */,
 				D1783F20197FB9E200A92AA3 /* NLFoldAnimation.m in Sources */,
 				D1783F04197E398900A92AA3 /* UIViewController+BackViewController.m in Sources */,
 				4F9C414818EA84640038090E /* NLAppDelegate.m in Sources */,
@@ -987,6 +1018,7 @@
 				D1CAF02C19C06666001C5270 /* UIImage+Grayscale.m in Sources */,
 				4F390E7D18ED731E00131934 /* NLNewsEntry.m in Sources */,
 				4F22FD861937288B0075C1A0 /* NLPlacesViewController.m in Sources */,
+				D172841919D2C902005459CA /* NLTravelCarView.m in Sources */,
 				4F89A42B1957CFF60045D1A3 /* NLMapViewController.m in Sources */,
 				4F390E8318ED752700131934 /* NLTeaser.m in Sources */,
 				4F61374D19273D7700BFDD1C /* NLEventGroup.m in Sources */,
