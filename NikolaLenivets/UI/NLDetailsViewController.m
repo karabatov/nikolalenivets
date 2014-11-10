@@ -216,7 +216,7 @@ typedef enum {
     NSString *hex = [[self capitalLetterColor] stringWithHexValue];
     [self.firstPartWebView loadHTMLString:[NSString stringWithFormat:HTMLFormat, hex, _textParts.firstObject] baseURL:[NSURL URLWithString:@"http://"]];
     if (_textParts.count > 1) {
-        [self.secondPartLabel loadHTMLString:[NSString stringWithFormat:HTMLFormat, _textParts.lastObject] baseURL:[NSURL URLWithString:@"http://"]];
+        [self.secondPartLabel loadHTMLString:[NSString stringWithFormat:HTMLFormat, hex, _textParts.lastObject] baseURL:[NSURL URLWithString:@"http://"]];
     }
     self.dateLabel.attributedText = [self attributedStringForDateMonth:date];
 }
