@@ -9,6 +9,7 @@
 #import "NLAboutScreenController.h"
 #import "NLStorage.h"
 #import "NSAttributedString+Kerning.h"
+#import "NLAboutDeveloperController.h"
 
 #define kNLAboutNavbarHeight 52.f
 
@@ -52,6 +53,9 @@
 
 /** Scroll view offset to start fading the navigation bar in. */
 @property (nonatomic) CGFloat startFadeOffset;
+
+/** Button to show the "About Developer". */
+@property (strong, nonatomic) UIButton *questionButton;
 
 @end
 
@@ -99,6 +103,12 @@
     [self.menuButton setContentEdgeInsets:UIEdgeInsetsMake(16, 3, 16, 3)];
     [self.menuButton addTarget:self action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
 
+    self.questionButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.questionButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.questionButton setImage:[UIImage imageNamed:@"about-question.png"] forState:UIControlStateNormal];
+    [self.questionButton setContentEdgeInsets:UIEdgeInsetsMake(11, 11, 11, 11)];
+    [self.questionButton addTarget:self action:@selector(openAboutDeveloperScreen) forControlEvents:UIControlEventTouchUpInside];
+
     UIView *dash0 = [[UIView alloc] init];
     [dash0 setTranslatesAutoresizingMaskIntoConstraints:NO];
     [dash0 setBackgroundColor:[UIColor colorWithRed:172.f/255.f green:172.f/255.f blue:172.f/255.f alpha:1.f]];
@@ -140,6 +150,7 @@
     [self.containerView addSubview:self.gradientView];
 
     [self.navigationView addSubview:self.titleLabel];
+    [self.navigationView addSubview:self.questionButton];
     [self.navigationView addSubview:dash0];
 
     [self.mainScroll addSubview:self.containerView];
@@ -149,6 +160,7 @@
     [self.view addSubview:self.menuButton];
 
     NSDictionary *views = @{ @"menu": self.menuButton,
+                             @"question": self.questionButton,
                              @"navi": self.navigationView,
                              @"title": self.titleLabel,
                              @"scroll": self.mainScroll,
@@ -161,6 +173,7 @@
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-14-[menu(44)]" options:kNilOptions metrics:metrics views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-4-[menu(44)]" options:kNilOptions metrics:metrics views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[navi]|" options:kNilOptions metrics:metrics views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=1)-[question(44)]-1-|" options:kNilOptions metrics:metrics views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[dash0]|" options:kNilOptions metrics:metrics views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=1)-[dash0(0.5)]|" options:kNilOptions metrics:metrics views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[navi(navV)]" options:kNilOptions metrics:metrics views:views]];
@@ -181,6 +194,8 @@
     [self.view addConstraint:self.webViewHeight];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.navigationView attribute:NSLayoutAttributeCenterX multiplier:1.f constant:7.f]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.navigationView attribute:NSLayoutAttributeCenterY multiplier:1.f constant:-2.f]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.questionButton attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.navigationView attribute:NSLayoutAttributeCenterY multiplier:1.f constant:0.f]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.questionButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.f constant:44.f]];
 
     self.startFadeOffset = self.parkPhotoHeight.constant - kNLAboutNavbarHeight;
 
@@ -190,6 +205,12 @@
 - (void)goBack
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)openAboutDeveloperScreen
+{
+    NLAboutDeveloperController *aboutDev = [[NLAboutDeveloperController alloc] init];
+    [self.navigationController pushViewController:aboutDev animated:YES];
 }
 
 #pragma mark - UIWebViewDelegate
