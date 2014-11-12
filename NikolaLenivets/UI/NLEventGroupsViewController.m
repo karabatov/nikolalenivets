@@ -70,6 +70,10 @@
     [self.scrollView addGestureRecognizer:tap];
 
     _currentPage = 0;
+
+    if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_7_1) {
+        self.dashHorizontalOffset.constant -= 6.f;
+    }
 }
 
 
@@ -170,9 +174,9 @@
         [self updateUnreadCountWithCount:[[NLStorage sharedInstance] unreadCountInArray:group.events]];
 
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-        paragraphStyle.hyphenationFactor = 0.1f;
-        NSMutableAttributedString *attributedTitle = [[NSMutableAttributedString alloc] initWithString:group.name attributes:@{ NSParagraphStyleAttributeName : paragraphStyle }];
-        NSMutableAttributedString *attributedPrice = [[NSMutableAttributedString alloc] initWithString:group.ticketprice attributes:@{ NSParagraphStyleAttributeName : paragraphStyle }];
+        paragraphStyle.hyphenationFactor = 0.8f;
+        NSMutableAttributedString *attributedTitle = [[NSMutableAttributedString alloc] initWithString:group.name attributes:@{ NSParagraphStyleAttributeName: paragraphStyle, NSForegroundColorAttributeName: self.eventTitleLabel.textColor, NSFontAttributeName: self.eventTitleLabel.font }];
+        NSMutableAttributedString *attributedPrice = [[NSMutableAttributedString alloc] initWithString:group.ticketprice attributes:@{ NSParagraphStyleAttributeName: paragraphStyle, NSForegroundColorAttributeName: self.ticketPriceLabel.textColor, NSFontAttributeName: self.ticketPriceLabel.font}];
 
         self.eventTitleLabel.attributedText = attributedTitle;
         self.ticketPriceLabel.attributedText = attributedPrice;

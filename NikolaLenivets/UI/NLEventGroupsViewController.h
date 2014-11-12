@@ -29,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *eventDatesLabel;
 @property (weak, nonatomic) IBOutlet UIView *pagerView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *dashOffset;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *dashHorizontalOffset;
 
 - (IBAction)openEventsList:(id)sender;
 
