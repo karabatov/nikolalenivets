@@ -65,6 +65,9 @@
     self.gmLogo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"golova-media.png"]];
     [self.gmLogo setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.gmLogo setContentMode:UIViewContentModeCenter];
+    [self.gmLogo setUserInteractionEnabled:YES];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gmLogoTapped:)];
+    [self.gmLogo addGestureRecognizer:tap];
 
     NSString *versionText = [NSString stringWithFormat:@"Nikola Lenivets iOS App ver. %@\nТехническая поддержка — nl@glv.cc", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
     self.versionLabel = [[UILabel alloc] init];
@@ -74,8 +77,8 @@
     [self.versionLabel setAttributedText:[NSAttributedString kernedStringForString:versionText withFontName:NLMonospacedBoldFont fontSize:12.f kerning:.2f andColor:textColor]];
     [self.versionLabel setUserInteractionEnabled:YES];
 
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(versionLabelTapped:)];
-    [self.versionLabel addGestureRecognizer:tap];
+    UITapGestureRecognizer *tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(versionLabelTapped:)];
+    [self.versionLabel addGestureRecognizer:tap2];
 
     [self.view addSubview:self.gmTitle];
     [self.view addSubview:self.mainText];
@@ -106,6 +109,11 @@
 - (void)versionLabelTapped:(UITapGestureRecognizer *)gesture
 {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto:nl@glv.cc"]];
+}
+
+- (void)gmLogoTapped:(UITapGestureRecognizer *)gesture
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://golovamedia.ru"]];
 }
 
 @end
