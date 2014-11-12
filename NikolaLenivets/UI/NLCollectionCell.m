@@ -26,7 +26,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self setClipsToBounds:YES];
-        [self.contentView setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
 
         UIColor *textColor = [UIColor colorWithRed:127.f/255.f green:127.f/255.f blue:127.f/255.f alpha:1.f];
 
@@ -181,7 +180,9 @@
     static NLCollectionCell *cell;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        cell = [[NLCollectionCell alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        CGRect frame = [UIScreen mainScreen].bounds;
+        frame.size.width /= 2;
+        cell = [[NLCollectionCell alloc] initWithFrame:frame];
     });
 
     [cell populateFromNewsEntry:entry];
@@ -200,7 +201,9 @@
     static NLCollectionCell *cell;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        cell = [[NLCollectionCell alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        CGRect frame = [UIScreen mainScreen].bounds;
+        frame.size.width /= 2;
+        cell = [[NLCollectionCell alloc] initWithFrame:frame];
     });
 
     [cell populateFromEvent:event];
