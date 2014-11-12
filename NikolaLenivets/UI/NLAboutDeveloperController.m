@@ -28,16 +28,6 @@
 
 @implementation NLAboutDeveloperController
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        self.title = @"РАЗРАБОТЧИК";
-        [self setupForNavBarWithStyle:NLNavigationBarStyleNoCounter];
-    }
-    return self;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -94,16 +84,6 @@
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-marginTop-[title]-marginV-[text]-imgMargin-[logo(imgV)]-(>=marginV)-[version]-marginV-|" options:kNilOptions metrics:metrics views:views]];
 
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.gmLogo attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0.f]];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [self.navigationController setNavigationBarHidden:YES];
 }
 
 - (void)versionLabelTapped:(UITapGestureRecognizer *)gesture

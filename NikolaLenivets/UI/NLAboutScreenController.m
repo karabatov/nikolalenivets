@@ -150,7 +150,6 @@
     [self.containerView addSubview:self.gradientView];
 
     [self.navigationView addSubview:self.titleLabel];
-    [self.navigationView addSubview:self.questionButton];
     [self.navigationView addSubview:dash0];
 
     [self.mainScroll addSubview:self.containerView];
@@ -158,6 +157,7 @@
     [self.view addSubview:self.mainScroll];
     [self.view addSubview:self.navigationView];
     [self.view addSubview:self.menuButton];
+    [self.view addSubview:self.questionButton];
 
     NSDictionary *views = @{ @"menu": self.menuButton,
                              @"question": self.questionButton,
@@ -172,8 +172,9 @@
     NSDictionary *metrics = @{ @"navV": [NSNumber numberWithFloat:kNLAboutNavbarHeight] };
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-14-[menu(44)]" options:kNilOptions metrics:metrics views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-4-[menu(44)]" options:kNilOptions metrics:metrics views:views]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[navi]|" options:kNilOptions metrics:metrics views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=1)-[question(44)]-1-|" options:kNilOptions metrics:metrics views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-4-[question(44)]-(>=1)-|" options:kNilOptions metrics:metrics views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[navi]|" options:kNilOptions metrics:metrics views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[dash0]|" options:kNilOptions metrics:metrics views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=1)-[dash0(0.5)]|" options:kNilOptions metrics:metrics views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[navi(navV)]" options:kNilOptions metrics:metrics views:views]];
@@ -194,8 +195,6 @@
     [self.view addConstraint:self.webViewHeight];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.navigationView attribute:NSLayoutAttributeCenterX multiplier:1.f constant:7.f]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.navigationView attribute:NSLayoutAttributeCenterY multiplier:1.f constant:-2.f]];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.questionButton attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.navigationView attribute:NSLayoutAttributeCenterY multiplier:1.f constant:0.f]];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.questionButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.f constant:44.f]];
 
     self.startFadeOffset = self.parkPhotoHeight.constant - kNLAboutNavbarHeight;
 
