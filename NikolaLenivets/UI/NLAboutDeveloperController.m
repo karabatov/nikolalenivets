@@ -12,6 +12,15 @@
 
 @interface NLAboutDeveloperController ()
 
+/** Navigation bar view. */
+@property (strong, nonatomic) UIView *navBarView;
+
+/** Title of the view in the navigation bar. */
+@property (strong, nonatomic) UILabel *navTitleLabel;
+
+/** Menu button. */
+@property (strong, nonatomic) UIButton *menuButton;
+
 /** View title. */
 @property (strong, nonatomic) UILabel *gmTitle;
 
@@ -28,10 +37,31 @@
 
 @implementation NLAboutDeveloperController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
 
+    self.title = @"РАЗРАБОТЧИК";
+
     [self.view setBackgroundColor:[UIColor whiteColor]];
+
+    self.navBarView = [[UIView alloc] init];
+    [self.navBarView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.navBarView setBackgroundColor:[UIColor colorWithRed:246.f/255.f green:246.f/255.f blue:246.f/255.f alpha:1.f]];
+
+    UIView *dash0 = [[UIView alloc] init];
+    [dash0 setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [dash0 setBackgroundColor:[UIColor colorWithRed:172.f/255.f green:172.f/255.f blue:172.f/255.f alpha:1.f]];
+
+    self.navTitleLabel = [[UILabel alloc] init];
+    [self.navTitleLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    self.navTitleLabel.attributedText = [NSAttributedString kernedStringForString:[self.title uppercaseString] withFontSize:18 kerning:2.2f andColor:[UIColor colorWithRed:126.0f/255.0f green:126.0f/255.0f blue:126.0f/255.0f alpha:1.0f]];
+
+    self.menuButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.menuButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.menuButton setImage:[UIImage imageNamed:@"menu_button.png"] forState:UIControlStateNormal];
+    [self.menuButton setContentEdgeInsets:UIEdgeInsetsMake(16, 3, 16, 3)];
+    [self.menuButton addTarget:self action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
 
     UIColor *textColor = [UIColor colorWithRed:37.f/255.f green:37.f/255.f blue:37.f/255.f alpha:1.f];
 
@@ -70,20 +100,39 @@
     UITapGestureRecognizer *tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(versionLabelTapped:)];
     [self.versionLabel addGestureRecognizer:tap2];
 
+    [self.navBarView addSubview:dash0];
+    [self.navBarView addSubview:self.navTitleLabel];
+    [self.navBarView addSubview:self.menuButton];
+
+    [self.view addSubview:self.navBarView];
     [self.view addSubview:self.gmTitle];
     [self.view addSubview:self.mainText];
     [self.view addSubview:self.gmLogo];
     [self.view addSubview:self.versionLabel];
 
-    NSDictionary *views = @{ @"title": self.gmTitle, @"text":self.mainText, @"logo": self.gmLogo, @"version": self.versionLabel };
-    NSDictionary *metrics = @{ @"marginTop": @80, @"marginH": @16, @"marginV": @23, @"imgMargin": @46, @"imgH": @172.5, @"imgV": @70 };
+    NSDictionary *views = @{ @"navB": self.navBarView,
+                             @"navT": self.navTitleLabel,
+                             @"dash0": dash0,
+                             @"menuBtn": self.menuButton,
+                             @"title": self.gmTitle,
+                             @"text": self.mainText,
+                             @"logo": self.gmLogo,
+                             @"version": self.versionLabel };
+    NSDictionary *metrics = @{ @"navV": @52, @"dashV": @0.5, @"marginH": @16, @"marginV": @23, @"imgMargin": @46, @"imgH": @172.5, @"imgV": @70 };
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[navB]|" options:kNilOptions metrics:metrics views:views]];
+    [self.navBarView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-14-[menuBtn(44)]-(>=1)-|" options:kNilOptions metrics:nil views:views]];
+    [self.navBarView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[dash0]|" options:kNilOptions metrics:nil views:views]];
+    [self.navBarView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-4-[menuBtn(44)]-(>=1)-|" options:kNilOptions metrics:nil views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=1)-[dash0(dashV)]|" options:kNilOptions metrics:metrics views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-marginH-[title]-(>=marginH)-|" options:kNilOptions metrics:metrics views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-marginH-[text]-(>=marginH)-|" options:kNilOptions metrics:metrics views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=1)-[logo(imgH)]-(>=1)-|" options:kNilOptions metrics:metrics views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-marginH-[version]-(>=marginH)-|" options:kNilOptions metrics:metrics views:views]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-marginTop-[title]-marginV-[text]-imgMargin-[logo(imgV)]-(>=marginV)-[version]-marginV-|" options:kNilOptions metrics:metrics views:views]];
-
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[navB(navV)]-marginV-[title]-marginV-[text]-imgMargin-[logo(imgV)]-(>=marginV)-[version]-marginV-|" options:kNilOptions metrics:metrics views:views]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.gmLogo attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0.f]];
+    [self.navBarView addConstraint:[NSLayoutConstraint constraintWithItem:self.navTitleLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.navBarView attribute:NSLayoutAttributeCenterY multiplier:1.f constant:-2.f]];
+    [self.navBarView addConstraint:[NSLayoutConstraint constraintWithItem:self.navTitleLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.navBarView attribute:NSLayoutAttributeCenterX multiplier:1.f constant:7.f]];
+
 }
 
 - (void)versionLabelTapped:(UITapGestureRecognizer *)gesture
@@ -94,6 +143,11 @@
 - (void)gmLogoTapped:(UITapGestureRecognizer *)gesture
 {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://golovamedia.ru"]];
+}
+
+- (void)goBack
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end
