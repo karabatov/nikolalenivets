@@ -396,7 +396,7 @@
     if (reload) {
         if (_selectedView) {
             [self.mapView selectAnnotation:nil animated:NO];
-            _selectedView.image = [UIImage imageNamed:@"object.png"];
+            _selectedView.image = [UIImage imageNamed:@"map-object.png"];
         }
         [self hidePlaceMenu];
         [self updatePlaces];
@@ -429,7 +429,7 @@
         MKAnnotationView *placeLocationView = [mapView dequeueReusableAnnotationViewWithIdentifier:placeReuseId];
         if (!placeLocationView) {
             placeLocationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:placeReuseId];
-            placeLocationView.image = [UIImage imageNamed:@"object.png"];
+            placeLocationView.image = [UIImage imageNamed:@"map-object.png"];
             placeLocationView.centerOffset = CGPointMake(0, placeLocationView.centerOffset.y - placeLocationView.image.size.height / 2);
             placeLocationView.canShowCallout = NO;
             placeLocationView.enabled = YES;
@@ -449,10 +449,10 @@
     if ([view.annotation isKindOfClass:[NLPlaceAnnotation class]]) {
         if (_selectedView) {
             [self.mapView selectAnnotation:nil animated:NO];
-            _selectedView.image = [UIImage imageNamed:@"object.png"];
+            _selectedView.image = [UIImage imageNamed:@"map-object.png"];
         }
         _selectedView = view;
-        view.image = [UIImage imageNamed:@"object-selected.png"];
+        view.image = [UIImage imageNamed:@"map-object-selected.png"];
         CLLocationCoordinate2D newCenter = CLLocationCoordinate2DMake(view.annotation.coordinate.latitude + 0.0025f, view.annotation.coordinate.longitude);
         MKCoordinateRegion region = {.center = newCenter, .span = MKCoordinateSpanMake(0.01, 0.01)};
         _shouldResetSelectedView = NO;
@@ -467,7 +467,7 @@
 {
     if ([view.annotation isKindOfClass:[NLPlaceAnnotation class]]) {
         [self.mapView selectAnnotation:nil animated:NO];
-        view.image = [UIImage imageNamed:@"object.png"];
+        view.image = [UIImage imageNamed:@"map-object.png"];
     }
 }
 
@@ -476,7 +476,7 @@
 {
     if (_selectedView && _shouldResetSelectedView) {
         [self.mapView selectAnnotation:nil animated:NO];
-        _selectedView.image = [UIImage imageNamed:@"object.png"];
+        _selectedView.image = [UIImage imageNamed:@"map-object.png"];
         [self hidePlaceMenu];
     }
 }

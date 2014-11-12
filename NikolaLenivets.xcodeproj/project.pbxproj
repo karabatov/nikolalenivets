@@ -55,6 +55,8 @@
 		D115713619D2DE3400A9E433 /* travel-car-map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D115713119D2DE3400A9E433 /* travel-car-map@2x.png */; };
 		D115713919D2F39D00A9E433 /* NLCircleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D115713819D2F39D00A9E433 /* NLCircleLabel.m */; };
 		D12B05F61979A5E700AA4CDD /* tiles in Resources */ = {isa = PBXBuildFile; fileRef = D12B05F51979A5E700AA4CDD /* tiles */; };
+		D12C72F21A13E47B007BB112 /* map-object-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D12C72F01A13E47B007BB112 /* map-object-selected@2x.png */; };
+		D12C72F31A13E47B007BB112 /* map-object@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D12C72F11A13E47B007BB112 /* map-object@2x.png */; };
 		D138D4E819C8CD0800E5B4F4 /* NLSearchRotatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D138D4E719C8CD0800E5B4F4 /* NLSearchRotatingView.m */; };
 		D138D4ED19C8E05000E5B4F4 /* NLSearchNothingFoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = D138D4EC19C8E05000E5B4F4 /* NLSearchNothingFoundView.m */; };
 		D138D4EF19C8E47100E5B4F4 /* search-rotating@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D138D4EE19C8E47100E5B4F4 /* search-rotating@2x.png */; };
@@ -81,10 +83,6 @@
 		D177EDEF1A115E84001070D3 /* about-question@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D177EDEE1A115E84001070D3 /* about-question@2x.png */; };
 		D177EDF31A117256001070D3 /* golova-media@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D177EDF21A117256001070D3 /* golova-media@2x.png */; };
 		D1783ED8197C141F00A92AA3 /* NLPlaceAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = D1783ED7197C141F00A92AA3 /* NLPlaceAnnotation.m */; };
-		D1783EDB197C195100A92AA3 /* object.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783ED9197C195100A92AA3 /* object.png */; };
-		D1783EDC197C195100A92AA3 /* object@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783EDA197C195100A92AA3 /* object@2x.png */; };
-		D1783EE3197C2C5B00A92AA3 /* object-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783EE1197C2C5B00A92AA3 /* object-selected.png */; };
-		D1783EE4197C2C5B00A92AA3 /* object-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783EE2197C2C5B00A92AA3 /* object-selected@2x.png */; };
 		D1783EEB197C417000A92AA3 /* route-b.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783EE9197C417000A92AA3 /* route-b.png */; };
 		D1783EEC197C417000A92AA3 /* route-b@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783EEA197C417000A92AA3 /* route-b@2x.png */; };
 		D1783EEF197C438200A92AA3 /* userlocation.png in Resources */ = {isa = PBXBuildFile; fileRef = D1783EED197C438200A92AA3 /* userlocation.png */; };
@@ -236,6 +234,8 @@
 		D115713719D2F39D00A9E433 /* NLCircleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLCircleLabel.h; path = UI/NLCircleLabel.h; sourceTree = "<group>"; };
 		D115713819D2F39D00A9E433 /* NLCircleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLCircleLabel.m; path = UI/NLCircleLabel.m; sourceTree = "<group>"; };
 		D12B05F51979A5E700AA4CDD /* tiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tiles; sourceTree = "<group>"; };
+		D12C72F01A13E47B007BB112 /* map-object-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-object-selected@2x.png"; sourceTree = "<group>"; };
+		D12C72F11A13E47B007BB112 /* map-object@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-object@2x.png"; sourceTree = "<group>"; };
 		D138D4E619C8CD0800E5B4F4 /* NLSearchRotatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLSearchRotatingView.h; path = UI/NLSearchRotatingView.h; sourceTree = "<group>"; };
 		D138D4E719C8CD0800E5B4F4 /* NLSearchRotatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLSearchRotatingView.m; path = UI/NLSearchRotatingView.m; sourceTree = "<group>"; };
 		D138D4EB19C8E05000E5B4F4 /* NLSearchNothingFoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLSearchNothingFoundView.h; path = UI/NLSearchNothingFoundView.h; sourceTree = "<group>"; };
@@ -277,10 +277,6 @@
 		D177EDF21A117256001070D3 /* golova-media@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "golova-media@2x.png"; sourceTree = "<group>"; };
 		D1783ED6197C141F00A92AA3 /* NLPlaceAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLPlaceAnnotation.h; path = UI/NLPlaceAnnotation.h; sourceTree = "<group>"; };
 		D1783ED7197C141F00A92AA3 /* NLPlaceAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLPlaceAnnotation.m; path = UI/NLPlaceAnnotation.m; sourceTree = "<group>"; };
-		D1783ED9197C195100A92AA3 /* object.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = object.png; sourceTree = "<group>"; };
-		D1783EDA197C195100A92AA3 /* object@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "object@2x.png"; sourceTree = "<group>"; };
-		D1783EE1197C2C5B00A92AA3 /* object-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "object-selected.png"; sourceTree = "<group>"; };
-		D1783EE2197C2C5B00A92AA3 /* object-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "object-selected@2x.png"; sourceTree = "<group>"; };
 		D1783EE9197C417000A92AA3 /* route-b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "route-b.png"; sourceTree = "<group>"; };
 		D1783EEA197C417000A92AA3 /* route-b@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "route-b@2x.png"; sourceTree = "<group>"; };
 		D1783EED197C438200A92AA3 /* userlocation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = userlocation.png; sourceTree = "<group>"; };
@@ -599,12 +595,10 @@
 				D1783F331982921500A92AA3 /* NLMapFilterCell.xib */,
 				D1783ED6197C141F00A92AA3 /* NLPlaceAnnotation.h */,
 				D1783ED7197C141F00A92AA3 /* NLPlaceAnnotation.m */,
-				D1783ED9197C195100A92AA3 /* object.png */,
-				D1783EDA197C195100A92AA3 /* object@2x.png */,
-				D1783EE1197C2C5B00A92AA3 /* object-selected.png */,
-				D1783EE2197C2C5B00A92AA3 /* object-selected@2x.png */,
 				D19C0422196EF44C006A086B /* map-minus@2x.png */,
 				D19C0423196EF44C006A086B /* map-locate@2x.png */,
+				D12C72F01A13E47B007BB112 /* map-object-selected@2x.png */,
+				D12C72F11A13E47B007BB112 /* map-object@2x.png */,
 				D19C0424196EF44C006A086B /* map-plus@2x.png */,
 				D1783EE9197C417000A92AA3 /* route-b.png */,
 				D1783EEA197C417000A92AA3 /* route-b@2x.png */,
@@ -860,7 +854,6 @@
 				4F0D75AD193DE20400E78AA5 /* back_white@2x.png in Resources */,
 				4F9C414218EA84640038090E /* InfoPlist.strings in Resources */,
 				D115713419D2DE3400A9E433 /* travel-car-circle@2x.png in Resources */,
-				D1783EDB197C195100A92AA3 /* object.png in Resources */,
 				4F10D2B019374ABB00F6658D /* NLStaticScreenViewController.xib in Resources */,
 				D1783F391982934E00A92AA3 /* map-unchecked@2x.png in Resources */,
 				D1CAF02419C0435C001C5270 /* unread-indicator-gray@2x.png in Resources */,
@@ -873,6 +866,7 @@
 				D172841019D1CF32005459CA /* travel-bus-route@2x.png in Resources */,
 				4FCBE0081907A054002F37A3 /* BookmanC.otf in Resources */,
 				4F22FD791936E8B30075C1A0 /* NLGalleryViewController.xib in Resources */,
+				D12C72F31A13E47B007BB112 /* map-object@2x.png in Resources */,
 				D1926BB819CE0A2200571E3A /* forward@2x.png in Resources */,
 				D177EDF31A117256001070D3 /* golova-media@2x.png in Resources */,
 				D19C0426196EF44D006A086B /* map-locate@2x.png in Resources */,
@@ -896,18 +890,16 @@
 				D1C545EF19C9A7C0004781B1 /* about-image@2x.jpg in Resources */,
 				D1783F2719826F1B00A92AA3 /* place-info@2x.png in Resources */,
 				D1783F08197E622B00A92AA3 /* blue-gradient@2x.png in Resources */,
-				D1783EE4197C2C5B00A92AA3 /* object-selected@2x.png in Resources */,
 				4F22FD871937288B0075C1A0 /* NLPlacesViewController.xib in Resources */,
 				4F61374A1927313700BFDD1C /* NLEventGroupsViewController.xib in Resources */,
 				4F18FD3B192212F900032A34 /* NLDetailsViewController.xib in Resources */,
 				D115713619D2DE3400A9E433 /* travel-car-map@2x.png in Resources */,
 				D1783EEB197C417000A92AA3 /* route-b.png in Resources */,
 				D115713519D2DE3400A9E433 /* travel-car-gps@2x.png in Resources */,
+				D12C72F21A13E47B007BB112 /* map-object-selected@2x.png in Resources */,
 				D1F5018A19BA1BDC00CDFA5E /* search-selected@2x.png in Resources */,
 				D19C0427196EF44D006A086B /* map-plus@2x.png in Resources */,
-				D1783EDC197C195100A92AA3 /* object@2x.png in Resources */,
 				D1783F19197EBA8800A92AA3 /* object-count.png in Resources */,
-				D1783EE3197C2C5B00A92AA3 /* object-selected.png in Resources */,
 				D1783F431982CEF600A92AA3 /* splash-top@2x.png in Resources */,
 				D1C57547199B6D4A00FFB310 /* photo-count@2x.png in Resources */,
 				D172840919D1B8A4005459CA /* travel-heli-coords@2x.png in Resources */,
