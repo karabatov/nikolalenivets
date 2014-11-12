@@ -57,6 +57,7 @@
 		D12B05F61979A5E700AA4CDD /* tiles in Resources */ = {isa = PBXBuildFile; fileRef = D12B05F51979A5E700AA4CDD /* tiles */; };
 		D12C72F21A13E47B007BB112 /* map-object-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D12C72F01A13E47B007BB112 /* map-object-selected@2x.png */; };
 		D12C72F31A13E47B007BB112 /* map-object@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D12C72F11A13E47B007BB112 /* map-object@2x.png */; };
+		D12C72F61A1421F0007BB112 /* NSString+StripHTMLTags.m in Sources */ = {isa = PBXBuildFile; fileRef = D12C72F51A1421F0007BB112 /* NSString+StripHTMLTags.m */; };
 		D138D4E819C8CD0800E5B4F4 /* NLSearchRotatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D138D4E719C8CD0800E5B4F4 /* NLSearchRotatingView.m */; };
 		D138D4ED19C8E05000E5B4F4 /* NLSearchNothingFoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = D138D4EC19C8E05000E5B4F4 /* NLSearchNothingFoundView.m */; };
 		D138D4EF19C8E47100E5B4F4 /* search-rotating@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D138D4EE19C8E47100E5B4F4 /* search-rotating@2x.png */; };
@@ -236,6 +237,8 @@
 		D12B05F51979A5E700AA4CDD /* tiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tiles; sourceTree = "<group>"; };
 		D12C72F01A13E47B007BB112 /* map-object-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-object-selected@2x.png"; sourceTree = "<group>"; };
 		D12C72F11A13E47B007BB112 /* map-object@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-object@2x.png"; sourceTree = "<group>"; };
+		D12C72F41A1421F0007BB112 /* NSString+StripHTMLTags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+StripHTMLTags.h"; path = "UI/NSString+StripHTMLTags.h"; sourceTree = "<group>"; };
+		D12C72F51A1421F0007BB112 /* NSString+StripHTMLTags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+StripHTMLTags.m"; path = "UI/NSString+StripHTMLTags.m"; sourceTree = "<group>"; };
 		D138D4E619C8CD0800E5B4F4 /* NLSearchRotatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLSearchRotatingView.h; path = UI/NLSearchRotatingView.h; sourceTree = "<group>"; };
 		D138D4E719C8CD0800E5B4F4 /* NLSearchRotatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLSearchRotatingView.m; path = UI/NLSearchRotatingView.m; sourceTree = "<group>"; };
 		D138D4EB19C8E05000E5B4F4 /* NLSearchNothingFoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLSearchNothingFoundView.h; path = UI/NLSearchNothingFoundView.h; sourceTree = "<group>"; };
@@ -415,6 +418,8 @@
 				D172840419D1B73E005459CA /* NLBorderedLabel.m */,
 				D115713719D2F39D00A9E433 /* NLCircleLabel.h */,
 				D115713819D2F39D00A9E433 /* NLCircleLabel.m */,
+				D12C72F41A1421F0007BB112 /* NSString+StripHTMLTags.h */,
+				D12C72F51A1421F0007BB112 /* NSString+StripHTMLTags.m */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1013,6 +1018,7 @@
 				4F390E8318ED752700131934 /* NLTeaser.m in Sources */,
 				4F61374D19273D7700BFDD1C /* NLEventGroup.m in Sources */,
 				4F22FD781936E8B30075C1A0 /* NLGalleryViewController.m in Sources */,
+				D12C72F61A1421F0007BB112 /* NSString+StripHTMLTags.m in Sources */,
 				D1783ED8197C141F00A92AA3 /* NLPlaceAnnotation.m in Sources */,
 				D172841319D1CF93005459CA /* NLTravelBusView.m in Sources */,
 				D1CC015C19CC40B400F8C047 /* NLNavigationBar.m in Sources */,

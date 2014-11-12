@@ -7,6 +7,7 @@
 //
 
 #import "NSAttributedString+Kerning.h"
+#import "NSString+StripHTMLTags.h"
 
 @implementation NSAttributedString (Kerning)
 
@@ -93,9 +94,10 @@
 
 + (NSAttributedString *)attributedStringForString:(NSString *)htmlString
 {
-    NSData *htmlData = [htmlString dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary *options = @{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: [NSNumber numberWithInt:NSUTF8StringEncoding] };
-    NSMutableAttributedString *attributed = [[NSMutableAttributedString alloc] initWithData:htmlData options:options documentAttributes:nil error:nil];
+    // NSData *htmlData = [htmlString dataUsingEncoding:NSUTF8StringEncoding];
+    // NSDictionary *options = @{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: [NSNumber numberWithInt:NSUTF8StringEncoding] };
+    // NSMutableAttributedString *attributed = [[NSMutableAttributedString alloc] initWithData:htmlData options:options documentAttributes:nil error:nil];
+    NSMutableAttributedString *attributed = [[NSMutableAttributedString alloc] initWithString:[[htmlString stringByStrippingHTML] changeAccentsLettersToSymbols]];
     CFStringTrimWhitespace((CFMutableStringRef)[attributed mutableString]);
     NSRange range = {0, attributed.length};
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
