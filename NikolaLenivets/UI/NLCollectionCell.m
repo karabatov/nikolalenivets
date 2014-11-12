@@ -20,7 +20,6 @@
     __strong UIImage *_coloredImage;
 }
 
-
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];

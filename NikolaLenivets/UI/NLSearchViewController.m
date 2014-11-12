@@ -220,22 +220,6 @@ typedef enum : NSUInteger {
 
     self.searchSections = [[NSMutableArray alloc] initWithCapacity:3];
 
-    _sizingCellNews = [[NLSearchTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NLSearchTableViewCell reuseIdentifier]];
-    _sizingCellNews.collectionView.tag = NLCollectionViewTypeNews;
-    _sizingCellNews.collectionView.delegate = self;
-    _sizingCellNews.collectionView.dataSource = self;
-    _sizingCellNews.frame = self.view.frame;
-    _sizingCellEvents = [[NLSearchTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NLSearchTableViewCell reuseIdentifier]];
-    _sizingCellEvents.collectionView.tag = NLCollectionViewTypeEvents;
-    _sizingCellEvents.collectionView.delegate = self;
-    _sizingCellEvents.collectionView.dataSource = self;
-    _sizingCellEvents.frame = self.view.frame;
-    _sizingCellPlaces = [[NLSearchTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NLSearchTableViewCell reuseIdentifier]];
-    _sizingCellPlaces.collectionView.tag = NLCollectionViewTypePlaces;
-    _sizingCellPlaces.collectionView.delegate = self;
-    _sizingCellPlaces.collectionView.dataSource = self;
-    _sizingCellPlaces.frame = self.view.frame;
-
     self.preloadedCells = [[NSMutableArray alloc] initWithCapacity:3];
 }
 
@@ -353,30 +337,42 @@ typedef enum : NSUInteger {
             }
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                [_sizingCellNews.collectionView reloadData];
-                _sizingCellNews.collectionView.collectionViewLayout = [NLSearchTableViewCell newFlowLayout];
+                _sizingCellNews = [[NLSearchTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NLSearchTableViewCell reuseIdentifier]];
+                _sizingCellNews.collectionView.tag = NLCollectionViewTypeNews;
+                _sizingCellNews.collectionView.delegate = self;
+                _sizingCellNews.collectionView.dataSource = self;
+                _sizingCellNews.frame = self.view.frame;
+                _sizingCellEvents = [[NLSearchTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NLSearchTableViewCell reuseIdentifier]];
+                _sizingCellEvents.collectionView.tag = NLCollectionViewTypeEvents;
+                _sizingCellEvents.collectionView.delegate = self;
+                _sizingCellEvents.collectionView.dataSource = self;
+                _sizingCellEvents.frame = self.view.frame;
+                _sizingCellPlaces = [[NLSearchTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NLSearchTableViewCell reuseIdentifier]];
+                _sizingCellPlaces.collectionView.tag = NLCollectionViewTypePlaces;
+                _sizingCellPlaces.collectionView.delegate = self;
+                _sizingCellPlaces.collectionView.dataSource = self;
+                _sizingCellPlaces.frame = self.view.frame;
                 [_sizingCellNews setNeedsLayout];
                 [_sizingCellNews layoutIfNeeded];
                 _sizingCellNewsHeight = [_sizingCellNews.collectionView.collectionViewLayout collectionViewContentSize].height;
-                [_sizingCellEvents.collectionView reloadData];
-                _sizingCellEvents.collectionView.collectionViewLayout = [NLSearchTableViewCell newFlowLayout];
+                _sizingCellNews = nil;
                 [_sizingCellEvents setNeedsLayout];
                 [_sizingCellEvents layoutIfNeeded];
                 _sizingCellEventsHeight = [_sizingCellEvents.collectionView.collectionViewLayout collectionViewContentSize].height;
-                [_sizingCellPlaces.collectionView reloadData];
-                _sizingCellPlaces.collectionView.collectionViewLayout = [NLSearchTableViewCell newFlowLayout];
+                _sizingCellEvents = nil;
                 [_sizingCellPlaces setNeedsLayout];
                 [_sizingCellPlaces layoutIfNeeded];
                 _sizingCellPlacesHeight = [_sizingCellPlaces.collectionView.collectionViewLayout collectionViewContentSize].height;
+                _sizingCellPlaces = nil;
                 [self.preloadedCells removeAllObjects];
                 for (NSString *cellType in self.searchSections) {
                     NLSearchTableViewCell *newCell = [[NLSearchTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NLSearchTableViewCell reuseIdentifier]];
                     newCell.collectionView.delegate = self;
                     newCell.collectionView.dataSource = self;
-                    newCell.frame = self.view.frame;
-                    [newCell.collectionView reloadData];
-                    [_sizingCellNews setNeedsLayout];
-                    [_sizingCellNews layoutIfNeeded];
+                    // newCell.frame = self.view.frame;
+                    // [newCell.collectionView reloadData];
+                    // [newCell setNeedsLayout];
+                    // [newCell layoutIfNeeded];
                     if ([cellType isEqualToString:kSearchSectionNews]) {
                         newCell.collectionView.tag = NLCollectionViewTypeNews;
                     } else if ([cellType isEqualToString:kSearchSectionEvents]) {
@@ -563,6 +559,7 @@ typedef enum : NSUInteger {
 {
     NSString *sectionTitle = [self.searchSections objectAtIndex:indexPath.section];
     if ([sectionTitle isEqualToString:kSearchSectionNews]) {
+        return _sizingCellNewsHeight;
         if ([[NLStorage sharedInstance].searchPhrase isEqualToString:self.searchField.text]) {
             NSLog(@"cached height");
             return _sizingCellNewsHeight;
@@ -575,6 +572,7 @@ typedef enum : NSUInteger {
             return [_sizingCellNews.collectionView.collectionViewLayout collectionViewContentSize].height;
         }
     } else if ([sectionTitle isEqualToString:kSearchSectionEvents]) {
+        return _sizingCellEventsHeight;
         if ([[NLStorage sharedInstance].searchPhrase isEqualToString:self.searchField.text]) {
             NSLog(@"cached height");
             return _sizingCellEventsHeight;
@@ -587,6 +585,7 @@ typedef enum : NSUInteger {
             return [_sizingCellEvents.collectionView.collectionViewLayout collectionViewContentSize].height;
         }
     } else if ([sectionTitle isEqualToString:kSearchSectionPlaces]) {
+        return _sizingCellPlacesHeight;
         if ([[NLStorage sharedInstance].searchPhrase isEqualToString:self.searchField.text]) {
             NSLog(@"cached height");
             return _sizingCellPlacesHeight;
