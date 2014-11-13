@@ -17,6 +17,7 @@
     __strong NLNewsEntry *_entry;
     __strong NLEvent *_event;
     __strong UIImage *_coloredImage;
+    __strong UIImage *_grayscaleImage;
 }
 
 
@@ -200,17 +201,28 @@
 
 - (void)makeImageGrayscale:(BOOL)shouldMakeImageGrayscale
 {
-    if (self.thumbnail.image && shouldMakeImageGrayscale) {
-        _coloredImage = self.thumbnail.image;
-        UIImage *grayscale = [_coloredImage convertImageToGrayscale];
-        [UIView animateWithDuration:0.25f animations:^{
-            [self.thumbnail setImage:grayscale];
-        }];
+    if ((self.thumbnail.image || _grayscaleImage) && shouldMakeImageGrayscale) {
+        if (_grayscaleImage) {
+            [UIView transitionWithView:self.thumbnail duration:0.25f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+                self.thumbnail.image = _grayscaleImage;
+            } completion:nil];
+        } else {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                _coloredImage = self.thumbnail.image;
+                UIImage *grayscale = [_coloredImage convertImageToGrayscale];
+                _grayscaleImage = grayscale;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [UIView transitionWithView:self.thumbnail duration:0.25f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+                        self.thumbnail.image = _grayscaleImage;
+                    } completion:nil];
+                });
+            });
+        }
     } else {
         if (_coloredImage) {
-            [UIView animateWithDuration:0.25f animations:^{
-                [self.thumbnail setImage:_coloredImage];
-            }];
+            [UIView transitionWithView:self.thumbnail duration:0.25f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+                self.thumbnail.image = _coloredImage;
+            } completion:nil];
         }
     }
 }
@@ -237,6 +249,7 @@
 - (void)prepareForReuse
 {
     _coloredImage = nil;
+    _grayscaleImage = nil;
     self.thumbnail.image = nil;
     [self.thumbnail sd_cancelCurrentImageLoad];
 }
