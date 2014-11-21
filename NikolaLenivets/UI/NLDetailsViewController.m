@@ -288,7 +288,7 @@ typedef enum {
 - (NSAttributedString *)attributedStringForTitle:(NSString *)titleString
 {
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.hyphenationFactor = 0.1f;
+    paragraphStyle.hyphenationFactor = 1.f;
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     paragraphStyle.lineSpacing = 0.0f;
     paragraphStyle.maximumLineHeight = 35.f;

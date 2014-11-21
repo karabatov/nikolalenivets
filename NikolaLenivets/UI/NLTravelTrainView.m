@@ -42,7 +42,7 @@
 
     NSMutableAttributedString *trainText = [[NSMutableAttributedString alloc] initWithAttributedString:[NSAttributedString kernedStringForString:@"От Киевского вокзала на\u00a0электричках Киевского направления до\u00a0станций Малоярославец или Калуга–1." withFontName:NLSerifFont fontSize:18.f kerning:0.2f andColor:textColor]];
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.hyphenationFactor = 0.1f;
+    paragraphStyle.hyphenationFactor = 1.f;
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     paragraphStyle.lineSpacing = 5.f;
     [trainText addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [trainText length])];

@@ -44,6 +44,12 @@
         [attributedString addAttribute:NSForegroundColorAttributeName
                                  value:color
                                  range:NSMakeRange(0, [attributedString length])];
+        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+        paragraphStyle.hyphenationFactor = 1.f;
+        paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+        [attributedString addAttribute:NSParagraphStyleAttributeName
+                                 value:paragraphStyle
+                                 range:NSMakeRange(0, [attributedString length])];
     }
 
     return [[NSAttributedString alloc] initWithAttributedString:attributedString];
@@ -52,7 +58,7 @@
 + (NSAttributedString *)attributedStringForTitle:(NSString *)titleString
 {
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.hyphenationFactor = 0.1f;
+    paragraphStyle.hyphenationFactor = 1.f;
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     paragraphStyle.lineSpacing = 0.0f;
     paragraphStyle.maximumLineHeight = 20.f;
@@ -79,7 +85,7 @@
 + (NSAttributedString *)attributedStringForPlaceName:(NSString *)titleString
 {
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.hyphenationFactor = 0.1f;
+    paragraphStyle.hyphenationFactor = 1.f;
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     paragraphStyle.lineSpacing = 0.0f;
     paragraphStyle.maximumLineHeight = 12.f;
@@ -101,7 +107,7 @@
     CFStringTrimWhitespace((CFMutableStringRef)[attributed mutableString]);
     NSRange range = {0, attributed.length};
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.hyphenationFactor = 0.8f;
+    paragraphStyle.hyphenationFactor = 1.f;
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     paragraphStyle.lineSpacing = 3.5f;
     NSDictionary *attributes = @{ NSFontAttributeName: [UIFont fontWithName:NLSerifFont size:10],

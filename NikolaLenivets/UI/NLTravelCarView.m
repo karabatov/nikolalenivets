@@ -58,7 +58,7 @@
     UIColor *textColor = [UIColor colorWithRed:37.f/255.f green:37.f/255.f blue:37.f/255.f alpha:1.f];
     UIColor *dashBgColor = [UIColor colorWithRed:244.f/255.f green:241.f/255.f blue:241.f/255.f alpha:1.f];
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.hyphenationFactor = 0.1f;
+    paragraphStyle.hyphenationFactor = 1.f;
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     paragraphStyle.lineSpacing = 5.f;
 

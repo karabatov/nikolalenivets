@@ -69,7 +69,7 @@
 - (NSDictionary *)searchAttributesForFontWithName:(NSString *)fontName andSize:(CGFloat)fontSize
 {
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.hyphenationFactor = 0.1f;
+    paragraphStyle.hyphenationFactor = 1.f;
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     paragraphStyle.lineSpacing = 0.0f;
     paragraphStyle.alignment = NSTextAlignmentCenter;

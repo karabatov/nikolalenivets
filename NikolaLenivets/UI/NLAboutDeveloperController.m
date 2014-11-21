@@ -71,7 +71,7 @@
     [self.gmTitle setAttributedText:[NSAttributedString kernedStringForString:@"Golova Media" withFontName:NLMonospacedBoldFont fontSize:16.f kerning:.2f andColor:textColor]];
 
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.hyphenationFactor = 0.6f;
+    paragraphStyle.hyphenationFactor = 1.f;
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     paragraphStyle.lineSpacing = 0.f;
     NSMutableAttributedString *mainStr = [[NSMutableAttributedString alloc] initWithAttributedString:[NSAttributedString kernedStringForString:@"Создаем интерес к\u00a0вашему делу, превращаем аудиторию в\u00a0ваших клиентов. С\u00a0помощью сайтов, приложений, спецпроектов и\u00a0медиа.\n\nНаши стратегии, идеи и\u00a0технологии. Ваши большие\u00a0цели." withFontName:NLSerifFont fontSize:17 kerning:.2f andColor:textColor]];

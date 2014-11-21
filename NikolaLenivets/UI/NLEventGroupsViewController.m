@@ -174,7 +174,7 @@
         [self updateUnreadCountWithCount:[[NLStorage sharedInstance] unreadCountInArray:group.events]];
 
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-        paragraphStyle.hyphenationFactor = 0.8f;
+        paragraphStyle.hyphenationFactor = 1.f;
         NSMutableAttributedString *attributedTitle = [[NSMutableAttributedString alloc] initWithString:group.name attributes:@{ NSParagraphStyleAttributeName: paragraphStyle, NSForegroundColorAttributeName: self.eventTitleLabel.textColor, NSFontAttributeName: self.eventTitleLabel.font }];
         NSMutableAttributedString *attributedPrice = [[NSMutableAttributedString alloc] initWithString:group.ticketprice attributes:@{ NSParagraphStyleAttributeName: paragraphStyle, NSForegroundColorAttributeName: self.ticketPriceLabel.textColor, NSFontAttributeName: self.ticketPriceLabel.font}];
 
