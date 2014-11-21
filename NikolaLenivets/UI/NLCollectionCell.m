@@ -86,7 +86,7 @@
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-17-[title]-17-|" options:kNilOptions metrics:nil views:views]];
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-17-[pre]-13-|" options:kNilOptions metrics:nil views:views]];
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-17-[thumb]" options:kNilOptions metrics:nil views:views]];
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[unread(7)]-15.5-[title]-12-[pre]-16.5-|" options:kNilOptions metrics:nil views:views]];
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=0)-[unread(7)]-15.5-[title]-12-[pre]-16.5-|" options:kNilOptions metrics:nil views:views]];
         [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[alarm(12.5)]" options:kNilOptions metrics:nil views:views]];
         self.thumbnailHeight = [NSLayoutConstraint constraintWithItem:self.thumbnail attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.f constant:0.f];
         [self.contentView addConstraint:self.thumbnailHeight];
@@ -182,14 +182,15 @@
         CGRect frame = [UIScreen mainScreen].bounds;
         frame.size.width /= 2;
         cell = [[NLCollectionCell alloc] initWithFrame:frame];
+        cell.titleLabel.preferredMaxLayoutWidth = frame.size.width - 34.f;
     });
 
     [cell populateFromNewsEntry:entry];
 
-    [cell setNeedsLayout];
-    [cell layoutIfNeeded];
+    [cell.contentView setNeedsLayout];
+    [cell.contentView layoutIfNeeded];
 
-    CGFloat height = [cell systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+    CGFloat height = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
 
     return height;
 }
@@ -203,14 +204,15 @@
         CGRect frame = [UIScreen mainScreen].bounds;
         frame.size.width /= 2;
         cell = [[NLCollectionCell alloc] initWithFrame:frame];
+        cell.titleLabel.preferredMaxLayoutWidth = frame.size.width - 34.f;
     });
 
     [cell populateFromEvent:event];
 
-    [cell setNeedsLayout];
-    [cell layoutIfNeeded];
+    [cell.contentView setNeedsLayout];
+    [cell.contentView layoutIfNeeded];
 
-    CGFloat height = [cell systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+    CGFloat height = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
 
     return height;
 }

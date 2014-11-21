@@ -24,6 +24,7 @@
 #import "NLSearchRotatingView.h"
 #import "NLSearchNothingFoundView.h"
 #import "NLDetailsViewController.h"
+#import "NLNewsCell.h"
 
 /**
  Enum to sort out which data source data to give to a specific collection view.
@@ -810,7 +811,8 @@ typedef enum : NSUInteger {
         case NLCollectionViewTypeNews:
         {
             NLNewsEntry *entry = [[NLStorage sharedInstance].searchResultNews objectAtIndex:indexPath.item];
-            return CGSizeMake(width, [NLCollectionCell heightForCellWithEntry:entry]);
+            CGFloat height = [NLNewsCell heightForCellWithEntry:entry]; // [NLCollectionCell heightForCellWithEntry:entry];
+            return CGSizeMake(width, height);
             break;
         }
         case NLCollectionViewTypePlaces:
