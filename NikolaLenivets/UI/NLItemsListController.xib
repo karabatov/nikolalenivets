@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1552" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NLItemsListController">
@@ -41,13 +41,13 @@
                         <outlet property="delegate" destination="-1" id="PQk-wy-ymF"/>
                     </connections>
                 </tableView>
-                <imageView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="red_left_shadow.png" translatesAutoresizingMaskIntoConstraints="NO" id="ohb-ea-z3Z" userLabel="Left Shadow">
+                <imageView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="black_left_shadow.png" translatesAutoresizingMaskIntoConstraints="NO" id="ohb-ea-z3Z" userLabel="Left Shadow">
                     <rect key="frame" x="73" y="0.0" width="87" height="568"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="87" id="5dK-09-BK8"/>
                     </constraints>
                 </imageView>
-                <imageView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="red_right_shadow.png" translatesAutoresizingMaskIntoConstraints="NO" id="8Sm-qU-54I" userLabel="Right Shadow">
+                <imageView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="black_right_shadow.png" translatesAutoresizingMaskIntoConstraints="NO" id="8Sm-qU-54I" userLabel="Right Shadow">
                     <rect key="frame" x="160" y="0.0" width="87" height="568"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="87" id="yn0-aA-9ox"/>
@@ -73,8 +73,8 @@
         </view>
     </objects>
     <resources>
-        <image name="red_left_shadow.png" width="87" height="568"/>
-        <image name="red_right_shadow.png" width="87" height="568"/>
+        <image name="black_left_shadow.png" width="87" height="568"/>
+        <image name="black_right_shadow.png" width="87" height="568"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
