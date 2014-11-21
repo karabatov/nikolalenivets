@@ -89,7 +89,7 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gmLogoTapped:)];
     [self.gmLogo addGestureRecognizer:tap];
 
-    NSString *versionText = [NSString stringWithFormat:@"Nikola Lenivets iOS App ver. %@\nТехническая поддержка — nl@glv.cc", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
+    NSString *versionText = [NSString stringWithFormat:@"Nikola Lenivets iOS App ver. %@\nТехническая поддержка — support@golovamedia.ru", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
     self.versionLabel = [[UILabel alloc] init];
     [self.versionLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.versionLabel setNumberOfLines:0];
@@ -137,7 +137,7 @@
 
 - (void)versionLabelTapped:(UITapGestureRecognizer *)gesture
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto:nl@glv.cc"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto:support@golovamedia.ru"]];
 }
 
 - (void)gmLogoTapped:(UITapGestureRecognizer *)gesture
