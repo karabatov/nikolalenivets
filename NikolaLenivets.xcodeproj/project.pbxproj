@@ -60,6 +60,7 @@
 		D12C72F61A1421F0007BB112 /* NSString+StripHTMLTags.m in Sources */ = {isa = PBXBuildFile; fileRef = D12C72F51A1421F0007BB112 /* NSString+StripHTMLTags.m */; };
 		D12CDF051A1EBE0400CB6FA5 /* black_left_shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D12CDF031A1EBE0400CB6FA5 /* black_left_shadow@2x.png */; };
 		D12CDF061A1EBE0400CB6FA5 /* black_right_shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D12CDF041A1EBE0400CB6FA5 /* black_right_shadow@2x.png */; };
+		D12CDF0E1A1EC7A600CB6FA5 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12CDF0D1A1EC7A600CB6FA5 /* Fabric.framework */; };
 		D138D4E819C8CD0800E5B4F4 /* NLSearchRotatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D138D4E719C8CD0800E5B4F4 /* NLSearchRotatingView.m */; };
 		D138D4ED19C8E05000E5B4F4 /* NLSearchNothingFoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = D138D4EC19C8E05000E5B4F4 /* NLSearchNothingFoundView.m */; };
 		D138D4EF19C8E47100E5B4F4 /* search-rotating@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D138D4EE19C8E47100E5B4F4 /* search-rotating@2x.png */; };
@@ -241,6 +242,7 @@
 		D12C72F51A1421F0007BB112 /* NSString+StripHTMLTags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+StripHTMLTags.m"; path = "UI/NSString+StripHTMLTags.m"; sourceTree = "<group>"; };
 		D12CDF031A1EBE0400CB6FA5 /* black_left_shadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "black_left_shadow@2x.png"; sourceTree = "<group>"; };
 		D12CDF041A1EBE0400CB6FA5 /* black_right_shadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "black_right_shadow@2x.png"; sourceTree = "<group>"; };
+		D12CDF0D1A1EC7A600CB6FA5 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		D138D4E619C8CD0800E5B4F4 /* NLSearchRotatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLSearchRotatingView.h; path = UI/NLSearchRotatingView.h; sourceTree = "<group>"; };
 		D138D4E719C8CD0800E5B4F4 /* NLSearchRotatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLSearchRotatingView.m; path = UI/NLSearchRotatingView.m; sourceTree = "<group>"; };
 		D138D4EB19C8E05000E5B4F4 /* NLSearchNothingFoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLSearchNothingFoundView.h; path = UI/NLSearchNothingFoundView.h; sourceTree = "<group>"; };
@@ -373,6 +375,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D12CDF0E1A1EC7A600CB6FA5 /* Fabric.framework in Frameworks */,
 				4F9C413A18EA84640038090E /* CoreGraphics.framework in Frameworks */,
 				4FD010FA192CC940002F5836 /* Crashlytics.framework in Frameworks */,
 				4F9C413C18EA84640038090E /* UIKit.framework in Frameworks */,
@@ -653,6 +656,7 @@
 		4F9C413618EA84640038090E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D12CDF0D1A1EC7A600CB6FA5 /* Fabric.framework */,
 				D1783F211980042E00A92AA3 /* MapKit.framework */,
 				4FD010F9192CC940002F5836 /* Crashlytics.framework */,
 				4F9C413718EA84640038090E /* Foundation.framework */,
@@ -958,7 +962,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Crashlytics.framework/run 2859bb1aae7d9b32942d1d64eebd584fa07a88af 4b0a0eac76b07ad148fae9a832ce9a19e1846b0c7fe40a572ca9ef8a4c575d7e";
+			shellScript = "./Fabric.framework/run 4893aae225e81a9da1dd5677f4c8d14bc3879483 5c22d28155bb7d01850aee6c06ceccbcd8c7e4c0e910d55cdda044465b69305d";
 		};
 		71C9E1B8363D4E4FA529F140 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
