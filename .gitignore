@@ -1,2 +1,8 @@
 .DS_Store
 ykar.xcuserdatad
+build
+.ycm_extra_conf.py
+.ycm_extra_conf.pyc
+Rakefile
+compile_commands.json
+--serialize-diagnostics
