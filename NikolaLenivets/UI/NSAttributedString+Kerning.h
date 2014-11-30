@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Semyon Novikov. All rights reserved.
 //
 
-@import Foundation;
+#import <Foundation/Foundation.h>
 
 /**
  Category to apply font kerning (tracking in Apple terms) to input strings.

@@ -21,7 +21,7 @@
         titleLabel.attributedText = attributedText;
 
         [self addSubview:titleLabel];
-        
+
         NSDictionary *views = NSDictionaryOfVariableBindings(titleLabel);
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-7-[titleLabel]-6-|" options:kNilOptions metrics:nil views:views]];
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-1-[titleLabel]-4-|" options:kNilOptions metrics:nil views:views]];

@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Semyon Novikov. All rights reserved.
 //
 
-@import Foundation;
-@import CoreLocation;
+#import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 #define NLUserLocationUpdated @"NLUserLocationUpdated"
 #define NLUserHeadingUpdated @"NLUserHeadingUpdated"

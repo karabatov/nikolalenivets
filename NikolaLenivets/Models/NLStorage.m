@@ -42,7 +42,7 @@
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-
+    
     // Check if there are big pictures in the model. If no, redownload without crashing.
     // TODO: Remove check in next release.
     BOOL hasBigPictures = NO;

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Semyon Novikov. All rights reserved.
 //
 
-@import UIKit;
+#import "UIKit/UIKit.h"
 
 @interface NLBorderedLabel : UIView
 
