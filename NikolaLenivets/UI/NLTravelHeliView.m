@@ -9,6 +9,7 @@
 #import "NLTravelHeliView.h"
 #import "NLBorderedLabel.h"
 #import "NSAttributedString+Kerning.h"
+#import "UIApplication+NLDirections.h"
 
 @implementation NLTravelHeliView
 
@@ -52,8 +53,10 @@
     [dashLine setTranslatesAutoresizingMaskIntoConstraints:NO];
     [dashLine setBackgroundColor:[UIColor colorWithRed:244.f/255.f green:241.f/255.f blue:241.f/255.f alpha:1.f]];
 
-    UIImageView *coordsImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"travel-heli-coords.png"]];
+    UIButton *coordsImage = [UIButton buttonWithType:UIButtonTypeCustom];
+    [coordsImage setImage:[UIImage imageNamed:@"travel-heli-coords.png"] forState:UIControlStateNormal];
     [coordsImage setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [coordsImage addTarget:self action:@selector(coordsImageTapped) forControlEvents:UIControlEventTouchUpInside];
 
     NLBorderedLabel *borderedTimeLabel = [[NLBorderedLabel alloc] initWithAttributedText:[NSAttributedString kernedStringForString:@"45 МИНУТ" withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor]];
     [borderedTimeLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -77,6 +80,12 @@
     [self addConstraint:[NSLayoutConstraint constraintWithItem:coordLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0.f]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:travelTimeLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0.f]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:borderedTimeLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0.f]];
+}
+
+- (void)coordsImageTapped
+{
+    CLLocationCoordinate2D endingCoord = CLLocationCoordinate2DMake(54.749725, 35.600477);
+    [[UIApplication sharedApplication] openDirectionsWithCoordinate:endingCoord];
 }
 
 @end

@@ -10,6 +10,7 @@
 #import "NLBorderedLabel.h"
 #import "NSAttributedString+Kerning.h"
 #import "NLCircleLabel.h"
+#import "UIApplication+NLDirections.h"
 
 #define kNLCarSlider1Offset 379.f
 #define kNLCarMap1Offset 439.5f
@@ -105,8 +106,10 @@
     [header3 setTranslatesAutoresizingMaskIntoConstraints:NO];
     header3.attributedText = [NSAttributedString kernedStringForString:@"GPS КООРДИНАТЫ" withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor];
 
-    UIImageView *image2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"travel-car-gps.png"]];
+    UIButton *image2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [image2 setImage:[UIImage imageNamed:@"travel-car-gps.png"] forState:UIControlStateNormal];
     [image2 setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [image2 addTarget:self action:@selector(openGPSLocation) forControlEvents:UIControlEventTouchUpInside];
 
     UIView *slider1 = [[UIView alloc] init];
     [slider1 setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -290,6 +293,12 @@
     [self addConstraint:[NSLayoutConstraint constraintWithItem:circle4 attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0.f]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:circle5 attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0.f]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:header5 attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.f constant:0.f]];
+}
+
+- (void)openGPSLocation
+{
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(54.749725, 35.600477);
+    [[UIApplication sharedApplication] openDirectionsWithCoordinate:coordinate];
 }
 
 #pragma mark - UIScrollViewDelegate protocol
