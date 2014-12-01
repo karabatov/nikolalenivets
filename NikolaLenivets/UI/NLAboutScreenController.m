@@ -84,7 +84,7 @@
 
     if (screen != nil) {
         self.titleLabel.attributedText = [NSAttributedString kernedStringForString:[screen.fullname uppercaseString] withFontSize:18 kerning:2.2f andColor:[UIColor colorWithRed:126.0f/255.0f green:126.0f/255.0f blue:126.0f/255.0f alpha:1.0f]];
-        NSString *HTMLFormat = @"<html><head><style type=\"text/css\">* { margin:0 !important; padding:0 !important; -webkit-hyphens:auto !important; font-family:MonoCondensedCBold !important; font-size:16pt !important; line-height:30px !important; text-transform:uppercase !important; letter-spacing:0.04em } p { color:#252525 !important; } a { color:#252525 !important; background-color:#caf8d5 !important; text-decoration:none !important; }</style></head><body>%@</body></html>";
+        NSString *HTMLFormat = @"<html><head><style type=\"text/css\">* { margin:0 !important; padding:0 !important; -webkit-hyphens:auto !important; hyphens:auto !important; font-family:MonoCondensedCBold !important; font-size:16pt !important; line-height:30px !important; text-transform:uppercase !important; letter-spacing:0.04em } p { color:#252525 !important; } a { color:#252525 !important; background-color:#caf8d5 !important; text-decoration:none !important; }</style></head><body>%@</body></html>";
         [self.webView loadHTMLString:[NSString stringWithFormat:HTMLFormat, screen.content] baseURL:[NSURL URLWithString:@"http://"]];
     } else {
         self.titleLabel.text = @"";

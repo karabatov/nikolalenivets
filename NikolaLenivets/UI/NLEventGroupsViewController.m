@@ -15,6 +15,7 @@
 #import "NSAttributedString+Kerning.h"
 #import "NSDate+CompareDays.h"
 #import "UIViewController+CustomButtons.h"
+#import "NSString+SoftHyphenation.h"
 
 #import <UIImageView+WebCache.h>
 
@@ -175,8 +176,8 @@
 
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
         paragraphStyle.hyphenationFactor = 1.f;
-        NSMutableAttributedString *attributedTitle = [[NSMutableAttributedString alloc] initWithString:group.name attributes:@{ NSParagraphStyleAttributeName: paragraphStyle, NSForegroundColorAttributeName: self.eventTitleLabel.textColor, NSFontAttributeName: self.eventTitleLabel.font }];
-        NSMutableAttributedString *attributedPrice = [[NSMutableAttributedString alloc] initWithString:group.ticketprice attributes:@{ NSParagraphStyleAttributeName: paragraphStyle, NSForegroundColorAttributeName: self.ticketPriceLabel.textColor, NSFontAttributeName: self.ticketPriceLabel.font}];
+        NSMutableAttributedString *attributedTitle = [[NSMutableAttributedString alloc] initWithString:[group.name softHyphenatedString] attributes:@{ NSParagraphStyleAttributeName: paragraphStyle, NSForegroundColorAttributeName: self.eventTitleLabel.textColor, NSFontAttributeName: self.eventTitleLabel.font }];
+        NSMutableAttributedString *attributedPrice = [[NSMutableAttributedString alloc] initWithString:[group.ticketprice softHyphenatedString] attributes:@{ NSParagraphStyleAttributeName: paragraphStyle, NSForegroundColorAttributeName: self.ticketPriceLabel.textColor, NSFontAttributeName: self.ticketPriceLabel.font}];
 
         self.eventTitleLabel.attributedText = attributedTitle;
         self.ticketPriceLabel.attributedText = attributedPrice;

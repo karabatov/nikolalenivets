@@ -9,6 +9,7 @@
 #import "NLAboutDeveloperController.h"
 #import "UIViewController+CustomButtons.h"
 #import "NSAttributedString+Kerning.h"
+#import "NSString+SoftHyphenation.h"
 
 @interface NLAboutDeveloperController ()
 
@@ -74,7 +75,7 @@
     paragraphStyle.hyphenationFactor = 1.f;
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     paragraphStyle.lineSpacing = 0.f;
-    NSMutableAttributedString *mainStr = [[NSMutableAttributedString alloc] initWithAttributedString:[NSAttributedString kernedStringForString:@"Создаем интерес к\u00a0вашему делу, превращаем аудиторию в\u00a0ваших клиентов. С\u00a0помощью сайтов, приложений, спецпроектов и\u00a0медиа.\n\nНаши стратегии, идеи и\u00a0технологии. Ваши большие\u00a0цели." withFontName:NLSerifFont fontSize:17 kerning:.2f andColor:textColor]];
+    NSMutableAttributedString *mainStr = [[NSMutableAttributedString alloc] initWithAttributedString:[NSAttributedString kernedStringForString:[@"Создаем интерес к\u00a0вашему делу, превращаем аудиторию в\u00a0ваших клиентов. С\u00a0помощью сайтов, приложений, спецпроектов и\u00a0медиа.\n\nНаши стратегии, идеи и\u00a0технологии. Ваши большие\u00a0цели." softHyphenatedString] withFontName:NLSerifFont fontSize:17 kerning:.2f andColor:textColor]];
     [mainStr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:(NSRange){0, [mainStr length]}];
     self.mainText = [[UILabel alloc] init];
     [self.mainText setTranslatesAutoresizingMaskIntoConstraints:NO];

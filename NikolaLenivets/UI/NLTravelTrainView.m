@@ -9,6 +9,7 @@
 #import "NLTravelTrainView.h"
 #import "NLBorderedLabel.h"
 #import "NSAttributedString+Kerning.h"
+#import "NSString+SoftHyphenation.h"
 
 @implementation NLTravelTrainView
 
@@ -40,7 +41,7 @@
     [titleLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     titleLabel.attributedText = [NSAttributedString kernedStringForString:@"НА ЭЛЕКТРИЧКЕ" withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor];
 
-    NSMutableAttributedString *trainText = [[NSMutableAttributedString alloc] initWithAttributedString:[NSAttributedString kernedStringForString:@"От Киевского вокзала на\u00a0электричках Киевского направления до\u00a0станций Малоярославец или Калуга–1." withFontName:NLSerifFont fontSize:18.f kerning:0.2f andColor:textColor]];
+    NSMutableAttributedString *trainText = [[NSMutableAttributedString alloc] initWithAttributedString:[NSAttributedString kernedStringForString:[@"От Киевского вокзала на\u00a0электричках Киевского направления до\u00a0станций Малоярославец или Калуга–1." softHyphenatedString] withFontName:NLSerifFont fontSize:18.f kerning:0.2f andColor:textColor]];
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.hyphenationFactor = 1.f;
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;

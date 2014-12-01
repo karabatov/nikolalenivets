@@ -21,6 +21,7 @@
 #import "NSDate+CompareDays.h"
 #import "NLGalleryTransition.h"
 #import "UIColor+HexValues.h"
+#import "NSString+SoftHyphenation.h"
 
 typedef enum {
     ShowingNewsEntry,
@@ -297,7 +298,7 @@ typedef enum {
                                   // TODO: Make text tighter somehow.
                                   NSKernAttributeName: [NSNumber numberWithFloat:0.f],
                                   NSParagraphStyleAttributeName: paragraphStyle };
-    NSAttributedString *title = [[NSAttributedString alloc] initWithString:titleString attributes:attributes];
+    NSAttributedString *title = [[NSAttributedString alloc] initWithString:[titleString softHyphenatedString] attributes:attributes];
     return title;
 }
 

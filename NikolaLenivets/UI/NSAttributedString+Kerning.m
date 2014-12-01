@@ -8,6 +8,7 @@
 
 #import "NSAttributedString+Kerning.h"
 #import "NSString+StripHTMLTags.h"
+#import "NSString+SoftHyphenation.h"
 
 @implementation NSAttributedString (Kerning)
 
@@ -67,10 +68,9 @@
                                   // TODO: Make text tighter somehow.
                                   NSKernAttributeName: [NSNumber numberWithFloat:0.f],
                                   NSParagraphStyleAttributeName: paragraphStyle };
-    NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString:titleString attributes:attributes];
+    NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString:[titleString softHyphenatedString] attributes:attributes];
     return title;
 }
-
 
 + (NSAttributedString *)attributedStringForDateMonth:(NSString *)monthString
 {
@@ -93,7 +93,7 @@
                                   NSForegroundColorAttributeName: [UIColor colorWithRed:37.f/255.f green:37.f/255.f blue:37.f/255.f alpha:1.f],
                                   NSKernAttributeName: [NSNumber numberWithFloat:0.5f],
                                   NSParagraphStyleAttributeName: paragraphStyle };
-    NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString:titleString attributes:attributes];
+    NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString:[titleString softHyphenatedString] attributes:attributes];
     return title;
 }
 
@@ -103,7 +103,7 @@
     // NSData *htmlData = [htmlString dataUsingEncoding:NSUTF8StringEncoding];
     // NSDictionary *options = @{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: [NSNumber numberWithInt:NSUTF8StringEncoding] };
     // NSMutableAttributedString *attributed = [[NSMutableAttributedString alloc] initWithData:htmlData options:options documentAttributes:nil error:nil];
-    NSMutableAttributedString *attributed = [[NSMutableAttributedString alloc] initWithString:[[htmlString stringByStrippingHTML] changeAccentsLettersToSymbols]];
+    NSMutableAttributedString *attributed = [[NSMutableAttributedString alloc] initWithString:[[[htmlString stringByStrippingHTML] softHyphenatedString] changeAccentsLettersToSymbols]];
     CFStringTrimWhitespace((CFMutableStringRef)[attributed mutableString]);
     NSRange range = {0, attributed.length};
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];

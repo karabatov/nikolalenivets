@@ -11,6 +11,7 @@
 #import "NSAttributedString+Kerning.h"
 #import "NLCircleLabel.h"
 #import "UIApplication+NLDirections.h"
+#import "NSString+SoftHyphenation.h"
 
 #define kNLCarSlider1Offset 379.f
 #define kNLCarMap1Offset 439.5f
@@ -131,7 +132,7 @@
 
     NLCircleLabel *circle1 = [[NLCircleLabel alloc] initWithNumber:1];
 
-    NSMutableAttributedString *text2 = [[NSMutableAttributedString alloc] initWithAttributedString:[NSAttributedString kernedStringForString:@"С Киевского шоссе поворот направо, на\u00a0Медынь.\n174\u00a0км от\u00a0МКАД, пост ДПС с\u00a0огромными буквами «Калуга»." withFontName:NLSerifFont fontSize:18.f kerning:0.2f andColor:textColor]];
+    NSMutableAttributedString *text2 = [[NSMutableAttributedString alloc] initWithAttributedString:[NSAttributedString kernedStringForString:[@"С Киевского шоссе поворот направо, на\u00a0Медынь.\n174\u00a0км от\u00a0МКАД, пост ДПС с\u00a0огромными буквами «Калуга»." softHyphenatedString] withFontName:NLSerifFont fontSize:18.f kerning:0.2f andColor:textColor]];
     [text2 addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [text2 length])];
 
     UILabel *content2 = [[UILabel alloc] init];
@@ -145,7 +146,7 @@
 
     NLCircleLabel *circle2 = [[NLCircleLabel alloc] initWithNumber:2];
 
-    NSMutableAttributedString *text3 = [[NSMutableAttributedString alloc] initWithAttributedString:[NSAttributedString kernedStringForString:@"В Кондрово поворот налево: на\u00a0Сени, Острожное." withFontName:NLSerifFont fontSize:18.f kerning:0.2f andColor:textColor]];
+    NSMutableAttributedString *text3 = [[NSMutableAttributedString alloc] initWithAttributedString:[NSAttributedString kernedStringForString:[@"В Кондрово поворот налево: на\u00a0Сени, Острожное." softHyphenatedString] withFontName:NLSerifFont fontSize:18.f kerning:0.2f andColor:textColor]];
     [text3 addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [text3 length])];
 
     UILabel *content3 = [[UILabel alloc] init];
@@ -159,7 +160,7 @@
 
     NLCircleLabel *circle3 = [[NLCircleLabel alloc] initWithNumber:3];
 
-    NSMutableAttributedString *text4 = [[NSMutableAttributedString alloc] initWithAttributedString:[NSAttributedString kernedStringForString:@"На T-образном перекрёстке поворот налево. На\u00a0горбатый мост через ж/д\u00a0пути." withFontName:NLSerifFont fontSize:18.f kerning:0.2f andColor:textColor]];
+    NSMutableAttributedString *text4 = [[NSMutableAttributedString alloc] initWithAttributedString:[NSAttributedString kernedStringForString:[@"На T-образном перекрёстке поворот налево. На\u00a0горбатый мост через ж/д\u00a0пути." softHyphenatedString] withFontName:NLSerifFont fontSize:18.f kerning:0.2f andColor:textColor]];
     [text4 addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [text4 length])];
 
     UILabel *content4 = [[UILabel alloc] init];
@@ -173,7 +174,7 @@
 
     NLCircleLabel *circle4 = [[NLCircleLabel alloc] initWithNumber:4];
 
-    NSMutableAttributedString *text5 = [[NSMutableAttributedString alloc] initWithAttributedString:[NSAttributedString kernedStringForString:@"В Острожном на\u00a0большом перекрёстке налево." withFontName:NLSerifFont fontSize:18.f kerning:0.2f andColor:textColor]];
+    NSMutableAttributedString *text5 = [[NSMutableAttributedString alloc] initWithAttributedString:[NSAttributedString kernedStringForString:[@"В Острожном на\u00a0большом перекрёстке налево." softHyphenatedString] withFontName:NLSerifFont fontSize:18.f kerning:0.2f andColor:textColor]];
     [text5 addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [text5 length])];
 
     UILabel *content5 = [[UILabel alloc] init];
@@ -187,7 +188,7 @@
 
     NLCircleLabel *circle5 = [[NLCircleLabel alloc] initWithNumber:5];
 
-    NSMutableAttributedString *text6 = [[NSMutableAttributedString alloc] initWithAttributedString:[NSAttributedString kernedStringForString:@"Не доезжая несколько метров до\u00a0Звизжей, поворот направо на\u00a0грунтовую дорогу. После поворота спуск с\u00a0крутой горки." withFontName:NLSerifFont fontSize:18.f kerning:0.2f andColor:textColor]];
+    NSMutableAttributedString *text6 = [[NSMutableAttributedString alloc] initWithAttributedString:[NSAttributedString kernedStringForString:[@"Не доезжая несколько метров до\u00a0Звизжей, поворот направо на\u00a0грунтовую дорогу. После поворота спуск с\u00a0крутой горки." softHyphenatedString] withFontName:NLSerifFont fontSize:18.f kerning:0.2f andColor:textColor]];
     [text6 addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [text6 length])];
 
     UILabel *content6 = [[UILabel alloc] init];
