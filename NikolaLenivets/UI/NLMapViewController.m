@@ -14,6 +14,9 @@
 #import "NLMapFilter.h"
 #import "NLCategory.h"
 #import "UIViewController+CustomButtons.h"
+#import "UIImage+Tint.h"
+
+#define kNLDefaultImageTint [UIColor colorWithRed:52.f/255.f green:6.f/255.f blue:180.f/255.f alpha:1.f]
 
 @implementation NLMapViewController
 {
@@ -66,7 +69,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     self.view.frame = [[AppDelegate window] frame];
 
     _shouldResetSelectedView = YES;
@@ -188,6 +191,33 @@
         default:
             break;
     }
+}
+
+
+- (UIImage *)imageForAnnotation:(NLPlaceAnnotation *)annotation selected:(BOOL)selected
+{
+    static NSDictionary *categoryMapping;
+    static dispatch_once_t token;
+    dispatch_once(&token, ^{
+        categoryMapping = @{ @"инфраструктура": [UIColor colorWithRed:225.f/255.f green:80.f/255.f blue:0.f alpha:1.f] };
+    });
+    UIColor *imageTint;
+    NLPlace *place = annotation.place;
+    if (place && [place.categories count] > 0) {
+        NLCategory *category = [place.categories firstObject];
+        imageTint = [categoryMapping objectForKey:[category.name lowercaseString]];
+    }
+    if (!imageTint) {
+        imageTint = kNLDefaultImageTint;
+    }
+    UIImage *placeImage;
+    if (selected) {
+        placeImage = [[UIImage imageNamed:@"map-object-selected.png"] imageTintedWithColor:imageTint];
+    } else {
+        placeImage = [[UIImage imageNamed:@"map-object.png"] imageTintedWithColor:imageTint];
+    }
+    NSLog(@"Place image = %@", placeImage);
+    return placeImage;
 }
 
 
@@ -396,7 +426,7 @@
     if (reload) {
         if (_selectedView) {
             [self.mapView selectAnnotation:nil animated:NO];
-            _selectedView.image = [UIImage imageNamed:@"map-object.png"];
+            _selectedView.image = [self imageForAnnotation:_selectedView.annotation selected:NO];
         }
         [self hidePlaceMenu];
         [self updatePlaces];
@@ -421,19 +451,19 @@
         MKAnnotationView *userLocationView = [mapView dequeueReusableAnnotationViewWithIdentifier:userReuseId];
         if (!userLocationView) {
             userLocationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:userReuseId];
-            userLocationView.image = [UIImage imageNamed:@"userlocation.png"];
-            userLocationView.centerOffset = CGPointMake(0, userLocationView.centerOffset.y - userLocationView.image.size.height / 2);
         }
+        userLocationView.image = [UIImage imageNamed:@"userlocation.png"];
+        userLocationView.centerOffset = CGPointMake(0, userLocationView.centerOffset.y - userLocationView.image.size.height / 2);
         return userLocationView;
     } else if ([annotation isKindOfClass:[NLPlaceAnnotation class]]) {
         MKAnnotationView *placeLocationView = [mapView dequeueReusableAnnotationViewWithIdentifier:placeReuseId];
         if (!placeLocationView) {
             placeLocationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:placeReuseId];
-            placeLocationView.image = [UIImage imageNamed:@"map-object.png"];
-            placeLocationView.centerOffset = CGPointMake(0, placeLocationView.centerOffset.y - placeLocationView.image.size.height / 2);
-            placeLocationView.canShowCallout = NO;
-            placeLocationView.enabled = YES;
         }
+        placeLocationView.image = [self imageForAnnotation:annotation selected:NO];
+        placeLocationView.centerOffset = CGPointMake(0, placeLocationView.centerOffset.y - placeLocationView.image.size.height / 2);
+        placeLocationView.canShowCallout = NO;
+        placeLocationView.enabled = YES;
         if (_showingPlace && ((NLPlaceAnnotation *)annotation).place.id == _showingPlace.id) {
             _selectedView = placeLocationView;
         }
@@ -449,10 +479,10 @@
     if ([view.annotation isKindOfClass:[NLPlaceAnnotation class]]) {
         if (_selectedView) {
             [self.mapView selectAnnotation:nil animated:NO];
-            _selectedView.image = [UIImage imageNamed:@"map-object.png"];
+            _selectedView.image = [self imageForAnnotation:_selectedView.annotation selected:NO];
         }
         _selectedView = view;
-        view.image = [UIImage imageNamed:@"map-object-selected.png"];
+        view.image = [self imageForAnnotation:view.annotation selected:YES];
         CLLocationCoordinate2D newCenter = CLLocationCoordinate2DMake(view.annotation.coordinate.latitude + 0.0025f, view.annotation.coordinate.longitude);
         MKCoordinateRegion region = {.center = newCenter, .span = MKCoordinateSpanMake(0.01, 0.01)};
         _shouldResetSelectedView = NO;
@@ -467,7 +497,7 @@
 {
     if ([view.annotation isKindOfClass:[NLPlaceAnnotation class]]) {
         [self.mapView selectAnnotation:nil animated:NO];
-        view.image = [UIImage imageNamed:@"map-object.png"];
+        view.image = [self imageForAnnotation:view.annotation selected:NO];
     }
 }
 
@@ -476,7 +506,7 @@
 {
     if (_selectedView && _shouldResetSelectedView) {
         [self.mapView selectAnnotation:nil animated:NO];
-        _selectedView.image = [UIImage imageNamed:@"map-object.png"];
+        _selectedView.image = [self imageForAnnotation:_selectedView.annotation selected:NO];
         [self hidePlaceMenu];
     }
 }

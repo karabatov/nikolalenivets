@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Semyon Novikov. All rights reserved.
 //
 
-@import UIKit;
-@import MapKit;
+#import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 #import "NLPlaceAnnotation.h"
 
 @interface NLMapViewController : UIViewController <MKMapViewDelegate>

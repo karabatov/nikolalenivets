@@ -49,6 +49,7 @@
 		4FD010FA192CC940002F5836 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FD010F9192CC940002F5836 /* Crashlytics.framework */; };
 		4FF31086D2714E0584DB4E63 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 213D00ACD702461FA5EF0EB3 /* libPods.a */; };
 		D11503981A2B932300467710 /* UIApplication+NLDirections.m in Sources */ = {isa = PBXBuildFile; fileRef = D11503971A2B932300467710 /* UIApplication+NLDirections.m */; };
+		D115039F1A2CC90200467710 /* UIImage+Tint.m in Sources */ = {isa = PBXBuildFile; fileRef = D115039E1A2CC90200467710 /* UIImage+Tint.m */; };
 		D115713219D2DE3400A9E433 /* travel-car-220km@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D115712D19D2DE3400A9E433 /* travel-car-220km@2x.png */; };
 		D115713319D2DE3400A9E433 /* travel-car-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D115712E19D2DE3400A9E433 /* travel-car-arrow@2x.png */; };
 		D115713419D2DE3400A9E433 /* travel-car-circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D115712F19D2DE3400A9E433 /* travel-car-circle@2x.png */; };
@@ -231,6 +232,8 @@
 		9F010D930FC743A086F2A9F3 /* libPods-NikolaLenivetsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NikolaLenivetsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D11503961A2B932300467710 /* UIApplication+NLDirections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIApplication+NLDirections.h"; path = "UI/UIApplication+NLDirections.h"; sourceTree = "<group>"; };
 		D11503971A2B932300467710 /* UIApplication+NLDirections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIApplication+NLDirections.m"; path = "UI/UIApplication+NLDirections.m"; sourceTree = "<group>"; };
+		D115039D1A2CC90200467710 /* UIImage+Tint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Tint.h"; path = "UI/UIImage+Tint.h"; sourceTree = "<group>"; };
+		D115039E1A2CC90200467710 /* UIImage+Tint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Tint.m"; path = "UI/UIImage+Tint.m"; sourceTree = "<group>"; };
 		D115712D19D2DE3400A9E433 /* travel-car-220km@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "travel-car-220km@2x.png"; sourceTree = "<group>"; };
 		D115712E19D2DE3400A9E433 /* travel-car-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "travel-car-arrow@2x.png"; sourceTree = "<group>"; };
 		D115712F19D2DE3400A9E433 /* travel-car-circle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "travel-car-circle@2x.png"; sourceTree = "<group>"; };
@@ -428,6 +431,8 @@
 				D12C72F51A1421F0007BB112 /* NSString+StripHTMLTags.m */,
 				D11503961A2B932300467710 /* UIApplication+NLDirections.h */,
 				D11503971A2B932300467710 /* UIApplication+NLDirections.m */,
+				D115039D1A2CC90200467710 /* UIImage+Tint.h */,
+				D115039E1A2CC90200467710 /* UIImage+Tint.m */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1018,6 +1023,7 @@
 				4F10D2AF19374ABB00F6658D /* NLStaticScreenViewController.m in Sources */,
 				D17177B3196D047200521D72 /* NSAttributedString+Kerning.m in Sources */,
 				D1CAF03319C2ED0D001C5270 /* NLSearchViewController.m in Sources */,
+				D115039F1A2CC90200467710 /* UIImage+Tint.m in Sources */,
 				D19C04331973FF7E006A086B /* NLAttributedLabel.m in Sources */,
 				D1CAF02C19C06666001C5270 /* UIImage+Grayscale.m in Sources */,
 				4F390E7D18ED731E00131934 /* NLNewsEntry.m in Sources */,
