@@ -52,6 +52,11 @@
     self.eventDatesTitleLabel.font =
     self.eventPriceTitleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:self.eventTypeLabel.font.pointSize];
 
+    self.eventTypeLabel.text = NSLocalizedString(@"ФЕСТИВАЛЬ", @"FESTIVAL");
+    [self.eventTypeLabel sizeToFit];
+    self.eventDatesTitleLabel.text = NSLocalizedString(@"ДАТЫ", @"DATES");
+    self.eventPriceTitleLabel.text = NSLocalizedString(@"ЦЕНА", @"PRICES");
+
     self.eventTitleLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:40];
     self.eventDatesLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:18];
     self.eventDateDashLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:18];

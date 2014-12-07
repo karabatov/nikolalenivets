@@ -55,6 +55,9 @@
 /* NEXT */
 "ДАЛЕЕ" = "NEXT";
 
+/* DATES */
+"ДАТЫ" = "DATES";
+
 /* Car - villages */
 "ДЕРЕВНИ" = "VILLAGES";
 
@@ -160,8 +163,14 @@
 /* (No Commment) */
 "ТЕЛЕФОН ТАКСИ" = "TAXI PHONE NUMBER";
 
+/* FESTIVAL */
+"ФЕСТИВАЛЬ" = "FESTIVAL";
+
 /* FESTIVAL TRANSFER */
 "ФЕСТИВАЛЬНЫЙ ТРАНСФЕР" = "FESTIVAL TRANSFER";
+
+/* PRICES */
+"ЦЕНА" = "PRICE";
 
 /* TRAIN */
 "ЭЛЕКТРИЧКА" = "TRAIN";

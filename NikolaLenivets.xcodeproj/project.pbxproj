@@ -266,8 +266,7 @@
 		D15C68D71A344CCA00622A37 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D15C68D81A344CCA00622A37 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D15C68D91A344CCA00622A37 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D15C68DB1A344F1900622A37 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/NLEventGroupsViewController.xib; sourceTree = "<group>"; };
-		D15C68DD1A344F1B00622A37 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NLEventGroupsViewController.xib; sourceTree = "<group>"; };
+		D15C68DE1A34865600622A37 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/NLEventGroupsViewController.xib; sourceTree = "<group>"; };
 		D16373A919B76B9700A89A98 /* NLMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLMenuButton.h; path = UI/NLMenuButton.h; sourceTree = "<group>"; };
 		D16373AA19B76B9700A89A98 /* NLMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLMenuButton.m; path = UI/NLMenuButton.m; sourceTree = "<group>"; };
 		D16373AC19B8910C00A89A98 /* menu-circle-green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-circle-green@2x.png"; sourceTree = "<group>"; };
@@ -1112,8 +1111,7 @@
 		D15C68DC1A344F1900622A37 /* NLEventGroupsViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D15C68DB1A344F1900622A37 /* ru */,
-				D15C68DD1A344F1B00622A37 /* en */,
+				D15C68DE1A34865600622A37 /* ru */,
 			);
 			name = NLEventGroupsViewController.xib;
 			path = UI;
