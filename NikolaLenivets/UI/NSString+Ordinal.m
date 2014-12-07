@@ -13,6 +13,15 @@
 
 + (NSString *)ordinalRepresentationWithNumber:(NSInteger)ordinal
 {
+    if (![[NSLocale currentLocale].localeIdentifier isEqualToString:@"ru_RU"]) {
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+        [formatter setNumberStyle:NSNumberFormatterSpellOutStyle];
+
+        NSString *ordinalStr = [formatter stringFromNumber:@(ordinal)];
+        
+        return ordinalStr;
+    }
+
     switch (ordinal) {
         case 0:
             return @"нулевой";
