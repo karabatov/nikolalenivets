@@ -461,7 +461,7 @@
             placeLocationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:placeReuseId];
         }
         placeLocationView.image = [self imageForAnnotation:annotation selected:NO];
-        placeLocationView.centerOffset = CGPointMake(0, placeLocationView.centerOffset.y - placeLocationView.image.size.height / 2);
+        placeLocationView.centerOffset = CGPointMake(0, -placeLocationView.image.size.height / 2);
         placeLocationView.canShowCallout = NO;
         placeLocationView.enabled = YES;
         if (_showingPlace && ((NLPlaceAnnotation *)annotation).place.id == _showingPlace.id) {
