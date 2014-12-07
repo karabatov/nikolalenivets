@@ -1,3 +1,9 @@
 /* (No Commment) */
 "CFBundleDisplayName" = "Nikola-Lenivets";
 
+/* (No Commment) */
+"CFBundleName" = "${PRODUCT_NAME}";
+
+/* (No Commment) */
+"CFBundleShortVersionString" = "1.0";
+

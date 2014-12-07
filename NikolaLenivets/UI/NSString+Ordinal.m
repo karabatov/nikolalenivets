@@ -13,7 +13,7 @@
 
 + (NSString *)ordinalRepresentationWithNumber:(NSInteger)ordinal
 {
-    if (![[NSLocale currentLocale].localeIdentifier isEqualToString:@"ru_RU"]) {
+    if (![[NSLocale currentLocale].localeIdentifier containsString:@"ru"]) {
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
         [formatter setNumberStyle:NSNumberFormatterSpellOutStyle];
 

@@ -31,6 +31,21 @@
 /* Developer support email */
 "mailto:support@golovamedia.ru" = "mailto:support@golovamedia.ru";
 
+/* travel-bus-route.png */
+"travel-bus-route.png" = "travel-bus-route-en.png";
+
+/* travel-car-220km.png */
+"travel-car-220km.png" = "travel-car-220km-en.png";
+
+/* travel-car-map.png */
+"travel-car-map.png" = "travel-car-map-en.png";
+
+/* travel-festival-transfer.png */
+"travel-festival-transfer.png" = "travel-festival-transfer-en.png";
+
+/* travel-text-title.png */
+"travel-text-title.png" = "travel-text-title-en.png";
+
 /* BUS */
 "АВТОБУС" = "BUS";
 

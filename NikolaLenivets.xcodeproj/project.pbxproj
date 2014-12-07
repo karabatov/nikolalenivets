@@ -50,7 +50,6 @@
 		D11503981A2B932300467710 /* UIApplication+NLDirections.m in Sources */ = {isa = PBXBuildFile; fileRef = D11503971A2B932300467710 /* UIApplication+NLDirections.m */; };
 		D115039F1A2CC90200467710 /* UIImage+Tint.m in Sources */ = {isa = PBXBuildFile; fileRef = D115039E1A2CC90200467710 /* UIImage+Tint.m */; };
 		D11503A21A2CE64F00467710 /* NSString+SoftHyphenation.m in Sources */ = {isa = PBXBuildFile; fileRef = D11503A11A2CE64F00467710 /* NSString+SoftHyphenation.m */; };
-		D115713219D2DE3400A9E433 /* travel-car-220km@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D115712D19D2DE3400A9E433 /* travel-car-220km@2x.png */; };
 		D115713319D2DE3400A9E433 /* travel-car-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D115712E19D2DE3400A9E433 /* travel-car-arrow@2x.png */; };
 		D115713419D2DE3400A9E433 /* travel-car-circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D115712F19D2DE3400A9E433 /* travel-car-circle@2x.png */; };
 		D115713519D2DE3400A9E433 /* travel-car-gps@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D115713019D2DE3400A9E433 /* travel-car-gps@2x.png */; };
@@ -72,12 +71,19 @@
 		D153DDAF19CDE9D10091BB4A /* button-back-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D153DDAE19CDE9D10091BB4A /* button-back-white@2x.png */; };
 		D15C68D31A344B6A00622A37 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D15C68D51A344B6A00622A37 /* Localizable.strings */; };
 		D15C68DA1A344F1900622A37 /* NLEventGroupsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D15C68DC1A344F1900622A37 /* NLEventGroupsViewController.xib */; };
+		D15C68E41A34A63100622A37 /* travel-bus-route-en@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D15C68DF1A34A63100622A37 /* travel-bus-route-en@2x.png */; };
+		D15C68E51A34A63100622A37 /* travel-car-220km-en@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D15C68E01A34A63100622A37 /* travel-car-220km-en@2x.png */; };
+		D15C68E61A34A63100622A37 /* travel-car-map-en@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D15C68E11A34A63100622A37 /* travel-car-map-en@2x.png */; };
+		D15C68E71A34A63100622A37 /* travel-festival-transfer-en@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D15C68E21A34A63100622A37 /* travel-festival-transfer-en@2x.png */; };
+		D15C68E81A34A63100622A37 /* travel-text-title-en@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D15C68E31A34A63100622A37 /* travel-text-title-en@2x.png */; };
+		D15C68EA1A34A69D00622A37 /* travel-car-220km@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D15C68E91A34A69D00622A37 /* travel-car-220km@2x.png */; };
+		D15C68EC1A34A78F00622A37 /* travel-text-title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D15C68EB1A34A78F00622A37 /* travel-text-title@2x.png */; };
+		D15C68EE1A34B25400622A37 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D15C68F01A34B25400622A37 /* Default-568h@2x.png */; };
 		D16373AB19B76B9700A89A98 /* NLMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D16373AA19B76B9700A89A98 /* NLMenuButton.m */; };
 		D16373AD19B8910C00A89A98 /* menu-circle-green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D16373AC19B8910C00A89A98 /* menu-circle-green@2x.png */; };
 		D17177B3196D047200521D72 /* NSAttributedString+Kerning.m in Sources */ = {isa = PBXBuildFile; fileRef = D17177B2196D047200521D72 /* NSAttributedString+Kerning.m */; };
 		D17283FA19D1747A005459CA /* NLTravelScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = D17283F919D1747A005459CA /* NLTravelScreenController.m */; };
 		D17283FD19D1820D005459CA /* NLTravelTypeSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D17283FC19D1820D005459CA /* NLTravelTypeSectionView.m */; };
-		D17283FF19D18644005459CA /* travel-text-title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D17283FE19D18644005459CA /* travel-text-title@2x.png */; };
 		D172840219D1B574005459CA /* NLTravelHeliView.m in Sources */ = {isa = PBXBuildFile; fileRef = D172840119D1B574005459CA /* NLTravelHeliView.m */; };
 		D172840519D1B73E005459CA /* NLBorderedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D172840419D1B73E005459CA /* NLBorderedLabel.m */; };
 		D172840919D1B8A4005459CA /* travel-heli-coords@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D172840819D1B8A4005459CA /* travel-heli-coords@2x.png */; };
@@ -150,7 +156,6 @@
 		D1F5018919BA1BDC00CDFA5E /* search-normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1F5018719BA1BDC00CDFA5E /* search-normal@2x.png */; };
 		D1F5018A19BA1BDC00CDFA5E /* search-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1F5018819BA1BDC00CDFA5E /* search-selected@2x.png */; };
 		D1F5018E19BA1F0C00CDFA5E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1F5018C19BA1F0C00CDFA5E /* Default@2x.png */; };
-		D1F5019019BA1F7600CDFA5E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1F5018F19BA1F7600CDFA5E /* Default-568h@2x.png */; };
 		D1F5019219BA24C900CDFA5E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D1F5019119BA24C900CDFA5E /* Default.png */; };
 /* End PBXBuildFile section */
 
@@ -235,7 +240,6 @@
 		D115039E1A2CC90200467710 /* UIImage+Tint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Tint.m"; path = "UI/UIImage+Tint.m"; sourceTree = "<group>"; };
 		D11503A01A2CE64F00467710 /* NSString+SoftHyphenation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SoftHyphenation.h"; sourceTree = "<group>"; };
 		D11503A11A2CE64F00467710 /* NSString+SoftHyphenation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SoftHyphenation.m"; sourceTree = "<group>"; };
-		D115712D19D2DE3400A9E433 /* travel-car-220km@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "travel-car-220km@2x.png"; sourceTree = "<group>"; };
 		D115712E19D2DE3400A9E433 /* travel-car-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "travel-car-arrow@2x.png"; sourceTree = "<group>"; };
 		D115712F19D2DE3400A9E433 /* travel-car-circle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "travel-car-circle@2x.png"; sourceTree = "<group>"; };
 		D115713019D2DE3400A9E433 /* travel-car-gps@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "travel-car-gps@2x.png"; sourceTree = "<group>"; };
@@ -262,11 +266,20 @@
 		D153DDAE19CDE9D10091BB4A /* button-back-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-back-white@2x.png"; sourceTree = "<group>"; };
 		D15C68CF1A343EC900622A37 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D15C68D01A343EC900622A37 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D15C68D41A344B6A00622A37 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D15C68D71A344CCA00622A37 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D15C68D81A344CCA00622A37 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D15C68D91A344CCA00622A37 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D15C68DE1A34865600622A37 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/NLEventGroupsViewController.xib; sourceTree = "<group>"; };
+		D15C68DF1A34A63100622A37 /* travel-bus-route-en@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "travel-bus-route-en@2x.png"; sourceTree = "<group>"; };
+		D15C68E01A34A63100622A37 /* travel-car-220km-en@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "travel-car-220km-en@2x.png"; sourceTree = "<group>"; };
+		D15C68E11A34A63100622A37 /* travel-car-map-en@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "travel-car-map-en@2x.png"; sourceTree = "<group>"; };
+		D15C68E21A34A63100622A37 /* travel-festival-transfer-en@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "travel-festival-transfer-en@2x.png"; sourceTree = "<group>"; };
+		D15C68E31A34A63100622A37 /* travel-text-title-en@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "travel-text-title-en@2x.png"; sourceTree = "<group>"; };
+		D15C68E91A34A69D00622A37 /* travel-car-220km@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "travel-car-220km@2x.png"; sourceTree = "<group>"; };
+		D15C68EB1A34A78F00622A37 /* travel-text-title@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "travel-text-title@2x.png"; sourceTree = "<group>"; };
+		D15C68ED1A34AE8600622A37 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D15C68EF1A34B25400622A37 /* ru */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ru; path = "ru.lproj/Default-568h@2x.png"; sourceTree = "<group>"; };
+		D15C68F11A34B25600622A37 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "en.lproj/Default-568h@2x.png"; sourceTree = "<group>"; };
 		D16373A919B76B9700A89A98 /* NLMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLMenuButton.h; path = UI/NLMenuButton.h; sourceTree = "<group>"; };
 		D16373AA19B76B9700A89A98 /* NLMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLMenuButton.m; path = UI/NLMenuButton.m; sourceTree = "<group>"; };
 		D16373AC19B8910C00A89A98 /* menu-circle-green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-circle-green@2x.png"; sourceTree = "<group>"; };
@@ -276,7 +289,6 @@
 		D17283F919D1747A005459CA /* NLTravelScreenController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLTravelScreenController.m; path = UI/NLTravelScreenController.m; sourceTree = "<group>"; };
 		D17283FB19D1820D005459CA /* NLTravelTypeSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLTravelTypeSectionView.h; path = UI/NLTravelTypeSectionView.h; sourceTree = "<group>"; };
 		D17283FC19D1820D005459CA /* NLTravelTypeSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLTravelTypeSectionView.m; path = UI/NLTravelTypeSectionView.m; sourceTree = "<group>"; };
-		D17283FE19D18644005459CA /* travel-text-title@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "travel-text-title@2x.png"; sourceTree = "<group>"; };
 		D172840019D1B574005459CA /* NLTravelHeliView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLTravelHeliView.h; path = UI/NLTravelHeliView.h; sourceTree = "<group>"; };
 		D172840119D1B574005459CA /* NLTravelHeliView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLTravelHeliView.m; path = UI/NLTravelHeliView.m; sourceTree = "<group>"; };
 		D172840319D1B73E005459CA /* NLBorderedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLBorderedLabel.h; path = UI/NLBorderedLabel.h; sourceTree = "<group>"; };
@@ -380,7 +392,6 @@
 		D1F5018719BA1BDC00CDFA5E /* search-normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-normal@2x.png"; sourceTree = "<group>"; };
 		D1F5018819BA1BDC00CDFA5E /* search-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-selected@2x.png"; sourceTree = "<group>"; };
 		D1F5018C19BA1F0C00CDFA5E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		D1F5018F19BA1F7600CDFA5E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		D1F5019119BA24C900CDFA5E /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -472,12 +483,17 @@
 				D172840F19D1CF32005459CA /* travel-bus-route@2x.png */,
 				D172840D19D1C86B005459CA /* travel-festival-transfer@2x.png */,
 				D172840819D1B8A4005459CA /* travel-heli-coords@2x.png */,
-				D17283FE19D18644005459CA /* travel-text-title@2x.png */,
-				D115712D19D2DE3400A9E433 /* travel-car-220km@2x.png */,
+				D15C68E91A34A69D00622A37 /* travel-car-220km@2x.png */,
 				D115712E19D2DE3400A9E433 /* travel-car-arrow@2x.png */,
 				D115712F19D2DE3400A9E433 /* travel-car-circle@2x.png */,
 				D115713019D2DE3400A9E433 /* travel-car-gps@2x.png */,
 				D115713119D2DE3400A9E433 /* travel-car-map@2x.png */,
+				D15C68DF1A34A63100622A37 /* travel-bus-route-en@2x.png */,
+				D15C68E01A34A63100622A37 /* travel-car-220km-en@2x.png */,
+				D15C68E11A34A63100622A37 /* travel-car-map-en@2x.png */,
+				D15C68E21A34A63100622A37 /* travel-festival-transfer-en@2x.png */,
+				D15C68EB1A34A78F00622A37 /* travel-text-title@2x.png */,
+				D15C68E31A34A63100622A37 /* travel-text-title-en@2x.png */,
 				4F10D2AC19374ABB00F6658D /* NLStaticScreenViewController.h */,
 				4F10D2AD19374ABB00F6658D /* NLStaticScreenViewController.m */,
 				4F10D2AE19374ABB00F6658D /* NLStaticScreenViewController.xib */,
@@ -772,7 +788,7 @@
 				D1783EF7197CFFF000A92AA3 /* tile-empty.png */,
 				D1CAF02219C0435C001C5270 /* unread-indicator-gray@2x.png */,
 				D1CAF02319C0435C001C5270 /* unread-indicator-red@2x.png */,
-				D1F5018F19BA1F7600CDFA5E /* Default-568h@2x.png */,
+				D15C68F01A34B25400622A37 /* Default-568h@2x.png */,
 				D1F5018C19BA1F0C00CDFA5E /* Default@2x.png */,
 				D1F5019119BA24C900CDFA5E /* Default.png */,
 			);
@@ -894,6 +910,7 @@
 				D1CAF02519C0435C001C5270 /* unread-indicator-red@2x.png in Resources */,
 				D19956E419C83D1300904137 /* event-alarm@2x.png in Resources */,
 				D1C545F119C9A9EE004781B1 /* gradient-green@2x.png in Resources */,
+				D15C68EA1A34A69D00622A37 /* travel-car-220km@2x.png in Resources */,
 				D15C68D31A344B6A00622A37 /* Localizable.strings in Resources */,
 				D172841019D1CF32005459CA /* travel-bus-route@2x.png in Resources */,
 				4FCBE0081907A054002F37A3 /* BookmanC.otf in Resources */,
@@ -905,11 +922,12 @@
 				D1F5018E19BA1F0C00CDFA5E /* Default@2x.png in Resources */,
 				D1783F2D1982824C00A92AA3 /* map-filter@2x.png in Resources */,
 				D1783F381982934E00A92AA3 /* map-checked@2x.png in Resources */,
-				D115713219D2DE3400A9E433 /* travel-car-220km@2x.png in Resources */,
+				D15C68E61A34A63100622A37 /* travel-car-map-en@2x.png in Resources */,
 				D12CDF051A1EBE0400CB6FA5 /* black_left_shadow@2x.png in Resources */,
 				D1783F07197E622B00A92AA3 /* blue-gradient.png in Resources */,
 				D1783EEC197C417000A92AA3 /* route-b@2x.png in Resources */,
 				D1783EF0197C438200A92AA3 /* userlocation@2x.png in Resources */,
+				D15C68E71A34A63100622A37 /* travel-festival-transfer-en@2x.png in Resources */,
 				D19C04401975319E006A086B /* NLEventsCollectionViewController.xib in Resources */,
 				D12CDF061A1EBE0400CB6FA5 /* black_right_shadow@2x.png in Resources */,
 				D115713319D2DE3400A9E433 /* travel-car-arrow@2x.png in Resources */,
@@ -920,6 +938,7 @@
 				D177EDEF1A115E84001070D3 /* about-question@2x.png in Resources */,
 				D1783F351982921500A92AA3 /* NLMapFilterCell.xib in Resources */,
 				D1C545EF19C9A7C0004781B1 /* about-image@2x.jpg in Resources */,
+				D15C68EC1A34A78F00622A37 /* travel-text-title@2x.png in Resources */,
 				D1783F2719826F1B00A92AA3 /* place-info@2x.png in Resources */,
 				D1783F08197E622B00A92AA3 /* blue-gradient@2x.png in Resources */,
 				4F22FD871937288B0075C1A0 /* NLPlacesViewController.xib in Resources */,
@@ -938,19 +957,21 @@
 				D1F5019219BA24C900CDFA5E /* Default.png in Resources */,
 				D153DDAF19CDE9D10091BB4A /* button-back-white@2x.png in Resources */,
 				D172840E19D1C86B005459CA /* travel-festival-transfer@2x.png in Resources */,
-				D1F5019019BA1F7600CDFA5E /* Default-568h@2x.png in Resources */,
+				D15C68EE1A34B25400622A37 /* Default-568h@2x.png in Resources */,
 				D1F5018919BA1BDC00CDFA5E /* search-normal@2x.png in Resources */,
 				4F0D75B1193DEADF00E78AA5 /* circle@2x.png in Resources */,
 				D153DDAB19CDB9C10091BB4A /* button-back-black@2x.png in Resources */,
 				4F0D759E193D9C6400E78AA5 /* white_menu@2x.png in Resources */,
 				4F89A42C1957CFF60045D1A3 /* NLMapViewController.xib in Resources */,
+				D15C68E51A34A63100622A37 /* travel-car-220km-en@2x.png in Resources */,
 				D1783EEF197C438200A92AA3 /* userlocation.png in Resources */,
+				D15C68E41A34A63100622A37 /* travel-bus-route-en@2x.png in Resources */,
 				D1A3D7CF197634AD00C53E06 /* menu_button@2x.png in Resources */,
+				D15C68E81A34A63100622A37 /* travel-text-title-en@2x.png in Resources */,
 				D1F5018619BA169E00CDFA5E /* compass-white@2x.png in Resources */,
 				D19C0425196EF44C006A086B /* map-minus@2x.png in Resources */,
 				D1B7ADD0196BCBCE0057C1E2 /* MonoCondensedC.otf in Resources */,
 				D153DDAD19CDE88C0091BB4A /* menu_button_white@2x.png in Resources */,
-				D17283FF19D18644005459CA /* travel-text-title@2x.png in Resources */,
 				D138D4EF19C8E47100E5B4F4 /* search-rotating@2x.png in Resources */,
 				4F9C414A18EA84640038090E /* Images.xcassets in Resources */,
 			);
@@ -1102,8 +1123,8 @@
 		D15C68D51A344B6A00622A37 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D15C68D41A344B6A00622A37 /* ru */,
 				D15C68D81A344CCA00622A37 /* en */,
+				D15C68ED1A34AE8600622A37 /* ru */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1115,6 +1136,15 @@
 			);
 			name = NLEventGroupsViewController.xib;
 			path = UI;
+			sourceTree = "<group>";
+		};
+		D15C68F01A34B25400622A37 /* Default-568h@2x.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D15C68EF1A34B25400622A37 /* ru */,
+				D15C68F11A34B25600622A37 /* en */,
+			);
+			name = "Default-568h@2x.png";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1195,6 +1225,7 @@
 			baseConfigurationReference = 74E178DDEDDC3851747EF626 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1214,6 +1245,7 @@
 			baseConfigurationReference = 4C339608A2FAAFA64154FEF6 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Yakushev Lev (G9HB4UV686)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

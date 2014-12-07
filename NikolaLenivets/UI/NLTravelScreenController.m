@@ -109,7 +109,7 @@
     [self.topMenuWrapper setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.topMenuWrapper setBackgroundColor:[UIColor whiteColor]];
 
-    self.screenTitle = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"travel-text-title.png"]];
+    self.screenTitle = [[UIImageView alloc] initWithImage:[UIImage imageNamed:NSLocalizedString(@"travel-text-title.png", @"travel-text-title.png")]];
     [self.screenTitle setTranslatesAutoresizingMaskIntoConstraints:NO];
 
     UIView *dash1 = [[UIView alloc] init];
@@ -162,7 +162,7 @@
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[navbar(64)][menu]|" options:kNilOptions metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[navbar][content]|" options:kNilOptions metrics:nil views:views]];
     [self.menuWrapper addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[topMenu]|" options:kNilOptions metrics:nil views:views]];
-    [self.topMenuWrapper addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-16-[sTitle(287)]-(>=1)-|" options:kNilOptions metrics:nil views:views]];
+    [self.topMenuWrapper addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-16-[sTitle(300)]-(>=1)-|" options:kNilOptions metrics:nil views:views]];
     [self.topMenuWrapper addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[dash1]|" options:kNilOptions metrics:nil views:views]];
     [self.topMenuWrapper addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-9-[sTitle(150)]-(>=1)-[dash1(0.5)]|" options:kNilOptions metrics:nil views:views]];
     [self.navBarView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-14-[menuBtn(44)]-(>=1)-|" options:kNilOptions metrics:nil views:views]];

@@ -40,7 +40,7 @@
     [titleLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     titleLabel.attributedText = [NSAttributedString kernedStringForString:NSLocalizedString(@"НА АВТОБУСЕ", @"BY BUS") withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor];
 
-    UIImageView *transferImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"travel-bus-route.png"]];
+    UIImageView *transferImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:NSLocalizedString(@"travel-bus-route.png", @"travel-bus-route.png")]];
     [transferImage setTranslatesAutoresizingMaskIntoConstraints:NO];
 
     NLBorderedLabel *borderedTimeLabel = [[NLBorderedLabel alloc] initWithAttributedText:[NSAttributedString kernedStringForString:NSLocalizedString(@"ЕЖЕДНЕВНО В 14:30 И 15:30", @"Bus timetable") withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor]];

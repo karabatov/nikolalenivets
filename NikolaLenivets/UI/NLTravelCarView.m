@@ -70,7 +70,7 @@
     [titleLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     titleLabel.attributedText = [NSAttributedString kernedStringForString:NSLocalizedString(@"НА АВТОМОБИЛЕ", @"BY CAR") withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor];
 
-    UIImageView *image1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"travel-car-220km.png"]];
+    UIImageView *image1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:NSLocalizedString(@"travel-car-220km.png", @"travel-car-220km.png")]];
     [image1 setTranslatesAutoresizingMaskIntoConstraints:NO];
 
     UIView *dash1 = [[UIView alloc] init];
@@ -127,7 +127,7 @@
     self.arrow1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"travel-car-arrow.png"]];
     [self.arrow1 setTranslatesAutoresizingMaskIntoConstraints:NO];
 
-    UIImageView *map1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"travel-car-map.png"]];
+    UIImageView *map1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:NSLocalizedString(@"travel-car-map.png", @"travel-car-map.png")]];
     [map1 setTranslatesAutoresizingMaskIntoConstraints:NO];
 
     NLCircleLabel *circle1 = [[NLCircleLabel alloc] initWithNumber:1];
@@ -239,7 +239,7 @@
 
     NSDictionary *views = NSDictionaryOfVariableBindings(titleLabel, image1, dash1, header1, bordered1, dash2, header2, content1, dash3, header3, image2, slider1, dash4, header4, _arrow1, map1, circle1, content2, dash5, circle2, content3, dash6, circle3, content4, dash7, circle4, content5, dash8, circle5, content6, dash9, header5);
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=1)-[titleLabel]-(>=1)-|" options:kNilOptions metrics:nil views:views]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(16.5)-[image1(163)]-(>=1)-|" options:kNilOptions metrics:nil views:views]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(16.5)-[image1(183)]-(>=1)-|" options:kNilOptions metrics:nil views:views]];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[dash1]|" options:kNilOptions metrics:nil views:views]];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=1)-[header1]-(>=1)-|" options:kNilOptions metrics:nil views:views]];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=1)-[bordered1]-(>=1)-|" options:kNilOptions metrics:nil views:views]];

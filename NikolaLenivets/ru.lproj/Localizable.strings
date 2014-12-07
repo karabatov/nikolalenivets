@@ -31,6 +31,21 @@
 /* Developer support email */
 "mailto:support@golovamedia.ru" = "mailto:support@golovamedia.ru";
 
+/* travel-bus-route.png */
+"travel-bus-route.png" = "travel-bus-route.png";
+
+/* travel-car-220km.png */
+"travel-car-220km.png" = "travel-car-220km.png";
+
+/* travel-car-map.png */
+"travel-car-map.png" = "travel-car-map.png";
+
+/* travel-festival-transfer.png */
+"travel-festival-transfer.png" = "travel-festival-transfer.png";
+
+/* travel-text-title.png */
+"travel-text-title.png" = "travel-text-title.png";
+
 /* BUS */
 "АВТОБУС" = "АВТОБУС";
 
@@ -55,8 +70,14 @@
 /* NEXT */
 "ДАЛЕЕ" = "ДАЛЕЕ";
 
+/* DATES */
+"ДАТЫ" = "ДАТЫ";
+
 /* Car - villages */
 "ДЕРЕВНИ" = "ДЕРЕВНИ";
+
+/* DISTANCE TO PLACE */
+"ДО МЕСТА" = "ДО МЕСТА";
 
 /* GET THERE */
 "ДОБРАТЬСЯ" = "ДОБРАТЬСЯ";
@@ -160,8 +181,14 @@
 /* (No Commment) */
 "ТЕЛЕФОН ТАКСИ" = "ТЕЛЕФОН ТАКСИ";
 
+/* FESTIVAL */
+"ФЕСТИВАЛЬ" = "ФЕСТИВАЛЬ";
+
 /* FESTIVAL TRANSFER */
 "ФЕСТИВАЛЬНЫЙ ТРАНСФЕР" = "ФЕСТИВАЛЬНЫЙ ТРАНСФЕР";
+
+/* PRICES */
+"ЦЕНА" = "ЦЕНА";
 
 /* TRAIN */
 "ЭЛЕКТРИЧКА" = "ЭЛЕКТРИЧКА";

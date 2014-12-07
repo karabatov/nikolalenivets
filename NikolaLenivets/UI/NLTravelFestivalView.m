@@ -48,7 +48,7 @@
     [dashLine setTranslatesAutoresizingMaskIntoConstraints:NO];
     [dashLine setBackgroundColor:[UIColor colorWithRed:244.f/255.f green:241.f/255.f blue:241.f/255.f alpha:1.f]];
 
-    UIImageView *transferImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"travel-festival-transfer.png"]];
+    UIImageView *transferImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:NSLocalizedString(@"travel-festival-transfer.png", @"travel-festival-transfer.png")]];
     [transferImage setTranslatesAutoresizingMaskIntoConstraints:NO];
 
     NLBorderedLabel *borderedTimeLabel = [[NLBorderedLabel alloc] initWithAttributedText:[NSAttributedString kernedStringForString:NSLocalizedString(@"4 ЧАСА", @"Festival - 4 hours") withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor]];
