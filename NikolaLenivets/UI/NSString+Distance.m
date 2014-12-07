@@ -14,9 +14,9 @@
 + (NSString *)stringFromDistance:(CLLocationDistance)distance
 {
     if (distance > 999) {
-        return [NSString stringWithFormat:@"%0.2f км", distance / 1000];
+        return [NSString stringWithFormat:NSLocalizedString(@"%0.2f км", @"Distance in km format"), distance / 1000];
     } else {
-        return [NSString stringWithFormat:@"%0.0f м", distance];
+        return [NSString stringWithFormat:NSLocalizedString(@"%0.0f м", @"Distance in m format"), distance];
     }
 }
 

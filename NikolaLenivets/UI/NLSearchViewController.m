@@ -178,7 +178,7 @@ typedef enum : NSUInteger {
     NSDictionary *attributes = @{ NSFontAttributeName: [UIFont fontWithName:NLMonospacedBoldFont size:37],
                                   NSForegroundColorAttributeName: [UIColor colorWithRed:202.f/255.f green:202.f/255.f blue:202.f/255.f alpha:1.f],
                                   NSKernAttributeName: [NSNumber numberWithFloat:4.3f] };
-    self.placeholderLabel.attributedText = [[NSAttributedString alloc] initWithString:@"ПОИСК" attributes:attributes];
+    self.placeholderLabel.attributedText = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"ПОИСК", @"SEARCH") attributes:attributes];
     self.placeholderLabel.alpha = 0.f;
     self.placeholderLabel.hidden = YES;
 
@@ -615,11 +615,11 @@ typedef enum : NSUInteger {
     }
     NSString *sectionTitle = [self.searchSections objectAtIndex:section];
     if ([sectionTitle isEqualToString:kSearchSectionNews]) {
-        header.sectionTitle = @"НОВОСТИ";
+        header.sectionTitle = NSLocalizedString(@"НОВОСТИ", @"NEWS");
     } else if ([sectionTitle isEqualToString:kSearchSectionEvents]) {
-        header.sectionTitle = @"СОБЫТИЯ";
+        header.sectionTitle = NSLocalizedString(@"СОБЫТИЯ", @"EVENTS");
     } else if ([sectionTitle isEqualToString:kSearchSectionPlaces]) {
-        header.sectionTitle = @"МЕСТА";
+        header.sectionTitle = NSLocalizedString(@"МЕСТА", @"PLACES");
     }
     return header;
 }
@@ -836,7 +836,7 @@ typedef enum : NSUInteger {
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.title = @"ПОИСК";
+    self.title = NSLocalizedString(@"ПОИСК", @"SEARCH");
     NLDetailsViewController *details = nil;
     switch (collectionView.tag) {
         case NLCollectionViewTypeNews:
@@ -862,7 +862,7 @@ typedef enum : NSUInteger {
             break;
     }
     if (details) {
-        details.title = @"ПОИСК";
+        details.title = NSLocalizedString(@"ПОИСК", @"SEARCH");
         [self.navigationController pushViewController:details animated:YES];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [collectionView reloadItemsAtIndexPaths:@[ indexPath ]];

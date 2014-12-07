@@ -48,7 +48,7 @@
     [super viewDidLoad];
     [self prepareState];
     self.view.frame = [UIScreen mainScreen].bounds;
-    self.titleLabel.attributedText = [NSAttributedString kernedStringForString:@"СОБЫТИЯ"];
+    self.titleLabel.attributedText = [NSAttributedString kernedStringForString:NSLocalizedString(@"СОБЫТИЯ", @"EVENTS")];
     self.itemsCountLabel.font = [UIFont fontWithName:NLMonospacedBoldFont size:9.0f];
 
     self.collectionView.dataSource = self;
@@ -182,7 +182,7 @@
         if ([_eventsByDay[indexPath.section] count] != 0) {
             NLEvent *event = [_eventsByDay[indexPath.section] firstObject];
             sectionView.dateLabel.text = [[[event startDate] stringWithFormat:DefaultDateFormat] uppercaseString];
-            sectionView.dayOrderLabel.text = [[NSString stringWithFormat:@"%@ %@", @"день", [NSString ordinalRepresentationWithNumber:indexPath.section + 1]] uppercaseString];
+            sectionView.dayOrderLabel.text = [[NSString stringWithFormat:NSLocalizedString(@"%@ %@", @"Ordinal day string format"), NSLocalizedString(@"день", @"Ordinal day - day string"), [NSString ordinalRepresentationWithNumber:indexPath.section + 1]] uppercaseString];
         }
         return sectionView;
     } else {

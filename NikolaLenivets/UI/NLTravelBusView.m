@@ -38,25 +38,25 @@
 
     UILabel *titleLabel = [[UILabel alloc] init];
     [titleLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-    titleLabel.attributedText = [NSAttributedString kernedStringForString:@"НА АВТОБУСЕ" withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor];
+    titleLabel.attributedText = [NSAttributedString kernedStringForString:NSLocalizedString(@"НА АВТОБУСЕ", @"BY BUS") withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor];
 
     UIImageView *transferImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"travel-bus-route.png"]];
     [transferImage setTranslatesAutoresizingMaskIntoConstraints:NO];
 
-    NLBorderedLabel *borderedTimeLabel = [[NLBorderedLabel alloc] initWithAttributedText:[NSAttributedString kernedStringForString:@"ЕЖЕДНЕВНО В 14:30 И 15:30" withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor]];
+    NLBorderedLabel *borderedTimeLabel = [[NLBorderedLabel alloc] initWithAttributedText:[NSAttributedString kernedStringForString:NSLocalizedString(@"ЕЖЕДНЕВНО В 14:30 И 15:30", @"Bus timetable") withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor]];
     [borderedTimeLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
 
     UILabel *nextLabel = [[UILabel alloc] init];
     [nextLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-    nextLabel.attributedText = [NSAttributedString kernedStringForString:@"ДАЛЕЕ" withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor];
+    nextLabel.attributedText = [NSAttributedString kernedStringForString:NSLocalizedString(@"ДАЛЕЕ", @"NEXT") withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor];
 
     UILabel *taxiLabel = [[UILabel alloc] init];
     [taxiLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-    taxiLabel.attributedText = [NSAttributedString kernedStringForString:@"На такси до Никола-Ленивца." withFontName:NLSerifFont fontSize:18.f kerning:0.2f andColor:textColor];
+    taxiLabel.attributedText = [NSAttributedString kernedStringForString:NSLocalizedString(@"На такси до Никола-Ленивца.", @"Bus - take a taxi to NL") withFontName:NLSerifFont fontSize:18.f kerning:0.2f andColor:textColor];
 
     UILabel *taxiHeaderLabel = [[UILabel alloc] init];
     [taxiHeaderLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-    taxiHeaderLabel.attributedText = [NSAttributedString kernedStringForString:@"ТЕЛЕФОН ТАКСИ" withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor];
+    taxiHeaderLabel.attributedText = [NSAttributedString kernedStringForString:NSLocalizedString(@"ТЕЛЕФОН ТАКСИ", @"Bus - taxi phone") withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor];
 
     UILabel *taxiPhoneLabel = [[UILabel alloc] init];
     [taxiPhoneLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -90,7 +90,7 @@
 
 - (void)dialPhone
 {
-    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Отменить" destructiveButtonTitle:nil otherButtonTitles:@"Скопировать номер", @"Позвонить +74843448500", nil];
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Отменить", @"Bus phone popup - Cancel") destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Скопировать номер", @"Bus phone popup - Copy number"), NSLocalizedString(@"Позвонить +74843448500", @"Bus phone popup - Call number"), nil];
     [sheet showInView:self];
 }
 

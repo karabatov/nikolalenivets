@@ -108,12 +108,12 @@ enum {
 
     _nikolaLabel = [[UILabel alloc] init];
     [_nikolaLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-    _nikolaLabel.attributedText = [NSAttributedString kernedStringForString:@"НИКОЛА" withFontSize:18 kerning:2.2f andColor:[UIColor colorWithRed:37.f/255.f green:37.f/255.f blue:37.f/255.f alpha:1.f]];
+    _nikolaLabel.attributedText = [NSAttributedString kernedStringForString:NSLocalizedString(@"НИКОЛА", @"NIKOLA") withFontSize:18 kerning:2.2f andColor:[UIColor colorWithRed:37.f/255.f green:37.f/255.f blue:37.f/255.f alpha:1.f]];
     [_nikolaLabel setBackgroundColor:[UIColor clearColor]];
 
     _lenivetsLabel = [[UILabel alloc] init];
     [_lenivetsLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-    _lenivetsLabel.attributedText = [NSAttributedString kernedStringForString:@"ЛЕНИВЕЦ" withFontSize:18 kerning:2.2f andColor:[UIColor colorWithRed:37.f/255.f green:37.f/255.f blue:37.f/255.f alpha:1.f]];
+    _lenivetsLabel.attributedText = [NSAttributedString kernedStringForString:NSLocalizedString(@"ЛЕНИВЕЦ", @"LENIVETS") withFontSize:18 kerning:2.2f andColor:[UIColor colorWithRed:37.f/255.f green:37.f/255.f blue:37.f/255.f alpha:1.f]];
     [_lenivetsLabel setBackgroundColor:[UIColor clearColor]];
 
     _compass = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"compass-white.png"]];
@@ -147,12 +147,12 @@ enum {
     _directionsButton.tag = Way;
     _aboutButton.tag = About;
 
-    _newsButton.title = @"НОВОСТИ";
-    _eventsButton.title = @"СОБЫТИЯ";
-    _mapButton.title = @"КАРТА";
-    _placesButton.title = @"МЕСТА";
-    _directionsButton.title = @"ДОБРАТЬСЯ";
-    _aboutButton.title = @"О ПАРКЕ";
+    _newsButton.title = NSLocalizedString(@"НОВОСТИ", @"NEWS");
+    _eventsButton.title = NSLocalizedString(@"СОБЫТИЯ", @"EVENTS");
+    _mapButton.title = NSLocalizedString(@"КАРТА", @"MAP");
+    _placesButton.title = NSLocalizedString(@"МЕСТА", @"PLACES");
+    _directionsButton.title = NSLocalizedString(@"ДОБРАТЬСЯ", @"GET THERE");
+    _aboutButton.title = NSLocalizedString(@"О ПАРКЕ", @"ABOUT");
 
     self.newsCounter = [[UILabel alloc] init];
     self.eventsCounter = [[UILabel alloc] init];
@@ -294,25 +294,25 @@ enum {
     switch (sender.tag) {
         case News: {
             _newsList = [NLItemsListController new];
-            _newsList.title = @"НОВОСТИ";
+            _newsList.title = NSLocalizedString(@"НОВОСТИ", @"NEWS");
             [self.navigationController pushViewController:_newsList animated:YES];
             break;
         }
         case Events: {
             _eventsController = [NLEventGroupsViewController new];
-            _eventsController.title = @"СОБЫТИЯ";
+            _eventsController.title = NSLocalizedString(@"СОБЫТИЯ", @"EVENTS");
             [self.navigationController pushViewController:_eventsController animated:YES];
             break;
         }
         case Places: {
             _placesController = [NLPlacesViewController new];
-            _placesController.title = @"МЕСТА";
+            _placesController.title = NSLocalizedString(@"МЕСТА", @"PLACES");
             [self.navigationController pushViewController:_placesController animated:YES];
             break;
         }
         case Way: {
             _driveScreen = [[NLTravelScreenController alloc] init];
-            _driveScreen.title = @"ДОБРАТЬСЯ";
+            _driveScreen.title = NSLocalizedString(@"ДОБРАТЬСЯ", @"GET THERE");
             [self.navigationController pushViewController:_driveScreen animated:YES];
             break;
         }
@@ -324,12 +324,12 @@ enum {
         }
         case About:
             _aboutController = [[NLAboutScreenController alloc] initWithScreenNamed:@"about"];
-            _aboutController.title = @"О ПАРКЕ";
+            _aboutController.title = NSLocalizedString(@"О ПАРКЕ", @"ABOUT");
             [self.navigationController pushViewController:_aboutController animated:YES];
             break;
         case Search:
             _searchController = [[NLSearchViewController alloc] init];
-            _searchController.title = @"ПОИСК";
+            _searchController.title = NSLocalizedString(@"ПОИСК", @"SEARCH");
             [self.navigationController pushViewController:_searchController animated:YES];
             break;
         default:

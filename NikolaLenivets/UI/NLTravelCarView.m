@@ -68,7 +68,7 @@
 
     UILabel *titleLabel = [[UILabel alloc] init];
     [titleLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-    titleLabel.attributedText = [NSAttributedString kernedStringForString:@"НА АВТОМОБИЛЕ" withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor];
+    titleLabel.attributedText = [NSAttributedString kernedStringForString:NSLocalizedString(@"НА АВТОМОБИЛЕ", @"BY CAR") withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor];
 
     UIImageView *image1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"travel-car-220km.png"]];
     [image1 setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -79,9 +79,9 @@
 
     UILabel *header1 = [[UILabel alloc] init];
     [header1 setTranslatesAutoresizingMaskIntoConstraints:NO];
-    header1.attributedText = [NSAttributedString kernedStringForString:@"РАСЧЕТНОЕ ВРЕМЯ В ПУТИ" withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor];
+    header1.attributedText = [NSAttributedString kernedStringForString:NSLocalizedString(@"РАСЧЕТНОЕ ВРЕМЯ В ПУТИ", @"Car - Estimated travel time") withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor];
 
-    NLBorderedLabel *bordered1 = [[NLBorderedLabel alloc] initWithAttributedText:[NSAttributedString kernedStringForString:@"3,5 ЧАСА" withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor]];
+    NLBorderedLabel *bordered1 = [[NLBorderedLabel alloc] initWithAttributedText:[NSAttributedString kernedStringForString:NSLocalizedString(@"3,5 ЧАСА", @"Car - 3.5 hours") withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor]];
 
     UIView *dash2 = [[UIView alloc] init];
     [dash2 setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -89,9 +89,9 @@
 
     UILabel *header2 = [[UILabel alloc] init];
     [header2 setTranslatesAutoresizingMaskIntoConstraints:NO];
-    header2.attributedText = [NSAttributedString kernedStringForString:@"ДЕРЕВНИ" withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor];
+    header2.attributedText = [NSAttributedString kernedStringForString:NSLocalizedString(@"ДЕРЕВНИ", @"Car - villages") withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor];
 
-    NSMutableAttributedString *text1 = [[NSMutableAttributedString alloc] initWithAttributedString:[NSAttributedString kernedStringForString:@"Звизжи\nНикола-Ленивец\nКольцово" withFontName:NLSerifFont fontSize:18.f kerning:0.2f andColor:textColor]];
+    NSMutableAttributedString *text1 = [[NSMutableAttributedString alloc] initWithAttributedString:[NSAttributedString kernedStringForString:NSLocalizedString(@"Звизжи\nНикола-Ленивец\nКольцово", @"Car - village names") withFontName:NLSerifFont fontSize:18.f kerning:0.2f andColor:textColor]];
     [text1 addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [text1 length])];
 
     UILabel *content1 = [[UILabel alloc] init];
@@ -105,7 +105,7 @@
 
     UILabel *header3 = [[UILabel alloc] init];
     [header3 setTranslatesAutoresizingMaskIntoConstraints:NO];
-    header3.attributedText = [NSAttributedString kernedStringForString:@"GPS КООРДИНАТЫ" withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor];
+    header3.attributedText = [NSAttributedString kernedStringForString:NSLocalizedString(@"GPS КООРДИНАТЫ", @"GPS COORDINATES") withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor];
 
     UIButton *image2 = [UIButton buttonWithType:UIButtonTypeCustom];
     [image2 setImage:[UIImage imageNamed:@"travel-car-gps.png"] forState:UIControlStateNormal];
@@ -122,7 +122,7 @@
 
     UILabel *header4 = [[UILabel alloc] init];
     [header4 setTranslatesAutoresizingMaskIntoConstraints:NO];
-    header4.attributedText = [NSAttributedString kernedStringForString:@"КАРТА" withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor];
+    header4.attributedText = [NSAttributedString kernedStringForString:NSLocalizedString(@"КАРТА", @"MAP") withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor];
 
     self.arrow1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"travel-car-arrow.png"]];
     [self.arrow1 setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -132,7 +132,7 @@
 
     NLCircleLabel *circle1 = [[NLCircleLabel alloc] initWithNumber:1];
 
-    NSMutableAttributedString *text2 = [[NSMutableAttributedString alloc] initWithAttributedString:[NSAttributedString kernedStringForString:[@"С Киевского шоссе поворот направо, на\u00a0Медынь.\n174\u00a0км от\u00a0МКАД, пост ДПС с\u00a0огромными буквами «Калуга»." softHyphenatedString] withFontName:NLSerifFont fontSize:18.f kerning:0.2f andColor:textColor]];
+    NSMutableAttributedString *text2 = [[NSMutableAttributedString alloc] initWithAttributedString:[NSAttributedString kernedStringForString:[NSLocalizedString(@"С Киевского шоссе поворот направо, на\u00a0Медынь.\n174\u00a0км от\u00a0МКАД, пост ДПС с\u00a0огромными буквами «Калуга».", @"Car - directions 1") softHyphenatedString] withFontName:NLSerifFont fontSize:18.f kerning:0.2f andColor:textColor]];
     [text2 addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [text2 length])];
 
     UILabel *content2 = [[UILabel alloc] init];
@@ -146,7 +146,7 @@
 
     NLCircleLabel *circle2 = [[NLCircleLabel alloc] initWithNumber:2];
 
-    NSMutableAttributedString *text3 = [[NSMutableAttributedString alloc] initWithAttributedString:[NSAttributedString kernedStringForString:[@"В Кондрово поворот налево: на\u00a0Сени, Острожное." softHyphenatedString] withFontName:NLSerifFont fontSize:18.f kerning:0.2f andColor:textColor]];
+    NSMutableAttributedString *text3 = [[NSMutableAttributedString alloc] initWithAttributedString:[NSAttributedString kernedStringForString:[NSLocalizedString(@"В Кондрово поворот налево: на\u00a0Сени, Острожное.", @"Car - directions 2") softHyphenatedString] withFontName:NLSerifFont fontSize:18.f kerning:0.2f andColor:textColor]];
     [text3 addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [text3 length])];
 
     UILabel *content3 = [[UILabel alloc] init];
@@ -160,7 +160,7 @@
 
     NLCircleLabel *circle3 = [[NLCircleLabel alloc] initWithNumber:3];
 
-    NSMutableAttributedString *text4 = [[NSMutableAttributedString alloc] initWithAttributedString:[NSAttributedString kernedStringForString:[@"На T-образном перекрёстке поворот налево. На\u00a0горбатый мост через ж/д\u00a0пути." softHyphenatedString] withFontName:NLSerifFont fontSize:18.f kerning:0.2f andColor:textColor]];
+    NSMutableAttributedString *text4 = [[NSMutableAttributedString alloc] initWithAttributedString:[NSAttributedString kernedStringForString:[NSLocalizedString(@"На T-образном перекрёстке поворот налево. На\u00a0горбатый мост через ж/д\u00a0пути.", @"Car - directions 3") softHyphenatedString] withFontName:NLSerifFont fontSize:18.f kerning:0.2f andColor:textColor]];
     [text4 addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [text4 length])];
 
     UILabel *content4 = [[UILabel alloc] init];
@@ -174,7 +174,7 @@
 
     NLCircleLabel *circle4 = [[NLCircleLabel alloc] initWithNumber:4];
 
-    NSMutableAttributedString *text5 = [[NSMutableAttributedString alloc] initWithAttributedString:[NSAttributedString kernedStringForString:[@"В Острожном на\u00a0большом перекрёстке налево." softHyphenatedString] withFontName:NLSerifFont fontSize:18.f kerning:0.2f andColor:textColor]];
+    NSMutableAttributedString *text5 = [[NSMutableAttributedString alloc] initWithAttributedString:[NSAttributedString kernedStringForString:[NSLocalizedString(@"В Острожном на\u00a0большом перекрёстке налево.", @"Car - directions 4") softHyphenatedString] withFontName:NLSerifFont fontSize:18.f kerning:0.2f andColor:textColor]];
     [text5 addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [text5 length])];
 
     UILabel *content5 = [[UILabel alloc] init];
@@ -188,7 +188,7 @@
 
     NLCircleLabel *circle5 = [[NLCircleLabel alloc] initWithNumber:5];
 
-    NSMutableAttributedString *text6 = [[NSMutableAttributedString alloc] initWithAttributedString:[NSAttributedString kernedStringForString:[@"Не доезжая несколько метров до\u00a0Звизжей, поворот направо на\u00a0грунтовую дорогу. После поворота спуск с\u00a0крутой горки." softHyphenatedString] withFontName:NLSerifFont fontSize:18.f kerning:0.2f andColor:textColor]];
+    NSMutableAttributedString *text6 = [[NSMutableAttributedString alloc] initWithAttributedString:[NSAttributedString kernedStringForString:[NSLocalizedString(@"Не доезжая несколько метров до\u00a0Звизжей, поворот направо на\u00a0грунтовую дорогу. После поворота спуск с\u00a0крутой горки.", @"Car - directions 5") softHyphenatedString] withFontName:NLSerifFont fontSize:18.f kerning:0.2f andColor:textColor]];
     [text6 addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [text6 length])];
 
     UILabel *content6 = [[UILabel alloc] init];
@@ -202,7 +202,7 @@
 
     UILabel *header5 = [[UILabel alloc] init];
     [header5 setTranslatesAutoresizingMaskIntoConstraints:NO];
-    header5.attributedText = [NSAttributedString kernedStringForString:@"ВЫ НА МЕСТЕ" withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor];
+    header5.attributedText = [NSAttributedString kernedStringForString:NSLocalizedString(@"ВЫ НА МЕСТЕ", @"Car - you have arrived") withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor];
 
     [self addSubview:titleLabel];
     [self addSubview:image1];

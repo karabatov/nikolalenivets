@@ -39,15 +39,15 @@
 
     UILabel *titleLabel = [[UILabel alloc] init];
     [titleLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-    titleLabel.attributedText = [NSAttributedString kernedStringForString:@"НА ВЕРТОЛЕТЕ" withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor];
+    titleLabel.attributedText = [NSAttributedString kernedStringForString:NSLocalizedString(@"НА ВЕРТОЛЕТЕ", @"BY HELICOPTER") withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor];
 
     UILabel *coordLabel = [[UILabel alloc] init];
     [coordLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-    coordLabel.attributedText = [NSAttributedString kernedStringForString:@"КООРДИНАТЫ ДЛЯ ПОСАДКИ" withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor];
+    coordLabel.attributedText = [NSAttributedString kernedStringForString:NSLocalizedString(@"КООРДИНАТЫ ДЛЯ ПОСАДКИ", @"Heli - landing coordinates") withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor];
 
     UILabel *travelTimeLabel = [[UILabel alloc] init];
     [travelTimeLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-    travelTimeLabel.attributedText = [NSAttributedString kernedStringForString:@"РАСЧЕТНОЕ ВРЕМЯ В ПУТИ" withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor];
+    travelTimeLabel.attributedText = [NSAttributedString kernedStringForString:NSLocalizedString(@"РАСЧЕТНОЕ ВРЕМЯ В ПУТИ", @"Heli - Estimated travel time") withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor];
 
     UIView *dashLine = [[UIView alloc] init];
     [dashLine setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -58,7 +58,7 @@
     [coordsImage setTranslatesAutoresizingMaskIntoConstraints:NO];
     [coordsImage addTarget:self action:@selector(coordsImageTapped) forControlEvents:UIControlEventTouchUpInside];
 
-    NLBorderedLabel *borderedTimeLabel = [[NLBorderedLabel alloc] initWithAttributedText:[NSAttributedString kernedStringForString:@"45 МИНУТ" withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor]];
+    NLBorderedLabel *borderedTimeLabel = [[NLBorderedLabel alloc] initWithAttributedText:[NSAttributedString kernedStringForString:NSLocalizedString(@"45 МИНУТ", @"Heli - 45 minutes") withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor]];
     [borderedTimeLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
 
     [self addSubview:titleLabel];

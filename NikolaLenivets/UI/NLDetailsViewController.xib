@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1552" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NLDetailsViewController">
@@ -102,13 +102,13 @@
                                         <action selector="infoButtonAction:" destination="-1" eventType="touchUpInside" id="kae-om-qDp"/>
                                     </connections>
                                 </button>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vvp-B6-tKE" userLabel="Place Image" customClass="AsyncImageView">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vvp-B6-tKE" userLabel="Place Image" customClass="AsyncImageView">
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" id="mN7-hY-lVO"/>
                                     </constraints>
                                 </imageView>
-                                <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blue-gradient.png" translatesAutoresizingMaskIntoConstraints="NO" id="t1q-pq-u48" userLabel="Blue gradient">
+                                <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="blue-gradient.png" translatesAutoresizingMaskIntoConstraints="NO" id="t1q-pq-u48" userLabel="Blue gradient">
                                     <constraints>
                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" id="AK1-1K-YgU"/>
                                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="233" id="oMA-uf-ks4"/>
@@ -127,12 +127,12 @@
                                     </constraints>
                                     <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES"/>
                                 </webView>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mgw-DY-1Xg" userLabel="Gallery Cover" customClass="AsyncImageView">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mgw-DY-1Xg" userLabel="Gallery Cover" customClass="AsyncImageView">
                                     <constraints>
                                         <constraint firstAttribute="height" id="64k-GY-hhM"/>
                                     </constraints>
                                 </imageView>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WcX-qz-D5Q">
+                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WcX-qz-D5Q">
                                     <state key="normal">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>

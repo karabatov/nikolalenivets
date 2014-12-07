@@ -139,7 +139,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NLNewsEntry *entry = [self entryForTable:tableView indexPath:indexPath];
     _details = [[NLDetailsViewController alloc] initWithEntry:entry];
-    _details.title = @"НОВОСТИ";
+    _details.title = NSLocalizedString(@"НОВОСТИ", @"NEWS");
     [self.navigationController pushViewController:_details animated:YES];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [tableView reloadRowsAtIndexPaths:@[ indexPath ] withRowAnimation:UITableViewRowAnimationAutomatic];

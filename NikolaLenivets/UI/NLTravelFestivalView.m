@@ -38,11 +38,11 @@
 
     UILabel *titleLabel = [[UILabel alloc] init];
     [titleLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-    titleLabel.attributedText = [NSAttributedString kernedStringForString:@"ФЕСТИВАЛЬНЫЙ ТРАНСФЕР" withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor];
+    titleLabel.attributedText = [NSAttributedString kernedStringForString:NSLocalizedString(@"ФЕСТИВАЛЬНЫЙ ТРАНСФЕР", @"FESTIVAL TRANSFER") withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor];
 
     UILabel *travelTimeLabel = [[UILabel alloc] init];
     [travelTimeLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-    travelTimeLabel.attributedText = [NSAttributedString kernedStringForString:@"РАСЧЕТНОЕ ВРЕМЯ В ПУТИ" withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor];
+    travelTimeLabel.attributedText = [NSAttributedString kernedStringForString:NSLocalizedString(@"РАСЧЕТНОЕ ВРЕМЯ В ПУТИ", @"Festival - estimated travel time") withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor];
 
     UIView *dashLine = [[UIView alloc] init];
     [dashLine setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -51,7 +51,7 @@
     UIImageView *transferImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"travel-festival-transfer.png"]];
     [transferImage setTranslatesAutoresizingMaskIntoConstraints:NO];
 
-    NLBorderedLabel *borderedTimeLabel = [[NLBorderedLabel alloc] initWithAttributedText:[NSAttributedString kernedStringForString:@"4 ЧАСА" withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor]];
+    NLBorderedLabel *borderedTimeLabel = [[NLBorderedLabel alloc] initWithAttributedText:[NSAttributedString kernedStringForString:NSLocalizedString(@"4 ЧАСА", @"Festival - 4 hours") withFontName:NLMonospacedFont fontSize:12.f kerning:0.7f andColor:textColor]];
     [borderedTimeLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
 
     UIButton *siteButton = [UIButton buttonWithType:UIButtonTypeCustom];

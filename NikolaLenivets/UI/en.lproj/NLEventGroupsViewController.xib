@@ -45,29 +45,26 @@
                     <rect key="frame" x="0.0" y="386" width="320" height="134"/>
                     <subviews>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="НОЧЬ НОВЫХ МЕДИА" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" preferredMaxLayoutWidth="144" translatesAutoresizingMaskIntoConstraints="NO" id="gS7-BB-T4z">
-                            <rect key="frame" x="10" y="24.5" width="144" height="41"/>
+                            <rect key="frame" x="10" y="24" width="144" height="41"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ФЕСТИВАЛЬ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FSN-ss-hnX">
-                            <rect key="frame" x="10" y="1" width="70.5" height="13.5"/>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FESTIVAL" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FSN-ss-hnX">
+                            <rect key="frame" x="10" y="1" width="51" height="13.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ЦЕНА" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="26" translatesAutoresizingMaskIntoConstraints="NO" id="eNv-XU-AMk">
-                            <rect key="frame" x="162" y="3" width="25.5" height="11"/>
-                            <constraints>
-                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="64" id="tNf-xK-2iw"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="PRICE" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNv-XU-AMk">
+                            <rect key="frame" x="162" y="0.0" width="33.5" height="13.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ДАТЫ" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="86" translatesAutoresizingMaskIntoConstraints="NO" id="ot7-Ol-Y9d">
-                            <rect key="frame" x="226" y="3" width="86" height="11"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DATES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ot7-Ol-Y9d">
+                            <rect key="frame" x="226" y="1" width="86" height="13.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -78,7 +75,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="400 Р" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" preferredMaxLayoutWidth="56" translatesAutoresizingMaskIntoConstraints="NO" id="Xa8-ir-0AD">
-                            <rect key="frame" x="162" y="106.5" width="56" height="14.5"/>
+                            <rect key="frame" x="162" y="106" width="56" height="14.5"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -162,18 +159,18 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bla-hA-7Xa">
-                            <rect key="frame" x="145.5" y="16.5" width="6.5" height="13.5"/>
+                            <rect key="frame" x="145" y="16" width="6.5" height="13.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Gn-yw-8hA" userLabel="Label - 2">
-                            <rect key="frame" x="157.5" y="16.5" width="6.5" height="13.5"/>
+                            <rect key="frame" x="157" y="16" width="6.5" height="13.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aK8-7j-fTQ">
-                            <rect key="frame" x="170" y="16.5" width="13" height="13.5"/>
+                            <rect key="frame" x="170" y="16" width="13" height="13.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.23000000000000001" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>

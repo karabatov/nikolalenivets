@@ -71,19 +71,19 @@
     [super setTag:tag];
     switch (tag) {
         case NLTravelTypeCar:
-            self.headerLabel.text = @"АВТОМОБИЛЬ";
+            self.headerLabel.text = NSLocalizedString(@"АВТОМОБИЛЬ", @"CAR");
             break;
         case NLTravelTypeTrain:
-            self.headerLabel.text = @"ЭЛЕКТРИЧКА";
+            self.headerLabel.text = NSLocalizedString(@"ЭЛЕКТРИЧКА", @"TRAIN");
             break;
         case NLTravelTypeBus:
-            self.headerLabel.text = @"АВТОБУС";
+            self.headerLabel.text = NSLocalizedString(@"АВТОБУС", @"BUS");
             break;
         case NLTravelTypeFestival:
-            self.headerLabel.text = @"ФЕСТИВАЛЬНЫЙ ТРАНСФЕР";
+            self.headerLabel.text = NSLocalizedString(@"ФЕСТИВАЛЬНЫЙ ТРАНСФЕР", @"FESTIVAL TRANSFER");
             break;
         case NLTravelTypeHeli:
-            self.headerLabel.text = @"ВЕРТОЛЕТ";
+            self.headerLabel.text = NSLocalizedString(@"ВЕРТОЛЕТ", @"HELICOPTER");
             break;
 
         default:

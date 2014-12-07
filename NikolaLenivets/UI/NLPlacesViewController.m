@@ -158,7 +158,7 @@
             return;
         }
         NLDetailsViewController *details = [[NLDetailsViewController alloc] initWithPlace:place currentLocation:_userLoc];
-        details.title = @"МЕСТА";
+        details.title = NSLocalizedString(@"МЕСТА", @"PLACES");
         [self.navigationController pushViewController:details animated:YES];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [collectionView reloadItemsAtIndexPaths:@[ indexPath ]];

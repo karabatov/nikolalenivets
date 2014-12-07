@@ -141,7 +141,7 @@ typedef enum {
             [self setUnreadStatus:_event.itemStatus];
             self.eventDayHeight.constant = 26;
             self.eventDayView.dateLabel.text = [[[_event startDate] stringWithFormat:DefaultDateFormat] uppercaseString];
-            self.eventDayView.dayOrderLabel.text = [[NSString stringWithFormat:@"%@ %@", @"день", [NSString ordinalRepresentationWithNumber:_eventGroupOrder]] uppercaseString];
+            self.eventDayView.dayOrderLabel.text = [[NSString stringWithFormat:NSLocalizedString(@"%@ %@", @"Ordinal day string format"), NSLocalizedString(@"день", @"Ordinal day - day string"), [NSString ordinalRepresentationWithNumber:_eventGroupOrder]] uppercaseString];
             [self.eventDayView.layer setBorderColor:borderGray.CGColor];
             [self.eventDayView.layer setBorderWidth:0.5f];
             webViewOffset += 25.5f;
@@ -155,7 +155,7 @@ typedef enum {
                 CLLocationDistance distance = [_place distanceFromLocation:_currentLocation];
                 self.countView.text = [[NSString stringFromDistance:distance] uppercaseString];
             } else {
-                self.countView.text = @"∞ КМ";
+                self.countView.text = NSLocalizedString(@"∞ КМ", @"Infinity kilometers");
             }
             [self setUnreadStatus:_place.itemStatus];
             self.titleLabelBottomSpace.constant = 0;

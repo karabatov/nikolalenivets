@@ -42,7 +42,7 @@
 {
     [super viewDidLoad];
 
-    self.title = @"РАЗРАБОТЧИК";
+    self.title = NSLocalizedString(@"РАЗРАБОТЧИК", @"DEVELOPER");
 
     [self.view setBackgroundColor:[UIColor whiteColor]];
 
@@ -69,13 +69,13 @@
     self.gmTitle = [[UILabel alloc] init];
     [self.gmTitle setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.gmTitle setNumberOfLines:1];
-    [self.gmTitle setAttributedText:[NSAttributedString kernedStringForString:@"Golova Media" withFontName:NLMonospacedBoldFont fontSize:16.f kerning:.2f andColor:textColor]];
+    [self.gmTitle setAttributedText:[NSAttributedString kernedStringForString:NSLocalizedString(@"Golova Media", @"Golova Media") withFontName:NLMonospacedBoldFont fontSize:16.f kerning:.2f andColor:textColor]];
 
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.hyphenationFactor = 1.f;
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     paragraphStyle.lineSpacing = 0.f;
-    NSMutableAttributedString *mainStr = [[NSMutableAttributedString alloc] initWithAttributedString:[NSAttributedString kernedStringForString:[@"Создаем интерес к\u00a0вашему делу, превращаем аудиторию в\u00a0ваших клиентов. С\u00a0помощью сайтов, приложений, спецпроектов и\u00a0медиа.\n\nНаши стратегии, идеи и\u00a0технологии. Ваши большие\u00a0цели." softHyphenatedString] withFontName:NLSerifFont fontSize:17 kerning:.2f andColor:textColor]];
+    NSMutableAttributedString *mainStr = [[NSMutableAttributedString alloc] initWithAttributedString:[NSAttributedString kernedStringForString:[NSLocalizedString(@"Создаем интерес к\u00a0вашему делу, превращаем аудиторию в\u00a0ваших клиентов. С\u00a0помощью сайтов, приложений, спецпроектов и\u00a0медиа.\n\nНаши стратегии, идеи и\u00a0технологии. Ваши большие\u00a0цели.", @"Golova Media description") softHyphenatedString] withFontName:NLSerifFont fontSize:17 kerning:.2f andColor:textColor]];
     [mainStr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:(NSRange){0, [mainStr length]}];
     self.mainText = [[UILabel alloc] init];
     [self.mainText setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -90,7 +90,7 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gmLogoTapped:)];
     [self.gmLogo addGestureRecognizer:tap];
 
-    NSString *versionText = [NSString stringWithFormat:@"Nikola Lenivets iOS App ver. %@\nТехническая поддержка — support@golovamedia.ru", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
+    NSString *versionText = [NSString stringWithFormat:NSLocalizedString(@"Nikola Lenivets iOS App ver. %@\nТехническая поддержка — support@golovamedia.ru", @"App version and techsupport"), [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
     self.versionLabel = [[UILabel alloc] init];
     [self.versionLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.versionLabel setNumberOfLines:0];
@@ -138,12 +138,12 @@
 
 - (void)versionLabelTapped:(UITapGestureRecognizer *)gesture
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto:support@golovamedia.ru"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:NSLocalizedString(@"mailto:support@golovamedia.ru", @"Developer support email")]];
 }
 
 - (void)gmLogoTapped:(UITapGestureRecognizer *)gesture
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://golovamedia.ru"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:NSLocalizedString(@"http://golovamedia.ru", @"Developer website")]];
 }
 
 - (void)goBack

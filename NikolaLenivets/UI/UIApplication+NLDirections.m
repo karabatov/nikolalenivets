@@ -14,7 +14,7 @@
 
 - (void)openDirectionsWithCoordinate:(CLLocationCoordinate2D)endingCoord
 {
-    NSDictionary *addressDict = @{ (NSString *)kABPersonAddressCityKey: @"Никола-Ленивец", (NSString *)kABPersonAddressStateKey: @"Калужская область", (NSString *)kABPersonAddressCountryKey: @"Россия", (NSString *)kABPersonAddressCountryCodeKey: @"RU" };
+    NSDictionary *addressDict = @{ (NSString *)kABPersonAddressCityKey: NSLocalizedString(@"Никола-Ленивец", @"Address - Nikola-Lenivets"), (NSString *)kABPersonAddressStateKey: NSLocalizedString(@"Калужская область", @"Address - Kaluzhskaya oblast"), (NSString *)kABPersonAddressCountryKey: NSLocalizedString(@"Россия", @"Address - Russia"), (NSString *)kABPersonAddressCountryCodeKey: @"RU" };
     MKPlacemark *endLocation = [[MKPlacemark alloc] initWithCoordinate:endingCoord addressDictionary:addressDict];
     MKMapItem *endingItem = [[MKMapItem alloc] initWithPlacemark:endLocation];
     NSMutableDictionary *launchOptions = [[NSMutableDictionary alloc] init];

@@ -28,7 +28,7 @@
         NSDictionary *attributes = @{ NSFontAttributeName: [UIFont fontWithName:NLMonospacedBoldFont size:18],
                                       NSForegroundColorAttributeName: [UIColor colorWithRed:202.f/255.f green:202.f/255.f blue:202.f/255.f alpha:1.f],
                                       NSKernAttributeName: [NSNumber numberWithFloat:2.2f] };
-        _nothingLabel.attributedText = [[NSAttributedString alloc] initWithString:@"НИЧЕГО НЕ НАЙДЕНО" attributes:attributes];
+        _nothingLabel.attributedText = [[NSAttributedString alloc] initWithString:NSLocalizedString(@"НИЧЕГО НЕ НАЙДЕНО", @"NOTHING FOUND") attributes:attributes];
     }
     return self;
 }

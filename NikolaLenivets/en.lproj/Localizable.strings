@@ -1,0 +1,174 @@
+/* Distance in m format */
+"%0.0f м" = "%0.0f m";
+
+/* Distance in km format */
+"%0.2f км" = "%0.2f km";
+
+/* Ordinal day string format */
+"%@ %@" = "%1$@ %2$@";
+
+/* Car - 3.5 hours */
+"3,5 ЧАСА" = "3.5 HOURS";
+
+/* Festival - 4 hours */
+"4 ЧАСА" = "4 HOURS";
+
+/* Heli - 45 minutes */
+"45 МИНУТ" = "45 MINUTES";
+
+/* GPS COORDINATES */
+"GPS КООРДИНАТЫ" = "GPS COORDINATES";
+
+/* Golova Media */
+"Golova Media" = "Golova Media";
+
+/* App version and techsupport */
+"Nikola Lenivets iOS App ver. %@\nТехническая поддержка — support@golovamedia.ru" = "Nikola Lenivets iOS App ver. %@\nTechnical support — support@golovamedia.ru";
+
+/* Developer website */
+"http://golovamedia.ru" = "http://golovamedia.ru";
+
+/* Developer support email */
+"mailto:support@golovamedia.ru" = "mailto:support@golovamedia.ru";
+
+/* BUS */
+"АВТОБУС" = "BUS";
+
+/* CAR */
+"АВТОМОБИЛЬ" = "CAR";
+
+/* Car - directions 2 */
+"В Кондрово поворот налево: на Сени, Острожное." = "In Kondrovo turn left: to Seni, Ostrozhnoye.";
+
+/* Car - directions 4 */
+"В Острожном на большом перекрёстке налево." = "In Ostrozhnoye turn left at the large crossing.";
+
+/* HELICOPTER */
+"ВЕРТОЛЕТ" = "HELICOPTER";
+
+/* Car - you have arrived */
+"ВЫ НА МЕСТЕ" = "YOU HAVE ARRIVED";
+
+/* Map - you are out of NL bounds */
+"ВЫ НАХОДИТЕСЬ\nЗА ПРЕДЕЛАМИ\nПАРКА\nНИКОЛА-ЛЕНИВЕЦ" = "YOU ARE OUTSIDE\nNIKOLA-LENIVETS\nPARK AREA";
+
+/* NEXT */
+"ДАЛЕЕ" = "NEXT";
+
+/* Car - villages */
+"ДЕРЕВНИ" = "VILLAGES";
+
+/* GET THERE */
+"ДОБРАТЬСЯ" = "GET THERE";
+
+/* Bus timetable */
+"ЕЖЕДНЕВНО В 14:30 И 15:30" = "EVERY DAY AT 2:30 PM AND 3:30 PM";
+
+/* Car - village names */
+"Звизжи\nНикола-Ленивец\nКольцово" = "Zvizzhi\nNikola-Lenivets\nKoltsovo";
+
+/* MAP */
+"КАРТА" = "MAP";
+
+/* Heli - landing coordinates */
+"КООРДИНАТЫ ДЛЯ ПОСАДКИ" = "LANDING COORDINATES";
+
+/* Address - Kaluzhskaya oblast */
+"Калужская область" = "Kaluga oblast";
+
+/* LENIVETS */
+"ЛЕНИВЕЦ" = "LENIVETS";
+
+/* PLACES */
+"МЕСТА" = "PLACES";
+
+/* BY BUS */
+"НА АВТОБУСЕ" = "BY BUS";
+
+/* BY CAR */
+"НА АВТОМОБИЛЕ" = "BY CAR";
+
+/* BY HELICOPTER */
+"НА ВЕРТОЛЕТЕ" = "BY HELICOPTER";
+
+/* BY TRAIN */
+"НА ЭЛЕКТРИЧКЕ" = "BY TRAIN";
+
+/* NIKOLA */
+"НИКОЛА" = "NIKOLA";
+
+/* NOTHING FOUND */
+"НИЧЕГО НЕ НАЙДЕНО" = "NOTHING FOUND";
+
+/* NEWS */
+"НОВОСТИ" = "NEWS";
+
+/* Car - directions 3 */
+"На T-образном перекрёстке поворот налево. На горбатый мост через ж/д пути." = "Turn left at the T-shaped crossing. Get to the hogged bridge over the railways.";
+
+/* (No Commment) */
+"На такси до Никола-Ленивца." = "Take a taxi to Nikola-Lenivets";
+
+/* Car - directions 5 */
+"Не доезжая несколько метров до Звизжей, поворот направо на грунтовую дорогу. После поворота спуск с крутой горки." = "Turn right to the dirt road a few meters before reaching Zvizzhi. There's a steep descent after the turn.";
+
+/* Address - Nikola-Lenivets */
+"Никола-Ленивец" = "Nikola-Lenivets";
+
+/* ABOUT */
+"О ПАРКЕ" = "ABOUT";
+
+/* Map filter OK */
+"ОК" = "OK";
+
+/* Map filter CANCEL */
+"ОТМЕНИТЬ" = "CANCEL";
+
+/* Train - directions */
+"От Киевского вокзала на электричках Киевского направления до станций Малоярославец или Калуга–1." = "From the Kievsky railway station take a Kievskoe direction train to Maloyaroslavets or Kaluga-1.";
+
+/* (No Commment) */
+"Отменить" = "Cancel";
+
+/* SEARCH */
+"ПОИСК" = "SEARCH";
+
+/* (No Commment) */
+"Позвонить +74843448500" = "Call +74843448500";
+
+/* DEVELOPER */
+"РАЗРАБОТЧИК" = "DEVELOPER";
+
+/* (No Commment) */
+"РАСЧЕТНОЕ ВРЕМЯ В ПУТИ" = "ESTIMATED TRAVEL TIME";
+
+/* Address - Russia */
+"Россия" = "Russia";
+
+/* Car - directions 1 */
+"С Киевского шоссе поворот направо, на Медынь.\n174 км от МКАД, пост ДПС с огромными буквами «Калуга»." = "Turn right from Kievskoe highway to Medyn.\nAt 174 km from MKAD there's a traffic control post with “Kaluga“ written in large letters on it.";
+
+/* EVENTS */
+"СОБЫТИЯ" = "EVENTS";
+
+/* (No Commment) */
+"Скопировать номер" = "Copy number";
+
+/* Golova Media description */
+"Создаем интерес к вашему делу, превращаем аудиторию в ваших клиентов. С помощью сайтов, приложений, спецпроектов и медиа.\n\nНаши стратегии, идеи и технологии. Ваши большие цели." = "We create interest for your cause, turning audience into your clients using websites, apps, experimental projects and media. Our strategies, ideas and technology. Your big goals.";
+
+/* (No Commment) */
+"ТЕЛЕФОН ТАКСИ" = "TAXI PHONE NUMBER";
+
+/* FESTIVAL TRANSFER */
+"ФЕСТИВАЛЬНЫЙ ТРАНСФЕР" = "FESTIVAL TRANSFER";
+
+/* TRAIN */
+"ЭЛЕКТРИЧКА" = "TRAIN";
+
+/* Ordinal day - day string */
+"день" = "day";
+
+/* Infinity kilometers */
+"∞ КМ" = "∞ KM";
+

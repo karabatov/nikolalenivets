@@ -30,7 +30,6 @@
 		4F390E8C18ED755300131934 /* NLEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F390E8B18ED755300131934 /* NLEvent.m */; };
 		4F411E7E18FFD8AA00758E30 /* NLMainMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F411E7C18FFD8AA00758E30 /* NLMainMenuController.m */; };
 		4F6137491927313700BFDD1C /* NLEventGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6137471927313700BFDD1C /* NLEventGroupsViewController.m */; };
-		4F61374A1927313700BFDD1C /* NLEventGroupsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F6137481927313700BFDD1C /* NLEventGroupsViewController.xib */; };
 		4F61374D19273D7700BFDD1C /* NLEventGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F61374C19273D7700BFDD1C /* NLEventGroup.m */; };
 		4F7EC305190933B9002C0ECD /* NLItemsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7EC303190933B9002C0ECD /* NLItemsListController.m */; };
 		4F7EC306190933B9002C0ECD /* NLItemsListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7EC304190933B9002C0ECD /* NLItemsListController.xib */; };
@@ -71,6 +70,8 @@
 		D153DDAB19CDB9C10091BB4A /* button-back-black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D153DDAA19CDB9C10091BB4A /* button-back-black@2x.png */; };
 		D153DDAD19CDE88C0091BB4A /* menu_button_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D153DDAC19CDE88C0091BB4A /* menu_button_white@2x.png */; };
 		D153DDAF19CDE9D10091BB4A /* button-back-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D153DDAE19CDE9D10091BB4A /* button-back-white@2x.png */; };
+		D15C68D31A344B6A00622A37 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D15C68D51A344B6A00622A37 /* Localizable.strings */; };
+		D15C68DA1A344F1900622A37 /* NLEventGroupsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D15C68DC1A344F1900622A37 /* NLEventGroupsViewController.xib */; };
 		D16373AB19B76B9700A89A98 /* NLMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D16373AA19B76B9700A89A98 /* NLMenuButton.m */; };
 		D16373AD19B8910C00A89A98 /* menu-circle-green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D16373AC19B8910C00A89A98 /* menu-circle-green@2x.png */; };
 		D17177B3196D047200521D72 /* NSAttributedString+Kerning.m in Sources */ = {isa = PBXBuildFile; fileRef = D17177B2196D047200521D72 /* NSAttributedString+Kerning.m */; };
@@ -199,7 +200,6 @@
 		4F411E7C18FFD8AA00758E30 /* NLMainMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLMainMenuController.m; path = UI/NLMainMenuController.m; sourceTree = "<group>"; };
 		4F6137461927313700BFDD1C /* NLEventGroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLEventGroupsViewController.h; path = UI/NLEventGroupsViewController.h; sourceTree = "<group>"; };
 		4F6137471927313700BFDD1C /* NLEventGroupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLEventGroupsViewController.m; path = UI/NLEventGroupsViewController.m; sourceTree = "<group>"; };
-		4F6137481927313700BFDD1C /* NLEventGroupsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NLEventGroupsViewController.xib; path = UI/NLEventGroupsViewController.xib; sourceTree = "<group>"; };
 		4F61374B19273D7700BFDD1C /* NLEventGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLEventGroup.h; path = Models/NLEventGroup.h; sourceTree = "<group>"; };
 		4F61374C19273D7700BFDD1C /* NLEventGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLEventGroup.m; path = Models/NLEventGroup.m; sourceTree = "<group>"; };
 		4F7A321618EA8BC200C75EE5 /* NLBackendSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NLBackendSpec.m; sourceTree = "<group>"; };
@@ -218,7 +218,6 @@
 		4F9C413918EA84640038090E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		4F9C413B18EA84640038090E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4F9C413F18EA84640038090E /* NikolaLenivets-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NikolaLenivets-Info.plist"; sourceTree = "<group>"; };
-		4F9C414118EA84640038090E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4F9C414318EA84640038090E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4F9C414518EA84640038090E /* NikolaLenivets-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NikolaLenivets-Prefix.pch"; sourceTree = "<group>"; };
 		4F9C414618EA84640038090E /* NLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NLAppDelegate.h; sourceTree = "<group>"; };
@@ -226,7 +225,6 @@
 		4F9C414918EA84640038090E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4F9C415018EA84640038090E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		4F9C415818EA84640038090E /* NikolaLenivetsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NikolaLenivetsTests-Info.plist"; sourceTree = "<group>"; };
-		4F9C415A18EA84640038090E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4FCBE0051907A054002F37A3 /* BookmanC.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BookmanC.otf; sourceTree = "<group>"; };
 		4FD010F9192CC940002F5836 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		74E178DDEDDC3851747EF626 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -262,6 +260,14 @@
 		D153DDAA19CDB9C10091BB4A /* button-back-black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-back-black@2x.png"; sourceTree = "<group>"; };
 		D153DDAC19CDE88C0091BB4A /* menu_button_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_button_white@2x.png"; sourceTree = "<group>"; };
 		D153DDAE19CDE9D10091BB4A /* button-back-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-back-white@2x.png"; sourceTree = "<group>"; };
+		D15C68CF1A343EC900622A37 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D15C68D01A343EC900622A37 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D15C68D41A344B6A00622A37 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D15C68D71A344CCA00622A37 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D15C68D81A344CCA00622A37 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D15C68D91A344CCA00622A37 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D15C68DB1A344F1900622A37 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/NLEventGroupsViewController.xib; sourceTree = "<group>"; };
+		D15C68DD1A344F1B00622A37 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NLEventGroupsViewController.xib; sourceTree = "<group>"; };
 		D16373A919B76B9700A89A98 /* NLMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NLMenuButton.h; path = UI/NLMenuButton.h; sourceTree = "<group>"; };
 		D16373AA19B76B9700A89A98 /* NLMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NLMenuButton.m; path = UI/NLMenuButton.m; sourceTree = "<group>"; };
 		D16373AC19B8910C00A89A98 /* menu-circle-green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-circle-green@2x.png"; sourceTree = "<group>"; };
@@ -596,7 +602,7 @@
 				D1926BB619CE0A2200571E3A /* forward@2x.png */,
 				4F6137461927313700BFDD1C /* NLEventGroupsViewController.h */,
 				4F6137471927313700BFDD1C /* NLEventGroupsViewController.m */,
-				4F6137481927313700BFDD1C /* NLEventGroupsViewController.xib */,
+				D15C68DC1A344F1900622A37 /* NLEventGroupsViewController.xib */,
 				D19C043419750589006A086B /* NLEventsCollectionViewController.h */,
 				D19C043519750589006A086B /* NLEventsCollectionViewController.m */,
 				D19C043619750589006A086B /* NLEventsCollectionViewController.xib */,
@@ -704,6 +710,7 @@
 				4F9C414018EA84640038090E /* InfoPlist.strings */,
 				4F9C414318EA84640038090E /* main.m */,
 				4F9C414518EA84640038090E /* NikolaLenivets-Prefix.pch */,
+				D15C68D51A344B6A00622A37 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -854,9 +861,10 @@
 			};
 			buildConfigurationList = 4F9C412F18EA84640038090E /* Build configuration list for PBXProject "NikolaLenivets" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = Russian;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				ru,
 				en,
 			);
 			mainGroup = 4F9C412B18EA84640038090E;
@@ -887,6 +895,7 @@
 				D1CAF02519C0435C001C5270 /* unread-indicator-red@2x.png in Resources */,
 				D19956E419C83D1300904137 /* event-alarm@2x.png in Resources */,
 				D1C545F119C9A9EE004781B1 /* gradient-green@2x.png in Resources */,
+				D15C68D31A344B6A00622A37 /* Localizable.strings in Resources */,
 				D172841019D1CF32005459CA /* travel-bus-route@2x.png in Resources */,
 				4FCBE0081907A054002F37A3 /* BookmanC.otf in Resources */,
 				4F22FD791936E8B30075C1A0 /* NLGalleryViewController.xib in Resources */,
@@ -915,7 +924,7 @@
 				D1783F2719826F1B00A92AA3 /* place-info@2x.png in Resources */,
 				D1783F08197E622B00A92AA3 /* blue-gradient@2x.png in Resources */,
 				4F22FD871937288B0075C1A0 /* NLPlacesViewController.xib in Resources */,
-				4F61374A1927313700BFDD1C /* NLEventGroupsViewController.xib in Resources */,
+				D15C68DA1A344F1900622A37 /* NLEventGroupsViewController.xib in Resources */,
 				4F18FD3B192212F900032A34 /* NLDetailsViewController.xib in Resources */,
 				D115713619D2DE3400A9E433 /* travel-car-map@2x.png in Resources */,
 				D1783EEB197C417000A92AA3 /* route-b.png in Resources */,
@@ -1076,7 +1085,8 @@
 		4F9C414018EA84640038090E /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				4F9C414118EA84640038090E /* en */,
+				D15C68CF1A343EC900622A37 /* ru */,
+				D15C68D71A344CCA00622A37 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1084,9 +1094,29 @@
 		4F9C415918EA84640038090E /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				4F9C415A18EA84640038090E /* en */,
+				D15C68D01A343EC900622A37 /* ru */,
+				D15C68D91A344CCA00622A37 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D15C68D51A344B6A00622A37 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D15C68D41A344B6A00622A37 /* ru */,
+				D15C68D81A344CCA00622A37 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		D15C68DC1A344F1900622A37 /* NLEventGroupsViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D15C68DB1A344F1900622A37 /* ru */,
+				D15C68DD1A344F1B00622A37 /* en */,
+			);
+			name = NLEventGroupsViewController.xib;
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
