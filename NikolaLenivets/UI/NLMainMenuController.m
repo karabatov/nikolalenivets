@@ -318,7 +318,7 @@ enum {
         }
         case Map: {
             _mapController = [NLMapViewController new];
-            _mapController.title = @"КАРТА";
+            _mapController.title = NSLocalizedString(@"КАРТА", @"MAP");
             [self.navigationController pushViewController:_mapController animated:YES];
             break;
         }

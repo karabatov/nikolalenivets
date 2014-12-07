@@ -87,6 +87,7 @@
     self.placeName.font = [UIFont fontWithName:NLMonospacedBoldFont size:13];
     self.distanceToPlace.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
     self.distanceToPlaceLegend.font = [UIFont fontWithName:NLMonospacedBoldFont size:9];
+    self.distanceToPlaceLegend.text = NSLocalizedString(@"ДО МЕСТА", @"DISTANCE TO PLACE");
 
     MKTileOverlay *bgOverlay = [[MKTileOverlay alloc] initWithURLTemplate:[[[[NSBundle mainBundle] bundleURL] URLByAppendingPathComponent:@"tile-empty.png"] absoluteString]];
     bgOverlay.canReplaceMapContent = YES;
@@ -216,7 +217,6 @@
     } else {
         placeImage = [[UIImage imageNamed:@"map-object.png"] imageTintedWithColor:imageTint];
     }
-    NSLog(@"Place image = %@", placeImage);
     return placeImage;
 }
 
@@ -389,7 +389,7 @@
     NLPlace *place = ((NLPlaceAnnotation *)(_selectedView.annotation)).place;
     NLDetailsViewController *details = [[NLDetailsViewController alloc] initWithPlace:place currentLocation:self.currentLocation];
     [details.view setNeedsDisplayInRect:[UIScreen mainScreen].bounds];
-    details.title = @"КАРТА";
+    details.title = NSLocalizedString(@"КАРТА", @"MAP");
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     [self.navigationController pushViewController:details animated:YES];
 }
