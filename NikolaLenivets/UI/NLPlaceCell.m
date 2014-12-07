@@ -67,9 +67,9 @@
 - (void)populateWithPlace:(NLPlace *)place
 {
     _place = place;
-    self.distanceLabel.text = @"∞ КМ";
+    self.distanceLabel.text = NSLocalizedString(@"∞ КМ", @"Infinite kilometers");
     self.nameLabel.attributedText = [NSAttributedString attributedStringForPlaceName:[_place.title uppercaseString]];
-    [self.image sd_setImageWithURL:[NSURL URLWithString:_place.thumbnail]];
+    [self.image sd_setImageWithURL:[NSURL URLWithString:_place.thumbnail] placeholderImage:[UIImage imageNamed:@"thumbnail-placeholder.png"]];
     [self setUnreadStatus:place.itemStatus];
 }
 
@@ -98,7 +98,7 @@
 
 - (void)prepareForReuse
 {
-    self.image.image = nil;
+    self.image.image = [UIImage imageNamed:@"thumbnail-placeholder.png"];
     [self.image sd_cancelCurrentImageLoad];
 }
 
