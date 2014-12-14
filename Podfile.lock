@@ -1,11 +1,11 @@
 PODS:
   - AFNetworking (2.2.4):
-    - AFNetworking/NSURLConnection
-    - AFNetworking/NSURLSession
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-    - AFNetworking/UIKit
+    - AFNetworking/NSURLConnection (= 2.2.4)
+    - AFNetworking/NSURLSession (= 2.2.4)
+    - AFNetworking/Reachability (= 2.2.4)
+    - AFNetworking/Security (= 2.2.4)
+    - AFNetworking/Serialization (= 2.2.4)
+    - AFNetworking/UIKit (= 2.2.4)
   - AFNetworking/NSURLConnection (2.2.4):
     - AFNetworking/Reachability
     - AFNetworking/Security
@@ -34,7 +34,7 @@ PODS:
     - DTFoundation/Core
   - NSDate+Helper (1.0.0)
   - SDWebImage (3.7.1):
-    - SDWebImage/Core
+    - SDWebImage/Core (= 3.7.1)
   - SDWebImage/Core (3.7.1)
   - UIPhotoGallery (0.1.2):
     - SDWebImage (~> 3.0)
@@ -62,4 +62,4 @@ SPEC CHECKSUMS:
   UIPhotoGallery: 1dd2dbe4ea352ab42f8092ded8c1ac3d9e6be708
   Underscore.m: f99c166a9fdccfb5069085b6b4263c04b817fc9f
 
-COCOAPODS: 0.34.4
+COCOAPODS: 0.35.0
