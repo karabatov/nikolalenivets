@@ -13,12 +13,12 @@
 
 + (NSString *)ordinalRepresentationWithNumber:(NSInteger)ordinal
 {
-    if (![[NSLocale currentLocale].localeIdentifier containsString:@"ru"]) {
+    if ([[NSLocale currentLocale].localeIdentifier rangeOfString:@"ru" options:NSCaseInsensitiveSearch].location == NSNotFound) {
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
         [formatter setNumberStyle:NSNumberFormatterSpellOutStyle];
 
         NSString *ordinalStr = [formatter stringFromNumber:@(ordinal)];
-        
+
         return ordinalStr;
     }
 
