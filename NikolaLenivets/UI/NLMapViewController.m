@@ -275,7 +275,6 @@
 {
     self.currentLocation = notification.object;
     if (_selectedView.selected) {
-        [self.mapView selectAnnotation:nil animated:NO];
         [self.mapView selectAnnotation:_selectedView.annotation animated:NO];
     }
 }

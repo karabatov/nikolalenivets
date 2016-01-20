@@ -76,11 +76,11 @@
     [self.animator.behaviors enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         if ([obj isKindOfClass:[UIAttachmentBehavior class]]) {
             UIAttachmentBehavior *springBehavior = (UIAttachmentBehavior *)obj;
-            CGFloat yDistanceFromTouch = fabsf(touchLocation.y - springBehavior.anchorPoint.y);
-            CGFloat xDistanceFromTouch = fabsf(touchLocation.x - springBehavior.anchorPoint.x);
+            CGFloat yDistanceFromTouch = fabs(touchLocation.y - springBehavior.anchorPoint.y);
+            CGFloat xDistanceFromTouch = fabs(touchLocation.x - springBehavior.anchorPoint.x);
             CGFloat scrollResistance = (yDistanceFromTouch + xDistanceFromTouch) / 1500.0f;
 
-            UICollectionViewLayoutAttributes *item = springBehavior.items.firstObject;
+            UICollectionViewLayoutAttributes *item = (UICollectionViewLayoutAttributes *)springBehavior.items.firstObject;
             CGPoint center = item.center;
             if (delta < 0) {
                 center.y += MAX(delta, delta*scrollResistance);
