@@ -45,7 +45,6 @@
 		4F9C414818EA84640038090E /* NLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9C414718EA84640038090E /* NLAppDelegate.m */; };
 		4F9C414A18EA84640038090E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F9C414918EA84640038090E /* Images.xcassets */; };
 		4FCBE0081907A054002F37A3 /* BookmanC.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBE0051907A054002F37A3 /* BookmanC.otf */; };
-		4FD010FA192CC940002F5836 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FD010F9192CC940002F5836 /* Crashlytics.framework */; };
 		4FF31086D2714E0584DB4E63 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 213D00ACD702461FA5EF0EB3 /* libPods.a */; };
 		D11503981A2B932300467710 /* UIApplication+NLDirections.m in Sources */ = {isa = PBXBuildFile; fileRef = D11503971A2B932300467710 /* UIApplication+NLDirections.m */; };
 		D115039F1A2CC90200467710 /* UIImage+Tint.m in Sources */ = {isa = PBXBuildFile; fileRef = D115039E1A2CC90200467710 /* UIImage+Tint.m */; };
@@ -231,7 +230,6 @@
 		4F9C415018EA84640038090E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		4F9C415818EA84640038090E /* NikolaLenivetsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NikolaLenivetsTests-Info.plist"; sourceTree = "<group>"; };
 		4FCBE0051907A054002F37A3 /* BookmanC.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BookmanC.otf; sourceTree = "<group>"; };
-		4FD010F9192CC940002F5836 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		74E178DDEDDC3851747EF626 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		9F010D930FC743A086F2A9F3 /* libPods-NikolaLenivetsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NikolaLenivetsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D11503961A2B932300467710 /* UIApplication+NLDirections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIApplication+NLDirections.h"; path = "UI/UIApplication+NLDirections.h"; sourceTree = "<group>"; };
@@ -401,7 +399,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F9C413A18EA84640038090E /* CoreGraphics.framework in Frameworks */,
-				4FD010FA192CC940002F5836 /* Crashlytics.framework in Frameworks */,
 				4F9C413C18EA84640038090E /* UIKit.framework in Frameworks */,
 				4F9C413818EA84640038090E /* Foundation.framework in Frameworks */,
 				D1783F221980042E00A92AA3 /* MapKit.framework in Frameworks */,
@@ -692,7 +689,6 @@
 			isa = PBXGroup;
 			children = (
 				D1783F211980042E00A92AA3 /* MapKit.framework */,
-				4FD010F9192CC940002F5836 /* Crashlytics.framework */,
 				4F9C413718EA84640038090E /* Foundation.framework */,
 				4F9C413918EA84640038090E /* CoreGraphics.framework */,
 				4F9C413B18EA84640038090E /* UIKit.framework */,
